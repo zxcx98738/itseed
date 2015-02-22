@@ -39,8 +39,29 @@
   </head>
 
   <body>
-    <%- body %>
 
+    <!--HEADER-->
+    <% include header %>
+    <!--END HEADER-->
+    
+    <!--BODY-->
+    <div class="container-fluid">
+      <table class="col-xs-12">   
+        <tr>
+          <td class="col-xs-1" style="background-color: #AECCE2;"></td>
+          <td class="col-xs-10" id="mainContent" style="background-color: white; padding-top: 60px; padding-bottom: 60px;">
+            <%- body %>
+          </td>
+          <td class="col-xs-1" style="background-color: #E5E8C3;"></td>
+        </tr>
+      </table>
+    </div>
+    <!--END BODY-->
+
+    <!--FOOTER-->
+    <% include footer %>
+    <!--END FOOTER-->
+    
 
 
     <!--
@@ -48,7 +69,7 @@
         ========================
 
         HTML templates are important prerequisites of modern, rich client applications.
-        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
+        To work their magic, layoutworks like Backbone, Angular, Ember, and Knockout require
         that you load these templates client-side.
 
         By default, your Gruntfile is configured to automatically load and precompile
