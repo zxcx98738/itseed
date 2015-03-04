@@ -1,7 +1,7 @@
 /**
-* News.js
+* OverseaVisit.js
 *
-* @描述 : 最新消息資料表
+* @描述 : 海外參訪
 * @文件 : http://sailsjs.org/#!documentation/models
 * 
 */ 
@@ -15,8 +15,39 @@ module.exports = {
           primaryKey: true,
           unique: true
         },
-        
- 
+        //屆數
+        th: {
+          type: 'integer',
+          notNull: true
+        },
+        //參訪名稱
+        overseaName: {
+          type: 'string',
+          notNull: true,
+          maxLength: 20
+        },
+        //圖片名稱
+        picName: {
+          type: 'string',
+          notNull: true,
+          maxLength: 30
+        },
+        //圖片位置
+        source: {
+          type: 'string',
+          notNull: true,
+          maxLength: 30
+        },
+        //顯示
+        visible: {
+          type: 'boolean',
+          defaultsTo: true
+        },
+        //排序
+        order: {
+          type: 'integer',
+          autoIncrement: true
+        },
         //建立時間
         createdAt: {
           type: 'datetime'

@@ -1,7 +1,7 @@
 /**
-* News.js
+* AboutITSeed.js
 *
-* @描述 : 最新消息資料表
+* @描述 : 計畫簡介
 * @文件 : http://sailsjs.org/#!documentation/models
 * 
 */ 
@@ -15,8 +15,17 @@ module.exports = {
           primaryKey: true,
           unique: true
         },
-        
- 
+        //標題
+        title: {
+          type: 'string',
+          maxLength: 10,
+          notNull: true
+        },
+        //內容
+        content: {
+          type: 'text',
+          notNull: true
+        },
         //建立時間
         createdAt: {
           type: 'datetime'

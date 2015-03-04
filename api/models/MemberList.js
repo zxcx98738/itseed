@@ -1,7 +1,7 @@
 /**
-* News.js
+* MemberList.js
 *
-* @描述 : 最新消息資料表
+* @描述 : 歷屆名單
 * @文件 : http://sailsjs.org/#!documentation/models
 * 
 */ 
@@ -15,8 +15,21 @@ module.exports = {
           primaryKey: true,
           unique: true
         },
-        
- 
+        //屆數
+        th: {
+          type: 'integer',
+          autoIncrement: true,
+        },
+        //內容
+        content: {
+          type: 'text',
+          notNull: true
+        },
+        //顯示
+        visible: {
+          type: 'boolean',
+          defaultsTo: true
+        },
         //建立時間
         createdAt: {
           type: 'datetime'
