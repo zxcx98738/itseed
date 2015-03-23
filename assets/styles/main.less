@@ -1,0 +1,255 @@
+/*
+	CSS書寫順序
+	1.位置屬性(position, top, right, z-index, display, float等)
+	2.大小(width, height, padding, margin)
+	3.文字系列(font, line-height, letter-spacing, color- text-align等)
+	4.背景(background, border等)
+	5.其他(animation, transition等)
+*/
+
+@font-face {
+    font-family: 'WebFont';
+    src: url('/fonts/SourceHanSansTC-Normal.otf'); 
+}
+
+//全域元件
+
+body {
+	font-family: 'WebFont';
+}
+
+.bg-light-gray {
+	background-color: #ededed;
+}
+
+//標頭
+
+header {
+	nav.navbar-default {
+	    background-color: white;
+	    border-bottom: solid 1px transparent;
+	    border-bottom-color: #ececec;
+	    box-shadow: 0 0 16px 0 rgba(50,50,50,0.3);
+
+		.navbar-header {          
+			padding: 15px;
+
+			.navbar-toggle {
+                float: left;
+                margin-right: 0px;
+				border-color: #fed136;
+				background-color: #fed136;
+
+				&:hover, &:focus {
+					background-color: #fed136;
+				};
+				.icon-bar {
+					background-color: #fff;
+				}
+			}
+			.navbar-brand {
+                padding: 0px;
+				height: 50px;
+
+                @media(max-width:767px) {
+                    float: none;
+                }
+
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+
+                    @media(max-width:767px) {
+                        margin: 0 auto;
+                    }
+                }
+			}
+		}
+	    
+	    .navbar-collapse {
+	    	border-color: rgba(255,255,255,.02);
+
+            .main-nav {
+                float: none;
+                clear: both;
+            }
+
+	    	.main-nav li a {
+	    		text-transform: uppercase;
+	    		font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	    		font-weight: 400;
+	    		letter-spacing: 1px;
+	    		color: black;
+
+	    		&:hover, &:focus {
+	    			outline: 0;
+	    			color: #fed136;
+	    		}
+	    	}
+
+	    	.main-nav li.active a {
+	    		border-radius: 0;
+	    		color: #fff;
+	    		background-color: #fed136;
+
+	    		&:hover, &:focus {
+	    			color: #fff;
+	    			background-color: #fec503;
+	    		}
+	    	}
+	    }
+	}
+}
+
+#cover {
+    text-align: center;
+    color: #fff;
+    background-attachment: scroll;
+    background-image: url(/images/layout/header-bg.jpg);
+    background-position: center center;
+    background-repeat: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+#cover .intro-text {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+#cover .intro-text .intro-lead-in {
+    margin-bottom: 25px;
+    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 22px;
+}
+
+#cover .intro-text .intro-heading {
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 50px;
+}
+
+@media(min-width:768px) {
+    #cover .intro-text {
+        padding-top: 300px;
+        padding-bottom: 200px;
+    }
+
+    #cover .intro-text .intro-lead-in {
+        margin-bottom: 25px;
+        font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 40px;
+        font-style: italic;
+        line-height: 40px;
+    }
+
+    #cover .intro-text .intro-heading {
+        margin-bottom: 50px;
+        text-transform: uppercase;
+        font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 75px;
+        font-weight: 700;
+        line-height: 75px;
+    }
+}
+
+.btn-xl {
+    padding: 20px 40px;
+    border-color: #fed136;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #fed136;
+}
+
+.btn-xl:hover,
+.btn-xl:focus,
+.btn-xl:active,
+.btn-xl.active,
+.open .dropdown-toggle.btn-xl {
+    border-color: #f6bf01;
+    color: #fff;
+    background-color: #fec503;
+}
+
+.btn-xl:active,
+.btn-xl.active,
+.open .dropdown-toggle.btn-xl {
+    background-image: none;
+}
+
+.btn-xl.disabled,
+.btn-xl[disabled],
+fieldset[disabled] .btn-xl,
+.btn-xl.disabled:hover,
+.btn-xl[disabled]:hover,
+fieldset[disabled] .btn-xl:hover,
+.btn-xl.disabled:focus,
+.btn-xl[disabled]:focus,
+fieldset[disabled] .btn-xl:focus,
+.btn-xl.disabled:active,
+.btn-xl[disabled]:active,
+fieldset[disabled] .btn-xl:active,
+.btn-xl.disabled.active,
+.btn-xl[disabled].active,
+fieldset[disabled] .btn-xl.active {
+    border-color: #fed136;
+    background-color: #fed136;
+}
+
+footer {
+    padding: 25px 0;
+    text-align: center;
+    background-color: #222;
+    color: #a2a2a2;
+}
+
+footer span.copyright {
+    text-transform: uppercase;
+    text-transform: none;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 40px;
+}
+
+footer ul.quicklinks {
+    margin-bottom: 0;
+    text-transform: uppercase;
+    text-transform: none;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 40px;
+}
+
+ul.social-buttons {
+    margin-bottom: 0;
+}
+
+ul.social-buttons li a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    font-size: 20px;
+    line-height: 40px;
+    outline: 0;
+    color: #fff;
+    background-color: #222;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+
+ul.social-buttons li a:hover,
+ul.social-buttons li a:focus,
+ul.social-buttons li a:active {
+    background-color: #fed136;
+}

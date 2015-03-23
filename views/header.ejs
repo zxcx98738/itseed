@@ -1,9 +1,79 @@
-<header>  
-  <div class="container-fluid">
-    <div class="row">
-      <div class="text-center" style="background: #BDE0CC;">        
-        <b>Copyright © 2014 - 資訊種子培訓計畫</b>        
-      </div>
-    </div>
-  </div>        
+<script>
+	(function(){
+		$(window).scroll(function(){
+			if($(this).scrollTop() > 300) {
+				$("nav").addClass("navbar-shrink");
+			}
+			else{
+				$("nav").removeClass("navbar-shrink");
+			}
+		});
+	})()
+</script>
+
+<header>
+<!-- 導覽列 -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">
+					<img src="/images/layout/logo1.png" alt="">
+				</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+					<span class="sr-only">展開導覽列</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">註冊</a></li>
+					<li><a href="#">登入</a></li>
+					<li class="divider"></li>
+				</ul>
+				<ul class="main-nav nav navbar-nav">
+					<li class="active">
+						<a href="#">最新消息</a>
+					</li>
+					<li>
+						<a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">關於資種<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">公會簡介</a></li>
+							<li><a href="#">計畫簡介</a></li>
+							<li><a href="#">歷屆名單</a></li>
+							<li><a href="#">歷屆課程</a></li>
+						</ul>
+					</li>
+					<li>
+						<a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">培訓內容<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">講座課程</a></li>
+							<li><a href="#">企業參訪</a></li>
+							<li><a href="#">專案實作</a></li>
+							<li><a href="#">海外參訪</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">講師介紹</a>
+					</li>
+					<li>
+						<a href="#">經驗分享</a>
+					</li>
+					<li>
+						<a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">招生訊息<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">報名資訊</a></li>
+							<li><a href="#">書審資料</a></li>
+							<li><a href="#">重要時程</a></li>
+							<li><a href="#">常見問題</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">影音專區</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 </header>
