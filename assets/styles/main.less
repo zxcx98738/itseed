@@ -1,0 +1,197 @@
+/*
+	CSS書寫順序
+	1.位置屬性(position, top, right, z-index, display, float等)
+	2.大小(width, height, padding, margin)
+	3.文字系列(font, line-height, letter-spacing, color- text-align等)
+	4.背景(background, border等)
+	5.其他(animation, transition等)
+*/
+
+@import 'index.less';
+
+//定義
+
+@font-face {
+    font-family: '思源黑體';
+    src: url('/fonts/SourceHanSansTC-Normal.otf'); 
+}
+
+@light-green: #C2D63E;
+@green: #509238;
+
+@light-yello: #F9F96C;
+
+@gray: #777;
+@light-gray: #ededed;
+@dark-gray: #333;
+
+//全域元件
+
+body {
+	font-family: '思源黑體', '微軟正黑體';
+}
+
+.bg-light-gray {
+	background-color: @light-gray;
+}
+
+//標頭
+
+header {
+	nav.navbar-default {
+	    border-bottom: solid 3px;
+        border-bottom-color: @green;
+	    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        background-color: white;
+
+		.navbar-header {          
+			padding: 15px;
+
+			.navbar-toggle {
+                float: left;
+                margin-right: 0px;
+				border: 0px;
+				background-color: @light-green;
+
+				&:hover, &:focus {
+					background-color: @green;
+				};
+				.icon-bar {
+					background-color: #fff;
+				}
+			}
+			.navbar-brand {
+                padding: 0px;
+				height: 50px;
+
+                @media(max-width:767px) {
+                    float: none;
+                }
+
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+
+                    @media(max-width:767px) {
+                        margin: 0 auto;
+                    }
+                }
+			}
+		}  
+	    .navbar-collapse {
+            .login-area{
+                li a {            
+                    margin: 15px 5px 0px 0px;
+                    padding: 5px 10px;
+                    color: @green;
+                    background-color: transparent;
+                    border: 2px solid @green;
+                    transition: all 0.3s;
+                
+                    &:after {
+                      content: '';
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      z-index: -1;
+                      width: 0%;
+                      height: 100%;
+                      background: @green;
+                      transition: all 0.3s;
+                    }
+                    &:hover{
+                        color: white;
+
+                        &:after {
+                          width: 100%;
+                        }
+                    }
+                }  
+
+                @media(max-width:767px) {
+                    text-align: center;
+                    li {
+                        display: inline-block;
+                        width: 40%;    
+
+                        a {
+                            color: white;
+                            background: @green;
+                        }
+                    }
+                }
+            } 
+
+            .main-nav {
+                clear: both;
+
+                @media(max-width:767px) {
+                    margin: 0px -15px;
+                } 
+                  
+                >li>a {
+                    top: 0px;
+                    color: white;
+                    border-width: 0px 1px 0px 1px;
+                    border-radius: 4px 4px 0px 0px;
+                    border-color: @green;
+                    border-style: solid;
+                    background: @light-green;
+                    box-shadow: 0 3px @green;
+                    transition: all 0.1s;
+
+                    &:hover, &:focus, &[aria-expanded="true"] {
+                        top: -3px;
+                        color: @green;
+                        background-color: @light-yello;
+                    }          
+
+                    @media(max-width:767px) {
+                        border-width: 0px 1px 2px 1px;
+                    }        
+                }
+                >li.active>a {
+                    top: -3px;
+                    color: @green;
+                    background-color: @light-yello;
+                }
+                ul.dropdown-menu {
+                    padding: 0px 0px 3px 0px;
+                    width: 100%;
+                    min-width: 0px;
+                    background-color: @green;
+
+                    >li>a {
+                        color: white;
+                        border-width: 1px 1px 0px 1px;
+                        border-color: @green;
+                        border-style: solid;             
+                        background: @light-green;
+
+                        @media(max-width:767px) {
+                            border-width: 0px 1px 1px 1px;
+                            color: @green;
+                            background-color: white;
+                        }    
+
+                        &:hover, &:focus {
+                            color: @green;
+                            background-color: @light-yello;
+                        }
+                    }
+                }
+            }    	
+	    }
+	}
+}
+
+footer {
+    padding: 25px 0;
+    text-align: center;
+    color: #a2a2a2;
+    background-color: #222;
+
+    span.copyright {
+        line-height: 40px;
+    }
+}
