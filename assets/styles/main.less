@@ -51,11 +51,8 @@ header {
                 float: left;
                 margin-right: 0px;
 				border: 0px;
-				background-color: @light-green;
+				background-color: @green;
 
-				&:hover, &:focus {
-					background-color: @green;
-				};
 				.icon-bar {
 					background-color: #fff;
 				}
@@ -79,6 +76,8 @@ header {
 			}
 		}  
 	    .navbar-collapse {
+            max-height: none;
+
             .login-area{
                 li a {            
                     margin: 15px 5px 0px 0px;
@@ -140,7 +139,7 @@ header {
                     box-shadow: 0 3px @green;
                     transition: all 0.1s;
 
-                    &:hover, &:focus, &[aria-expanded="true"] {
+                    &:hover, &[aria-expanded="true"] {
                         top: -3px;
                         color: @green;
                         background-color: @light-yello;
