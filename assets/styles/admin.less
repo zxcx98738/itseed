@@ -1,0 +1,49 @@
+@light-gray: #f8f8f8;
+@grey: #e7e7e7;
+
+#wrapper {
+    width: 100%;
+    background-color: @light-gray;
+
+    nav {
+        margin-bottom: 0px;
+
+        .navbar-header {
+            padding-right: 15px;
+            width: 100%;
+
+            .device-selector {
+                float: right;
+                line-height: 50px;
+            }
+        }
+        .sidebar {
+            position: absolute;
+            width: 250px;
+            margin-top: 51px;
+
+            ul li {
+                border-bottom: 1px solid @grey;
+                a {
+                    &.active {
+                        background-color: @light-gray;
+                    }
+                }
+            }
+        }
+    }
+    #page-wrapper {
+        margin: 0 0 0 250px;
+        padding: 30px;
+        background-color: @dark-gray;
+        border-left: 1px solid @grey;
+
+        iframe {
+            width: 992px;
+            height: 100%;
+        }
+    }
+}
+
+
+
