@@ -1,19 +1,4 @@
 <script>
-    $(function() {
-        /*$("input[type=radio][name=device]").change(function() {
-            if (this.value == "desktop") {
-                $("#page").css("width", "992px");
-            }
-            else if (this.value == "tablet") {
-                $("#page").css("width", "768px");
-            }
-            else{
-                $("#page").css("width", "320px");
-            }          
-        });*/
-    });
-</script>
-<script>
     ( function( $ ) {
         $( document ).ready(function() {
             $('#sidebar li.has-sub>a').on('click', function(){
@@ -39,27 +24,8 @@
     } )( jQuery );
 </script>
 
-<div id="wrapper">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">資訊種子招生網站 後台管理系統 v1.0</a>
-            <ul class="main-nav nav navbar-nav">
-                <li>
-                    <a href="#">文章管理</a>
-                </li>
-                <li>
-                    <a href="#">報名系統</a>
-                </li>
-            </ul>
-            <ul class="login-area nav navbar-nav navbar-right">
-                <li><a class="profile-pic" href="#">
-                    <img class="img-responsive" src="images/layout/head.jpg" alt="">
-                </a></li>
-                <li><a href="#">登出</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div id='sidebar'>
+<aside>
+	<div id='sidebar'>
         <ul>
             <li><a href='#'><span>首頁</span></a></li>
             <li class='has-sub'><a href='#'><span>最新消息</span></a>
@@ -180,60 +146,4 @@
             </li>
         </ul>
     </div>
-    <div id="page-wrapper">
-        <header>
-            <button type="button" class="btn btn-default"><input type="checkbox"></button>
-            <div class="btn-group">
-                <button type="button" class="btn btn-default">發佈</button>
-                <button type="button" class="btn btn-default">還原為草稿</button>
-                <button type="button" class="btn btn-default"><i class="fa fa-trash-o fa-fw"></i></button>
-            </div>
-        </header>
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th scope="row"><input type="checkbox"></th>
-                    <td>
-                        <div class="title">
-                            【台北基隆-熊米屋手工餅乾】
-                        </div>
-                        <div class="title">
-                            <a href="#">編輯</a> | <a href="#">預覽</a> | <a href="#">刪除</a>
-                        </div>    
-                    </td>
-                    <td>已排程</td>
-                    <td><a href="#">小人物 故事 情</a></td>
-                    <td>2013/11/21</td>
-                </tr>
-                <tr>
-                    <th scope="row"><input type="checkbox"></th>
-                    <td>
-                        <div class="title">
-                            【大誌雜誌-The Big Issue Taiwan】
-                        </div>
-                        <div class="title">
-                            <a href="#">編輯</a> | <a href="#">預覽</a> | <a href="#">刪除</a>
-                        </div>   
-                    </td>
-                    <td>草稿</td>
-                    <td><a href="#">Ryan Chiu</a></td>
-                    <td>2013/11/15</td>
-                </tr>
-                <tr>
-                    <th scope="row"><input type="checkbox"></th>
-                    <td>
-                        <div class="title">
-                            【台北街頭-盲人歌手徐承邦】
-                        </div>
-                        <div class="title">
-                            <a href="#">編輯</a> | <a href="#">檢視</a> | <a href="#">刪除</a>
-                        </div>   
-                    </td>
-                    <td>草稿</td>
-                    <td><a href="#">Ryan Chiu</a></td>
-                    <td>2013/11/15</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+</aside>
