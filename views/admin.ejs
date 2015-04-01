@@ -1,9 +1,6 @@
 <script>
     $(function() {
-        $("#wrapper").css("height", window.innerHeight);
-        $("#page-wrapper").css("height", window.innerHeight-51);
-
-        $("input[type=radio][name=device]").change(function() {
+        /*$("input[type=radio][name=device]").change(function() {
             if (this.value == "desktop") {
                 $("#page").css("width", "992px");
             }
@@ -13,54 +10,230 @@
             else{
                 $("#page").css("width", "320px");
             }          
-        });
+        });*/
     });
+</script>
+<script>
+    ( function( $ ) {
+        $( document ).ready(function() {
+            $('#sidebar li.has-sub>a').on('click', function(){
+                $(this).removeAttr('href');
+                var element = $(this).parent('li');
+                if (element.hasClass('open')) {
+                    element.removeClass('open');
+                    element.find('li').removeClass('open');
+                    element.find('ul').slideUp();
+                }
+                else {
+                    element.addClass('open');
+                    element.children('ul').slideDown();
+                    element.siblings('li').children('ul').slideUp();
+                    element.siblings('li').removeClass('open');
+                    element.siblings('li').find('li').removeClass('open');
+                    element.siblings('li').find('ul').slideUp();
+                }
+            });
+
+            $('#sidebar>ul>li.has-sub>a').append('<span class="holder"></span>');
+        });
+    } )( jQuery );
 </script>
 
 <div id="wrapper">
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">資訊種子招生網站 後台管理系統 v1.0</a>
-            <div class="device-selector">
-                <div class="btn-group" data-toggle="buttons">
-                  <label class="btn btn-primary active">
-                    <input type="radio" name="device" value="desktop">電腦
-                </label>
-                <label class="btn btn-primary">
-                    <input type="radio" name="device" value="tablet">平板
-                </label>
-                <label class="btn btn-primary">
-                    <input type="radio" name="device" value="phone">手機
-                </label>
-            </div>
-            </div>
-        </div>
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav">
-                <ul class="nav">
-                    <li>
-                        <a href="#">新增</a>
-                    </li>
-                    <li>
-                        <a href="#">讀取</a>
-                    </li>
-                    <li>
-                        <a href="#">修改</a>
-                    </li>
-                    <li>
-                        <a href="#">刪除</a>
-                    </li>
-                    <li>
-                        <a href="#">顯示/隱藏</a>
-                    </li>
-                    <li>
-                        <a href="#">排序</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="main-nav nav navbar-nav">
+                <li>
+                    <a href="#">文章管理</a>
+                </li>
+                <li>
+                    <a href="#">報名系統</a>
+                </li>
+            </ul>
+            <ul class="login-area nav navbar-nav navbar-right">
+                <li><a class="profile-pic" href="#">
+                    <img class="img-responsive" src="images/layout/head.jpg" alt="">
+                </a></li>
+                <li><a href="#">登出</a></li>
+            </ul>
         </div>
     </nav>
+    <div id='sidebar'>
+        <ul>
+            <li><a href='#'><span>首頁</span></a></li>
+            <li class='has-sub'><a href='#'><span>最新消息</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li><a href='#'><span>已排程()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li><a href='#'><span>關於資種</span></a></li>
+            <li class='sub has-sub'><a href='#'><span>公會簡介</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li class='sub has-sub'><a href='#'><span>計畫簡介</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li class='sub has-sub'><a href='#'><span>歷屆名單</span></a>
+                <ul class="text-right"> 
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li class='sub has-sub'><a href='#'><span>歷屆課程</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li><a href='#'><span>培訓內容</span></a></li>
+            <li class='sub has-sub'><a href='#'><span>講座課程</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li class='sub has-sub'><a href='#'><span>企業參訪</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li class='sub has-sub'><a href='#'><span>專案實作</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li class='sub has-sub'><a href='#'><span>海外參訪</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li class='has-sub'><a href='#'><span>講師介紹</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li class='has-sub'><a href='#'><span>經驗分享</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li><a href='#'><span>招生訊息</span></a></li>
+            <li class='sub has-sub'><a href='#'><span>報名資訊</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li class='sub has-sub'><a href='#'><span>書審資料</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li class='sub has-sub'><a href='#'><span>重要時程</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li class='has-sub'><a href='#'><span>常見問題</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+            <li class='has-sub'><a href='#'><span>影音專區</span></a>
+                <ul class="text-right">
+                    <li><a href='#'><span>全部()</span></a></li>
+                    <li><a href='#'><span>草稿()</span></a></li>
+                    <li class='last'><a href='#'><span>已發佈</span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
     <div id="page-wrapper">
-        <iframe id="page" src="/"></iframe>
+        <header>
+            <button type="button" class="btn btn-default"><input type="checkbox"></button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default">發佈</button>
+                <button type="button" class="btn btn-default">還原為草稿</button>
+                <button type="button" class="btn btn-default"><i class="fa fa-trash-o fa-fw"></i></button>
+            </div>
+        </header>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row"><input type="checkbox"></th>
+                    <td>
+                        <div class="title">
+                            【台北基隆-熊米屋手工餅乾】
+                        </div>
+                        <div class="title">
+                            <a href="#">編輯</a> | <a href="#">預覽</a> | <a href="#">刪除</a>
+                        </div>    
+                    </td>
+                    <td>已排程</td>
+                    <td><a href="#">小人物 故事 情</a></td>
+                    <td>2013/11/21</td>
+                </tr>
+                <tr>
+                    <th scope="row"><input type="checkbox"></th>
+                    <td>
+                        <div class="title">
+                            【大誌雜誌-The Big Issue Taiwan】
+                        </div>
+                        <div class="title">
+                            <a href="#">編輯</a> | <a href="#">預覽</a> | <a href="#">刪除</a>
+                        </div>   
+                    </td>
+                    <td>草稿</td>
+                    <td><a href="#">Ryan Chiu</a></td>
+                    <td>2013/11/15</td>
+                </tr>
+                <tr>
+                    <th scope="row"><input type="checkbox"></th>
+                    <td>
+                        <div class="title">
+                            【台北街頭-盲人歌手徐承邦】
+                        </div>
+                        <div class="title">
+                            <a href="#">編輯</a> | <a href="#">檢視</a> | <a href="#">刪除</a>
+                        </div>   
+                    </td>
+                    <td>草稿</td>
+                    <td><a href="#">Ryan Chiu</a></td>
+                    <td>2013/11/15</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
