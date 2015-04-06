@@ -7,37 +7,28 @@
 	5.其他(animation, transition等)
 */
 
-@import 'index.less';
-
-//定義
+//全域元件
 
 @font-face {
     font-family: '思源黑體';
     src: url('/fonts/SourceHanSansTC-Normal.otf'); 
 }
 
-@light-green: #C2D63E;
-@green: #509238;
-
-@light-yello: #F9F96C;
-
-@gray: #777;
-@light-gray: #ededed;
-@dark-gray: #333;
-
-//全域元件
-
 body {
 	font-family: '思源黑體', '微軟正黑體';
+}
+
+.no-padding {
+  padding: 0px !important;
 }
 
 .bg-light-gray {
 	background-color: @light-gray;
 }
 
-//標頭
+//頁首
 
-header {
+body>header {
 	nav.navbar-default {
 	    border-bottom: solid 3px;
         border-bottom-color: @green;
@@ -51,11 +42,8 @@ header {
                 float: left;
                 margin-right: 0px;
 				border: 0px;
-				background-color: @light-green;
+				background-color: @green;
 
-				&:hover, &:focus {
-					background-color: @green;
-				};
 				.icon-bar {
 					background-color: #fff;
 				}
@@ -79,6 +67,8 @@ header {
 			}
 		}  
 	    .navbar-collapse {
+            max-height: none;
+
             .login-area{
                 li a {            
                     margin: 15px 5px 0px 0px;
@@ -140,10 +130,10 @@ header {
                     box-shadow: 0 3px @green;
                     transition: all 0.1s;
 
-                    &:hover, &:focus, &[aria-expanded="true"] {
+                    &:hover, &[aria-expanded="true"] {
                         top: -3px;
                         color: @green;
-                        background-color: @light-yello;
+                        background-color: @light-yellow;
                     }          
 
                     @media(max-width:767px) {
@@ -153,7 +143,7 @@ header {
                 >li.active>a {
                     top: -3px;
                     color: @green;
-                    background-color: @light-yello;
+                    background-color: @light-yellow;
                 }
                 ul.dropdown-menu {
                     padding: 0px 0px 3px 0px;
@@ -176,7 +166,7 @@ header {
 
                         &:hover, &:focus {
                             color: @green;
-                            background-color: @light-yello;
+                            background-color: @light-yellow;
                         }
                     }
                 }
@@ -185,7 +175,9 @@ header {
 	}
 }
 
-footer {
+//頁尾
+
+body>footer {
     padding: 25px 0;
     text-align: center;
     color: #a2a2a2;

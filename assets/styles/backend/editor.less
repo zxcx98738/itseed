@@ -1,0 +1,110 @@
+/*
+  CSS書寫順序
+  1.位置屬性(position, top, right, z-index, display, float等)
+  2.大小(width, height, padding, margin)
+  3.文字系列(font, line-height, letter-spacing, color- text-align等)
+  4.背景(background, border等)
+  5.其他(animation, transition等)
+*/
+
+//功能列
+
+#page-wrapper>header.editor-header {
+  height: 64px;
+
+  form {
+    display: table;
+    width: 100%;
+    padding-left: 15px;
+
+    input {
+      display: table-cell;
+      width: 100%;
+    }
+    span {
+      display: table-cell;
+      width: 1px;
+      white-space: nowrap;
+      padding: 0px 15px;
+    }
+  }
+}
+
+//文章設定
+
+#page-wrapper>aside>div#setting {
+  position: absolute;
+  right: 0px;
+  width: 300px;
+  background-color: white;
+
+  div.title {
+    padding: 15px;
+    font-size: 16px;
+    color: white;
+    background-color: black;
+    border-top: 1px solid black;
+  }
+  >ul {
+    >li>a {
+      padding: 15px 20px;
+      font-size: 13px;
+      color: black;
+      background: white;
+      border-top: 1px solid black; 
+
+      &:hover {
+        background: #f8f8f8;
+      }
+    }
+    >li.last {
+      border-bottom: 1px solid black; 
+    }
+    >li.open {
+      background-color: #edf4ff;
+
+      >a {
+        background-color: inherit;
+      }
+    }
+    >li>div.settings {
+      padding: 0px 30px 15px 30px;
+
+      textarea {
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+//編輯器
+
+#page-wrapper>div.note-editor {
+  margin-right: 300px;
+  background-color: @light-yellow;
+  border-width: 1px 1px 0px 0px !important;
+  border-color: black !important;
+
+  div.note-toolbar {
+    background-color: @light-green !important;
+    border-color: inherit;
+
+    button {
+      border-color: inherit;
+    }
+  }
+  div.note-editable {
+    margin: 10px 200px !important;
+    background-color: white;
+    border: 1px solid;
+    border-color: inherit;
+  }
+  textarea.note-codable {
+
+  }
+
+}
+
+
+

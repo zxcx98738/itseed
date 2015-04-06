@@ -1,0 +1,79 @@
+/*
+  CSS書寫順序
+  1.位置屬性(position, top, right, z-index, display, float等)
+  2.大小(width, height, padding, margin)
+  3.文字系列(font, line-height, letter-spacing, color- text-align等)
+  4.背景(background, border等)
+  5.其他(animation, transition等)
+*/
+
+#wrapper{
+  width: 100%;
+} 
+    
+//頁首
+
+#wrapper>header>nav {
+    margin-bottom: 0px;
+
+    .navbar-header {
+        padding-right: 15px;
+        width: 100%;
+
+        .login-area {
+            a.profile-pic {
+                padding: 10px;
+
+                img {
+                    width: 30px;
+                    border-radius: 15px;
+                }
+            }
+        }
+    }
+}
+
+//側邊攔 
+
+aside>div.accordion {
+    ul, a {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      list-style: none;
+      line-height: 1;
+      display: block;
+      position: relative;
+    }
+
+    >ul {
+      >li>a {
+        cursor: pointer;
+        text-decoration: none;
+      }
+      >li.has-sub>ul {
+        display: none;
+      }
+      >li.has-sub>div {
+        display: none;
+      }
+      ul {
+        li a {
+          cursor: pointer;
+          z-index: 1;
+          text-decoration: none;
+        }
+      }
+    }
+}
+
+
+//主內容
+
+#page-wrapper {
+    margin: 50px 0 0 0;
+    background-color: white;
+}
+
+
+

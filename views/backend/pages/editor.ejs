@@ -1,0 +1,48 @@
+<script>
+    $(function() {
+        $('.summernote').summernote();
+        $("#page-wrapper").css("height", window.innerHeight-50);
+        $(".note-editable").css("height", window.innerHeight-50-64-43-20);
+        $(".note-codable").css("height", window.innerHeight-50-64-43-20);
+        $("#setting").css("height", window.innerHeight-50-64);
+        $(".note-editor").css("height", window.innerHeight-50-64);
+        /*$("input[type=radio][name=device]").change(function() {
+            if (this.value == "desktop") {
+                $("#page").css("width", "992px");
+            }
+            else if (this.value == "tablet") {
+                $("#page").css("width", "768px");
+            }
+            else{
+                $("#page").css("width", "320px");
+            }          
+        });*/
+    });
+</script>
+<div id="wrapper">
+    <!--HEADER-->
+    <% include ../header %>
+    <!--END HEADER-->
+
+    <div id="page-wrapper" class="no-padding">
+        <header class="editor-header">
+            <form action="">
+                <input type="text" class="form-control" placeholder="文章標題">
+                <span>
+                    <button type="button" class="btn btn-default">發佈/更新</button>
+                    <button type="button" class="btn btn-default">儲存/還原為草稿</button>
+                    <button type="button" class="btn btn-default">預覽</button>
+                    <button type="button" class="btn btn-default">關閉</button>
+                </span>
+            </form>
+        </header>
+
+        <!--ASIDE-->
+        <% include ../setting %>
+        <!--END ASIDE-->
+        
+        <div class="summernote">
+            summernote 1
+        </div>
+    </div>
+</div>
