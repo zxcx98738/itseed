@@ -5,6 +5,7 @@
         $(".note-editable").css("height", window.innerHeight-50-64-43-20);
         $(".note-codable").css("height", window.innerHeight-50-64-43-20);
         $("#setting").css("height", window.innerHeight-50-64);
+        $(".note-editor").css("height", window.innerHeight-50-64);
         /*$("input[type=radio][name=device]").change(function() {
             if (this.value == "desktop") {
                 $("#page").css("width", "992px");
@@ -25,14 +26,14 @@
 
     <div id="page-wrapper" class="no-padding">
         <header class="editor-header">
-            <form action="" class="form-inline">
+            <form action="">
                 <input type="text" class="form-control" placeholder="文章標題">
-                <div class="pull-right">
+                <span>
                     <button type="button" class="btn btn-default">發佈/更新</button>
                     <button type="button" class="btn btn-default">儲存/還原為草稿</button>
                     <button type="button" class="btn btn-default">預覽</button>
                     <button type="button" class="btn btn-default">關閉</button>
-                </div>
+                </span>
             </form>
         </header>
 

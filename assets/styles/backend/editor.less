@@ -13,9 +13,20 @@
   height: 64px;
 
   form {
+    display: table;
+    width: 100%;
     padding-left: 15px;
 
-
+    input {
+      display: table-cell;
+      width: 100%;
+    }
+    span {
+      display: table-cell;
+      width: 1px;
+      white-space: nowrap;
+      padding: 0px 15px;
+    }
   }
 }
 
@@ -24,15 +35,53 @@
 #page-wrapper>aside>div#setting {
   position: absolute;
   right: 0px;
-  width: 250px;
-  background-color: #f8f8f8;
+  width: 300px;
+  background-color: white;
+
+  div.title {
+    padding: 15px;
+    font-size: 16px;
+    color: white;
+    background-color: black;
+    border-top: 1px solid black;
+  }
+  >ul {
+    >li>a {
+      padding: 15px 20px;
+      font-size: 13px;
+      color: black;
+      background: white;
+      border-top: 1px solid black; 
+
+      &:hover {
+        background: #f8f8f8;
+      }
+    }
+    >li.last {
+      border-bottom: 1px solid black; 
+    }
+    >li.open {
+      background-color: #edf4ff;
+
+      >a {
+        background-color: inherit;
+      }
+    }
+    >li>div.settings {
+      padding: 0px 30px 15px 30px;
+
+      textarea {
+        width: 100%;
+      }
+    }
+  }
 }
 
 
 //編輯器
 
 #page-wrapper>div.note-editor {
-  margin-right: 250px;
+  margin-right: 300px;
   background-color: @light-yellow;
   border-width: 1px 1px 0px 0px !important;
   border-color: black !important;

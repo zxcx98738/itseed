@@ -14,22 +14,10 @@
     width: 250px;
     padding: 30px;
 
-    ul, a {
-      margin: 0;
-      padding: 0;
-      border: 0;
-      list-style: none;
-      line-height: 1;
-      display: block;
-      position: relative;
-    }
-
     >ul {
       >li>a {
         padding: 15px 20px;
-        cursor: pointer;
         font-size: 13px;
-        text-decoration: none;
         color: black;
         background: white;
 
@@ -41,18 +29,12 @@
         color: @green;
         background-color: @light-yellow;
       }
-      >li.has-sub>ul {
-        display: none;
-      }
       >li.sub>a {
         padding-left: 35px;
       }
       ul {
         li a {
-          cursor: pointer;
           padding: 10px 20px;
-          z-index: 1;
-          text-decoration: none;
           font-size: 13px;
           color: black;
           background: white;
