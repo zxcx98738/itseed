@@ -33,11 +33,15 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'index'
+    view: 'frontend/pages/index'
   },
 
-  '/admin': {
-    view: 'admin/admin'
+  '/cms': {
+    view: 'backend/pages/cms'
+  },
+
+  '/editor': {
+    view: 'backend/pages/editor'
   }
 
   /***************************************************************************

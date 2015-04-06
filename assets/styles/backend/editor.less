@@ -1,0 +1,61 @@
+/*
+  CSS書寫順序
+  1.位置屬性(position, top, right, z-index, display, float等)
+  2.大小(width, height, padding, margin)
+  3.文字系列(font, line-height, letter-spacing, color- text-align等)
+  4.背景(background, border等)
+  5.其他(animation, transition等)
+*/
+
+//功能列
+
+#page-wrapper>header.editor-header {
+  height: 64px;
+
+  form {
+    padding-left: 15px;
+
+
+  }
+}
+
+//文章設定
+
+#page-wrapper>aside>div#setting {
+  position: absolute;
+  right: 0px;
+  width: 250px;
+  background-color: #f8f8f8;
+}
+
+
+//編輯器
+
+#page-wrapper>div.note-editor {
+  margin-right: 250px;
+  background-color: @light-yellow;
+  border-width: 1px 1px 0px 0px !important;
+  border-color: black !important;
+
+  div.note-toolbar {
+    background-color: @light-green !important;
+    border-color: inherit;
+
+    button {
+      border-color: inherit;
+    }
+  }
+  div.note-editable {
+    margin: 10px 200px !important;
+    background-color: white;
+    border: 1px solid;
+    border-color: inherit;
+  }
+  textarea.note-codable {
+
+  }
+
+}
+
+
+

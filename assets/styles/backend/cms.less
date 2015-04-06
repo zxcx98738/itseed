@@ -1,0 +1,131 @@
+/*
+  CSS書寫順序
+  1.位置屬性(position, top, right, z-index, display, float等)
+  2.大小(width, height, padding, margin)
+  3.文字系列(font, line-height, letter-spacing, color- text-align等)
+  4.背景(background, border等)
+  5.其他(animation, transition等)
+*/
+
+//網站目錄
+
+#wrapper>aside>div#menu {
+    position: absolute;
+    width: 250px;
+    padding: 30px;
+
+    ul, a {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      list-style: none;
+      line-height: 1;
+      display: block;
+      position: relative;
+    }
+
+    >ul {
+      >li>a {
+        padding: 15px 20px;
+        cursor: pointer;
+        font-size: 13px;
+        text-decoration: none;
+        color: black;
+        background: white;
+
+        &:hover {
+          background: @light-yellow;
+        }
+      }
+      >li.active>a, >li.open>a {
+        color: @green;
+        background-color: @light-yellow;
+      }
+      >li.has-sub>ul {
+        display: none;
+      }
+      >li.sub>a {
+        padding-left: 35px;
+      }
+      ul {
+        li a {
+          cursor: pointer;
+          padding: 10px 20px;
+          z-index: 1;
+          text-decoration: none;
+          font-size: 13px;
+          color: black;
+          background: white;
+
+          &:hover {
+            background: @light-green;
+          }
+        }
+        li.active a {
+          color: @green;
+        }
+        li.has-sub>a::after {
+          display: block;
+          position: absolute;
+          content: "";
+          width: 5px;
+          height: 5px;
+          right: 20px;
+          z-index: 10;
+          top: 11.5px;
+          border-top: 2px solid black;
+          border-left: 2px solid black;
+          -webkit-transform: rotate(-135deg);
+          -ms-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+        }
+      }
+    }
+
+    .holder {
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        &::after, ::before {
+          display: block;
+          position: absolute;
+          content: "";
+          width: 6px;
+          height: 6px;
+          right: 20px;
+          z-index: 10;
+          border-top: 2px solid black;
+          border-left: 2px solid black;
+          -webkit-transform: rotate(-135deg);
+          -ms-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+        }
+        &::after {
+            top: 17px;
+        }
+        &::before {
+            top: 18px;
+        }
+    }
+}
+
+//編輯區
+
+#wrapper>aside+div#page-wrapper {
+  margin-left: 250px;
+}
+#wrapper>div#page-wrapper {
+    padding: 30px;
+
+    >header {
+      padding: 15px 0 15px 0;
+    }
+    
+    iframe {
+        width: 992px;
+        height: 100%;
+    }
+}
