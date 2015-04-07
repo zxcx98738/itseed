@@ -13,5 +13,26 @@ module.exports.bootstrap = function(cb) {
 
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
+  Video.create({
+  	title: "資訊種子形象影片",
+  	content: "<h1>這是影片</h1>"
+  }).exec(function(){
+
+  });
+
+  Video.create({
+  	title: "十一屆招生影片",
+  	content: "<h1>這是影片</h1>"
+  }).exec(function(){
+
+  });
+
+  Video.create({
+  	title: "十二屆招生影片",
+  	content: "<h1>這是影片</h1>"
+  }).exec(function(){
+
+  });
+
   cb();
 };

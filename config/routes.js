@@ -36,13 +36,26 @@ module.exports.routes = {
     view: 'frontend/pages/index'
   },
 
+  '/video': {
+    controller: 'Video',
+    action: 'list'
+  },
+
+
+
+
+
+
+
   '/cms': {
     view: 'backend/pages/cms'
   },
 
   '/editor': {
     view: 'backend/pages/editor'
-  }
+  },
+
+
 
   /***************************************************************************
   *                                                                          *
