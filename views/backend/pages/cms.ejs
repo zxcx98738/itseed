@@ -11,6 +11,20 @@
                 $("#page").css("width", "320px");
             }          
         });*/
+        var editing = <%- JSON.stringify(editing) %>;
+        var status = <%- JSON.stringify(status) %>;
+        var total = <%- JSON.stringify(total) %>;
+        var draftNum = <%- JSON.stringify(draftNum) %>;
+        var publishNum = <%- JSON.stringify(publishNum) %>;
+        var scheduleNum = <%- JSON.stringify(scheduleNum) %>;
+
+        $("#"+editing).addClass("open");
+        $("#"+editing+">ul").css("display", "block");
+        $("#"+editing+" li."+status).addClass("active");
+        $("#"+editing+" li.all span").append("("+total+")");
+        $("#"+editing+" li.draft span").append("("+draftNum+")");
+        $("#"+editing+" li.publish span").append("("+publishNum+")");
+        $("#"+editing+" li.schedule span").append("("+scheduleNum+")");
     });
 </script>
 <div id="wrapper">
@@ -19,7 +33,7 @@
     <!--END HEADER-->
 
     <!--ASIDE-->
-    <% include ../menu %>
+    <% include ../cms-menu %>
     <!--END ASIDE-->
 
     <div id="page-wrapper">
@@ -32,8 +46,39 @@
             </div>
         </header>
         <table class="table">
-            <tbody>
+            <thead>
                 <tr>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-5">標題</th>
+                    <th class="col-md-2">狀態</th>
+                    <th class="col-md-2">作者</th>
+                    <th class="col-md-2">日期</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for(var i = 0; i < articles.length; i++){ %>
+                <tr>
+                    <th scope="row"><input type="checkbox"></th>
+                    <td>
+                        <div class="title">
+                            <%= articles[i].title %>
+                        </div>
+                        <div class="title">
+                            <a href="#">編輯</a> | <a href="#">預覽</a> | <a href="#">刪除</a>
+                        </div>    
+                    </td>
+                    <% if(articles[i].status == "D"){ %>
+                        <td>草稿</td>
+                    <% } else if(articles[i].status == "S"){ %>
+                        <td>已排程</td>
+                    <% } else { %>
+                        <td></td>
+                    <% } %>
+                    <td><a href="#">作者名<!--<%= articles[i].author %>--></a></td>
+                    <td><%= articles[i].createdAt %></td>
+                </tr>
+            <% } %>
+                <!-- <tr>
                     <th scope="row"><input type="checkbox"></th>
                     <td>
                         <div class="title">
@@ -74,7 +119,7 @@
                     <td>草稿</td>
                     <td><a href="#">Ryan Chiu</a></td>
                     <td>2013/11/15</td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </div>

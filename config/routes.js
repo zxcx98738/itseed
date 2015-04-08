@@ -32,23 +32,24 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  /*前台*/
   '/': {
-    view: 'frontend/pages/index'
+    view: 'frontend/pages/indiex'
   },
 
   '/video': {
     controller: 'Video',
-    action: 'list'
+    action: 'show'
   },
 
-
-
-
-
-
-
+  /*後台*/
   '/cms': {
     view: 'backend/pages/cms'
+  },
+
+  '/cms/video/:status': {
+    controller: 'Video',
+    action: 'list'
   },
 
   '/editor': {
