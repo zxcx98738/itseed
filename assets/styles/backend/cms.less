@@ -44,7 +44,7 @@
           }
         }
         li.active a {
-          color: @green;
+          color: red;
         }
         li.has-sub>a::after {
           display: block;
@@ -105,9 +105,25 @@
     >header {
       padding: 15px 0 15px 0;
     }
-    
-    iframe {
-        width: 992px;
-        height: 100%;
+    table {
+      td.selector {
+        text-align: center;
+      }
+      td.status {
+        font-style: italic;
+        color: red;
+      }
+      div.operation {
+        visibility: hidden;
+        margin-top: 5px;
+        
+        a {
+          color: #333;
+          cursor: pointer;
+        }
+      }
+      tr:hover div.operation {
+        visibility: visible;
+      }
     }
 }

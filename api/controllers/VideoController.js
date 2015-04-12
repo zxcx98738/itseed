@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-	//前台顯示影片
+	//前台顯示
 	show: function(req, res){
 		Video.find()
 		.where({ status: "P" })
@@ -26,7 +26,7 @@ module.exports = {
 			}
 		});
     },
-    //後台影片清單
+    //後台清單
     list: function(req, res){
         /*if(req.session.type == "admin"){*/
             var status = req.param('status');
@@ -65,20 +65,18 @@ module.exports = {
                             if(err)
                                 res.end(JSON.stringify(err));
                             else{
-                                if(videos.length == 0){
-                                    res.end("還沒有影片啦");
-                                }
-                                else{
-                                    return res.view("backend/pages/cms", {
-                                        articles: videos,
-                                        editing: "video",
-                                        status: "all",
-                                        total: results.total,
-                                        draftNum: results.draftNum,
-                                        publishNum: results.publishNum,
-                                        scheduleNum: 0
-                                    });
-                                }
+                                for(var i = 0; i < videos.length; i++){
+                                    videos[i].createdAt = formatTime(videos[i].createdAt);
+                                };
+                                return res.view("backend/pages/cms", {
+                                    articles: videos,
+                                    editing: "video",
+                                    status: "all",
+                                    total: results.total,
+                                    draftNum: results.draftNum,
+                                    publishNum: results.publishNum,
+                                    scheduleNum: 0
+                                });
                             }
                         });
                     }
@@ -142,7 +140,7 @@ module.exports = {
             });
         }*/
     },
-    //新增影片
+    //新增文章
     create: function(req, res){
     	if(req.session.type == "admin"){
             var newVideo = {
@@ -168,13 +166,102 @@ module.exports = {
     		});*/
     	}
     },
-
+    //編輯
     update: function(req, res){
     },
+    //發布
+    publish: function(req, res){
+/*        if(req.session.type == "admin"){*/
+            var id = req.param('id');
 
-    destroy: function(req, res){
+            Video.update({
+                id: id
+            }, {
+                status: "P"
+            })
+            .exec(function(err){
+                if(err)
+                    res.end(JSON.stringify(err));
+                else  
+                    res.end("success");
+            });     
+/*        }
+        else{
+            return res.view("redirect", {
+                message: "請先登入",
+                url: "/forum?id="+req.body.fid
+            });
+        }*/
+    },
+    //還原為草稿
+    toDraft: function(req, res){
+/*        if(req.session.type == "admin"){*/
+            var id = req.param('id');
+
+            Video.update({
+                id: id
+            }, {
+                status: "D"
+            })
+            .exec(function(err){
+                if(err)
+                    res.end(JSON.stringify(err));
+                else  
+                    res.end("success");
+            });     
+/*        }
+        else{
+            return res.view("redirect", {
+                message: "請先登入",
+                url: "/forum?id="+req.body.fid
+            });
+        }*/
+    },
+    //刪除
+    delete: function(req, res){
+/*        if(req.session.type == "admin"){*/
+            var id = req.param('id');
+
+            Video.destroy({
+                id: id
+            })
+            .exec(function(err){
+                if(err)
+                    res.end(JSON.stringify(err));
+                else  
+                    res.end("success");
+            });
+/*        }
+        else{
+            return res.view("redirect", {
+                message: "請先登入",
+                url: "/forum?id="+req.body.fid
+            });
+        }*/ 
     },
 };
+
+function formatTime(time)
+{
+    var year = time.getFullYear();
+    var month = time.getMonth();
+    var date = time.getDate();
+    var hour = time.getHours();
+    var minute = time.getMinutes();
+
+    if(hour == 0){
+        return year + "/" + (month + 1) + "/" + date + " 上午 " + "12" + ":" + minute;
+    }
+    else if(hour < 12){
+        return year + "/" + (month + 1) + "/" + date + " 上午 " + hour + ":" + minute;
+    }
+    else if(hour == 12){
+        return year + "/" + (month + 1) + "/" + date + " 下午 " + "12" + ":" + minute;
+    }
+    else{
+        return year + "/" + (month + 1) + "/" + date + " 下午 " + (hour - 12) + ":" + minute;
+    }      
+}
 
 
 /*Video.findOne({

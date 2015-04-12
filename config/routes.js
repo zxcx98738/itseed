@@ -34,7 +34,7 @@ module.exports.routes = {
 
   /*前台*/
   '/': {
-    view: 'frontend/pages/indiex'
+    view: 'frontend/pages/index'
   },
 
   '/video': {
@@ -47,13 +47,28 @@ module.exports.routes = {
     view: 'backend/pages/cms'
   },
 
-  '/cms/video/:status': {
+  '/editor': {
+    view: 'backend/pages/editor'
+  },
+
+  'get /cms/video/:status': {
     controller: 'Video',
     action: 'list'
   },
 
-  '/editor': {
-    view: 'backend/pages/editor'
+  'get /cms/publishVideo': {
+    controller: 'Video',
+    action: 'publish'
+  },
+
+  'get /cms/toDraftVideo': {
+    controller: 'Video',
+    action: 'toDraft'
+  },
+
+  'get /cms/deleteVideo': {
+    controller: 'Video',
+    action: 'delete'
   },
 
 

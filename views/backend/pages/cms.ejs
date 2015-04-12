@@ -1,16 +1,6 @@
 <script>
     $(function() {
-        /*$("input[type=radio][name=device]").change(function() {
-            if (this.value == "desktop") {
-                $("#page").css("width", "992px");
-            }
-            else if (this.value == "tablet") {
-                $("#page").css("width", "768px");
-            }
-            else{
-                $("#page").css("width", "320px");
-            }          
-        });*/
+        /*接收後端傳來的參數*/
         var editing = <%- JSON.stringify(editing) %>;
         var status = <%- JSON.stringify(status) %>;
         var total = <%- JSON.stringify(total) %>;
@@ -18,13 +8,117 @@
         var publishNum = <%- JSON.stringify(publishNum) %>;
         var scheduleNum = <%- JSON.stringify(scheduleNum) %>;
 
-        $("#"+editing).addClass("open");
-        $("#"+editing+">ul").css("display", "block");
-        $("#"+editing+" li."+status).addClass("active");
-        $("#"+editing+" li.all span").append("("+total+")");
-        $("#"+editing+" li.draft span").append("("+draftNum+")");
-        $("#"+editing+" li.publish span").append("("+publishNum+")");
-        $("#"+editing+" li.schedule span").append("("+scheduleNum+")");
+        init(editing);
+        
+        
+
+        function init(editing) {
+            /*根據正在管理的頁面調整menu的UI*/
+            menuUI(editing);
+            /*綁定全選事件*/
+            setSelectAll("#selectAll", "td.selector>input");
+            /*綁定由checkbox觸發的事件*/
+            setOperation("#publish", "td.selector>input:checked", "tr", publish, "你確定要發佈選取的文章嗎?");
+            setOperation("#toDraft", "td.selector>input:checked", "tr", toDraft, "你確定要還原選取的文章為草稿嗎?");
+            setOperation("#deletePost", "td.selector>input:checked", "tr", deletePost, "你確定要刪除選取的文章嗎?");
+        }
+
+        function menuUI(editing) {
+            $("#"+editing).addClass("open");
+            $("#"+editing+">ul").css("display", "block");
+            $("#"+editing+" li."+status).addClass("active");
+            $("#"+editing+" li.all span").append(" ("+total+")");
+            $("#"+editing+" li.draft span").append(" ("+draftNum+")");
+            $("#"+editing+" li.publish span").append(" ("+publishNum+")");
+            $("#"+editing+" li.schedule span").append(" ("+scheduleNum+")");
+        }
+        function setSelectAll(checkbox, checkboxs) {
+            $(checkbox).change(function() {
+                if($(this).prop("checked")) {
+                    $(checkboxs).prop("checked", true);
+                }
+                else {
+                    $(checkboxs).prop("checked", false);
+                }      
+            });
+            $(checkboxs).change(function() {
+                if($(this).prop("checked") == false) {
+                    $(checkbox).prop("checked", false);
+                }    
+            });
+        }
+        function setOperation(button, checkbox, getID, operation, message) {
+            var postID;
+
+            $(button).click(function() {
+                if($(checkbox).length > 0){
+                    if(confirm(message)){
+                        $(checkbox).each(function() {
+                            postID = $(this).parents(getID).attr("id");
+                            operation(postID);
+                            $(this).prop("checked", false);
+                        });
+                    }   
+                }
+                else{
+                    alert("未選取任何文章");
+                }
+            });
+        }
+        function publish(postID) {
+            $.ajax({
+                url: '/cms/publishVideo',
+                method: 'get',
+                data: {
+                    id: postID,
+                },
+                success: function(msg){
+                    if(msg == "success")
+                        location.reload();
+                    else
+                        alert("資料庫錯誤: " + msg);       
+                },
+                error: function(xhr, ajaxOptions, thrownError){ 
+                    alert("Ajax錯誤: " + xhr.status);
+                }
+            });  
+        }
+        function toDraft(postID) {
+            $.ajax({
+                url: '/cms/toDraftVideo',
+                method: 'get',
+                data: {
+                    id: postID,
+                },
+                success: function(msg){
+                    if(msg == "success")
+                        location.reload();
+                    else
+                        alert("資料庫錯誤: " + msg);        
+                },
+                error: function(xhr, ajaxOptions, thrownError){ 
+                    alert("Ajax錯誤: " + xhr.status);
+                }
+            });  
+        }
+        function deletePost(postID) {
+            $.ajax({
+                url: '/cms/deleteVideo',
+                method: 'get',
+                data: {
+                    id: postID,
+                },
+                success: function(msg){
+                    if(msg == "success")
+                        location.reload();
+                    else
+                        alert("資料庫錯誤: " + msg);        
+                },
+                error: function(xhr, ajaxOptions, thrownError){ 
+                    alert("Ajax錯誤: " + xhr.status);
+                }
+            }); 
+        }
     });
 </script>
 <div id="wrapper">
@@ -38,88 +132,66 @@
 
     <div id="page-wrapper">
         <header>
-            <button type="button" class="btn btn-default"><input type="checkbox"></button>
+            <button type="button" class="btn btn-default"><input type="checkbox" id="selectAll"></button>
             <div class="btn-group">
-                <button type="button" class="btn btn-default">發佈</button>
-                <button type="button" class="btn btn-default">還原為草稿</button>
-                <button type="button" class="btn btn-default"><i class="fa fa-trash-o fa-fw"></i></button>
+                <% if(editing == "sharing"){ %>
+                    <button type="button" class="btn btn-default" id="tags" data-toggle="dropdown" aria-expanded="true">
+                        <i class="fa fa-tag fa-fw"></i>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">標籤一</a></li>
+                        <li><a href="#">標籤二</a></li>
+                        <li><a href="#">標籤三</a></li>
+                    </ul>
+                <% } %>
+                <button type="button" class="btn btn-default" id="publish">發佈</button>
+                <button type="button" class="btn btn-default" id="toDraft">還原為草稿</button>
+                <button type="button" class="btn btn-default" id="deletePost"><i class="fa fa-trash-o fa-fw"></i></button>
             </div>
         </header>
         <table class="table">
             <thead>
                 <tr>
                     <th class="col-md-1"></th>
-                    <th class="col-md-5">標題</th>
-                    <th class="col-md-2">狀態</th>
-                    <th class="col-md-2">作者</th>
-                    <th class="col-md-2">日期</th>
+                    <th class="col-md-6"></th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-2"></th>
+                    <th class="col-md-2"></th>
                 </tr>
             </thead>
             <tbody>
+            <% if(articles.length == 0){ %>
+                <h1>尚無任何文章</h1>
+            <% } %>
             <% for(var i = 0; i < articles.length; i++){ %>
-                <tr>
-                    <th scope="row"><input type="checkbox"></th>
-                    <td>
-                        <div class="title">
-                            <%= articles[i].title %>
+                <tr id="<%= articles[i].id %>">
+                    <td class="selector"><input type="checkbox"></td>
+                    <td class="title">
+                        <div>
+                            <a href="#"><%= articles[i].title %></a>
                         </div>
-                        <div class="title">
-                            <a href="#">編輯</a> | <a href="#">預覽</a> | <a href="#">刪除</a>
+                        <div class="operation">
+                            <a href="#">編輯</a> | 
+                            <% if(articles[i].status == "D"){ %>
+                                <a href="#">預覽</a> | 
+                            <% } else { %>
+                                <a href="#">檢視</a> | 
+                            <% } %>
+                                <a>刪除</a>
                         </div>    
                     </td>
                     <% if(articles[i].status == "D"){ %>
-                        <td>草稿</td>
+                        <td class="status">草稿</td>
                     <% } else if(articles[i].status == "S"){ %>
-                        <td>已排程</td>
+                        <td class="status">已排程</td>
                     <% } else { %>
-                        <td></td>
+                        <td class="status"></td>
                     <% } %>
-                    <td><a href="#">作者名<!--<%= articles[i].author %>--></a></td>
-                    <td><%= articles[i].createdAt %></td>
+                    <td class="author">作者名<!--<%= articles[i].author %>--></td>
+                    <td class="date"><%= articles[i].createdAt %></td>
                 </tr>
             <% } %>
-                <!-- <tr>
-                    <th scope="row"><input type="checkbox"></th>
-                    <td>
-                        <div class="title">
-                            【台北基隆-熊米屋手工餅乾】
-                        </div>
-                        <div class="title">
-                            <a href="#">編輯</a> | <a href="#">預覽</a> | <a href="#">刪除</a>
-                        </div>    
-                    </td>
-                    <td>已排程</td>
-                    <td><a href="#">小人物 故事 情</a></td>
-                    <td>2013/11/21</td>
-                </tr>
-                <tr>
-                    <th scope="row"><input type="checkbox"></th>
-                    <td>
-                        <div class="title">
-                            【大誌雜誌-The Big Issue Taiwan】
-                        </div>
-                        <div class="title">
-                            <a href="#">編輯</a> | <a href="#">預覽</a> | <a href="#">刪除</a>
-                        </div>   
-                    </td>
-                    <td>草稿</td>
-                    <td><a href="#">Ryan Chiu</a></td>
-                    <td>2013/11/15</td>
-                </tr>
-                <tr>
-                    <th scope="row"><input type="checkbox"></th>
-                    <td>
-                        <div class="title">
-                            【台北街頭-盲人歌手徐承邦】
-                        </div>
-                        <div class="title">
-                            <a href="#">編輯</a> | <a href="#">檢視</a> | <a href="#">刪除</a>
-                        </div>   
-                    </td>
-                    <td>草稿</td>
-                    <td><a href="#">Ryan Chiu</a></td>
-                    <td>2013/11/15</td>
-                </tr> -->
             </tbody>
         </table>
     </div>
