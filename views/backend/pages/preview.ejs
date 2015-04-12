@@ -20,21 +20,22 @@
     <!--HEADER-->
     <% include ../header %>
     <!--END HEADER-->
-
-    <div class="preview" id="page-wrapper">
-        <div class="device-selector">
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-info active">
-                    <input type="radio" name="device" value="desktop">電腦
-                </label>
-                <label class="btn btn-info">
-                    <input type="radio" name="device" value="tablet">平板
-                </label>
-                <label class="btn btn-info">
-                    <input type="radio" name="device" value="phone">手機
-                </label>
-            </div>
+    <div class="device-selector">
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default active">
+                <input type="radio" name="device" value="desktop">電腦
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="device" value="tablet">平板
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="device" value="phone">手機
+            </label>
         </div>
-        <iframe id="page" src="<%= url%>"></iframe>
+    </div>
+    <div class="preview" id="page-wrapper">
+        <div class="frame">
+            <iframe id="page" src="<%= url%>"></iframe>
+        </div>
     </div>
 </div>

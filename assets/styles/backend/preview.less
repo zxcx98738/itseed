@@ -9,15 +9,35 @@
 
 //編輯區
 
-#wrapper>div.preview {
-    padding: 0px 30px 30px 30px;
+#wrapper>div.device-selector {
+    height: 50px;
+    margin-top: 50px;
+    padding: 8px;
     text-align: center;
+    background-color: white;
+}
+#wrapper>div#page-wrapper.preview {
+    margin-top: 0px;
+    padding: 0px;
+    text-align: center;
+    background-color: #FAFBFD;
+    transition: all 0.5s;
 
-    div.device-selector {
-      height: 50px;
-    }
-    iframe {
-      width: 992px;
-      height: 100%;
+    div.frame {
+        display: inline-block;
+        height: 100%;
+        padding: 30px;
+        background-color: black;
+        border: 1px solid #E0E2E4;
+        border-radius: 30px;
+        transition: inherit;
+
+        iframe {
+            width: 992px;
+            height: 100%;
+            border: 1px solid #E0E2E4;
+            background-color: white;
+            transition: inherit;
+        }
     }
 }
