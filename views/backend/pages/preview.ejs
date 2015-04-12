@@ -1,7 +1,6 @@
 <script>
     $(function() {
-        $("#wrapper").css("height", window.innerHeight);
-        $("#page-wrapper").css("height", window.innerHeight-51);
+        $("#page-wrapper").css("height", window.innerHeight-100);
 
         $("input[type=radio][name=device]").change(function() {
             if (this.value == "desktop") {
@@ -18,49 +17,24 @@
 </script>
 
 <div id="wrapper">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">資訊種子招生網站 後台管理系統 v1.0</a>
-            <div class="device-selector">
-                <div class="btn-group" data-toggle="buttons">
-                  <label class="btn btn-primary active">
+    <!--HEADER-->
+    <% include ../header %>
+    <!--END HEADER-->
+
+    <div class="preview" id="page-wrapper">
+        <div class="device-selector">
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-info active">
                     <input type="radio" name="device" value="desktop">電腦
                 </label>
-                <label class="btn btn-primary">
+                <label class="btn btn-info">
                     <input type="radio" name="device" value="tablet">平板
                 </label>
-                <label class="btn btn-primary">
+                <label class="btn btn-info">
                     <input type="radio" name="device" value="phone">手機
                 </label>
             </div>
-            </div>
         </div>
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav">
-                <ul class="nav">
-                    <li>
-                        <a href="#">新增</a>
-                    </li>
-                    <li>
-                        <a href="#">讀取</a>
-                    </li>
-                    <li>
-                        <a href="#">修改</a>
-                    </li>
-                    <li>
-                        <a href="#">刪除</a>
-                    </li>
-                    <li>
-                        <a href="#">顯示/隱藏</a>
-                    </li>
-                    <li>
-                        <a href="#">排序</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div id="page-wrapper">
-        <iframe id="page" src="/"></iframe>
+        <iframe id="page" src="<%= url%>"></iframe>
     </div>
 </div>

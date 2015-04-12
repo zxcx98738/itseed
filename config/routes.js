@@ -51,6 +51,11 @@ module.exports.routes = {
     view: 'backend/pages/editor'
   },
 
+  'get /preview': {
+    controller: 'cms',
+    action: 'preview'
+  },
+
   'get /cms/video/:status': {
     controller: 'Video',
     action: 'list'
@@ -70,6 +75,12 @@ module.exports.routes = {
     controller: 'Video',
     action: 'delete'
   },
+
+  'get /cms/previewVideo': {
+    controller: 'Video',
+    action: 'preview'
+  },
+
 
 
 

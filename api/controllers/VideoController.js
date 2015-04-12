@@ -26,10 +26,55 @@ module.exports = {
 			}
 		});
     },
+    //預覽畫面
+    preview: function(req, res){
+        /*if(req.session.type == "admin"){*/
+            var id = req.param("id");
+
+            if(id == undefined){
+                var video = {
+                    title: req.body.title,
+                    content: req.body.content
+                }
+                return res.view("frontend/pages/video", {
+                    videos: [video]
+                });
+            }
+            else{
+                Video.findOne({
+                    id: id
+                })
+                .exec(function(err, video){
+                    if(err)
+                        res.end(JSON.stringify(err));
+                    else{
+                        if(!video){
+                            /*return res.view("redirect", {
+                                message: "使用者權限不足",
+                                url: "/"
+                            });*/
+                        }
+                        else{
+                            return res.view("frontend/pages/video", {
+                                videos: [video]
+                            });
+                        }
+                    }
+                });
+            }
+        /*}
+        else{
+            return res.view("redirect", {
+                message: "使用者權限不足",
+                url: "/"
+            });
+        }*/
+    },
+
     //後台清單
     list: function(req, res){
         /*if(req.session.type == "admin"){*/
-            var status = req.param('status');
+            var status = req.param("status");
 
             async.series({
                 total: function(callback){
@@ -172,7 +217,7 @@ module.exports = {
     //發布
     publish: function(req, res){
 /*        if(req.session.type == "admin"){*/
-            var id = req.param('id');
+            var id = req.param("id");
 
             Video.update({
                 id: id
@@ -196,7 +241,7 @@ module.exports = {
     //還原為草稿
     toDraft: function(req, res){
 /*        if(req.session.type == "admin"){*/
-            var id = req.param('id');
+            var id = req.param("id");
 
             Video.update({
                 id: id
@@ -220,7 +265,7 @@ module.exports = {
     //刪除
     delete: function(req, res){
 /*        if(req.session.type == "admin"){*/
-            var id = req.param('id');
+            var id = req.param("id");
 
             Video.destroy({
                 id: id

@@ -3,6 +3,7 @@
         /*接收後端傳來的參數*/
         var editing = <%- JSON.stringify(editing) %>;
         var status = <%- JSON.stringify(status) %>;
+
         var total = <%- JSON.stringify(total) %>;
         var draftNum = <%- JSON.stringify(draftNum) %>;
         var publishNum = <%- JSON.stringify(publishNum) %>;
@@ -18,9 +19,11 @@
             /*綁定全選事件*/
             setSelectAll("#selectAll", "td.selector>input");
             /*綁定由checkbox觸發的事件*/
-            setOperation("#publish", "td.selector>input:checked", "tr", publish, "你確定要發佈選取的文章嗎?");
-            setOperation("#toDraft", "td.selector>input:checked", "tr", toDraft, "你確定要還原選取的文章為草稿嗎?");
-            setOperation("#deletePost", "td.selector>input:checked", "tr", deletePost, "你確定要刪除選取的文章嗎?");
+            setGroupOperation("#publish", "td.selector>input:checked", "tr", publish, "確定要發佈選取的文章嗎?");
+            setGroupOperation("#toDraft", "td.selector>input:checked", "tr", toDraft, "確定要還原選取的文章為草稿嗎?");
+            setGroupOperation("#deletePost", "td.selector>input:checked", "tr", deletePost, "確定要刪除選取的文章嗎?");
+            /*綁定事件*/
+            setPostOperation(editing);
         }
 
         function menuUI(editing) {
@@ -47,7 +50,7 @@
                 }    
             });
         }
-        function setOperation(button, checkbox, getID, operation, message) {
+        function setGroupOperation(button, checkbox, getID, operation, message) {
             var postID;
 
             $(button).click(function() {
@@ -63,6 +66,46 @@
                 else{
                     alert("未選取任何文章");
                 }
+            });
+        }
+        function setPostOperation(editing) {
+            var postID;
+            /*檢視*/
+            $(".view").each(function() {
+                postID = $(this).parents("tr").attr("id");
+
+                switch(editing)
+                {
+                    case "video":
+                        $(this).attr("href", "/video#" + postID);
+                        break;
+                    default:
+                        break;
+                }
+                
+            });
+            /*預覽*/
+            $(".preview").each(function() {
+                postID = $(this).parents("tr").attr("id");
+                var url;
+
+                switch(editing)
+                {
+                    case "video":
+                        url = "/cms/previewVideo/?id=" + postID;
+                        $(this).attr("href", "/preview?url=" + url);
+                        break;
+                    default:
+                        break;
+                }
+                
+            });
+            /*刪除*/
+            $(".deletePost").click(function() {
+                if(confirm("確定要刪除選取的文章嗎?")){
+                    postID = $(this).parents("tr").attr("id");
+                    deletePost(postID);
+                }   
             });
         }
         function publish(postID) {
@@ -173,12 +216,12 @@
                         </div>
                         <div class="operation">
                             <a href="#">編輯</a> | 
-                            <% if(articles[i].status == "D"){ %>
-                                <a href="#">預覽</a> | 
+                            <% if(articles[i].status == "D" || articles[i].status == "S"){ %>
+                                <a class="preview" href="#" target="_blank">預覽</a> | 
                             <% } else { %>
-                                <a href="#">檢視</a> | 
+                                <a class="view" href="#" target="_blank">檢視</a> | 
                             <% } %>
-                                <a>刪除</a>
+                                <a class="deletePost">刪除</a>
                         </div>    
                     </td>
                     <% if(articles[i].status == "D"){ %>
