@@ -1,21 +1,4 @@
-<script>
-    $(function() {
-        $("#page-wrapper").css("height", window.innerHeight-100);
-
-        $("input[type=radio][name=device]").change(function() {
-            if (this.value == "desktop") {
-                $("#page").css("width", "992px");
-            }
-            else if (this.value == "tablet") {
-                $("#page").css("width", "768px");
-            }
-            else{
-                $("#page").css("width", "320px");
-            }          
-        });
-    });
-</script>
-
+<script src="/js/specifies/backend/preview.js"></script>
 <div id="wrapper">
     <!--HEADER-->
     <% include ../header %>
@@ -34,8 +17,19 @@
         </div>
     </div>
     <div class="preview" id="page-wrapper">
+        <% if(preview.method == "post"){ %>
+            <form action="<%= preview.url%>" method="post" target="iframe">
+                <input type="text" name="title" value="<%= preview.title%>">
+                <input type="text" name="content" value="<%= preview.content%>">
+                <input type="submit">
+            </form>
+        <% } %>
         <div class="frame">
-            <iframe id="page" src="<%= url%>"></iframe>
+            <% if(preview.method == "get"){ %>
+                <iframe id="page" name="iframe" src="<%= preview.url%>"></iframe>
+            <% } else{ %>
+                <iframe id="page" name="iframe" src="/"></iframe>
+            <% } %> 
         </div>
     </div>
 </div>

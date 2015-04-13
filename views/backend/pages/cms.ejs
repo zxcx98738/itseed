@@ -23,7 +23,7 @@
             setGroupOperation("#toDraft", "td.selector>input:checked", "tr", toDraft, "確定要還原選取的文章為草稿嗎?");
             setGroupOperation("#deletePost", "td.selector>input:checked", "tr", deletePost, "確定要刪除選取的文章嗎?");
             /*綁定事件*/
-            setPostOperation(editing);
+            setOperation(editing);
         }
 
         function menuUI(editing) {
@@ -68,8 +68,10 @@
                 }
             });
         }
-        function setPostOperation(editing) {
+        function setOperation(editing) {
             var postID;
+            /*新增*/
+            $("#newPost").attr("href", "/newPost");
             /*檢視*/
             $(".view").each(function() {
                 postID = $(this).parents("tr").attr("id");
@@ -192,6 +194,7 @@
                 <button type="button" class="btn btn-default" id="toDraft">還原為草稿</button>
                 <button type="button" class="btn btn-default" id="deletePost"><i class="fa fa-trash-o fa-fw"></i></button>
             </div>
+            <a class="btn btn-default pull-right" id="newPost" href="#" target="_blank">新增文章</a>
         </header>
         <table class="table">
             <thead>

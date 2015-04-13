@@ -51,7 +51,17 @@ module.exports.routes = {
     view: 'backend/pages/editor'
   },
 
+  'get /newPost': {
+    controller: 'cms',
+    action: 'newPost'
+  },
+
   'get /preview': {
+    controller: 'cms',
+    action: 'preview'
+  },
+
+  'post /preview': {
     controller: 'cms',
     action: 'preview'
   },
@@ -81,7 +91,10 @@ module.exports.routes = {
     action: 'preview'
   },
 
-
+  'post /cms/previewVideo': {
+    controller: 'Video',
+    action: 'preview'
+  },
 
 
   /***************************************************************************

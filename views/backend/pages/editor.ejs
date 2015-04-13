@@ -6,17 +6,31 @@
         $(".note-codable").css("height", window.innerHeight-50-64-43-20);
         $("#setting").css("height", window.innerHeight-50-64);
         $(".note-editor").css("height", window.innerHeight-50-64);
-        /*$("input[type=radio][name=device]").change(function() {
-            if (this.value == "desktop") {
-                $("#page").css("width", "992px");
+        
+        $(".preview").click(function() {
+            function submit(action, method, values) {
+                var form = $("<form/>", {
+                    action: action,
+                    method: method,
+                    target: "_blank"
+                });
+                $.each(values, function() {
+                    form.append($("<input/>", {
+                        type: "hidden",
+                        name: this.name,
+                        value: this.value
+                    }));    
+                });
+                form.appendTo('body').submit();
             }
-            else if (this.value == "tablet") {
-                $("#page").css("width", "768px");
-            }
-            else{
-                $("#page").css("width", "320px");
-            }          
-        });*/
+
+            submit("/preview", "POST", [
+                { name: "method", value: "post" },
+                { name: "url", value: "/cms/previewVideo" },
+                { name: 'title', value: $("input.title").val() },
+                { name: "content", value: $('.summernote').code() }
+            ]);
+        });
     });
 </script>
 <div id="wrapper">
@@ -26,12 +40,12 @@
 
     <div id="page-wrapper" class="no-padding">
         <header class="editor-header">
-            <form action="">
-                <input type="text" class="form-control" placeholder="文章標題">
+            <form>
+                <input type="text" class="form-control title" placeholder="文章標題">
                 <span>
                     <button type="button" class="btn btn-default">發佈/更新</button>
                     <button type="button" class="btn btn-default">儲存/還原為草稿</button>
-                    <button type="button" class="btn btn-default">預覽</button>
+                    <button type="button" class="btn btn-default preview" target="_blank">預覽</button>
                     <button type="button" class="btn btn-default">關閉</button>
                 </span>
             </form>
@@ -42,7 +56,6 @@
         <!--END ASIDE-->
         
         <div class="summernote">
-            summernote 1
         </div>
     </div>
 </div>

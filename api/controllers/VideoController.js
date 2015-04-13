@@ -31,6 +31,7 @@ module.exports = {
         /*if(req.session.type == "admin"){*/
             var id = req.param("id");
 
+            /*收到POST request*/
             if(id == undefined){
                 var video = {
                     title: req.body.title,
@@ -40,6 +41,7 @@ module.exports = {
                     videos: [video]
                 });
             }
+            /*收到GET request*/
             else{
                 Video.findOne({
                     id: id
