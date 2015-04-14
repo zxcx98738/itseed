@@ -16,7 +16,8 @@ module.exports.bootstrap = function(cb) {
   Video.create({
   	title: "資訊種子形象影片",
   	content: "<h1>這是影片</h1><br><br><br><br><br><br><br><br><br><br><br>",
-    status: "P"
+    status: "D",
+    createdAt: "2015-05-14T20:06:02.304Z"
   }).exec(function(){
 
   });

@@ -8,23 +8,81 @@
 module.exports = {
     //新增文章
     newPost: function(req, res){
-        /*if(req.session.type == "admin"){*/
-            var url = req.param("url");
+        /*if(req.session.authorized){*/
+            if(typeof req.param("postType") === "undefined"){
+                return res.notfound();
+            }
+            var postType = req.param("postType");
 
+            var post = {
+                status: "new"
+            };
+            var action = {};
+
+            switch(postType)
+            {
+                case "video":
+                    action.create = "/cms/createVideo";
+                    action.update = "/cms/updateVideo";
+                    action.toDraft = "/cms/toDraftVideo";
+                    action.publish = "/cms/publishVideo";
+                    action.preview = "/cms/previewVideo";
+
+                    break;
+                default:
+                    break;
+            }
             return res.view("backend/pages/editor", {
-                url: url
+                action: action,
+                post: post
             });
         /*}
         else{
-            return res.view("redirect", {
-                message: "使用者權限不足",
-                url: "/"
+            return res.forbidden();
+        }*/
+    },
+    //編輯文章
+    editPost: function(req, res){
+        /*if(req.session.authorized){*/
+            if(typeof req.param("postType") === "undefined"){
+                return res.notfound();
+            }
+            var postType = req.param("postType");
+
+            Video.findOne({
+                id: req.param("id")
+            })
+            .exec(function(err, post){
+                if(err)
+                    res.end(JSON.stringify(err));
+                else{
+                    var action = {};
+                    switch(postType)
+                    {
+                        case "video":
+                            action.create = "/cms/createVideo";
+                            action.update = "/cms/updateVideo";
+                            action.toDraft = "/cms/toDraftVideo";
+                            action.publish = "/cms/publishVideo";
+                            action.preview = "/cms/previewVideo";
+                            break;
+                        default:
+                            break;
+                    }
+                    return res.view("backend/pages/editor", {
+                        action: action,
+                        post: post
+                    });
+                }
             });
+        /*}
+        else{
+            return res.forbidden();
         }*/
     },
     //預覽畫面
     preview: function(req, res){
-        /*if(req.session.type == "admin"){*/
+        /*if(req.session.authorized){*/
             var method = req.param("method");
 
             /*收到POST request*/
@@ -53,10 +111,7 @@ module.exports = {
             }
         /*}
         else{
-            return res.view("redirect", {
-                message: "使用者權限不足",
-                url: "/"
-            });
+            return res.forbidden();
         }*/
     },
 

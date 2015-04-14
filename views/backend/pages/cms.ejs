@@ -1,7 +1,7 @@
 <script>
     $(function() {
         /*接收後端傳來的參數*/
-        var editing = <%- JSON.stringify(editing) %>;
+        var postType = <%- JSON.stringify(postType) %>;
         var status = <%- JSON.stringify(status) %>;
 
         var total = <%- JSON.stringify(total) %>;
@@ -9,13 +9,13 @@
         var publishNum = <%- JSON.stringify(publishNum) %>;
         var scheduleNum = <%- JSON.stringify(scheduleNum) %>;
 
-        init(editing);
+        init(postType);
         
         
 
-        function init(editing) {
+        function init(postType) {
             /*根據正在管理的頁面調整menu的UI*/
-            menuUI(editing);
+            menuUI(postType);
             /*綁定全選事件*/
             setSelectAll("#selectAll", "td.selector>input");
             /*綁定由checkbox觸發的事件*/
@@ -23,17 +23,16 @@
             setGroupOperation("#toDraft", "td.selector>input:checked", "tr", toDraft, "確定要還原選取的文章為草稿嗎?");
             setGroupOperation("#deletePost", "td.selector>input:checked", "tr", deletePost, "確定要刪除選取的文章嗎?");
             /*綁定事件*/
-            setOperation(editing);
+            setOperation(postType);
         }
-
-        function menuUI(editing) {
-            $("#"+editing).addClass("open");
-            $("#"+editing+">ul").css("display", "block");
-            $("#"+editing+" li."+status).addClass("active");
-            $("#"+editing+" li.all span").append(" ("+total+")");
-            $("#"+editing+" li.draft span").append(" ("+draftNum+")");
-            $("#"+editing+" li.publish span").append(" ("+publishNum+")");
-            $("#"+editing+" li.schedule span").append(" ("+scheduleNum+")");
+        function menuUI(postType) {
+            $("#"+postType).addClass("open");
+            $("#"+postType+">ul").css("display", "block");
+            $("#"+postType+" li."+status).addClass("active");
+            $("#"+postType+" li.all span").append(" ("+total+")");
+            $("#"+postType+" li.draft span").append(" ("+draftNum+")");
+            $("#"+postType+" li.publish span").append(" ("+publishNum+")");
+            $("#"+postType+" li.schedule span").append(" ("+scheduleNum+")");
         }
         function setSelectAll(checkbox, checkboxs) {
             $(checkbox).change(function() {
@@ -68,15 +67,29 @@
                 }
             });
         }
-        function setOperation(editing) {
+        function setOperation(postType) {
             var postID;
             /*新增*/
-            $("#newPost").attr("href", "/newPost");
+            $("#newPost").attr("href", "/newPost?postType=" + postType);
+            /*編輯*/
+            $(".edit").each(function() {
+                postID = $(this).parents("tr").attr("id");
+
+                switch(postType)
+                {
+                    case "video":
+                        $(this).attr("href", "/editPost?postType=" + postType + "&id=" + postID);
+                        break;
+                    default:
+                        break;
+                }
+                
+            });
             /*檢視*/
             $(".view").each(function() {
                 postID = $(this).parents("tr").attr("id");
 
-                switch(editing)
+                switch(postType)
                 {
                     case "video":
                         $(this).attr("href", "/video#" + postID);
@@ -91,7 +104,7 @@
                 postID = $(this).parents("tr").attr("id");
                 var url;
 
-                switch(editing)
+                switch(postType)
                 {
                     case "video":
                         url = "/cms/previewVideo/?id=" + postID;
@@ -179,7 +192,7 @@
         <header>
             <button type="button" class="btn btn-default"><input type="checkbox" id="selectAll"></button>
             <div class="btn-group">
-                <% if(editing == "sharing"){ %>
+                <% if(postType == "sharing"){ %>
                     <button type="button" class="btn btn-default" id="tags" data-toggle="dropdown" aria-expanded="true">
                         <i class="fa fa-tag fa-fw"></i>
                         <span class="caret"></span>
@@ -194,7 +207,7 @@
                 <button type="button" class="btn btn-default" id="toDraft">還原為草稿</button>
                 <button type="button" class="btn btn-default" id="deletePost"><i class="fa fa-trash-o fa-fw"></i></button>
             </div>
-            <a class="btn btn-default pull-right" id="newPost" href="#" target="_blank">新增文章</a>
+            <a class="btn btn-default pull-right" id="newPost" href="#">新增文章</a>
         </header>
         <table class="table">
             <thead>
@@ -215,10 +228,10 @@
                     <td class="selector"><input type="checkbox"></td>
                     <td class="title">
                         <div>
-                            <a href="#"><%= articles[i].title %></a>
+                            <a class="edit" href="#"><%= articles[i].title %></a>
                         </div>
                         <div class="operation">
-                            <a href="#">編輯</a> | 
+                            <a class="edit" href="#">編輯</a> | 
                             <% if(articles[i].status == "D" || articles[i].status == "S"){ %>
                                 <a class="preview" href="#" target="_blank">預覽</a> | 
                             <% } else { %>

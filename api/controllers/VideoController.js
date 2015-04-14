@@ -29,13 +29,11 @@ module.exports = {
     //預覽畫面
     preview: function(req, res){
         /*if(req.session.type == "admin"){*/
-            var id = req.param("id");
-
             /*收到POST request*/
-            if(id == undefined){
+            if(typeof req.param("id") === "undefined"){
                 var video = {
-                    title: req.body.title,
-                    content: req.body.content
+                    title: req.param("title"),
+                    content: req.param("content")
                 }
                 return res.view("frontend/pages/video", {
                     videos: [video]
@@ -44,7 +42,7 @@ module.exports = {
             /*收到GET request*/
             else{
                 Video.findOne({
-                    id: id
+                    id: req.param("id")
                 })
                 .exec(function(err, video){
                     if(err)
@@ -72,7 +70,6 @@ module.exports = {
             });
         }*/
     },
-
     //後台清單
     list: function(req, res){
         /*if(req.session.type == "admin"){*/
@@ -117,7 +114,7 @@ module.exports = {
                                 };
                                 return res.view("backend/pages/cms", {
                                     articles: videos,
-                                    editing: "video",
+                                    postType: "video",
                                     status: "all",
                                     total: results.total,
                                     draftNum: results.draftNum,
@@ -141,7 +138,7 @@ module.exports = {
                                 else{
                                     return res.view("backend/pages/cms", {
                                         articles: videos,
-                                        editing: "video",
+                                        postType: "video",
                                         status: "draft",
                                         total: results.total,
                                         draftNum: results.draftNum,
@@ -166,7 +163,7 @@ module.exports = {
                                 else{
                                     return res.view("backend/pages/cms", {
                                         articles: videos,
-                                        editing: "video",
+                                        postType: "video",
                                         status: "publish",
                                         total: results.total,
                                         draftNum: results.draftNum,
@@ -187,14 +184,14 @@ module.exports = {
             });
         }*/
     },
-    //新增文章
+    //新增
     create: function(req, res){
-    	if(req.session.type == "admin"){
+    	/*if(req.session.authorized){*/
             var newVideo = {
                 /*author: req.session.userid,*/
-                title: req.body.title,
-                content: req.body.content,
-                status: req.status
+                title: req.param("title"),
+                content: req.param("content"),
+                status: req.param("status")
             }
             Video.create(newVideo)
             .exec(function(err, data){
@@ -202,36 +199,69 @@ module.exports = {
                     res.end(JSON.stringify(err));
                 }
                 else{
-                    return res.redirect("back");  
+                    data.message = "success";
+                    res.end(JSON.stringify(data));
                 } 
             });
-    	}
-    	else{
-/*    		return res.view("redirect", {
-    			message: "請先登入",
-    			url: "/forum?id="+req.body.fid
-    		});*/
-    	}
+        /*}
+        else{
+            return res.forbidden();
+        }*/
     },
-    //編輯
+    //更新
     update: function(req, res){
+        /*if(req.session.authorized){*/
+            Video.update({
+                id: req.param("id")
+            }, {
+                title: req.param("title"),
+                content: req.param("content"),
+                status: req.param("status")
+            })
+            .exec(function(err, data){
+                if(err){
+                    res.end(JSON.stringify(err));
+                }
+                else{
+                    res.end("success");
+                } 
+            });
+        /*}
+        else{
+            return res.forbidden();
+        }*/
     },
     //發布
     publish: function(req, res){
 /*        if(req.session.type == "admin"){*/
             var id = req.param("id");
+            var status;
 
-            Video.update({
+            Video.findOne({
                 id: id
-            }, {
-                status: "P"
             })
-            .exec(function(err){
-                if(err)
+            .exec(function(err, video){
+                if(err){
                     res.end(JSON.stringify(err));
-                else  
-                    res.end("success");
-            });     
+                }
+                else{
+                    if(video.createdAt < new Date())
+                        status = "P";
+                    else
+                        status = "S";
+                    Video.update({
+                        id: id
+                    }, {
+                        status: status
+                    })
+                    .exec(function(err){
+                        if(err)
+                            res.end(JSON.stringify(err));
+                        else  
+                            res.end("success");
+                    });  
+                } 
+            });
 /*        }
         else{
             return res.view("redirect", {

@@ -1,36 +1,154 @@
 <script>
     $(function() {
-        $('.summernote').summernote();
-        $("#page-wrapper").css("height", window.innerHeight-50);
-        $(".note-editable").css("height", window.innerHeight-50-64-43-20);
-        $(".note-codable").css("height", window.innerHeight-50-64-43-20);
-        $("#setting").css("height", window.innerHeight-50-64);
-        $(".note-editor").css("height", window.innerHeight-50-64);
-        
-        $(".preview").click(function() {
-            function submit(action, method, values) {
-                var form = $("<form/>", {
-                    action: action,
-                    method: method,
-                    target: "_blank"
-                });
-                $.each(values, function() {
-                    form.append($("<input/>", {
-                        type: "hidden",
-                        name: this.name,
-                        value: this.value
-                    }));    
-                });
-                form.appendTo('body').submit();
-            }
+        /*接收後端傳來的參數*/
+        var createAction = <%- JSON.stringify(action.create) %>;
+        var updateAction = <%- JSON.stringify(action.update) %>;
+        var toDraftAction = <%- JSON.stringify(action.toDraft) %>;
+        var publishAction = <%- JSON.stringify(action.publish) %>;
 
-            submit("/preview", "POST", [
-                { name: "method", value: "post" },
-                { name: "url", value: "/cms/previewVideo" },
-                { name: 'title', value: $("input.title").val() },
-                { name: "content", value: $('.summernote').code() }
-            ]);
-        });
+        init();
+
+        function init() {
+            /*根據正在管理的頁面調整menu的UI*/
+            editorUI();
+            /*綁定事件*/
+            setOperation();
+        }
+        function editorUI() {
+            $(".summernote").summernote();
+            $("#page-wrapper").css("height", window.innerHeight-50);
+            $(".note-editable").css("height", window.innerHeight-50-64-43-20);
+            $(".note-codable").css("height", window.innerHeight-50-64-43-20);
+            $("#setting").css("height", window.innerHeight-50-64);
+            $(".note-editor").css("height", window.innerHeight-50-64);
+        }
+        function setOperation() {
+            /*發佈*/
+            $("#newPost").click(newPost);
+            $("#publish").click(publish);
+            /*儲存*/
+            $("#newDraft").click(newDraft);
+            $("#update").click(update);
+            /*還原為草稿*/
+            $("#toDraft").click(toDraft);
+            /*預覽*/
+            $("#preview").click(function() {
+                $("#form-preview>input.title").val($("#title").val());
+                $("#form-preview>input.content").val($(".summernote").code());
+                $("#form-preview").submit();
+            });
+            /*關閉*/
+            $("#close").click(function() {
+                location.href = document.referrer;
+            });
+        }
+        function newPost() {
+            $("#content").val($(".summernote").code());
+            /*未設定排程時*/
+            if($("#status").val() == "new")
+                $("#status").val("P");
+
+            $.ajax({
+                url: createAction,
+                method: "post",
+                data: $("#form-edit").serialize(),
+                success: function(json){
+                    var obj = JSON.parse(json);
+
+                    if(obj.message == "success")
+                        location.href = document.referrer;
+                    else
+                        alert("資料庫錯誤: " + json);       
+                },
+                error: function(xhr, ajaxOptions, thrownError){ 
+                    alert("Ajax錯誤: " + xhr.status);
+                }
+            });  
+        }
+        function newDraft() {
+            $("#content").val($(".summernote").code());
+            $("#status").val("D");
+
+            $.ajax({
+                url: createAction,
+                method: "post",
+                data: $("#form-edit").serialize(),
+                success: function(json){
+                    var obj = JSON.parse(json);
+
+                    if(obj.message == "success"){
+                        alert("儲存成功");
+                        $("#id").val(obj.id);
+                        $("#newDraft").off("click").click(update);
+                        $("#newPost").off("click").click(publish);
+                    }    
+                    else
+                        alert("資料庫錯誤: " + json);       
+                },
+                error: function(xhr, ajaxOptions, thrownError){ 
+                    alert("Ajax錯誤: " + xhr.status);
+                }
+            }); 
+        }
+        function update() {
+            $("#content").val($(".summernote").code());
+
+            $.ajax({
+                url: updateAction,
+                method: "post",
+                data: $("#form-edit").serialize(),
+                success: function(msg){
+                    if(msg == "success")
+                        alert("儲存成功");
+                    else
+                        alert("資料庫錯誤: " + msg);       
+                },
+                error: function(xhr, ajaxOptions, thrownError){ 
+                    alert("Ajax錯誤: " + xhr.status);
+                }
+            });  
+        }
+        function toDraft() {
+            $.ajax({
+                url: toDraftAction,
+                method: "get",
+                data: {
+                    id: $("#id").val(),
+                },
+                success: function(msg){
+                    if(msg == "success"){
+                        alert("儲存成功");
+                        $("#toDraft").off("click").click(publish);
+                        $("#toDraft").text("發佈");
+                    }
+                    else
+                        alert("資料庫錯誤: " + msg);       
+                },
+                error: function(xhr, ajaxOptions, thrownError){ 
+                    alert("Ajax錯誤: " + xhr.status);
+                }
+            });  
+        }
+        function publish() {
+            update();
+            
+            $.ajax({
+                url: publishAction,
+                method: "get",
+                data: {
+                    id: $("#id").val()
+                },
+                success: function(msg){
+                    if(msg == "success")
+                        location.href = document.referrer;
+                    else
+                        alert("資料庫錯誤: " + msg);       
+                },
+                error: function(xhr, ajaxOptions, thrownError){ 
+                    alert("Ajax錯誤: " + xhr.status);
+                }
+            });  
+        }
     });
 </script>
 <div id="wrapper">
@@ -40,14 +158,38 @@
 
     <div id="page-wrapper" class="no-padding">
         <header class="editor-header">
-            <form>
-                <input type="text" class="form-control title" placeholder="文章標題">
+            <form id="form-edit">
+                <% if(post.status == "new"){ %>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="文章標題">
+                    <input type="text" class="hidden" id="id" name="id">
+                    <input type="text" class="hidden" id="content" name="content">
+                    <input type="text" class="hidden" id="status" name="status" value="<%= post.status %>">
+                <% } else{ %>
+                    <input type="text" class="form-control title" name="title" placeholder="文章標題" value="<%= post.title %>">
+                    <input type="text" class="hidden" id="id" name="id" value="<%= post.id %>">
+                    <input type="text" class="hidden" id="content" name="content">
+                    <input type="text" class="hidden" id="status" name="status" value="<%= post.status %>">
+                <% } %>
                 <span>
-                    <button type="button" class="btn btn-default">發佈/更新</button>
-                    <button type="button" class="btn btn-default">儲存/還原為草稿</button>
-                    <button type="button" class="btn btn-default preview" target="_blank">預覽</button>
-                    <button type="button" class="btn btn-default">關閉</button>
+                    <% if(post.status == "new"){ %>
+                        <button type="button" class="btn btn-danger" id="newPost">發佈</button>
+                        <button type="button" class="btn btn-default" id="newDraft">儲存</button>
+                    <% } else if(post.status == "D"){ %>
+                        <button type="button" class="btn btn-danger" id="publish">發佈</button>
+                        <button type="button" class="btn btn-default" id="update">儲存</button>
+                    <% } else{ %>
+                        <button type="button" class="btn btn-danger" id="toDraft">還原為草稿</button>
+                        <button type="button" class="btn btn-default" id="update">儲存</button>
+                    <% } %>
+                    <button type="button" class="btn btn-default" id="preview" target="_blank">預覽</button>
+                    <button type="button" class="btn btn-default" id="close">關閉</button>
                 </span>
+            </form>
+            <form action="/preview" class="hidden" id="form-preview" target="_blank">
+                <input type="text" name="method" value="post">
+                <input type="text" name="url" value="<%= action.preview %>">
+                <input type="text" class="title" name="title">
+                <input type="text" class="content" name="content">
             </form>
         </header>
 
@@ -56,6 +198,9 @@
         <!--END ASIDE-->
         
         <div class="summernote">
+            <% if (typeof post.content !== 'undefined') { %>
+                <%- post.content %>
+            <% } %>
         </div>
     </div>
 </div>

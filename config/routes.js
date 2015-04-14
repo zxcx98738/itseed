@@ -43,17 +43,14 @@ module.exports.routes = {
   },
 
   /*後台*/
-  '/cms': {
-    view: 'backend/pages/cms'
-  },
-
-  '/editor': {
-    view: 'backend/pages/editor'
-  },
-
   'get /newPost': {
     controller: 'cms',
     action: 'newPost'
+  },
+
+  'get /editPost': {
+    controller: 'cms',
+    action: 'editPost'
   },
 
   'get /preview': {
@@ -66,9 +63,20 @@ module.exports.routes = {
     action: 'preview'
   },
 
+  /*影音專區*/
   'get /cms/video/:status': {
     controller: 'Video',
     action: 'list'
+  },
+
+  'post /cms/createVideo': {
+    controller: 'Video',
+    action: 'create'
+  },
+
+  'post /cms/updateVideo': {
+    controller: 'Video',
+    action: 'update'
   },
 
   'get /cms/publishVideo': {
