@@ -1,3 +1,4 @@
+<script src="/js/specifies/backend/editor.js"></script>
 <script>
     $(function() {
         /*接收後端傳來的參數*/
@@ -7,148 +8,6 @@
         var publishAction = <%- JSON.stringify(action.publish) %>;
 
         init();
-
-        function init() {
-            /*根據正在管理的頁面調整menu的UI*/
-            editorUI();
-            /*綁定事件*/
-            setOperation();
-        }
-        function editorUI() {
-            $(".summernote").summernote();
-            $("#page-wrapper").css("height", window.innerHeight-50);
-            $(".note-editable").css("height", window.innerHeight-50-64-43-20);
-            $(".note-codable").css("height", window.innerHeight-50-64-43-20);
-            $("#setting").css("height", window.innerHeight-50-64);
-            $(".note-editor").css("height", window.innerHeight-50-64);
-        }
-        function setOperation() {
-            /*發佈*/
-            $("#newPost").click(newPost);
-            $("#publish").click(publish);
-            /*儲存*/
-            $("#newDraft").click(newDraft);
-            $("#update").click(update);
-            /*還原為草稿*/
-            $("#toDraft").click(toDraft);
-            /*預覽*/
-            $("#preview").click(function() {
-                $("#form-preview>input.title").val($("#title").val());
-                $("#form-preview>input.content").val($(".summernote").code());
-                $("#form-preview").submit();
-            });
-            /*關閉*/
-            $("#close").click(function() {
-                location.href = document.referrer;
-            });
-        }
-        function newPost() {
-            $("#content").val($(".summernote").code());
-            /*未設定排程時*/
-            if($("#status").val() == "new")
-                $("#status").val("P");
-
-            $.ajax({
-                url: createAction,
-                method: "post",
-                data: $("#form-edit").serialize(),
-                success: function(json){
-                    var obj = JSON.parse(json);
-
-                    if(obj.message == "success")
-                        location.href = document.referrer;
-                    else
-                        alert("資料庫錯誤: " + json);       
-                },
-                error: function(xhr, ajaxOptions, thrownError){ 
-                    alert("Ajax錯誤: " + xhr.status);
-                }
-            });  
-        }
-        function newDraft() {
-            $("#content").val($(".summernote").code());
-            $("#status").val("D");
-
-            $.ajax({
-                url: createAction,
-                method: "post",
-                data: $("#form-edit").serialize(),
-                success: function(json){
-                    var obj = JSON.parse(json);
-
-                    if(obj.message == "success"){
-                        alert("儲存成功");
-                        $("#id").val(obj.id);
-                        $("#newDraft").off("click").click(update);
-                        $("#newPost").off("click").click(publish);
-                    }    
-                    else
-                        alert("資料庫錯誤: " + json);       
-                },
-                error: function(xhr, ajaxOptions, thrownError){ 
-                    alert("Ajax錯誤: " + xhr.status);
-                }
-            }); 
-        }
-        function update() {
-            $("#content").val($(".summernote").code());
-
-            $.ajax({
-                url: updateAction,
-                method: "post",
-                data: $("#form-edit").serialize(),
-                success: function(msg){
-                    if(msg == "success")
-                        alert("儲存成功");
-                    else
-                        alert("資料庫錯誤: " + msg);       
-                },
-                error: function(xhr, ajaxOptions, thrownError){ 
-                    alert("Ajax錯誤: " + xhr.status);
-                }
-            });  
-        }
-        function toDraft() {
-            $.ajax({
-                url: toDraftAction,
-                method: "get",
-                data: {
-                    id: $("#id").val(),
-                },
-                success: function(msg){
-                    if(msg == "success"){
-                        alert("儲存成功");
-                        $("#toDraft").off("click").click(publish);
-                        $("#toDraft").text("發佈");
-                    }
-                    else
-                        alert("資料庫錯誤: " + msg);       
-                },
-                error: function(xhr, ajaxOptions, thrownError){ 
-                    alert("Ajax錯誤: " + xhr.status);
-                }
-            });  
-        }
-        function publish() {
-            update();
-            
-            $.ajax({
-                url: publishAction,
-                method: "get",
-                data: {
-                    id: $("#id").val()
-                },
-                success: function(msg){
-                    if(msg == "success")
-                        location.href = document.referrer;
-                    else
-                        alert("資料庫錯誤: " + msg);       
-                },
-                error: function(xhr, ajaxOptions, thrownError){ 
-                    alert("Ajax錯誤: " + xhr.status);
-                }
-            });  
-        }
     });
 </script>
 <div id="wrapper">
@@ -194,7 +53,50 @@
         </header>
 
         <!--ASIDE-->
-        <% include ../editor-setting %>
+        <aside>
+            <div id="setting" class="accordion">
+                <div class="title">文章設定</div>
+                <ul>
+                    <% if(menu.tag == "on") { %>
+                    <li class='has-sub'>
+                        <a href='#'><i class="fa fa-tag fa-fw"></i><span>標籤</span></a>
+                        <div class="settings">
+                            <form action="">
+                                <textarea name="" id="" cols="30" rows="10"></textarea>
+                                <p>以逗號區隔標籤</p>
+                                <p>
+                                    夏天, 是, 地表第一, 大, 帥哥
+                                </p>
+                                <button type="submit" class="btn btn-default">完成</button>
+                            </form>
+                        </div>
+                    </li>
+                    <% } %>
+                    <% if(menu.datepicker == "on") { %>
+                    <li class='has-sub'>
+                        <a href='#'><i class="fa fa-calendar fa-fw"></i><span>日期和時間</span></a>
+                        <div class="settings">
+                            <form action="">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="time" value="auto" checked>
+                                        自動
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="time" value="manual">
+                                        設定日期及時間
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-default">完成</button>
+                            </form>
+                        </div>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
+        </aside>
         <!--END ASIDE-->
         
         <div class="summernote">

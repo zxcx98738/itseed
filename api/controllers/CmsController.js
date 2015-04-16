@@ -9,16 +9,15 @@ module.exports = {
     //新增文章
     newPost: function(req, res){
         /*if(req.session.authorized){*/
-            if(typeof req.param("postType") === "undefined"){
+            if(typeof req.param("postType") === "undefined")
                 return res.notfound();
-            }
-            var postType = req.param("postType");
-
-            var post = {
-                status: "new"
-            };
+            
             var action = {};
+            var post = {status: "new"};
+            var menu = {};
+            var postType = req.param("postType");          
 
+            /*根據文章類型註冊事件跟能調整的項目*/
             switch(postType)
             {
                 case "video":
@@ -28,13 +27,16 @@ module.exports = {
                     action.publish = "/cms/publishVideo";
                     action.preview = "/cms/previewVideo";
 
+                    menu.datePicker = "off";
+                    menu.tag = "off";
                     break;
                 default:
                     break;
             }
             return res.view("backend/pages/editor", {
                 action: action,
-                post: post
+                post: post,
+                menu: menu
             });
         /*}
         else{
@@ -44,19 +46,31 @@ module.exports = {
     //編輯文章
     editPost: function(req, res){
         /*if(req.session.authorized){*/
-            if(typeof req.param("postType") === "undefined"){
+            if(typeof req.param("postType") === "undefined")
                 return res.notfound();
-            }
-            var postType = req.param("postType");
+            
+            var module;
+            var action = {};
+            var menu = {};
+            var postType = req.param("postType");   
 
-            Video.findOne({
+            switch(postType)
+            {
+                case "video":
+                    module = Video;
+                    break;
+                default:
+                    return res.notfound();
+            }
+            
+            module.findOne({
                 id: req.param("id")
             })
             .exec(function(err, post){
                 if(err)
                     res.end(JSON.stringify(err));
                 else{
-                    var action = {};
+                    /*根據文章類型註冊事件跟能調整的項目*/
                     switch(postType)
                     {
                         case "video":
@@ -65,13 +79,17 @@ module.exports = {
                             action.toDraft = "/cms/toDraftVideo";
                             action.publish = "/cms/publishVideo";
                             action.preview = "/cms/previewVideo";
+
+                            menu.datePicker = "off";
+                            menu.tag = "off";
                             break;
                         default:
                             break;
                     }
                     return res.view("backend/pages/editor", {
                         action: action,
-                        post: post
+                        post: post,
+                        menu: menu
                     });
                 }
             });
