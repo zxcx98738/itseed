@@ -1,11 +1,3 @@
-function init() {
-    /*根據正在管理的頁面調整menu的UI*/
-    editorUI();
-    /*選單欄開合事件*/
-    menuUI()
-    /*綁定事件*/
-    setOperation();
-}
 function editorUI() {
     /*載入編輯器*/
     $(".summernote").summernote();
@@ -35,15 +27,15 @@ function menuUI() {
         }
     });
 }
-function setOperation() {
+function setOperation(action) {
     /*發佈*/
-    $("#newPost").click(newPost);
-    $("#publish").click(publish);
+    $("#newPost").click({action: action}, newPost);
+    $("#publish").click({action: action}, publish);
     /*儲存*/
-    $("#newDraft").click(newDraft);
-    $("#update").click(update);
+    $("#newDraft").click({action: action}, newDraft);
+    $("#update").click({action: action}, update);
     /*還原為草稿*/
-    $("#toDraft").click(toDraft);
+    $("#toDraft").click({action: action}, toDraft);
     /*預覽*/
     $("#preview").click(function() {
         $("#form-preview>input.title").val($("#title").val());
@@ -55,14 +47,12 @@ function setOperation() {
         location.href = document.referrer;
     });
 }
-function newPost() {
+function newPost(event) {
     $("#content").val($(".summernote").code());
-    /*未設定發佈時間時*/
-    if($("#status").val() == "new")
-        $("#status").val("P");
+    $("#status").val("P");
 
     $.ajax({
-        url: createAction,
+        url: event.data.action.create,
         method: "post",
         data: $("#form-edit").serialize(),
         success: function(json){
@@ -78,12 +68,12 @@ function newPost() {
         }
     });  
 }
-function newDraft() {
+function newDraft(event) {
     $("#content").val($(".summernote").code());
     $("#status").val("D");
 
     $.ajax({
-        url: createAction,
+        url: event.data.action.create,
         method: "post",
         data: $("#form-edit").serialize(),
         success: function(json){
@@ -93,8 +83,8 @@ function newDraft() {
                 alert("儲存成功");
                 /*儲存成功時，將回傳的id與update, publish事件綁定*/
                 $("#id").val(obj.id);
-                $("#newDraft").off("click").click(update);
-                $("#newPost").off("click").click(publish);
+                $("#newPost").off("click").click({action: event.data.action}, publish);
+                $("#newDraft").off("click").click({action: event.data.action}, update);
             }    
             else
                 alert("資料庫錯誤: " + json);       
@@ -104,11 +94,11 @@ function newDraft() {
         }
     }); 
 }
-function update() {
+function update(event) {
     $("#content").val($(".summernote").code());
 
     $.ajax({
-        url: updateAction,
+        url: event.data.action.update,
         method: "post",
         data: $("#form-edit").serialize(),
         success: function(msg){
@@ -122,18 +112,19 @@ function update() {
         }
     });  
 }
-function toDraft() {
+function toDraft(event) {
+    $("#content").val($(".summernote").code());
+    $("#status").val("D");
+
     $.ajax({
-        url: toDraftAction,
-        method: "get",
-        data: {
-            id: $("#id").val(),
-        },
+        url: event.data.action.update,
+        method: "post",
+        data: $("#form-edit").serialize(),
         success: function(msg){
             if(msg == "success"){
                 alert("儲存成功");
                 /*還原為草稿後，將publish事件綁定*/
-                $("#toDraft").off("click").click(publish);
+                $("#toDraft").off("click").click({action: event.data.action}, publish);
                 $("#toDraft").text("發佈");
             }
             else
@@ -144,15 +135,14 @@ function toDraft() {
         }
     });  
 }
-function publish() {
-    update();
+function publish(event) {
+    $("#content").val($(".summernote").code());
+    $("#status").val("P");
 
     $.ajax({
-        url: publishAction,
-        method: "get",
-        data: {
-            id: $("#id").val()
-        },
+        url: event.data.action.update,
+        method: "post",
+        data: $("#form-edit").serialize(),
         success: function(msg){
             if(msg == "success")
                 location.href = document.referrer;
@@ -162,5 +152,5 @@ function publish() {
         error: function(xhr, ajaxOptions, thrownError){ 
             alert("Ajax錯誤: " + xhr.status);
         }
-    });  
+    });   
 }

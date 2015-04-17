@@ -35,7 +35,7 @@ module.exports = {
           type: 'integer',
           autoIncrement: true
         },
-        //狀態  D:草稿, S:已排程, P:已發佈
+        //狀態  D:草稿, P:已發佈
         status: {
           type: 'string',
           minLength: 1,

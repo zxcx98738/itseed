@@ -2,12 +2,14 @@
 <script>
     $(function() {
         /*接收後端傳來的參數*/
-        var createAction = <%- JSON.stringify(action.create) %>;
-        var updateAction = <%- JSON.stringify(action.update) %>;
-        var toDraftAction = <%- JSON.stringify(action.toDraft) %>;
-        var publishAction = <%- JSON.stringify(action.publish) %>;
-
-        init();
+        var action = <%- JSON.stringify(action) %>;
+    
+        /*根據正在管理的頁面調整menu的UI*/
+        editorUI();
+        /*選單欄開合事件*/
+        menuUI()
+        /*綁定事件*/
+        setOperation(action);
     });
 </script>
 <div id="wrapper">
