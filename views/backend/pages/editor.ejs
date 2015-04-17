@@ -23,14 +23,12 @@
                 <% if(post.status == "new"){ %>
                     <input type="text" class="form-control" id="title" name="title" placeholder="文章標題">
                     <input type="text" class="hidden" id="id" name="id">
-                    <input type="text" class="hidden" id="content" name="content">
-                    <input type="text" class="hidden" id="status" name="status" value="<%= post.status %>">
                 <% } else{ %>
-                    <input type="text" class="form-control title" name="title" placeholder="文章標題" value="<%= post.title %>">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="文章標題" value="<%= post.title %>">
                     <input type="text" class="hidden" id="id" name="id" value="<%= post.id %>">
-                    <input type="text" class="hidden" id="content" name="content">
-                    <input type="text" class="hidden" id="status" name="status" value="<%= post.status %>">
                 <% } %>
+                <input type="text" class="hidden" id="content" name="content">
+                <input type="text" class="hidden" id="status" name="status" value="<%= post.status %>">
                 <span>
                     <% if(post.status == "new"){ %>
                         <button type="button" class="btn btn-danger" id="newPost">發佈</button>

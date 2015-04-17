@@ -8,58 +8,53 @@
 module.exports = {
 	//前台顯示
 	show: function(req, res){
-		Video.find()
-		.where({ status: "P" })
-		.sort({ order: "asc" })
-		.exec(function(err, videos){
-			if(err)
-				res.end(JSON.stringify(err));
-			else{
-				if(videos.length == 0){
-					res.end("還沒有影片啦");
-				}
-				else{
-					return res.view("frontend/pages/video", {
-						videos: videos
-					});
-				}
-			}
-		});
+        var criteria = {   
+            where: { status: "P" }, 
+            sort: { order: "asc" }
+        }
+
+        CmsService.findPosts(Video, criteria)
+        .then(function(datas){
+            return res.view("frontend/pages/video", {
+                videos: datas
+            });
+        })
+        .catch(function(err){
+            res.end(JSON.stringify(err));
+        });
     },
     //預覽畫面
     preview: function(req, res){
         /*if(req.session.type == "admin"){*/
             /*收到POST request*/
             if(typeof req.param("id") === "undefined"){
-                var video = {
+                var data = {
                     title: req.param("title"),
                     content: req.param("content")
                 }
                 return res.view("frontend/pages/video", {
-                    videos: [video]
+                    videos: [data]
                 });
             }
             /*收到GET request*/
             else{
-                Video.findOne({
+                var criteria = {
                     id: req.param("id")
-                })
-                .exec(function(err, video){
-                    if(err)
-                        res.end(JSON.stringify(err));
-                    else{
-                        if(!video){
-                            /*return res.view("redirect", {
-                                message: "使用者權限不足",
-                                url: "/"
-                            });*/
-                        }
-                        else{
-                            return res.view("frontend/pages/video", {
-                                videos: [video]
-                            });
-                        }
+                }
+
+                CmsService.findOnePost(Video, criteria)
+                .then(function(data){
+                    if(!data){
+                        res.end("此文章不存在");
                     }
+                    else{
+                        return res.view("frontend/pages/video", {
+                            videos: [data]
+                        });
+                    }
+                })
+                .catch(function(err){
+                    res.end(JSON.stringify(err));
                 });
             }
         /*}
@@ -77,24 +72,32 @@ module.exports = {
 
             async.series({
                 total: function(callback){
-                    Video.count()
-                    .exec(function(err, count){
+                    var criteria = {};
+                    
+                    CmsService.countPost(Video, criteria)
+                    .then(function(count){
                         callback(null, count);
-                    });
+                    })
                 },
                 draftNum: function(callback){
-                    Video.count({
+                    var criteria = {
                         status: "D"
-                    }).exec(function(err, count){
+                    };
+
+                    CmsService.countPost(Video, criteria)
+                    .then(function(count){
                         callback(null, count);
-                    });
+                    })
                 },
                 publishNum: function(callback){
-                    Video.count({
+                    var criteria = {
                         status: "P"
-                    }).exec(function(err, count){
+                    };
+                    
+                    CmsService.countPost(Video, criteria)
+                    .then(function(count){
                         callback(null, count);
-                    });
+                    })
                 },
             },
             function(err, results){
@@ -103,77 +106,40 @@ module.exports = {
                 }
                 else {
                     if(status == "all"){
-                        Video.find()
-                        .sort({ order: "asc" })
-                        .exec(function(err, videos){
-                            if(err)
-                                res.end(JSON.stringify(err));
-                            else{
-                                for(var i = 0; i < videos.length; i++){
-                                    videos[i].createdAt = formatTime(videos[i].createdAt);
-                                };
-                                return res.view("backend/pages/cms", {
-                                    articles: videos,
-                                    postType: "video",
-                                    status: "all",
-                                    total: results.total,
-                                    draftNum: results.draftNum,
-                                    publishNum: results.publishNum,
-                                    scheduleNum: 0
-                                });
-                            }
-                        });
+                        var criteria = {   
+                            sort: { order: "asc" }
+                        }
                     }
                     else if(status == "draft"){
-                        Video.find()
-                        .where({ status: "D" })
-                        .sort({ order: "asc" })
-                        .exec(function(err, videos){
-                            if(err)
-                                res.end(JSON.stringify(err));
-                            else{
-                                if(videos.length == 0){
-                                    res.end("還沒有影片啦");
-                                }
-                                else{
-                                    return res.view("backend/pages/cms", {
-                                        articles: videos,
-                                        postType: "video",
-                                        status: "draft",
-                                        total: results.total,
-                                        draftNum: results.draftNum,
-                                        publishNum: results.publishNum,
-                                        scheduleNum: 0
-                                    });
-                                }
-                            }
-                        });
+                        var criteria = {   
+                            where: { status: "D" }, 
+                            sort: { order: "asc" }
+                        }
                     }
-                    else {
-                        Video.find()
-                        .where({ status: "P" })
-                        .sort({ order: "asc" })
-                        .exec(function(err, videos){
-                            if(err)
-                                res.end(JSON.stringify(err));
-                            else{
-                                if(videos.length == 0){
-                                    res.end("還沒有影片啦");
-                                }
-                                else{
-                                    return res.view("backend/pages/cms", {
-                                        articles: videos,
-                                        postType: "video",
-                                        status: "publish",
-                                        total: results.total,
-                                        draftNum: results.draftNum,
-                                        publishNum: results.publishNum,
-                                        scheduleNum: 0
-                                    });
-                                }
-                            }
-                        });
+                    else{
+                        var criteria = {   
+                            where: { status: "P" }, 
+                            sort: { order: "asc" }
+                        }
                     }
+                    CmsService.findPosts(Video, criteria)
+                    .then(function(datas){
+                        for(var i = 0; i < datas.length; i++){
+                            datas[i].createdAt = CmsService.formatTime(datas[i].createdAt);
+                        }
+                        return res.view("backend/pages/cms", {
+                            articles: datas,
+                            postType: "video",
+                            status: "all",
+                            total: results.total,
+                            draftNum: results.draftNum,
+                            publishNum: results.publishNum,
+                            scheduleNum: 0
+                        });
+                    })
+                    .catch(function(err){
+                        res.end(JSON.stringify(err));
+                    });
                 }
             });
         /*}
@@ -187,21 +153,20 @@ module.exports = {
     //新增
     create: function(req, res){
     	/*if(req.session.authorized){*/
-            var newVideo = {
+            var values = {
                 /*author: req.session.userid,*/
                 title: req.param("title"),
                 content: req.param("content"),
                 status: req.param("status")
             }
-            Video.create(newVideo)
-            .exec(function(err, data){
-                if(err){
-                    res.end(JSON.stringify(err));
-                }
-                else{
-                    data.message = "success";
-                    res.end(JSON.stringify(data));
-                } 
+
+            CmsService.createPost(Video, values)
+            .then(function(data){
+                data.message = "success";
+                res.end(JSON.stringify(data));
+            })
+            .catch(function(err){
+                res.end(JSON.stringify(err));
             });
         /*}
         else{
@@ -211,20 +176,21 @@ module.exports = {
     //更新
     update: function(req, res){
         /*if(req.session.authorized){*/
-            Video.update({
+            var criteria = {
                 id: req.param("id")
-            }, {
+            }
+            var values = {
                 title: req.param("title"),
                 content: req.param("content"),
                 status: req.param("status")
+            }
+
+            CmsService.updatePost(Video, criteria, values)
+            .then(function(){
+                res.end("success");
             })
-            .exec(function(err, data){
-                if(err){
-                    res.end(JSON.stringify(err));
-                }
-                else{
-                    res.end("success");
-                } 
+            .catch(function(err){
+                res.end(JSON.stringify(err));
             });
         /*}
         else{
@@ -233,36 +199,22 @@ module.exports = {
     },
     //發布
     publish: function(req, res){
-/*        if(req.session.type == "admin"){*/
-            var id = req.param("id");
-            var status;
+        /*if(req.session.type == "admin"){*/
+            var criteria = {
+                id: req.param("id")
+            }
+            var values = {
+                status: "P"
+            }
 
-            Video.findOne({
-                id: id
+            CmsService.updatePost(Video, criteria, values)
+            .then(function(){
+                res.end("success");
             })
-            .exec(function(err, video){
-                if(err){
-                    res.end(JSON.stringify(err));
-                }
-                else{
-                    if(video.createdAt < new Date())
-                        status = "P";
-                    else
-                        status = "S";
-                    Video.update({
-                        id: id
-                    }, {
-                        status: status
-                    })
-                    .exec(function(err){
-                        if(err)
-                            res.end(JSON.stringify(err));
-                        else  
-                            res.end("success");
-                    });  
-                } 
+            .catch(function(err){
+                res.end(JSON.stringify(err));
             });
-/*        }
+        /*}
         else{
             return res.view("redirect", {
                 message: "請先登入",
@@ -272,21 +224,22 @@ module.exports = {
     },
     //還原為草稿
     toDraft: function(req, res){
-/*        if(req.session.type == "admin"){*/
-            var id = req.param("id");
-
-            Video.update({
-                id: id
-            }, {
+        /*if(req.session.type == "admin"){*/
+            var criteria = {
+                id: req.param("id")
+            }
+            var values = {
                 status: "D"
+            }
+
+            CmsService.updatePost(Video, criteria, values)
+            .then(function(){
+                res.end("success");
             })
-            .exec(function(err){
-                if(err)
-                    res.end(JSON.stringify(err));
-                else  
-                    res.end("success");
-            });     
-/*        }
+            .catch(function(err){
+                res.end(JSON.stringify(err));
+            });    
+        /*}
         else{
             return res.view("redirect", {
                 message: "請先登入",
@@ -296,19 +249,19 @@ module.exports = {
     },
     //刪除
     delete: function(req, res){
-/*        if(req.session.type == "admin"){*/
-            var id = req.param("id");
+        /*if(req.session.type == "admin"){*/
+            var criteria = {
+                id: req.param("id")
+            }
 
-            Video.destroy({
-                id: id
+            CmsService.deletePost(Video, criteria)
+            .then(function(){
+                res.end("success");
             })
-            .exec(function(err){
-                if(err)
-                    res.end(JSON.stringify(err));
-                else  
-                    res.end("success");
-            });
-/*        }
+            .catch(function(err){
+                res.end(JSON.stringify(err));
+            }); 
+        /*}
         else{
             return res.view("redirect", {
                 message: "請先登入",
@@ -318,41 +271,3 @@ module.exports = {
     },
 };
 
-function formatTime(time)
-{
-    var year = time.getFullYear();
-    var month = time.getMonth();
-    var date = time.getDate();
-    var hour = time.getHours();
-    var minute = time.getMinutes();
-
-    if(hour == 0){
-        return year + "/" + (month + 1) + "/" + date + " 上午 " + "12" + ":" + minute;
-    }
-    else if(hour < 12){
-        return year + "/" + (month + 1) + "/" + date + " 上午 " + hour + ":" + minute;
-    }
-    else if(hour == 12){
-        return year + "/" + (month + 1) + "/" + date + " 下午 " + "12" + ":" + minute;
-    }
-    else{
-        return year + "/" + (month + 1) + "/" + date + " 下午 " + (hour - 12) + ":" + minute;
-    }      
-}
-
-
-/*Video.findOne({
-	id: "1"
-})
-.exec(function(err, videos){
-	if(err)
-		res.end("err");
-	else{
-		if(!videos){
-			res.end("empty");
-		}
-		else{
-			res.end("something");
-		}
-	}
-});*/
