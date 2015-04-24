@@ -213,13 +213,15 @@ module.exports = {
                     CmsService.findPosts(Video, criteria)
                     .then(function(datas){
                         for(var i = 0; i < datas.length; i++){
-                            datas[i].createdAt = CmsService.formatTime(datas[i].createdAt);
+                            datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
                         }
                         return res.view("backend/pages/cms", {
                             articles: datas,
                             postType: "video",
                             status: status,
                             action: CmsService.getAction(Video),
+                            menu: CmsService.getMenu(Video),
+
                             total: results.total,
                             draftNum: results.draftNum,
                             publishNum: results.publishNum,
