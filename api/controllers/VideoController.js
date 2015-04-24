@@ -6,26 +6,100 @@
  */
 
 module.exports = {
-	//前台顯示
-	show: function(req, res){
-        var criteria = {   
-            where: { status: "P" }, 
-            sort: { order: "asc" }
-        }
+    //載入編輯器
+    editor: function(req, res){
+        /*if(req.session.authorized){*/           
+            var action = {};
+            var post = {};
+            var menu = {};
 
-        CmsService.findPosts(Video, criteria)
-        .then(function(datas){
-            return res.view("frontend/pages/video", {
-                videos: datas
-            });
-        })
-        .catch(function(err){
-            res.end(JSON.stringify(err));
-        });
+            /*新增文章*/
+            if(typeof req.param("id") === "undefined"){
+                post.status = "new";
+
+                action = CmsService.getAction(Video);
+                menu = CmsService.getMenu(Video);
+
+                return res.view("backend/pages/editor", {
+                    action: action,
+                    post: post,
+                    menu: menu
+                });
+            }
+            /*編輯文章*/
+            else{
+                var criteria = {
+                    id: req.param("id")
+                }
+
+                CmsService.findOnePost(Video, criteria)
+                .then(function(data){
+                    if(!data){
+                        return res.notFound();
+                    }
+                    else{
+                        action = CmsService.getAction(Video);
+                        menu = CmsService.getMenu(Video);
+
+                        return res.view("backend/pages/editor", {
+                            action: action,
+                            post: data,
+                            menu: menu
+                        });
+                    }
+                })
+                .catch(function(err){
+                    res.end(JSON.stringify(err));
+                });
+            }
+        /*}
+        else{
+            return res.forbidden();
+        }*/
     },
     //預覽畫面
     preview: function(req, res){
-        /*if(req.session.type == "admin"){*/
+        /*if(req.session.authorized){*/
+           var method = req.param("method");
+
+            /*收到POST request*/
+            if(method == "post"){
+                var action = CmsService.getAction(Video);
+                var url = action.load;
+
+                var preview = {
+                    method: "post",
+                    url: url,
+                    title: req.param("title"),
+                    content: req.param("content")
+                }
+
+                return res.view("backend/pages/preview", {
+                    preview: preview
+                });
+            }
+            /*收到GET request*/
+            else{
+                var action = CmsService.getAction(Video);
+                var url = action.load + "?id=" + req.param("id");
+
+                var preview = {
+                    method: "get",
+                    url: url,
+                }
+
+                return res.view("backend/pages/preview", {
+                    preview: preview
+                });
+            }
+        /*}
+        else{
+            return res.forbidden();
+        }*/
+    },
+    //載入預覽內容
+    load: function(req, res){
+        /*if(req.session.authorized){*/
             /*收到POST request*/
             if(typeof req.param("id") === "undefined"){
                 var data = {
@@ -45,7 +119,7 @@ module.exports = {
                 CmsService.findOnePost(Video, criteria)
                 .then(function(data){
                     if(!data){
-                        res.end("此文章不存在");
+                        return res.notFound();
                     }
                     else{
                         return res.view("frontend/pages/video", {
@@ -59,15 +133,29 @@ module.exports = {
             }
         /*}
         else{
-            return res.view("redirect", {
-                message: "使用者權限不足",
-                url: "/"
-            });
+            return res.forbidden();
         }*/
     },
-    //後台清單
+    //回傳前台顯示的內容
+    show: function(req, res){
+        var criteria = {   
+            where: { status: "P" }, 
+            sort: { order: "asc" }
+        }
+
+        CmsService.findPosts(Video, criteria)
+        .then(function(datas){
+            return res.view("frontend/pages/video", {
+                videos: datas
+            });
+        })
+        .catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    },
+    //回傳後台顯示的文章列表
     list: function(req, res){
-        /*if(req.session.type == "admin"){*/
+        /*if(req.session.authorized){*/
             var status = req.param("status");
 
             async.series({
@@ -130,7 +218,8 @@ module.exports = {
                         return res.view("backend/pages/cms", {
                             articles: datas,
                             postType: "video",
-                            status: "all",
+                            status: status,
+                            action: CmsService.getAction(Video),
                             total: results.total,
                             draftNum: results.draftNum,
                             publishNum: results.publishNum,
@@ -144,10 +233,7 @@ module.exports = {
             });
         /*}
         else{
-            return res.view("redirect", {
-                message: "使用者權限不足",
-                url: "/"
-            });
+            return res.forbidden();
         }*/
     },
     //新增

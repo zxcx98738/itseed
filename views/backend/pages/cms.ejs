@@ -3,6 +3,7 @@
         /*接收後端傳來的參數*/
         var postType = <%- JSON.stringify(postType) %>;
         var status = <%- JSON.stringify(status) %>;
+        var action = <%- JSON.stringify(action) %>;
 
         var total = <%- JSON.stringify(total) %>;
         var draftNum = <%- JSON.stringify(draftNum) %>;
@@ -10,8 +11,6 @@
         var scheduleNum = <%- JSON.stringify(scheduleNum) %>;
 
         init(postType);
-        
-        
 
         function init(postType) {
             /*根據正在管理的頁面調整menu的UI*/
@@ -70,50 +69,21 @@
         function setOperation(postType) {
             var postID;
             /*新增*/
-            $("#newPost").attr("href", "/newPost?postType=" + postType);
+            $("#newPost").attr("href", action.new);
             /*編輯*/
             $(".edit").each(function() {
                 postID = $(this).parents("tr").attr("id");
-
-                switch(postType)
-                {
-                    case "video":
-                        $(this).attr("href", "/editPost?postType=" + postType + "&id=" + postID);
-                        break;
-                    default:
-                        break;
-                }
-                
+                $(this).attr("href", action.edit + "?id=" + postID);
             });
             /*檢視*/
             $(".view").each(function() {
                 postID = $(this).parents("tr").attr("id");
-
-                switch(postType)
-                {
-                    case "video":
-                        $(this).attr("href", "/video#" + postID);
-                        break;
-                    default:
-                        break;
-                }
-                
+                $(this).attr("href", action.view + postID);                
             });
             /*預覽*/
             $(".preview").each(function() {
                 postID = $(this).parents("tr").attr("id");
-                var url;
-
-                switch(postType)
-                {
-                    case "video":
-                        url = "/cms/previewVideo/?id=" + postID;
-                        $(this).attr("href", "/preview?url=" + url);
-                        break;
-                    default:
-                        break;
-                }
-                
+                $(this).attr("href", action.preview + "?id=" + postID);                
             });
             /*刪除*/
             $(".deletePost").click(function() {

@@ -42,28 +42,37 @@ module.exports.routes = {
     action: 'show'
   },
 
-  /*後台*/
-  'get /newPost': {
-    controller: 'cms',
-    action: 'newPost'
-  },
-
-  'get /editPost': {
-    controller: 'cms',
-    action: 'editPost'
-  },
-
-  'get /preview': {
-    controller: 'cms',
-    action: 'preview'
-  },
-
-  'post /preview': {
-    controller: 'cms',
-    action: 'preview'
-  },
-
   /*影音專區*/
+  'get /cms/newVideo': {
+    controller: 'Video',
+    action: 'editor'
+  },
+  
+  'get /cms/editVideo': {
+    controller: 'Video',
+    action: 'editor'
+  },
+
+  'get /cms/previewVideo': {
+    controller: 'Video',
+    action: 'preview'
+  },
+
+  'post /cms/previewVideo': {
+    controller: 'Video',
+    action: 'preview'
+  },
+
+  'get /cms/loadVideo': {
+    controller: 'Video',
+    action: 'load'
+  },
+
+  'post /cms/loadVideo': {
+    controller: 'Video',
+    action: 'load'
+  },
+
   'get /cms/video/:status': {
     controller: 'Video',
     action: 'list'
@@ -94,15 +103,7 @@ module.exports.routes = {
     action: 'delete'
   },
 
-  'get /cms/previewVideo': {
-    controller: 'Video',
-    action: 'preview'
-  },
 
-  'post /cms/previewVideo': {
-    controller: 'Video',
-    action: 'preview'
-  },
 
 
   /***************************************************************************

@@ -5,7 +5,7 @@
  */
 
 module.exports = {
-    /*CRUD*/
+/*文章的新增, 讀取, 修改, 刪除*/
 	createPost: function(module, values){
         return module.create(values);
     },
@@ -26,12 +26,53 @@ module.exports = {
         return module.destroy(criteria);
     },
 
-    /*計算數量*/
+    //計算數量
     countPost: function(module, criteria){
         return module.count(criteria);
     },
 
-    /*格式化時間*/
+/*編輯器*/
+    getAction: function(module){
+        var action = {};
+
+        switch(module)
+        {
+            case Video:
+                action.new = "/cms/newVideo"
+                action.edit = "/cms/editVideo"
+
+                action.view = "/video#"
+                action.preview = "/cms/previewVideo";
+                action.load = "/cms/loadVideo";
+                
+                action.create = "/cms/createVideo";
+                action.update = "/cms/updateVideo";
+                action.toDraft = "/cms/toDraftVideo";
+                action.publish = "/cms/publishVideo";
+                break;
+            default:
+                break;
+        }
+        return action;
+    },
+
+    getMenu: function(module){
+        var menu = {};
+
+        switch(module)
+        {
+            case Video:
+                menu.datePicker = "off";
+                menu.tag = "off";
+                break;
+            default:
+                break;
+        }
+        return menu;
+    },
+
+
+/*其他函式*/
     formatTime: function(time){
         var year = time.getFullYear();
         var month = time.getMonth();
@@ -52,4 +93,6 @@ module.exports = {
             return year + "/" + (month + 1) + "/" + date + " 下午 " + (hour - 12) + ":" + minute;
         }    
     },
+
+    
 };

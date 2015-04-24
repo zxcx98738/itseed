@@ -44,9 +44,8 @@
                     <button type="button" class="btn btn-default" id="close">關閉</button>
                 </span>
             </form>
-            <form action="/preview" class="hidden" id="form-preview" target="_blank">
+            <form action="<%= action.preview %>" class="hidden" id="form-preview" target="_blank">
                 <input type="text" name="method" value="post">
-                <input type="text" name="url" value="<%= action.preview %>">
                 <input type="text" class="title" name="title">
                 <input type="text" class="content" name="content">
             </form>
