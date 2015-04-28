@@ -158,41 +158,75 @@ module.exports = {
         /*if(req.session.authorized){*/
             var status = req.param("status");
 
-            async.series({
-                total: function(callback){
-                    var criteria = {};
-                    
-                    CmsService.countPost(Video, criteria)
-                    .then(function(count){
-                        callback(null, count);
-                    })
-                },
-                draftNum: function(callback){
-                    var criteria = {
-                        status: "D"
-                    };
+            var modelArr = ["AboutITSeed", "AboutNTCA", "BusinessVisit", "CourseInfo", "CourseList", "FAQ", 
+                            "MemberList", "News", "OverseaVisit", "Project", "RegFile", "RegInfo", "Sharing",
+                            "Slider", "Timeline", "Video"];
+            var counts = {};
 
-                    CmsService.countPost(Video, criteria)
-                    .then(function(count){
-                        callback(null, count);
-                    })
+            var now = new Date();
+
+            async.each(modelArr, function(model, callback) {
+                async.series({
+                    total: function(callback){
+                        var criteria = {};
+
+                        CmsService.countPost(sails.models[model.toLowerCase()], criteria)
+                        .then(function(count){
+                            callback(null, count);
+                        })
+                    },
+                    draftNum: function(callback){
+                        var criteria = {
+                            status: "D"
+                        };
+
+                        CmsService.countPost(sails.models[model.toLowerCase()], criteria)
+                        .then(function(count){
+                            callback(null, count);
+                        })
+                    },
+                    publishNum: function(callback){
+                        var criteria = {
+                            status: "P", 
+                            createdAt: { '<=': now }
+                        };
+
+                        CmsService.countPost(sails.models[model.toLowerCase()], criteria)
+                        .then(function(count){
+                            callback(null, count);
+                        })
+                    },
+                    scheduleNum: function(callback){
+                        var criteria = {
+                            status: "P",
+                            createdAt: { '>': now }
+                        };
+
+                        CmsService.countPost(sails.models[model.toLowerCase()], criteria)
+                        .then(function(count){
+                            callback(null, count);
+                        })
+                    },
                 },
-                publishNum: function(callback){
-                    var criteria = {
-                        status: "P"
-                    };
-                    
-                    CmsService.countPost(Video, criteria)
-                    .then(function(count){
-                        callback(null, count);
-                    })
-                },
-            },
-            function(err, results){
+                function(err, results){
+                    if(err){
+                        res.end(JSON.stringify(err));
+                    }
+                    else{
+                        counts[model] = {
+                            total: results.total,
+                            draftNum: results.draftNum,
+                            publishNum: results.publishNum,
+                            scheduleNum: results.scheduleNum
+                        };
+                        callback();             
+                    }
+                });
+            }, function(err) { 
                 if(err){
                     res.end(JSON.stringify(err));
                 }
-                else {
+                else{
                     if(status == "all"){
                         var criteria = {   
                             sort: { order: "asc" }
@@ -217,15 +251,12 @@ module.exports = {
                         }
                         return res.view("backend/pages/cms", {
                             articles: datas,
-                            postType: "video",
+                            postType: "Video",
                             status: status,
                             action: CmsService.getAction(Video),
                             menu: CmsService.getMenu(Video),
 
-                            total: results.total,
-                            draftNum: results.draftNum,
-                            publishNum: results.publishNum,
-                            scheduleNum: 0
+                            postAmounts: counts,
                         });
                     })
                     .catch(function(err){

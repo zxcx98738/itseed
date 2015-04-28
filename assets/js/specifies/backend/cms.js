@@ -1,12 +1,16 @@
-function menuUI(postType, status, total, draftNum, publishNum, scheduleNum) {
+function menuUI(postType, status, postAmounts) {
+    /*打開編輯中的項目*/
     $("#"+postType).addClass("open");
     $("#"+postType+">ul").css("display", "block");
     $("#"+postType+" li."+status).addClass("active");
 
-    $("#"+postType+" li.all span").append(" ("+total+")");
-    $("#"+postType+" li.draft span").append(" ("+draftNum+")");
-    $("#"+postType+" li.publish span").append(" ("+publishNum+")");
-    $("#"+postType+" li.schedule span").append(" ("+scheduleNum+")");
+    /*加上文章數*/
+    for(var module in postAmounts){
+        $("#"+module+" li.all span").append(" ("+postAmounts[module].total+")");
+        $("#"+module+" li.draft span").append(" ("+postAmounts[module].draftNum+")");
+        $("#"+module+" li.publish span").append(" ("+postAmounts[module].publishNum+")");
+        $("#"+module+" li.schedule span").append(" ("+postAmounts[module].scheduleNum+")");
+    }
 }
 function setSelectAll(checkbox, checkboxs) {
     $(checkbox).change(function() {
