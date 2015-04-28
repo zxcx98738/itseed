@@ -13,9 +13,12 @@
         /*綁定全選事件*/
         setSelectAll("#selectAll", "td.selector>input");
         /*綁定由checkbox觸發的事件*/
-        setGroupOperation("#publish", "td.selector>input:checked", "tr", publish, "確定要發佈選取的文章嗎?");
-        setGroupOperation("#toDraft", "td.selector>input:checked", "tr", toDraft, "確定要還原選取的文章為草稿嗎?");
-        setGroupOperation("#deletePost", "td.selector>input:checked", "tr", deletePost, "確定要刪除選取的文章嗎?");
+        setGroupOperation("#publish", "td.selector>input:checked", "tr", publish, action.publish, 
+            "確定要發佈選取的文章嗎?");
+        setGroupOperation("#toDraft", "td.selector>input:checked", "tr", toDraft, action.toDraft, 
+            "確定要還原選取的文章為草稿嗎?");
+        setGroupOperation("#deletePost", "td.selector>input:checked", "tr", deletePost, action.delete, 
+            "確定要刪除選取的文章嗎?");
         /*綁定事件*/
         setOperation(action);
     });

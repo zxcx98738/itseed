@@ -27,7 +27,7 @@ function setSelectAll(checkbox, checkboxs) {
         }    
     });
 }
-function setGroupOperation(button, checkbox, getID, operation, message) {
+function setGroupOperation(button, checkbox, getID, operation, url, message) {
     var postID;
 
     $(button).click(function() {
@@ -35,7 +35,7 @@ function setGroupOperation(button, checkbox, getID, operation, message) {
             if(confirm(message)){
                 $(checkbox).each(function() {
                     postID = $(this).parents(getID).attr("id");
-                    operation(postID);
+                    operation(postID, url);
                     $(this).prop("checked", false);
                 });
             }   
@@ -72,9 +72,9 @@ function setOperation(action) {
         }   
     });
 }
-function publish(postID) {
+function publish(postID, url) {
     $.ajax({
-        url: '/cms/publishVideo',
+        url: url,
         method: 'get',
         data: {
             id: postID,
@@ -90,9 +90,9 @@ function publish(postID) {
         }
     });  
 }
-function toDraft(postID) {
+function toDraft(postID, url) {
     $.ajax({
-        url: '/cms/toDraftVideo',
+        url: url,
         method: 'get',
         data: {
             id: postID,
@@ -108,9 +108,9 @@ function toDraft(postID) {
         }
     });  
 }
-function deletePost(postID) {
+function deletePost(postID, url) {
     $.ajax({
-        url: '/cms/deleteVideo',
+        url: url,
         method: 'get',
         data: {
             id: postID,

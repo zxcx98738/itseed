@@ -49,6 +49,7 @@ module.exports = {
                 action.update = "/cms/updateVideo";
                 action.toDraft = "/cms/toDraftVideo";
                 action.publish = "/cms/publishVideo";
+                action.delete = "/cms/deleteVideo";
                 break;
             default:
                 break;

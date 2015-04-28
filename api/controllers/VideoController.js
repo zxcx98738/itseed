@@ -165,6 +165,7 @@ module.exports = {
 
             var now = new Date();
 
+            /*先計算每個model裡的文章數*/
             async.each(modelArr, function(model, callback) {
                 async.series({
                     total: function(callback){
@@ -244,6 +245,7 @@ module.exports = {
                             sort: { order: "asc" }
                         }
                     }
+                    /*再撈正在編輯的model的文章列表*/
                     CmsService.findPosts(Video, criteria)
                     .then(function(datas){
                         for(var i = 0; i < datas.length; i++){
