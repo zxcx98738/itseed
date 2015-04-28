@@ -37,69 +37,69 @@ module.exports.routes = {
     view: 'frontend/pages/index'
   },
 
-  '/video': {
-    controller: 'Video',
+  '/:model': {
+    controller: 'Cms',
     action: 'show'
   },
 
-  /*影音專區*/
-  'get /cms/newVideo': {
-    controller: 'Video',
+  /*後台-CMS*/
+  'get /cms/new/:model': {
+    controller: 'Cms',
     action: 'editor'
   },
   
-  'get /cms/editVideo': {
-    controller: 'Video',
+  'get /cms/edit/:model': {
+    controller: 'Cms',
     action: 'editor'
   },
 
-  'get /cms/previewVideo': {
-    controller: 'Video',
+  'get /cms/preview/:model': {
+    controller: 'Cms',
     action: 'preview'
   },
 
-  'post /cms/previewVideo': {
-    controller: 'Video',
+  'post /cms/preview/:model': {
+    controller: 'Cms',
     action: 'preview'
   },
 
-  'get /cms/loadVideo': {
-    controller: 'Video',
+  'get /cms/load/:model': {
+    controller: 'Cms',
     action: 'load'
   },
 
-  'post /cms/loadVideo': {
-    controller: 'Video',
+  'post /cms/load/:model': {
+    controller: 'Cms',
     action: 'load'
   },
 
-  'get /cms/video/:status': {
-    controller: 'Video',
+  'get /cms/list/:model/:status': {
+    controller: 'Cms',
     action: 'list'
   },
 
-  'post /cms/createVideo': {
-    controller: 'Video',
+  'post /cms/create/:model': {
+    controller: 'Cms',
     action: 'create'
   },
 
-  'post /cms/updateVideo': {
-    controller: 'Video',
+  'post /cms/update/:model': {
+    controller: 'Cms',
     action: 'update'
   },
 
-  'get /cms/publishVideo': {
-    controller: 'Video',
+  'get /cms/publish/:model': {
+    controller: 'Cms',
     action: 'publish'
   },
 
-  'get /cms/toDraftVideo': {
-    controller: 'Video',
+  'get /cms/toDraft/:model': {
+    controller: 'Cms',
     action: 'toDraft'
   },
 
-  'get /cms/deleteVideo': {
-    controller: 'Video',
+  'get /cms/delete/:model': {
+    controller: 'Cms',
     action: 'delete'
   },
 

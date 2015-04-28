@@ -1,4 +1,24 @@
 function menuUI(postType, status, postAmounts) {
+    /*開關效果*/
+    $("#menu li.has-sub>a").on("click", function(){
+        $(this).removeAttr("href");
+        var element = $(this).parent("li");
+        if(element.hasClass("open")){
+            element.removeClass("open");
+            element.find("li").removeClass("open");
+            element.find("ul").slideUp();
+        }
+        else{
+            element.addClass("open");
+            element.children("ul").slideDown();
+            element.siblings("li").children("ul").slideUp();
+            element.siblings("li").removeClass("open");
+            element.siblings("li").find("li").removeClass("open");
+            element.siblings("li").find("ul").slideUp();
+        }
+    });
+    $("#menu>ul>li.has-sub>a").append("<span class='holder'></span>");
+
     /*打開編輯中的項目*/
     $("#"+postType).addClass("open");
     $("#"+postType+">ul").css("display", "block");
@@ -68,7 +88,7 @@ function setOperation(action) {
     $(".deletePost").click(function() {
         if(confirm("確定要刪除選取的文章嗎?")){
             postID = $(this).parents("tr").attr("id");
-            deletePost(postID);
+            deletePost(postID, action.delete);
         }   
     });
 }

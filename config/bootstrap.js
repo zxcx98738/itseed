@@ -41,7 +41,7 @@ module.exports.bootstrap = function(cb) {
   Video.create({
   	title: "已排程發佈",
   	content: "<h1>這是影片</h1><br><br><br><br><br><br><br><br><br><br><br>",
-    status: "p",
+    status: "P",
     createdAt: "2015-05-14T20:06:02.304Z"
   }).exec(function(){
 

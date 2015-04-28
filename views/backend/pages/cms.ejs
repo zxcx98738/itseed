@@ -7,7 +7,6 @@
         var action = <%- JSON.stringify(action) %>;
         var postAmounts = <%- JSON.stringify(postAmounts) %>;
 
-
         /*根據正在管理的頁面調整menu的UI*/
         menuUI(postType, status, postAmounts);
         /*綁定全選事件*/
@@ -76,7 +75,8 @@
                         </div>
                         <div class="operation">
                             <a class="edit" href="#">編輯</a> | 
-                            <% if(articles[i].status == "D" || articles[i].status == "S"){ %>
+                            <% if(articles[i].status == "D" || (articles[i].status == "P" && 
+                                (new Date(articles[i].createdAt).getTime() > new Date().getTime()) )){ %>
                                 <a class="preview" href="#" target="_blank">預覽</a> | 
                             <% } else { %>
                                 <a class="view" href="#" target="_blank">檢視</a> | 

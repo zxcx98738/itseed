@@ -32,24 +32,25 @@ module.exports = {
     },
 
 /*編輯器*/
-    getAction: function(module){
+    getAction: function(model){
         var action = {};
 
-        switch(module)
+        switch(model)
         {
             case Video:
-                action.new = "/cms/newVideo"
-                action.edit = "/cms/editVideo"
+                action.new = "/cms/new/video"
+                action.edit = "/cms/edit/video"
 
                 action.view = "/video#"
-                action.preview = "/cms/previewVideo";
-                action.load = "/cms/loadVideo";
+                action.preview = "/cms/preview/video";
+                action.load = "/cms/load/video";
+                action.url = "frontend/pages/video";
                 
-                action.create = "/cms/createVideo";
-                action.update = "/cms/updateVideo";
-                action.toDraft = "/cms/toDraftVideo";
-                action.publish = "/cms/publishVideo";
-                action.delete = "/cms/deleteVideo";
+                action.create = "/cms/create/video";
+                action.update = "/cms/update/video";
+                action.toDraft = "/cms/toDraft/video";
+                action.publish = "/cms/publish/video";
+                action.delete = "/cms/delete/video";
                 break;
             default:
                 break;
@@ -74,13 +75,24 @@ module.exports = {
 
 
 /*其他函式*/
-    formatTime: function(time){
+    formatTime: function(milliseconds){
+        var time = new Date(milliseconds);
+
         var year = time.getFullYear();
         var month = time.getMonth();
         var date = time.getDate();
         var hour = time.getHours();
         var minute = time.getMinutes();
 
+        //補零
+        if(hour%12 < 10){
+            hour = "0" + hour;
+        }
+        if(minute < 10){
+            minute = "0" + minute;
+        }
+            
+        //標準格式化
         if(hour == 0){
             return year + "/" + (month + 1) + "/" + date + " 上午 " + "12" + ":" + minute;
         }

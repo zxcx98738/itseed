@@ -23,17 +23,17 @@
 <!--HEADER-->
 <% include ../header %>
 <!--END HEADER-->
-<% for(var i = 0; i < videos.length; i++){ %>
+<% for(var i = 0; i < datas.length; i++){ %>
 	<% if(i%2 == 0){ %>
-		<section class="bg-light-gray" id="<%= videos[i].id %>">
+		<section class="bg-light-gray" id="<%= datas[i].id %>">
 	<% } else{ %>
-		<section class="bg-white" id="<%= videos[i].id %>">
+		<section class="bg-white" id="<%= datas[i].id %>">
 	<% } %>
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 text-center">
-						<h3><%= videos[i].title %></h3>
-						<div><%- videos[i].content %></div>		
+						<h3><%= datas[i].title %></h3>
+						<div><%- datas[i].content %></div>	
 					</div>
 				</div>
 			</div>
