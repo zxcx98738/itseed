@@ -32,7 +32,7 @@ function menuUI(postType, status, postAmounts) {
         $("#"+module+" li.schedule span").append(" ("+postAmounts[module].scheduleNum+")");
     }
 }
-function setSorting() {
+function setSorting(url) {
     $("td").each(function(){
         $(this).css("width", $(this).width() + "px");
     });
@@ -50,7 +50,7 @@ function setSorting() {
         update: function(event, ui){
             var postOrder = JSON.stringify($(this).sortable("toArray"));
             $.ajax({
-                url: action.sort,
+                url: url,
                 method: "get",
                 data: {
                     orders: postOrder
