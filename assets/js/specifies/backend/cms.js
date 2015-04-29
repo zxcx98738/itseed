@@ -32,6 +32,42 @@ function menuUI(postType, status, postAmounts) {
         $("#"+module+" li.schedule span").append(" ("+postAmounts[module].scheduleNum+")");
     }
 }
+function setSorting() {
+    $("td").each(function(){
+        $(this).css("width", $(this).width() + "px");
+    });
+
+    $(".sortable").sortable({
+        handle: ".handle",
+        placeholder: "highlight",
+        opacity: "0.8",
+        axis: "y",
+        containment: ".sortable",
+        helper: "clone",
+        revert: 100,
+        tolerance: "pointer",
+        
+        update: function(event, ui){
+            var postOrder = JSON.stringify($(this).sortable("toArray"));
+            $.ajax({
+                url: action.sort,
+                method: "get",
+                data: {
+                    orders: postOrder
+                },
+                success: function(msg){
+                    if(msg == "success")
+                        alert("更新成功");
+                    else
+                        alert("伺服器錯誤: " + msg);        
+                },
+                error: function(xhr, ajaxOptions, thrownError){ 
+                    alert("Ajax錯誤: " + xhr.status);
+                }
+            });
+        }
+    });
+}
 function setSelectAll(checkbox, checkboxs) {
     $(checkbox).change(function() {
         if($(this).prop("checked")) {
@@ -95,7 +131,7 @@ function setOperation(action) {
 function publish(postID, url) {
     $.ajax({
         url: url,
-        method: 'get',
+        method: "get",
         data: {
             id: postID,
         },
@@ -103,7 +139,7 @@ function publish(postID, url) {
             if(msg == "success")
                 location.reload();
             else
-                alert("資料庫錯誤: " + msg);       
+                alert("伺服器錯誤: " + msg);       
         },
         error: function(xhr, ajaxOptions, thrownError){ 
             alert("Ajax錯誤: " + xhr.status);
@@ -113,7 +149,7 @@ function publish(postID, url) {
 function toDraft(postID, url) {
     $.ajax({
         url: url,
-        method: 'get',
+        method: "get",
         data: {
             id: postID,
         },
@@ -121,7 +157,7 @@ function toDraft(postID, url) {
             if(msg == "success")
                 location.reload();
             else
-                alert("資料庫錯誤: " + msg);        
+                alert("伺服器錯誤: " + msg);        
         },
         error: function(xhr, ajaxOptions, thrownError){ 
             alert("Ajax錯誤: " + xhr.status);
@@ -131,7 +167,7 @@ function toDraft(postID, url) {
 function deletePost(postID, url) {
     $.ajax({
         url: url,
-        method: 'get',
+        method: "get",
         data: {
             id: postID,
         },
@@ -139,7 +175,7 @@ function deletePost(postID, url) {
             if(msg == "success")
                 location.reload();
             else
-                alert("資料庫錯誤: " + msg);        
+                alert("伺服器錯誤: " + msg);        
         },
         error: function(xhr, ajaxOptions, thrownError){ 
             alert("Ajax錯誤: " + xhr.status);

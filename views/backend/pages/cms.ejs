@@ -1,3 +1,4 @@
+<script src="/js/specifies/jquery-ui-1.11.4.min.js"></script>
 <script src="/js/specifies/backend/cms.js"></script>
 <script>
     $(function() {
@@ -9,6 +10,8 @@
 
         /*根據正在管理的頁面調整menu的UI*/
         menuUI(postType, status, postAmounts);
+        /*設定排序事件*/
+        setSorting();
         /*綁定全選事件*/
         setSelectAll("#selectAll", "td.selector>input");
         /*綁定由checkbox觸發的事件*/
@@ -19,7 +22,7 @@
         setGroupOperation("#deletePost", "td.selector>input:checked", "tr", deletePost, action.delete, 
             "確定要刪除選取的文章嗎?");
         /*綁定事件*/
-        setOperation(action);
+        setOperation(action);        
     });
 </script>
 <div id="wrapper">
@@ -51,24 +54,42 @@
                 <button type="button" class="btn btn-default" id="deletePost"><i class="fa fa-trash-o fa-fw"></i></button>
             </div>
             <a class="btn btn-default pull-right" id="newPost" href="#">新增文章</a>
+            <a class="btn btn-default pull-right" href="<%= action.view %>" target="_blank">檢視頁面</a>  
         </header>
         <table class="table">
             <thead>
                 <tr>
                     <th class="col-md-1"></th>
-                    <th class="col-md-6"></th>
-                    <th class="col-md-1"></th>
-                    <th class="col-md-2"></th>
-                    <th class="col-md-2"></th>
+                    <th class="col-md-6">
+                        標題
+                    </th>
+                    <th class="col-md-1">
+                        狀態
+                    </th>
+                    <th class="col-md-2">
+                        作者
+                    </th>
+                    <th class="col-md-2">
+                        發佈時間
+                    </th>
                 </tr>
             </thead>
-            <tbody>
+            <% if(status == "all" && action.sort != "disabled"){ %>
+                <tbody class="sortable">
+            <% }else{ %>
+                <tbody>
+            <% } %>
             <% if(articles.length == 0){ %>
                 <h1>尚無任何文章</h1>
             <% } %>
             <% for(var i = 0; i < articles.length; i++){ %>
                 <tr id="<%= articles[i].id %>">
-                    <td class="selector"><input type="checkbox"></td>
+                    <td class="selector">
+                        <% if(status == "all" && action.sort != "disabled"){ %>
+                            <i class="fa fa-bars fa-fw handle pull-left"></i>
+                        <% } %>                    
+                        <input type="checkbox">
+                    </td>
                     <td class="title">
                         <div>
                             <a class="edit" href="#"><%= articles[i].title %></a>

@@ -103,6 +103,11 @@ module.exports.routes = {
     action: 'delete'
   },
 
+  'get /cms/sort/:model': {
+    controller: 'Cms',
+    action: 'sort'
+  },
+
 
 
 

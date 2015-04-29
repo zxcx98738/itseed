@@ -51,8 +51,11 @@ module.exports = {
                 action.toDraft = "/cms/toDraft/video";
                 action.publish = "/cms/publish/video";
                 action.delete = "/cms/delete/video";
+                action.sort = "/cms/sort/video";           
                 break;
             default:
+            //TODO: 防呆
+                action.sort = "disabled";
                 break;
         }
         return action;
@@ -68,6 +71,7 @@ module.exports = {
                 menu.tag = "off";
                 break;
             default:
+            //TODO: 防呆
                 break;
         }
         return menu;

@@ -170,7 +170,7 @@ module.exports = {
             var status = req.param("status");
             var modelArr = ["aboutITSeed", "aboutNTCA", "businessVisit", "courseInfo", "courseList", "faq", 
                             "memberList", "news", "overseaVisit", "project", "regFile", "regInfo", "sharing",
-                            "slider", "timeline", "video"];
+                            "slider", "timeline", "video"]
             var counts = {};
             var now = new Date();
 
@@ -364,11 +364,11 @@ module.exports = {
             var criteria = {
                 id: req.param("id")
             }
-            var values = {
+            var value = {
                 status: "P"
             }
 
-            CmsService.updatePost(model, criteria, values)
+            CmsService.updatePost(model, criteria, value)
             .then(function(){
                 res.end("success");
             })
@@ -387,11 +387,11 @@ module.exports = {
             var criteria = {
                 id: req.param("id")
             }
-            var values = {
+            var value = {
                 status: "D"
             }
 
-            CmsService.updatePost(model, criteria, values)
+            CmsService.updatePost(model, criteria, value)
             .then(function(){
                 res.end("success");
             })
@@ -418,6 +418,40 @@ module.exports = {
             .catch(function(err){
                 res.end(JSON.stringify(err));
             }); 
+        /*}
+        else{
+            return res.forbidden();
+        }*/
+    },
+    //排序
+    sort: function(req, res){
+        /*if(req.session.authorized){*/
+            var model = sails.models[req.param("model").toLowerCase()];
+            var orders =  JSON.parse(req.param("orders"));
+
+            async.each(orders, function(order, callback){
+                var criteria = {
+                    id: order
+                }
+                var value = {
+                    order: orders.indexOf(order) + 1
+                }
+
+                CmsService.updatePost(model, criteria, value)
+                .then(function(){
+                    callback();  
+                })
+                .catch(function(err){
+                    res.end(JSON.stringify(err));
+                }); 
+            }, function(err){ 
+                if(err){
+                    res.end(JSON.stringify(err));
+                }
+                else{
+                    res.end("success");
+                }
+            });
         /*}
         else{
             return res.forbidden();

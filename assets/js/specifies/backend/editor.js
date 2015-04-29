@@ -61,7 +61,7 @@ function newPost(event) {
             if(obj.message == "success")
                 location.href = document.referrer;
             else
-                alert("資料庫錯誤: " + json);       
+                alert("伺服器錯誤: " + json);       
         },
         error: function(xhr, ajaxOptions, thrownError){ 
             alert("Ajax錯誤: " + xhr.status);
@@ -87,7 +87,7 @@ function newDraft(event) {
                 $("#newDraft").off("click").click({action: event.data.action}, update);
             }    
             else
-                alert("資料庫錯誤: " + json);       
+                alert("伺服器錯誤: " + json);       
         },
         error: function(xhr, ajaxOptions, thrownError){ 
             alert("Ajax錯誤: " + xhr.status);
@@ -105,7 +105,7 @@ function update(event) {
             if(msg == "success")
                 alert("儲存成功");
             else
-                alert("資料庫錯誤: " + msg);       
+                alert("伺服器錯誤: " + msg);       
         },
         error: function(xhr, ajaxOptions, thrownError){ 
             alert("Ajax錯誤: " + xhr.status);
@@ -128,7 +128,7 @@ function toDraft(event) {
                 $("#toDraft").text("發佈");
             }
             else
-                alert("資料庫錯誤: " + msg);       
+                alert("伺服器錯誤: " + msg);       
         },
         error: function(xhr, ajaxOptions, thrownError){ 
             alert("Ajax錯誤: " + xhr.status);
@@ -147,7 +147,7 @@ function publish(event) {
             if(msg == "success")
                 location.href = document.referrer;
             else
-                alert("資料庫錯誤: " + msg);       
+                alert("伺服器錯誤: " + msg);       
         },
         error: function(xhr, ajaxOptions, thrownError){ 
             alert("Ajax錯誤: " + xhr.status);
