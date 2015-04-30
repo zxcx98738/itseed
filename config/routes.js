@@ -36,10 +36,10 @@ module.exports.routes = {
   '/': {
     view: 'frontend/pages/index'
   },
-
-  '/:model': {
-    controller: 'Cms',
-    action: 'show'
+  
+  '/video': {
+    controller: 'Site',
+    action: 'video'
   },
 
   /*後台-CMS*/

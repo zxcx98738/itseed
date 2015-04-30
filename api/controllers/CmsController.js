@@ -140,29 +140,6 @@ module.exports = {
             return res.forbidden();
         }*/
     },
-    //回傳前台顯示的內容
-    show: function(req, res){
-        var model = sails.models[req.param("model").toLowerCase()]; 
-        var action = CmsService.getAction(model);
-        var now = new Date();
-        var criteria = {   
-            where: { status: "P", createdAt: { '<=': now } }, 
-            sort: { order: "asc" }
-        }
-
-        CmsService.findPosts(model, criteria)
-        .then(function(datas){
-            for(var i = 0; i < datas.length; i++){
-                datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
-            }
-            return res.view(action.url, {
-                datas: datas
-            });
-        })
-        .catch(function(err){
-            res.end(JSON.stringify(err));
-        });
-    },
     //回傳後台顯示的文章列表
     list: function(req, res){
         /*if(req.session.authorized){*/
