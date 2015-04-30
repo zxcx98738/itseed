@@ -7,7 +7,7 @@
         /*根據正在管理的頁面調整menu的UI*/
         editorUI();
         /*選單欄開合事件*/
-        menuUI()
+        menuUI();
         /*綁定事件*/
         setOperation(action);
     });
@@ -71,7 +71,7 @@
                         </div>
                     </li>
                     <% } %>
-                    <% if(menu.datepicker == "on") { %>
+                    <% if(menu.datePicker == "on") { %>
                     <li class='has-sub'>
                         <a href='#'><i class="fa fa-calendar fa-fw"></i><span>日期和時間</span></a>
                         <div class="settings">
@@ -87,6 +87,7 @@
                                         <input type="radio" name="time" value="manual">
                                         設定日期及時間
                                     </label>
+                                    <% include ../plugins/datetimepicker %>
                                 </div>
                                 <button type="submit" class="btn btn-default">完成</button>
                             </form>

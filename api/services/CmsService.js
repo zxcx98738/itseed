@@ -67,7 +67,7 @@ module.exports = {
         switch(module)
         {
             case Video:
-                menu.datePicker = "off";
+                menu.datePicker = "on";
                 menu.tag = "off";
                 break;
             default:

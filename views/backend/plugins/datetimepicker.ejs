@@ -1,0 +1,14 @@
+<link href="/styles/backend/plugins/jquery.datetimepicker.css">
+<script src="/js/specifies/backend/plugins/jquery.datetimepicker.js"></script>
+
+<script>
+	$(function(){
+		$("#datetimepicker").datetimepicker({
+			format: "d.m.Y H:i",
+			//inline: true,
+			lang: "zh-TW"
+		});
+	});
+</script>
+
+<input id="datetimepicker" type="text" >
