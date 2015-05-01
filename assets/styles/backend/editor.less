@@ -38,41 +38,45 @@
   width: 300px;
   background-color: white;
 
-  div.title {
-    padding: 15px;
-    font-size: 16px;
-    color: white;
-    background-color: #272d39;
-    border-top: 1px solid black;
-  }
-  >ul {
-    >li>a {
-      padding: 15px 20px;
-      font-size: 14px;
-      color: black;
-      background: white;
-      border-top: 1px solid black; 
+  >div {
+    >div {
+      padding: 15px;
+      font-size: 16px;
+      color: white;
+      background-color: #272d39;
+      border-top: 1px solid black;
+    }
+    >ul {
+      >li>a {
+        padding: 15px 20px;
+        font-size: 14px;
+        text-decoration: none;
+        color: black;
+        background: white;
+        border-top: 1px solid black; 
 
-      &:hover {
-        background: #f8f8f8;
+        &:hover {
+          background: #f8f8f8;
+        }
+        >div {
+          margin-top: 10px;
+          color: @gray;
+        }
       }
-      >div {
-        margin-top: 10px;
-        color: @gray;
+      >li.last {
+        border-bottom: 1px solid black; 
       }
-    }
-    >li.last {
-      border-bottom: 1px solid black; 
-    }
-    >li.open {
-      background-color: #edf4ff;
+      >li.open {
+        background-color: #edf4ff;
 
-      >a {
-        background-color: inherit;
+        >a {
+          background-color: inherit;
+        }
       }
-    }
-    >li>div.settings {
-      padding: 0px 30px 15px 30px;
+      >li>div.settings {
+        display: none;
+        padding: 0px 30px 15px 30px;
+      }
     }
   }
 }
@@ -99,6 +103,9 @@
     background-color: white;
     border: 1px solid;
     border-color: inherit;
+  }
+  div.CodeMirror {
+    margin: 10px;
   }
   textarea.note-codable {
 

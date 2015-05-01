@@ -1,3 +1,6 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.min.js"></script>
 <script src="/js/specifies/backend/editor.js"></script>
 <script>
     $(function() {
@@ -54,27 +57,32 @@
         <!--ASIDE-->
         <aside>
             <div id="setting" class="accordion">
-                <div class="title">文章設定</div>
-                <ul>
-                    <% if(menu.tag == "on") { %>
-                    <li class='has-sub'>
-                        <a href='#'><i class="fa fa-tag fa-fw"></i><span>標籤</span></a>
-                        <div class="settings">
-                            <form action="">
-                                <textarea name="" id="" cols="30" rows="10"></textarea>
-                                <p>以逗號區隔標籤</p>
-                                <p>
-                                    夏天, 是, 地表第一, 大, 帥哥
-                                </p>
-                                <button type="submit" class="btn btn-default">完成</button>
-                            </form>
-                        </div>
-                    </li>
-                    <% } %>
-                    <% if(menu.datePicker == "on") { %>
-                        <% include ../plugins/datetimepicker %>
-                    <% } %>
-                </ul>
+                <div>
+                    <div>文章設定</div>
+                    <ul>
+                        <% if(menu.tag == "on") { %>
+                        <li class='has-sub'>
+                            <a href='#'><i class="fa fa-tag fa-fw"></i><span>標籤</span></a>
+                            <div class="settings">
+                                <form action="">
+                                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                                    <p>以逗號區隔標籤</p>
+                                    <p>
+                                        夏天, 是, 地表第一, 大, 帥哥
+                                    </p>
+                                    <button type="submit" class="btn btn-default">完成</button>
+                                </form>
+                            </div>
+                        </li>
+                        <% } %>
+                        <% if(menu.datePicker == "on") { %>
+                            <% include ../plugins/datetimepicker %>
+                        <% } %>
+                    </ul>
+                </div>
+                <div>
+                    <div>外掛元件</div>
+                </div>
             </div>
         </aside>
         <!--END ASIDE-->

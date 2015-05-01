@@ -1,30 +1,32 @@
 function editorUI() {
     /*載入編輯器*/
-    $(".summernote").summernote();
-    /*調整高度*/
-    $("#page-wrapper").css("height", window.innerHeight-50);
-    $(".note-editable").css("height", window.innerHeight-50-64-43-20);
-    $(".note-codable").css("height", window.innerHeight-50-64-43-20);
+    $(".summernote").summernote({
+        height: window.innerHeight - 185, 
+        codemirror: {
+            theme: "monokai"
+        },
+        lang: "zh-TW"
+    });
+    $(".note-statusbar").unbind();
     $("#setting").css("height", window.innerHeight-50-64);
-    $(".note-editor").css("height", window.innerHeight-50-64);
 }
 
 function menuUI() {
-    $('#setting li.has-sub>a').click(function(){
-        $(this).removeAttr('href');
-        var element = $(this).parent('li');
-        if (element.hasClass('open')) {
-            element.removeClass('open');
-            element.find('li').removeClass('open');
-            element.find('div.settings').slideUp();
+    $("#setting li.has-sub>a").click(function(){
+        $(this).removeAttr("href");
+        var element = $(this).parent("li");
+        if (element.hasClass("open")) {
+            element.removeClass("open");
+            element.find("li").removeClass("open");
+            element.find("div.settings").slideUp();
         }
         else {
-            element.addClass('open');
-            element.children('div.settings').slideDown();
-            element.siblings('li').children('div').slideUp();
-            element.siblings('li').removeClass('open');
-            element.siblings('li').find('li').removeClass('open');
-            element.siblings('li').find('ul').slideUp();
+            element.addClass("open");
+            element.children("div.settings").slideDown();
+            element.siblings("li").children("div").slideUp();
+            element.siblings("li").removeClass("open");
+            element.siblings("li").find("li").removeClass("open");
+            element.siblings("li").find("ul").slideUp();
         }
     });
 }
