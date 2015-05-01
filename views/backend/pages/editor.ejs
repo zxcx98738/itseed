@@ -72,27 +72,7 @@
                     </li>
                     <% } %>
                     <% if(menu.datePicker == "on") { %>
-                    <li class='has-sub'>
-                        <a href='#'><i class="fa fa-calendar fa-fw"></i><span>日期和時間</span></a>
-                        <div class="settings">
-                            <form action="">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="time" value="auto" checked>
-                                        自動
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="time" value="manual">
-                                        設定日期及時間
-                                    </label>
-                                    <% include ../plugins/datetimepicker %>
-                                </div>
-                                <button type="submit" class="btn btn-default">完成</button>
-                            </form>
-                        </div>
-                    </li>
+                        <% include ../plugins/datetimepicker %>
                     <% } %>
                 </ul>
             </div>

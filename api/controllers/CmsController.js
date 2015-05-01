@@ -17,6 +17,7 @@ module.exports = {
             /*新增文章*/
             if(typeof req.param("id") === "undefined"){
                 post.status = "new";
+                post.createdAt = "";
 
                 action = CmsService.getAction(model);
                 menu = CmsService.getMenu(model);
@@ -39,6 +40,7 @@ module.exports = {
                         return res.notFound();
                     }
                     else{
+                        data.formatTime = CmsService.formatTime(data.createdAt);
                         action = CmsService.getAction(model);
                         menu = CmsService.getMenu(model);
 
@@ -269,6 +271,7 @@ module.exports = {
     create: function(req, res){
     	/*if(req.session.authorized){*/
             var model = sails.models[req.param("model").toLowerCase()];
+            var menu = CmsService.getMenu(model);
 
             //共通的attributes 
             var value = {
@@ -276,6 +279,10 @@ module.exports = {
                 title: req.param("title"),
                 content: req.param("content"),
                 status: req.param("status")
+            }
+            if(menu.datePicker == "on"){
+                if(req.param("createdAt") != "auto")
+                    value.createdAt = req.param("createdAt");
             }
             //各自Model的attributes
             switch(model)
@@ -303,6 +310,7 @@ module.exports = {
     update: function(req, res){
         /*if(req.session.authorized){*/
             var model = sails.models[req.param("model").toLowerCase()]; 
+            var menu = CmsService.getMenu(model);
             var criteria = {
                 id: req.param("id")
             }
@@ -312,6 +320,13 @@ module.exports = {
                 title: req.param("title"),
                 content: req.param("content"),
                 status: req.param("status")
+            }
+            if(menu.datePicker == "on"){
+                if(req.param("createdAt") == "auto"){
+                    value.createdAt = new Date();
+                }
+                else
+                    value.createdAt = req.param("createdAt");
             }
             //各自Model的attributes
             switch(model)

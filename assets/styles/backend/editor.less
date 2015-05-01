@@ -42,19 +42,23 @@
     padding: 15px;
     font-size: 16px;
     color: white;
-    background-color: black;
+    background-color: #272d39;
     border-top: 1px solid black;
   }
   >ul {
     >li>a {
       padding: 15px 20px;
-      font-size: 13px;
+      font-size: 14px;
       color: black;
       background: white;
       border-top: 1px solid black; 
 
       &:hover {
         background: #f8f8f8;
+      }
+      >div {
+        margin-top: 10px;
+        color: @gray;
       }
     }
     >li.last {
@@ -69,10 +73,6 @@
     }
     >li>div.settings {
       padding: 0px 30px 15px 30px;
-
-      textarea {
-        width: 100%;
-      }
     }
   }
 }
@@ -82,7 +82,7 @@
 
 #page-wrapper>div.note-editor {
   margin-right: 300px;
-  background-color: @light-yellow;
+  background-color: #f1f1f1;
   border-width: 1px 1px 0px 0px !important;
   border-color: black !important;
 
