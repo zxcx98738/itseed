@@ -1,5 +1,5 @@
 /**
-* FAQ.js
+* Faq.js
 *
 * @描述 : 常見問題
 * @文件 : http://sailsjs.org/#!documentation/models

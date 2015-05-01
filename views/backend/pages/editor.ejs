@@ -1,22 +1,18 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.min.js"></script>
+<script src="/js/specifies/backend/editor.js"></script>
 <script>
     $(function() {
-        $('.summernote').summernote();
-        $("#page-wrapper").css("height", window.innerHeight-50);
-        $(".note-editable").css("height", window.innerHeight-50-64-43-20);
-        $(".note-codable").css("height", window.innerHeight-50-64-43-20);
-        $("#setting").css("height", window.innerHeight-50-64);
-        $(".note-editor").css("height", window.innerHeight-50-64);
-        /*$("input[type=radio][name=device]").change(function() {
-            if (this.value == "desktop") {
-                $("#page").css("width", "992px");
-            }
-            else if (this.value == "tablet") {
-                $("#page").css("width", "768px");
-            }
-            else{
-                $("#page").css("width", "320px");
-            }          
-        });*/
+        /*接收後端傳來的參數*/
+        var action = <%- JSON.stringify(action) %>;
+    
+        /*根據正在管理的頁面調整menu的UI*/
+        editorUI();
+        /*選單欄開合事件*/
+        menuUI();
+        /*綁定事件*/
+        setOperation(action);
     });
 </script>
 <div id="wrapper">
@@ -26,23 +22,78 @@
 
     <div id="page-wrapper" class="no-padding">
         <header class="editor-header">
-            <form action="">
-                <input type="text" class="form-control" placeholder="文章標題">
+            <form id="form-edit">
+                <% if(post.status == "new"){ %>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="文章標題">
+                    <input type="text" class="hidden" id="id" name="id">
+                <% } else{ %>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="文章標題" value="<%= post.title %>">
+                    <input type="text" class="hidden" id="id" name="id" value="<%= post.id %>">
+                <% } %>
+                <input type="text" class="hidden" id="content" name="content">
+                <input type="text" class="hidden" id="status" name="status" value="<%= post.status %>">
                 <span>
-                    <button type="button" class="btn btn-default">發佈/更新</button>
-                    <button type="button" class="btn btn-default">儲存/還原為草稿</button>
-                    <button type="button" class="btn btn-default">預覽</button>
-                    <button type="button" class="btn btn-default">關閉</button>
+                    <% if(post.status == "new"){ %>
+                        <button type="button" class="btn btn-danger" id="newPost">發佈</button>
+                        <button type="button" class="btn btn-default" id="newDraft">儲存</button>
+                    <% } else if(post.status == "D"){ %>
+                        <button type="button" class="btn btn-danger" id="publish">發佈</button>
+                        <button type="button" class="btn btn-default" id="update">儲存</button>
+                    <% } else{ %>
+                        <button type="button" class="btn btn-danger" id="toDraft">還原為草稿</button>
+                        <button type="button" class="btn btn-default" id="update">儲存</button>
+                    <% } %>
+                    <button type="button" class="btn btn-default" id="preview" target="_blank">預覽</button>
+                    <button type="button" class="btn btn-default" id="close">關閉</button>
                 </span>
+            </form>
+            <form action="<%= action.preview %>" class="hidden" id="form-preview" target="_blank">
+                <input type="text" name="method" value="post">
+                <input type="text" class="title" name="title">
+                <input type="text" class="content" name="content">
             </form>
         </header>
 
         <!--ASIDE-->
-        <% include ../setting %>
+        <aside>
+            <div id="setting" class="accordion">
+                <div>
+                    <div>文章設定</div>
+                    <ul>
+                        <% if(menu.tag == "on") { %>
+                        <li class='has-sub'>
+                            <a href='#'><i class="fa fa-tag fa-fw"></i><span>標籤</span></a>
+                            <div class="settings">
+                                <form action="">
+                                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                                    <p>以逗號區隔標籤</p>
+                                    <p>
+                                        夏天, 是, 地表第一, 大, 帥哥
+                                    </p>
+                                    <button type="submit" class="btn btn-default">完成</button>
+                                </form>
+                            </div>
+                        </li>
+                        <% } %>
+                        <% if(menu.datePicker == "on") { %>
+                            <% include ../plugins/datetimepicker %>
+                        <% } %>
+                    </ul>
+                </div>
+                <div>
+                    <div>外掛元件</div>
+                    <ul>
+                        <% include ../plugins/youtube %>
+                    </ul>
+                </div>
+            </div>
+        </aside>
         <!--END ASIDE-->
         
         <div class="summernote">
-            summernote 1
+            <% if (typeof post.content !== 'undefined') { %>
+                <%- post.content %>
+            <% } %>
         </div>
     </div>
 </div>

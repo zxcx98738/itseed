@@ -32,17 +32,84 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  /*前台*/
   '/': {
     view: 'frontend/pages/index'
   },
-
-  '/cms': {
-    view: 'backend/pages/cms'
+  
+  '/video': {
+    controller: 'Site',
+    action: 'video'
   },
 
-  '/editor': {
-    view: 'backend/pages/editor'
-  }
+  /*後台-CMS*/
+  'get /cms/new/:model': {
+    controller: 'Cms',
+    action: 'editor'
+  },
+  
+  'get /cms/edit/:model': {
+    controller: 'Cms',
+    action: 'editor'
+  },
+
+  'get /cms/preview/:model': {
+    controller: 'Cms',
+    action: 'preview'
+  },
+
+  'post /cms/preview/:model': {
+    controller: 'Cms',
+    action: 'preview'
+  },
+
+  'get /cms/load/:model': {
+    controller: 'Cms',
+    action: 'load'
+  },
+
+  'post /cms/load/:model': {
+    controller: 'Cms',
+    action: 'load'
+  },
+
+  'get /cms/list/:model/:status': {
+    controller: 'Cms',
+    action: 'list'
+  },
+
+  'post /cms/create/:model': {
+    controller: 'Cms',
+    action: 'create'
+  },
+
+  'post /cms/update/:model': {
+    controller: 'Cms',
+    action: 'update'
+  },
+
+  'get /cms/publish/:model': {
+    controller: 'Cms',
+    action: 'publish'
+  },
+
+  'get /cms/toDraft/:model': {
+    controller: 'Cms',
+    action: 'toDraft'
+  },
+
+  'get /cms/delete/:model': {
+    controller: 'Cms',
+    action: 'delete'
+  },
+
+  'get /cms/sort/:model': {
+    controller: 'Cms',
+    action: 'sort'
+  },
+
+
+
 
   /***************************************************************************
   *                                                                          *

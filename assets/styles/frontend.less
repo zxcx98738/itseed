@@ -22,6 +22,10 @@ body {
   padding: 0px !important;
 }
 
+.bg-white {
+    background-color: white;
+}
+
 .bg-light-gray {
 	background-color: @light-gray;
 }
@@ -29,6 +33,8 @@ body {
 //頁首
 
 body>header {
+    height: 133px;
+
 	nav.navbar-default {
 	    border-bottom: solid 3px;
         border-bottom-color: @green;
@@ -181,7 +187,7 @@ body>footer {
     padding: 25px 0;
     text-align: center;
     color: #a2a2a2;
-    background-color: #222;
+    background-color: @dark-gray;
 
     span.copyright {
         line-height: 40px;
