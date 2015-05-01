@@ -8,6 +8,7 @@ function editorUI() {
     $("#setting").css("height", window.innerHeight-50-64);
     $(".note-editor").css("height", window.innerHeight-50-64);
 }
+
 function menuUI() {
     $('#setting li.has-sub>a').click(function(){
         $(this).removeAttr('href');
@@ -27,6 +28,7 @@ function menuUI() {
         }
     });
 }
+
 function setOperation(action) {
     /*發佈*/
     $("#newPost").click({action: action}, newPost);
@@ -47,6 +49,7 @@ function setOperation(action) {
         location.href = document.referrer;
     });
 }
+
 function newPost(event) {
     $("#content").val($(".summernote").code());
     $("#status").val("P");
@@ -68,6 +71,7 @@ function newPost(event) {
         }
     });  
 }
+
 function newDraft(event) {
     $("#content").val($(".summernote").code());
     $("#status").val("D");
@@ -94,6 +98,7 @@ function newDraft(event) {
         }
     }); 
 }
+
 function update(event) {
     $("#content").val($(".summernote").code());
 
@@ -112,6 +117,7 @@ function update(event) {
         }
     });  
 }
+
 function toDraft(event) {
     $("#content").val($(".summernote").code());
     $("#status").val("D");
@@ -135,6 +141,7 @@ function toDraft(event) {
         }
     });  
 }
+
 function publish(event) {
     $("#content").val($(".summernote").code());
     $("#status").val("P");

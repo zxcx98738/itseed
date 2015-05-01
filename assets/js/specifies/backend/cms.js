@@ -32,6 +32,7 @@ function menuUI(postType, status, postAmounts) {
         $("#"+module+" li.schedule span").append(" ("+postAmounts[module].scheduleNum+")");
     }
 }
+
 function setSorting(url) {
     $("td").each(function(){
         $(this).css("width", $(this).width() + "px");
@@ -68,6 +69,7 @@ function setSorting(url) {
         }
     });
 }
+
 function setSelectAll(checkbox, checkboxs) {
     $(checkbox).change(function() {
         if($(this).prop("checked")) {
@@ -83,6 +85,7 @@ function setSelectAll(checkbox, checkboxs) {
         }    
     });
 }
+
 function setGroupOperation(button, checkbox, getID, operation, url, message) {
     var postID;
 
@@ -101,6 +104,7 @@ function setGroupOperation(button, checkbox, getID, operation, url, message) {
         }
     });
 }
+
 function setOperation(action) {
     var postID;
     /*新增*/
@@ -128,6 +132,7 @@ function setOperation(action) {
         }   
     });
 }
+
 function publish(postID, url) {
     $.ajax({
         url: url,
@@ -146,6 +151,7 @@ function publish(postID, url) {
         }
     });  
 }
+
 function toDraft(postID, url) {
     $.ajax({
         url: url,
@@ -164,6 +170,7 @@ function toDraft(postID, url) {
         }
     });  
 }
+
 function deletePost(postID, url) {
     $.ajax({
         url: url,

@@ -281,7 +281,7 @@ module.exports = {
                 status: req.param("status")
             }
             if(menu.datePicker == "on"){
-                if(req.param("createdAt") != "auto")
+                if(req.param("createdAt") != "auto" && typeof req.param("createdAt") !== "undefined")
                     value.createdAt = req.param("createdAt");
             }
             //各自Model的attributes
@@ -321,7 +321,7 @@ module.exports = {
                 content: req.param("content"),
                 status: req.param("status")
             }
-            if(menu.datePicker == "on"){
+            if(menu.datePicker == "on" && typeof req.param("createdAt") !== "undefined"){
                 if(req.param("createdAt") == "auto"){
                     value.createdAt = new Date();
                 }
