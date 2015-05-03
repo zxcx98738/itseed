@@ -5,9 +5,28 @@ function editorUI() {
         codemirror: {
             theme: "monokai"
         },
-        lang: "zh-TW"
+        lang: "zh-TW",
+        toolbar: [
+            ["style", ["style"]],
+            ["font", ["bold", "italic", "underline", "clear"]],
+            ["fontname", ["fontname"]],
+            ["color", ["color"]],
+            ["para", ["ul", "ol", "paragraph"]],
+            ["height", ["height"]],
+            ["table", ["table"]],
+            ["insert", ["link", "picture", "hr"]],
+            ["view", ["fullscreen", "codeview"]],
+            ["help", ["help"]]
+        ],
+        fontNames: [
+            "微軟正黑體", "標楷體", "新細明體", "Arial", "Arial Black", "Comic Sans MS", "Courier New",
+            "Helvetica Neue", "Impact", "Lucida Grande",
+            "Tahoma", "Times New Roman", "Verdana"
+        ],
     });
+    /*取消編輯器高度縮放*/
     $(".note-statusbar").unbind();
+    /*調整側邊欄高度*/
     $("#setting").css("height", window.innerHeight-50-64);
 }
 

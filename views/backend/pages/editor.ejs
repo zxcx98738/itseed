@@ -22,7 +22,7 @@
 
     <div id="page-wrapper" class="no-padding">
         <header class="editor-header">
-            <form id="form-edit">
+            <form method="post" id="form-edit">
                 <% if(post.status == "new"){ %>
                     <input type="text" class="form-control" id="title" name="title" placeholder="文章標題">
                     <input type="text" class="hidden" id="id" name="id">
@@ -30,7 +30,7 @@
                     <input type="text" class="form-control" id="title" name="title" placeholder="文章標題" value="<%= post.title %>">
                     <input type="text" class="hidden" id="id" name="id" value="<%= post.id %>">
                 <% } %>
-                <input type="text" class="hidden" id="content" name="content">
+                <textarea class="hidden" id="content" name="content"></textarea>
                 <input type="text" class="hidden" id="status" name="status" value="<%= post.status %>">
                 <span>
                     <% if(post.status == "new"){ %>
@@ -47,7 +47,7 @@
                     <button type="button" class="btn btn-default" id="close">關閉</button>
                 </span>
             </form>
-            <form action="<%= action.preview %>" class="hidden" id="form-preview" target="_blank">
+            <form action="<%= action.preview %>" method="post" class="hidden" id="form-preview" target="_blank">
                 <input type="text" name="method" value="post">
                 <input type="text" class="title" name="title">
                 <input type="text" class="content" name="content">
