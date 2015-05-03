@@ -74,8 +74,8 @@ module.exports = {
                 var preview = {
                     method: "post",
                     url: url,
-                    title: req.body("title"),
-                    content: req.body("content")
+                    title: req.param("title"),
+                    content: req.param("content"),
                 }
 
                 return res.view("backend/pages/preview", {
