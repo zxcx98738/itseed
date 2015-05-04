@@ -20,7 +20,9 @@
         <% if(preview.method == "post"){ %>
             <form action="<%= preview.url%>" method="post" target="iframe">
                 <input type="text" name="title" value="<%= preview.title%>">
-                <input type="text" name="content" value="<%= preview.content%>">
+                <textarea name="content">
+                    <%= preview.content %>
+                </textarea>
             </form>
         <% } %>
         <div class="frame">

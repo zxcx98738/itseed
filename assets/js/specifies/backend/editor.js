@@ -62,7 +62,7 @@ function setOperation(action) {
     /*預覽*/
     $("#preview").click(function() {
         $("#form-preview>input.title").val($("#title").val());
-        $("#form-preview>input.content").val($(".summernote").code());
+        $("#form-preview>textarea.content").val($(".summernote").code());
         $("#form-preview").submit();
     });
     /*關閉*/
