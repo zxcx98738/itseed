@@ -20,7 +20,7 @@
         });
 
         $('#setting .modal')
-            //開啟modal時ubind掉dragenter事件，避免拖曳圖片時觸發
+            //開啟modal時拿掉dragenter事件，避免拖曳圖片時觸發
             .on('shown.bs.modal', function () {
                 $(document).off('dragenter');
             })
@@ -32,12 +32,12 @@
             });
 
             $('#slider .modal-footer>button').click(function () {
-                var div = '<p><br></p>'+$("#slider .preview").html()+'<p><br></p>';
+                var script = '<script>$(function(){$("#slider1").'+slider.getMethod()+'('+JSON.stringify(slider.getOptions())+')});</scr'+'ipt>';
+
+                var div = '<p><br></p>'+script+$("#slider .preview").html()+'<p><br></p>';
                 $('.note-editable').append(div);
                 $('#slider').modal('hide');
             });
-
-
 
         var default_img = [
             "<img data-src='holder.js/900x500/auto/#777:#555/text:First slide' alt='First slide [900x500]' src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzc3NyIvPjxnPjx0ZXh0IHg9IjMxNy43MzQzNzUiIHk9IjI1MCIgc3R5bGU9ImZpbGw6IzU1NTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZTo0MnB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPkZpcnN0IHNsaWRlPC90ZXh0PjwvZz48L3N2Zz4=' data-holder-rendered='true'>",
@@ -91,7 +91,7 @@
 
     //載入設定表單
     function loadSettings(options_selector) {
-        var html = slider.getOptions();
+        var html = slider.getSettings();
         $(options_selector).html(html);
     }
     //重設設定表單
@@ -170,77 +170,6 @@
         slider.play("#"+slider_id);
     }
 </script>
-
-<style>
-    div.preview {
-        overflow: auto;
-        height: 350px;
-    }
-    div.drop-zone {
-        margin: 15px 10px 0 0;
-        width: 75px;
-        height: 75px;
-        font-size: 16px;
-        font-weight: bold;
-        color: #777;
-        line-height: 35px;
-        text-align: center;
-        background-color: #ddd;
-        border-radius: 10px;
-        border: 3px dashed #777;
-    }
-    div.drop-over {
-        background-color: white;
-    }
-    div.drop-error {
-        color: #A10E09;
-        border-color: #A10E09;
-    }
-    div.miniature {
-        overflow-x: auto;
-        overflow-y: hidden;
-        white-space: nowrap;
-        padding-top: 15px;
-    }
-    div.miniature > div {
-        position: relative;
-        display: inline-block;
-        vertical-align: top;
-        margin-right: 10px;
-        padding: 3px;
-        background-color: white;
-        border-radius: 10px;
-        border: 2px dashed #000;
-    }
-    div.miniature > div > i {
-        position: absolute;
-        top: -9px;
-        right: -8px;
-        font-size: 16px;
-        color: black;
-        background-color: white;
-        border-radius: 6px;
-    }
-    div.miniature > div > i:hover {
-        color: red;
-        cursor: pointer;
-    }
-    div.miniature > div > img {
-        max-width: 65px;
-    }
-    div.miniature > div.highlight {
-        width: 75px;
-        height: 75px;
-        box-shadow: inset 1px 1px 4px 2px rgba(20%,20%,40%,0.5);  
-        border-color: transparent !important;
-    }
-    div.miniature > div.ui-sortable-helper {
-        background-color: transparent !important;
-        border-color: transparent !important;
-    }
-
-    
-</style>
 <li class="last">
     <a data-toggle="modal" data-target="#slider" id="test">
         <i class="fa fa-sliders fa-fw"></i>

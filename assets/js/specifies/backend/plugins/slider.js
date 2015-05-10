@@ -7,7 +7,7 @@ var slider = (function() {
         s_settings_template_selector,
         s_slider_template_selector;
 
-    var getOptions = function() {
+    var getSettings = function() {
         var source  = $(s_settings_template_selector).html();
         var template = Handlebars.compile(source);
 
@@ -42,10 +42,16 @@ var slider = (function() {
         play: function(selector) {
             $(selector)[s_method](s_options);
         },
-        getOptions: getOptions,
+        getMethod: function() {
+            return s_method;
+        },
+        getSettings: getSettings,
+        getOptions: function() {
+            return s_options;
+        },
         getSlider: getSlider,
         getImages: function() {
             return s_imageArr;
-        }
+        },
     }
 })();
