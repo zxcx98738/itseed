@@ -34,7 +34,7 @@ var slider = (function() {
             s_imageArr = imageArr;
         },
         setTemplate: function(type ,selector) {
-            if (type == "settings")
+            if (type == 'settings')
                 s_settings_template_selector = selector;
             else
                 s_slider_template_selector = selector;
@@ -57,20 +57,6 @@ var slider = (function() {
 })();
 
 $(function(){
-    /* 編輯器開關事件 */
-    $('#setting .modal')
-        // 開啟modal時拿掉dragenter事件，避免拖曳圖片時觸發
-        .on('shown.bs.modal', function () {
-            $(document).off('dragenter');
-        })
-
-        // 關閉modal後重啟summernote來復原事件(暴力解)
-        .on('hidden.bs.modal', function () {
-            //
-            $('.summernote').destroy();
-            editorUI();
-        });
-
     /* 圖片排序初始化 */
     $('.sortable').sortable({
         placeholder: 'highlight',
@@ -84,22 +70,50 @@ $(function(){
             changeImages();
         },
     });
+    //handlebar helper: 列表勾選
+    Handlebars.registerHelper('select', function (value, options) {
+        var select = document.createElement('select');
+        select.innerHTML = options.fn(this);
+        select.value = value;
+        if (select.children[select.selectedIndex])
+            select.children[select.selectedIndex].setAttribute('selected', 'selected');
+        return select.innerHTML;
+    });
+    
+    //handlebar helper: 判斷相等
+    Handlebars.registerHelper('ifEqual', function (v1, v2, options) {
+        if (v1 === v2)
+            return options.fn(this);
+        else
+            return options.inverse(this);
+    });
 
-    /* 編輯器初始化 */
-    init();
+    /* 編輯器開關 */
+    $('#setting .modal')
+        .on('shown.bs.modal', function () {
+            // 開啟modal時拿掉dragenter事件，避免拖曳圖片時觸發
+            $(document).off('dragenter');
+            /* 編輯器初始化 */
+            init();
+        })
+        .on('hidden.bs.modal', function () {
+            // 關閉modal後重啟summernote來復原事件(暴力解)
+            $('.summernote').destroy();
+            editorUI();
+        });
 
     /* 切換plugin */
-    $("#slider-settings .plugin select").on("change", function() {
+    $('#slider-settings .plugin select').on('change', function() {
         var plugin = $(this).val();
         resetSettings(plugin);
-        loadSettings("#slider-settings .plugin-options");
-        refreshSlider("#slider-settings", "#slider .preview", "slider1");
+        loadSettings('#slider-settings .plugin-options');
+        refreshSlider('#slider-settings', '#slider .preview', 'slider-preview');
     });
 
     /* 修改設定 */
-    $("#slider-settings .plugin-options").on("change", function() {
-        changeSettings("#slider-settings");
-        refreshSlider("#slider-settings", "#slider .preview", "slider1");
+    $('#slider-settings .plugin-options').on('change', function() {
+        changeSettings('#slider-settings');
+        refreshSlider('#slider-settings', '#slider .preview', 'slider-preview');
     });
 
     /* 拖拉圖片 */
@@ -119,25 +133,26 @@ $(function(){
         return false;
     });
 
-    /* 圖片大小限制 */
-    $('.drop-image').on('load', function () {
-        if (this.naturalWidth > 1650 || this.naturalHeight > 1650) {
-            $('.drop-zone').addClass("drop-error")
-            $('.drop-zone').html("圖片大小<br>過大")
-        }
+    /* 拖拉防呆 */
+    $(window).on('dragover', function(e) {
+        e.preventDefault();
+    });
+    $(window).on('drop', function(e) {
+        e.preventDefault();
     });
 
     // 完成
     $('#slider .modal-footer>button').click(function () {
-        var script = '<script>$(function(){$("#slider1").'+slider.getMethod()+'('+JSON.stringify(slider.getOptions())+')});</scr'+'ipt>';
+        var slider_id = getUniqueId('.note-editable');
+        refreshSlider('#slider-settings', '#slider .preview', slider_id);
+        var script = '<script>$(function(){$("#'+slider_id+'").'+slider.getMethod()+'('+JSON.stringify(slider.getOptions())+')});</scr'+'ipt>';
         var div = '<p><br></p>'+script+$("#slider .preview").html()+'<p><br></p>';
         $('.note-editable').append(div);
         $('#slider').modal('hide');
     });   
 });
 
-function init ()
-{
+function init () {
     //預設圖片
     var default_img = [
         "<img data-src='holder.js/900x500/auto/#777:#555/text:First slide' alt='First slide [900x500]' src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzc3NyIvPjxnPjx0ZXh0IHg9IjMxNy43MzQzNzUiIHk9IjI1MCIgc3R5bGU9ImZpbGw6IzU1NTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZTo0MnB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPkZpcnN0IHNsaWRlPC90ZXh0PjwvZz48L3N2Zz4=' data-holder-rendered='true'>",
@@ -145,40 +160,29 @@ function init ()
         "<img data-src='holder.js/900x500/auto/#555:#333/text:Third slide' alt='Third slide [900x500]' src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzU1NSIvPjxnPjx0ZXh0IHg9IjMwOC40MjE4NzUiIHk9IjI1MCIgc3R5bGU9ImZpbGw6IzMzMztmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZTo0MnB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPlRoaXJkIHNsaWRlPC90ZXh0PjwvZz48L3N2Zz4=' data-holder-rendered='true'>"
     ];
     //預設套件
-    var default_method = "carousel"; //Bootstrap
+    var default_method = 'carousel'; //Bootstrap
     //預設設定
     var default_options = {
         interval: 5000,
-        pause: "hover",
+        pause: 'hover',
         wrap: true,
         keyboard: true
     };
     //預設設定模版
-    var default_settings_template = "#Bootstrap-options-template";
+    var default_settings_template = '#Bootstrap-options-template';
     //預設slider模版
-    var default_slider_template = "#Bootstrap-slider-template";
+    var default_slider_template = '#Bootstrap-slider-template';
 
-    //handlebar helper: 列表勾選
-    Handlebars.registerHelper('select', function (value, options) {
-        var select = document.createElement('select');
-        select.innerHTML = options.fn(this);
-        select.value = value;
-        if (select.children[select.selectedIndex])
-            select.children[select.selectedIndex].setAttribute('selected', 'selected');
-        return select.innerHTML;
-    });
-    //handlebar helper: 判斷相等
-    Handlebars.registerHelper('ifEqual', function (v1, v2, options) {
-        if (v1 === v2)
-            return options.fn(this);
-        else
-            return options.inverse(this);
-    });
+    //清除殘留內容
+    $('.drop-zone').html('將圖片拖<br>曳至此處');
+    $('.drop-zone').removeClass('drop-error');
+    $('.miniature').html('');
 
+    //載入預設設定
     slider.setImages(default_img);
-    resetSettings("Bootstrap");
-    loadSettings("#slider-settings .plugin-options");
-    refreshSlider("#slider-settings", "#slider .preview", "slider1");
+    resetSettings('Bootstrap');
+    loadSettings('#slider-settings .plugin-options');
+    refreshSlider('#slider-settings', '#slider .preview', 'slider-preview');
 }
 
 /* 載入設定表單 */
@@ -196,33 +200,33 @@ function resetSettings (plugin) {
 
     switch(plugin)
     {
-        case "Bootstrap":
-            defaultMethod = "carousel"
+        case 'Bootstrap':
+            defaultMethod = 'carousel'
             defaultOptions = {
                 interval: 5000,
-                pause: "hover",
+                pause: 'hover',
                 wrap: true,
                 keyboard: true
             };
-            default_settings_template = "#Bootstrap-options-template";
-            default_slider_template = "#Bootstrap-slider-template";
+            default_settings_template = '#Bootstrap-options-template';
+            default_slider_template = '#Bootstrap-slider-template';
             break;
-        case "Owl Carousel":
-            defaultMethod = "carousel"
+        case 'Owl Carousel':
+            defaultMethod = 'carousel'
             defaultOptions = {
                 interval: 1000,
-                pause: "hover",
+                pause: 'hover',
                 wrap: false,
                 keyboard: false
             };
-            default_settings_template = "#Bootstrap-options-template";
-            default_slider_template = "#Bootstrap-slider-template";
+            default_settings_template = '#Bootstrap-options-template';
+            default_slider_template = '#Bootstrap-slider-template';
             break;
     }
     slider.setMethod(defaultMethod);
     slider.setOptions(defaultOptions);
-    slider.setTemplate("settings", default_settings_template);
-    slider.setTemplate("slider", default_slider_template);
+    slider.setTemplate('settings', default_settings_template);
+    slider.setTemplate('slider', default_slider_template);
 }
 
 /* 修改設定 */
@@ -234,23 +238,23 @@ function changeSettings (form_selector) {
 
     //從表單擷取slider參數
     $(formdata).each(function(index, obj){
-        if (obj.name == "plugin")
+        if (obj.name == 'plugin')
             plugin = obj.value;
         else{
-            if (obj.value == "true")
+            if (obj.value == 'true')
                 obj.value = true;
-            if (obj.value == "false")
+            if (obj.value == 'false')
                 obj.value = false;
             options[obj.name] = obj.value;
         }
     });
     switch(plugin)
     {
-        case "Bootstrap":
-            method = "carousel"
+        case 'Bootstrap':
+            method = 'carousel'
             break;
-        case "Owl Carousel":
-            method = "carousel"
+        case 'Owl Carousel':
+            method = 'carousel'
             break;
     }
     slider.setMethod(method);
@@ -262,14 +266,18 @@ function refreshSlider (form_selector, preview_selector, slider_id) {
     //插入回傳的slider到預覽畫面
     $(preview_selector).html(slider.getSlider(slider_id));
     //啟動slider
-    slider.play("#"+slider_id);
+    slider.play('#'+slider_id);
 }
 
 /* 添加圖片 */
 function loadFromDesktop(file) {
     if (!file || file.type.indexOf('image/') !== 0) {
-        $('.drop-zone').addClass("drop-error")
-        $('.drop-zone').html("檔案格式<br>錯誤")
+        $('.drop-zone').addClass('drop-error');
+        $('.drop-zone').html('檔案格式<br>錯誤');
+    }
+    else if (file.size/1024/1024 > 1) {
+        $('.drop-zone').addClass('drop-error');
+        $('.drop-zone').html('檔案限制<br> < 1MB');
     }
     else {
         var reader = new FileReader();
@@ -280,7 +288,7 @@ function loadFromDesktop(file) {
             $('.miniature i').on('click', function (e) {
                 $(this).parent().remove();
                 changeImages();
-                refreshSlider("#slider-settings", "#slider .preview", "slider1");
+                refreshSlider('#slider-settings', '#slider .preview', 'slider-preview');
             });
             changeImages();
         };
@@ -291,11 +299,23 @@ function loadFromDesktop(file) {
 /* 變動slider圖片 */
 function changeImages() {
     var imageArr = [];
-    $('.miniature').find("img").each(function() {
+    $('.miniature').find('img').each(function() {
         var copy = $(this).clone();
         var image = $('<div>').append(copy).html();
         imageArr.push(image);
     });
     slider.setImages(imageArr);
-    refreshSlider("#slider-settings", "#slider .preview", "slider1");
+    refreshSlider('#slider-settings', '#slider .preview', 'slider-preview');
+}
+
+/* 避免同文章內出現重複id */
+function getUniqueId(article) {
+    var id = 'slider';
+    var i = 1;
+    while(1){
+        if($(article).find('#'+id+i).length == 0)
+            return id+i;
+        else
+            i++;
+    }
 }
