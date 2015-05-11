@@ -57,6 +57,11 @@ var slider = (function() {
 })();
 
 $(function(){
+    /* slider列表 */
+    listSliders();
+    bindEditEvent('.slider-list .edit');
+    bindDeleteEvent('.slider-list .delete');
+
     /* 圖片排序初始化 */
     $('.sortable').sortable({
         placeholder: 'highlight',
@@ -79,7 +84,7 @@ $(function(){
             select.children[select.selectedIndex].setAttribute('selected', 'selected');
         return select.innerHTML;
     });
-    
+
     //handlebar helper: 判斷相等
     Handlebars.registerHelper('ifEqual', function (v1, v2, options) {
         if (v1 === v2)
@@ -90,7 +95,7 @@ $(function(){
 
     /* 編輯器開關 */
     $('#setting .modal')
-        .on('shown.bs.modal', function () {
+        .on('show.bs.modal', function () {
             // 開啟modal時拿掉dragenter事件，避免拖曳圖片時觸發
             $(document).off('dragenter');
             /* 編輯器初始化 */
@@ -141,15 +146,8 @@ $(function(){
         e.preventDefault();
     });
 
-    // 完成
-    $('#slider .modal-footer>button').click(function () {
-        var slider_id = getUniqueId('.note-editable');
-        refreshSlider('#slider-settings', '#slider .preview', slider_id);
-        var script = '<script>$(function(){$("#'+slider_id+'").'+slider.getMethod()+'('+JSON.stringify(slider.getOptions())+')});</scr'+'ipt>';
-        var div = '<p><br></p>'+script+$("#slider .preview").html()+'<p><br></p>';
-        $('.note-editable').append(div);
-        $('#slider').modal('hide');
-    });   
+    /* 送出 */
+    bindSubmitEvent('#slider .modal-footer>button');
 });
 
 function init () {
@@ -159,8 +157,10 @@ function init () {
         "<img data-src='holder.js/900x500/auto/#666:#444/text:Second slide' alt='Second slide [900x500]' src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzY2NiIvPjxnPjx0ZXh0IHg9IjI3Ny4yODEyNSIgeT0iMjUwIiBzdHlsZT0iZmlsbDojNDQ0O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQycHQ7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+U2Vjb25kIHNsaWRlPC90ZXh0PjwvZz48L3N2Zz4=' data-holder-rendered='true'>",
         "<img data-src='holder.js/900x500/auto/#555:#333/text:Third slide' alt='Third slide [900x500]' src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzU1NSIvPjxnPjx0ZXh0IHg9IjMwOC40MjE4NzUiIHk9IjI1MCIgc3R5bGU9ImZpbGw6IzMzMztmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZTo0MnB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPlRoaXJkIHNsaWRlPC90ZXh0PjwvZz48L3N2Zz4=' data-holder-rendered='true'>"
     ];
+
     //預設套件
     var default_method = 'carousel'; //Bootstrap
+
     //預設設定
     var default_options = {
         interval: 5000,
@@ -168,10 +168,12 @@ function init () {
         wrap: true,
         keyboard: true
     };
+
     //預設設定模版
-    var default_settings_template = '#Bootstrap-options-template';
+    var default_settings_template = '#Bootstrap-options';
+
     //預設slider模版
-    var default_slider_template = '#Bootstrap-slider-template';
+    var default_slider_template = '#Bootstrap-slider';
 
     //清除殘留內容
     $('.drop-zone').html('將圖片拖<br>曳至此處');
@@ -192,7 +194,7 @@ function loadSettings (options_selector) {
 }
 
 /* 重設設定表單 */
-function resetSettings (plugin) {
+function resetSettings (plugin, options) {
     var defaultMethod,
         defaultOptions,
         default_settings_template,
@@ -208,8 +210,8 @@ function resetSettings (plugin) {
                 wrap: true,
                 keyboard: true
             };
-            default_settings_template = '#Bootstrap-options-template';
-            default_slider_template = '#Bootstrap-slider-template';
+            default_settings_template = '#Bootstrap-options';
+            default_slider_template = '#Bootstrap-slider';
             break;
         case 'Owl Carousel':
             defaultMethod = 'carousel'
@@ -219,12 +221,15 @@ function resetSettings (plugin) {
                 wrap: false,
                 keyboard: false
             };
-            default_settings_template = '#Bootstrap-options-template';
-            default_slider_template = '#Bootstrap-slider-template';
+            default_settings_template = '#Owl_Carousel-options';
+            default_slider_template = '#Owl_Carousel-slider';
             break;
     }
     slider.setMethod(defaultMethod);
-    slider.setOptions(defaultOptions);
+    if (typeof options === 'undefined')
+        slider.setOptions(defaultOptions);
+    else
+        slider.setOptions(options);
     slider.setTemplate('settings', default_settings_template);
     slider.setTemplate('slider', default_slider_template);
 }
@@ -270,7 +275,7 @@ function refreshSlider (form_selector, preview_selector, slider_id) {
 }
 
 /* 添加圖片 */
-function loadFromDesktop(file) {
+function loadFromDesktop (file) {
     if (!file || file.type.indexOf('image/') !== 0) {
         $('.drop-zone').addClass('drop-error');
         $('.drop-zone').html('檔案格式<br>錯誤');
@@ -297,7 +302,7 @@ function loadFromDesktop(file) {
 }
 
 /* 變動slider圖片 */
-function changeImages() {
+function changeImages () {
     var imageArr = [];
     $('.miniature').find('img').each(function() {
         var copy = $(this).clone();
@@ -309,7 +314,7 @@ function changeImages() {
 }
 
 /* 避免同文章內出現重複id */
-function getUniqueId(article) {
+function getUniqueId (article) {
     var id = 'slider';
     var i = 1;
     while(1){
@@ -318,4 +323,131 @@ function getUniqueId(article) {
         else
             i++;
     }
+}
+
+/* 綁定送出鈕 */
+function bindSubmitEvent(selector) {
+    $(selector).on('click', function (e) {
+        var slider_id = getUniqueId('.note-editable');
+        
+        appendToArticle(slider_id);
+
+        $('#slider').parent().append('<div class="slider-list" data-id="'+slider_id+'">'+
+            '<span>'+slider_id+'</span>'+
+            '<a class="pull-right delete">刪除</a>'+
+            '<a class="pull-right edit">編輯</a></div>');
+        bindEditEvent('[data-id = "'+slider_id+'"] .edit');
+        bindDeleteEvent('[data-id = "'+slider_id+'"] .delete');
+    });   
+}
+
+/* 添加slider到文章 */
+function appendToArticle (slider_id) {
+    refreshSlider('#slider-settings', '#slider .preview', slider_id);
+    var hint = '/* 注意: 這塊程式碼不會顯示在送出的畫面中，但刪除slider時要一併移除 */';
+    var script = '<script>'+hint+'$(function(){$("#'+slider_id+'").'+slider.getMethod()+'('+JSON.stringify(slider.getOptions())+')});</scr'+'ipt>';
+    var div = '<p><br></p>'+script+$("#slider .preview").html()+'<p><br></p>';
+    $('.note-editable').append(div);
+    $('#slider').modal('hide');
+}
+
+/* 載入設定 */
+function editSlider (str, imageArr) {
+    var id,
+        method,
+        options,
+        start,
+        end;
+
+    start = str.search('#');    
+    end = str.search('\"\\).');
+    id = str.substring(start + 1, end);
+
+    start = str.search('\"\\).');    
+    end = str.search('\\(\\{\"');
+    method = str.substring(start + 3, end);
+
+    start = str.search('\\(\\{\"');    
+    end = str.search('\\)\\}\\);');
+    options = str.substring(start + 1, end);
+
+    $('#setting .modal').on('shown.bs.modal', function () { //運用shown.bs.modal來覆蓋show.bs.modal觸發的init()
+        slider.setImages(imageArr);
+        switch(method)
+        {
+            case 'carousel':
+                //更改表單plugin欄位
+                $('#slider-settings .plugin select option[value="Bootstrap"]').prop('selected', true);
+                $('#slider-settings .plugin select option[value!="Bootstrap"]').prop('selected', false);
+                resetSettings('Bootstrap', JSON.parse(options));
+                break;
+            default:
+                return false;
+        }
+        loadSettings('#slider-settings .plugin-options');
+        refreshSlider('#slider-settings', '#slider .preview', 'slider-preview');
+
+        for(var i = 0; i < imageArr.length; i++){
+            $('.miniature').append('<div><i class="fa fa-times-circle remove"></i>'+imageArr[i]+'</div>');
+        }
+        $('.miniature i').on('click', function (e) {
+            $(this).parent().remove();
+            changeImages();
+            refreshSlider('#slider-settings', '#slider .preview', 'slider-preview');
+        });
+    });
+    $('#slider').modal('show');
+    $('#setting .modal').off('shown.bs.modal');
+}
+
+/* Slider列表 */
+function listSliders () {
+    $('.note-editable').find('[id^="slider"]').each(function () {
+        var id = $(this).attr('id');
+        $('#slider').parent().append('<div class="slider-list" data-id="'+id+'">'+
+            '<span>'+id+'</span>'+
+            '<a class="pull-right delete">刪除</a>'+
+            '<a class="pull-right edit">編輯</a></div>');
+    });
+}
+
+/* 綁定slider編輯鈕 */
+function bindEditEvent(selector) {    
+    $(selector).on('click', function (e) {
+        var id = $(this).parent().attr('data-id');
+        var str = $('.note-editable #'+id).prev('script').html();
+        var imageArr = [];
+
+        $('.note-editable #'+id).find('img').each(function () {
+            var copy = $(this).clone();
+            var image = $('<div>').append(copy).html();
+            imageArr.push(image);
+        });
+
+        editSlider(str, imageArr);
+
+        $('#slider .modal-footer>button').off('click');
+        $('#slider .modal-footer>button').on('click', function (e) {
+            //刪除原本的slider
+            $('.note-editable #'+id).prev('script').remove();
+            $('.note-editable #'+id).remove();
+
+            //重新添加編輯後的slider
+            appendToArticle(id);
+
+            //還原設定
+            $(this).off('click');
+            bindSubmitEvent(this);
+        }); 
+    });
+}
+
+/* 綁定slider刪除鈕 */
+function bindDeleteEvent(selector) {
+    $(selector).on('click', function (e) {
+        var id = $(this).parent().attr('data-id');
+        $('.note-editable #'+id).prev('script').remove();
+        $('.note-editable #'+id).remove();
+        $(this).parent().remove();
+    });
 }
