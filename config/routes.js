@@ -47,6 +47,11 @@ module.exports.routes = {
     action: 'aboutITSeed'
   }, 
 
+  '/memberList': {
+    controller: 'Site',
+    action: 'memberList'
+  }, 
+
   '/video': {
     controller: 'Site',
     action: 'video'

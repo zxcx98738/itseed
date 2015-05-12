@@ -29,6 +29,24 @@ module.exports.bootstrap = function(cb) {
 
   });
 
+  memberList.create({
+    title: "第一屆",
+    content: "<table class=\"table table-striped text-center\"><thead><tr><th class=\"col-md-2 text-center\">姓　名</th><th class=\"col-md-10 text-center\">校　系</th></tr></thead><tbody><tr><td>高培翔</td><td>政治大學 企管系</td></tr><tr><td>曾曉婷</td><td>實踐大學 企管系</td></tr><tr><td>段繼忠</td><td>台北科大 工管所</td></tr><tr><td>方超群</td><td>政治大學 公行系</td></tr><tr><td>周呈樺</td><td>台灣藝大 圖傳系</td></tr><tr><td>何明政</td><td>文化大學 資科系</td></tr><tr><td>沈庭禎</td><td>台灣大學 會計系</td></tr><tr><td>王俊凱</td><td>政治大學 財管系</td></tr><tr><td>許儒怡</td><td>政治大學 國貿系</td></tr><tr><td>吳進榮</td><td>輔仁大學 管理所</td></tr><tr><td>詹大千</td><td>台灣大學 政治系</td></tr><tr><td>詹庭芳</td><td>台灣大學 外文系</td></tr><tr><td>張雁翔</td><td>交通大學 管科系</td></tr><tr><td>蔡琮翔</td><td>台灣大學 電機系</td></tr><tr><td>藍健銘</td><td>台灣大學 電機系</td></tr><tr><td>蔡東昇</td><td>交通大學 電物系</td></tr><tr><td>陳姮螢</td><td>台灣大學 國企系</td></tr><tr><td>王治真</td><td>台灣大學 國企系</td></tr><tr><td>張世鋒</td><td>文化大學 資傳所</td></tr><tr><td>劉柏廷</td><td>輔仁大學 哲學系</td></tr><tr><td>岑岡霖</td><td>東吳大學 商數系</td></tr><tr><td>鄭湘縈</td><td>東吳大學 商數系</td></tr></tbody></table>",
+    status: "P",
+    order: 1
+  }).exec(function(){
+
+  });
+
+  memberList.create({
+    title: "第二屆",
+    content: "<table class=\"table table-striped text-center\"><thead><tr><th class=\"col-md-2 text-center\">姓　名</th><th class=\"col-md-10 text-center\">校　系</th></tr></thead><tbody><tr><td>李佳泓</td><td>交通大學 電控系</td></tr><tr><td>陳彥如</td><td>台灣大學 資管系</td></tr><tr><td>黃重凱</td><td>台灣大學 工科系</td></tr><tr><td>張程鈞</td><td>淡江大學 教科系</td></tr><tr><td>陳正閔</td><td>東吳大學 企管所</td></tr><tr><td>梁文玉</td><td>交通大學 管科系</td></tr><tr><td>黃麒穎</td><td>交通大學 機械系</td></tr><tr><td>林俊成</td><td>交通大學 工管系</td></tr><tr><td>劉嘉皓</td><td>政治大學 廣電所</td></tr><tr><td>王培仲</td><td>台灣大學 微生所</td></tr><tr><td>陳琬瑜</td><td>台灣師大 社教系</td></tr><tr><td>陳顥仁</td><td>台北科大 工管所</td></tr><tr><td>洪韶彥</td><td>清華大學 科管所</td></tr><tr><td>蔡致蕙</td><td>台灣藝大 視傳系</td></tr><tr><td>古竹生</td><td>清華大學 電機系</td></tr><tr><td>許庭瑋</td><td>台灣師大 資訊系</td></tr><tr><td>王仕閔</td><td>台灣大學 政治系</td></tr><tr><td>劉虹麟</td><td>政治大學 公行系</td></tr><tr><td>劉筱筠</td><td>台北大學 經研所</td></tr><tr><td>李佳泓</td><td>交通大學 電控系</td></tr><tr><td>陳彥如</td><td>台灣大學 資管系</td></tr><tr><td>黃重凱</td><td>台灣大學 工科系</td></tr></tbody></table>",
+    status: "P",
+    order: 2
+  }).exec(function(){
+
+  });
+
   Video.create({
   	title: "【資訊種子-面試篇】文字",
   	content: "<br><h4><a href=\"https://www.youtube.com/watch?v=P3p_1krD7t8&amp;feature=youtu.be\" style=\"background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: 0px 0px; background-repeat: initial; font-family: 微軟正黑體;\">【資訊種子-面試篇】</a></h4><h4><p><span style=\"font-family: 微軟正黑體;\">決定。加入資訊種子<br>想要了解最新的IT資訊嗎？<br>想要得到業界的一手消息嗎？<br>想要出國與海外的學生交流嗎？<br>想要找到一群來自各校各系的夥伴嗎？<br>上網搜尋「資訊種子」，我們正在找你！<br><a href=\"http://www.itseed.tw/#\" style=\"background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: 0px 0px; background-repeat: initial;\">【報名資訊】</a><br>招生對象：升大三至升研究所碩一各領域<br>報名日期：6/2(一)至7/27(日)</span></p><p><span style=\"font-family: 微軟正黑體;\"><a href=\"http://www.itseed.tw/\" style=\"background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: 0px 0px; background-repeat: initial;\">【資訊種子官方網站】&nbsp;</a><br><a href=\"http://www.facebook.com/iloveitseed\" style=\"background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: 0px 0px; background-repeat: initial;\">【資訊種子粉絲專頁】&nbsp;</a></span><br></p></h4>\r\n            \r\n        \r\n            \r\n        ",

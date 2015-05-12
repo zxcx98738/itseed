@@ -73,6 +73,24 @@ module.exports = {
                 action.sort = "disabled";           
                 break;
 
+             case MemberList:
+                action.new = "/cms/new/memberList"
+                action.edit = "/cms/edit/memberList"
+
+                action.view = "/memberList#"
+                action.preview = "/cms/preview/memberList";
+                action.load = "/cms/load/memberList";
+                action.url = "frontend/pages/memberList";
+                
+                action.create = "/cms/create/memberList";
+                action.update = "/cms/update/memberList";
+                action.toDraft = "/cms/toDraft/memberList";
+                action.publish = "/cms/publish/memberList";
+                action.delete = "/cms/delete/memberList";
+
+                action.sort = "/cms/sort/memberList";           
+                break;
+
             case Video:
                 action.new = "/cms/new/video"
                 action.edit = "/cms/edit/video"
