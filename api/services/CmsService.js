@@ -236,6 +236,24 @@ module.exports = {
                 action.sort = "disabled";           
                 break;
 
+             case Faq:
+                action.new = "/cms/new/faq";
+                action.edit = "/cms/edit/faq";
+
+                action.view = "/faq#";
+                action.preview = "/cms/preview/faq";
+                action.load = "/cms/load/faq";
+                action.url = "frontend/pages/faq";
+                
+                action.create = "/cms/create/faq";
+                action.update = "/cms/update/faq";
+                action.toDraft = "/cms/toDraft/faq";
+                action.publish = "/cms/publish/faq";
+                action.delete = "/cms/delete/faq";
+
+                action.sort = "/cms/sort/faq";           
+                break;
+
             case Video:
                 action.new = "/cms/new/video";
                 action.edit = "/cms/edit/video";

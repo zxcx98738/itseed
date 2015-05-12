@@ -292,6 +292,30 @@ module.exports = {
     },
 
     //影音專區
+    faq: function(req, res){
+        var model = Faq; 
+        var action = CmsService.getAction(model);
+        var now = new Date();
+        var criteria = {   
+            where: { status: "P" }, 
+            sort: { order: "asc" }
+        }
+
+        CmsService.findPosts(model, criteria)
+        .then(function(datas){
+            for(var i = 0; i < datas.length; i++){
+                datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
+            }
+            return res.view(action.url, {
+                datas: datas
+            });
+        })
+        .catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    },
+
+    //影音專區
     video: function(req, res){
         var model = Video; 
         var action = CmsService.getAction(model);

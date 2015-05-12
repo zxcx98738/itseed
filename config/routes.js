@@ -97,6 +97,11 @@ module.exports.routes = {
     action: 'timeline'
   }, 
 
+  '/faq': {
+    controller: 'Site',
+    action: 'faq'
+  },
+
   '/video': {
     controller: 'Site',
     action: 'video'
