@@ -15,7 +15,7 @@ module.exports = {
           primaryKey: true,
           unique: true
         },
-         //作者ID
+        //作者ID
         /*author: {
           model:'User'
         },*/

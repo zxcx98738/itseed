@@ -16,8 +16,19 @@ module.exports = {
 
             /*新增文章*/
             if(typeof req.param("id") === "undefined"){
+                //共通的attributes 
                 post.status = "new";
                 post.createdAt = "";
+
+                //各自Model的attributes
+                switch(model)
+                {
+                    case Project:
+                        post.th = "";
+                        break;
+                    default:
+                        break;
+                }
 
                 action = CmsService.getAction(model);
                 menu = CmsService.getMenu(model);
@@ -287,7 +298,8 @@ module.exports = {
             //各自Model的attributes
             switch(model)
             {
-                case Video:
+                case Project:
+                    value.th = req.param("th");
                     break;
                 default:
                     break;
@@ -331,7 +343,8 @@ module.exports = {
             //各自Model的attributes
             switch(model)
             {
-                case Video:
+                case Project:
+                    value.th = req.param("th");
                     break;
                 default:
                     break;

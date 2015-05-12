@@ -78,7 +78,7 @@ function newPost(event) {
     $.ajax({
         url: event.data.action.create,
         method: "post",
-        data: $("#form-edit").serialize(),
+        data: $("#form-edit").serialize()+'&'+$("#form-extra").serialize(),
         success: function(json){
             var obj = JSON.parse(json);
 
@@ -100,7 +100,7 @@ function newDraft(event) {
     $.ajax({
         url: event.data.action.create,
         method: "post",
-        data: $("#form-edit").serialize(),
+        data: $("#form-edit").serialize()+'&'+$("#form-extra").serialize(),
         success: function(json){
             var obj = JSON.parse(json);
 
@@ -126,7 +126,7 @@ function update(event) {
     $.ajax({
         url: event.data.action.update,
         method: "post",
-        data: $("#form-edit").serialize(),
+        data: $("#form-edit").serialize()+'&'+$("#form-extra").serialize(),
         success: function(msg){
             if(msg == "success")
                 alert("儲存成功");
@@ -146,7 +146,7 @@ function toDraft(event) {
     $.ajax({
         url: event.data.action.update,
         method: "post",
-        data: $("#form-edit").serialize(),
+        data: $("#form-edit").serialize()+'&'+$("#form-extra").serialize(),
         success: function(msg){
             if(msg == "success"){
                 alert("儲存成功");
@@ -170,7 +170,7 @@ function publish(event) {
     $.ajax({
         url: event.data.action.update,
         method: "post",
-        data: $("#form-edit").serialize(),
+        data: $("#form-edit").serialize()+'&'+$("#form-extra").serialize(),
         success: function(msg){
             if(msg == "success")
                 location.href = document.referrer;

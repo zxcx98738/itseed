@@ -109,6 +109,24 @@ module.exports = {
                 action.sort = "/cms/sort/courseList";           
                 break;
 
+            case Project:
+                action.new = "/cms/new/project"
+                action.edit = "/cms/edit/project"
+
+                action.view = "/project#"
+                action.preview = "/cms/preview/project";
+                action.load = "/cms/load/project";
+                action.url = "frontend/pages/project";
+                
+                action.create = "/cms/create/project";
+                action.update = "/cms/update/project";
+                action.toDraft = "/cms/toDraft/project";
+                action.publish = "/cms/publish/project";
+                action.delete = "/cms/delete/project";
+
+                action.sort = "/cms/sort/project";           
+                break;
+
             case Video:
                 action.new = "/cms/new/video"
                 action.edit = "/cms/edit/video"
@@ -138,16 +156,9 @@ module.exports = {
 
         switch(module)
         {
-            case AboutNTCA:
-                menu.datePicker = "off";
-                menu.tag = "off";
-                break;
-            case Video:
-                menu.datePicker = "off";
-                menu.tag = "off";
-                break;
             default:
-            //TODO: 防呆
+                menu.datePicker = "off";
+                menu.tag = "off";
                 break;
         }
         return menu;

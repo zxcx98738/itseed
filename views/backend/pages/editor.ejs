@@ -60,6 +60,19 @@
                 <div>
                     <div>文章設定</div>
                     <ul>
+                        <li class='other-attributes'>
+                            <form method="post" id="form-extra">
+                            <% if(typeof post.th !== 'undefined'){ %>
+                                    <label>屆數</label>
+                                <% if(post.status == "new"){ %>
+                                    <input type="text" class="form-control" id="th" name="th" placeholder="請輸入數字">
+                                <% } else{ %>
+                                    <input type="text" class="form-control" id="th" name="th" placeholder="請輸入數字" value="<%= post.th %>">
+                                <% } %>
+                            <% } %>
+                            </form>
+                        </li>
+
                         <% if(menu.tag == "on") { %>
                         <li class='has-sub'>
                             <a href='#'><i class="fa fa-tag fa-fw"></i><span>標籤</span></a>
