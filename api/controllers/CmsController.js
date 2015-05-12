@@ -161,7 +161,7 @@ module.exports = {
         /*if(req.session.authorized){*/
             var theModel = sails.models[req.param("model").toLowerCase()];   
             var status = req.param("status");
-            var modelArr = ["aboutITSeed", "aboutNTCA", "businessVisit", "courseInfo", "courseList", "faq", 
+            var modelArr = ["aboutITSeed", "aboutNTCA", "businessVisit", "courseInfo", "courseList", "faq", "instructor", 
                             "memberList", "news", "overseaVisit", "project", "regFile", "regInfo", "sharing",
                             "slider", "timeline", "video"]
             var counts = {};

@@ -77,6 +77,11 @@ module.exports.routes = {
     action: 'overseaVisit'
   }, 
 
+  '/instructor': {
+    controller: 'Site',
+    action: 'instructor'
+  }, 
+
   '/video': {
     controller: 'Site',
     action: 'video'

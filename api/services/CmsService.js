@@ -164,6 +164,24 @@ module.exports = {
                 action.sort = "/cms/sort/overseaVisit";           
                 break;
 
+            case Instructor:
+                action.new = "/cms/new/instructor"
+                action.edit = "/cms/edit/instructor"
+
+                action.view = "/instructor#"
+                action.preview = "/cms/preview/instructor";
+                action.load = "/cms/load/instructor";
+                action.url = "frontend/pages/instructor";
+                
+                action.create = "/cms/create/instructor";
+                action.update = "/cms/update/instructor";
+                action.toDraft = "/cms/toDraft/instructor";
+                action.publish = "/cms/publish/instructor";
+                action.delete = "/cms/delete/instructor";
+
+                action.sort = "/cms/sort/instructor";           
+                break;
+
             case Video:
                 action.new = "/cms/new/video"
                 action.edit = "/cms/edit/video"
