@@ -23,6 +23,12 @@ module.exports = {
                 //各自Model的attributes
                 switch(model)
                 {
+                    case CourseInfo:
+                        post.th = "";
+                        post.speaker = "";
+                        post.speakerTitle = "";
+                        post.photo = "";
+                        break;
                     case Project:
                         post.th = "";
                         break;
@@ -163,7 +169,7 @@ module.exports = {
             var status = req.param("status");
             var modelArr = ["aboutITSeed", "aboutNTCA", "businessVisit", "courseInfo", "courseList", "faq", "instructor", 
                             "memberList", "news", "overseaVisit", "project", "regFile", "regInfo", "sharing",
-                            "slider", "timeline", "video"]
+                            "timeline", "video"]
             var counts = {};
             var now = new Date();
 
@@ -301,6 +307,12 @@ module.exports = {
             //各自Model的attributes
             switch(model)
             {
+                case CourseInfo:
+                    value.th = req.param("th");
+                    value.speaker = req.param("speaker");
+                    value.speakerTitle = req.param("speakerTitle");
+                    //value.photo = req.param("photo");
+                    break;
                 case Project:
                     value.th = req.param("th");
                     break;
@@ -349,6 +361,12 @@ module.exports = {
             //各自Model的attributes
             switch(model)
             {
+                case CourseInfo:
+                    value.th = req.param("th");
+                    value.speaker = req.param("speaker");
+                    value.speakerTitle = req.param("speakerTitle");
+                    //value.photo = req.param("photo");
+                    break;
                 case Project:
                     value.th = req.param("th");
                     break;

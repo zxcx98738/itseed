@@ -99,7 +99,7 @@ module.exports = {
         });
     },
 
-    //計畫簡介
+    //歷屆名單
     memberList: function(req, res){
         var model = MemberList; 
         var action = CmsService.getAction(model);
@@ -123,7 +123,7 @@ module.exports = {
         });
     },
 
-    //計畫簡介
+    //歷屆課程
     courseList: function(req, res){
         var model = CourseList; 
         var action = CmsService.getAction(model);
@@ -140,6 +140,51 @@ module.exports = {
             }
             return res.view(action.url, {
                 datas: datas
+            });
+        })
+        .catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    },
+
+    //講座課程
+    courseInfoList: function(req, res){
+        var model = CourseInfo; 
+        var action = CmsService.getAction(model);
+        var now = new Date();
+        var criteria = {   
+            where: { status: "P" }, 
+            sort: { order: "asc" }
+        }
+
+        CmsService.findPosts(model, criteria)
+        .then(function(datas){
+            for(var i = 0; i < datas.length; i++){
+                datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
+            }
+            return res.view(action.list, {
+                url: action.view,
+                datas: datas
+            });
+        })
+        .catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    },
+    courseInfo: function(req, res){
+        var model = CourseInfo; 
+        var action = CmsService.getAction(model);
+        var now = new Date();
+        var criteria = {   
+            id: req.param("id")
+        }
+
+        CmsService.findOnePost(model, criteria)
+        .then(function(data){
+            data.formatTime = CmsService.formatTime(data.createdAt);
+
+            return res.view(action.url, {
+                data: data
             });
         })
         .catch(function(err){

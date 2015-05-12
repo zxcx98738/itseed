@@ -63,12 +63,34 @@
                         <li class='other-attributes'>
                             <form method="post" id="form-extra">
                             <% if(typeof post.th !== 'undefined'){ %>
+                                <div>
                                     <label>屆數</label>
                                 <% if(post.status == "new"){ %>
-                                    <input type="text" class="form-control" id="th" name="th" placeholder="請輸入數字">
+                                    <input type="text" class="form-control" name="th" placeholder="ex: 12">
                                 <% } else{ %>
-                                    <input type="text" class="form-control" id="th" name="th" placeholder="請輸入數字" value="<%= post.th %>">
+                                    <input type="text" class="form-control" name="th" placeholder="ex: 12" value="<%= post.th %>">
                                 <% } %>
+                                </div>
+                            <% } %>
+                            <% if(typeof post.speaker !== 'undefined'){ %>
+                                <div>
+                                    <label>講者</label>
+                                <% if(post.status == "new"){ %>
+                                    <input type="text" class="form-control" name="speaker" placeholder="ex: 陳芬玉">
+                                <% } else{ %>
+                                    <input type="text" class="form-control" name="speaker" placeholder="ex: 陳芬玉" value="<%= post.speaker %>">
+                                <% } %>
+                                </div>
+                            <% } %>
+                            <% if(typeof post.speakerTitle !== 'undefined'){ %>
+                                <div>
+                                    <label>頭銜</label>
+                                <% if(post.status == "new"){ %>
+                                    <input type="text" class="form-control" name="speakerTitle" placeholder="ex: 總幹事">
+                                <% } else{ %>
+                                    <input type="text" class="form-control" name="speakerTitle" placeholder="ex: 總幹事" value="<%= post.speakerTitle %>">
+                                <% } %>
+                                </div>
                             <% } %>
                             </form>
                         </li>

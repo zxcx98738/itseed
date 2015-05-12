@@ -67,6 +67,16 @@ module.exports.routes = {
     action: 'courseList'
   }, 
 
+  '/courseInfo': {
+    controller: 'Site',
+    action: 'courseInfoList'
+  }, 
+
+  '/courseInfo/:id': {
+    controller: 'Site',
+    action: 'courseInfo'
+  }, 
+
   '/project': {
     controller: 'Site',
     action: 'project'

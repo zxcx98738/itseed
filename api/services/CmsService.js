@@ -128,6 +128,25 @@ module.exports = {
                 action.sort = "/cms/sort/courseList";           
                 break;
 
+            case CourseInfo:
+                action.new = "/cms/new/courseInfo";
+                action.edit = "/cms/edit/courseInfo";
+
+                action.view = "/courseInfo/";
+                action.preview = "/cms/preview/courseInfo";
+                action.load = "/cms/load/courseInfo";
+                action.url = "frontend/pages/courseInfo";
+                action.list = "frontend/pages/courseInfoList"
+                
+                action.create = "/cms/create/courseInfo";
+                action.update = "/cms/update/courseInfo";
+                action.toDraft = "/cms/toDraft/courseInfo";
+                action.publish = "/cms/publish/courseInfo";
+                action.delete = "/cms/delete/courseInfo";
+
+                action.sort = "/cms/sort/courseInfo";           
+                break;
+
             case Project:
                 action.new = "/cms/new/project";
                 action.edit = "/cms/edit/project";
