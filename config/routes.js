@@ -82,6 +82,21 @@ module.exports.routes = {
     action: 'instructor'
   }, 
 
+  '/regInfo': {
+    controller: 'Site',
+    action: 'regInfo'
+  }, 
+
+  '/regFile': {
+    controller: 'Site',
+    action: 'regFile'
+  }, 
+
+  '/timeline': {
+    controller: 'Site',
+    action: 'timeline'
+  }, 
+
   '/video': {
     controller: 'Site',
     action: 'video'

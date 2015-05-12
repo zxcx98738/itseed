@@ -38,10 +38,10 @@ module.exports = {
         switch(model)
         {
             case News:
-                action.new = "/cms/new/news"
-                action.edit = "/cms/edit/news"
+                action.new = "/cms/new/news";
+                action.edit = "/cms/edit/news";
 
-                action.view = "/news/"
+                action.view = "/news/";
                 action.preview = "/cms/preview/news";
                 action.load = "/cms/load/news";
                 action.url = "frontend/pages/news";
@@ -57,10 +57,10 @@ module.exports = {
                 break;
 
             case AboutNTCA:
-                action.new = "/cms/new/aboutNTCA"
-                action.edit = "/cms/edit/aboutNTCA"
+                action.new = "/cms/new/aboutNTCA";
+                action.edit = "/cms/edit/aboutNTCA";
 
-                action.view = "/aboutNTCA#"
+                action.view = "/aboutNTCA#";
                 action.preview = "/cms/preview/aboutNTCA";
                 action.load = "/cms/load/aboutNTCA";
                 action.url = "frontend/pages/aboutNTCA";
@@ -75,10 +75,10 @@ module.exports = {
                 break;
 
             case AboutITSeed:
-                action.new = "/cms/new/aboutITSeed"
-                action.edit = "/cms/edit/aboutITSeed"
+                action.new = "/cms/new/aboutITSeed";
+                action.edit = "/cms/edit/aboutITSeed";
 
-                action.view = "/aboutITSeed#"
+                action.view = "/aboutITSeed#";
                 action.preview = "/cms/preview/aboutITSeed";
                 action.load = "/cms/load/aboutITSeed";
                 action.url = "frontend/pages/aboutITSeed";
@@ -93,10 +93,10 @@ module.exports = {
                 break;
 
              case MemberList:
-                action.new = "/cms/new/memberList"
-                action.edit = "/cms/edit/memberList"
+                action.new = "/cms/new/memberList";
+                action.edit = "/cms/edit/memberList";
 
-                action.view = "/memberList#"
+                action.view = "/memberList#";
                 action.preview = "/cms/preview/memberList";
                 action.load = "/cms/load/memberList";
                 action.url = "frontend/pages/memberList";
@@ -111,10 +111,10 @@ module.exports = {
                 break;
 
             case CourseList:
-                action.new = "/cms/new/courseList"
-                action.edit = "/cms/edit/courseList"
+                action.new = "/cms/new/courseList";
+                action.edit = "/cms/edit/courseList";
 
-                action.view = "/courseList#"
+                action.view = "/courseList#";
                 action.preview = "/cms/preview/courseList";
                 action.load = "/cms/load/courseList";
                 action.url = "frontend/pages/courseList";
@@ -129,10 +129,10 @@ module.exports = {
                 break;
 
             case Project:
-                action.new = "/cms/new/project"
-                action.edit = "/cms/edit/project"
+                action.new = "/cms/new/project";
+                action.edit = "/cms/edit/project";
 
-                action.view = "/project#"
+                action.view = "/project#";
                 action.preview = "/cms/preview/project";
                 action.load = "/cms/load/project";
                 action.url = "frontend/pages/project";
@@ -147,10 +147,10 @@ module.exports = {
                 break;
 
             case OverseaVisit:
-                action.new = "/cms/new/overseaVisit"
-                action.edit = "/cms/edit/overseaVisit"
+                action.new = "/cms/new/overseaVisit";
+                action.edit = "/cms/edit/overseaVisit";
 
-                action.view = "/overseaVisit#"
+                action.view = "/overseaVisit#";
                 action.preview = "/cms/preview/overseaVisit";
                 action.load = "/cms/load/overseaVisit";
                 action.url = "frontend/pages/overseaVisit";
@@ -165,10 +165,10 @@ module.exports = {
                 break;
 
             case Instructor:
-                action.new = "/cms/new/instructor"
-                action.edit = "/cms/edit/instructor"
+                action.new = "/cms/new/instructor";
+                action.edit = "/cms/edit/instructor";
 
-                action.view = "/instructor#"
+                action.view = "/instructor#";
                 action.preview = "/cms/preview/instructor";
                 action.load = "/cms/load/instructor";
                 action.url = "frontend/pages/instructor";
@@ -182,11 +182,65 @@ module.exports = {
                 action.sort = "/cms/sort/instructor";           
                 break;
 
-            case Video:
-                action.new = "/cms/new/video"
-                action.edit = "/cms/edit/video"
+            case RegInfo:
+                action.new = "/cms/new/regInfo";
+                action.edit = "/cms/edit/regInfo";
 
-                action.view = "/video#"
+                action.view = "/regInfo#";
+                action.preview = "/cms/preview/regInfo";
+                action.load = "/cms/load/regInfo";
+                action.url = "frontend/pages/regInfo";
+                
+                action.create = "/cms/create/regInfo";
+                action.update = "/cms/update/regInfo";
+                action.toDraft = "/cms/toDraft/regInfo";
+                action.publish = "/cms/publish/regInfo";
+                action.delete = "/cms/delete/regInfo";
+
+                action.sort = "disabled";           
+                break;
+
+            case RegFile:
+                action.new = "/cms/new/regFile";
+                action.edit = "/cms/edit/regFile";
+
+                action.view = "/regFile#";
+                action.preview = "/cms/preview/regFile";
+                action.load = "/cms/load/regFile";
+                action.url = "frontend/pages/regFile";
+                
+                action.create = "/cms/create/regFile";
+                action.update = "/cms/update/regFile";
+                action.toDraft = "/cms/toDraft/regFile";
+                action.publish = "/cms/publish/regFile";
+                action.delete = "/cms/delete/regFile";
+
+                action.sort = "disabled";           
+                break;
+
+            case Timeline:
+                action.new = "/cms/new/timeline";
+                action.edit = "/cms/edit/timeline";
+
+                action.view = "/timeline#";
+                action.preview = "/cms/preview/timeline";
+                action.load = "/cms/load/timeline";
+                action.url = "frontend/pages/timeline";
+                
+                action.create = "/cms/create/timeline";
+                action.update = "/cms/update/timeline";
+                action.toDraft = "/cms/toDraft/timeline";
+                action.publish = "/cms/publish/timeline";
+                action.delete = "/cms/delete/timeline";
+
+                action.sort = "disabled";           
+                break;
+
+            case Video:
+                action.new = "/cms/new/video";
+                action.edit = "/cms/edit/video";
+
+                action.view = "/video#";
                 action.preview = "/cms/preview/video";
                 action.load = "/cms/load/video";
                 action.url = "frontend/pages/video";
