@@ -37,6 +37,24 @@ module.exports = {
 
         switch(model)
         {
+            case AboutNTCA:
+                action.new = "/cms/new/aboutNTCA"
+                action.edit = "/cms/edit/aboutNTCA"
+
+                action.view = "/aboutNTCA#"
+                action.preview = "/cms/preview/aboutNTCA";
+                action.load = "/cms/load/aboutNTCA";
+                action.url = "frontend/pages/aboutNTCA";
+                
+                action.create = "/cms/create/aboutNTCA";
+                action.update = "/cms/update/aboutNTCA";
+                action.toDraft = "/cms/toDraft/aboutNTCA";
+                action.publish = "/cms/publish/aboutNTCA";
+                action.delete = "/cms/delete/aboutNTCA";
+
+                action.sort = "disabled";           
+                break;
+
             case Video:
                 action.new = "/cms/new/video"
                 action.edit = "/cms/edit/video"
@@ -51,11 +69,11 @@ module.exports = {
                 action.toDraft = "/cms/toDraft/video";
                 action.publish = "/cms/publish/video";
                 action.delete = "/cms/delete/video";
+
                 action.sort = "/cms/sort/video";           
                 break;
             default:
             //TODO: 防呆
-                action.sort = "disabled";
                 break;
         }
         return action;
@@ -66,8 +84,12 @@ module.exports = {
 
         switch(module)
         {
+            case AboutNTCA:
+                menu.datePicker = "off";
+                menu.tag = "off";
+                break;
             case Video:
-                menu.datePicker = "on";
+                menu.datePicker = "off";
                 menu.tag = "off";
                 break;
             default:

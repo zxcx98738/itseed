@@ -37,6 +37,11 @@ module.exports.routes = {
     view: 'frontend/pages/index'
   },
   
+  '/aboutNTCA': {
+    controller: 'Site',
+    action: 'aboutNTCA'
+  },
+
   '/video': {
     controller: 'Site',
     action: 'video'
