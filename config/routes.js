@@ -37,6 +37,16 @@ module.exports.routes = {
     view: 'frontend/pages/index'
   },
   
+  '/news': {
+    controller: 'Site',
+    action: 'newsList'
+  },
+
+  '/news/:id': {
+    controller: 'Site',
+    action: 'news'
+  },
+
   '/aboutNTCA': {
     controller: 'Site',
     action: 'aboutNTCA'

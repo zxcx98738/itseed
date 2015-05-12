@@ -37,6 +37,25 @@ module.exports = {
 
         switch(model)
         {
+            case News:
+                action.new = "/cms/new/news"
+                action.edit = "/cms/edit/news"
+
+                action.view = "/news/"
+                action.preview = "/cms/preview/news";
+                action.load = "/cms/load/news";
+                action.url = "frontend/pages/news";
+                action.list = "frontend/pages/newsList"
+                
+                action.create = "/cms/create/news";
+                action.update = "/cms/update/news";
+                action.toDraft = "/cms/toDraft/news";
+                action.publish = "/cms/publish/news";
+                action.delete = "/cms/delete/news";
+
+                action.sort = "disabled";           
+                break;
+
             case AboutNTCA:
                 action.new = "/cms/new/aboutNTCA"
                 action.edit = "/cms/edit/aboutNTCA"
@@ -174,6 +193,9 @@ module.exports = {
 
         switch(module)
         {
+            case News:
+                menu.datePicker = "on";
+                break;
             default:
                 menu.datePicker = "off";
                 menu.tag = "off";

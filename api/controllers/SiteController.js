@@ -6,14 +6,59 @@
  */
 
 module.exports = {
+    //最新消息
+    newsList: function(req, res){
+        var model = News; 
+        var action = CmsService.getAction(model);
+        var now = new Date();
+        var criteria = {   
+            where: { status: "P", createdAt: { '<=': now } }, 
+            sort: { createdAt: "asc" }
+        }
+
+        CmsService.findPosts(model, criteria)
+        .then(function(datas){
+            for(var i = 0; i < datas.length; i++){
+                datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
+            }
+            return res.view(action.list, {
+                url: action.view,
+                datas: datas
+            });
+        })
+        .catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    },
+    news: function(req, res){
+        var model = News; 
+        var action = CmsService.getAction(model);
+        var now = new Date();
+        var criteria = {   
+            id: req.param("id")
+        }
+
+        CmsService.findOnePost(model, criteria)
+        .then(function(data){
+            data.formatTime = CmsService.formatTime(data.createdAt);
+
+            return res.view(action.url, {
+                data: data
+            });
+        })
+        .catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    },
+
     //公會簡介
     aboutNTCA: function(req, res){
         var model = AboutNTCA; 
         var action = CmsService.getAction(model);
         var now = new Date();
         var criteria = {   
-            where: { status: "P", createdAt: { '<=': now } }, 
-            sort: { order: "asc" }
+            where: { status: "P" }, 
+            sort: { createdAt: "asc" }
         }
 
         CmsService.findPosts(model, criteria)
@@ -36,8 +81,8 @@ module.exports = {
         var action = CmsService.getAction(model);
         var now = new Date();
         var criteria = {   
-            where: { status: "P", createdAt: { '<=': now } }, 
-            sort: { order: "asc" }
+            where: { status: "P" }, 
+            sort: { createdAt: "asc" }
         }
 
         CmsService.findPosts(model, criteria)
@@ -60,8 +105,8 @@ module.exports = {
         var action = CmsService.getAction(model);
         var now = new Date();
         var criteria = {   
-            where: { status: "P", createdAt: { '<=': now } }, 
-            sort: { order: "asc" }
+            where: { status: "P" }, 
+            sort: { createdAt: "asc" }
         }
 
         CmsService.findPosts(model, criteria)
@@ -84,8 +129,8 @@ module.exports = {
         var action = CmsService.getAction(model);
         var now = new Date();
         var criteria = {   
-            where: { status: "P", createdAt: { '<=': now } }, 
-            sort: { order: "asc" }
+            where: { status: "P" }, 
+            sort: { createdAt: "asc" }
         }
 
         CmsService.findPosts(model, criteria)
@@ -108,7 +153,7 @@ module.exports = {
         var action = CmsService.getAction(model);
         var now = new Date();
         var criteria = {   
-            where: { status: "P", createdAt: { '<=': now } }, 
+            where: { status: "P" }, 
             sort: { order: "asc" }
         }
 
@@ -132,7 +177,7 @@ module.exports = {
         var action = CmsService.getAction(model);
         var now = new Date();
         var criteria = {   
-            where: { status: "P", createdAt: { '<=': now } }, 
+            where: { status: "P" }, 
             sort: { order: "asc" }
         }
 
@@ -156,7 +201,7 @@ module.exports = {
         var action = CmsService.getAction(model);
         var now = new Date();
         var criteria = {   
-            where: { status: "P", createdAt: { '<=': now } }, 
+            where: { status: "P" }, 
             sort: { order: "asc" }
         }
 
