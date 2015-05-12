@@ -52,6 +52,11 @@ module.exports.routes = {
     action: 'memberList'
   }, 
 
+  '/courseList': {
+    controller: 'Site',
+    action: 'courseList'
+  }, 
+
   '/video': {
     controller: 'Site',
     action: 'video'

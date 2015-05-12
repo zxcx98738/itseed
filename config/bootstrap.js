@@ -29,7 +29,7 @@ module.exports.bootstrap = function(cb) {
 
   });
 
-  memberList.create({
+  MemberList.create({
     title: "第一屆",
     content: "<table class=\"table table-striped text-center\"><thead><tr><th class=\"col-md-2 text-center\">姓　名</th><th class=\"col-md-10 text-center\">校　系</th></tr></thead><tbody><tr><td>高培翔</td><td>政治大學 企管系</td></tr><tr><td>曾曉婷</td><td>實踐大學 企管系</td></tr><tr><td>段繼忠</td><td>台北科大 工管所</td></tr><tr><td>方超群</td><td>政治大學 公行系</td></tr><tr><td>周呈樺</td><td>台灣藝大 圖傳系</td></tr><tr><td>何明政</td><td>文化大學 資科系</td></tr><tr><td>沈庭禎</td><td>台灣大學 會計系</td></tr><tr><td>王俊凱</td><td>政治大學 財管系</td></tr><tr><td>許儒怡</td><td>政治大學 國貿系</td></tr><tr><td>吳進榮</td><td>輔仁大學 管理所</td></tr><tr><td>詹大千</td><td>台灣大學 政治系</td></tr><tr><td>詹庭芳</td><td>台灣大學 外文系</td></tr><tr><td>張雁翔</td><td>交通大學 管科系</td></tr><tr><td>蔡琮翔</td><td>台灣大學 電機系</td></tr><tr><td>藍健銘</td><td>台灣大學 電機系</td></tr><tr><td>蔡東昇</td><td>交通大學 電物系</td></tr><tr><td>陳姮螢</td><td>台灣大學 國企系</td></tr><tr><td>王治真</td><td>台灣大學 國企系</td></tr><tr><td>張世鋒</td><td>文化大學 資傳所</td></tr><tr><td>劉柏廷</td><td>輔仁大學 哲學系</td></tr><tr><td>岑岡霖</td><td>東吳大學 商數系</td></tr><tr><td>鄭湘縈</td><td>東吳大學 商數系</td></tr></tbody></table>",
     status: "P",
@@ -38,11 +38,20 @@ module.exports.bootstrap = function(cb) {
 
   });
 
-  memberList.create({
+  MemberList.create({
     title: "第二屆",
     content: "<table class=\"table table-striped text-center\"><thead><tr><th class=\"col-md-2 text-center\">姓　名</th><th class=\"col-md-10 text-center\">校　系</th></tr></thead><tbody><tr><td>李佳泓</td><td>交通大學 電控系</td></tr><tr><td>陳彥如</td><td>台灣大學 資管系</td></tr><tr><td>黃重凱</td><td>台灣大學 工科系</td></tr><tr><td>張程鈞</td><td>淡江大學 教科系</td></tr><tr><td>陳正閔</td><td>東吳大學 企管所</td></tr><tr><td>梁文玉</td><td>交通大學 管科系</td></tr><tr><td>黃麒穎</td><td>交通大學 機械系</td></tr><tr><td>林俊成</td><td>交通大學 工管系</td></tr><tr><td>劉嘉皓</td><td>政治大學 廣電所</td></tr><tr><td>王培仲</td><td>台灣大學 微生所</td></tr><tr><td>陳琬瑜</td><td>台灣師大 社教系</td></tr><tr><td>陳顥仁</td><td>台北科大 工管所</td></tr><tr><td>洪韶彥</td><td>清華大學 科管所</td></tr><tr><td>蔡致蕙</td><td>台灣藝大 視傳系</td></tr><tr><td>古竹生</td><td>清華大學 電機系</td></tr><tr><td>許庭瑋</td><td>台灣師大 資訊系</td></tr><tr><td>王仕閔</td><td>台灣大學 政治系</td></tr><tr><td>劉虹麟</td><td>政治大學 公行系</td></tr><tr><td>劉筱筠</td><td>台北大學 經研所</td></tr><tr><td>李佳泓</td><td>交通大學 電控系</td></tr><tr><td>陳彥如</td><td>台灣大學 資管系</td></tr><tr><td>黃重凱</td><td>台灣大學 工科系</td></tr></tbody></table>",
     status: "P",
     order: 2
+  }).exec(function(){
+
+  });
+
+  CourseList.create({
+    title: "第一屆",
+    content: "<h3><span style=\"font-weight: bold;\">上學期</span></h3><table class=\"table table-striped\"><thead><tr><th class=\"col-md-2 text-center\">時　間</th><th class=\"col-md-6 text-center\">課　程　內　容</th><th class=\"col-md-4 text-center\">講　師</th></tr></thead><tbody><tr><td>2003/10/18</td><td>台灣資訊科技產業的現況與未來發展</td><td>精英電腦 許明仁 副董事長 / 本會榮譽理事長</td></tr><tr><td>2003/10/18</td><td>團隊學 Who To Do?團隊溝通與管理</td><td>百略醫學教育基金會 陳於志 執行長</td></tr><tr><td>2003/11/01</td><td>亞洲電腦遊戲產業的現況與未來</td><td>大宇資訊 李永進 董事長 / 本會理事</td></tr><tr><td>2S003/11/15</td><td>IA資訊家電產業大未來</td><td>欣龍資訊 黃宗信 總經理</td></tr><tr><td>2003/11/15</td><td>資訊情報蒐集、分析與運用</td><td>拓墣產業研究所 陳清文 所長</td></tr><tr><td>2003/11/29</td><td>人才學 -IT職場人力資源需求分析</td><td>就業情報資訊 翁靜玉 董事長</td></tr><tr><td>2003/11/29</td><td>兩岸軟體產業的發展與依存</td><td>資訊工業策進會 許良光 顧問</td></tr><tr><td>2003/12/13</td><td>行動智慧裝置未來發展潛力</td><td>台灣微軟 亞洲區嵌入式系統事業群 吳勝雄 執行副總</td></tr><tr><td>2003/12/27</td><td>企劃學 (Project Management) How To Do?大型電腦展企劃~從創意力到執行力</td><td>林偉正 專案經理 / 臺北縣電腦公會</td></tr><tr><td>2003/12/27</td><td>將藝術美學帶入科技產業</td><td>戴醒凡 美術系教授兼計算中心主任 / 國立台灣藝術大學</td></tr><tr><td>2004/1/10</td><td>消費性電子產品的成功行銷模式</td><td>張運揚 副總經理 / 英資達股份有限公司 / 本會理事</td></tr><tr><td>2004/1/10</td><td>期末心得分享座談</td><td>公會教育訓練組</td></tr></tbody></table>  <h3><span style=\"font-weight: bold;\">下學期</span></h3><table class=\"table table-striped\"><thead><tr><th class=\"col-xs-2\" style=\"text-align: center; width: 141px;\">時　間</th><th class=\"col-xs-6\" style=\"text-align: center; width: 421px;\">課　程　內　容</th><th class=\"col-xs-4\" style=\"text-align: center; width: 280px;\">講　師</th></tr></thead><tbody><tr><td>2004/2/21</td><td>專案報告</td><td>公會教育訓練組</td></tr><tr><td>2004/3/6</td><td>將藝術美學帶入科技產業</td><td>國立台灣藝術大學 戴醒凡 美術系教授兼計算中心主任</td></tr><tr><td>2004/3/21</td><td>企業經營者的思維與格局--從遊戲產業成功經營談起</td><td>大宇資訊 李永進 董事長 / 本會理事</td></tr><tr><td>2004/4/3</td><td>承先啟後談資策會在台灣資訊產業的角色及功能</td><td>資訊工業策進會 林逢慶 執行長</td></tr><tr><td>2004/4/17</td><td>縮短數位城鄉差距</td><td>李鳴飛處長 / 資策會教育訓練處</td></tr><tr><td>2004/5/1</td><td>行動裝置與行動服務的整合應用-從okwap熱銷談起</td><td>葉力銓 協理 / 英業達股份有限公司</td></tr><tr><td>2004/5/15</td><td>企業參訪</td><td>中影-梁祝的製作與分工</td></tr><tr><td>2004/5/29</td><td>兩岸青年競爭力分析-談大陸青年與台灣學子的差異</td><td>陳芬玉 總幹事 / 臺北縣電腦商業同業公會</td></tr><tr><td>2004/5/29</td><td>結訓典禮</td><td>公會教育訓練組</td></tr></tbody></table>",
+    status: "P",
+    order: 1
   }).exec(function(){
 
   });

@@ -29,6 +29,7 @@ module.exports = {
             res.end(JSON.stringify(err));
         });
     },
+
     //計畫簡介
     aboutITSeed: function(req, res){
         var model = AboutITSeed; 
@@ -52,6 +53,7 @@ module.exports = {
             res.end(JSON.stringify(err));
         });
     },
+
     //計畫簡介
     memberList: function(req, res){
         var model = MemberList; 
@@ -75,6 +77,31 @@ module.exports = {
             res.end(JSON.stringify(err));
         });
     },
+
+    //計畫簡介
+    courseList: function(req, res){
+        var model = CourseList; 
+        var action = CmsService.getAction(model);
+        var now = new Date();
+        var criteria = {   
+            where: { status: "P", createdAt: { '<=': now } }, 
+            sort: { order: "asc" }
+        }
+
+        CmsService.findPosts(model, criteria)
+        .then(function(datas){
+            for(var i = 0; i < datas.length; i++){
+                datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
+            }
+            return res.view(action.url, {
+                datas: datas
+            });
+        })
+        .catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    },
+
     //影音專區
     video: function(req, res){
         var model = Video; 
