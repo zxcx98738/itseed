@@ -55,6 +55,24 @@ module.exports = {
                 action.sort = "disabled";           
                 break;
 
+            case AboutITSeed:
+                action.new = "/cms/new/aboutITSeed"
+                action.edit = "/cms/edit/aboutITSeed"
+
+                action.view = "/aboutITSeed#"
+                action.preview = "/cms/preview/aboutITSeed";
+                action.load = "/cms/load/aboutITSeed";
+                action.url = "frontend/pages/aboutITSeed";
+                
+                action.create = "/cms/create/aboutITSeed";
+                action.update = "/cms/update/aboutITSeed";
+                action.toDraft = "/cms/toDraft/aboutITSeed";
+                action.publish = "/cms/publish/aboutITSeed";
+                action.delete = "/cms/delete/aboutITSeed";
+
+                action.sort = "disabled";           
+                break;
+
             case Video:
                 action.new = "/cms/new/video"
                 action.edit = "/cms/edit/video"

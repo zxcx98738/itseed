@@ -42,6 +42,11 @@ module.exports.routes = {
     action: 'aboutNTCA'
   },
 
+  '/aboutITSeed': {
+    controller: 'Site',
+    action: 'aboutITSeed'
+  }, 
+
   '/video': {
     controller: 'Site',
     action: 'video'
