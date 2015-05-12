@@ -1,0 +1,55 @@
+<script>
+	function scroll_if_anchor(href) {
+	 	href = typeof(href) == "string" ? href : $(this).attr("href");
+	    var fromTop = 133;
+
+	    if(href.indexOf("#") == 0) {
+	    	var $target = $(href);
+	    	
+	        if($target.length) {
+	        	$('html, body').animate({ scrollTop: $target.offset().top - fromTop });
+	        	if(history && "pushState" in history) {
+	        		history.pushState({}, document.title, window.location.pathname + href);
+	        		return false;
+	        	}
+	        }
+	    }
+	}    
+	$(function() {
+		scroll_if_anchor(window.location.hash);
+    });
+</script>
+
+<!--HEADER-->
+<% include ../header %>
+<!--END HEADER-->
+
+<% for(var i = 0; i < datas.length; i++){ %>
+	<% if(i%2 == 0){ %>
+		<section class="bg-white">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<h3><%= datas[0].title %></h3>
+						<div><%- datas[0].content %></div>	
+					</div>
+				</div>
+			</div>
+		</section>
+	<% } else{ %>
+		<section class="bg-light-gray">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<h3><%= datas[0].title %></h3>
+						<div><%- datas[0].content %></div>	
+					</div>
+				</div>
+			</div>
+		</section>
+	<% } %>
+<% } %>
+
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->

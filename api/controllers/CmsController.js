@@ -26,6 +26,9 @@ module.exports = {
                     case Project:
                         post.th = "";
                         break;
+                    case OverseaVisit:
+                        post.th = "";
+                        break;
                     default:
                         break;
                 }
@@ -301,6 +304,9 @@ module.exports = {
                 case Project:
                     value.th = req.param("th");
                     break;
+                case OverseaVisit:
+                    value.th = req.param("th");
+                    break;
                 default:
                     break;
             }
@@ -344,6 +350,9 @@ module.exports = {
             switch(model)
             {
                 case Project:
+                    value.th = req.param("th");
+                    break;
+                case OverseaVisit:
                     value.th = req.param("th");
                     break;
                 default:

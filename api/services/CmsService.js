@@ -127,6 +127,24 @@ module.exports = {
                 action.sort = "/cms/sort/project";           
                 break;
 
+            case OverseaVisit:
+                action.new = "/cms/new/overseaVisit"
+                action.edit = "/cms/edit/overseaVisit"
+
+                action.view = "/overseaVisit#"
+                action.preview = "/cms/preview/overseaVisit";
+                action.load = "/cms/load/overseaVisit";
+                action.url = "frontend/pages/overseaVisit";
+                
+                action.create = "/cms/create/overseaVisit";
+                action.update = "/cms/update/overseaVisit";
+                action.toDraft = "/cms/toDraft/overseaVisit";
+                action.publish = "/cms/publish/overseaVisit";
+                action.delete = "/cms/delete/overseaVisit";
+
+                action.sort = "/cms/sort/overseaVisit";           
+                break;
+
             case Video:
                 action.new = "/cms/new/video"
                 action.edit = "/cms/edit/video"
