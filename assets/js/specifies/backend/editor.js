@@ -75,10 +75,23 @@ function newPost(event) {
     $("#content").val($(".summernote").code());
     $("#status").val("P");
 
+    /*建立FormData物件來同時上傳表單與檔案*/
+    var formData = new FormData($("#form-edit")[0]);
+    var poData = $("#form-extra").serializeArray();
+
+    for(var i = 0; i < poData.length; i++){
+        formData.append(poData[i].name, poData[i].value);
+    }
+    if($("#form-extra input[type=file]").length > 0)
+        formData.append("photo", $("#form-extra input[type=file]")[0].files[0]); 
+
     $.ajax({
         url: event.data.action.create,
         method: "post",
-        data: $("#form-edit").serialize()+'&'+$("#form-extra").serialize(),
+        data: formData,
+        enctype:"multipart/form-data",
+        processData: false,
+        contentType: false,
         success: function(json){
             var obj = JSON.parse(json);
 
@@ -100,6 +113,7 @@ function newDraft(event) {
     $.ajax({
         url: event.data.action.create,
         method: "post",
+        enctype: 'multipart/form-data',
         data: $("#form-edit").serialize()+'&'+$("#form-extra").serialize(),
         success: function(json){
             var obj = JSON.parse(json);
@@ -126,6 +140,7 @@ function update(event) {
     $.ajax({
         url: event.data.action.update,
         method: "post",
+        enctype: 'multipart/form-data',
         data: $("#form-edit").serialize()+'&'+$("#form-extra").serialize(),
         success: function(msg){
             if(msg == "success")
@@ -146,6 +161,7 @@ function toDraft(event) {
     $.ajax({
         url: event.data.action.update,
         method: "post",
+        enctype: 'multipart/form-data',
         data: $("#form-edit").serialize()+'&'+$("#form-extra").serialize(),
         success: function(msg){
             if(msg == "success"){
@@ -170,6 +186,7 @@ function publish(event) {
     $.ajax({
         url: event.data.action.update,
         method: "post",
+        enctype: 'multipart/form-data',
         data: $("#form-edit").serialize()+'&'+$("#form-extra").serialize(),
         success: function(msg){
             if(msg == "success")

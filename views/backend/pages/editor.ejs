@@ -91,6 +91,17 @@
                                 <% } %>
                                 </div>
                             <% } %>
+                            <% if(typeof post.photo !== 'undefined'){ %>
+                                <div>
+                                    <label>封面相片</label>
+                                <% if(post.status == "new"){ %>
+                                    <input type="file" name="photo">
+                                <% } else{ %>
+                                    <img src="<%= post.photo %>" class="img-responsive">
+                                    <input type="file" name="photo">
+                                <% } %>
+                                </div>
+                            <% } %>
                             </form>
                         </li>
 

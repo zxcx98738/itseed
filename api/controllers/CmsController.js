@@ -311,6 +311,29 @@ module.exports = {
                     value.speaker = req.param("speaker");
                     value.speakerTitle = req.param("speakerTitle");
                     //value.photo = req.param("photo");
+
+                    req.file('photo').upload({ dirname: '../../assets/images/courseInfo'}, function (err, uploadedFiles) {
+                        if (err) 
+                            res.end(JSON.stringify(err));
+                        else {
+                            var url = uploadedFiles[0].fd;
+                            var start = url.search("images") - 1;
+                            url = url.slice(start);
+                            url = url.replace(/\\/g, "/");
+                            value.photo = url;
+                        }
+
+                        CmsService.createPost(model, value)
+                        .then(function(data){
+                            data.message = "success";
+                            res.end(JSON.stringify(data));
+                        })
+                        .catch(function(err){
+                            res.end(JSON.stringify(err));
+                        });
+                    });
+
+
                     break;
                 case Project:
                     value.th = req.param("th");
@@ -321,15 +344,21 @@ module.exports = {
                 default:
                     break;
             }
-
-            CmsService.createPost(model, value)
-            .then(function(data){
-                data.message = "success";
-                res.end(JSON.stringify(data));
-            })
-            .catch(function(err){
-                res.end(JSON.stringify(err));
-            });
+            switch(model)
+            {
+                case CourseInfo:
+                    break;
+                default:
+                    CmsService.createPost(model, value)
+                    .then(function(data){
+                        data.message = "success";
+                        res.end(JSON.stringify(data));
+                    })
+                    .catch(function(err){
+                        res.end(JSON.stringify(err));
+                    });
+                    break;
+            } 
         /*}
         else{
             return res.forbidden();
@@ -364,7 +393,7 @@ module.exports = {
                     value.th = req.param("th");
                     value.speaker = req.param("speaker");
                     value.speakerTitle = req.param("speakerTitle");
-                    //value.photo = req.param("photo");
+                    value.photo = req.param("photo");
                     break;
                 case Project:
                     value.th = req.param("th");
