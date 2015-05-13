@@ -84,10 +84,9 @@ module.exports = {
     preview: function(req, res){
         /*if(req.session.authorized){*/
             var model = sails.models[req.param("model").toLowerCase()]; 
-            var method = req.param("method");
 
             /*收到POST request*/
-            if(method == "post"){
+            if(req.method === 'POST'){
                 var action = CmsService.getAction(model);
                 var url = action.load;
 
@@ -127,7 +126,7 @@ module.exports = {
             var model = sails.models[req.param("model").toLowerCase()]; 
             var action = CmsService.getAction(model);
             /*收到POST request*/
-            if(typeof req.param("id") === "undefined"){
+            if(req.method === 'POST'){
                 var data = {
                     title: req.param("title"),
                     content: req.param("content")
