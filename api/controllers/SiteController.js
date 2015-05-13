@@ -106,7 +106,7 @@ module.exports = {
         var now = new Date();
         var criteria = {   
             where: { status: "P" }, 
-            sort: { createdAt: "asc" }
+            sort: { order: "asc" }
         }
 
         CmsService.findPosts(model, criteria)
@@ -130,7 +130,7 @@ module.exports = {
         var now = new Date();
         var criteria = {   
             where: { status: "P" }, 
-            sort: { createdAt: "asc" }
+            sort: { order: "asc" }
         }
 
         CmsService.findPosts(model, criteria)

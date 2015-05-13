@@ -236,27 +236,59 @@ module.exports = {
                 }
                 else{
                     if(status == "all"){
-                        var criteria = {   
-                            sort: { order: "asc" }
-                        };
+                        if(typeof theModel.attributes.order !== "undefined"){
+                            var criteria = {   
+                                sort: { order: "asc" }
+                            };
+                        }
+                        else{
+                            var criteria = {   
+                                sort: { createdAt: "asc" }
+                            };
+                        }
+                            
                     }
                     else if(status == "draft"){
-                        var criteria = {   
-                            where: { status: "D" }, 
-                            sort: { order: "asc" }
-                        };
+                        if(typeof theModel.attributes.order !== "undefined"){
+                            var criteria = {   
+                                where: { status: "D" }, 
+                                sort: { order: "asc" }
+                            };
+                        }
+                        else{
+                            var criteria = {   
+                                where: { status: "D" }, 
+                                sort: { createdAt: "asc" }
+                            };
+                        }
                     }
                     else if(status == "schedule"){
-                        var criteria = {   
-                            where: { status: "P", createdAt: { ">": now } }, 
-                            sort: { order: "asc" }
-                        };
+                        if(typeof theModel.attributes.order !== "undefined"){
+                            var criteria = {   
+                                where: { status: "P", createdAt: { ">": now } }, 
+                                sort: { order: "asc" }
+                            };
+                        }
+                        else{
+                            var criteria = {   
+                                where: { status: "P", createdAt: { ">": now } }, 
+                                sort: { createdAt: "asc" }
+                            };
+                        }
                     }
                     else{
-                        var criteria = {   
-                            where: { status: "P", createdAt: { "<=": now } }, 
-                            sort: { order: "asc" }
-                        };
+                        if(typeof theModel.attributes.order !== "undefined"){
+                            var criteria = {   
+                                where: { status: "P", createdAt: { "<=": now } }, 
+                                sort: { order: "asc" }
+                            };
+                        }
+                        else{
+                            var criteria = {   
+                                where: { status: "P", createdAt: { "<=": now } }, 
+                                sort: { createdAt: "asc" }
+                            };
+                        }
                     }
 
                     /*再撈正在編輯的model的文章列表*/

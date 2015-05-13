@@ -15,6 +15,15 @@ module.exports = {
           primaryKey: true,
           unique: true
         },
+        //作者ID
+        /*author: {
+          model:'User'
+        },*/
+        //屆數
+        th: {
+          type: 'integer',
+          required: true,
+        },
         //名字
         name: {
           type: 'string',
@@ -27,12 +36,6 @@ module.exports = {
           notNull: true,
           maxLength: 30.
           //defaultsTo: 
-        },
-        //屆數
-        overseaName: {
-          type: 'string',
-          notNull: true,
-          maxLength: 30
         },
         //標題
         title: {
@@ -49,15 +52,17 @@ module.exports = {
         tags: {
           type: 'string'
         },
-        //顯示
-        visible: {
-          type: 'boolean',
-          defaultsTo: true
-        },
         //排序
         order: {
           type: 'integer',
           autoIncrement: true
+        },
+        //狀態  D:草稿, P:已發佈
+        status: {
+          type: 'string',
+          minLength: 1,
+          maxLength: 1,
+          required: true
         },
         //建立時間
         createdAt: {

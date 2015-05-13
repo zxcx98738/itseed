@@ -15,41 +15,42 @@ module.exports = {
           primaryKey: true,
           unique: true
         },
-        //分類
-        type: {
-          type: 'string',
-          notNull: true,
-          maxLength: 10
-        },
+        //作者ID
+        /*author: {
+          model:'User'
+        },*/
         //屆數
         th: {
           type: 'integer',
           notNull: true
         },
-        //參訪企業
-        business: {
+        //照片
+        photo: {
           type: 'string',
-          notNull: true,
-          maxLength: 20
+          defaultsTo: '/images/courseInfo/default.png'
         },
-        //參訪日期
-        date: {
-          type: 'datetime'
+        //標題
+        title: {
+          type: 'string',
+          maxLength: 30,
+          notNull: true
         },
         //內容
         content: {
           type: 'text',
           notNull: true
         },
-        //顯示
-        visible: {
-          type: 'boolean',
-          defaultsTo: true
-        },
         //排序
         order: {
           type: 'integer',
           autoIncrement: true
+        },
+        //狀態  D:草稿, P:已發佈
+        status: {
+          type: 'string',
+          minLength: 1,
+          maxLength: 1,
+          required: true
         },
         //建立時間
         createdAt: {
