@@ -39,6 +39,16 @@
   background-color: white;
 
   >div {
+    height: 50%;
+
+    &.settings {
+      >ul {
+        height: calc(~"100% - 53px");
+        overflow-x: hidden;
+        overflow-y: scroll;
+      }
+    }
+
     >div {
       padding: 15px;
       font-size: 16px;

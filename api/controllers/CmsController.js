@@ -5,6 +5,8 @@
  * @文件 : See http://links.sailsjs.org/docs/controllers
  */
 
+var fs = require("fs"); 
+
 module.exports = {
     //載入編輯器
     editor: function(req, res){
@@ -342,17 +344,28 @@ module.exports = {
                     value.th = req.param("th");
                     value.speaker = req.param("speaker");
                     value.speakerTitle = req.param("speakerTitle");
-                    //value.photo = req.param("photo");
 
+                    //上傳檔案
                     req.file('photo').upload({ dirname: '../../assets/images/courseInfo'}, function (err, uploadedFiles) {
                         if (err) 
-                            res.end(JSON.stringify(err));
-                        else {
-                            var url = uploadedFiles[0].fd;
-                            var start = url.search("images") - 1;
-                            url = url.slice(start);
-                            url = url.replace(/\\/g, "/");
-                            value.photo = url;
+                            return res.end(JSON.stringify(err));
+                        if (uploadedFiles.length > 0) {
+                            //圖片檔
+                            if(uploadedFiles[0].type.substring(0, 5) == "image"){           
+                                var url = uploadedFiles[0].fd;
+                                var start = url.search("images") - 1;
+                                url = url.slice(start);
+                                url = url.replace(/\\/g, "/");
+                                value.photo = url;
+                            }
+                            //非圖片檔
+                            else{
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                                return res.end(JSON.stringify("檔案格式錯誤"));
+                            }                        
                         }
 
                         CmsService.createPost(model, value)
@@ -361,11 +374,16 @@ module.exports = {
                             res.end(JSON.stringify(data));
                         })
                         .catch(function(err){
+                            //刪除上傳檔案
+                            if (uploadedFiles.length > 0) {
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                            }
                             res.end(JSON.stringify(err));
                         });
                     });
-
-
                     break;
                 case Project:
                     value.th = req.param("th");
@@ -425,7 +443,55 @@ module.exports = {
                     value.th = req.param("th");
                     value.speaker = req.param("speaker");
                     value.speakerTitle = req.param("speakerTitle");
-                    value.photo = req.param("photo");
+                    
+                    //上傳檔案
+                    req.file('photo').upload({ dirname: '../../assets/images/courseInfo'}, function (err, uploadedFiles) {
+                        if (err) 
+                            res.end(JSON.stringify(err));
+                        if (uploadedFiles.length > 0) {
+                            //圖片檔
+                            if(uploadedFiles[0].type.substring(0, 5) == "image"){           
+                                var url = uploadedFiles[0].fd;
+                                var start = url.search("images") - 1;
+                                url = url.slice(start);
+                                url = url.replace(/\\/g, "/");
+                                value.photo = url;
+                            }
+                            //非圖片檔
+                            else{
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                                return res.end(JSON.stringify("檔案格式錯誤"));
+                            }
+                        }
+
+                        CmsService.updatePost(model, criteria, value)
+                        .then(function(){
+
+                            //刪除原始檔案
+                            if (uploadedFiles.length > 0 && req.param("oldPhoto") != '/images/courseInfo/default.png') {
+                                var imagePath = sails.config.appPath+'/assets'+req.param("oldPhoto");
+
+                                fs.unlink(imagePath, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                            }
+                            res.end("success");
+                        })
+                        .catch(function(err){
+                            //刪除上傳檔案
+                            if (uploadedFiles.length > 0) {
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                            }
+                            res.end(JSON.stringify(err));
+                        });
+                    });
                     break;
                 case Project:
                     value.th = req.param("th");
@@ -436,14 +502,19 @@ module.exports = {
                 default:
                     break;
             }
-
-            CmsService.updatePost(model, criteria, value)
-            .then(function(){
-                res.end("success");
-            })
-            .catch(function(err){
-                res.end(JSON.stringify(err));
-            });
+            switch(model)
+            {
+                case CourseInfo:
+                    break;
+                default:
+                    CmsService.updatePost(model, criteria, value)
+                    .then(function(){
+                        res.end("success");
+                    })
+                    .catch(function(err){
+                        res.end(JSON.stringify(err));
+                    });
+            }     
         /*}
         else{
             return res.forbidden();

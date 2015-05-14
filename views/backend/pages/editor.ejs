@@ -56,7 +56,7 @@
         <!--ASIDE-->
         <aside>
             <div id="setting" class="accordion">
-                <div>
+                <div class="settings">
                     <div>文章設定</div>
                     <ul>
                         <li class='other-attributes'>
@@ -97,8 +97,9 @@
                                 <% if(post.status == "new"){ %>
                                     <input type="file" name="photo">
                                 <% } else{ %>
-                                    <img src="<%= post.photo %>" class="img-responsive">
-                                    <input type="file" name="photo">
+                                    <img src="<%= post.photo %>" class="photo-preview img-responsive">
+                                    <input type="text" class="hidden" name="oldPhoto" value="<%= post.photo %>">
+                                    <input type="file" name="photo" accept="image/*">
                                 <% } %>
                                 </div>
                             <% } %>
@@ -125,7 +126,7 @@
                         <% } %>
                     </ul>
                 </div>
-                <div>
+                <div class="plugins">
                     <div>外掛元件</div>
                     <ul>
                         <% include ../plugins/youtube %>
