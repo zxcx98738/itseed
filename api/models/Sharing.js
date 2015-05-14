@@ -28,13 +28,11 @@ module.exports = {
         name: {
           type: 'string',
           notNull: true,
-          maxLength: 10
+          maxLength: 30
         },
         //相片
         photo: {
           type: 'string',
-          notNull: true,
-          maxLength: 30.
           //defaultsTo: 
         },
         //標題

@@ -27,7 +27,7 @@ module.exports = {
         //標題
         title: {
           type: 'string',
-          maxLength: 10,
+          maxLength: 30,
           notNull: true
         },
         //內容
