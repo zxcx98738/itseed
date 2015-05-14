@@ -77,6 +77,16 @@ module.exports.routes = {
     action: 'courseInfo'
   }, 
 
+  '/businessVisit': {
+    controller: 'Site',
+    action: 'businessVisitList'
+  }, 
+
+  '/businessVisit/:id': {
+    controller: 'Site',
+    action: 'businessVisit'
+  }, 
+
   '/project': {
     controller: 'Site',
     action: 'project'
