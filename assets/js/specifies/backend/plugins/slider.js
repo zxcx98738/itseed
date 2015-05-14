@@ -214,17 +214,19 @@ function resetSettings (plugin, options) {
             default_slider_template = '#Bootstrap-slider';
             break;
         case 'Owl Carousel':
-            defaultMethod = 'carousel'
+            defaultMethod = 'owlCarousel'
             defaultOptions = {
-                interval: 1000,
-                pause: 'hover',
-                wrap: false,
-                keyboard: false
+                autoPlay: 5000,
+                items : 4,
             };
             default_settings_template = '#Owl_Carousel-options';
             default_slider_template = '#Owl_Carousel-slider';
             break;
     }
+
+    $('#slider-settings .plugin select option[value="'+plugin+'"]').prop('selected', true);
+    $('#slider-settings .plugin select option[value!="'+plugin+'"]').prop('selected', false);
+
     slider.setMethod(defaultMethod);
     if (typeof options === 'undefined')
         slider.setOptions(defaultOptions);
@@ -259,7 +261,7 @@ function changeSettings (form_selector) {
             method = 'carousel'
             break;
         case 'Owl Carousel':
-            method = 'carousel'
+            method = 'owlCarousel'
             break;
     }
     slider.setMethod(method);
@@ -345,7 +347,7 @@ function bindSubmitEvent(selector) {
 function appendToArticle (slider_id) {
     refreshSlider('#slider-settings', '#slider .preview', slider_id);
     var hint = '/* 注意: 這塊程式碼不會顯示在送出的畫面中，但刪除slider時要一併移除 */';
-    var script = '<script>'+hint+'$(function(){$("#'+slider_id+'").'+slider.getMethod()+'('+JSON.stringify(slider.getOptions())+')});</scr'+'ipt>';
+    var script = '<script>'+hint+'$(function(){$(".owl-carousel").'+slider.getMethod()+'('+JSON.stringify(slider.getOptions())+')});</scr'+'ipt>';
     var div = '<p><br></p>'+script+$("#slider .preview").html()+'<p><br></p>';
     $('.note-editable').append(div);
     $('#slider').modal('hide');
@@ -380,6 +382,11 @@ function editSlider (str, imageArr) {
                 $('#slider-settings .plugin select option[value="Bootstrap"]').prop('selected', true);
                 $('#slider-settings .plugin select option[value!="Bootstrap"]').prop('selected', false);
                 resetSettings('Bootstrap', JSON.parse(options));
+                break;
+            case 'owlCarousel':
+                $('#slider-settings .plugin select option[value="Owl Carousel"]').prop('selected', true);
+                $('#slider-settings .plugin select option[value!="Owl Carousel"]').prop('selected', false);
+                resetSettings('Owl Carousel', JSON.parse(options));
                 break;
             default:
                 return false;

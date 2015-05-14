@@ -10,12 +10,13 @@ function editorUI() {
             ["style", ["style"]],
             ["font", ["bold", "italic", "underline", "clear"]],
             ["fontname", ["fontname"]],
+            ["fontsize", ["fontsize"]],
             ["color", ["color"]],
             ["para", ["ul", "ol", "paragraph"]],
             ["height", ["height"]],
             ["table", ["table"]],
             ["insert", ["link", "picture", "hr"]],
-            ["view", ["fullscreen", "codeview"]],
+            ["view", [ "undo", "redo", "fullscreen", "codeview"]],
             ["help", ["help"]]
         ],
         fontNames: [

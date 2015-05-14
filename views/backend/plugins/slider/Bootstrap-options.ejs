@@ -1,7 +1,7 @@
 <script id="Bootstrap-options" type="text/x-handlebars-template">
     <div class='form-group'>
-        <label for='sliderInterval'>播放間隔</label>
-        <select class='form-control' id='sliderInterval' name='interval'>
+        <label>播放間隔</label>
+        <select class='form-control' name='interval'>
             {{#select interval}}
             <option value='false'>(手動換頁)</option>
             <option value='1000'>1秒</option>
@@ -18,7 +18,7 @@
         </select>
     </div>
     <div class='form-group'>
-        <label for='sliderPause'>滑鼠停在圖片上時</label>
+        <label>滑鼠停在圖片上時</label>
         <select class='form-control' name='pause'>
             {{#select pause}}
             <option value='false'>無動作</option>
@@ -27,7 +27,7 @@
         </select>
     </div>
     <div class='form-group'>
-        <label for='sliderWrap'>播放模式</label>
+        <label>播放模式</label>
         <select class='form-control' name='wrap'>
             {{#select wrap}}
             <option value='true'>循環播放</option>   
@@ -36,7 +36,7 @@
         </select>
     </div>
     <div class='form-group'>
-        <label for='sliderKeyboard'>可使用鍵盤控制</label>
+        <label>可使用鍵盤控制</label>
         <select class='form-control' name='keyboard'>
             {{#select keyboard}}
             <option value='true'>是</option>
