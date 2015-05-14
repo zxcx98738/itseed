@@ -574,13 +574,53 @@ module.exports = {
                 id: req.param("id")
             }
 
-            CmsService.deletePost(model, criteria)
-            .then(function(){
-                res.end("success");
-            })
-            .catch(function(err){
-                res.end(JSON.stringify(err));
-            }); 
+            //在刪除record前先取得要一起刪除的檔案位址
+            switch(model)
+            {
+                case CourseInfo:
+                    CmsService.findOnePost(model, criteria)
+                    .then(function(data){
+                        var photo = data.photo;
+                        
+                        CmsService.deletePost(model, criteria)
+                        .then(function(){
+                            //刪除照片
+                            if (data.photo != '/images/courseInfo/default.png') {
+                                var imagePath = sails.config.appPath+'/assets'+data.photo;
+
+                                fs.unlink(imagePath, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                            }
+                            res.end("success");
+                        })
+                        .catch(function(err){
+                            res.end(JSON.stringify(err));
+                        }); 
+                    })
+                    .catch(function(err){
+                        res.end(JSON.stringify(err));
+                    });
+                    break;
+                default:
+                    break;
+            } 
+            
+            //刪除record
+            switch(model)
+            {
+                case CourseInfo:
+                    break;
+                default:
+                    CmsService.deletePost(model, criteria)
+                    .then(function(){
+                        res.end("success");
+                    })
+                    .catch(function(err){
+                        res.end(JSON.stringify(err));
+                    }); 
+            } 
         /*}
         else{
             return res.forbidden();
