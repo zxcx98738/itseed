@@ -24,7 +24,7 @@ module.exports = {
           type: 'integer',
           required: true,
         },
-        //名字
+        //分享人
         name: {
           type: 'string',
           notNull: true,
@@ -33,7 +33,7 @@ module.exports = {
         //相片
         photo: {
           type: 'string',
-          //defaultsTo: 
+          defaultsTo: '/images/sharing/default.png'
         },
         //標題
         title: {
@@ -47,9 +47,9 @@ module.exports = {
           notNull: true
         },
         //標籤
-        tags: {
+        /*tags: {
           type: 'string'
-        },
+        },*/
         //排序
         order: {
           type: 'integer',

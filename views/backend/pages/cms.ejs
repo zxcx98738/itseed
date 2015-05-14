@@ -67,6 +67,10 @@
                 <% }else if(postType == "businessVisit" || postType == "project" || postType == "overseaVisit"){ %>
                     <th class="col-md-1">屆數</th>
                     <th class="col-md-5">標題</th>
+                <% }else if(postType == "sharing"){ %>
+                    <th class="col-md-1">屆數</th>
+                    <th class="col-md-2">分享人</th>
+                    <th class="col-md-3">標題</th>
                 <% }else{ %>
                     <th class="col-md-6">標題</th>
                 <% } %>                 
@@ -98,6 +102,10 @@
                 <% } %>
                 <% if(postType == "businessVisit" || postType == "project" || postType == "overseaVisit"){ %>
                     <td><%= articles[i].th %></td>
+                <% } %>
+                <% if(postType == "sharing"){ %>
+                    <td><%= articles[i].th %></td>
+                    <td><%= articles[i].name %></td>
                 <% } %>
                     <td class="title">
                         <div>

@@ -41,6 +41,11 @@ module.exports = {
                     case OverseaVisit:
                         post.th = "";
                         break;
+                    case Sharing:
+                        post.th = "";
+                        post.name = "";
+                        post.photo = "";
+                        break;
                     default:
                         break;
                 }
@@ -438,6 +443,50 @@ module.exports = {
                 case OverseaVisit:
                     value.th = req.param("th");
                     break;
+                case Sharing:
+                    value.th = req.param("th");
+                    value.name = req.param("name");
+
+                    //上傳檔案
+                    req.file('photo').upload({ dirname: '../../assets/images/sharing'}, function (err, uploadedFiles) {
+                        if (err) 
+                            return res.end(JSON.stringify(err));
+                        if (uploadedFiles.length > 0) {
+                            //圖片檔
+                            if(uploadedFiles[0].type.substring(0, 5) == "image"){           
+                                var url = uploadedFiles[0].fd;
+                                var start = url.search("images") - 1;
+                                url = url.slice(start);
+                                url = url.replace(/\\/g, "/");
+                                value.photo = url;
+                            }
+                            //非圖片檔
+                            else{
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                                return res.end(JSON.stringify("檔案格式錯誤"));
+                            }                        
+                        }
+
+                        CmsService.createPost(model, value)
+                        .then(function(data){
+                            data.message = "success";
+                            res.end(JSON.stringify(data));
+                        })
+                        .catch(function(err){
+                            //刪除上傳檔案
+                            if (uploadedFiles.length > 0) {
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                            }
+                            res.end(JSON.stringify(err));
+                        });
+                    });
+                    break;
                 default:
                     break;
             }
@@ -446,6 +495,8 @@ module.exports = {
                 case CourseInfo:
                     break;
                 case BusinessVisit:
+                    break;
+                case Sharing:
                     break;
                 default:
                     CmsService.createPost(model, value)
@@ -542,11 +593,115 @@ module.exports = {
                         });
                     });
                     break;
+                case BusinessVisit:
+                    value.th = req.param("th");
+                    
+                    //上傳檔案
+                    req.file('photo').upload({ dirname: '../../assets/images/businessVisit'}, function (err, uploadedFiles) {
+                        if (err) 
+                            res.end(JSON.stringify(err));
+                        if (uploadedFiles.length > 0) {
+                            //圖片檔
+                            if(uploadedFiles[0].type.substring(0, 5) == "image"){           
+                                var url = uploadedFiles[0].fd;
+                                var start = url.search("images") - 1;
+                                url = url.slice(start);
+                                url = url.replace(/\\/g, "/");
+                                value.photo = url;
+                            }
+                            //非圖片檔
+                            else{
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                                return res.end(JSON.stringify("檔案格式錯誤"));
+                            }
+                        }
+
+                        CmsService.updatePost(model, criteria, value)
+                        .then(function(){
+
+                            //刪除原始檔案
+                            if (uploadedFiles.length > 0 && req.param("oldPhoto") != '/images/businessVisit/default.png') {
+                                var imagePath = sails.config.appPath+'/assets'+req.param("oldPhoto");
+
+                                fs.unlink(imagePath, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                            }
+                            res.end("success");
+                        })
+                        .catch(function(err){
+                            //刪除上傳檔案
+                            if (uploadedFiles.length > 0) {
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                            }
+                            res.end(JSON.stringify(err));
+                        });
+                    });
+                    break;
                 case Project:
                     value.th = req.param("th");
                     break;
                 case OverseaVisit:
                     value.th = req.param("th");
+                    break;
+                case Sharing:
+                    value.th = req.param("th");
+                    
+                    //上傳檔案
+                    req.file('photo').upload({ dirname: '../../assets/images/sharing'}, function (err, uploadedFiles) {
+                        if (err) 
+                            res.end(JSON.stringify(err));
+                        if (uploadedFiles.length > 0) {
+                            //圖片檔
+                            if(uploadedFiles[0].type.substring(0, 5) == "image"){           
+                                var url = uploadedFiles[0].fd;
+                                var start = url.search("images") - 1;
+                                url = url.slice(start);
+                                url = url.replace(/\\/g, "/");
+                                value.photo = url;
+                            }
+                            //非圖片檔
+                            else{
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                                return res.end(JSON.stringify("檔案格式錯誤"));
+                            }
+                        }
+
+                        CmsService.updatePost(model, criteria, value)
+                        .then(function(){
+
+                            //刪除原始檔案
+                            if (uploadedFiles.length > 0 && req.param("oldPhoto") != '/images/sharing/default.png') {
+                                var imagePath = sails.config.appPath+'/assets'+req.param("oldPhoto");
+
+                                fs.unlink(imagePath, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                            }
+                            res.end("success");
+                        })
+                        .catch(function(err){
+                            //刪除上傳檔案
+                            if (uploadedFiles.length > 0) {
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                            }
+                            res.end(JSON.stringify(err));
+                        });
+                    });
                     break;
                 default:
                     break;
@@ -678,6 +833,32 @@ module.exports = {
                         res.end(JSON.stringify(err));
                     });
                     break;
+                case Sharing:
+                    CmsService.findOnePost(model, criteria)
+                    .then(function(data){
+                        var photo = data.photo;
+                        
+                        CmsService.deletePost(model, criteria)
+                        .then(function(){
+                            //刪除照片
+                            if (data.photo != '/images/sharing/default.png') {
+                                var imagePath = sails.config.appPath+'/assets'+data.photo;
+
+                                fs.unlink(imagePath, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                            }
+                            res.end("success");
+                        })
+                        .catch(function(err){
+                            res.end(JSON.stringify(err));
+                        }); 
+                    })
+                    .catch(function(err){
+                        res.end(JSON.stringify(err));
+                    });
+                    break;
                 default:
                     break;
             } 
@@ -688,6 +869,8 @@ module.exports = {
                 case CourseInfo:
                     break;
                 case BusinessVisit:
+                    break;
+                case Sharing:
                     break;
                 default:
                     CmsService.deletePost(model, criteria)

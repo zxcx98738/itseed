@@ -71,6 +71,16 @@
                                 <% } %>
                                 </div>
                             <% } %>
+                            <% if(typeof post.name !== 'undefined'){ %>
+                                <div>
+                                    <label>分享人</label>
+                                <% if(post.status == "new"){ %>
+                                    <input type="text" class="form-control" name="name" placeholder="ex: 張肯維">
+                                <% } else{ %>
+                                    <input type="text" class="form-control" name="name" placeholder="ex: 張肯維" value="<%= post.name %>">
+                                <% } %>
+                                </div>
+                            <% } %>
                             <% if(typeof post.speaker !== 'undefined'){ %>
                                 <div>
                                     <label>講者</label>

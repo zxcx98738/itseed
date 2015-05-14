@@ -102,6 +102,16 @@ module.exports.routes = {
     action: 'instructor'
   }, 
 
+  '/sharing': {
+    controller: 'Site',
+    action: 'sharingList'
+  }, 
+
+  '/sharing/:id': {
+    controller: 'Site',
+    action: 'sharing'
+  }, 
+
   '/regInfo': {
     controller: 'Site',
     action: 'regInfo'

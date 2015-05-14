@@ -220,6 +220,25 @@ module.exports = {
                 action.sort = "/cms/sort/instructor";           
                 break;
 
+            case Sharing:
+                action.new = "/cms/new/sharing";
+                action.edit = "/cms/edit/sharing";
+
+                action.view = "/sharing/";
+                action.preview = "/cms/preview/sharing";
+                action.load = "/cms/load/sharing";
+                action.url = "frontend/pages/sharing";
+                action.list = "frontend/pages/sharingList"
+                
+                action.create = "/cms/create/sharing";
+                action.update = "/cms/update/sharing";
+                action.toDraft = "/cms/toDraft/sharing";
+                action.publish = "/cms/publish/sharing";
+                action.delete = "/cms/delete/sharing";
+
+                action.sort = "/cms/sort/sharing";           
+                break;
+
             case RegInfo:
                 action.new = "/cms/new/regInfo";
                 action.edit = "/cms/edit/regInfo";
