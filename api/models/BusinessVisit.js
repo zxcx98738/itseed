@@ -27,7 +27,7 @@ module.exports = {
         //照片
         photo: {
           type: 'string',
-          defaultsTo: '/images/courseInfo/default.png'
+          defaultsTo: '/images/businessVisit/default.png'
         },
         //標題
         title: {

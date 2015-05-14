@@ -31,6 +31,10 @@ module.exports = {
                         post.speakerTitle = "";
                         post.photo = "";
                         break;
+                    case BusinessVisit:
+                        post.th = "";
+                        post.photo = "";
+                        break;           
                     case Project:
                         post.th = "";
                         break;
@@ -385,6 +389,49 @@ module.exports = {
                         });
                     });
                     break;
+                case BusinessVisit:
+                    value.th = req.param("th");
+
+                    //上傳檔案
+                    req.file('photo').upload({ dirname: '../../assets/images/businessVisit'}, function (err, uploadedFiles) {
+                        if (err) 
+                            return res.end(JSON.stringify(err));
+                        if (uploadedFiles.length > 0) {
+                            //圖片檔
+                            if(uploadedFiles[0].type.substring(0, 5) == "image"){           
+                                var url = uploadedFiles[0].fd;
+                                var start = url.search("images") - 1;
+                                url = url.slice(start);
+                                url = url.replace(/\\/g, "/");
+                                value.photo = url;
+                            }
+                            //非圖片檔
+                            else{
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                                return res.end(JSON.stringify("檔案格式錯誤"));
+                            }                        
+                        }
+
+                        CmsService.createPost(model, value)
+                        .then(function(data){
+                            data.message = "success";
+                            res.end(JSON.stringify(data));
+                        })
+                        .catch(function(err){
+                            //刪除上傳檔案
+                            if (uploadedFiles.length > 0) {
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                            }
+                            res.end(JSON.stringify(err));
+                        });
+                    });
+                    break;
                 case Project:
                     value.th = req.param("th");
                     break;
@@ -397,6 +444,8 @@ module.exports = {
             switch(model)
             {
                 case CourseInfo:
+                    break;
+                case BusinessVisit:
                     break;
                 default:
                     CmsService.createPost(model, value)
@@ -603,14 +652,42 @@ module.exports = {
                         res.end(JSON.stringify(err));
                     });
                     break;
+                case BusinessVisit:
+                    CmsService.findOnePost(model, criteria)
+                    .then(function(data){
+                        var photo = data.photo;
+                        
+                        CmsService.deletePost(model, criteria)
+                        .then(function(){
+                            //刪除照片
+                            if (data.photo != '/images/businessVisit/default.png') {
+                                var imagePath = sails.config.appPath+'/assets'+data.photo;
+
+                                fs.unlink(imagePath, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                            }
+                            res.end("success");
+                        })
+                        .catch(function(err){
+                            res.end(JSON.stringify(err));
+                        }); 
+                    })
+                    .catch(function(err){
+                        res.end(JSON.stringify(err));
+                    });
+                    break;
                 default:
                     break;
             } 
-            
+
             //刪除record
             switch(model)
             {
                 case CourseInfo:
+                    break;
+                case BusinessVisit:
                     break;
                 default:
                     CmsService.deletePost(model, criteria)

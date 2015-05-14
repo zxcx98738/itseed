@@ -63,23 +63,16 @@
                 <% if(postType == "courseInfo"){ %>
                     <th class="col-md-1">屆數</th>
                     <th class="col-md-2">講者</th>
-                    <th class="col-md-3">
-                        標題
-                    </th>
+                    <th class="col-md-3">標題</th>
+                <% }else if(postType == "businessVisit" || postType == "project" || postType == "overseaVisit"){ %>
+                    <th class="col-md-1">屆數</th>
+                    <th class="col-md-5">標題</th>
                 <% }else{ %>
-                    <th class="col-md-6">
-                        標題
-                    </th>
+                    <th class="col-md-6">標題</th>
                 <% } %>                 
-                    <th class="col-md-1">
-                        狀態
-                    </th>
-                    <th class="col-md-2">
-                        作者
-                    </th>
-                    <th class="col-md-2">
-                        發佈時間
-                    </th>
+                    <th class="col-md-1">狀態</th>
+                    <th class="col-md-2">作者</th>
+                    <th class="col-md-2">發佈時間</th>
                 </tr>
             </thead>
             <% if(status == "all" && action.sort != "disabled"){ %>
@@ -103,7 +96,9 @@
                     <td><%= articles[i].th %></td>
                     <td><%= articles[i].speaker+" "+articles[i].speakerTitle %></td>
                 <% } %>
-
+                <% if(postType == "businessVisit" || postType == "project" || postType == "overseaVisit"){ %>
+                    <td><%= articles[i].th %></td>
+                <% } %>
                     <td class="title">
                         <div>
                             <a class="edit" href="#"><%= articles[i].title %></a>
