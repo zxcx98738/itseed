@@ -37,6 +37,81 @@ module.exports.routes = {
     view: 'frontend/pages/index'
   },
   
+  '/news': {
+    controller: 'Site',
+    action: 'newsList'
+  },
+
+  '/news/:id': {
+    controller: 'Site',
+    action: 'news'
+  },
+
+  '/aboutNTCA': {
+    controller: 'Site',
+    action: 'aboutNTCA'
+  },
+
+  '/aboutITSeed': {
+    controller: 'Site',
+    action: 'aboutITSeed'
+  }, 
+
+  '/memberList': {
+    controller: 'Site',
+    action: 'memberList'
+  }, 
+
+  '/courseList': {
+    controller: 'Site',
+    action: 'courseList'
+  }, 
+
+  '/courseInfo': {
+    controller: 'Site',
+    action: 'courseInfoList'
+  }, 
+
+  '/courseInfo/:id': {
+    controller: 'Site',
+    action: 'courseInfo'
+  }, 
+
+  '/project': {
+    controller: 'Site',
+    action: 'project'
+  }, 
+
+  '/overseaVisit': {
+    controller: 'Site',
+    action: 'overseaVisit'
+  }, 
+
+  '/instructor': {
+    controller: 'Site',
+    action: 'instructor'
+  }, 
+
+  '/regInfo': {
+    controller: 'Site',
+    action: 'regInfo'
+  }, 
+
+  '/regFile': {
+    controller: 'Site',
+    action: 'regFile'
+  }, 
+
+  '/timeline': {
+    controller: 'Site',
+    action: 'timeline'
+  }, 
+
+  '/faq': {
+    controller: 'Site',
+    action: 'faq'
+  },
+
   '/video': {
     controller: 'Site',
     action: 'video'

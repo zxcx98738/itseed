@@ -23,22 +23,16 @@
 <!--HEADER-->
 <% include ../header %>
 <!--END HEADER-->
-<% for(var i = 0; i < datas.length; i++){ %>
-	<% if(i%2 == 0){ %>
-		<section class="bg-light-gray" id="<%= datas[i].id %>">
-	<% } else{ %>
-		<section class="bg-white" id="<%= datas[i].id %>">
-	<% } %>
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 text-center">
-						<h3><%= datas[i].title %></h3>
-						<div><%- datas[i].content %></div>	
-					</div>
-				</div>
-			</div>
-		</section>
-<% } %>
+
+<div class="container">
+	<div class="row">
+		<% for(var i = 0; i < datas.length; i++){ %>
+			<section class="col-md-6 col-xs-12 bg-white" id="<%= datas[i].id %>">
+				<div><%- datas[i].content %></div>	
+			</section>
+		<% } %>
+	</div>
+</div>
 
 <!--FOOTER-->
 <% include ../footer %>

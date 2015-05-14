@@ -1,0 +1,31 @@
+<script id="Owl_Carousel-slider" type="text/x-handlebars-template">
+    <div id='{{id}}' class='carousel'>
+        <ol class='carousel-indicators'>
+        {{#each imgArr}}
+            {{#ifEqual @index 0}}
+                <li data-target='#{{../../id}}' data-slide-to='{{@index}}' class='active'></li>
+            {{else}}    
+                <li data-target='#{{../../id}}' data-slide-to='{{@index}}'></li>
+            {{/ifEqual}}
+        {{/each}}
+        </ol>
+        <div class='carousel-inner' role='listbox'>
+        {{#each imgArr}}
+            {{#ifEqual @index 0}}
+                <div class='item active'>
+            {{else}}
+                <div class='item'>
+            {{/ifEqual}}
+                    {{{this}}}
+                    <div class='carousel-caption'></div>
+                </div>
+        {{/each}}
+        </div>
+        <a class='left carousel-control' href='#{{id}}' data-slide='prev'>
+            <span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>
+        </a>
+        <a class='right carousel-control' href='#{{id}}' data-slide='next'>
+            <span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span>
+        </a>
+    </div>
+</script>
