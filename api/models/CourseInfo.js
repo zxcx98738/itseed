@@ -34,7 +34,7 @@ module.exports = {
         speakerTitle: {
           type: 'string',
           required: true,
-          maxLength: 10
+          maxLength: 30
         },
         //照片
         photo: {
