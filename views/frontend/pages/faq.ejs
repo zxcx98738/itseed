@@ -2,17 +2,31 @@
 <% include ../header %>
 <!--END HEADER-->
 
-<div class="container">
-	<div class="row">
+<section class="bg-light-gray" id="faq">
+	<div class="container">
+		<div class="row">
 		<% for(var i = 0; i < datas.length; i++){ %>
-			<section class="col-md-12 bg-white" id="<%= datas[i].id %>">
-				<div><%- datas[i].title %></div>	
-				<div><%- datas[i].content %></div>	
-			</section>
+			<div class="col-md-10 col-md-offset-1" id="<%= datas[i].id %>">
+				<div class="faq">
+					<a class="faq-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= datas[i].id %>" class="collapsed">
+						<%= datas[i].title %>
+					</a>
+					<div id="collapse<%= datas[i].id %>" class="faq-collapse collapse">
+						<div class="faq-body">
+							<%- datas[i].content %>
+						</div>
+					</div>
+				</div>
+			</div>
 		<% } %>
+		</div>
 	</div>
-</div>
+</section>
 
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->
+
+
+
+				
