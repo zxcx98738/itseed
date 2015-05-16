@@ -13,8 +13,12 @@
     position: absolute;
     width: 250px;
     padding: 30px;
+    background-color: @light-gray;
 
     >ul {
+      >li {
+        border: 1px solid @light-gray;
+      }
       >li>a {
         padding: 15px 20px;
         font-size: 13px;
@@ -25,12 +29,19 @@
           background: @light-yellow;
         }
       }
-      >li.active>a, >li.open>a {
-        color: @green;
-        background-color: @light-yellow;
+      >li.super>a {
+        cursor: default;
+
+        &:hover {
+          background: white;
+        }
       }
       >li.sub>a {
         padding-left: 35px;
+      }
+      >li.open>a {
+        color: @green;
+        background-color: @light-yellow;
       }
       ul {
         li a {
@@ -40,11 +51,12 @@
           background: white;
 
           &:hover {
+            color: white;
             background: @light-green;
           }
         }
         li.active a {
-          color: @green;
+          color: red;
         }
         li.has-sub>a::after {
           display: block;
@@ -104,10 +116,55 @@
 
     >header {
       padding: 15px 0 15px 0;
+
+      a {
+        margin-left: 10px;
+      }
     }
-    
-    iframe {
-        width: 992px;
-        height: 100%;
+    table {
+      tr {
+        height: 62px;
+
+        &.highlight {
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.05) 15%, rgba(0, 0, 0, 0.05) 85%, rgba(0, 0, 0, 0.10) 100%); 
+        }
+        &.ui-sortable-helper {
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+          background-color: white;
+          border: 1px solid #272d39;
+
+          td {
+            border-top: 0px;
+          }
+        }
+        td.selector {
+          vertical-align: middle;
+          text-align: center;
+
+          i.handle:hover {
+            cursor: move;
+            color: #272d39;
+          }
+          input {
+            margin: 0px;
+          }
+        }
+        td.status {
+          font-style: italic;
+          color: red;
+        }
+        div.operation {
+          visibility: hidden;
+          margin-top: 5px;
+          
+          a {
+            color: #333;
+            cursor: pointer;
+          }
+        }
+      }  
+      tr:hover div.operation {
+        visibility: visible;
+      }
     }
 }

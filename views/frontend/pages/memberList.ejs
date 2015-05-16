@@ -1,0 +1,40 @@
+<script>
+	function scroll_if_anchor(href) {
+	 	href = typeof(href) == "string" ? href : $(this).attr("href");
+	    var fromTop = 133;
+
+	    if(href.indexOf("#") == 0) {
+	    	var $target = $(href);
+	    	
+	        if($target.length) {
+	        	$('html, body').animate({ scrollTop: $target.offset().top - fromTop });
+	        	if(history && "pushState" in history) {
+	        		history.pushState({}, document.title, window.location.pathname + href);
+	        		return false;
+	        	}
+	        }
+	    }
+	}    
+	$(function() {
+		scroll_if_anchor(window.location.hash);
+    });
+</script>
+
+<!--HEADER-->
+<% include ../header %>
+<!--END HEADER-->
+
+<div class="container">
+	<div class="row">
+		<% for(var i = 0; i < datas.length; i++){ %>
+			<section class="col-md-6 col-xs-12 bg-white" id="<%= datas[i].id %>">
+				<h3 class="text-center"><%- datas[i].title %></h3>
+				<div><%- datas[i].content %></div>	
+			</section>
+		<% } %>
+	</div>
+</div>
+
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->

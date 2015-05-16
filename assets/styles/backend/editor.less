@@ -38,40 +38,65 @@
   width: 300px;
   background-color: white;
 
-  div.title {
-    padding: 15px;
-    font-size: 16px;
-    color: white;
-    background-color: black;
-    border-top: 1px solid black;
-  }
-  >ul {
-    >li>a {
-      padding: 15px 20px;
-      font-size: 13px;
-      color: black;
-      background: white;
-      border-top: 1px solid black; 
+  >div {
+    height: 50%;
 
-      &:hover {
-        background: #f8f8f8;
+    &.settings {
+      >ul {
+        height: calc(~"100% - 53px");
+        overflow-x: hidden;
+        overflow-y: scroll;
       }
     }
-    >li.last {
-      border-bottom: 1px solid black; 
-    }
-    >li.open {
-      background-color: #edf4ff;
 
-      >a {
-        background-color: inherit;
+    >div {
+      padding: 15px;
+      font-size: 16px;
+      color: white;
+      background-color: #272d39;
+      border-top: 1px solid black;
+    }
+    >ul {
+      >li>a {
+        padding: 15px 20px;
+        font-size: 14px;
+        text-decoration: none;
+        color: black;
+        background: white;
+        border-top: 1px solid black; 
+        cursor: pointer;
+
+        &:hover {
+          background: #f8f8f8;
+        }
+        >div {
+          margin-top: 10px;
+          color: @gray;
+        }
       }
-    }
-    >li>div.settings {
-      padding: 0px 30px 15px 30px;
+      >li.last {
+        border-bottom: 1px solid black; 
+      }
+      >li.open {
+        background-color: #edf4ff;
 
-      textarea {
-        width: 100%;
+        >a {
+          background-color: inherit;
+        }
+      }
+      >li>div.settings {
+        display: none;
+        padding: 0px 30px 15px 30px;
+      }
+      >li.other-attributes {
+        padding: 20px;
+
+        div {
+          margin-bottom: 10px;
+        }
+        div:last-child {
+          margin-bottom: 0px;
+        }
       }
     }
   }
@@ -82,7 +107,7 @@
 
 #page-wrapper>div.note-editor {
   margin-right: 300px;
-  background-color: @light-yellow;
+  background-color: #f1f1f1;
   border-width: 1px 1px 0px 0px !important;
   border-color: black !important;
 
@@ -99,6 +124,9 @@
     background-color: white;
     border: 1px solid;
     border-color: inherit;
+  }
+  div.CodeMirror {
+    margin: 10px;
   }
   textarea.note-codable {
 

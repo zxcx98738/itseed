@@ -1,0 +1,49 @@
+<script src="/js/specifies/jquery-ui-1.11.4.min.js"></script>
+<script src="/js/specifies/backend/plugins/slider.js"></script>
+<% include slider/Bootstrap-options.ejs %>
+<% include slider/Bootstrap-slider.ejs %>
+<% include slider/Owl Carousel-options.ejs %>
+<% include slider/Owl Carousel-slider.ejs %>
+
+<li class="last">
+    <a data-toggle="modal" data-target="#slider">
+        <i class="fa fa-sliders fa-fw"></i>
+        <span>圖片輪播</span>
+    </a>
+    <div class="modal" id="slider" aria-hidden="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">插入圖片輪播</h4>
+                </div>
+                <div class="modal-body row">
+                    <div class="col-md-9">
+                        <div class="preview">
+                        </div>
+                        <div class="pull-left drop-zone">
+                            將圖片拖<br>曳至此處
+                        </div>      
+                        <div class="miniature sortable">            
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <form id="slider-settings">
+                            <div class="plugin form-group">
+                                <label for="sliderPlugin">使用套件</label>
+                                <select class="form-control" name="plugin">
+                                    <option value="Bootstrap" selected>Bootstrap</option>
+                                </select>
+                            </div>
+                            <div class="plugin-options">                        
+                            </div>                   
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">插入圖片輪播</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>

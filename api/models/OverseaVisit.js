@@ -15,38 +15,37 @@ module.exports = {
           primaryKey: true,
           unique: true
         },
+        //作者ID
+        /*author: {
+          model:'User'
+        },*/
         //屆數
         th: {
           type: 'integer',
+          required: true
+        },
+        //標題
+        title: {
+          type: 'string',
+          maxLength: 30,
           notNull: true
         },
-        //參訪名稱
-        overseaName: {
-          type: 'string',
-          notNull: true,
-          maxLength: 20
-        },
-        //圖片名稱
-        picName: {
-          type: 'string',
-          notNull: true,
-          maxLength: 30
-        },
-        //圖片位置
-        source: {
-          type: 'string',
-          notNull: true,
-          maxLength: 30
-        },
-        //顯示
-        visible: {
-          type: 'boolean',
-          defaultsTo: true
+        //內容
+        content: {
+          type: 'text',
+          notNull: true
         },
         //排序
         order: {
           type: 'integer',
           autoIncrement: true
+        },
+        //狀態  D:草稿, P:已發佈
+        status: {
+          type: 'string',
+          minLength: 1,
+          maxLength: 1,
+          required: true
         },
         //建立時間
         createdAt: {

@@ -15,53 +15,54 @@ module.exports = {
           primaryKey: true,
           unique: true
         },
-        //分類
-        type: {
-          type: 'string',
-          notNull: true,
-          maxLength: 10
-        },
+        //作者ID
+        /*author: {
+          model:'User'
+        },*/
         //屆數
         th: {
           type: 'integer',
-          notNull: true
-        },
-        //課程名稱
-        courseTitle: {
-          type: 'string',
-          notNull: true,
-          maxLength: 30
+          required: true,
         },
         //講者
         speaker: {
           type: 'string',
-          notNull: true,
+          required: true,
           maxLength: 10
         },
         //講者頭銜
         speakerTitle: {
           type: 'string',
-          notNull: true,
-          maxLength: 10
+          required: true,
+          maxLength: 30
         },
-        //課程日期
-        date: {
-          type: 'datetime'
+        //照片
+        photo: {
+          type: 'string',
+          defaultsTo: '/images/courseInfo/default.png'
+        },
+        //標題
+        title: {
+          type: 'string',
+          maxLength: 30,
+          notNull: true
         },
         //內容
         content: {
           type: 'text',
           notNull: true
         },
-        //顯示
-        visible: {
-          type: 'boolean',
-          defaultsTo: true
-        },
         //排序
         order: {
           type: 'integer',
-          notNull: true
+          autoIncrement: true
+        },
+        //狀態  D:草稿, P:已發佈
+        status: {
+          type: 'string',
+          minLength: 1,
+          maxLength: 1,
+          required: true
         },
         //建立時間
         createdAt: {

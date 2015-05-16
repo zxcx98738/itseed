@@ -1,0 +1,18 @@
+<!--HEADER-->
+<% include ../header %>
+<!--END HEADER-->
+
+<div class="container">
+	<div class="row">
+		<% for(var i = 0; i < datas.length; i++){ %>
+			<section class="col-md-12 bg-white" id="<%= datas[i].id %>">
+				<div><%- datas[i].title %></div>	
+				<div><%- datas[i].content %></div>	
+			</section>
+		<% } %>
+	</div>
+</div>
+
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->

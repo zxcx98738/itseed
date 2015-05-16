@@ -15,24 +15,25 @@ module.exports = {
           primaryKey: true,
           unique: true
         },
-        //名字
+        //作者ID
+        /*author: {
+          model:'User'
+        },*/
+        //屆數
+        th: {
+          type: 'integer',
+          required: true,
+        },
+        //分享人
         name: {
           type: 'string',
           notNull: true,
-          maxLength: 10
+          maxLength: 30
         },
         //相片
         photo: {
           type: 'string',
-          notNull: true,
-          maxLength: 30.
-          //defaultsTo: 
-        },
-        //屆數
-        overseaName: {
-          type: 'string',
-          notNull: true,
-          maxLength: 30
+          defaultsTo: '/images/sharing/default.png'
         },
         //標題
         title: {
@@ -46,18 +47,20 @@ module.exports = {
           notNull: true
         },
         //標籤
-        tags: {
+        /*tags: {
           type: 'string'
-        },
-        //顯示
-        visible: {
-          type: 'boolean',
-          defaultsTo: true
-        },
+        },*/
         //排序
         order: {
           type: 'integer',
           autoIncrement: true
+        },
+        //狀態  D:草稿, P:已發佈
+        status: {
+          type: 'string',
+          minLength: 1,
+          maxLength: 1,
+          required: true
         },
         //建立時間
         createdAt: {

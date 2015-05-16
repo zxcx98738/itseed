@@ -32,9 +32,115 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  /*前台-一般頁面*/
   '/': {
     view: 'frontend/pages/index'
   },
+  
+  '/news': {
+    controller: 'Site',
+    action: 'newsList'
+  },
+
+  '/news/:id': {
+    controller: 'Site',
+    action: 'news'
+  },
+
+  '/aboutNTCA': {
+    controller: 'Site',
+    action: 'aboutNTCA'
+  },
+
+  '/aboutITSeed': {
+    controller: 'Site',
+    action: 'aboutITSeed'
+  }, 
+
+  '/memberList': {
+    controller: 'Site',
+    action: 'memberList'
+  }, 
+
+  '/courseList': {
+    controller: 'Site',
+    action: 'courseList'
+  }, 
+
+  '/courseInfo': {
+    controller: 'Site',
+    action: 'courseInfoList'
+  }, 
+
+  '/courseInfo/:id': {
+    controller: 'Site',
+    action: 'courseInfo'
+  }, 
+
+  '/businessVisit': {
+    controller: 'Site',
+    action: 'businessVisitList'
+  }, 
+
+  '/businessVisit/:id': {
+    controller: 'Site',
+    action: 'businessVisit'
+  }, 
+
+  '/project': {
+    controller: 'Site',
+    action: 'project'
+  }, 
+
+  '/cms': {
+    view: 'backend/pages/cms'
+
+  '/overseaVisit': {
+    controller: 'Site',
+    action: 'overseaVisit'
+  }, 
+
+  '/instructor': {
+    controller: 'Site',
+    action: 'instructor'
+  }, 
+
+  '/sharing': {
+    controller: 'Site',
+    action: 'sharingList'
+  }, 
+
+  '/sharing/:id': {
+    controller: 'Site',
+    action: 'sharing'
+  }, 
+
+  '/regInfo': {
+    controller: 'Site',
+    action: 'regInfo'
+  }, 
+
+  '/regFile': {
+    controller: 'Site',
+    action: 'regFile'
+  }, 
+
+  '/timeline': {
+    controller: 'Site',
+    action: 'timeline'
+  }, 
+
+  '/faq': {
+    controller: 'Site',
+    action: 'faq'
+  },
+
+  '/video': {
+    controller: 'Site',
+    action: 'video'
+  },
+
+  /*前台-使用者相關*/
 
   '/register': {
     view: 'frontend/pages/register'    
@@ -45,13 +151,74 @@ module.exports.routes = {
     action: 'newUser'    
   },
 
-  '/cms': {
-    view: 'backend/pages/cms'
+  /*後台-CMS*/
+  'get /cms/new/:model': {
+    controller: 'Cms',
+    action: 'editor'
+  },
+  
+  'get /cms/edit/:model': {
+    controller: 'Cms',
+    action: 'editor'
   },
 
-  '/editor': {
-    view: 'backend/pages/editor'
-  }
+  'get /cms/preview/:model': {
+    controller: 'Cms',
+    action: 'preview'
+  },
+
+  'post /cms/preview/:model': {
+    controller: 'Cms',
+    action: 'preview'
+  },
+
+  'get /cms/load/:model': {
+    controller: 'Cms',
+    action: 'load'
+  },
+
+  'post /cms/load/:model': {
+    controller: 'Cms',
+    action: 'load'
+  },
+
+  'get /cms/list/:model/:status': {
+    controller: 'Cms',
+    action: 'list'
+  },
+
+  'post /cms/create/:model': {
+    controller: 'Cms',
+    action: 'create'
+  },
+
+  'post /cms/update/:model': {
+    controller: 'Cms',
+    action: 'update'
+  },
+
+  'get /cms/publish/:model': {
+    controller: 'Cms',
+    action: 'publish'
+  },
+
+  'get /cms/toDraft/:model': {
+    controller: 'Cms',
+    action: 'toDraft'
+  },
+
+  'get /cms/delete/:model': {
+    controller: 'Cms',
+    action: 'delete'
+  },
+
+  'get /cms/sort/:model': {
+    controller: 'Cms',
+    action: 'sort'
+  },
+
+
+
 
   /***************************************************************************
   *                                                                          *

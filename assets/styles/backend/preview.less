@@ -1,0 +1,46 @@
+/*
+  CSS書寫順序
+  1.位置屬性(position, top, right, z-index, display, float等)
+  2.大小(width, height, padding, margin)
+  3.文字系列(font, line-height, letter-spacing, color- text-align等)
+  4.背景(background, border等)
+  5.其他(animation, transition等)
+*/
+
+//編輯區
+
+#wrapper>div.device-selector {
+    height: 50px;
+    margin-top: 50px;
+    padding: 8px;
+    text-align: center;
+    background-color: white;
+}
+#wrapper>div#page-wrapper.preview {
+    margin-top: 0px;
+    padding: 0px;
+    text-align: center;
+    background-color: #FAFBFD;
+    transition: all 0.5s;
+
+    form {
+        display: none;
+    }
+    div.frame {
+        display: inline-block;
+        height: 100%;
+        padding: 30px;
+        background-color: black;
+        border: 1px solid #E0E2E4;
+        border-radius: 30px;
+        transition: inherit;
+
+        iframe {
+            width: 992px;
+            height: 100%;
+            border: 1px solid #E0E2E4;
+            background-color: white;
+            transition: inherit;
+        }
+    }
+}

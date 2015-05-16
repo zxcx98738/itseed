@@ -1,66 +1,36 @@
-<script>
-    $(function() {
-        $("#wrapper").css("height", window.innerHeight);
-        $("#page-wrapper").css("height", window.innerHeight-51);
-
-        $("input[type=radio][name=device]").change(function() {
-            if (this.value == "desktop") {
-                $("#page").css("width", "992px");
-            }
-            else if (this.value == "tablet") {
-                $("#page").css("width", "768px");
-            }
-            else{
-                $("#page").css("width", "320px");
-            }          
-        });
-    });
-</script>
-
+<script src="/js/specifies/backend/preview.js"></script>
 <div id="wrapper">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">資訊種子招生網站 後台管理系統 v1.0</a>
-            <div class="device-selector">
-                <div class="btn-group" data-toggle="buttons">
-                  <label class="btn btn-primary active">
-                    <input type="radio" name="device" value="desktop">電腦
-                </label>
-                <label class="btn btn-primary">
-                    <input type="radio" name="device" value="tablet">平板
-                </label>
-                <label class="btn btn-primary">
-                    <input type="radio" name="device" value="phone">手機
-                </label>
-            </div>
-            </div>
+    <!--HEADER-->
+    <% include ../header %>
+    <!--END HEADER-->
+    <div class="device-selector">
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default active">
+                <input type="radio" name="device" value="desktop">電腦
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="device" value="tablet">平板
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="device" value="phone">手機
+            </label>
         </div>
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav">
-                <ul class="nav">
-                    <li>
-                        <a href="#">新增</a>
-                    </li>
-                    <li>
-                        <a href="#">讀取</a>
-                    </li>
-                    <li>
-                        <a href="#">修改</a>
-                    </li>
-                    <li>
-                        <a href="#">刪除</a>
-                    </li>
-                    <li>
-                        <a href="#">顯示/隱藏</a>
-                    </li>
-                    <li>
-                        <a href="#">排序</a>
-                    </li>
-                </ul>
-            </div>
+    </div>
+    <div class="preview" id="page-wrapper">
+        <% if(preview.method == "post"){ %>
+            <form action="<%= preview.url%>" method="post" target="iframe">
+                <input type="text" name="title" value="<%= preview.title%>">
+                <textarea name="content">
+                    <%= preview.content %>
+                </textarea>
+            </form>
+        <% } %>
+        <div class="frame">
+            <% if(preview.method == "get"){ %>
+                <iframe id="page" name="iframe" src="<%= preview.url%>"></iframe>
+            <% } else{ %>
+                <iframe id="page" name="iframe" src="/"></iframe>
+            <% } %> 
         </div>
-    </nav>
-    <div id="page-wrapper">
-        <iframe id="page" src="/"></iframe>
     </div>
 </div>

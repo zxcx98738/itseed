@@ -11,15 +11,24 @@
 
 @font-face {
     font-family: '思源黑體';
-    src: url('/fonts/SourceHanSansTC-Normal.otf'); 
+    src: url('fonts/SourceHanSansTC-Normal.otf');
+    //TODO: 修復BUG 
 }
 
 body {
 	font-family: '思源黑體', '微軟正黑體';
 }
 
+.full-width {
+    width: 100%;
+}
+
 .no-padding {
   padding: 0px !important;
+}
+
+.bg-white {
+    background-color: white;
 }
 
 .bg-light-gray {
@@ -29,6 +38,8 @@ body {
 //頁首
 
 body>header {
+    height: 133px;
+
 	nav.navbar-default {
 	    border-bottom: solid 3px;
         border-bottom-color: @green;
@@ -181,7 +192,7 @@ body>footer {
     padding: 25px 0;
     text-align: center;
     color: #a2a2a2;
-    background-color: #222;
+    background-color: @dark-gray;
 
     span.copyright {
         line-height: 40px;
