@@ -36,6 +36,15 @@ module.exports.routes = {
     view: 'frontend/pages/index'
   },
 
+  '/register': {
+    view: 'frontend/pages/register'    
+  },
+
+  'post /newUser': {
+    controller: 'User',
+    action: 'newUser'    
+  },
+
   '/cms': {
     view: 'backend/pages/cms'
   },

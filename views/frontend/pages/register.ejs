@@ -1,0 +1,50 @@
+<!--HEADER-->
+	<!--暫時把HEADER拿掉-->
+<!--END HEADER-->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+			<ul class="nav nav-tabs">
+		  		<li role="presentation" class="active"><a href="#">基本資料</a></li>
+		  		<li role="presentation"><a href="#">書審資料</a></li>
+		  		<li role="presentation"><a href="#">DISC測驗</a></li>
+			</ul>
+			</div>
+		</div>
+
+		<div class="row">
+		<form name="regForm" action="/newUser" method="post">
+			<div class="col-sm-12">
+				<label>帳號</label><input name="account"></input>
+				<label>密碼</label><input name="pwd"></input>								
+			</div>
+			<div class="col-sm-12">
+				<label>名字</label><input name="userName"></input>
+				<label>性別</label>
+				<input type="radio" name="gender" value="M">男</input>
+				<input type="radio" name="gender" value="F">女</input>
+			</div>
+			<div class="col-sm-12">
+				<label>大頭貼</label>
+			</div>
+			<div class="col-sm-12">				
+				<label>E-mail</label><input name="email"></input>
+				<label>推薦人</label><input name="reference"></input>
+			</div>
+			<div class="col-sm-12">
+				<label>就讀學校</label><input name="school"></input>
+				<label>就讀科系/年級</label><input name="grade"></input>				
+			</div>
+			<div class="col-sm-12">
+				<label>家裡電話</label><input name="phone"></input>
+				<label>手機</label><input name="cellphone"></input>			
+			</div>
+		</div>
+		<div>
+			<button id="saveRegedit" type="submit">儲存</button>
+		</div>
+		</form>
+	</div>
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->
