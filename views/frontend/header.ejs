@@ -28,9 +28,11 @@
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse">
 				<ul class="login-area nav navbar-nav navbar-right">
-					<li><a href="#">註冊</a></li>
+					<!-- <li><a href="#">註冊</a></li>
 					<li><a href="#">登入</a></li>
-					<li class="divider"></li>
+					<li class="divider"></li> -->
+					 <li><fb:login-button scope="public_profile,email" onlogin="checkLoginState();" autologoutlink="true" data-size="xlarge"></fb:login-button>
+					 </li>
 				</ul>
 				<ul class="main-nav nav navbar-nav">
 					<li>
