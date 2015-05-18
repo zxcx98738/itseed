@@ -11,7 +11,7 @@
       // Logged into your app and Facebook.
       //alert("connected");
       console.log('connected');
-      //getMemData();
+      getMemData();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       //alert("not_authorized");
@@ -29,11 +29,12 @@
   // This function is called when someone finishes with the Login
   // Button.  See the onlogin handler attached to it in the sample
   // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
+
+  // function checkLoginState() {
+  //   FB.getLoginStatus(function(response) {
+  //     statusChangeCallback(response);
+  //   });
+  // }
 
 
   window.fbAsyncInit = function() {
@@ -77,7 +78,7 @@
     console.log('Welcome!  Fetching your information.... ');
     var mId,mName,mGender,mLocale;
     FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
+      console.log('Successful login for: ' + response.email);
 
       mId=response.id;
       mName=response.name;
