@@ -30,11 +30,11 @@
   // Button.  See the onlogin handler attached to it in the sample
   // code below.
 
-  // function checkLoginState() {
-  //   FB.getLoginStatus(function(response) {
-  //     statusChangeCallback(response);
-  //   });
-  // }
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
 
 
   window.fbAsyncInit = function() {
@@ -74,6 +74,8 @@
 
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
+  
+
   function getMemData() {
     console.log('Welcome!  Fetching your information.... ');
     var mId,mName,mGender,mLocale;
@@ -91,7 +93,7 @@
     
   }
 
-
+  /*
   function checkMemData(mId,mName,mGender,mLocale) {
     $.ajax({
       type: "POST",
@@ -108,3 +110,4 @@
     });
     //location.href="./choosesinger.html";
   }
+  */
