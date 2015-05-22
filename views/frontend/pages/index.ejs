@@ -1,4 +1,4 @@
-HEADER-->
+<!--HEADER-->
 <% include ../header %>
 <!--END HEADER-->
 
@@ -12,7 +12,7 @@ HEADER-->
 	</div>
 </section> -->
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel"> 
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false" > 
   <!-- Indicators -->
   <div class="carousel-caption">
           <h1>第十三屆資訊種子</h1>
@@ -84,6 +84,14 @@ HEADER-->
 	</div>
 </section>
  -->
+
+ <script type="text/javascript">
+  var $ = jQuery.noConflict();
+  $(document).ready(function() { 
+      //$('#myCarousel').carousel({ interval: 3000, cycle: true });
+      $('#myCarousel').carousel('pause');
+  }); 
+</script>
 <!--FOOTER-->
 <% include ../footer %>
-<!--END FOOTER
+<!--END FOOTER-->
