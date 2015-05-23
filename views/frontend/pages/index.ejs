@@ -2,15 +2,6 @@
 <% include ../header %>
 <!--END HEADER-->
 
-<!-- <section id="cover">
-	<div class="container">
-		<div class="intro-text">
-			<div class="intro-lead-in">第十三屆資訊種子</div>
-			<div class="intro-heading">熱情招生中</div>
-			<a href="#services" class="page-scroll btn btn-xl">立即報名</a>
-		</div>
-	</div>
-</section> -->
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false" > 
   <!-- Indicators -->
@@ -66,34 +57,40 @@
   </div>
   <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> </div>
 
-<!-- <section id="team" class="bg-light-gray">
+<section id="team" class="bg-light-gray">
 	<div class="container">
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-lg-12 text-center">
 				<h2 class="section-heading">主標題</h2>
 				<h3 class="section-subheading text-muted">副標題</h3>
 			</div>
-		</div>
-		<div class="row" style="height: 320px">
+		</div> -->
+		<div class="row">
 			<div class="col-sm-4">
-				<div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
-					<br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<h2>最新消息</h2>
+        <div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
+          <table class="table table-hover">
+          <tbody>
+          <% for(var i = 0; i < Math.min(4,datas.length); i++){ %>
+            <tr>
+              <td class="col-md-6">
+                <a href="<%= url + datas[i].id %>">   
+                  <%= datas[i].title %>   
+                </a>
+              </td>
+              <td class="col-md-6"><%= datas[i].formatTime %></td>
+            </tr>
+          <% } %>
+          </tbody>
+        </table> 
+       
 				</div>
 			</div>
-			<div class="col-sm-4">
-				<div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
-					<br><br><br><br><br><br><br><br><br><br><br><br><br>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
-					<br><br><br><br><br><br><br><br><br><br><br><br><br>
-				</div>
-			</div>
+ 
 		</div>
 	</div>
 </section>
- -->
+
 
 <!--FOOTER-->
 <% include ../footer %>

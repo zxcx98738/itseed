@@ -6,6 +6,30 @@
  */
 
 module.exports = {
+    //首頁最新消息
+    index: function(req, res){
+        var model = News; 
+        var action = CmsService.getAction(model);
+        var now = new Date();
+        var criteria = {   
+            where: { status: "P", createdAt: { '<=': now } }, 
+            sort: { createdAt: "asc" }
+        }
+
+        CmsService.findPosts(model, criteria)
+        .then(function(datas){
+            for(var i = 0; i < datas.length; i++){
+                datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
+            }
+            return res.view('frontend/pages/index', {
+                url: action.view,
+                datas: datas
+            });
+        })
+        .catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    },
     //最新消息
     newsList: function(req, res){
         var model = News; 
