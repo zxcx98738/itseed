@@ -1,0 +1,85 @@
+<!--HEADER-->
+<% include ../header %>
+<!--END HEADER-->
+
+<section class="bg-white" id="files">
+	<div class="container">
+		<div class="row col-md-10 col-md-offset-1">
+			<ul class="nav nav-tabs">
+				<li><a href="/profile">個人資料</a></li>
+				<li><a href="/disc">DISC測驗</a></li>
+				<li class="active"><a href="/files">書審資料</a></li>
+			</ul>
+		</div>
+		<div class="row col-md-10 col-md-offset-1">
+			<label for="registration" class="col-sm-2 col-xs-12">報名表</label>
+			<div class="col-sm-8 col-xs-12">
+				<p class="formatInfo">
+					最新版本:
+					<a href="" id="myReg"></a><br>
+					最後編輯:
+					<b id="regTime"></b>
+				</p>
+				<form action="api/uploadReg.php" method="POST" target="reg_upload" enctype="multipart/form-data">
+					<p class="formatInfo">
+						請以<b class="red">「pdf」</b>檔案格式上傳報名表。上傳限制大小為<b class="red"> 5MB</b><br>
+						檔案命名規則請依照此格式撰寫<br>
+						<b>「英文名子_Registration」</b>。<br>
+						(如：報名者翁嘉妤的英文翻譯名字為Chia-Yu,Weng，則將檔案命名為
+						「ChiaYuWeng_Registration」)。
+					</p>
+					<input type="file" name="file" class="hidden">
+					<button type="button" class="btn btn-default">上傳檔案</button>
+				</form>
+			</div>
+		</div>
+		<div class="row col-md-10 col-md-offset-1">
+			<label for="autobiography" class="col-sm-2 col-xs-12">自傳</label>
+			<div class="col-sm-8 col-xs-12">
+				<p class="formatInfo">
+					最新版本:
+					<a href="" id="myAut"></a><br>
+					最後編輯:
+					<b id="autTime"></b>
+				</p>
+				<form action="api/uploadAut.php" method="POST" target="aut_upload" enctype="multipart/form-data">
+					<p class="formatInfo">
+						請以<b class="red">「pdf」</b>檔案格式上傳自傳。上傳限制大小為<b class="red"> 5MB</b><br>
+						檔案命名規則請依照此格式撰寫<br>
+						<b>「英文名子_Autobiography」</b>。<br>
+						(如：報名者翁嘉妤的英文翻譯名字為Chia-Yu,Weng，則將檔案命名為
+						「ChiaYuWeng_Autobiography」)。
+					</p>
+					<input type="file" name="file" class="hidden">
+					<button type="button" class="btn btn-default">上傳檔案</button>
+				</form>
+			</div>
+		</div>
+		<div class="row col-md-10 col-md-offset-1">
+			<label for="receipt" class="col-sm-2 col-xs-12">匯款證明</label>
+			<div class="col-sm-8 col-xs-12">
+				<p class="formatInfo">
+					最新版本:
+					<a href="" id="myRec"></a><br>
+					最後編輯:
+					<b id="recTime"></b>
+				</p>
+				<form action="api/uploadRec.php" method="POST" target="rec_upload" enctype="multipart/form-data">	
+					<p class="formatInfo">
+						請以<b class="red">「pdf」</b>檔案格式上傳自傳。上傳限制大小為<b class="red"> 5MB</b><br>
+						檔案命名規則請依照此格式撰寫<br>
+						<b>「英文名子_Receipt」</b>。<br>
+						(如：報名者翁嘉妤的英文翻譯名字為Chia-Yu,Weng，則將檔案命名為
+						「ChiaYuWeng_Receipt」)。
+					</p>
+					<input type="file" name="file" class="hidden">
+					<button type="button" class="btn btn-default">上傳檔案</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->

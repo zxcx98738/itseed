@@ -1,0 +1,84 @@
+<!--HEADER-->
+<% include ../header %>
+<!--END HEADER-->
+
+<section class="bg-white" id="profile">
+	<div class="container">
+		<div class="row col-md-10 col-md-offset-1">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="/profile">個人資料</a></li>
+				<li><a href="/disc">DISC測驗</a></li>
+				<li><a href="/files">書審資料</a></li>
+			</ul>
+		</div>
+		<div class="row col-md-10 col-md-offset-1">
+			<form action="/editProfile" method="post" class="form-horizontal">
+				<div class="col-sm-9 col-xs-12">
+					<div class="form-group">
+						<label class="col-xs-2 control-label" for="email">電子信箱</label>
+						<input type="text" name="email" class="col-xs-10">							
+					</div>
+					<div class="form-group">
+						<label class="col-xs-2 control-label" for="pwd">密碼</label>
+						<input type="password" name="pwd" class="col-xs-10" id="pwd_confirmation"></input>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-2 control-label" for="pwd_confirmation">確認密碼</label>
+						<input type="password" name="pwd_confirmation" class="col-xs-10" id="pwd_confirmation">
+					</div>
+					<div class="form-group">
+						<label class="col-xs-2 control-label" for="phone">連絡電話</label>
+						<input type="text" name="phone" class="col-xs-10" id="phone"></input>			
+					</div>
+					<div class="form-group">
+						<label class="col-xs-2 control-label" for="name">真實姓名</label>
+						<input type="text" name="name" class="col-xs-10" id="name"></input>			
+					</div>	
+					<div class="form-group">
+						<label class="col-xs-2 control-label" class="control-label">性別</label>
+						<div>
+							<label class="radio-inline">
+								<input type="radio" name="gender" value="M" required> 男
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="gender" value="F" required> 女
+							</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-2 control-label" for="school">就讀學校</label>
+						<input type="text" name="school" class="col-xs-10" id="school"></input>			
+					</div>
+					<div class="form-group">
+						<label class="col-xs-2 control-label" for="grade">系所/年級</label>
+						<input type="text" name="grade" class="col-xs-10" id="grade"></input>			
+					</div>
+					<div class="form-group">
+						<label class="col-xs-2 control-label" for="reference">推薦人</label>
+						<input type="text" name="reference" class="col-xs-10" id="reference"></input>			
+					</div>
+				</div>
+				<div class="col-sm-3 col-xs-12 uploadPhoto">
+					<div class="col-sm-12 col-xs-6">
+						<img src="images/layout/default.png" alt="" class="img-responsive">
+					</div>	
+					<div class="col-sm-12 col-xs-6 text-center">
+						<input type="file" name="photo" class="hidden">
+						<button type="button" class="btn btn-default">上傳照片</button>
+						<p>
+							建議圖片尺寸為 250x250 以上正方形圖片，最大檔案容量為2MB。如果沒有上傳，會使用系統預設圖片。
+						</p>	
+					</div>
+				</div>	
+				<div class="col-sm-12 col-xs-12 text-center">
+					<hr>
+					<button type="submit" class="btn-lg btn-green">儲存個人資料</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->

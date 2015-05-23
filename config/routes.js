@@ -92,9 +92,6 @@ module.exports.routes = {
     action: 'project'
   }, 
 
-  '/cms': {
-    view: 'backend/pages/cms'
-
   '/overseaVisit': {
     controller: 'Site',
     action: 'overseaVisit'
@@ -142,13 +139,29 @@ module.exports.routes = {
 
   /*前台-使用者相關*/
 
+  '/login': {
+    view: 'frontend/pages/login'    
+  },
+
   '/register': {
     view: 'frontend/pages/register'    
   },
 
-  'post /newUser': {
+  'post /register': {
     controller: 'User',
-    action: 'newUser'    
+    action: 'create'    
+  },
+
+  '/profile': {
+    view: 'frontend/pages/userProfile'    
+  },
+
+  '/disc': {
+    view: 'frontend/pages/userDisc'    
+  },
+
+  '/files': {
+    view: 'frontend/pages/userFiles'    
   },
 
   /*後台-CMS*/

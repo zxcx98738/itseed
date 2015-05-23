@@ -1,0 +1,105 @@
+/*
+  CSS書寫順序
+  1.位置屬性(position, top, right, z-index, display, float等)
+  2.大小(width, height, padding, margin)
+  3.文字系列(font, line-height, letter-spacing, color- text-align等)
+  4.背景(background, border等)
+  5.其他(animation, transition等)
+*/
+
+body>section#profile, section#disc, section#files {
+  div.row {
+    margin-bottom: 50px;
+  }
+
+  ul {
+    margin-top: 30px;
+    font-weight: bold;
+
+    li>a {
+      color: @green;
+
+      &:hover {
+        background-color: @light-yellow;
+      }
+    }
+    li.active>a {
+      color: #555;
+    }
+  }
+
+  form {
+    font-size: 15px;
+  }
+}
+
+body>section#profile {
+  form {
+    >div {
+      margin-bottom: 15px;
+
+      >div.form-group {
+        margin-left: 0px;
+        margin-right: 0px;
+
+        >input {
+          padding: 7px 16px;
+          border-radius: 3px;
+        }
+      }
+    }  
+
+    >div.uploadPhoto {
+      img {
+        margin-bottom: 15px;
+      }
+
+      p {
+        margin-top: 15px;
+        text-align: left;
+      }
+
+      @media(max-width: 767px) {
+        display: table;
+
+        >div {
+          display: table-cell;
+          float: none;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+
+body>section#disc {
+  form {
+    >div {
+      margin-bottom: 15px;
+
+      input {
+        margin-right: 10px;
+      }
+    }  
+  }
+}
+
+body>section#files {
+  label {
+    margin-bottom: 15px;
+    font-size: 18px;
+
+    @media(min-width: 768px) {
+      text-align: right;
+    }
+  }
+
+  p.formatInfo {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: white;
+    border-left: 5px solid #eee;
+    border-color: @light-green;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  }
+}
