@@ -139,6 +139,16 @@ module.exports.routes = {
 
   /*前台-使用者相關*/
 
+  'post /check-email': {
+    controller: 'User',
+    action: 'checkEmail'    
+  },
+
+  'post /check-pwd': {
+    controller: 'User',
+    action: 'checkPwd'    
+  },
+
   'get /register': {
     view: 'frontend/pages/register'    
   },

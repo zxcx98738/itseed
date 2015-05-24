@@ -23,7 +23,8 @@ module.exports = {
         },
         //密碼
         pwd: {
-          type: 'string'
+          type: 'string',
+          minLength: 6,
         },
         //連絡電話
         phone: {

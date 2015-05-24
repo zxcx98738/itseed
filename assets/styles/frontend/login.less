@@ -37,17 +37,24 @@ body>div#login, div#register {
 
         >img {
             width: 150px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         >a.facebook {
             margin-bottom: 10px;
+            padding: 8px 16px;
             text-decoration: none;
+            font-size: 15px;
+            line-height: 1.3333333;
             color: white;
             background-color: #507BBC;
 
             i {
                 line-height: inherit;
+            }
+
+            &:hover {
+                background-color: #425F9B;
             }
         }
 
@@ -57,18 +64,37 @@ body>div#login, div#register {
         }
 
         >form {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
 
             >div {
+                height: 56px;
                 margin-bottom: 10px;
-            }
+                text-align: left;
 
-            input {
-                border: 1px solid #ddd;
+                >label.error {
+                    margin-bottom: 0px;
+                    font-size: 14px;
+                    color: @error;
+                }
 
-                &.login {
-                    color: white;
-                    background-color: @green;
+                >input {
+                    padding: 8px 16px;
+                    font-size: 15px;
+                    line-height: 1.3333333;
+                    border: 1px solid transparent;
+
+                    &.error {
+                        border-color: @error;
+                        outline-color: @error;
+                    }
+                }
+
+                &.clearfix {
+                    height: 38px;
+                }
+
+                &:last-child {
+                    height: 38px;
                 }
             }
 
@@ -79,11 +105,11 @@ body>div#login, div#register {
 
         >a.register, a.login {
             display: block;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-decoration: none;
             font-weight: bold;
             font-size: 16px;
-            color: @green;
+            color: @dark-green;
         }
     }
 }
