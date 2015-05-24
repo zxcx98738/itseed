@@ -139,11 +139,7 @@ module.exports.routes = {
 
   /*前台-使用者相關*/
 
-  '/login': {
-    view: 'frontend/pages/login'    
-  },
-
-  '/register': {
+  'get /register': {
     view: 'frontend/pages/register'    
   },
 
@@ -152,8 +148,23 @@ module.exports.routes = {
     action: 'create'    
   },
 
+  'get /login': {
+    view: 'frontend/pages/login'    
+  },
+
+  'post /login': {
+    controller: 'User',
+    action: 'login'    
+  },
+
+  'get /logout': {
+    controller: 'User',
+    action: 'logout'   
+  }, 
+
   '/profile': {
-    view: 'frontend/pages/userProfile'    
+    controller: 'User',
+    action: 'profile'   
   },
 
   '/disc': {
