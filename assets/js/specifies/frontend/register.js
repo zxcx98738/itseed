@@ -9,6 +9,7 @@ $(function(){
       	rules: {
       		email: {
       			required: true,
+            email: true,
       			remote: {
       				url: "/check-email",
       				type: "post",

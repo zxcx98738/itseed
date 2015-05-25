@@ -172,9 +172,19 @@ module.exports.routes = {
     action: 'logout'   
   }, 
 
+  '/myPhoto': {
+    controller: 'User',
+    action: 'myPhoto'   
+  },
+
   '/profile': {
     controller: 'User',
     action: 'profile'   
+  },
+
+  '/editProfile': {
+    controller: 'User',
+    action: 'editProfile'   
   },
 
   '/disc': {

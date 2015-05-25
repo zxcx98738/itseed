@@ -1,3 +1,7 @@
+<script src="/js/specifies/jquery.validate.min.js"></script>
+<script src="/js/specifies/messages_zh_TW.min.js"></script>
+<script src="/js/specifies/frontend/userProfile.js"></script>
+
 <!--HEADER-->
 <% include ../header %>
 <!--END HEADER-->
@@ -12,39 +16,49 @@
 			</ul>
 		</div>
 		<div class="row col-md-10 col-md-offset-1">
-			<form action="/editProfile" method="post" class="form-horizontal">
+			<form action="/editProfile" method="post" enctype="multipart/form-data" class="form-horizontal">
 				<div class="col-sm-9 col-xs-12">
 					<div class="form-group">
 						<label class="col-xs-2 control-label" for="email">電子信箱</label>
-						<input type="text" name="email" class="col-xs-10" value="<%= user.email %>">	
+						<div class="col-xs-10">
+							<input type="text" name="email" class="btn-block" value="<%= user.email %>">
+						</div>	
 					</div>
 					<div class="form-group">
 						<label class="col-xs-2 control-label" for="pwd">密碼</label>
-						<input type="password" name="pwd" class="col-xs-10" id="pwd_confirmation" value="<%= req.session.pwd %>">
+						<div class="col-xs-10">
+							<input type="password" name="pwd" class="btn-block" id="pwd" value="<%= req.session.pwd %>">
+						</div>	
 					</div>
 					<div class="form-group">
 						<label class="col-xs-2 control-label" for="pwd_confirmation">確認密碼</label>
-						<input type="password" name="pwd_confirmation" class="col-xs-10" id="pwd_confirmation" value="<%= req.session.pwd %>">
+						<div class="col-xs-10">
+							<input type="password" name="pwd_confirmation" class="btn-block" value="<%= req.session.pwd %>">
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-xs-2 control-label" for="phone">連絡電話</label>
-					<% if(user.phone == null){%>
-						<input type="text" name="phone" class="col-xs-10" id="phone">
-					<% } else{ %>
-						<input type="text" name="phone" class="col-xs-10" id="phone" value="<%= user.phone %>">
-					<% } %>
+						<div class="col-xs-10">
+						<% if(user.phone == null){%>
+							<input type="text" name="phone" class="btn-block" id="phone" placeholder="ex: 0800-090-000">
+						<% } else{ %>
+							<input type="text" name="phone" class="btn-block" id="phone" placeholder="ex: 0800-090-000" value="<%= user.phone %>">
+						<% } %>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-xs-2 control-label" for="name">真實姓名</label>
-					<% if(user.name == null){%>
-						<input type="text" name="name" class="col-xs-10" id="name">
-					<% } else{ %>
-						<input type="text" name="name" class="col-xs-10" id="name" value="<%= user.name %>">
-					<% } %>
+						<div class="col-xs-10">
+						<% if(user.name == null){%>
+							<input type="text" name="name" class="btn-block" id="name" placeholder="ex: 林資種">
+						<% } else{ %>
+							<input type="text" name="name" class="btn-block" id="name" placeholder="ex: 林資種" value="<%= user.name %>">
+						<% } %>
+						</div>
 					</div>	
 					<div class="form-group">
 						<label class="col-xs-2 control-label" class="control-label">性別</label>
-						<div>
+						<div class="col-xs-10">
 							<label class="radio-inline">
 							<% if(user.gender == "M"){%>
 								<input type="radio" name="gender" value="M" checked> 男
@@ -63,38 +77,44 @@
 					</div>
 					<div class="form-group">
 						<label class="col-xs-2 control-label" for="school">就讀學校</label>
-					<% if(user.school == null){%>
-						<input type="text" name="school" class="col-xs-10" id="school">
-					<% } else{ %>
-						<input type="text" name="school" class="col-xs-10" id="school" value="<%= user.school %>">
-					<% } %>	
+						<div class="col-xs-10">
+						<% if(user.school == null){%>
+							<input type="text" name="school" class="btn-block" id="school" placeholder="ex: 台灣大學">
+						<% } else{ %>
+							<input type="text" name="school" class="btn-block" id="school" placeholder="ex: 台灣大學" value="<%= user.school %>">
+						<% } %>	
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-xs-2 control-label" for="grade">系所/年級</label>
-					<% if(user.grade == null){%>
-						<input type="text" name="grade" class="col-xs-10" id="grade">
-					<% } else{ %>
-						<input type="text" name="grade" class="col-xs-10" id="grade" value="<%= user.grade %>">
-					<% } %>	
+						<div class="col-xs-10">
+						<% if(user.grade == null){%>
+							<input type="text" name="grade" class="btn-block" id="grade" placeholder="ex: 資管系/三年級">
+						<% } else{ %>
+							<input type="text" name="grade" class="btn-block" id="grade" value="<%= user.grade %>" placeholder="ex: 資管系/三年級">
+						<% } %>	
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-xs-2 control-label" for="reference">推薦人</label>
-					<% if(user.reference == null){%>
-						<input type="text" name="reference" class="col-xs-10" id="reference">
-					<% } else{ %>
-						<input type="text" name="reference" class="col-xs-10" id="reference" value="<%= user.reference %>">
-					<% } %>			
+						<div class="col-xs-10">
+						<% if(user.reference == null){%>
+							<input type="text" name="reference" class="btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種">
+						<% } else{ %>
+							<input type="text" name="reference" class="btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種" value="<%= user.reference %>">
+						<% } %>	
+						</div>
 					</div>
 				</div>
 				<div class="col-sm-3 col-xs-12 uploadPhoto">
 					<div class="col-sm-12 col-xs-6">
-						<img src="<%= user.photo %>" alt="" class="img-responsive">
+						<img src="/myPhoto" alt="" class="img-responsive">
 					</div>	
 					<div class="col-sm-12 col-xs-6 text-center">
-						<input type="file" name="photo" class="hidden">
-						<button type="button" class="btn btn-default">上傳照片</button>
+						<button type="button" class="btn btn-default" id="uploadBtn">上傳照片</button>
+						<input type="file" class="" name="photo">
 						<p>
-							建議圖片尺寸為 250x250 以上正方形圖片，最大檔案容量為2MB。如果沒有上傳，會使用系統預設圖片。
+							建議使用尺寸為 250x250 以上正方形圖片，檔案大小限制為2MB。
 						</p>	
 					</div>
 				</div>	

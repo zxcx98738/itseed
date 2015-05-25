@@ -34,6 +34,19 @@ body>section#profile, section#disc, section#files {
 }
 
 body>section#profile {
+  label.error {
+    margin-bottom: 0px;
+    width: 100%;
+    font-size: 14px;
+    color: @error;
+  }
+
+  button.error, input.error {
+    color: @error;
+    border-color: @error;
+    outline-color: @error;
+  }
+
   form {
     >div {
       margin-bottom: 15px;
@@ -42,16 +55,25 @@ body>section#profile {
         margin-left: 0px;
         margin-right: 0px;
 
-        >input {
-          padding: 7px 16px;
-          border-radius: 3px;
-        }
+        >div {
+          height: 60px;
+          
+          >input {
+            padding: 7px 16px;
+            border-radius: 3px;
+          }
+        }          
       }
     }  
 
     >div.uploadPhoto {
       img {
         margin-bottom: 15px;
+      }
+
+      input {
+        visibility: hidden;
+        height: 0px;
       }
 
       p {

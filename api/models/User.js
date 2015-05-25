@@ -23,8 +23,7 @@ module.exports = {
         },
         //密碼
         pwd: {
-          type: 'string',
-          minLength: 6,
+          type: 'string'
         },
         //連絡電話
         phone: {
@@ -81,56 +80,7 @@ module.exports = {
         updatedAt: {
           type: 'datetime'
         }
-    },
-
-    //驗證使用者輸入的值
-    /*validationMessages: {
-      account: {
-        required: '帳號為必要欄位',
-        minLength: '帳號的長度限制為:6~20個字元',
-        maxLength: '帳號的長度限制為:6~20個字元',
-        unique: '帳號已存在'
-      },
-
-      pwd: {
-        required: '密碼為必要欄位'      
-      },
-
-      userName: {
-        required : '姓名為必要欄位',
-        maxLength: '姓名的最大長度限制為20個字元'
-      },
-
-      email: {
-        required : 'email為必要欄位',
-        email: '請填寫有效的email',
-        maxLength: 'email的最大長度限制為50個字元',
-        unique: '信箱已存在'
-      },
-
-      phone: {      
-        maxLength: '電話格式錯誤'
-      },
-
-      cellphone: {
-        required : '手機號碼為必要欄位',
-        maxLength: '手機號碼格式錯誤'
-      },
-
-      school: {
-        required : '就讀學校為必要欄位',
-        maxLength: '就讀學校資料錯誤'
-      },
-
-      grade: {
-        required : '就讀科系/年級為必要欄位',
-        maxLength: '就讀科系/年級資料錯誤'
-      },
-      
-      reference: {      
-        maxLength: '推薦人資料錯誤'
-      }
-    }*/
+    }
 };
 
 
