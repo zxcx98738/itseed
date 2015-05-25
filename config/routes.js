@@ -188,7 +188,13 @@ module.exports.routes = {
   },
 
   '/disc': {
-    view: 'frontend/pages/userDisc'    
+    controller: 'User',
+    action: 'disc'    
+  },
+
+  '/editDisc': {
+    controller: 'User',
+    action: 'editDisc'   
   },
 
   '/files': {

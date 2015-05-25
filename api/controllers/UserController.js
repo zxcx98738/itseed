@@ -17,18 +17,28 @@ module.exports = {
             th: 13,
         };
 
-        User.create(newuser)
-        .exec(function(err, user) {
+        UserDISC.create()
+        .exec(function(err, disc) {
             if(err){
                 res.end(JSON.stringify(err));
             }
             else{
-                req.session.userid = user.id;
-                req.session.email = req.body.email;
-                req.session.pwd = req.body.pwd;
-                res.redirect("/profile");
+                newuser.disc = disc.id;
+
+                User.create(newuser)
+                .exec(function(err, user) {
+                    if(err){
+                        res.end(JSON.stringify(err));
+                    }
+                    else{
+                        req.session.userid = user.id;
+                        req.session.email = req.body.email;
+                        req.session.pwd = req.body.pwd;
+                        res.redirect("/profile");
+                    }
+                });
             }
-        });
+        });       
     },
     //檢查信箱是否已存在
     checkEmail: function (req, res) {
@@ -270,6 +280,63 @@ module.exports = {
                     });
                 }
             });
+        }
+        else{
+            return res.forbidden();
+        }  
+    },
+    //DISC
+    disc: function (req, res) {
+        if(req.session.userid){
+            User.findOne({
+                id: req.session.userid
+            })
+            .populate("disc")
+            .exec(function(err, user) {
+                if(err){
+                    res.end(JSON.stringify(err));
+                }
+                else{
+                    return res.view("frontend/pages/userDisc", {
+                        disc: user.disc
+                    });
+                }
+            });
+        }
+        else{
+            return res.forbidden();
+        }  
+    },
+    //編輯DISC
+    editDisc: function (req, res) {
+        var data = {};
+        
+        if(req.session.userid){
+            for(var i = 1; i <= 26; i++){
+                if(req.body["q" + i] == undefined)
+                    return res.end("測驗未完成");
+                data["q" + i] = req.body["q" + i];
+            }
+
+            User.findOne({
+                id: req.session.userid
+            })
+            .exec(function(err, user) {
+                if(err){
+                    res.end(JSON.stringify(err));
+                }
+                else{
+                    UserDISC.update({id: user.disc}, data)
+                    .exec(function (err, datas) {
+                        if(err){
+                            res.end(JSON.stringify(err));
+                        }
+                        else{
+                            res.redirect("/disc");
+                        }
+                    });
+                }
+            });   
         }
         else{
             return res.forbidden();

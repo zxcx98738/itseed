@@ -31,9 +31,7 @@ body>section#profile, section#disc, section#files {
   form {
     font-size: 15px;
   }
-}
 
-body>section#profile {
   label.error {
     margin-bottom: 0px;
     width: 100%;
@@ -46,7 +44,9 @@ body>section#profile {
     border-color: @error;
     outline-color: @error;
   }
+}
 
+body>section#profile {
   form {
     >div {
       margin-bottom: 15px;
@@ -97,7 +97,21 @@ body>section#profile {
 body>section#disc {
   form {
     >div {
+      height: 50px;
       margin-bottom: 15px;
+
+      &.error {
+        color: @error;
+      }
+
+      @media(max-width: 767px) {
+        height: 75px;
+      }
+
+      >label.error {
+        margin-left: 16.66666667%;
+        padding-left: 15px;
+      }
 
       input {
         margin-right: 10px;

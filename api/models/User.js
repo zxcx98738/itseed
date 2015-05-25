@@ -72,6 +72,10 @@ module.exports = {
         th: {
           type: 'integer'
         },
+        //DISC
+        disc: {
+          model:'UserDISC'
+        },
         //建立時間
         createdAt: {
           type: 'datetime'

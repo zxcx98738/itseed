@@ -8,15 +8,12 @@
 module.exports = {
 
     attributes: {
-        
         id: {
           type: 'integer',
           autoIncrement: true,
           primaryKey: true,
           unique: true
         },
-
-        //DISC 答題結果
         q1 : {
           type: 'integer'
         },
@@ -94,12 +91,6 @@ module.exports = {
         },
         q26 : {          
           type: 'integer'
-        },
-        
-        //報名屆數
-        th : {
-          type: 'integer',
-          required: true
         },
         //建立時間
         createdAt: {
