@@ -32,6 +32,11 @@ body>section#profile, section#disc, section#files {
     font-size: 15px;
   }
 
+  input[type="file"] {
+    visibility: hidden;
+    height: 0px;
+  }
+
   label.error {
     margin-bottom: 0px;
     width: 100%;
@@ -71,9 +76,8 @@ body>section#profile {
         margin-bottom: 15px;
       }
 
-      input {
-        visibility: hidden;
-        height: 0px;
+      button {
+        font-size: 15px;
       }
 
       p {
@@ -121,7 +125,7 @@ body>section#disc {
 }
 
 body>section#files {
-  label {
+  div.row>label {
     margin-bottom: 15px;
     font-size: 18px;
 
@@ -137,5 +141,13 @@ body>section#files {
     border-left: 5px solid #eee;
     border-color: @light-green;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  }
+
+  form>div {
+    height: 55px;
+
+    button {
+      font-size: 15px;
+    }
   }
 }

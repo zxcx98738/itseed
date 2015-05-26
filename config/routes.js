@@ -201,6 +201,21 @@ module.exports.routes = {
     view: 'frontend/pages/userFiles'    
   },
 
+  '/uploadReg': {
+    controller: 'User',
+    action: 'uploadReg'
+  },
+
+  '/uploadAut': {
+    controller: 'User',
+    action: 'uploadAut'
+  },
+
+  '/uploadRec': {
+    controller: 'User',
+    action: 'uploadRec'
+  },
+
   /*後台-CMS*/
   'get /cms/new/:model': {
     controller: 'Cms',

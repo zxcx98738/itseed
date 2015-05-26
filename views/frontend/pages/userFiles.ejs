@@ -1,3 +1,7 @@
+<script src="/js/specifies/jquery.validate.min.js"></script>
+<script src="/js/specifies/messages_zh_TW.min.js"></script>
+<script src="/js/specifies/frontend/userFiles.js"></script>
+
 <!--HEADER-->
 <% include ../header %>
 <!--END HEADER-->
@@ -17,10 +21,10 @@
 				<p class="formatInfo">
 					最新版本:
 					<a href="" id="myReg"></a><br>
-					最後編輯:
+					上傳時間:
 					<b id="regTime"></b>
 				</p>
-				<form action="api/uploadReg.php" method="POST" target="reg_upload" enctype="multipart/form-data">
+				<form action="/uploadReg" method="post" enctype="multipart/form-data">
 					<p class="formatInfo">
 						請以<b class="red">「pdf」</b>檔案格式上傳報名表。上傳限制大小為<b class="red"> 5MB</b><br>
 						檔案命名規則請依照此格式撰寫<br>
@@ -28,8 +32,11 @@
 						(如：報名者翁嘉妤的英文翻譯名字為Chia-Yu,Weng，則將檔案命名為
 						「ChiaYuWeng_Registration」)。
 					</p>
-					<input type="file" name="file" class="hidden">
-					<button type="button" class="btn btn-default">上傳檔案</button>
+					<div>
+						<input type="file" name="registration">
+						<button type="button" class="btn btn-default">選擇檔案</button>
+						<button type="submit" class="btn btn-green">送出</button>
+					</div>
 				</form>
 			</div>
 		</div>
@@ -39,10 +46,10 @@
 				<p class="formatInfo">
 					最新版本:
 					<a href="" id="myAut"></a><br>
-					最後編輯:
+					上傳時間:
 					<b id="autTime"></b>
 				</p>
-				<form action="api/uploadAut.php" method="POST" target="aut_upload" enctype="multipart/form-data">
+				<form action="/uploadAut" method="post" enctype="multipart/form-data">
 					<p class="formatInfo">
 						請以<b class="red">「pdf」</b>檔案格式上傳自傳。上傳限制大小為<b class="red"> 5MB</b><br>
 						檔案命名規則請依照此格式撰寫<br>
@@ -50,8 +57,11 @@
 						(如：報名者翁嘉妤的英文翻譯名字為Chia-Yu,Weng，則將檔案命名為
 						「ChiaYuWeng_Autobiography」)。
 					</p>
-					<input type="file" name="file" class="hidden">
-					<button type="button" class="btn btn-default">上傳檔案</button>
+					<div>
+						<input type="file" name="autobiography">
+						<button type="button" class="btn btn-default">選擇檔案</button>
+						<button type="submit" class="btn btn-green">送出</button>
+					</div>
 				</form>
 			</div>
 		</div>
@@ -61,10 +71,10 @@
 				<p class="formatInfo">
 					最新版本:
 					<a href="" id="myRec"></a><br>
-					最後編輯:
+					上傳時間:
 					<b id="recTime"></b>
 				</p>
-				<form action="api/uploadRec.php" method="POST" target="rec_upload" enctype="multipart/form-data">	
+				<form action="/uploadRec" method="post" enctype="multipart/form-data">	
 					<p class="formatInfo">
 						請以<b class="red">「pdf」</b>檔案格式上傳自傳。上傳限制大小為<b class="red"> 5MB</b><br>
 						檔案命名規則請依照此格式撰寫<br>
@@ -72,8 +82,11 @@
 						(如：報名者翁嘉妤的英文翻譯名字為Chia-Yu,Weng，則將檔案命名為
 						「ChiaYuWeng_Receipt」)。
 					</p>
-					<input type="file" name="file" class="hidden">
-					<button type="button" class="btn btn-default">上傳檔案</button>
+					<div>
+						<input type="file" name="receipt">
+						<button type="button" class="btn btn-default">選擇檔案</button>
+						<button type="submit" class="btn btn-green">送出</button>
+					</div>
 				</form>
 			</div>
 		</div>
