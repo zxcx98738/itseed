@@ -1,0 +1,473 @@
+<script src="/js/specifies/jquery.validate.min.js"></script>
+<script src="/js/specifies/messages_zh_TW.min.js"></script>
+<script src="/js/specifies/frontend/userDisc.js"></script>
+
+<!--HEADER-->
+<% include ../header %>
+<!--END HEADER-->
+
+<section class="bg-white" id="disc">
+	<div class="container">
+		<div class="row col-md-10 col-md-offset-1">
+			<ul class="nav nav-tabs">
+				<li><a href="/profile">個人資料</a></li>
+				<li class="active"><a href="/disc">DISC測驗</a></li>
+				<li><a href="/files">書審資料</a></li>
+			</ul>
+		</div>
+		<div class="row col-md-10 col-md-offset-1">
+			<form action="/editDisc" method="post" class="form-horizontal">
+				<div class="form-group">
+					<label class="col-xs-2 text-right">1.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q1 == 1) { %>
+						<input type="radio" name="q1" value="1" required="" checked>走路較慢
+					<% } else { %>
+						<input type="radio" name="q1" value="1" required="">走路較慢
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q1 == 2) { %>
+						<input type="radio" name="q1" value="2" required="" checked>走路較快
+					<% } else { %>
+						<input type="radio" name="q1" value="2" required="">走路較快
+					<% } %>
+					</label>				
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">2.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q2 == 1) { %>
+						<input type="radio" name="q2" value="1" required="" checked>說話聲音比較輕柔
+					<% } else { %>
+						<input type="radio" name="q2" value="1" required="">說話聲音比較輕柔
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q2 == 2) { %>
+						<input type="radio" name="q2" value="2" required="" checked>說話聲音比較快而且響亮
+					<% } else { %>
+						<input type="radio" name="q2" value="2" required="">說話聲音比較快而且響亮
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">3.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q3 == 1) { %>
+						<input type="radio" name="q3" value="1" required="" checked>提意見時習慣用試探的語氣
+					<% } else { %>
+						<input type="radio" name="q3" value="1" required="">提意見時習慣用試探的語氣
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q3 == 2) { %>
+						<input type="radio" name="q3" value="2" required="" checked>提意見時直接表達要求
+					<% } else { %>
+						<input type="radio" name="q3" value="2" required="">提意見時直接表達要求
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">4.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q4 == 1) { %>
+						<input type="radio" name="q4" value="1" required="" checked>習慣用不確定的語氣
+					<% } else { %>
+						<input type="radio" name="q4" value="1" required="">習慣用不確定的語氣
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q4 == 2) { %>
+						<input type="radio" name="q4" value="2" required="" checked>習慣用確定的語氣
+					<% } else { %>
+						<input type="radio" name="q4" value="2" required="">習慣用確定的語氣
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">5.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q5 == 1) { %>
+						<input type="radio" name="q5" value="1" required="" checked>比較正式
+					<% } else { %>
+						<input type="radio" name="q5" value="1" required="">比較正式
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q5 == 2) { %>
+						<input type="radio" name="q5" value="2" required="" checked>不拘小節
+					<% } else { %>
+						<input type="radio" name="q5" value="2" required="">不拘小節
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">6.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q6 == 1) { %>
+						<input type="radio" name="q6" value="1" required="" checked>做事情有考慮再三的習慣
+					<% } else { %>
+						<input type="radio" name="q6" value="1" required="">做事情有考慮再三的習慣
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q6 == 2) { %>
+						<input type="radio" name="q6" value="2" required="" checked>想到立即去做
+					<% } else { %>
+						<input type="radio" name="q6" value="2" required="">想到立即去做
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">7.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q7 == 1) { %>
+						<input type="radio" name="q7" value="1" required="" checked>眼神比較不與人正面接觸
+					<% } else { %>
+						<input type="radio" name="q7" value="1" required="">眼神比較不與人正面接觸
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q7 == 2) { %>
+						<input type="radio" name="q7" value="2" required="" checked>眼神比較敢與人正面接觸
+					<% } else { %>
+						<input type="radio" name="q7" value="2" required="">眼神比較敢與人正面接觸
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">8.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q8 == 1) { %>
+						<input type="radio" name="q8" value="1" required="" checked>人際交往屬於被動型
+					<% } else { %>
+						<input type="radio" name="q8" value="1" required="">人際交往屬於被動型
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q8 == 2) { %>
+						<input type="radio" name="q8" value="2" required="" checked>人際交往屬於主動型
+					<% } else { %>
+						<input type="radio" name="q8" value="2" required="">人際交往屬於主動型
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">9.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q9 == 1) { %>
+						<input type="radio" name="q9" value="1" required="" checked>喜歡傾聽
+					<% } else { %>
+						<input type="radio" name="q9" value="1" required="">喜歡傾聽
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q9 == 2) { %>
+						<input type="radio" name="q9" value="2" required="" checked>習慣主導說話
+					<% } else { %>
+						<input type="radio" name="q9" value="2" required="">習慣主導說話
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">10.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q10 == 1) { %>
+						<input type="radio" name="q10" value="1" required="" checked>思考較久
+					<% } else { %>
+						<input type="radio" name="q10" value="1" required="">思考較久
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q10 == 2) { %>
+						<input type="radio" name="q10" value="2" required="" checked>果斷乾脆
+					<% } else { %>
+						<input type="radio" name="q10" value="2" required="">果斷乾脆
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">11.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q11 == 1) { %>
+						<input type="radio" name="q11" value="1" required="" checked>喜歡穩定，重視安全感
+					<% } else { %>
+						<input type="radio" name="q11" value="1" required="">喜歡穩定，重視安全感
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q11 == 2) { %>
+						<input type="radio" name="q11" value="2" required="" checked>喜歡冒險
+					<% } else { %>
+						<input type="radio" name="q11" value="2" required="">喜歡冒險
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">12.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q12 == 1) { %>
+						<input type="radio" name="q12" value="1" required="" checked>注重細節
+					<% } else { %>
+						<input type="radio" name="q12" value="1" required="">注重細節
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q12 == 2) { %>
+						<input type="radio" name="q12" value="2" required="" checked>大而化之
+					<% } else { %>
+						<input type="radio" name="q12" value="2" required="">大而化之
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">13.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q13 == 1) { %>
+						<input type="radio" name="q13" value="1" required="" checked>不會催促別人做決定
+					<% } else { %>
+						<input type="radio" name="q13" value="1" required="">不會催促別人做決定
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q13 == 2) { %>
+						<input type="radio" name="q13" value="2" required="" checked>會催促別人做決定
+					<% } else { %>
+						<input type="radio" name="q13" value="2" required="">會催促別人做決定
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">14.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q14 == 1) { %>
+						<input type="radio" name="q14" value="1" required="" checked>比較嚴肅
+					<% } else { %>
+						<input type="radio" name="q14" value="1" required="">比較嚴肅
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q14 == 2) { %>
+						<input type="radio" name="q14" value="2" required="" checked>愛開玩笑
+					<% } else { %>
+						<input type="radio" name="q14" value="2" required="">愛開玩笑
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">15.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q15 == 1) { %>
+						<input type="radio" name="q15" value="1" required="" checked>做決定時理性、果斷
+					<% } else { %>
+						<input type="radio" name="q15" value="1" required="">做決定時理性、果斷
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q15 == 2) { %>
+						<input type="radio" name="q15" value="2" required="" checked>做決定時常會猶豫不決，考量甚多
+					<% } else { %>
+						<input type="radio" name="q15" value="2" required="">做決定時常會猶豫不決，考量甚多
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">16.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q16 == 1) { %>
+						<input type="radio" name="q16" value="1" required="" checked>比較在乎事情對錯
+					<% } else { %>
+						<input type="radio" name="q16" value="1" required="">比較在乎事情對錯
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q16 == 2) { %>
+						<input type="radio" name="q16" value="2" required="" checked>比較在乎對方的感覺
+					<% } else { %>
+						<input type="radio" name="q16" value="2" required="">比較在乎對方的感覺
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">17.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q17 == 1) { %>
+						<input type="radio" name="q17" value="1" required="" checked>比較在乎事情是否完成
+					<% } else { %>
+						<input type="radio" name="q17" value="1" required="">比較在乎事情是否完成
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q17 == 2) { %>
+						<input type="radio" name="q17" value="2" required="" checked>比較在乎工作環境的氣氛
+					<% } else { %>
+						<input type="radio" name="q17" value="2" required="">比較在乎工作環境的氣氛
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">18.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q18 == 1) { %>
+						<input type="radio" name="q18" value="1" required="" checked>比較不喜歡與人閒聊
+					<% } else { %>
+						<input type="radio" name="q18" value="1" required="">比較不喜歡與人閒聊
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q18 == 2) { %>
+						<input type="radio" name="q18" value="2" required="" checked>比較喜歡與人閒聊
+					<% } else { %>
+						<input type="radio" name="q18" value="2" required="">比較喜歡與人閒聊
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">19.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q19 == 1) { %>
+						<input type="radio" name="q19" value="1" required="" checked>休閒時穿著正式
+					<% } else { %>
+						<input type="radio" name="q19" value="1" required="">休閒時穿著正式
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q19 == 2) { %>
+						<input type="radio" name="q19" value="2" required="" checked>休閒時穿著輕鬆
+					<% } else { %>
+						<input type="radio" name="q19" value="2" required="">休閒時穿著輕鬆
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">20.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q20 == 1) { %>
+						<input type="radio" name="q20" value="1" required="" checked>比較能控制感情的流露
+					<% } else { %>
+						<input type="radio" name="q20" value="1" required="">比較能控制感情的流露
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q20 == 2) { %>
+						<input type="radio" name="q20" value="2" required="" checked>比較喜歡自然的流露感情
+					<% } else { %>
+						<input type="radio" name="q20" value="2" required="">比較喜歡自然的流露感情
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">21.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q21 == 1) { %>
+						<input type="radio" name="q21" value="1" required="" checked>正經、一板一眼
+					<% } else { %>
+						<input type="radio" name="q21" value="1" required="">正經、一板一眼
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q21 == 2) { %>
+						<input type="radio" name="q21" value="2" required="" checked>親切、隨和
+					<% } else { %>
+						<input type="radio" name="q21" value="2" required="">親切、隨和
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">22.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q22 == 1) { %>
+						<input type="radio" name="q22" value="1" required="" checked>懂得時間管理
+					<% } else { %>
+						<input type="radio" name="q22" value="1" required="">懂得時間管理
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q22 == 2) { %>
+						<input type="radio" name="q22" value="2" required="" checked>比較不會支配時間
+					<% } else { %>
+						<input type="radio" name="q22" value="2" required="">比較不會支配時間
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">23.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q23 == 1) { %>
+						<input type="radio" name="q23" value="1" required="" checked>說話有條理
+					<% } else { %>
+						<input type="radio" name="q23" value="1" required="">說話有條理
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q23 == 2) { %>
+						<input type="radio" name="q23" value="2" required="" checked>說話比較隨性
+					<% } else { %>
+						<input type="radio" name="q23" value="2" required="">說話比較隨性
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">24.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q24 == 1) { %>
+						<input type="radio" name="q24" value="1" required="" checked>比較會精打細算
+					<% } else { %>
+						<input type="radio" name="q24" value="1" required="">比較會精打細算
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q24 == 2) { %>
+						<input type="radio" name="q24" value="2" required="" checked>比較不會精打細算
+					<% } else { %>
+						<input type="radio" name="q24" value="2" required="">比較不會精打細算
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">25.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q25 == 1) { %>
+						<input type="radio" name="q25" value="1" required="" checked>做事情會先作計劃，按部就班
+					<% } else { %>
+						<input type="radio" name="q25" value="1" required="">做事情會先作計劃，按部就班
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q25 == 2) { %>
+						<input type="radio" name="q25" value="2" required="" checked>想到做什麼就做什麼
+					<% } else { %>
+						<input type="radio" name="q25" value="2" required="">想到做什麼就做什麼
+					<% } %>
+					</label>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-2 text-right">26.</label>
+					<label class="col-sm-5 col-xs-10">
+					<% if (disc.q26 == 1) { %>
+						<input type="radio" name="q26" value="1" required="" checked>比較獨自管理
+					<% } else { %>
+						<input type="radio" name="q26" value="1" required="">比較獨自管理
+					<% } %>
+					</label>
+					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<% if (disc.q26 == 2) { %>
+						<input type="radio" name="q26" value="2" required="" checked>比較樂於助人
+					<% } else { %>
+						<input type="radio" name="q26" value="2" required="">比較樂於助人
+					<% } %>
+					</label>
+				</div>
+				<div class="text-center">
+					<hr>
+					<button type="submit" class="btn-lg btn-green">完成測驗</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->

@@ -32,7 +32,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  /*前台*/
+  /*前台-一般頁面*/
   '/': {
     view: 'frontend/pages/index'
   },
@@ -135,6 +135,81 @@ module.exports.routes = {
   '/video': {
     controller: 'Site',
     action: 'video'
+  },
+
+  /*前台-使用者相關*/
+
+  'post /check-email': {
+    controller: 'User',
+    action: 'checkEmail'    
+  },
+
+  'post /check-pwd': {
+    controller: 'User',
+    action: 'checkPwd'    
+  },
+
+  'get /register': {
+    view: 'frontend/pages/register'    
+  },
+
+  'post /register': {
+    controller: 'User',
+    action: 'create'    
+  },
+
+  'get /login': {
+    view: 'frontend/pages/login'    
+  },
+
+  'post /login': {
+    controller: 'User',
+    action: 'login'    
+  },
+
+  'get /logout': {
+    controller: 'User',
+    action: 'logout'   
+  }, 
+
+  '/profile': {
+    controller: 'User',
+    action: 'profile'   
+  },
+
+  '/editProfile': {
+    controller: 'User',
+    action: 'editProfile'   
+  },
+
+  '/disc': {
+    controller: 'User',
+    action: 'disc'    
+  },
+
+  '/editDisc': {
+    controller: 'User',
+    action: 'editDisc'   
+  },
+
+  '/files': {
+    controller: 'User',
+    action: 'files'    
+  },
+
+  '/uploadReg': {
+    controller: 'User',
+    action: 'uploadReg'
+  },
+
+  '/uploadAut': {
+    controller: 'User',
+    action: 'uploadAut'
+  },
+
+  '/uploadRec': {
+    controller: 'User',
+    action: 'uploadRec'
   },
 
   /*後台-CMS*/
