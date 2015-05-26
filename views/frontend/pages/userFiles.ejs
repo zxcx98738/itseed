@@ -20,17 +20,33 @@
 			<div class="col-sm-8 col-xs-12">
 				<p class="formatInfo">
 					最新版本:
-					<a href="" id="myReg"></a><br>
-					上傳時間:
-					<b id="regTime"></b>
+					<% 
+						if(files.registrationUT == null)
+							files.registrationUT = "";
+
+						if(files.registration == null)
+							var url = "";
+						else{
+							var url = files.registration;
+							var start = url.search("/") + 1;
+							url = url.slice(start);
+							start = url.search("/") + 1;
+							url = url.slice(start);
+							start = url.search("/") + 1;
+							url = url.slice(start);
+						}
+					%> 
+					<a href="<%= files.registration %>"><%= url %></a><br>
+					上傳時間: 
+					<b><%= files.registrationUT %></b>
 				</p>
 				<form action="/uploadReg" method="post" enctype="multipart/form-data">
 					<p class="formatInfo">
 						請以<b class="red">「pdf」</b>檔案格式上傳報名表。上傳限制大小為<b class="red"> 5MB</b><br>
 						檔案命名規則請依照此格式撰寫<br>
 						<b>「英文名子_Registration」</b>。<br>
-						(如：報名者翁嘉妤的英文翻譯名字為Chia-Yu,Weng，則將檔案命名為
-						「ChiaYuWeng_Registration」)。
+						(如：報名者林資種的英文翻譯名字為Zi-Zhong,Lin，則將檔案命名為
+						「ZiZhongLin_Registration」)。
 					</p>
 					<div>
 						<input type="file" name="registration">
@@ -45,17 +61,33 @@
 			<div class="col-sm-8 col-xs-12">
 				<p class="formatInfo">
 					最新版本:
-					<a href="" id="myAut"></a><br>
-					上傳時間:
-					<b id="autTime"></b>
+					<% 
+						if(files.autobiographyUT == null)
+							files.autobiographyUT = "";
+
+						if(files.autobiography == null)
+							var url = "";
+						else{
+							var url = files.autobiography;
+							var start = url.search("/") + 1;
+							url = url.slice(start);
+							start = url.search("/") + 1;
+							url = url.slice(start);
+							start = url.search("/") + 1;
+							url = url.slice(start);
+						}
+					%> 
+					<a href="<%= files.autobiography %>"><%= url %></a><br>
+					上傳時間: 
+					<b><%= files.autobiographyUT %></b>
 				</p>
 				<form action="/uploadAut" method="post" enctype="multipart/form-data">
 					<p class="formatInfo">
 						請以<b class="red">「pdf」</b>檔案格式上傳自傳。上傳限制大小為<b class="red"> 5MB</b><br>
 						檔案命名規則請依照此格式撰寫<br>
 						<b>「英文名子_Autobiography」</b>。<br>
-						(如：報名者翁嘉妤的英文翻譯名字為Chia-Yu,Weng，則將檔案命名為
-						「ChiaYuWeng_Autobiography」)。
+						(如：報名者林資種的英文翻譯名字為Zi-Zhong,Lin，則將檔案命名為
+						「ZiZhongLin_Autobiography」)。
 					</p>
 					<div>
 						<input type="file" name="autobiography">
@@ -70,17 +102,33 @@
 			<div class="col-sm-8 col-xs-12">
 				<p class="formatInfo">
 					最新版本:
-					<a href="" id="myRec"></a><br>
-					上傳時間:
-					<b id="recTime"></b>
+					<% 
+						if(files.receiptUT == null)
+							files.receiptUT = "";
+
+						if(files.receipt == null)
+							var url = "";
+						else{
+							var url = files.receipt;
+							var start = url.search("/") + 1;
+							url = url.slice(start);
+							start = url.search("/") + 1;
+							url = url.slice(start);
+							start = url.search("/") + 1;
+							url = url.slice(start);
+						}
+					%> 
+					<a href="<%= files.receipt %>"><%= url %></a><br>
+					上傳時間: 
+					<b><%= files.receiptUT %></b>
 				</p>
 				<form action="/uploadRec" method="post" enctype="multipart/form-data">	
 					<p class="formatInfo">
 						請以<b class="red">「pdf」</b>檔案格式上傳自傳。上傳限制大小為<b class="red"> 5MB</b><br>
 						檔案命名規則請依照此格式撰寫<br>
 						<b>「英文名子_Receipt」</b>。<br>
-						(如：報名者翁嘉妤的英文翻譯名字為Chia-Yu,Weng，則將檔案命名為
-						「ChiaYuWeng_Receipt」)。
+						(如：報名者林資種的英文翻譯名字為Zi-Zhong,Lin，則將檔案命名為
+						「ZiZhongLin_Receipt」)。
 					</p>
 					<div>
 						<input type="file" name="receipt">

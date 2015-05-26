@@ -172,11 +172,6 @@ module.exports.routes = {
     action: 'logout'   
   }, 
 
-  '/myPhoto': {
-    controller: 'User',
-    action: 'myPhoto'   
-  },
-
   '/profile': {
     controller: 'User',
     action: 'profile'   
@@ -198,7 +193,8 @@ module.exports.routes = {
   },
 
   '/files': {
-    view: 'frontend/pages/userFiles'    
+    controller: 'User',
+    action: 'files'    
   },
 
   '/uploadReg': {

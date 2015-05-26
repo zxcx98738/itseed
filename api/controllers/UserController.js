@@ -139,40 +139,6 @@ module.exports = {
         delete(req.session.pwd);
         res.redirect("/");
     },
-    //大頭貼
-    myPhoto: function (req, res) {
-        if(req.session.userid){
-            User.findOne({
-                id: req.session.userid
-            })
-            .exec(function(err, user) {
-                if(!err){
-                    var filePath = "assets" + user.photo;
-                    var stat = fs.statSync(filePath);
-
-                    res.writeHead(200, {
-                        "Content-Type": "application/exe",
-                        "Content-Length": stat.size
-                    });
-
-                    var readStream = fs.createReadStream(filePath);
-                    readStream.pipe(res);
-                }
-            });
-        }
-        else{
-            var filePath = "assets/images/layout/logo.png";
-            var stat = fs.statSync(filePath);
-
-            res.writeHead(200, {
-                "Content-Type": "application/exe",
-                "Content-Length": stat.size
-            });
-
-            var readStream = fs.createReadStream(filePath);
-            readStream.pipe(res);
-        }
-    },
     //個人資料
     profile: function (req, res) {
         if(req.session.userid){
@@ -341,13 +307,47 @@ module.exports = {
             return res.forbidden();
         }  
     },
+    //報名資料
+    files: function (req, res) {
+        if(req.session.userid){
+            UserFiles.findOne({
+                user: req.session.userid
+            })
+            .exec(function(err, files) {
+                if(err){
+                    res.end(JSON.stringify(err));
+                }
+                else{
+                    if(files.registrationUT != null)
+                        files.registrationUT = CmsService.formatTime(files.registrationUT);
+                    if(files.autobiographyUT != null)
+                        files.autobiographyUT = CmsService.formatTime(files.autobiographyUT);
+                    if(files.receiptUT != null)
+                        files.receiptUT = CmsService.formatTime(files.receiptUT);
+
+                    return res.view("frontend/pages/userFiles", {
+                        files: files
+                    });
+                }
+            });
+        }
+        else{
+            return res.forbidden();
+        }  
+    },
     //上傳報名表
     uploadReg: function (req, res) {
         var value = {};
 
         if(req.session.userid){
-            req.file("registration").upload({ dirname: sails.config.appPath+"/assets/files/"+req.session.userid}
-            , function (err, uploadedFiles) {
+            var uploadOptions = {
+                dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
+                saveAs: function (__newFileStream, cb) {
+                    cb(null, __newFileStream.filename);
+                },
+            }
+
+            req.file("registration").upload(uploadOptions, function (err, uploadedFiles) {
                 if (err) 
                     return res.end(JSON.stringify(err));
                 //有上傳檔案
@@ -421,17 +421,167 @@ module.exports = {
     },
     //上傳自傳
     uploadAut: function (req, res) {
+        var value = {};
+
         if(req.session.userid){
-            
+            var uploadOptions = {
+                dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
+                saveAs: function (__newFileStream, cb) {
+                    cb(null, __newFileStream.filename);
+                },
+            }
+
+            req.file("autobiography").upload(uploadOptions, function (err, uploadedFiles) {
+                if (err) 
+                    return res.end(JSON.stringify(err));
+                //有上傳檔案
+                if (uploadedFiles.length > 0) {
+                    //PDF檔
+                    if (uploadedFiles[0].type == "application/pdf") {    
+                        if (uploadedFiles[0].size > 5 * 1024 * 1024) {
+                            return res.end("檔案需小於5MB");
+                        }
+                        var url = uploadedFiles[0].fd;
+                        var start = url.search("files") - 1;
+                        url = url.slice(start);
+                        url = url.replace(/\\/g, "/");
+                        value.autobiography = url;
+                        value.autobiographyUT = new Date();
+                    }
+                    //非PDF檔
+                    else {
+                        fs.unlink(uploadedFiles[0].fd, function (err) {  
+                            if (err) 
+                                console.error(err) 
+                        });  
+                        return res.end("檔案格式錯誤");
+                    }      
+
+                    //取得舊檔案位址
+                    UserFiles.findOne({
+                        user: req.session.userid
+                    })
+                    .exec(function (err, file) {
+                        if (err)
+                            res.end(JSON.stringify(err));
+                        else {
+                            var oldFile = file.autobiography;
+
+                            UserFiles.update({id: file.id}, value)
+                            .exec(function (err, datas) {
+                                if (err) {
+                                    //刪除上傳檔案
+                                    fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                        if (err) 
+                                            console.error(err) 
+                                    });  
+                                    res.end(JSON.stringify(err));
+                                }
+                                else {
+                                    if(oldFile != null){
+                                        //刪除舊檔案
+                                        var filePath = sails.config.appPath + "/assets" + oldFile;
+
+                                        fs.unlink(filePath, function (err) {  
+                                            if (err) 
+                                                console.error(err) 
+                                        }); 
+                                    }
+                                    res.redirect("/files");
+                                }
+                            });
+                        }
+                    });                        
+                }
+                //沒上傳檔案
+                else{
+                    return res.end("未上傳檔案");
+                }
+            });
         }
         else{
             return res.forbidden();
-        }  
+        }    
     },
     //上傳匯款證明
     uploadRec: function (req, res) {
+        var value = {};
+
         if(req.session.userid){
-            
+            var uploadOptions = {
+                dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
+                saveAs: function (__newFileStream, cb) {
+                    cb(null, __newFileStream.filename);
+                },
+            }
+
+            req.file("receipt").upload(uploadOptions, function (err, uploadedFiles) {
+                if (err) 
+                    return res.end(JSON.stringify(err));
+                //有上傳檔案
+                if (uploadedFiles.length > 0) {
+                    //PDF檔
+                    if (uploadedFiles[0].type == "application/pdf") {    
+                        if (uploadedFiles[0].size > 5 * 1024 * 1024) {
+                            return res.end("檔案需小於5MB");
+                        }
+                        var url = uploadedFiles[0].fd;
+                        var start = url.search("files") - 1;
+                        url = url.slice(start);
+                        url = url.replace(/\\/g, "/");
+                        value.receipt = url;
+                        value.receiptUT = new Date();
+                    }
+                    //非PDF檔
+                    else {
+                        fs.unlink(uploadedFiles[0].fd, function (err) {  
+                            if (err) 
+                                console.error(err) 
+                        });  
+                        return res.end("檔案格式錯誤");
+                    }      
+
+                    //取得舊檔案位址
+                    UserFiles.findOne({
+                        user: req.session.userid
+                    })
+                    .exec(function (err, file) {
+                        if (err)
+                            res.end(JSON.stringify(err));
+                        else {
+                            var oldFile = file.receipt;
+
+                            UserFiles.update({id: file.id}, value)
+                            .exec(function (err, datas) {
+                                if (err) {
+                                    //刪除上傳檔案
+                                    fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                        if (err) 
+                                            console.error(err) 
+                                    });  
+                                    res.end(JSON.stringify(err));
+                                }
+                                else {
+                                    if(oldFile != null){
+                                        //刪除舊檔案
+                                        var filePath = sails.config.appPath + "/assets" + oldFile;
+
+                                        fs.unlink(filePath, function (err) {  
+                                            if (err) 
+                                                console.error(err) 
+                                        }); 
+                                    }
+                                    res.redirect("/files");
+                                }
+                            });
+                        }
+                    });                        
+                }
+                //沒上傳檔案
+                else{
+                    return res.end("未上傳檔案");
+                }
+            });
         }
         else{
             return res.forbidden();
