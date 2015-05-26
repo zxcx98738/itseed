@@ -39,6 +39,10 @@ module.exports = {
         receiptUT : {
           type: 'datetime'
         },
+        //使用者
+        user: {
+          model:'User'
+        },
         //建立時間
         createdAt: {
           type: 'datetime'

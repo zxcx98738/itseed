@@ -72,14 +72,6 @@ module.exports = {
         th: {
           type: 'integer'
         },
-        //DISC
-        disc: {
-          model:'UserDISC'
-        },
-        //報名資料
-        files: {
-          model:'UserFiles'
-        },
         //建立時間
         createdAt: {
           type: 'datetime'

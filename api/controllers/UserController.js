@@ -17,38 +17,38 @@ module.exports = {
             th: 13,
         };
 
-        UserDISC.create()
-        .exec(function(err, disc) {
+        //新增使用者
+        User.create(newuser)
+        .exec(function(err, user) {
             if(err){
                 res.end(JSON.stringify(err));
             }
             else{
-                newuser.disc = disc.id;
-
-                UserFiles.create()
-                .exec(function(err, files) {
+                //新增DISC
+                UserDISC.create({user: user.id})
+                .exec(function(err, disc) {
                     if(err){
                         res.end(JSON.stringify(err));
                     }
                     else{
-                        newuser.files = files.id;
-
-                        User.create(newuser)
-                        .exec(function(err, user) {
+                        //新增報名資料
+                        UserFiles.create({user: user.id})
+                        .exec(function(err, files) {
                             if(err){
                                 res.end(JSON.stringify(err));
                             }
                             else{
+                                //完成
                                 req.session.userid = user.id;
                                 req.session.email = req.body.email;
                                 req.session.pwd = req.body.pwd;
                                 res.redirect("/profile");
                             }
-                        });
+                        });     
                     }
-                });     
+                });
             }
-        });       
+        });
     },
     //檢查信箱是否已存在
     checkEmail: function (req, res) {
@@ -245,7 +245,7 @@ module.exports = {
                         else {
                             var oldPhoto = user.photo;
 
-                            User.update({id: req.session.userid}, value)
+                            User.update({id: user.id}, value)
                             .exec(function (err, datas) {
                                 if (err) {
                                     //刪除上傳檔案
@@ -257,7 +257,7 @@ module.exports = {
                                     res.end(JSON.stringify(err));
                                 }
                                 else {
-                                    //刪除原始檔案
+                                    //刪除舊檔案
                                     if (oldPhoto != "/images/layout/logo.png") {
                                         var imagePath = sails.config.appPath + "/assets" + oldPhoto;
 
@@ -297,17 +297,16 @@ module.exports = {
     //DISC
     disc: function (req, res) {
         if(req.session.userid){
-            User.findOne({
-                id: req.session.userid
+            UserDISC.findOne({
+                user: req.session.userid
             })
-            .populate("disc")
-            .exec(function(err, user) {
+            .exec(function(err, disc) {
                 if(err){
                     res.end(JSON.stringify(err));
                 }
                 else{
                     return res.view("frontend/pages/userDisc", {
-                        disc: user.disc
+                        disc: disc
                     });
                 }
             });
@@ -327,25 +326,16 @@ module.exports = {
                 value["q" + i] = req.body["q" + i];
             }
 
-            User.findOne({
-                id: req.session.userid
-            })
-            .exec(function (err, user) {
+            UserDISC.update({user: req.session.userid}, value)
+            .exec(function (err, datas) {
                 if(err){
                     res.end(JSON.stringify(err));
                 }
                 else{
-                    UserDISC.update({id: user.disc}, value)
-                    .exec(function (err, datas) {
-                        if(err){
-                            res.end(JSON.stringify(err));
-                        }
-                        else{
-                            res.redirect("/disc");
-                        }
-                    });
+                    res.redirect("/disc");
                 }
-            });   
+            });
+
         }
         else{
             return res.forbidden();
@@ -383,51 +373,41 @@ module.exports = {
                         return res.end("檔案格式錯誤");
                     }      
 
-                    //取得報名資料ID
-                    User.findOne({
-                        id: req.session.userid
+                    //取得舊檔案位址
+                    UserFiles.findOne({
+                        user: req.session.userid
                     })
-                    .exec(function (err, user) {
-                        if (err) {
+                    .exec(function (err, file) {
+                        if (err)
                             res.end(JSON.stringify(err));
-                        }
                         else {
-                            //取得舊檔案位址
-                            UserFiles.findOne({
-                                id: user.files
-                            })
-                            .exec(function (err, file) {
-                                if (err)
+                            var oldFile = file.registration;
+
+                            UserFiles.update({id: file.id}, value)
+                            .exec(function (err, datas) {
+                                if (err) {
+                                    //刪除上傳檔案
+                                    fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                        if (err) 
+                                            console.error(err) 
+                                    });  
                                     res.end(JSON.stringify(err));
-                                else {
-                                    var oldFile = file.registration;
-
-                                    UserFiles.update({id: user.files}, value)
-                                    .exec(function (err, datas) {
-                                        if (err) {
-                                            //刪除上傳檔案
-                                            fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                                if (err) 
-                                                    console.error(err) 
-                                            });  
-                                            res.end(JSON.stringify(err));
-                                        }
-                                        else {
-                                            //刪除原始檔案
-                                            var filePath = sails.config.appPath + "/assets" + oldFile;
-
-                                            fs.unlink(filePath, function (err) {  
-                                                if (err) 
-                                                    console.error(err) 
-                                            });  
-
-                                            res.redirect("/files");
-                                        }
-                                    });
                                 }
-                            });             
+                                else {
+                                    if(oldFile != null){
+                                        //刪除舊檔案
+                                        var filePath = sails.config.appPath + "/assets" + oldFile;
+
+                                        fs.unlink(filePath, function (err) {  
+                                            if (err) 
+                                                console.error(err) 
+                                        }); 
+                                    }
+                                    res.redirect("/files");
+                                }
+                            });
                         }
-                    });             
+                    });                        
                 }
                 //沒上傳檔案
                 else{

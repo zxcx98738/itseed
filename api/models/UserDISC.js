@@ -93,6 +93,10 @@ module.exports = {
         q26 : {          
           type: 'integer'
         },
+        //使用者
+        user: {
+          model:'User'
+        },
         //建立時間
         createdAt: {
           type: 'datetime'
