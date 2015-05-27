@@ -30,7 +30,10 @@
 				<ul class="login-area nav navbar-nav navbar-right">
 				<% if(!req.session.userid){ %>
 					<li><a href="/login">報名登入</a></li>
-				<% } else{ %>
+				<% } else { %>
+					<% if(req.session.type == "A"){ %>
+						<li><a href="/backend">後台系統</a></li>
+					<% } %>
 					<li><a href="/profile">我的帳戶</a></li>
 					<li><a href="/logout">登出</a></li>
 				<% } %>

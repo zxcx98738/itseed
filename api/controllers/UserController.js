@@ -1,54 +1,132 @@
 /**
  * UserController
  *
- * @描述 : 註冊
+ * @描述 : 使用者相關
  * @文件 : Se http://links.sailsjs.org/docs/controllers
  */
 
 var md5 = require("MD5")
 var fs = require("fs"); 
 
-module.exports = {    
-    //註冊
-    create: function(req, res){
-        var newuser = {
-            email: req.body.email,
-            pwd: md5(req.body.pwd),
-            th: 13,
-        };
-
-        //新增使用者
-        User.create(newuser)
-        .exec(function(err, user) {
-            if(err){
-                res.end(JSON.stringify(err));
+module.exports = {
+    //登入頁
+    loginPage: function (req, res) {
+        //判斷系統開放與否
+        SystemSetting.findOne({
+            name: "startDate"
+        })
+        .exec(function (err, parameter1) {
+            if (err) {
+                return res.end(JSON.stringify(err));
             }
-            else{
-                //新增DISC
-                UserDISC.create({user: user.id})
-                .exec(function(err, disc) {
-                    if(err){
-                        res.end(JSON.stringify(err));
+            else {
+                if (parameter1 == undefined)
+                    startDate = "";
+                else {
+                    startDate = (new Date(parameter1.value)).getTime();
+                }
+
+                SystemSetting.findOne({
+                    name: "endDate"
+                })
+                .exec(function (err, parameter2) {
+                    if (err) {
+                        return res.end(JSON.stringify(err));
                     }
-                    else{
-                        //新增報名資料
-                        UserFiles.create({user: user.id})
-                        .exec(function(err, files) {
-                            if(err){
-                                res.end(JSON.stringify(err));
+                    else {
+                        if (parameter2 == undefined)
+                            endDate = "";
+                        else {
+                            endDate = (new Date(parameter2.value)).getTime();
+                        }
+
+                        //還沒設定
+                        if (startDate == "" || endDate == "") {
+                            return res.view("frontend/pages/login", {
+                                system: "open"
+                            });
+                        }
+                        else {
+                            var now = (new Date()).getTime();
+
+                            //系統開放
+                            if (startDate < now && now < endDate){
+                                return res.view("frontend/pages/login", {
+                                    system: "open"
+                                });
                             }
-                            else{
-                                //完成
-                                req.session.userid = user.id;
-                                req.session.email = req.body.email;
-                                req.session.pwd = req.body.pwd;
-                                res.redirect("/profile");
+                            //系統關閉
+                            else {
+                                return res.view("frontend/pages/login", {
+                                    system: "close"
+                                });
                             }
-                        });     
+                        }
                     }
                 });
             }
         });
+    },
+    //註冊
+    register: function(req, res){
+        //TODO: 系統開關
+
+        var newuser = {
+            email: req.body.email,
+            pwd: md5(req.body.pwd),
+        };
+
+        SystemSetting.findOne({
+            name: "th"
+        })
+        .exec(function (err, parameter) {
+            if(err){
+                return res.end(JSON.stringify(err));
+            }
+            else{
+                if(parameter != undefined){
+                    newuser.th = parameter.value;
+                }
+                //新增使用者
+                User.create(newuser)
+                .exec(function(err, user) {
+                    if(err){
+                        res.end(JSON.stringify(err));
+                    }
+                    else{
+                        //新增DISC
+                        UserDISC.create({user: user.id})
+                        .exec(function(err, disc) {
+                            if(err){
+                                res.end(JSON.stringify(err));
+                            }
+                            else{
+                                //新增報名資料
+                                UserFiles.create({user: user.id})
+                                .exec(function(err, files) {
+                                    if(err){
+                                        res.end(JSON.stringify(err));
+                                    }
+                                    else{
+                                        //完成
+                                        req.session.userid = user.id;
+                                        req.session.email = req.body.email;
+                                        req.session.pwd = req.body.pwd;
+                                        req.session.type =  user.type;
+                                        req.session.authorized = {
+                                            cms: false,
+                                            systemSetting: false,
+                                        };
+
+                                        res.redirect("/profile");
+                                    }
+                                });     
+                            }
+                        });
+                    }
+                });    
+            }
+        });                
     },
     //檢查信箱是否已存在
     checkEmail: function (req, res) {
@@ -126,8 +204,23 @@ module.exports = {
                 }
 
                 req.session.userid = user.id;
-                req.session.email = req.body.email;
+                req.session.email = user.email;
                 req.session.pwd = req.body.pwd;
+                req.session.type =  user.type;
+                
+                if (user.type == "A") {
+                    req.session.authorized = {
+                        cms: true,
+                        systemSetting: true,
+                    };
+                }
+                else {
+                    req.session.authorized = {
+                        cms: false,
+                        systemSetting: false,
+                    };
+                }
+
                 res.redirect("/profile");
             }
         });
@@ -137,6 +230,8 @@ module.exports = {
         delete(req.session.userid);
         delete(req.session.email);
         delete(req.session.pwd);
+        delete(req.session.type);
+        delete(req.session.authorized);
         res.redirect("/");
     },
     //個人資料
@@ -172,6 +267,8 @@ module.exports = {
             grade: req.body.grade,
             reference: req.body.reference,
         };
+        if(req.session.type == "A")
+            value.th = req.body.th;
 
         if (req.session.userid) {
             req.file("photo").upload({ dirname: sails.config.appPath+"/assets/files/"+req.session.userid}
@@ -309,24 +406,81 @@ module.exports = {
     },
     //報名資料
     files: function (req, res) {
-        if(req.session.userid){
+        if (req.session.userid) {
             UserFiles.findOne({
                 user: req.session.userid
             })
-            .exec(function(err, files) {
-                if(err){
+            .exec(function (err, files) {
+                if (err) {
                     res.end(JSON.stringify(err));
                 }
-                else{
-                    if(files.registrationUT != null)
+                else {
+                    if (files.registrationUT != null)
                         files.registrationUT = CmsService.formatTime(files.registrationUT);
-                    if(files.autobiographyUT != null)
+                    if (files.autobiographyUT != null)
                         files.autobiographyUT = CmsService.formatTime(files.autobiographyUT);
-                    if(files.receiptUT != null)
+                    if (files.receiptUT != null)
                         files.receiptUT = CmsService.formatTime(files.receiptUT);
 
-                    return res.view("frontend/pages/userFiles", {
-                        files: files
+                    var startDate, endDate;
+
+                    //判斷系統開放與否
+                    SystemSetting.findOne({
+                        name: "startDate"
+                    })
+                    .exec(function (err, parameter1) {
+                        if (err) {
+                            return res.end(JSON.stringify(err));
+                        }
+                        else {
+                            if (parameter1 == undefined)
+                                startDate = "";
+                            else {
+                                startDate = (new Date(parameter1.value)).getTime();
+                            }
+
+                            SystemSetting.findOne({
+                                name: "endDate"
+                            })
+                            .exec(function (err, parameter2) {
+                                if (err) {
+                                    return res.end(JSON.stringify(err));
+                                }
+                                else {
+                                    if (parameter2 == undefined)
+                                        endDate = "";
+                                    else {
+                                        endDate = (new Date(parameter2.value)).getTime();
+                                    }
+
+                                    //還沒設定
+                                    if (startDate == "" || endDate == "") {
+                                        return res.view("frontend/pages/userFiles", {
+                                            system: "open",
+                                            files: files
+                                        });
+                                    }
+                                    else {
+                                        var now = (new Date()).getTime();
+
+                                        //系統開放
+                                        if (startDate < now && now < endDate){
+                                            return res.view("frontend/pages/userFiles", {
+                                                system: "open",
+                                                files: files
+                                            });
+                                        }
+                                        //系統關閉
+                                        else {
+                                            return res.view("frontend/pages/userFiles", {
+                                                system: "close",
+                                                files: files
+                                            });
+                                        }
+                                    }
+                                }
+                            });
+                        }
                     });
                 }
             });
@@ -339,6 +493,7 @@ module.exports = {
     uploadReg: function (req, res) {
         var value = {};
 
+        //TODO: 系統開關
         if(req.session.userid){
             var uploadOptions = {
                 dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
@@ -423,6 +578,7 @@ module.exports = {
     uploadAut: function (req, res) {
         var value = {};
 
+        //TODO: 系統開關
         if(req.session.userid){
             var uploadOptions = {
                 dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
@@ -507,6 +663,7 @@ module.exports = {
     uploadRec: function (req, res) {
         var value = {};
 
+        //TODO: 系統開關
         if(req.session.userid){
             var uploadOptions = {
                 dirname: sails.config.appPath+"/assets/files/"+req.session.userid,

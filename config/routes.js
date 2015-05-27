@@ -155,11 +155,12 @@ module.exports.routes = {
 
   'post /register': {
     controller: 'User',
-    action: 'create'    
+    action: 'register'    
   },
 
   'get /login': {
-    view: 'frontend/pages/login'    
+    controller: 'User',
+    action: 'loginPage'   
   },
 
   'post /login': {
@@ -212,7 +213,12 @@ module.exports.routes = {
     action: 'uploadRec'
   },
 
+  /*後台*/
+  '/backend': '/cms',
+
   /*後台-CMS*/
+  '/cms': '/cms/list/news/all',
+
   'get /cms/new/:model': {
     controller: 'Cms',
     action: 'editor'
@@ -278,7 +284,26 @@ module.exports.routes = {
     action: 'sort'
   },
 
+  /*系統設定*/
+  '/systemSetting': {
+    controller: 'System',
+    action: 'systemSetting'
+  },
 
+  'post /updateTh': {
+    controller: 'System',
+    action: 'updateTh'
+  },
+
+  'post /updateStartDate': {
+    controller: 'System',
+    action: 'updateStartDate'
+  },
+
+  'post /updateEndDate': {
+    controller: 'System',
+    action: 'updateEndDate'
+  },
 
 
   /***************************************************************************

@@ -10,7 +10,7 @@ var fs = require("fs");
 module.exports = {
     //載入編輯器
     editor: function(req, res){
-        /*if(req.session.authorized){*/   
+        if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){ 
             var model = sails.models[req.param("model").toLowerCase()];        
             var action = {};
             var post = {};
@@ -86,14 +86,14 @@ module.exports = {
                     res.end(JSON.stringify(err));
                 });
             }
-        /*}
+        }
         else{
             return res.forbidden();
-        }*/
+        }
     },
     //預覽畫面
     preview: function(req, res){
-        /*if(req.session.authorized){*/
+        if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
             var model = sails.models[req.param("model").toLowerCase()]; 
 
             /*收到POST request*/
@@ -126,14 +126,14 @@ module.exports = {
                     preview: preview
                 });
             }
-        /*}
+        }
         else{
             return res.forbidden();
-        }*/
+        }
     },
     //載入預覽內容
     load: function(req, res){
-        /*if(req.session.authorized){*/
+        if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
             var model = sails.models[req.param("model").toLowerCase()]; 
             var action = CmsService.getAction(model);
             /*收到POST request*/
@@ -167,14 +167,14 @@ module.exports = {
                     res.end(JSON.stringify(err));
                 });
             }
-        /*}
+        }
         else{
             return res.forbidden();
-        }*/
+        }
     },
     //回傳後台顯示的文章列表
     list: function(req, res){
-        /*if(req.session.authorized){*/
+        if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
             var theModel = sails.models[req.param("model").toLowerCase()];   
             var status = req.param("status");
             var modelArr = ["aboutITSeed", "aboutNTCA", "businessVisit", "courseInfo", "courseList", "faq", "instructor", 
@@ -304,6 +304,7 @@ module.exports = {
 
                     /*再撈正在編輯的model的文章列表*/
                     CmsService.findPosts(theModel, criteria)
+                    .populate('author')
                     .then(function(datas){
                         //BUG: 回傳的createdAt是數字而非string
                         for(var i = 0; i < datas.length; i++){
@@ -324,20 +325,20 @@ module.exports = {
                     });
                 }
             });
-        /*}
+        }
         else{
             return res.forbidden();
-        }*/
+        }
     },
     //新增
     create: function(req, res){
-    	/*if(req.session.authorized){*/
+    	if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
             var model = sails.models[req.param("model").toLowerCase()];
             var menu = CmsService.getMenu(model);
 
             //共通的attributes 
             var value = {
-                /*author: req.session.userid,*/
+                author: req.session.userid,
                 title: req.param("title"),
                 content: req.param("content"),
                 status: req.param("status")
@@ -509,14 +510,14 @@ module.exports = {
                     });
                     break;
             } 
-        /*}
+        }
         else{
             return res.forbidden();
-        }*/
+        }
     },
     //更新
     update: function(req, res){
-        /*if(req.session.authorized){*/
+        if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
             var model = sails.models[req.param("model").toLowerCase()]; 
             var menu = CmsService.getMenu(model);
             var criteria = {
@@ -719,14 +720,14 @@ module.exports = {
                         res.end(JSON.stringify(err));
                     });
             }     
-        /*}
+        }
         else{
             return res.forbidden();
-        }*/
+        }
     },
     //發布
     publish: function(req, res){
-        /*if(req.session.authorized){*/
+        if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
             var model = sails.models[req.param("model").toLowerCase()]; 
             var criteria = {
                 id: req.param("id")
@@ -742,14 +743,14 @@ module.exports = {
             .catch(function(err){
                 res.end(JSON.stringify(err));
             });
-        /*}
+        }
         else{
             return res.forbidden();
-        }*/
+        }
     },
     //還原為草稿
     toDraft: function(req, res){
-        /*if(req.session.authorized){*/
+        if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
             var model = sails.models[req.param("model").toLowerCase()]; 
             var criteria = {
                 id: req.param("id")
@@ -765,14 +766,14 @@ module.exports = {
             .catch(function(err){
                 res.end(JSON.stringify(err));
             });    
-        /*}
+        }
         else{
             return res.forbidden();
-        }*/
+        }
     },
     //刪除
     delete: function(req, res){
-        /*if(req.session.authorized){*/
+        if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
             var model = sails.models[req.param("model").toLowerCase()]; 
             var criteria = {
                 id: req.param("id")
@@ -881,14 +882,14 @@ module.exports = {
                         res.end(JSON.stringify(err));
                     }); 
             } 
-        /*}
+        }
         else{
             return res.forbidden();
-        }*/
+        }
     },
     //排序
     sort: function(req, res){
-        /*if(req.session.authorized){*/
+        if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
             var model = sails.models[req.param("model").toLowerCase()];
             var orders =  JSON.parse(req.param("orders"));
 
@@ -915,10 +916,10 @@ module.exports = {
                     res.end("success");
                 }
             });
-        /*}
+        }
         else{
             return res.forbidden();
-        }*/
+        }
     },
 };
 

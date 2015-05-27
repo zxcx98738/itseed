@@ -16,9 +16,9 @@ module.exports = {
           unique: true
         },
         //作者ID
-/*        author: {
+        author: {
           model:'User'
-        },*/
+        },
         //標題
         title: {
           type: 'string',

@@ -11,8 +11,10 @@
 		<div class="row col-md-10 col-md-offset-1">
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="/profile">個人資料</a></li>
+			<% if(req.session.type == "U"){ %>
 				<li><a href="/disc">DISC測驗</a></li>
 				<li><a href="/files">書審資料</a></li>
+			<% } %>
 			</ul>
 		</div>
 		<div class="row col-md-10 col-md-offset-1">
@@ -36,6 +38,7 @@
 							<input type="password" name="pwd_confirmation" class="btn-block" value="<%= req.session.pwd %>">
 						</div>
 					</div>
+				<% if(req.session.type == "U"){ %>
 					<div class="form-group">
 						<label class="col-xs-2 control-label" for="phone">連絡電話</label>
 						<div class="col-xs-10">
@@ -46,6 +49,19 @@
 						<% } %>
 						</div>
 					</div>
+				<% } %>
+				<% if(req.session.type == 'A') { %>
+					<div class="form-group">
+						<label class="col-xs-2 control-label" for="th">屆數</label>
+						<div class="col-xs-10">
+						<% if(user.th == null){%>
+							<input type="text" name="th" class="btn-block" id="th">
+						<% } else{ %>
+							<input type="text" name="th" class="btn-block" id="th" value="<%= user.th %>">
+						<% } %>
+						</div>
+					</div>	
+				<% } %>
 					<div class="form-group">
 						<label class="col-xs-2 control-label" for="name">真實姓名</label>
 						<div class="col-xs-10">
@@ -55,7 +71,8 @@
 							<input type="text" name="name" class="btn-block" id="name" placeholder="ex: 林資種" value="<%= user.name %>">
 						<% } %>
 						</div>
-					</div>	
+					</div>
+				<% if(req.session.type == "U"){ %>	
 					<div class="form-group">
 						<label class="col-xs-2 control-label" class="control-label">性別</label>
 						<div class="col-xs-10">
@@ -105,6 +122,7 @@
 						<% } %>	
 						</div>
 					</div>
+				<% } %>
 				</div>
 				<div class="col-sm-3 col-xs-12 uploadPhoto">
 					<div class="col-sm-12 col-xs-6">
