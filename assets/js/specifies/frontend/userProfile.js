@@ -1,7 +1,13 @@
 (function() {
   $.validator.addMethod("fileSize", function(value, element, param) {
+    var optionalValue = this.optional(element);
+    if (optionalValue) {
+      return optionalValue;
+    }
+
     var limit = param * 1024 * 1024;
     var size = element.files[0].size;
+
     if(size > limit)
       return false;
     else
@@ -85,6 +91,10 @@ $(function(){
   			required: true,
   			maxlength: 20
   		},
+      th: {
+        required: true,
+        maxlength: 10
+      },
   		name: {
   			required: true,
   			maxlength: 10
