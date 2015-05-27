@@ -304,6 +304,7 @@ module.exports = {
 
                     /*再撈正在編輯的model的文章列表*/
                     CmsService.findPosts(theModel, criteria)
+                    .populate('author')
                     .then(function(datas){
                         //BUG: 回傳的createdAt是數字而非string
                         for(var i = 0; i < datas.length; i++){
@@ -337,7 +338,7 @@ module.exports = {
 
             //共通的attributes 
             var value = {
-                /*author: req.session.userid,*/
+                author: req.session.userid,
                 title: req.param("title"),
                 content: req.param("content"),
                 status: req.param("status")

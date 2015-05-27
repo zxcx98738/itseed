@@ -42,6 +42,10 @@ module.exports = {
                                 req.session.userid = user.id;
                                 req.session.email = req.body.email;
                                 req.session.pwd = req.body.pwd;
+                                req.session.authorized = {
+                                    cms: false,
+                                };
+
                                 res.redirect("/profile");
                             }
                         });     
