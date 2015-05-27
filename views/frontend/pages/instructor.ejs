@@ -2,31 +2,20 @@
 <% include ../header %>
 <!--END HEADER-->
 
-<% for(var i = 0; i < datas.length; i++){ %>
-	<% if(i%2 == 0){ %>
-		<section class="bg-white">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<h3><%= datas[i].title %></h3>
-						<div><%- datas[i].content %></div>	
-					</div>
+<section class="bg-white">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+			<% for(var i = 0; i < datas.length; i++){ %>
+				<div class="col-md-6" id="<%= datas[i].id %>">
+					<h3><%= datas[i].title %></h3>
+					<div><%- datas[i].content %></div>	
 				</div>
-			</div>
-		</section>
-	<% } else{ %>
-		<section class="bg-light-gray">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<h3><%= datas[i].title %></h3>
-						<div><%- datas[i].content %></div>	
-					</div>
-				</div>
-			</div>
-		</section>
-	<% } %>
-<% } %>
+			<% } %>
+			</div>	
+		</div>	
+	</div>
+</section>
 
 <!--FOOTER-->
 <% include ../footer %>

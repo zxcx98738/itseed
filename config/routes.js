@@ -34,7 +34,8 @@ module.exports.routes = {
 
   /*前台-一般頁面*/
   '/': {
-    view: 'frontend/pages/index'
+    controller: 'Site',
+    action: 'index'
   },
   
   '/news': {

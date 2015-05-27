@@ -2,43 +2,93 @@
 <% include ../header %>
 <!--END HEADER-->
 
-<section id="cover">
-	<div class="container">
-		<div class="intro-text">
-			<div class="intro-lead-in">第十三屆資訊種子</div>
-			<div class="intro-heading">熱情招生中</div>
-			<a href="#services" class="page-scroll btn btn-xl">立即報名</a>
-		</div>
-	</div>
-</section>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel"  > 
+  <!-- Indicators -->
+  <div class="carousel-caption">
+          <h1>第十三屆資訊種子</h1>
+          <p>熱情招生中</p>
+          <p><a class="btn btn-lg btn-danger disabled" href="#" role="button">6/1 報名即將開始</a></p>
+  </div>
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="/images/layout/itseed2.png" style="width:100%" alt="First slide">
+      <!-- <div class="container">
+        <div class="carousel-caption">
+          <h1>第十三屆資訊種子</h1>
+          <p>熱情招生中</p>
+          <p><a class="btn btn-lg btn-primary disabled" href="#" role="button">6/1 報名即將開始</a></p>
+        </div>
+      </div> -->
+    </div>
+    <div class="item">
+    	<a href="http://lnk.pics/7Nr" target="_blank">
+      <img src="/images/layout/Seminar.png" style="width:100%" alt="First slide">
+      <!-- <div class="container">
+        <div class="carousel-caption">
+          <h1>第十三屆資訊種子</h1>
+          <p>熱情招生中</p>
+          <p><a class="btn btn-lg btn-primary disabled" href="#" role="button">6/1 報名即將開始</a></p>
+        </div>
+      </div> -->
+      </a>
+    </div>
+    
+  </div>
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> </div>
 
 <section id="team" class="bg-light-gray">
 	<div class="container">
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-lg-12 text-center">
 				<h2 class="section-heading">主標題</h2>
 				<h3 class="section-subheading text-muted">副標題</h3>
 			</div>
-		</div>
-		<div class="row" style="height: 320px">
+		</div> -->
+		<div class="row">
 			<div class="col-sm-4">
-				<div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
-					<br><br><br><br><br><br><br><br><br><br><br><br><br>
+				<h2>最新消息</h2>
+        <div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
+          <table class="table table-hover">
+          <tbody>
+          <% for(var i = 0; i < Math.min(4,datas.length); i++){ %>
+            <tr>
+              <td class="col-md-6">
+                <a href="<%= url + datas[i].id %>">   
+                  <%= datas[i].title %>   
+                </a>
+              </td>
+              <td class="col-md-6"><%= datas[i].formatTime %></td>
+            </tr>
+          <% } %>
+          </tbody>
+        </table> 
+       
 				</div>
 			</div>
-			<div class="col-sm-4">
-				<div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
-					<br><br><br><br><br><br><br><br><br><br><br><br><br>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
-					<br><br><br><br><br><br><br><br><br><br><br><br><br>
-				</div>
-			</div>
+      <div class="col-sm-4">
+        <h2>官方影片</h2>
+        <div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
+        <div class="video-container"><iframe src="https://www.youtube.com/embed/4nr0c3wK_g4" frameborder="0" allowfullscreen></iframe></div>
+
+       
+        </div>
+        
+      </div>
+      <div class="col-sm-4">
+        <div class="fb-page" data-href="https://www.facebook.com/iloveitseed?fref=ts" data-width="500" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/iloveitseed?fref=ts"><a href="https://www.facebook.com/iloveitseed?fref=ts">資訊種子</a></blockquote></div></div>
+        
+      </div>
+ 
 		</div>
 	</div>
 </section>
+
 
 <!--FOOTER-->
 <% include ../footer %>
