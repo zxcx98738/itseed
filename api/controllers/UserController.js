@@ -128,6 +128,18 @@ module.exports = {
                 req.session.userid = user.id;
                 req.session.email = req.body.email;
                 req.session.pwd = req.body.pwd;
+                
+                if (user.type == "A") {
+                    req.session.authorized = {
+                        cms: true,
+                    };
+                }
+                else {
+                    req.session.authorized = {
+                        cms: false,
+                    };
+                }
+
                 res.redirect("/profile");
             }
         });
@@ -137,6 +149,7 @@ module.exports = {
         delete(req.session.userid);
         delete(req.session.email);
         delete(req.session.pwd);
+        delete(req.session.authorized);
         res.redirect("/");
     },
     //個人資料

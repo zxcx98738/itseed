@@ -212,7 +212,12 @@ module.exports.routes = {
     action: 'uploadRec'
   },
 
+  /*後台*/
+  '/backend': '/cms',
+
   /*後台-CMS*/
+  '/cms': '/cms/list/news/all',
+
   'get /cms/new/:model': {
     controller: 'Cms',
     action: 'editor'
