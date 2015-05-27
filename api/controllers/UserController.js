@@ -1,7 +1,7 @@
 /**
  * UserController
  *
- * @描述 : 註冊
+ * @描述 : 使用者相關
  * @文件 : Se http://links.sailsjs.org/docs/controllers
  */
 
@@ -10,49 +10,63 @@ var fs = require("fs");
 
 module.exports = {    
     //註冊
-    create: function(req, res){
+    register: function(req, res){
         var newuser = {
             email: req.body.email,
             pwd: md5(req.body.pwd),
-            th: 13,
         };
 
-        //新增使用者
-        User.create(newuser)
-        .exec(function(err, user) {
+        SystemSetting.findOne({
+            name: "th"
+        })
+        .exec(function (err, parameter) {
             if(err){
-                res.end(JSON.stringify(err));
+                return res.end(JSON.stringify(err));
             }
             else{
-                //新增DISC
-                UserDISC.create({user: user.id})
-                .exec(function(err, disc) {
+                if(parameter != undefined){
+                    newuser.th = parameter.value;
+                }
+                //新增使用者
+                User.create(newuser)
+                .exec(function(err, user) {
                     if(err){
                         res.end(JSON.stringify(err));
                     }
                     else{
-                        //新增報名資料
-                        UserFiles.create({user: user.id})
-                        .exec(function(err, files) {
+                        //新增DISC
+                        UserDISC.create({user: user.id})
+                        .exec(function(err, disc) {
                             if(err){
                                 res.end(JSON.stringify(err));
                             }
                             else{
-                                //完成
-                                req.session.userid = user.id;
-                                req.session.email = req.body.email;
-                                req.session.pwd = req.body.pwd;
-                                req.session.authorized = {
-                                    cms: false,
-                                };
+                                //新增報名資料
+                                UserFiles.create({user: user.id})
+                                .exec(function(err, files) {
+                                    if(err){
+                                        res.end(JSON.stringify(err));
+                                    }
+                                    else{
+                                        //完成
+                                        req.session.userid = user.id;
+                                        req.session.email = req.body.email;
+                                        req.session.pwd = req.body.pwd;
+                                        req.session.type =  user.type;
+                                        req.session.authorized = {
+                                            cms: false,
+                                            systemSetting: false,
+                                        };
 
-                                res.redirect("/profile");
+                                        res.redirect("/profile");
+                                    }
+                                });     
                             }
-                        });     
+                        });
                     }
-                });
+                });    
             }
-        });
+        });                
     },
     //檢查信箱是否已存在
     checkEmail: function (req, res) {
@@ -130,17 +144,20 @@ module.exports = {
                 }
 
                 req.session.userid = user.id;
-                req.session.email = req.body.email;
+                req.session.email = user.email;
                 req.session.pwd = req.body.pwd;
+                req.session.type =  user.type;
                 
                 if (user.type == "A") {
                     req.session.authorized = {
                         cms: true,
+                        systemSetting: true,
                     };
                 }
                 else {
                     req.session.authorized = {
                         cms: false,
+                        systemSetting: false,
                     };
                 }
 
@@ -153,6 +170,7 @@ module.exports = {
         delete(req.session.userid);
         delete(req.session.email);
         delete(req.session.pwd);
+        delete(req.session.type);
         delete(req.session.authorized);
         res.redirect("/");
     },
@@ -189,6 +207,8 @@ module.exports = {
             grade: req.body.grade,
             reference: req.body.reference,
         };
+        if(req.session.type == "A")
+            value.th = req.body.th;
 
         if (req.session.userid) {
             req.file("photo").upload({ dirname: sails.config.appPath+"/assets/files/"+req.session.userid}

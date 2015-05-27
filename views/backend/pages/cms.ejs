@@ -129,7 +129,11 @@
                     <% } else { %>
                         <td class="status"></td>
                     <% } %>
-                    <td class="author"><%= articles[i].author.name %></td>
+                    <td class="author">
+                    <% if (typeof articles[i].author != "undefined") { %>
+                        <%= articles[i].author.name %>
+                    <% } %>
+                    </td>
                     <td class="date"><%= articles[i].formatTime %></td>
                 </tr>
             <% } %>

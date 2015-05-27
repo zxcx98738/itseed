@@ -155,7 +155,7 @@ module.exports.routes = {
 
   'post /register': {
     controller: 'User',
-    action: 'create'    
+    action: 'register'    
   },
 
   'get /login': {
@@ -283,7 +283,26 @@ module.exports.routes = {
     action: 'sort'
   },
 
+  /*系統設定*/
+  '/systemSetting': {
+    controller: 'System',
+    action: 'systemSetting'
+  },
 
+  'post /updateTh': {
+    controller: 'System',
+    action: 'updateTh'
+  },
+
+  'post /updateStartDate': {
+    controller: 'System',
+    action: 'updateStartDate'
+  },
+
+  'post /updateEndDate': {
+    controller: 'System',
+    action: 'updateEndDate'
+  },
 
 
   /***************************************************************************

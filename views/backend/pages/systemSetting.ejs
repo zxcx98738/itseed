@@ -1,0 +1,79 @@
+<script src="/js/specifies/backend/plugins/jquery.datetimepicker.js"></script>
+<script>
+    $(function(){
+        var startDate = <%- JSON.stringify(startDate) %>;
+        var endDate = <%- JSON.stringify(endDate) %>;
+
+        if (startDate == "") {
+            $("#startDate").datetimepicker({
+                lang: "zh-TW",
+                format: "Y/m/d H:i",
+                closeOnDateSelect: true,
+            });
+        }
+        else {
+            $("#startDate").datetimepicker({
+                lang: "zh-TW",
+                format: "Y/m/d H:i",
+                closeOnDateSelect: true,
+                value: new Date(startDate),
+            });
+        }
+
+        if (endDate == "") {
+            $("#endDate").datetimepicker({
+                lang: "zh-TW",
+                format: "Y/m/d H:i",
+                closeOnDateSelect: true,
+            });
+        }
+        else {
+            $("#endDate").datetimepicker({
+                lang: "zh-TW",
+                format: "Y/m/d H:i",
+                closeOnDateSelect: true,
+                value: new Date(endDate),
+            });
+        }   
+    });
+</script>
+<div id="wrapper">
+    <!--HEADER-->
+    <% include ../header %>
+    <!--END HEADER-->
+
+    <div id="page-wrapper">
+        <div class="col-md-8 col-md-offset-2"> 
+            <header>
+                <h3>報名系統設定</h3><br><br><br>
+            </header>
+            <form action="/updateTh" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-md-2 control-label btn-lg" for="th">屆數</label>
+                    <div class="col-md-8">
+                        <input type="number" name="th" class="btn-block btn-lg" id="th" value="<%= th %>">
+                    </div>  
+                    <button type="submit" class="btn-green btn-lg">更新</button>
+                </div>
+            </form>
+            <form action="/updateStartDate" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-md-2 control-label btn-lg" for="startDate">系統開啟時間</label>
+                    <div class="col-md-8">
+                        <input type="text" name="startDate" class="btn-block btn-lg" id="startDate" value="">
+                    </div>  
+                    <button type="submit" class="btn-green btn-lg">更新</button>
+                </div>
+            </form>
+            <form action="/updateEndDate" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-md-2 control-label btn-lg" for="endDate">系統關閉時間</label>
+                    <div class="col-md-8">
+                        <input type="text" name="endDate" class="btn-block btn-lg" id="endDate" value="">
+                    </div>  
+                    <button type="submit" class="btn-green btn-lg">更新</button>
+                </div>
+            </form>
+        </div>   
+    </div>
+</div>
