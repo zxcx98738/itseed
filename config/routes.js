@@ -159,7 +159,8 @@ module.exports.routes = {
   },
 
   'get /login': {
-    view: 'frontend/pages/login'    
+    controller: 'User',
+    action: 'loginPage'   
   },
 
   'post /login': {

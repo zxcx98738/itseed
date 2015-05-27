@@ -8,9 +8,69 @@
 var md5 = require("MD5")
 var fs = require("fs"); 
 
-module.exports = {    
+module.exports = {
+    //登入頁
+    loginPage: function (req, res) {
+        //判斷系統開放與否
+        SystemSetting.findOne({
+            name: "startDate"
+        })
+        .exec(function (err, parameter1) {
+            if (err) {
+                return res.end(JSON.stringify(err));
+            }
+            else {
+                if (parameter1 == undefined)
+                    startDate = "";
+                else {
+                    startDate = (new Date(parameter1.value)).getTime();
+                }
+
+                SystemSetting.findOne({
+                    name: "endDate"
+                })
+                .exec(function (err, parameter2) {
+                    if (err) {
+                        return res.end(JSON.stringify(err));
+                    }
+                    else {
+                        if (parameter2 == undefined)
+                            endDate = "";
+                        else {
+                            endDate = (new Date(parameter2.value)).getTime();
+                        }
+
+                        //還沒設定
+                        if (startDate == "" || endDate == "") {
+                            return res.view("frontend/pages/login", {
+                                system: "open"
+                            });
+                        }
+                        else {
+                            var now = (new Date()).getTime();
+
+                            //系統開放
+                            if (startDate < now && now < endDate){
+                                return res.view("frontend/pages/login", {
+                                    system: "open"
+                                });
+                            }
+                            //系統關閉
+                            else {
+                                return res.view("frontend/pages/login", {
+                                    system: "close"
+                                });
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    },
     //註冊
     register: function(req, res){
+        //TODO: 系統開關
+
         var newuser = {
             email: req.body.email,
             pwd: md5(req.body.pwd),
@@ -346,24 +406,81 @@ module.exports = {
     },
     //報名資料
     files: function (req, res) {
-        if(req.session.userid){
+        if (req.session.userid) {
             UserFiles.findOne({
                 user: req.session.userid
             })
-            .exec(function(err, files) {
-                if(err){
+            .exec(function (err, files) {
+                if (err) {
                     res.end(JSON.stringify(err));
                 }
-                else{
-                    if(files.registrationUT != null)
+                else {
+                    if (files.registrationUT != null)
                         files.registrationUT = CmsService.formatTime(files.registrationUT);
-                    if(files.autobiographyUT != null)
+                    if (files.autobiographyUT != null)
                         files.autobiographyUT = CmsService.formatTime(files.autobiographyUT);
-                    if(files.receiptUT != null)
+                    if (files.receiptUT != null)
                         files.receiptUT = CmsService.formatTime(files.receiptUT);
 
-                    return res.view("frontend/pages/userFiles", {
-                        files: files
+                    var startDate, endDate;
+
+                    //判斷系統開放與否
+                    SystemSetting.findOne({
+                        name: "startDate"
+                    })
+                    .exec(function (err, parameter1) {
+                        if (err) {
+                            return res.end(JSON.stringify(err));
+                        }
+                        else {
+                            if (parameter1 == undefined)
+                                startDate = "";
+                            else {
+                                startDate = (new Date(parameter1.value)).getTime();
+                            }
+
+                            SystemSetting.findOne({
+                                name: "endDate"
+                            })
+                            .exec(function (err, parameter2) {
+                                if (err) {
+                                    return res.end(JSON.stringify(err));
+                                }
+                                else {
+                                    if (parameter2 == undefined)
+                                        endDate = "";
+                                    else {
+                                        endDate = (new Date(parameter2.value)).getTime();
+                                    }
+
+                                    //還沒設定
+                                    if (startDate == "" || endDate == "") {
+                                        return res.view("frontend/pages/userFiles", {
+                                            system: "open",
+                                            files: files
+                                        });
+                                    }
+                                    else {
+                                        var now = (new Date()).getTime();
+
+                                        //系統開放
+                                        if (startDate < now && now < endDate){
+                                            return res.view("frontend/pages/userFiles", {
+                                                system: "open",
+                                                files: files
+                                            });
+                                        }
+                                        //系統關閉
+                                        else {
+                                            return res.view("frontend/pages/userFiles", {
+                                                system: "close",
+                                                files: files
+                                            });
+                                        }
+                                    }
+                                }
+                            });
+                        }
                     });
                 }
             });
@@ -376,6 +493,7 @@ module.exports = {
     uploadReg: function (req, res) {
         var value = {};
 
+        //TODO: 系統開關
         if(req.session.userid){
             var uploadOptions = {
                 dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
@@ -460,6 +578,7 @@ module.exports = {
     uploadAut: function (req, res) {
         var value = {};
 
+        //TODO: 系統開關
         if(req.session.userid){
             var uploadOptions = {
                 dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
@@ -544,6 +663,7 @@ module.exports = {
     uploadRec: function (req, res) {
         var value = {};
 
+        //TODO: 系統開關
         if(req.session.userid){
             var uploadOptions = {
                 dirname: sails.config.appPath+"/assets/files/"+req.session.userid,

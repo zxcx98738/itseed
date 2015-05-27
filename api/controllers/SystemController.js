@@ -14,43 +14,43 @@ module.exports = {
             SystemSetting.findOne({
                 name: "th"
             })
-            .exec(function (err, parameter) {
+            .exec(function (err, parameter1) {
                 if(err){
                     return res.end(JSON.stringify(err));
                 }
                 else{
-                    if(parameter == undefined)
+                    if(parameter1 == undefined)
                         th = "";
                     else
-                        th = parameter.value;
+                        th = parameter1.value;
                 }
 
                 SystemSetting.findOne({
                     name: "startDate"
                 })
-                .exec(function (err, parameter) {
+                .exec(function (err, parameter2) {
                     if(err){
                         return res.end(JSON.stringify(err));
                     }
                     else{
-                        if(parameter == undefined)
+                        if(parameter2 == undefined)
                             startDate = "";
                         else
-                            startDate = parameter.value;
+                            startDate = parameter2.value;
                     }
 
                     SystemSetting.findOne({
                         name: "endDate"
                     })
-                    .exec(function (err, parameter) {
+                    .exec(function (err, parameter3) {
                         if(err){
                             return res.end(JSON.stringify(err));
                         }
                         else{
-                            if(parameter == undefined)
+                            if(parameter3 == undefined)
                                 endDate = "";
                             else
-                                endDate = parameter.value;
+                                endDate = parameter3.value;
                         }
                         return res.view("backend/pages/systemSetting", {
                             th: th,
@@ -168,3 +168,4 @@ module.exports = {
         }
     },
 };
+
