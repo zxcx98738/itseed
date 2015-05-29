@@ -43,9 +43,9 @@
 						<label class="col-sm-2 col-xs-12 control-label" for="phone">連絡電話</label>
 						<div class="col-sm-10 col-xs-12">
 						<% if(user.phone == null){%>
-							<input type="text" name="phone" class="btn-block" id="phone" placeholder="ex: 0800-090-000">
+							<input type="text" name="phone" class="btn-block" id="phone" placeholder="ex: 0800090000" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 						<% } else{ %>
-							<input type="text" name="phone" class="btn-block" id="phone" placeholder="ex: 0800-090-000" value="<%= user.phone %>">
+							<input type="text" name="phone" class="btn-block" id="phone" placeholder="ex: 0800090000" value="<%= user.phone %>" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 						<% } %>
 						</div>
 					</div>
