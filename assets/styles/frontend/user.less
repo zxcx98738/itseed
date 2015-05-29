@@ -9,11 +9,10 @@
 
 body>section#profile, section#disc, section#files {
   div.row {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
 
   ul {
-    margin-top: 30px;
     font-weight: bold;
 
     li>a {
@@ -34,6 +33,7 @@ body>section#profile, section#disc, section#files {
 
   input[type="file"] {
     visibility: hidden;
+    width: 1px;
     height: 0px;
   }
 
@@ -87,6 +87,7 @@ body>section#profile {
 
       @media(max-width: 767px) {
         display: table;
+        table-layout: fixed;
 
         >div {
           display: table-cell;

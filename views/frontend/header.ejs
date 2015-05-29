@@ -19,17 +19,11 @@
 				<a class="navbar-brand" href="/">
 					<img src="/images/layout/logo1.png" alt="">
 				</a>
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-					<span class="sr-only">展開導覽列</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse">
-				<ul class="login-area nav navbar-nav navbar-right">
+				<ul class="login-area nav navbar-nav">
 				<% if(!req.session.userid){ %>
-					<li><a href="/login">報名登入</a></li>
+					<li><a href="/login">開發者登入</a></li>
 				<% } else { %>
 					<% if(req.session.type == "A"){ %>
 						<li><a href="/backend">後台系統</a></li>
@@ -37,7 +31,6 @@
 					<li><a href="/profile">我的帳戶</a></li>
 					<li><a href="/logout">登出</a></li>
 				<% } %>
-					<li class="divider"></li>
 				</ul>
 				<ul class="main-nav nav navbar-nav">
 					<li>
@@ -70,12 +63,10 @@
 					<li>
 						<a class="dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="0" role="button" aria-expanded="false">招生訊息<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<!-- <li><a href="/regInfo">報名資訊</a></li>
+							<li><a href="/regInfo">報名資訊</a></li>
 							<li><a href="/regFile">書審資料</a></li>
-							<li><a href="/timeline">重要時程</a></li> -->
-							<li class="disabled"><a href="javascript: void(0)">報名資訊</a></li>
-							<li class="disabled"><a href="javascript: void(0)">書審資料</a></li>
-							<li class="disabled"><a href="javascript: void(0)">重要時程</a></li>
+							<li><a href="/timeline">重要時程</a></li>
+							<!-- <li class="disabled"><a href="javascript: void(0)">重要時程</a></li> -->
 							<li><a href="/faq">常見問題</a></li>
 						</ul>
 					</li>
@@ -84,6 +75,8 @@
 					</li>
 				</ul>
 			</div>
+			<button type="button" class="btn-green" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
 		</div>
 	</nav>
 </header>
+

@@ -5,10 +5,33 @@
 <section class="bg-light-gray" id="faq">
 	<div class="container">
 		<div class="row">
-		<% for(var i = 0; i < datas.length; i++){ %>
+			<div class="col-md-10 col-md-offset-1">
+				<h3>關於資訊種子</h3>
+			</div>
+		<% var q = 8; %>
+		<% for(var i = 0; i < q; i++){ %>
 			<div class="col-md-10 col-md-offset-1" id="<%= datas[i].id %>">
 				<div class="faq">
-					<a class="faq-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= datas[i].id %>" class="collapsed">
+					<a class="faq-heading faq-normal" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= datas[i].id %>" class="collapsed">
+						<%= datas[i].title %>
+					</a>
+					<div id="collapse<%= datas[i].id %>" class="faq-collapse collapse">
+						<div class="faq-body">
+							<%- datas[i].content %>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% } %>
+		</div>
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<h3>報名相關事宜</h3>
+			</div>
+		<% for(var i = q; i < datas.length; i++){ %>
+			<div class="col-md-10 col-md-offset-1" id="<%= datas[i].id %>">
+				<div class="faq">
+					<a class="faq-heading faq-reg" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= datas[i].id %>" class="collapsed">
 						<%= datas[i].title %>
 					</a>
 					<div id="collapse<%= datas[i].id %>" class="faq-collapse collapse">
