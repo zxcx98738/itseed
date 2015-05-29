@@ -5,8 +5,10 @@
 <section class="bg-light-gray" id="faq">
 	<div class="container">
 		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<h3>關於資訊種子</h3>
+			</div>
 		<% var q = 8; %>
-		<h3>關於資訊種子</h3>
 		<% for(var i = 0; i < q; i++){ %>
 			<div class="col-md-10 col-md-offset-1" id="<%= datas[i].id %>">
 				<div class="faq">
@@ -23,7 +25,9 @@
 		<% } %>
 		</div>
 		<div class="row">
-		<h3>報名相關事宜</h3>
+			<div class="col-md-10 col-md-offset-1">
+				<h3>報名相關事宜</h3>
+			</div>
 		<% for(var i = q; i < datas.length; i++){ %>
 			<div class="col-md-10 col-md-offset-1" id="<%= datas[i].id %>">
 				<div class="faq">
