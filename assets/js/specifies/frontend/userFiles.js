@@ -62,18 +62,32 @@ $(function(){
       },
       rules: {          
         registration: {
+          required: true,
           accept: 'application/pdf',
           fileSize: 5
         },
         autobiography: {
+          required: true,
           accept: 'application/pdf',
           fileSize: 5
         },
         receipt: {
+          required: true,
           accept: 'application/pdf',
           fileSize: 5
         },
       },
+      messages: {
+        registration: {
+          required: "未選擇檔案",
+        },
+        autobiography: {
+          required: "未選擇檔案",
+        },
+        receipt: {
+          required: "未選擇檔案",
+        },
+      }
     });
   });
 });

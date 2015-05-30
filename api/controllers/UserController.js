@@ -5,10 +5,10 @@
  * @文件 : Se http://links.sailsjs.org/docs/controllers
  */
 
-var md5 = require("MD5")
-var fs = require("fs"); 
+ var md5 = require("MD5")
+ var fs = require("fs"); 
 
-module.exports = {
+ module.exports = {
     //登入頁
     loginPage: function (req, res) {
         //判斷系統開放與否
@@ -150,7 +150,7 @@ module.exports = {
                         else
                             res.end("false");
                     }   
-                        
+
                 }
                 //登入
                 else{
@@ -272,9 +272,9 @@ module.exports = {
 
         if (req.session.userid) {
             req.file("photo").upload({ dirname: sails.config.appPath+"/assets/files/"+req.session.userid}
-            , function (err, uploadedFiles) {
-                if (err) 
-                    return res.end(JSON.stringify(err));
+                , function (err, uploadedFiles) {
+                    if (err) 
+                        return res.end(JSON.stringify(err));
                 //有上傳檔案
                 if (uploadedFiles.length > 0) {
                     //圖片檔
@@ -498,6 +498,15 @@ module.exports = {
             var uploadOptions = {
                 dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
                 saveAs: function (__newFileStream, cb) {
+                    var i = 0;
+                    var uploadFile = req.file("registration")._files[0].stream.filename;
+                    var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
+                    var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
+                    
+                    //檔名重複時重新命名舊檔案
+                    if (fs.existsSync(newPath)) {
+                        fs.renameSync(newPath, tmpPath)
+                    }
                     cb(null, __newFileStream.filename);
                 },
             }
@@ -540,23 +549,40 @@ module.exports = {
 
                             UserFiles.update({id: file.id}, value)
                             .exec(function (err, datas) {
+                                var uploadFile = req.file("registration")._files[0].stream.filename;
+                                var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
+                                var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
+
                                 if (err) {
                                     //刪除上傳檔案
                                     fs.unlink(uploadedFiles[0].fd, function (err) {  
                                         if (err) 
                                             console.error(err) 
                                     });  
+
+                                    //還原舊檔案
+                                    if (fs.existsSync(tmpPath)) {
+                                        fs.renameSync(tmpPath, newPath)
+                                    }
                                     res.end(JSON.stringify(err));
                                 }
                                 else {
-                                    if(oldFile != null){
-                                        //刪除舊檔案
+                                    if(oldFile != null){                     
                                         var filePath = sails.config.appPath + "/assets" + oldFile;
 
-                                        fs.unlink(filePath, function (err) {  
-                                            if (err) 
-                                                console.error(err) 
-                                        }); 
+                                        //刪除舊檔案
+                                        if (fs.existsSync(tmpPath)) {
+                                            fs.unlink(tmpPath, function (err) {  
+                                                if (err) 
+                                                    console.error(err) 
+                                            }); 
+                                        }
+                                        else {
+                                            fs.unlink(filePath, function (err) {  
+                                                if (err) 
+                                                    console.error(err) 
+                                            }); 
+                                        }
                                     }
                                     res.redirect("/files");
                                 }
@@ -583,6 +609,15 @@ module.exports = {
             var uploadOptions = {
                 dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
                 saveAs: function (__newFileStream, cb) {
+                    var i = 0;
+                    var uploadFile = req.file("autobiography")._files[0].stream.filename;
+                    var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
+                    var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
+                    
+                    //檔名重複時重新命名舊檔案
+                    if (fs.existsSync(newPath)) {
+                        fs.renameSync(newPath, tmpPath)
+                    }
                     cb(null, __newFileStream.filename);
                 },
             }
@@ -625,23 +660,40 @@ module.exports = {
 
                             UserFiles.update({id: file.id}, value)
                             .exec(function (err, datas) {
+                                var uploadFile = req.file("autobiography")._files[0].stream.filename;
+                                var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
+                                var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
+
                                 if (err) {
                                     //刪除上傳檔案
                                     fs.unlink(uploadedFiles[0].fd, function (err) {  
                                         if (err) 
                                             console.error(err) 
                                     });  
+                                    
+                                    //還原舊檔案
+                                    if (fs.existsSync(tmpPath)) {
+                                        fs.renameSync(tmpPath, newPath)
+                                    }
                                     res.end(JSON.stringify(err));
                                 }
                                 else {
-                                    if(oldFile != null){
-                                        //刪除舊檔案
+                                    if(oldFile != null){                     
                                         var filePath = sails.config.appPath + "/assets" + oldFile;
 
-                                        fs.unlink(filePath, function (err) {  
-                                            if (err) 
-                                                console.error(err) 
-                                        }); 
+                                        //刪除舊檔案
+                                        if (fs.existsSync(tmpPath)) {
+                                            fs.unlink(tmpPath, function (err) {  
+                                                if (err) 
+                                                    console.error(err) 
+                                            }); 
+                                        }
+                                        else {
+                                            fs.unlink(filePath, function (err) {  
+                                                if (err) 
+                                                    console.error(err) 
+                                            }); 
+                                        }
                                     }
                                     res.redirect("/files");
                                 }
@@ -668,6 +720,15 @@ module.exports = {
             var uploadOptions = {
                 dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
                 saveAs: function (__newFileStream, cb) {
+                    var i = 0;
+                    var uploadFile = req.file("receipt")._files[0].stream.filename;
+                    var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
+                    var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
+                    
+                    //檔名重複時重新命名舊檔案
+                    if (fs.existsSync(newPath)) {
+                        fs.renameSync(newPath, tmpPath)
+                    }
                     cb(null, __newFileStream.filename);
                 },
             }
@@ -710,23 +771,40 @@ module.exports = {
 
                             UserFiles.update({id: file.id}, value)
                             .exec(function (err, datas) {
+                                var uploadFile = req.file("receipt")._files[0].stream.filename;
+                                var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
+                                var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
+                                
                                 if (err) {
                                     //刪除上傳檔案
                                     fs.unlink(uploadedFiles[0].fd, function (err) {  
                                         if (err) 
                                             console.error(err) 
                                     });  
+                                    
+                                    //還原舊檔案
+                                    if (fs.existsSync(tmpPath)) {
+                                        fs.renameSync(tmpPath, newPath)
+                                    }
                                     res.end(JSON.stringify(err));
                                 }
                                 else {
-                                    if(oldFile != null){
-                                        //刪除舊檔案
+                                    if(oldFile != null){                     
                                         var filePath = sails.config.appPath + "/assets" + oldFile;
 
-                                        fs.unlink(filePath, function (err) {  
-                                            if (err) 
-                                                console.error(err) 
-                                        }); 
+                                        //刪除舊檔案
+                                        if (fs.existsSync(tmpPath)) {
+                                            fs.unlink(tmpPath, function (err) {  
+                                                if (err) 
+                                                    console.error(err) 
+                                            }); 
+                                        }
+                                        else {
+                                            fs.unlink(filePath, function (err) {  
+                                                if (err) 
+                                                    console.error(err) 
+                                            }); 
+                                        }
                                     }
                                     res.redirect("/files");
                                 }
