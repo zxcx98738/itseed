@@ -8,7 +8,9 @@
   <div class="carousel-caption">
           <h1>第十三屆資訊種子</h1>
           <p>熱情招生中</p>
-          <p><a class="btn btn-lg btn-danger disabled" href="#" role="button">6/1 報名即將開始</a></p>
+          <% if(!req.session.userid){ %>
+           <p><a class="btn btn-lg btn-primary" href="/login" role="button">報名登入</a></p>
+          <% }%>
   </div>
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
