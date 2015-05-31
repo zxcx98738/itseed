@@ -6,16 +6,16 @@
 	<div class="container">
 		<div class="row col-md-10 col-md-offset-1">
             <ul class="nav nav-tabs" id="myTabs">
-              <% for(var i = datas.length-1; i >= 0; i++){ %>
-              <li  class="<% if(i==datas.length-1){ %> active <% } %>" ><a id="tab-<%= datas[i].id %>" href="#pane-<%= datas[i].id %>" data-toggle="tab"><%= datas[i].title %></a></li>
+              <% for(var i = 0; i < datas.length; i++){ %>
+              <li  class="<% if(i==0){ %> active <% } %>" ><a id="tab-<%= datas[i].id %>" href="#pane-<%= datas[i].id %>" data-toggle="tab"><%= datas[i].title %></a></li>
   
               <% } %>
             </ul>
         </div>
         <div class="row col-md-10 col-md-offset-1">    
             <div class="tab-content">
-              <% for(var i = datas.length-1; i >= 0; i++){ %>
-              <div class="tab-pane <% if(i==datas.length-1){ %> active <% } %>" id="pane-<%= datas[i].id %>">
+              <% for(var i = 0; i < datas.length; i++){ %>
+              <div class="tab-pane <% if(i==0){ %> active <% } %>" id="pane-<%= datas[i].id %>">
                   <%- datas[i].content %>
               </div>
               <% } %>
