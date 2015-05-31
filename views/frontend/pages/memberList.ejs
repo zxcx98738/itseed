@@ -14,31 +14,13 @@
         </div>
         <div class="row col-md-10 col-md-offset-1">    
             <div class="tab-content">
-              <% for(var i = 0; i >= 0; i++){ %>
+              <% for(var i = datas.length-1; i >= 0; i++){ %>
               <div class="tab-pane <% if(i==datas.length-1){ %> active <% } %>" id="pane-<%= datas[i].id %>">
                   <%- datas[i].content %>
               </div>
               <% } %>
             </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
+        </div>	
 	</div>
 </section>
 
