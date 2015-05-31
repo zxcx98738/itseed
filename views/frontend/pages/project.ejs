@@ -4,41 +4,89 @@
 
 <section class="bg-white">
 	<div class="container">
-		<div class="row">
-		<% for(var i = 0; i < datas.length; i++){ %>
-			<div class="col-md-10 col-md-offset-1" id="<%= datas[i].id %>">
-				<h3 class="text-center"><%= datas[i].title %></h3>
-				<div><%- datas[i].content %></div>	
-			</div>
-		<% } %>
-		</div>
-
-
-<div class="row">
-<div class="col-md-10 col-md-offset-1">
-<div id="myCarousel" class="carousel slide" data-ride="carousel"  > 
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <!-- <li data-target="#myCarousel" data-slide-to="2"></li> -->
-  </ol>
-  <div class="carousel-inner">
-    <div class="item project-item active">
-      <img src="/images/layout/itseed2.png" style="width:100%" alt="First slide">
+    <div class="row col-md-10 col-md-offset-1">
+        <ul class="nav nav-tabs" id="myTabs">    
+          <li  class="active" ><a id="tab-1" href="#pane-1" data-toggle="tab">TUV專案</a></li>
+          <li><a id="tab-2" href="#pane-2" data-toggle="tab">春酒專案</a></li>
+          <li><a id="tab-3" href="#pane-3" data-toggle="tab">職涯體驗計畫</a></li>
+        </ul>
     </div>
-    <div class="item project-item">
-      <img src="/images/layout/Seminar.png" style="width:100%" alt="First slide">
-    </div>
-    
-  </div>
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> </div>
-</div>
-</div>
-
-
-
-
+    <div class="row col-md-10 col-md-offset-1">    
+      <div class="tab-content">
+        <!--TUV專案-->
+        <div class="tab-pane active" id="pane-1">
+          <div id="myCarousel-1" class="carousel slide" data-ride="carousel"  > 
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel-1" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel-1" data-slide-to="1"></li>
+              <!-- <li data-target="#myCarousel" data-slide-to="2"></li> -->
+            </ol>
+            <div class="carousel-inner">
+              <div class="item project-item active">
+                <img src="/images/projects/tuv-01.jpg" style="width:100%" alt="First slide">
+              </div>
+              
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+        </div>
+        <!--TUV專案 end-->
+        <!--春酒專案-->
+        <div class="tab-pane" id="pane-2">
+          <div id="myCarousel-2" class="carousel slide" data-ride="carousel"  > 
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel-2" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel-2" data-slide-to="1"></li>
+              <!-- <li data-target="#myCarousel" data-slide-to="2"></li> -->
+            </ol>
+            <div class="carousel-inner">
+              <div class="item project-item active">
+                <img src="/images/projects/spring-01.jpg" style="width:100%" alt="First slide">
+              </div>
+               
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+        </div>
+        <!--春酒專案 end-->
+        <!--職涯體驗-->
+        <div class="tab-pane" id="pane-3">
+          <div id="myCarousel-3" class="carousel slide" data-ride="carousel"  > 
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel-3" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel-3" data-slide-to="1"></li>
+              <!-- <li data-target="#myCarousel" data-slide-to="2"></li> -->
+            </ol>
+            <div class="carousel-inner">
+              <div class="item project-item active">
+                <img src="/images/projects/work-01.jpg" style="width:100%" alt="First slide">
+              </div>
+              
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+        </div>
+        <!--職涯體驗 end-->
+      </div>
+    </div>  
 	</div>
 </section>
 
