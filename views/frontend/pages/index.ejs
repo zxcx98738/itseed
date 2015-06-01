@@ -3,7 +3,7 @@
 <!--END HEADER-->
 
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel"  > 
+<div id="myCarousel" class="carousel slide" data-ride="carousel"  >
   <!-- Indicators -->
   <div class="carousel-caption">
           <h1>第十三屆資訊種子</h1>
@@ -38,7 +38,7 @@
       </div> -->
       </a>
     </div>
-    
+
   </div>
   <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> </div>
 
@@ -51,40 +51,45 @@
 			</div>
 		</div> -->
 		<div class="row">
-			<div class="col-sm-4">
-				<h2>最新消息</h2>
+			<div class="col-xs-6">
+        <div class="row">
+          <h2>最新消息</h2>
         <div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
           <table class="table table-hover">
           <tbody>
           <% for(var i = 0; i < Math.min(4,datas.length); i++){ %>
             <tr>
-              <td class="col-md-6">
-                <a href="<%= url + datas[i].id %>">   
-                  <%= datas[i].title %>   
+              <td class="col-md-8">
+                <a href="<%= url + datas[i].id %>">
+                  <%= datas[i].title %>
                 </a>
               </td>
-              <td class="col-md-6"><%= datas[i].formatTime %></td>
+              <td class="col-md-4"><%= datas[i].formatTime %></td>
             </tr>
           <% } %>
           </tbody>
-        </table> 
-       
-				</div>
-			</div>
-      <div class="col-sm-4">
-        <h2>官方影片</h2>
+        </table>
+        </div>
+        </div>
+        <div class="row">
+          <h2>官方影片</h2>
         <div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
         <div class="video-container"><iframe src="https://www.youtube.com/embed/n__viDJpHg0" frameborder="0" allowfullscreen></iframe></div>
 
-       
+
         </div>
-        
+        </div>
+
+			</div>
+      <div class="col-xs-6">
+        <h2>粉絲專頁</h2>
+        <div class="fb-page" data-href="https://www.facebook.com/iloveitseed?fref=ts" data-width="500" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/iloveitseed?fref=ts"><a href="https://www.facebook.com/iloveitseed?fref=ts">資訊種子</a></blockquote></div></div>
+
       </div>
       <div class="col-sm-4">
-        <div class="fb-page" data-href="https://www.facebook.com/iloveitseed?fref=ts" data-width="500" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/iloveitseed?fref=ts"><a href="https://www.facebook.com/iloveitseed?fref=ts">資訊種子</a></blockquote></div></div>
-        
+
       </div>
- 
+
 		</div>
 	</div>
 </section>

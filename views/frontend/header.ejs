@@ -17,22 +17,12 @@
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/">
-					<img src="/images/layout/logo1.png" alt="">
+					<img src="/images/layout/logo2.png" alt="">
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse">
-				<ul class="login-area nav navbar-nav">
-				<% if(!req.session.userid){ %>
-					<li><a href="/login">開發者登入</a></li>
-				<% } else { %>
-					<% if(req.session.type == "A"){ %>
-						<li><a href="/backend">後台系統</a></li>
-					<% } %>
-					<li><a href="/profile">我的帳戶</a></li>
-					<li><a href="/logout">登出</a></li>
-				<% } %>
-				</ul>
-				<ul class="main-nav nav navbar-nav">
+<div class="collapse navbar-collapse" id="navbar-collapse">
+				<ul class="main-area nav navbar-nav navbar-right">
 					<li>
 						<a href="/news">最新消息</a>
 					</li>
@@ -73,7 +63,19 @@
 					<li>
 						<a href="/video">影音專區</a>
 					</li>
+					<% if(!req.session.userid){ %>
+					<div class="login-area">
+					<li><a href="/login">開發者登入</a></li>
+				<% } else { %>
+					<% if(req.session.type == "A"){ %>
+						<li><a href="/backend">後台系統</a></li>
+					<% } %>
+					<li><a href="/profile">我的帳戶</a></li>
+					<li><a href="/logout">登出</a></li>
+				<% } %>
+				 </div>
 				</ul>
+			</div>
 			</div>
 			<button type="button" class="btn-green" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
 		</div>
