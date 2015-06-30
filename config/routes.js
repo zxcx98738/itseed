@@ -306,6 +306,11 @@ module.exports.routes = {
     action: 'updateEndDate'
   },
 
+  /*報名者資料*/
+  'get /applicants': {
+    controller: 'User',
+    action: 'applicants'
+  },
 
   /***************************************************************************
   *                                                                          *

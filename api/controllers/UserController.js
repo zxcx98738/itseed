@@ -9,6 +9,15 @@
  var fs = require("fs"); 
 
  module.exports = {
+    //移除blueprint內建的actions
+    _config: { 
+        actions: false, 
+        rest: false, 
+        shortcuts: false 
+    },
+
+    /*前台*/
+
     //登入頁
     loginPage: function (req, res) {
         //判斷系統開放與否
@@ -108,17 +117,31 @@
                                         res.end(JSON.stringify(err));
                                     }
                                     else{
-                                        //完成
-                                        req.session.userid = user.id;
-                                        req.session.email = req.body.email;
-                                        req.session.pwd = req.body.pwd;
-                                        req.session.type =  user.type;
-                                        req.session.authorized = {
-                                            cms: false,
-                                            systemSetting: false,
-                                        };
+                                        //連結table
+                                        User.update({
+                                            id: user.id
+                                        },{
+                                            disc: disc.id,
+                                            files: files.id
+                                        })
+                                        .exec(function(err, data) {
+                                            if(err){
+                                                res.end(JSON.stringify(err));
+                                            }
+                                            else{
+                                                //完成
+                                                req.session.userid = user.id;
+                                                req.session.email = req.body.email;
+                                                req.session.pwd = req.body.pwd;
+                                                req.session.type =  user.type;
+                                                req.session.authorized = {
+                                                    cms: false,
+                                                    systemSetting: false,
+                                                };
 
-                                        res.redirect("/profile");
+                                                res.redirect("/profile");
+                                            }
+                                        });
                                     }
                                 });     
                             }
@@ -816,6 +839,56 @@
                 else{
                     return res.end("未上傳檔案");
                 }
+            });
+        }
+        else{
+            return res.forbidden();
+        }  
+    },
+
+    /*後台*/
+
+    //報名者資料
+    applicants: function (req, res) {
+        if (req.session.userid) {
+            var th;
+
+            SystemSetting.findOne({
+                name: 'th'
+            })
+            .exec(function (err, parameter1) {
+                if (err) {
+                    return res.end(JSON.stringify(err));
+                }
+                else {
+                    if (parameter1 == undefined)
+                        th = '';
+                    else
+                        th = parameter1.value;
+                }
+                User.find({
+                    th: th,
+                    type: 'U'
+                })
+                .populate('files')
+                .exec(function (err, users) {
+                    if (err) {
+                        res.end(JSON.stringify(err));
+                    }
+                    else {
+                        for (var i = 0; i < users.length; i++) { 
+                            if (users[i].files.registrationUT != null)
+                                users[i].files.registrationUT = CmsService.formatTime(users[i].files.registrationUT);
+                            if (users[i].files.autobiographyUT != null)
+                                users[i].files.autobiographyUT = CmsService.formatTime(users[i].files.autobiographyUT);
+                            if (users[i].files.receiptUT != null)
+                                users[i].files.receiptUT = CmsService.formatTime(users[i].files.receiptUT);
+                        }
+                        return res.view("backend/pages/applicants", {
+                            users: users
+                        });
+                    }
+                });
             });
         }
         else{

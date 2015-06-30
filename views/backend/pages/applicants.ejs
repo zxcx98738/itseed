@@ -1,0 +1,79 @@
+<div id="wrapper">
+    <!--HEADER-->
+    <% include ../header %>
+    <!--END HEADER-->
+
+    <div id="page-wrapper">
+        <div> 
+            <header>
+                <h3>報名者資料</h3>
+            </header>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-md-1">照  片</th>
+                        <th class="col-md-1">姓  名</th>
+                        <th class="col-md-1">學  校</th>
+                        <th class="col-md-2">系  級</th> 
+                        <th class="col-md-2">信  箱</th>
+                        <th class="col-md-2">電  話</th>              
+                        <th class="col-md-1">報名表</th>
+                        <th class="col-md-1">自  傳</th>
+                        <th class="col-md-1">匯款證明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% for (var i = 0; i < users.length; i++) { %>
+                    <tr>
+                        <td>
+                            <img src="<%= users[i].photo %>" class="img-responsive">
+                        </td>
+                        <td>
+                            <%= users[i].name %>
+                        </td>
+                        <td>
+                            <%= users[i].school %>
+                        </td>
+                        <td>
+                            <%= users[i].grade %>
+                        </td>
+                        <td>
+                            <%= users[i].email %>
+                        </td>
+                        <td>
+                            <%= users[i].phone %>
+                        </td>
+                        <td>
+                        <% if (users[i].files.registration == null) { %>
+                            <b class="red">未上傳</b>
+                        <% } else { %>
+                            <a href="<%= users[i].files.registration %>">
+                                <%= users[i].files.registrationUT %>
+                            </a>
+                        <% } %>
+                        </td>
+                        <td>
+                        <% if (users[i].files.autobiography == null) { %>
+                            <b class="red">未上傳</b>
+                        <% } else { %>
+                            <a href="<%= users[i].files.autobiography %>">
+                                <%= users[i].files.autobiographyUT %>
+                            </a>
+                        <% } %> 
+                        </td>
+                        <td>
+                        <% if (users[i].files.receipt == null) { %>
+                            <b class="red">未上傳</b>
+                        <% } else { %>
+                            <a href="<%= users[i].files.receipt %>">
+                                <%= users[i].files.receiptUT %>
+                            </a>
+                        <% } %>     
+                        </td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>   
+    </div>
+</div>
