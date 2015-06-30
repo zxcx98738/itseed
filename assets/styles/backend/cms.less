@@ -12,8 +12,9 @@
 #wrapper>aside>div#menu {
     position: absolute;
     width: 250px;
-    height: 100vh;
-    padding: 80px 30px 30px 30px;
+    height: calc(~"100vh - 50px");
+    margin-top: 49px;
+    padding: 30px;
     overflow-y: scroll; 
     background-color: @light-gray;
 
@@ -112,7 +113,6 @@
 
 #wrapper>aside+div#page-wrapper {
   margin-left: 250px;
-  overflow-y: scroll;
 }
 #wrapper>div#page-wrapper {
     >header {

@@ -8,6 +8,7 @@ $(function(){
        	},
       	rules: {
       		email: {
+            required: true,
       			remote: {
       				url: "/check-email",
       				type: "post",
@@ -22,6 +23,7 @@ $(function(){
       			}
       		},
       		pwd: {
+            required: true,
       			remote: {
       				url: "/check-pwd",
       				type: "post",

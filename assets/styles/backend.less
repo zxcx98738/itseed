@@ -7,8 +7,13 @@
   5.其他(animation, transition等)
 */
 
-#wrapper{
+.scrollY {
+  overflow-y: scroll;
+}
+
+#wrapper {
   width: 100%;
+  padding-top: 1px;
 } 
     
 //頁首
@@ -72,9 +77,9 @@ aside>div.accordion {
 //主內容
 
 #page-wrapper {
-    margin: 0px;
-    padding: 80px 30px 30px 30px;
-    height: 100vh;
+    margin: 49px 0px -90px 0px;
+    padding: 30px;
+    height: calc(~"100vh - 50px");
     background-color: white;
 }
 
