@@ -8,11 +8,13 @@
   <div class="carousel-caption">
           <h1>第十三屆資訊種子</h1>
           <p>熱情招生中</p>
-          <p><a class="btn btn-lg btn-danger disabled" href="#" role="button">6/1 報名即將開始</a></p>
+          <% if(!req.session.userid){ %>
+           <p><a class="btn btn-lg btn-primary" href="/login" role="button">報名登入</a></p>
+          <% }%>
   </div>
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <!-- <li data-target="#myCarousel" data-slide-to="1"></li> -->
     <!-- <li data-target="#myCarousel" data-slide-to="2"></li> -->
   </ol>
   <div class="carousel-inner">
@@ -26,18 +28,18 @@
         </div>
       </div> -->
     </div>
-    <div class="item">
+    <!-- <div class="item">
     	<a href="http://lnk.pics/7Nr" target="_blank">
       <img src="/images/layout/Seminar.png" style="width:100%" alt="First slide">
-      <!-- <div class="container">
+      <div class="container">
         <div class="carousel-caption">
           <h1>第十三屆資訊種子</h1>
           <p>熱情招生中</p>
           <p><a class="btn btn-lg btn-primary disabled" href="#" role="button">6/1 報名即將開始</a></p>
         </div>
-      </div> -->
+      </div>
       </a>
-    </div>
+    </div> -->
     
   </div>
   <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> </div>
@@ -51,12 +53,12 @@
 			</div>
 		</div> -->
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-6">
 				<h2>最新消息</h2>
         <div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
           <table class="table table-hover">
           <tbody>
-          <% for(var i = 0; i < Math.min(4,datas.length); i++){ %>
+          <% for(var i = Math.min(4,datas.length-1); i>=0 ; i--){ %>
             <tr>
               <td class="col-md-6">
                 <a href="<%= url + datas[i].id %>">   
@@ -69,18 +71,16 @@
           </tbody>
         </table> 
        
-				</div>
 			</div>
-      <div class="col-sm-4">
-        <h2>官方影片</h2>
-        <div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
-        <div class="video-container"><iframe src="https://www.youtube.com/embed/n__viDJpHg0" frameborder="0" allowfullscreen></iframe></div>
 
-       
-        </div>
-        
+      <h2>官方影片</h2>
+        <div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
+          <div class="video-container"><iframe src="https://www.youtube.com/embed/15Ldl8iqTks" frameborder="0" allowfullscreen></iframe></div>
+			  </div>
+      
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-6">
+      <h2>粉絲專頁</h2>
         <div class="fb-page" data-href="https://www.facebook.com/iloveitseed?fref=ts" data-width="500" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/iloveitseed?fref=ts"><a href="https://www.facebook.com/iloveitseed?fref=ts">資訊種子</a></blockquote></div></div>
         
       </div>
