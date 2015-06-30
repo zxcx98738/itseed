@@ -6,6 +6,12 @@
  */
 
 module.exports = {
+    //移除blueprint內建的actions
+    _config: { 
+        actions: false, 
+        rest: false, 
+        shortcuts: false 
+    },
     //首頁最新消息
     index: function(req, res){
         var model = News; 

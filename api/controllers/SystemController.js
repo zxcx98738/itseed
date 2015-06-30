@@ -6,6 +6,12 @@
  */
 
 module.exports = {
+    //移除blueprint內建的actions
+    _config: { 
+        actions: false, 
+        rest: false, 
+        shortcuts: false 
+    },
     //報名系統
     systemSetting: function (req, res) {
         if (typeof req.session.authorized !== "undefined" && req.session.authorized.systemSetting === true) {

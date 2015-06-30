@@ -8,6 +8,12 @@
 var fs = require("fs"); 
 
 module.exports = {
+    //移除blueprint內建的actions
+    _config: { 
+        actions: false, 
+        rest: false, 
+        shortcuts: false 
+    },
     //載入編輯器
     editor: function(req, res){
         if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){ 

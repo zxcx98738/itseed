@@ -9,6 +9,12 @@
  var fs = require("fs"); 
 
  module.exports = {
+    //移除blueprint內建的actions
+    _config: { 
+        actions: false, 
+        rest: false, 
+        shortcuts: false 
+    },
     //登入頁
     loginPage: function (req, res) {
         //判斷系統開放與否
