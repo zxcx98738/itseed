@@ -1,3 +1,6 @@
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<script src="/js/specifies/backend/applicants.js"></script>
 <div id="wrapper">
     <!--HEADER-->
     <% include ../header %>
@@ -8,7 +11,7 @@
             <header>
                 <h3>報名者資料</h3>
             </header>
-            <table class="table table-hover">
+            <table class="table table-hover" id="applicantsTable">
                 <thead>
                     <tr>
                         <th class="col-md-1">照  片</th>
