@@ -7,19 +7,22 @@
     <!--END HEADER-->
 
     <div class="scrollY" id="page-wrapper">
-        <div> 
+        <div id="applicantsTable"> 
             <header>
                 <h3>報名者資料</h3>
+                <button type="button" class="btn btn-default"><input type="checkbox" id="selectAll"></button>
+                <button type="button" class="btn btn-default" id="mailTo">寄信</button>
             </header>
-            <table class="table table-hover" id="applicantsTable">
+            <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th class="col-md-1"></th>
                         <th class="col-md-1">照  片</th>
                         <th class="col-md-1">姓  名</th>
                         <th class="col-md-1">學  校</th>
                         <th class="col-md-2">系  級</th> 
                         <th class="col-md-2">信  箱</th>
-                        <th class="col-md-2">電  話</th>              
+                        <th class="col-md-1">電  話</th>              
                         <th class="col-md-1">報名表</th>
                         <th class="col-md-1">自  傳</th>
                         <th class="col-md-1">匯款證明</th>
@@ -28,6 +31,9 @@
                 <tbody>
                 <% for (var i = 0; i < users.length; i++) { %>
                     <tr>
+                        <td class="selector">                  
+                            <input type="checkbox">
+                        </td>
                         <td>
                             <img src="<%= users[i].photo %>" class="img-responsive">
                         </td>
@@ -41,7 +47,7 @@
                             <%= users[i].grade %>
                         </td>
                         <td>
-                            <%= users[i].email %>
+                            <a class="email" href="https://mail.google.com/mail/?view=cm&fs=1&to=<%= users[i].email %>" target="_blank"><%= users[i].email %></a>
                         </td>
                         <td>
                             <%= users[i].phone %>
