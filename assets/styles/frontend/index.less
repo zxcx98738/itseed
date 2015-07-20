@@ -118,30 +118,22 @@ fieldset[disabled] .btn-xl.active {
 /*-------KP----------*/
 
 /*-------index Carousel----------*/
-.item{
-    height: 500px;
-    width: 100%;
-    position: relative;
-    overflow:hidden;
-}
-.item img{
-    position: absolute;
-    top:-100%; left:0; right: 0; bottom:-100%;
-    margin: auto;
-    
-}
-.carousel-caption{
-text-shadow: 0 2px 3px rgba(0, 0, 0, 0.6);
-font-weight: bold;
-}
-.carousel-caption h1{
-font-weight: bold;
+.index-caption {
+    padding-bottom: 30px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.6);
 
-}
-.carousel-caption p{
-font-size: 20px;
+    @media(max-width:1100px) {
+        h1, h3 {
+            visibility: hidden;
+        }
+    }
 
+    @media(max-width:767px) {
+        bottom: 0px;
+        padding-bottom: 0px;
+    }
 }
+
 .video-container {
     position:relative;
     padding-bottom:56.25%;
