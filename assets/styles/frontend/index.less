@@ -7,145 +7,45 @@
   5.其他(animation, transition等)
 */
 
-#cover {
-    text-align: center;
-    color: #fff;
-    background-attachment: scroll;
-    background-image: url(/images/layout/header-bg.jpg);
-    background-position: center center;
-    background-repeat: none;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
+div#indexCarousel {
+    .index-caption {
+        padding-bottom: 30px;
+        text-shadow: 0 2px 3px rgba(0, 0, 0, 0.6);
 
-#cover .intro-text {
-    padding-top: 100px;
-    padding-bottom: 50px;
-}
+        @media(max-width:1100px) {
+            h1, h3 {
+                visibility: hidden;
+            }
+        }
 
-#cover .intro-text .intro-lead-in {
-    margin-bottom: 25px;
-    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 22px;
-    font-style: italic;
-    line-height: 22px;
-}
-
-#cover .intro-text .intro-heading {
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 50px;
-    font-weight: 700;
-    line-height: 50px;
-}
-
-@media(min-width:768px) {
-    #cover .intro-text {
-        padding-top: 300px;
-        padding-bottom: 200px;
-    }
-
-    #cover .intro-text .intro-lead-in {
-        margin-bottom: 25px;
-        font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
-        font-size: 40px;
-        font-style: italic;
-        line-height: 40px;
-    }
-
-    #cover .intro-text .intro-heading {
-        margin-bottom: 50px;
-        text-transform: uppercase;
-        font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-        font-size: 75px;
-        font-weight: 700;
-        line-height: 75px;
-    }
-}
-
-.btn-xl {
-    padding: 20px 40px;
-    border-color: #fed136;
-    border-radius: 3px;
-    text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    background-color: @light-yellow;
-}
-
-.btn-xl:hover,
-.btn-xl:focus,
-.btn-xl:active,
-.btn-xl.active,
-.open .dropdown-toggle.btn-xl {
-    border-color: #f6bf01;
-    color: #fff;
-    background-color: #fec503;
-}
-
-.btn-xl:active,
-.btn-xl.active,
-.open .dropdown-toggle.btn-xl {
-    background-image: none;
-}
-
-.btn-xl.disabled,
-.btn-xl[disabled],
-fieldset[disabled] .btn-xl,
-.btn-xl.disabled:hover,
-.btn-xl[disabled]:hover,
-fieldset[disabled] .btn-xl:hover,
-.btn-xl.disabled:focus,
-.btn-xl[disabled]:focus,
-fieldset[disabled] .btn-xl:focus,
-.btn-xl.disabled:active,
-.btn-xl[disabled]:active,
-fieldset[disabled] .btn-xl:active,
-.btn-xl.disabled.active,
-.btn-xl[disabled].active,
-fieldset[disabled] .btn-xl.active {
-    border-color: #fed136;
-    background-color: #fed136;
-}
-
-
-
-/*-------KP----------*/
-
-/*-------index Carousel----------*/
-.index-caption {
-    padding-bottom: 30px;
-    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.6);
-
-    @media(max-width:1100px) {
-        h1, h3 {
-            visibility: hidden;
+        @media(max-width:767px) {
+            bottom: 0px;
+            padding-bottom: 0px;
         }
     }
+}   
 
-    @media(max-width:767px) {
-        bottom: 0px;
-        padding-bottom: 0px;
+section#index {
+    .index-block {
+        background-color: white;
+        margin-bottom: 50px;
+    }
+
+    .video-container {
+        position:relative;
+        padding-bottom:56.25%;
+        padding-top:30px;
+        height:0;
+        overflow:hidden;
+    }
+
+    .video-container iframe, .video-container object, .video-container embed {
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
     }
 }
 
-.video-container {
-    position:relative;
-    padding-bottom:56.25%;
-    padding-top:30px;
-    height:0;
-    overflow:hidden;
-}
-
-.video-container iframe, .video-container object, .video-container embed {
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-}
+    

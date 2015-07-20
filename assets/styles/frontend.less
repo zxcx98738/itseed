@@ -243,9 +243,43 @@ body>header {
 	}
 }
 
+//主內容
 body>section {
     padding-top: 30px;
     padding-bottom: 30px;
+
+    &#index, &#newsList {
+        tbody>tr {
+            a {
+                color: @green;
+            }
+        }
+        tbody>tr:hover {
+            background-color: @light-yellow;
+
+            a:hover {
+                color: black;
+                text-decoration: none;
+            }
+        }
+    }
+
+    &#profile, &#disc, &#files, &#memberList, &#project, &#instructor {
+        ul {
+            font-weight: bold;
+
+            li>a {
+                color: @green;
+
+                &:hover {
+                    background-color: @light-yellow;
+                }
+            }
+            li.active>a {
+                color: #555;
+            }
+        }
+    }
 }
 
 //頁尾

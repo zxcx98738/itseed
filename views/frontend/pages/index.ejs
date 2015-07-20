@@ -2,7 +2,7 @@
 <% include ../header %>
 <!--END HEADER-->
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel"> 
+<div id="indexCarousel" class="carousel slide" data-ride="carousel"> 
   <!-- Indicators -->
   <div class="carousel-caption index-caption">
     <h1><b>第十三屆資訊種子</b></h1>
@@ -12,23 +12,23 @@
   <% }%>
   </div>
   <!-- <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#indexCarousel" data-slide-to="0" class="active"></li>
   </ol> -->
   <div class="carousel-inner">
     <div class="item active">
       <img src="/images/layout/itseed2.png" style="width:100%" alt="First slide">
     </div>
   </div>
-  <!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> -->
+  <!-- <a class="left carousel-control" href="#indexCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+  <a class="right carousel-control" href="#indexCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> -->
 </div>
 
-<section id="team" class="bg-light-gray">
+<section class="bg-light-gray" id="index">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6">
 				<h2>最新消息</h2>
-        <div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
+        <div class="index-block">
           <table class="table table-hover">
             <tbody>
             <% for(var i = Math.min(4,datas.length-1); i>=0 ; i--){ %>
@@ -45,7 +45,7 @@
           </table> 
         </div>
         <h2>官方影片</h2>
-        <div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
+        <div class="index-block">
           <div class="video-container">
             <iframe src="https://www.youtube.com/embed/15Ldl8iqTks" frameborder="0" allowfullscreen></iframe>
           </div>
