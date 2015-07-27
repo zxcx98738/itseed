@@ -58,7 +58,7 @@
         <div class="team-member" style=" background-color: white;border-radius: 5px;color: #898989;margin: 15px;">
           <table class="table table-hover">
           <tbody>
-          <% for(var i = datas.length-1; i>=datas.length-4 ; i--){ %>
+          <% for(var i = datas.length-1; i>=Math.max(0,datas.length-4) ; i--){ %>
             <tr>
               <td class="col-md-6">
                 <a href="<%= url + datas[i].id %>">   
