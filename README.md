@@ -74,7 +74,7 @@
 * 調整文章狀態
 ...
 #### 介面與基本操作介紹
-![](http://i.imgur.com/NM7dWw5.png)
+![](assets/images/doc/cms.png)
 
 1. 導覽列，根據 [網站架構](#structure) 顯示所有可管理的文章分類
 2. 點擊下箭頭展開，會顯示該分類下不同 [狀態](#status) 的文章與其數量
@@ -101,12 +101,12 @@
 6. 勾選方框可以對文章 **進行** / **取消** 全選
 7. 可以對於勾選的文章進行 **發佈** / **還原為草稿** / **刪除** 等操作
 
-  ![](http://i.imgur.com/XClWbvo.png)
-  ![](http://i.imgur.com/E1LKiv5.png)
+  ![](assets/images/doc/cms-1.png)
+  ![](assets/images/doc/cms-2.png)
 
 8. 鼠標移到文章上時可對該篇文章進行 **編輯** / **檢視** / **預覽** / **刪除** 等操作
 
-  ![](http://i.imgur.com/9hnaqdR.png)
+  ![](assets/images/doc/cms-3.png)
 
 9. 另外，有些分類的文章可以透過 **拖曳圖示** 來進行順序的調整，並依據分類的情形，影響網站顯示的內容
 
@@ -128,7 +128,7 @@
 編輯器是文章管理系統的一部份，管理者可以透過它在線上以視覺化的方式編輯文章的內容
 
 #### 介面
-![](http://i.imgur.com/xAMTX9c.png)
+![](assets/images/doc/editor.png)
 
 1. 文章標題
 2. 文章操作功能
@@ -187,9 +187,9 @@
 ##### 預覽
 編輯器附有預覽文章的功能，使用者可以在發佈前先行預覽文章完成時的畫面
 
-![](http://i.imgur.com/13zg5fa.png)
+![](assets/images/doc/preview-1.png)
 
-![](http://i.imgur.com/VwSjWst.png)
+![](assets/images/doc/preview-2.png)
 
 同一篇文章在不同裝置上的呈現可能有所不同，最好在發佈前確認所有情況下的畫面都沒有問題 
 [(常見錯誤)](#imgErr)
@@ -198,38 +198,38 @@
 ##### 日期和時間
 在某些分類中可以設定文章的發佈時間，如果文章的發佈時間設在未來，它就會被加入排程，發佈時間到才會顯示在網站中
 
-![](http://i.imgur.com/Z8ru7fW.png)
+![](assets/images/doc/setTime-1.png)
 在能設定時間的分類中編輯器會顯示「日期和時間」的欄位，預設為自動
 
-![](http://i.imgur.com/cs00eGw.png)
+![](assets/images/doc/setTime-2.png)
 點擊展開後能透過小日曆設定日期及時間
 
 ##### 圖片
 在文章中能透過三種方式插入圖片
 
 * 第一種是使用編輯器上的圖片按鈕，透過上傳或是圖片網址的方式插入圖片
-![](http://i.imgur.com/npaDNtq.png)
-![](http://i.imgur.com/DQPvZiZ.png)
+![](assets/images/doc/img-1.png)
+![](assets/images/doc/img-2.png)
 
 * 第二種方式是從其他網頁或是直接從電腦裡拖拉圖片進編輯區域
-![](http://i.imgur.com/anAPVMz.png)
+![](assets/images/doc/img-3.png)
 
 * 第三種是直接透過複製貼上的方式插入圖片
 
 圖片插入後，可以透過點擊圖片來叫出圖片的設定選項
-![](http://i.imgur.com/2vjVzcy.png)
+![](assets/images/doc/img-4.png)
 
 另外有一點一定要注意，就是剛插入的圖片寬度是固定的像素，因此當使用手機觀看而圖片寬度過大時，會造成網頁破版的情形
 <a name="imgErr"></a>
 
-![](http://i.imgur.com/WPO17z5.png)
+![](assets/images/doc/imgErr-1.png)
 使用電腦觀看時沒有問題
 
-![](http://i.imgur.com/kJdUn56.png)
+![](assets/images/doc/imgErr-2.png)
 但使用手機觀看時圖片就會把畫面往旁邊撐開
 
 因此建議在每次插入圖片後都把圖片的寬度設為相對於螢幕寬度的百分比，就可避免以上問題
-![](http://i.imgur.com/gtLFaVa.png)
+![](assets/images/doc/imgErr-3.png)
 
 <a name="slider"></a>
 ##### 圖片輪播
@@ -240,7 +240,7 @@
 * 刪除
 
 ###### 介面介紹
-![](http://i.imgur.com/YyYnYMj.png)
+![](assets/images/doc/slider.png)
 
 1. 預覽區，圖片輪播會依照圖片與設定進行播放
 2. 編輯區，圖片的新增 / 排序 / 刪除都在這裡進行
@@ -249,9 +249,9 @@
 ##### 原始碼
 編輯器預設的功能是有限的，但網站的變化可以是無限的，對於有網站前端能力的人來說，可以隨時切換到原始碼模式來進行編輯，做出預設功能裡做不出的效果
 
-![](http://i.imgur.com/vjAed1s.png)
+![](assets/images/doc/code-1.png)
 
-![](http://i.imgur.com/jEEI0m4.png)
+![](assets/images/doc/code-2.png)
 
    
 <a name="enroll"></a>
@@ -260,7 +260,7 @@
 
 <a name="setting"></a>
 #### 系統設定
-![](http://i.imgur.com/2ABEhMN.png)
+![](assets/images/doc/setting.png)
 
 <a name="th"></a>
 * 屆數
@@ -276,7 +276,7 @@
 
 <a name="applicants"></a>
 #### 報名者資料
-![](http://i.imgur.com/1eQ6gNQ.png)
+![](assets/images/doc/applicants.png)
 
 顯示當屆([屆數設定](#th))報名者的重要資訊及其書審資料的繳交情形
 
