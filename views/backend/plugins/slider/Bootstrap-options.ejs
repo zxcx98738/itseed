@@ -1,0 +1,47 @@
+<script id="Bootstrap-options" type="text/x-handlebars-template">
+    <div class='form-group'>
+        <label>播放間隔</label>
+        <select class='form-control' name='interval'>
+            {{#select interval}}
+            <option value='false'>(手動換頁)</option>
+            <option value='1000'>1秒</option>
+            <option value='2000'>2秒</option>
+            <option value='3000'>3秒</option>
+            <option value='4000'>4秒</option>
+            <option value='5000'>5秒</option>
+            <option value='6000'>6秒</option>
+            <option value='7000'>7秒</option>
+            <option value='8000'>8秒</option>
+            <option value='9000'>9秒</option>
+            <option value='10000'>10秒</option>
+            {{/select}}
+        </select>
+    </div>
+    <div class='form-group'>
+        <label>滑鼠停在圖片上時</label>
+        <select class='form-control' name='pause'>
+            {{#select pause}}
+            <option value='false'>無動作</option>
+            <option value='hover'>暫停播放</option>
+            {{/select}}
+        </select>
+    </div>
+    <div class='form-group'>
+        <label>播放模式</label>
+        <select class='form-control' name='wrap'>
+            {{#select wrap}}
+            <option value='true'>循環播放</option>   
+            <option value='false'>單次播放</option>
+            {{/select}}
+        </select>
+    </div>
+    <div class='form-group'>
+        <label>可使用鍵盤控制</label>
+        <select class='form-control' name='keyboard'>
+            {{#select keyboard}}
+            <option value='true'>是</option>
+            <option value='false'>否</option>
+            {{/select}}
+        </select>
+    </div>
+</script>

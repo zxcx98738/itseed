@@ -1,0 +1,31 @@
+/*
+  CSS書寫順序
+  1.位置屬性(position, top, right, z-index, display, float等)
+  2.大小(width, height, padding, margin)
+  3.文字系列(font, line-height, letter-spacing, color- text-align等)
+  4.背景(background, border等)
+  5.其他(animation, transition等)
+*/
+
+//編輯區
+
+#applicantsTable {
+  header {
+    margin-bottom: 15px;
+  }
+  table {
+    img {
+      &:hover {
+        transform: scale(5);
+        transform-origin: left;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+  table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after {
+    top: initial !important;
+    right: initial !important;
+    position: absolute !important;
+    display: inline !important;
+  }
+}

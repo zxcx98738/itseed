@@ -1,0 +1,36 @@
+<script src="/js/specifies/backend/preview.js"></script>
+<div id="wrapper">
+    <!--HEADER-->
+    <% include ../header %>
+    <!--END HEADER-->
+    <div class="device-selector">
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default active">
+                <input type="radio" name="device" value="desktop">電腦
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="device" value="tablet">平板
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="device" value="phone">手機
+            </label>
+        </div>
+    </div>
+    <div class="preview" id="page-wrapper">
+        <% if(preview.method == "post"){ %>
+            <form action="<%= preview.url%>" method="post" target="iframe">
+                <input type="text" name="title" value="<%= preview.title%>">
+                <textarea name="content">
+                    <%= preview.content %>
+                </textarea>
+            </form>
+        <% } %>
+        <div class="frame">
+            <% if(preview.method == "get"){ %>
+                <iframe id="page" name="iframe" src="<%= preview.url%>"></iframe>
+            <% } else{ %>
+                <iframe id="page" name="iframe" src="/"></iframe>
+            <% } %> 
+        </div>
+    </div>
+</div>

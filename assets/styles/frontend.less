@@ -1,0 +1,308 @@
+/*
+	CSS書寫順序
+	1.位置屬性(position, top, right, z-index, display, float等)
+	2.大小(width, height, padding, margin)
+	3.文字系列(font, line-height, letter-spacing, color- text-align等)
+	4.背景(background, border等)
+	5.其他(animation, transition等)
+*/
+
+//全域元件
+
+body {
+    position: relative;
+    padding-bottom: 90px;
+    min-height: 100vh;
+	font-family: '微軟正黑體';
+}
+
+.full-width {
+    width: 100%;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.red {
+    color: red;   
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.bg-light-gray {
+	background-color: @light-gray;
+}
+
+.btn-green {
+    color: white;
+    background-color: @green;
+    border: none;
+
+    &:hover {
+        color: white;
+        background-color: @dark-green;
+    }
+}
+
+
+
+//頁首
+@nav-fixed-height: 89px;
+@nav-border-bottom-width: 3px;
+@nav-padding: 15px;
+
+body>header {
+    height: 133px;
+    @media(max-width:767px) {
+        height: @nav-fixed-height;
+    }
+
+	>nav.navbar-default {
+        height: inherit;
+	    border-bottom: solid @nav-border-bottom-width;
+        border-bottom-color: @green;
+	    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        background-color: white;
+
+        >div.container {
+            height: calc(@nav-fixed-height - @nav-border-bottom-width);;
+            @media(max-width:767px) {
+                background-color: inherit;
+            }
+        
+            div.navbar-header {      
+                @media(max-width:767px) {
+                    height: @nav-fixed-height; 
+                }
+                padding: @nav-padding;
+
+                .navbar-toggle {
+                    float: left;
+                    margin-right: 0px;
+                    border: 0px;
+                    background-color: @green;
+
+                    .icon-bar {
+                        background-color: #fff;
+                    }
+                }
+                .navbar-brand {
+                    padding: 0px;
+
+                    @media(max-width:767px) {
+                        float: none;
+                        line-height: calc(@nav-fixed-height - 2 * @nav-padding);
+                    }
+                        
+                    >img {
+                        max-width: 100%;
+                        max-height: 100%;
+
+                        @media(max-width:767px) {
+                            display: inline;
+                            margin: 0 auto;
+                        }
+                    }
+                }
+            }  
+            div.navbar-collapse {
+                max-height: none;
+                background-color: transparent;
+                @media(max-width:767px) {
+                    background-color: inherit;
+                }
+
+                .login-area{
+                    float: right;
+
+                    li a {            
+                        margin: 15px 0px 0px 10px;
+                        padding: 5px 10px;
+                        color: @green;
+                        background-color: transparent;
+                        border: 2px solid @green;
+                        transition: all 0.3s;
+
+                        @media(max-width:767px) {
+                            margin: 5px 10px;
+                        }
+                    
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            z-index: -1;
+                            width: 0%;
+                            height: 100%;
+                            background: @green;
+                            transition: all 0.3s;
+                        }
+                        &:hover{
+                            color: white;
+
+                            &:after {
+                              width: 100%;
+                            }
+                        }
+                    }  
+
+                    @media(max-width:767px) {
+                        float: none;
+                        margin: 0px -15px;
+                        text-align: center;
+
+                        li {
+                            display: block;   
+
+                            a {
+                                color: white;
+                                background: @green;
+
+                                &:hover {
+                                    background: @dark-green;
+                                }
+                            }
+                        }
+                    }
+                } 
+
+                .main-nav {
+                    clear: both;
+
+                    @media(max-width:767px) {
+                        margin: 0px -15px;
+                    } 
+                      
+                    >li>a {
+                        top: 0px;
+                        color: white;
+                        border-width: 0px 1px 0px 1px;
+                        border-radius: 4px 4px 0px 0px;
+                        border-color: @green;
+                        border-style: solid;
+                        background: @light-green;
+                        box-shadow: 0 3px @green;
+                        transition: all 0.1s;
+
+                        &:hover, &[aria-expanded="true"] {
+                            top: -3px;
+                            color: @green;
+                            background-color: @light-yellow;
+                        }          
+
+                        @media(max-width:767px) {
+                            border-width: 0px 1px 2px 1px;
+                        }        
+                    }
+                    >li.active>a {
+                        top: -3px;
+                        color: @green;
+                        background-color: @light-yellow;
+                    }
+                    ul.dropdown-menu {
+                        padding: 0px 0px 3px 0px;
+                        width: 100%;
+                        min-width: 0px;
+                        background-color: @green;
+
+                        >li>a {
+                            color: white;
+                            border-width: 1px 1px 0px 1px;
+                            border-color: @green;
+                            border-style: solid;             
+                            background: @light-green;
+
+                            @media(max-width:767px) {
+                                border-width: 0px 1px 1px 1px;
+                                color: @green;
+                                background-color: white;
+                            }    
+
+                            &:hover, &:focus {
+                                color: @green;
+                                background-color: @light-yellow;
+                            }
+                        }
+                    }
+                }       
+            }
+            >button {
+                @media(min-width:768px) {
+                    display: none;
+                }
+
+                float: right;
+                margin-top: -1px;
+                margin-right: -15px;
+            }
+        }            
+	}
+}
+
+//主內容
+body>section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    &#index, &#newsList {
+        tbody>tr {
+            a {
+                color: @green;
+            }
+        }
+        tbody>tr:hover {
+            background-color: @light-yellow;
+
+            a:hover {
+                color: black;
+                text-decoration: none;
+            }
+        }
+    }
+
+    &#profile, &#disc, &#files, &#memberList, &#project, &#instructor {
+        ul {
+            font-weight: bold;
+
+            li>a {
+                color: @green;
+
+                &:hover {
+                    background-color: @light-yellow;
+                }
+            }
+            li.active>a {
+                color: #555;
+            }
+        }
+    }
+}
+
+//頁尾
+
+body>footer {
+    position: absolute;
+    bottom: 0px;
+    padding: 25px 0;
+    width: 100%;
+    text-align: center;
+    color: #a2a2a2;
+    background-color: @dark-gray;
+
+    span.copyright {
+        line-height: 40px;
+    }
+}
+
+.article img {
+  padding: 5px;
+  border: solid 1px #F0F0F0;
+  border: solid 1px #CCC;
+  -moz-box-shadow: 1px 1px 5px #999;
+  -webkit-box-shadow: 1px 1px 5px #999;
+  box-shadow: 1px 1px 5px #999;
+}

@@ -32,9 +32,285 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  /*前台-一般頁面*/
   '/': {
-    view: 'homepage'
-  }
+    controller: 'Site',
+    action: 'index'
+  },
+  
+  '/news': {
+    controller: 'Site',
+    action: 'newsList'
+  },
+
+  '/news/:id': {
+    controller: 'Site',
+    action: 'news'
+  },
+
+  '/aboutNTCA': {
+    controller: 'Site',
+    action: 'aboutNTCA'
+  },
+
+  '/aboutITSeed': {
+    controller: 'Site',
+    action: 'aboutITSeed'
+  }, 
+
+  '/memberList': {
+    controller: 'Site',
+    action: 'memberList'
+  }, 
+
+  '/courseList': {
+    controller: 'Site',
+    action: 'courseList'
+  }, 
+
+  '/courseInfo': {
+    controller: 'Site',
+    action: 'courseInfoList'
+  }, 
+
+  '/courseInfo/:id': {
+    controller: 'Site',
+    action: 'courseInfo'
+  }, 
+
+  '/businessVisit': {
+    controller: 'Site',
+    action: 'businessVisitList'
+  }, 
+
+  '/businessVisit/:id': {
+    controller: 'Site',
+    action: 'businessVisit'
+  }, 
+
+  '/project': {
+    controller: 'Site',
+    action: 'project'
+  }, 
+
+  '/overseaVisit': {
+    controller: 'Site',
+    action: 'overseaVisit'
+  }, 
+
+  '/instructor': {
+    controller: 'Site',
+    action: 'instructor'
+  }, 
+
+  '/sharing': {
+    controller: 'Site',
+    action: 'sharingList'
+  }, 
+
+  '/sharing/:id': {
+    controller: 'Site',
+    action: 'sharing'
+  }, 
+
+  '/regInfo': {
+    controller: 'Site',
+    action: 'regInfo'
+  }, 
+
+  '/regFile': {
+    controller: 'Site',
+    action: 'regFile'
+  }, 
+
+  '/timeline': {
+    controller: 'Site',
+    action: 'timeline'
+  }, 
+
+  '/faq': {
+    controller: 'Site',
+    action: 'faq'
+  },
+
+  '/video': {
+    controller: 'Site',
+    action: 'video'
+  },
+
+  /*前台-使用者相關*/
+
+  'post /check-email': {
+    controller: 'User',
+    action: 'checkEmail'    
+  },
+
+  'post /check-pwd': {
+    controller: 'User',
+    action: 'checkPwd'    
+  },
+
+  'get /register': {
+    view: 'frontend/pages/register'    
+  },
+
+  'post /register': {
+    controller: 'User',
+    action: 'register'    
+  },
+
+  'get /login': {
+    controller: 'User',
+    action: 'loginPage'   
+  },
+
+  'post /login': {
+    controller: 'User',
+    action: 'login'    
+  },
+
+  'get /logout': {
+    controller: 'User',
+    action: 'logout'   
+  }, 
+
+  '/profile': {
+    controller: 'User',
+    action: 'profile'   
+  },
+
+  '/editProfile': {
+    controller: 'User',
+    action: 'editProfile'   
+  },
+
+  '/disc': {
+    controller: 'User',
+    action: 'disc'    
+  },
+
+  '/editDisc': {
+    controller: 'User',
+    action: 'editDisc'   
+  },
+
+  '/files': {
+    controller: 'User',
+    action: 'files'    
+  },
+
+  '/uploadReg': {
+    controller: 'User',
+    action: 'uploadReg'
+  },
+
+  '/uploadAut': {
+    controller: 'User',
+    action: 'uploadAut'
+  },
+
+  '/uploadRec': {
+    controller: 'User',
+    action: 'uploadRec'
+  },
+
+  /*後台*/
+  '/backend': '/cms',
+
+  /*後台-CMS*/
+  '/cms': '/cms/list/news/all',
+
+  'get /cms/new/:model': {
+    controller: 'Cms',
+    action: 'editor'
+  },
+  
+  'get /cms/edit/:model': {
+    controller: 'Cms',
+    action: 'editor'
+  },
+
+  'get /cms/preview/:model': {
+    controller: 'Cms',
+    action: 'preview'
+  },
+
+  'post /cms/preview/:model': {
+    controller: 'Cms',
+    action: 'preview'
+  },
+
+  'get /cms/load/:model': {
+    controller: 'Cms',
+    action: 'load'
+  },
+
+  'post /cms/load/:model': {
+    controller: 'Cms',
+    action: 'load'
+  },
+
+  'get /cms/list/:model/:status': {
+    controller: 'Cms',
+    action: 'list'
+  },
+
+  'post /cms/create/:model': {
+    controller: 'Cms',
+    action: 'create'
+  },
+
+  'post /cms/update/:model': {
+    controller: 'Cms',
+    action: 'update'
+  },
+
+  'get /cms/publish/:model': {
+    controller: 'Cms',
+    action: 'publish'
+  },
+
+  'get /cms/toDraft/:model': {
+    controller: 'Cms',
+    action: 'toDraft'
+  },
+
+  'get /cms/delete/:model': {
+    controller: 'Cms',
+    action: 'delete'
+  },
+
+  'get /cms/sort/:model': {
+    controller: 'Cms',
+    action: 'sort'
+  },
+
+  /*系統設定*/
+  '/systemSetting': {
+    controller: 'System',
+    action: 'systemSetting'
+  },
+
+  'post /updateTh': {
+    controller: 'System',
+    action: 'updateTh'
+  },
+
+  'post /updateStartDate': {
+    controller: 'System',
+    action: 'updateStartDate'
+  },
+
+  'post /updateEndDate': {
+    controller: 'System',
+    action: 'updateEndDate'
+  },
+
+  /*報名者資料*/
+  'get /applicants': {
+    controller: 'User',
+    action: 'applicants'
+  },
 
   /***************************************************************************
   *                                                                          *

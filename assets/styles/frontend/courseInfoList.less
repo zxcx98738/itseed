@@ -1,0 +1,111 @@
+section#cousreInfoList {
+	padding: 30px;
+	
+	div.course-card {
+		position: relative;
+		height: 265px;
+		margin-bottom: 30px;
+		overflow-y: hidden;
+		transition: all 100ms ease-out;
+
+		>div.photo {
+			height: 175px;
+			background-color: #D2D2D2;
+
+			>img {
+				width: 100%;
+			}
+		}
+		>div.image-overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: @green;
+			opacity: 0;
+		}
+		>div.view-details {
+			position: absolute;
+			top: 35px;
+			left: 50%;
+			margin-left: -85px;
+			border: 2px solid white;
+			color: white;
+			font-size: 22px;
+			text-align: center;
+			padding: 10px 0;
+			width: 170px;
+			opacity: 0;
+			transition: all 200ms ease-out;
+
+			>a {
+				color: white;
+				font-weight: bold;
+				text-decoration: none;	
+			}
+			&:hover {	
+				background-color: white;
+
+				>a {
+					color: @green;
+				}
+			}
+		}
+		>div.intro {
+			position: relative;
+			height: 150px;
+
+			>div.title {
+				position: absolute;
+				top: 0px;
+				height: 90px;
+				width: 100%;
+				padding: 20px;
+				font-size: 16px;		
+				background-color: white;
+				transition: all 100ms ease-out;
+			}
+			>div.instructor {
+				position: absolute;
+				top: 90px;
+				height: 60px;
+				width: 100%;
+				padding: 0 20px 20px 20px;
+				font-size: 14px;
+				background-color: white;
+				transition: all 100ms ease-out;
+
+				>p {
+					margin: 0px;
+					color: @gray;
+				}
+			}
+		}
+			
+		&:hover {
+			margin: -2px -2px 32px -2px;
+			box-shadow: 0px 13px 21px -5px rgba(0, 0, 0, 0.3);
+
+			>div.image-overlay {
+				opacity: 0.7;
+			}
+			>div.view-details {
+				opacity: 1;
+				width: 150px;
+				font-size: 15px;
+				margin-left: -75px;
+			}
+			>div.intro {
+				>div.title {
+					top: -60px;
+					padding: 20px 22px;
+				}
+				>div.instructor {
+					top: 30px;
+					padding: 0 22px 20px 22px;
+				}
+			}
+		}
+	}
+}

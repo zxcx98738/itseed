@@ -1,0 +1,38 @@
+<!--HEADER-->
+<% include ../header %>
+<!--END HEADER-->
+
+<section class="bg-light-gray" id="cousreInfoList">
+	<div class="container">
+		<div class="row">
+		<% for(var i = 0; i < datas.length; i++){ %>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="course-card">
+					<div class="photo text-center">
+						<img src="<%= datas[i].photo %>"></img>
+					</div>
+					<div class="image-overlay"></div>
+					<div class="view-details">
+						<a href="<%= url + datas[i].id %>">課程介紹</a>
+					</div>
+					<div class="intro">
+						<div class="title">
+							<%= datas[i].title %>							
+						</div>
+						<div class="instructor">
+							<strong>講師</strong>
+							<p>
+								<%= datas[i].speaker + " " + datas[i].speakerTitle %>
+							</p>
+						</div>
+					</div>	
+				</div>
+			</div>
+		<% } %>
+		</div>
+	</div>
+</section>
+
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->
