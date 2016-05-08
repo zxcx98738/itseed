@@ -78,6 +78,16 @@ module.exports.routes = {
     action: 'courseInfo'
   }, 
 
+  '/career': {
+    controller: 'Site',
+    action: 'careerList'
+  }, 
+
+  '/career/:id': {
+    controller: 'Site',
+    action: 'career'
+  }, 
+
   '/businessVisit': {
     controller: 'Site',
     action: 'businessVisitList'

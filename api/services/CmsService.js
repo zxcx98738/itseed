@@ -166,6 +166,25 @@ module.exports = {
                 action.sort = "/cms/sort/businessVisit";           
                 break;
 
+            case Career:
+                action.new = "/cms/new/career";
+                action.edit = "/cms/edit/career";
+
+                action.view = "/career/";
+                action.preview = "/cms/preview/career";
+                action.load = "/cms/load/career";
+                action.url = "frontend/pages/career";
+                action.list = "frontend/pages/careerList"
+                
+                action.create = "/cms/create/career";
+                action.update = "/cms/update/career";
+                action.toDraft = "/cms/toDraft/career";
+                action.publish = "/cms/publish/career";
+                action.delete = "/cms/delete/career";
+
+                action.sort = "/cms/sort/career";           
+                break;
+
             case Project:
                 action.new = "/cms/new/project";
                 action.edit = "/cms/edit/project";

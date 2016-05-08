@@ -15,12 +15,15 @@
 <!-- 導覽列 -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="/">
-					<img src="/images/layout/logo1.png" alt="">
-				</a>
+			<div class="col-md-4">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">
+						<img src="/images/layout/logo1.png" alt="">
+					</a>
+				</div>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse">
+
 				<ul class="login-area nav navbar-nav">
 				<% if(!req.session.userid){ %>
 					<li><a href="/login">報名登入</a></li>
@@ -32,7 +35,7 @@
 					<li><a href="/logout">登出</a></li>
 				<% } %>
 				</ul>
-				<ul class="main-nav nav navbar-nav">
+				<ul class="nav nav-pills" class="active">
 					<li>
 						<a href="/news">最新消息</a>
 					</li>
@@ -50,26 +53,27 @@
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="/courseInfo">講座課程</a></li>
 							<li><a href="/businessVisit">企業參訪</a></li>
+							<li><a href="/career">職涯體驗</a></li>
 							<li><a href="/project">專案實作</a></li>
 							<li><a href="/overseaVisit">海外參訪</a></li>
 						</ul>
 					</li>
-					<li>
+					<!-- <li>
 						<a href="/instructor">講師介紹</a>
-					</li>
+					</li> -->
 					<li>
 						<a href="/sharing">經驗分享</a>
 					</li>
-					<li>
+					<!-- <li>
 						<a class="dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="0" role="button" aria-expanded="false">招生訊息<span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
+						<ul class="dropdown-menu" role="menu"> -->
 							<li><a href="/regInfo">報名資訊</a></li>
-							<li><a href="/regFile">書審資料</a></li>
-							<li><a href="/timeline">重要時程</a></li>
+							<!-- <li><a href="/regFile">書審資料</a></li>
+							<li><a href="/timeline">重要時程</a></li> -->
 							<!-- <li class="disabled"><a href="javascript: void(0)">重要時程</a></li> -->
 							<!-- <li><a href="/faq">常見問題</a></li> -->
-						</ul>
-					</li>
+						<!-- </ul>
+					</li> -->
 					<!-- <li>
 						<a href="/video">影音專區</a>
 					</li> -->
@@ -77,6 +81,7 @@
 						<a href="/faq">常見問題</a>
 					</li>
 				</ul>
+			
 			</div>
 			<button type="button" class="btn-green" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
 		</div>
