@@ -40,7 +40,12 @@ module.exports = {
                     case BusinessVisit:
                         post.th = "";
                         post.photo = "";
-                        break;           
+                        break;      
+                    case Career:
+                        post.th = "";
+                        post.speaker = "";
+                        post.photo = "";
+                        break;      
                     case Project:
                         post.th = "";
                         break;

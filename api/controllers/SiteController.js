@@ -267,6 +267,51 @@ module.exports = {
         });
     },
 
+    // 職涯體驗
+    careerList: function(req, res){
+        var model = Career; 
+        var action = CmsService.getAction(model);
+        var now = new Date();
+        var criteria = {   
+            where: { status: "P" }, 
+            sort: { order: "asc" }
+        }
+
+        CmsService.findPosts(model, criteria)
+        .then(function(datas){
+            for(var i = 0; i < datas.length; i++){
+                datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
+            }
+            return res.view(action.list, {
+                url: action.view,
+                datas: datas
+            });
+        })
+        .catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    },
+    career: function(req, res){
+        var model = Career; 
+        var action = CmsService.getAction(model);
+        var now = new Date();
+        var criteria = {   
+            id: req.param("id")
+        }
+
+        CmsService.findOnePost(model, criteria)
+        .then(function(data){
+            data.formatTime = CmsService.formatTime(data.createdAt);
+
+            return res.view(action.url, {
+                datas: [data]
+            });
+        })
+        .catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    },
+
     //專案實作
     project: function(req, res){
         var model = Project; 

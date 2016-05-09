@@ -2,71 +2,337 @@
 <% include ../header %>
 <!--END HEADER-->
 
+
 <div id="indexCarousel" class="carousel slide" data-ride="carousel"> 
-  <!-- Indicators -->
-  <div class="carousel-caption index-caption">
-    <h1><b>第十三屆資訊種子</b></h1>
-    <h3><b>熱情招生中</b></h3>
-  <% if(!req.session.userid){ %>
-    <p><a class="btn btn-lg btn-green" href="/login" role="button">報名登入</a></p>
-  <% }%>
-  </div>
-  <!-- <ol class="carousel-indicators">
-    <li data-target="#indexCarousel" data-slide-to="0" class="active"></li>
-  </ol> -->
-  <div class="carousel-inner">
-    <div class="item active">
-      <img src="/images/layout/itseed2.png" style="width:100%" alt="First slide">
+  <div class="row">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      </ol>
+    <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <iframe width="100%" height="450" src="https://www.youtube.com/embed/15Ldl8iqTks" frameborder="0" allowfullscreen></iframe>
+            <div class="carousel-caption">
+              ...
+            </div>
+        </div>
+        <div class="item">
+          <img src="/images/layout/poyaoone.jpg" alt="..." class="indeximg" id="img-responsive">
+            <div class="carousel-caption">
+              <h1>hahaha</h1>
+            </div>
+        </div>
+        <div class="item">
+          <img src="/images/layout/poyaotwo.jpg" alt="..." class="indeximg">
+          <div class="carousel-caption">
+            <h1>poyao</h1>
+          </div>
+        </div>
+        <div class="item">
+          <img src="/images/layout/poyaothree.jpg" alt="..." height="500" class="indeximg">
+          <div class="carousel-caption">
+            <h1>資訊種了</h1> 
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
   </div>
-  <!-- <a class="left carousel-control" href="#indexCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-  <a class="right carousel-control" href="#indexCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> -->
 </div>
 
-<section class="bg-light-gray" id="index">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-6">
-				<h2>最新消息</h2>
-        <div class="index-block">
-          <table class="table table-hover">
-
-            <tbody>
-            <% for(var i = datas.length-1; i>=Math.max(0,datas.length-4) ; i--){ %>
-              <tr>
-                <td class="col-md-6">
-                  <a href="<%= url + datas[i].id %>">   
-                    <%= datas[i].title %>   
-                  </a>
-                </td>
-                <td class="col-md-6"><%= datas[i].formatTime %></td>
-              </tr>
-            <% } %>
-            </tbody>
-          </table> 
+<div class="container">
+    <div class="row fourreasontitlediv">
+      <div class="col-md-2">
+      </div>
+      <div class="col-sm-6 col-md-8">
+          <h2 class="fourreasontitle">你一定要加入<u> 資訓種子 </u>的4大理由</h2>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-1">
         </div>
-        <h2>官方影片</h2>
-        <div class="index-block">
-          <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/15Ldl8iqTks" frameborder="0" allowfullscreen></iframe>
+        <div class="col-sm-6 col-md-4">
+          <div class="fourreasondiv thumbnail" >
+              <h3 class="indexglyphicon glyphicon-star fourreason">跨領域融合</h3>
+            <div class="contentdiv">
+              <h4 class="fourreasoncontent">全國各大專院校不同背景科系的學員全國各大專院校不同背景科系的學員全國各大專院校不同背景科系的學員全國各大專院校不同背景科系的學員</h4>
+            </div>
           </div>
         </div>
-
-      </div>
-      <div class="col-sm-6">
-        <h2>粉絲專頁</h2>
-        <div class="fb-page" data-href="https://www.facebook.com/iloveitseed?fref=ts" data-width="500" data-hide-cover="false" data-show-facepile="true" data-show-posts="true">
-          <div class="fb-xfbml-parse-ignore">
-            <blockquote cite="https://www.facebook.com/iloveitseed?fref=ts">
-              <a href="https://www.facebook.com/iloveitseed?fref=ts">資訊種子</a>
-            </blockquote>
+        <div class="col-sm-6 col-md-2">
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="fourreasondiv thumbnail" >
+              <h3 class="indexglyphicon glyphicon-star fourreason">跨世代交流</h3>
+            <div class="contentdiv">
+              <h4 class="fourreasoncontent">學員、學長姐、講師長期密切互動學員、學長姐、講師長期密切互動學員、學長姐、講師長期密切互動學員、學長姐、講師長期密切互動學員、學長姐、講師長期密切互動</h4>
+            </div>
           </div>
+        </div>        
+        <div class="col-sm-6 col-md-1">
         </div>
       </div>
-		</div>
-	</div>
-</section>
+  </div>
+  <br>
+  <br>
+  <div class="container">    
+    <div class="row">
+        <div class="col-sm-6 col-md-1">
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="fourreasondiv thumbnail" >
+              <h3 class="indexglyphicon glyphicon-star fourreason">理論實務並進</h3>
+            <div class="contentdiv">
+              <h4 class="fourreasoncontent">專業授課、專案實作、企業參訪專業授課、專案實作、企業參訪專業授課、專案實作、企業參訪專業授課、專案實作、企業參訪專業授課、專案實作、企業參訪</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-2">
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="fourreasondiv thumbnail" >
+              <h3 class="indexglyphicon glyphicon-star fourreason">國際視野拓展</h3>
+            <div class="contentdiv">
+              <h4 class="fourreasoncontent">海外學術交流與企業參訪海外學術交流與企業參訪海外學術交流與企業參訪海外學術交流與企業參訪海外學術交流與企業參訪海外學術交流與企業參訪</h4>
+            </div>
+          </div>
+        </div>        
+        <div class="col-sm-6 col-md-1">
+        </div>
+    </div>
+  </div>
+<!-- pu's update -->
 
+<script src="/js/specifies/frontend/jquery.color.min.js"></script>
+<script src="/js/specifies/frontend/jquery.animateNumber.min.js"></script>
+<div class="col-sm-12 counter">
+  <div class="container">
+    <div class="row">
+    <div class="col-lg-3 col-sm-6">
+      <div class="number" style="vertical-align: middle;">
+          <div class="number1"><h1><b><p id="target1">13</p></b></h1></div>
+          <div class="number1"><h1><b>&mdash;</b></h1></div>
+          <div class="number3"><h3><b>屆累積</b></h3></div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="number" style="vertical-align: middle;">
+          <div class="number1"><h1><b><p id="target2">300+</p></b></h1></div>
+          <div class="number1"><h1><b>&mdash;</b></h1></div>
+          <div class="number3"><h3><b>畢業校友</b></h3></div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="number" style="vertical-align: middle;">
+          <div class="number1"><h1><b><p id="target3">100+</p></b></h1></div>
+          <div class="number1"><h1><b>&mdash;</b></h1></div>
+          <div class="number3"><h3><b>職場人脈</b></h3></div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="number" style="vertical-align: middle;">
+          <div class="number1"><h1><b><p id="target4">34</p></b></h1></div>
+          <div class="number1"><h1><b>&mdash;</b></h1></div>
+          <div class="number3"><h3><b>的夥伴</b></h3></div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 schedule">
+      <div><h2><b>計畫時程安排</b></h2></div>
+      <div><h2><b>&mdash;&mdash;&mdash;</b></h2></div>
+      <img src="/images/layout/flow.svg">
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+$.fn.isOnScreen = function(){
+
+  var win = $(window);
+
+  var viewport = {
+    top : win.scrollTop(),
+    left : win.scrollLeft()
+  };
+  viewport.right = viewport.left + win.width();
+  viewport.bottom = viewport.top + win.height();
+
+  var bounds = this.offset();
+  bounds.right = bounds.left + this.outerWidth();
+  bounds.bottom = bounds.top + this.outerHeight();
+
+  return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+
+};
+
+
+var t1=true;
+var t2=true;
+var t3=true;
+var t4=true;
+
+$(document).ready(function(){
+  $(window).scroll(function(){
+    if ($('#target1').isOnScreen() && t1) {
+      $('#target1').animateNumber({
+        number: 13
+      }, 4000,
+      function() {
+        $('#target1').text('13')
+      });
+      t1=false
+    }
+    if ($('#target2').isOnScreen() && t2) {
+      $('#target2').animateNumber({
+        number: 300
+      }, 4000,
+      function() {
+        $('#target2').text('300+')
+      });
+      t2=false
+    }
+    if ($('#target3').isOnScreen() && t3) {
+      $('#target3').animateNumber({
+        number: 100
+      }, 4000,
+      function() {
+        $('#target3').text('100+')
+      });
+      t3=false
+    }
+    if ($('#target4').isOnScreen() && t4) {
+      $('#target4').animateNumber({
+        number: 80
+      }, 4000,
+      function() {
+        $('#target4').text('一輩子')
+      });
+      t4=false
+    }
+  });
+});
+</script>
+
+
+
+<!-- pu's update -->
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 schedule">
+        <div><h2><b>報名流程</b></h2></div>
+        <div><h2><b>&mdash;&mdash;&mdash;</b></h2></div>
+      </div>
+    </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-2">
+      <div class="contentdiv thumbnail" >
+        <div class="circle">
+        </div>
+        <div class="thumbnail caption">
+                <h4>講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1">
+    </div>
+    <div class="col-sm-6 col-md-2">
+      <div class="contentdiv thumbnail" >
+        <div class="circle">
+        </div>
+        <div class="thumbnail caption">
+                <h4>講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1">
+    </div>
+    <div class="col-sm-6 col-md-2">
+      <div class="contentdiv thumbnail" >
+        <div class="circle">
+        </div>
+        <div class="thumbnail caption">
+                <h4>講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1">
+    </div>
+    <div class="col-sm-6 col-md-2">
+      <div class="contentdiv thumbnail" >
+        <div class="circle">
+        </div>
+        <div class="thumbnail caption">
+                <h4>講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 回到頂端按鈕 start -->
+<script>
+//<![CDATA[
+(function () {
+$("body").append("<img id='goTopButton' style='display: none; z-index: 5; cursor: pointer;' title='回到頂端'/>");
+var img = "http://i.imgur.com/IFInFUr.png",
+locatioin = 4/5, // 按鈕出現在螢幕的高度
+right = 1, // 距離右邊 px 值
+opacity = 0.4, // 透明度
+speed = 500, // 捲動速度
+$button = $("#goTopButton"),
+$body = $(document),
+$win = $(window);
+$button.attr("src", img);
+$button.on({
+mouseover: function() {$button.css("opacity", 1);},
+mouseout: function() {$button.css("opacity", opacity);},
+click: function() {$("html, body").animate({scrollTop: 0}, speed);}
+});
+window.goTopMove = function () {
+var scrollH = $body.scrollTop(),
+winH = $win.height(),
+css = {"top": winH * locatioin + "px", "position": "fixed", "right": right, "opacity": opacity};
+if(scrollH > 20) {
+$button.css(css);
+$button.fadeIn("slow");
+} else {
+$button.fadeOut("slow");
+}
+};
+$win.on({
+scroll: function() {goTopMove();},
+resize: function() {goTopMove();}
+});
+} )();
+//]]>
+</script>
+<!-- 回到頂端按鈕 end -->
 <!--FOOTER-->
 <% include ../footer %>
+
 <!--END FOOTER-->
