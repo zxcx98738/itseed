@@ -13,8 +13,9 @@
         <li data-target="#carousel-example-generic" data-slide-to="1"></li>
         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
       </ol>
+
     <!-- Wrapper for slides -->
-      <div class="carousel-inner" role="listbox">
+<!--       <div class="carousel-inner" role="listbox">
         <div class="item active">
           <iframe width="100%" height="450" src="https://www.youtube.com/embed/15Ldl8iqTks" frameborder="0" allowfullscreen></iframe>
             <div class="carousel-caption">
@@ -38,7 +39,7 @@
           <div class="carousel-caption">
             <h1>資訊種了</h1> 
           </div>
-        </div>
+        </div> -->
       </div>
 
       <!-- Controls -->
@@ -125,31 +126,31 @@
   <div class="container">
     <div class="row">
     <div class="col-lg-3 col-sm-6">
-      <div class="number" style="vertical-align: middle;">
-          <div class="number1"><h1><b><p id="target1">13</p></b></h1></div>
-          <div class="number1"><h1><b>&mdash;</b></h1></div>
-          <div class="number3"><h3><b>屆累積</b></h3></div>
+      <div class="number" >
+          <div class="number1"><p id="target1">13</p></div>
+          <div class="number2">&#175;&#175;</div>
+          <div class="number3">屆累積</div>
       </div>
     </div>
     <div class="col-lg-3 col-sm-6">
-      <div class="number" style="vertical-align: middle;">
-          <div class="number1"><h1><b><p id="target2">300+</p></b></h1></div>
-          <div class="number1"><h1><b>&mdash;</b></h1></div>
-          <div class="number3"><h3><b>畢業校友</b></h3></div>
+      <div class="number" >
+          <div class="number1"><p id="target2">300+</p></div>
+          <div class="number2">&#175;&#175;</div>
+          <div class="number3">畢業校友</div>
       </div>
     </div>
     <div class="col-lg-3 col-sm-6">
-      <div class="number" style="vertical-align: middle;">
-          <div class="number1"><h1><b><p id="target3">100+</p></b></h1></div>
-          <div class="number1"><h1><b>&mdash;</b></h1></div>
-          <div class="number3"><h3><b>職場人脈</b></h3></div>
+      <div class="number" >
+          <div class="number1"><p id="target3">100+</p></div>
+          <div class="number2">&#175;&#175;</div>
+          <div class="number3">職場人脈</div>
       </div>
     </div>
     <div class="col-lg-3 col-sm-6">
-      <div class="number" style="vertical-align: middle;">
-          <div class="number1"><h1><b><p id="target4">34</p></b></h1></div>
-          <div class="number1"><h1><b>&mdash;</b></h1></div>
-          <div class="number3"><h3><b>的夥伴</b></h3></div>
+      <div class="number" >
+          <div class="number1"><b><p id="target4">34</p></b></div>
+          <div class="number2"><b>&#175;&#175;</b></div>
+          <div class="number3"><b>的夥伴</b></div>
       </div>
     </div>
   </div>
@@ -197,7 +198,7 @@ $(document).ready(function(){
     if ($('#target1').isOnScreen() && t1) {
       $('#target1').animateNumber({
         number: 13
-      }, 4000,
+      }, 2500,
       function() {
         $('#target1').text('13')
       });
@@ -206,7 +207,7 @@ $(document).ready(function(){
     if ($('#target2').isOnScreen() && t2) {
       $('#target2').animateNumber({
         number: 300
-      }, 4000,
+      }, 3000,
       function() {
         $('#target2').text('300+')
       });
@@ -215,7 +216,7 @@ $(document).ready(function(){
     if ($('#target3').isOnScreen() && t3) {
       $('#target3').animateNumber({
         number: 100
-      }, 4000,
+      }, 3500,
       function() {
         $('#target3').text('100+')
       });
@@ -227,6 +228,7 @@ $(document).ready(function(){
       }, 4000,
       function() {
         $('#target4').text('一輩子')
+        
       });
       t4=false
     }
