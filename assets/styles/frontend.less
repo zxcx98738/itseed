@@ -11,7 +11,7 @@
 
 body {
     position: relative;
-    padding-bottom: 90px;
+    /*padding-bottom: 90px;*/
     min-height: 100vh;
 	font-family: '微軟正黑體';
 }
@@ -57,6 +57,7 @@ body {
 /*pu's update*/
 .counter{
     background-color: #11D392;
+    margin-bottom: 50px;
 }
 .counter .number{
     height: 100%;
@@ -116,7 +117,8 @@ body>header {
                 background-color: inherit;
             }
         
-            div.navbar-header {      
+            div.navbar-header { 
+                margin-left: -30px;     
                 @media(max-width:767px) {
                     height: @nav-fixed-height; 
                 }
@@ -152,6 +154,7 @@ body>header {
                 }
             }  
             div.navbar-collapse {
+                margin-right: -50px;
                 max-height: none;
                 background-color: transparent;
                 @media(max-width:767px) {
@@ -160,7 +163,7 @@ body>header {
 
                 .login-area{
                     float: right;
-
+                    
                     li a {            
                         margin: 15px 0px 0px 10px;
                         padding: 10px 20px;
@@ -329,7 +332,7 @@ body>section {
 //頁尾
 
 body > footer {
-    position: absolute;
+    /*position: absolute;*/
     bottom: 0px;
     padding: 25px 0;
     width: 100%;
@@ -354,3 +357,5 @@ body > footer {
 .backend-login {
     color: gray;
 }
+
+
