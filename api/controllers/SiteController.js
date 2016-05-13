@@ -501,7 +501,7 @@ module.exports = {
         });
     },
 
-    //影音專區
+    //faq
     faq: function(req, res){
         var model = Faq; 
         var action = CmsService.getAction(model);
@@ -521,6 +521,8 @@ module.exports = {
             });
         })
         .catch(function(err){
+                        console.log("4")
+
             res.end(JSON.stringify(err));
         });
     },
