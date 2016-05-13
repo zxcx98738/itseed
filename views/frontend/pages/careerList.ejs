@@ -1,30 +1,125 @@
 <!--HEADER-->
 <% include ../header %>
 <!--END HEADER-->
+<img src="/images/layout/3-4career.png" id="img-responsive" width="100%">
 
-<section class="bg-light-gray" id="careerList">
-	<div class="container">
-		<div class="row">
+<!-- pu's update -->
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 schedule">
+      <div><h2 style="color: #4cb5aa"><b>職涯發展計畫</b></h2></div>
+      <div><h4 style="color: #4cb5aa"><b>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</b></h4></div>
+      <div><h4 style="color: #96b6a3"><b><i style="color: #7ae8a4"class="fa fa-quote-left" aria-hidden="true"></i>  增進職場軟硬實力 <i style="color: #7ae8a4"class="fa fa-quote-right" aria-hidden="true"></i></b></h4></div>
+    </div>
+  </div>
+</div>
+
+<!-- poyao 報名流程 -->  
+<div class="container-fluid" >
+  <div class="row sign">
+    <div class="col-sm-12 col-md-4">
+      <div class="square thumbnail" >
+        <div class="flowcircle" ><h1 align="center" style="line-height:80px; color:white; ">1</h1>
+        </div>
+        <div class="inside thumbnail caption" style="background-color: #d6eae0">
+        	<h2 align="center" style="color: #4cb5aa">第一階段</h2>
+          <h4>講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="square thumbnail" >
+        <div class="flowcircle" ><h1 align="center" style="line-height:80px; color:white; ">2</h1>
+        </div>
+        <div class="inside thumbnail caption" style="background-color: #d6eae0">
+        	<h2 align="center" style="color: #4cb5aa">第二階段</h2>
+          <h4>講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="square thumbnail" >
+       <div class="flowcircle" ><h1 align="center" style="line-height:80px; color:white; ">3</h1>
+        </div>
+        <div class="inside thumbnail caption" style="background-color: #d6eae0">
+        	<h2 align="center" style="color: #4cb5aa">第三階段</h2>
+          <h4>講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強講師陣容堅強</h4>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+<div id="myCarousel" class="carousel slide" style="max-width: 70%;  margin:auto;" >
+   <!-- 輪播（Carousel）指標 -->
+   <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+   </ol>   
+   <!-- 輪播（Carousel）項目 -->
+   <div class="carousel-inner">
+      <div class="item active">
+         <img src="http://i.imgur.com/2UiLxcx.jpg" alt="First slide">
+      </div>
+      <div class="item">
+         <img src="http://i.imgur.com/2UiLxcx.jpg" alt="Second slide">
+      </div>
+      <div class="item">
+         <img src="http://i.imgur.com/2UiLxcx.jpg" alt="Third slide">
+      </div>
+   </div>
+   <!-- 輪播（Carousel）導航 -->
+   <a class="carousel-control left" href="#myCarousel" 
+      data-slide="prev">&lsaquo;</a>
+   <a class="carousel-control right" href="#myCarousel" 
+      data-slide="next">&rsaquo;</a>
+</div> 
+
+<br>
+
+
+
+<section style="background-color:#d6eae0;margin-top:50px;" id="careerList" >
+	<div class="container dataregion">
+      <div class="iconcircle">
+        <h1 align="center" style="line-height:80px;">
+          <i class="fa fa-comments-o" style="color: white" aria-hidden="true"></i>
+        </h1>
+      </div>
+      <h4 align="center" style="color: #6BC1B8"><b>職涯體驗心得</b></h4>
+  </div>
+	<div class="row">
 		<% for(var i = 0; i < datas.length; i++){ %>
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<div class="course-card">
-					<div class="photo text-center">
-						<img src="<%= datas[i].photo %>"></img>
-					</div>
-					<div class="image-overlay"></div>
-					<div class="view-details">
-						<a href="<%= url + datas[i].id %>">公司體驗介紹</a>
-					</div>
-					<div class="intro">
-						<div class="title">
-							<%= datas[i].title %>							
-						</div>
-					</div>	
+      					<div class="photo text-center">
+      						<img src="<%= datas[i].photo %>"></img>
+      					</div>
+      					<div class="image-overlay"></div>
+      					<div class="view-details">
+      						<a href="<%= url + datas[i].id %>">公司體驗介紹</a>
+      					</div>
+      					<div class="intro">
+      						<div class="title">
+      							<%= datas[i].title %>							
+      						</div>
+      					</div>	
 				</div>
 			</div>
 		<% } %>
-		</div>
 	</div>
+
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <a href="/regInfo" class="signupp">立即報名</a>
+    </div>
+  </div>
 </section>
 
 <!--FOOTER-->
