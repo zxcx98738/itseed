@@ -1,11 +1,69 @@
-<!--HEADER-->
+HEADER-->
 <% include ../header %>
 <!--END HEADER-->
 
+<style type="text/css">
+	.row{
+		margin: 0px 0px;
+	}
+</style>
+
 <section class="bg-light-gray" id="businessVisitList">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
-		<% for(var i = 0; i < datas.length; i++){ %>
+			<div class="col-md-6">
+				<div class="companyIBMdiv container">
+					<h3 class="companyNameIBM">IBM</h3>
+					<p class="companyContentIBM">擁有百年歷史的IBM在硬體開發的領域有輝煌的歷史，如何在變動快速的科技業中如此屹立不搖，追求創新、用人原則、勞資關係和轉型突破，都是使IBM鶴立雞群的重要標誌！</p>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="companyImgdiv">
+					<img src="/images/courseinfo/IBMpeople.png" class="companyImgIBM" id="img-responsive">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="companyMSImgdiv">
+					<img src="/images/courseinfo/microsoft.png" class="companyImgIBM" id="img-responsive">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="companyMSdiv container">
+					<h3 class="companyNameMS">MicroSoft</h3>
+					<p class="companyContentMS">微軟公司近幾年來除了作業系統和辦公軟體之外，也致力於雲端開發等等，臺灣微軟更是坐落於臺北市最金華信義區，並且與IBN為鄰，整個大廈可以說是科技之樓！</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="companyANKOdiv container">
+					<h3 class="companyNameANKO">安口食品</h3>
+					<p class="companyContentIBM">安口擁有超過30年的冷凍食品與麵包烘焙機械製造經驗，隨著台灣國際地位以及進出口關稅等各種不利因素下，靠著優質的服務及網路行銷，成功將產品擴展到108個國家。</p>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="companyANKOImgdiv">
+					<img src="/images/courseinfo/anko.png" class="companyImgIBM" id="img-responsive">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="companyAuroimgdiv">
+					<img src="/images/courseinfo/auro.png" class="companyImgIBM" id="img-responsive">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="companyAurodiv container">
+					<h3 class="companyNameAuro">和椿科技</h3>
+					<p class="companyContentAuro">微軟公司近幾年來除了作業系統和辦公軟體之外，也致力於雲端開發等等，臺灣微軟更是坐落於臺北市最金華信義區，並且與IBN為鄰，整個大廈可以說是科技之樓！</p>
+				</div>
+			</div>
+		</div>
+		<!-- <% for(var i = 0; i < datas.length; i++){ %>
+			
 			<div class="col-md-3 col-sm-6 col-xs-12">
 				<div class="course-card">
 					<div class="photo text-center">
@@ -22,11 +80,10 @@
 					</div>	
 				</div>
 			</div>
-		<% } %>
-		</div>
+		<% } %> -->
 	</div>
 </section>
 
 <!--FOOTER-->
 <% include ../footer %>
-<!--END FOOTER-->
+<!--END FOOTER
