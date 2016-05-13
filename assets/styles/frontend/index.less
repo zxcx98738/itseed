@@ -136,17 +136,27 @@ section#index {
 }
 .signupp {
     width: 200px;
-    border: solid #11D392;
-    color: #11D392;
+    /*border: 5px solid #11D392;*/
+    border-radius: 7px;
+    color: white;
     padding: 20px;
     font-size: 25px;
     margin-bottom: 50px;
+    background-color: #11D392;
+
     &:hover, &:focus{
         color: white;
-        background-color: #11D392;
+        background-color: #108B85;
+        -o-transition: background-color .20s linear;
+        -webkit-transition: background-color .20s linear;
+        -moz-transition: background-color .20s linear;
+        transition:  background-color .20s linear;
         text-decoration: none;
-    }
 
+    }
+}
+.first {
+    background-color: #6fbbf4;
 }
 .circle{
 /******************************************/
@@ -182,7 +192,7 @@ section#index {
     padding-top: 40px;
   }
 .timelineImg{
-    width: 100%;
+    width: 80%;
 }
 .ntca {
     width: 100px;
