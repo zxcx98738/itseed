@@ -5,26 +5,26 @@
  * @文件 : See http://links.sailsjs.org/docs/controllers
  */
 
-var fs = require("fs"); 
+var fs = require("fs");
 
 module.exports = {
     //移除blueprint內建的actions
-    _config: { 
-        actions: false, 
-        rest: false, 
-        shortcuts: false 
+    _config: {
+        actions: false,
+        rest: false,
+        shortcuts: false
     },
     //載入編輯器
     editor: function(req, res){
-        if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){ 
-            var model = sails.models[req.param("model").toLowerCase()];        
+        if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
+            var model = sails.models[req.param("model").toLowerCase()];
             var action = {};
             var post = {};
             var menu = {};
 
             /*新增文章*/
             if(typeof req.param("id") === "undefined"){
-                //共通的attributes 
+                //共通的attributes
                 post.status = "new";
                 post.createdAt = "";
 
@@ -40,12 +40,12 @@ module.exports = {
                     case BusinessVisit:
                         post.th = "";
                         post.photo = "";
-                        break;      
+                        break;
                     case Career:
                         post.th = "";
                         post.speaker = "";
                         post.photo = "";
-                        break;      
+                        break;
                     case Project:
                         post.th = "";
                         break;
@@ -105,7 +105,7 @@ module.exports = {
     //預覽畫面
     preview: function(req, res){
         if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
-            var model = sails.models[req.param("model").toLowerCase()]; 
+            var model = sails.models[req.param("model").toLowerCase()];
 
             /*收到POST request*/
             if(req.method === 'POST'){
@@ -145,7 +145,7 @@ module.exports = {
     //載入預覽內容
     load: function(req, res){
         if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
-            var model = sails.models[req.param("model").toLowerCase()]; 
+            var model = sails.models[req.param("model").toLowerCase()];
             var action = CmsService.getAction(model);
             /*收到POST request*/
             if(req.method === 'POST'){
@@ -186,9 +186,9 @@ module.exports = {
     //回傳後台顯示的文章列表
     list: function(req, res){
         if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
-            var theModel = sails.models[req.param("model").toLowerCase()];   
+            var theModel = sails.models[req.param("model").toLowerCase()];
             var status = req.param("status");
-            var modelArr = ["aboutITSeed", "aboutNTCA", "businessVisit", "courseInfo", "courseList", "faq", "instructor", 
+            var modelArr = ["aboutITSeed", "aboutNTCA", "businessVisit", "courseInfo", "courseList", "faq", "instructor",
                             "memberList", "news", "overseaVisit", "project", "regFile", "regInfo", "sharing",
                             "timeline", "video"]
             var counts = {};
@@ -217,7 +217,7 @@ module.exports = {
                     },
                     publishNum: function(callback){
                         var criteria = {
-                            status: "P", 
+                            status: "P",
                             createdAt: { "<=": now }
                         };
 
@@ -249,65 +249,65 @@ module.exports = {
                             publishNum: results.publishNum,
                             scheduleNum: results.scheduleNum
                         };
-                        callback();             
+                        callback();
                     }
                 });
-            }, function(err){ 
+            }, function(err){
                 if(err){
                     res.end(JSON.stringify(err));
                 }
                 else{
                     if(status == "all"){
                         if(typeof theModel.attributes.order !== "undefined"){
-                            var criteria = {   
+                            var criteria = {
                                 sort: { order: "asc" }
                             };
                         }
                         else{
-                            var criteria = {   
+                            var criteria = {
                                 sort: { createdAt: "asc" }
                             };
                         }
-                            
+
                     }
                     else if(status == "draft"){
                         if(typeof theModel.attributes.order !== "undefined"){
-                            var criteria = {   
-                                where: { status: "D" }, 
+                            var criteria = {
+                                where: { status: "D" },
                                 sort: { order: "asc" }
                             };
                         }
                         else{
-                            var criteria = {   
-                                where: { status: "D" }, 
+                            var criteria = {
+                                where: { status: "D" },
                                 sort: { createdAt: "asc" }
                             };
                         }
                     }
                     else if(status == "schedule"){
                         if(typeof theModel.attributes.order !== "undefined"){
-                            var criteria = {   
-                                where: { status: "P", createdAt: { ">": now } }, 
+                            var criteria = {
+                                where: { status: "P", createdAt: { ">": now } },
                                 sort: { order: "asc" }
                             };
                         }
                         else{
-                            var criteria = {   
-                                where: { status: "P", createdAt: { ">": now } }, 
+                            var criteria = {
+                                where: { status: "P", createdAt: { ">": now } },
                                 sort: { createdAt: "asc" }
                             };
                         }
                     }
                     else{
                         if(typeof theModel.attributes.order !== "undefined"){
-                            var criteria = {   
-                                where: { status: "P", createdAt: { "<=": now } }, 
+                            var criteria = {
+                                where: { status: "P", createdAt: { "<=": now } },
                                 sort: { order: "asc" }
                             };
                         }
                         else{
-                            var criteria = {   
-                                where: { status: "P", createdAt: { "<=": now } }, 
+                            var criteria = {
+                                where: { status: "P", createdAt: { "<=": now } },
                                 sort: { createdAt: "asc" }
                             };
                         }
@@ -321,7 +321,7 @@ module.exports = {
                         for(var i = 0; i < datas.length; i++){
                             datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
                         }
-                        
+
                         return res.view("backend/pages/cms", {
                             articles: datas,
                             postType: req.param("model"),
@@ -347,7 +347,7 @@ module.exports = {
             var model = sails.models[req.param("model").toLowerCase()];
             var menu = CmsService.getMenu(model);
 
-            //共通的attributes 
+            //共通的attributes
             var value = {
                 author: req.session.userid,
                 title: req.param("title"),
@@ -368,11 +368,11 @@ module.exports = {
 
                     //上傳檔案
                     req.file('photo').upload({ dirname: '../../assets/images/courseInfo'}, function (err, uploadedFiles) {
-                        if (err) 
+                        if (err)
                             return res.end(JSON.stringify(err));
                         if (uploadedFiles.length > 0) {
                             //圖片檔
-                            if(uploadedFiles[0].type.substring(0, 5) == "image"){           
+                            if(uploadedFiles[0].type.substring(0, 5) == "image"){
                                 var url = uploadedFiles[0].fd;
                                 var start = url.search("images") - 1;
                                 url = url.slice(start);
@@ -381,12 +381,12 @@ module.exports = {
                             }
                             //非圖片檔
                             else{
-                                fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(uploadedFiles[0].fd, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                                 return res.end(JSON.stringify("檔案格式錯誤"));
-                            }                        
+                            }
                         }
 
                         CmsService.createPost(model, value)
@@ -397,10 +397,10 @@ module.exports = {
                         .catch(function(err){
                             //刪除上傳檔案
                             if (uploadedFiles.length > 0) {
-                                fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(uploadedFiles[0].fd, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                             }
                             res.end(JSON.stringify(err));
                         });
@@ -411,11 +411,11 @@ module.exports = {
 
                     //上傳檔案
                     req.file('photo').upload({ dirname: '../../assets/images/businessVisit'}, function (err, uploadedFiles) {
-                        if (err) 
+                        if (err)
                             return res.end(JSON.stringify(err));
                         if (uploadedFiles.length > 0) {
                             //圖片檔
-                            if(uploadedFiles[0].type.substring(0, 5) == "image"){           
+                            if(uploadedFiles[0].type.substring(0, 5) == "image"){
                                 var url = uploadedFiles[0].fd;
                                 var start = url.search("images") - 1;
                                 url = url.slice(start);
@@ -424,12 +424,12 @@ module.exports = {
                             }
                             //非圖片檔
                             else{
-                                fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(uploadedFiles[0].fd, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                                 return res.end(JSON.stringify("檔案格式錯誤"));
-                            }                        
+                            }
                         }
 
                         CmsService.createPost(model, value)
@@ -440,10 +440,10 @@ module.exports = {
                         .catch(function(err){
                             //刪除上傳檔案
                             if (uploadedFiles.length > 0) {
-                                fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(uploadedFiles[0].fd, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                             }
                             res.end(JSON.stringify(err));
                         });
@@ -461,11 +461,11 @@ module.exports = {
 
                     //上傳檔案
                     req.file('photo').upload({ dirname: '../../assets/images/sharing'}, function (err, uploadedFiles) {
-                        if (err) 
+                        if (err)
                             return res.end(JSON.stringify(err));
                         if (uploadedFiles.length > 0) {
                             //圖片檔
-                            if(uploadedFiles[0].type.substring(0, 5) == "image"){           
+                            if(uploadedFiles[0].type.substring(0, 5) == "image"){
                                 var url = uploadedFiles[0].fd;
                                 var start = url.search("images") - 1;
                                 url = url.slice(start);
@@ -474,12 +474,12 @@ module.exports = {
                             }
                             //非圖片檔
                             else{
-                                fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(uploadedFiles[0].fd, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                                 return res.end(JSON.stringify("檔案格式錯誤"));
-                            }                        
+                            }
                         }
 
                         CmsService.createPost(model, value)
@@ -490,10 +490,10 @@ module.exports = {
                         .catch(function(err){
                             //刪除上傳檔案
                             if (uploadedFiles.length > 0) {
-                                fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(uploadedFiles[0].fd, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                             }
                             res.end(JSON.stringify(err));
                         });
@@ -520,7 +520,7 @@ module.exports = {
                         res.end(JSON.stringify(err));
                     });
                     break;
-            } 
+            }
         }
         else{
             return res.forbidden();
@@ -529,13 +529,13 @@ module.exports = {
     //更新
     update: function(req, res){
         if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
-            var model = sails.models[req.param("model").toLowerCase()]; 
+            var model = sails.models[req.param("model").toLowerCase()];
             var menu = CmsService.getMenu(model);
             var criteria = {
                 id: req.param("id")
             }
 
-            //共通的attributes 
+            //共通的attributes
             var value = {
                 title: req.param("title"),
                 content: req.param("content"),
@@ -555,14 +555,14 @@ module.exports = {
                     value.th = req.param("th");
                     value.speaker = req.param("speaker");
                     value.speakerTitle = req.param("speakerTitle");
-                    
+
                     //上傳檔案
                     req.file('photo').upload({ dirname: '../../assets/images/courseInfo'}, function (err, uploadedFiles) {
-                        if (err) 
+                        if (err)
                             res.end(JSON.stringify(err));
                         if (uploadedFiles.length > 0) {
                             //圖片檔
-                            if(uploadedFiles[0].type.substring(0, 5) == "image"){           
+                            if(uploadedFiles[0].type.substring(0, 5) == "image"){
                                 var url = uploadedFiles[0].fd;
                                 var start = url.search("images") - 1;
                                 url = url.slice(start);
@@ -571,10 +571,10 @@ module.exports = {
                             }
                             //非圖片檔
                             else{
-                                fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(uploadedFiles[0].fd, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                                 return res.end(JSON.stringify("檔案格式錯誤"));
                             }
                         }
@@ -586,20 +586,20 @@ module.exports = {
                             if (uploadedFiles.length > 0 && req.param("oldPhoto") != '/images/courseInfo/default.png') {
                                 var imagePath = sails.config.appPath+'/assets'+req.param("oldPhoto");
 
-                                fs.unlink(imagePath, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(imagePath, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                             }
                             res.end("success");
                         })
                         .catch(function(err){
                             //刪除上傳檔案
                             if (uploadedFiles.length > 0) {
-                                fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(uploadedFiles[0].fd, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                             }
                             res.end(JSON.stringify(err));
                         });
@@ -607,14 +607,14 @@ module.exports = {
                     break;
                 case BusinessVisit:
                     value.th = req.param("th");
-                    
+
                     //上傳檔案
                     req.file('photo').upload({ dirname: '../../assets/images/businessVisit'}, function (err, uploadedFiles) {
-                        if (err) 
+                        if (err)
                             res.end(JSON.stringify(err));
                         if (uploadedFiles.length > 0) {
                             //圖片檔
-                            if(uploadedFiles[0].type.substring(0, 5) == "image"){           
+                            if(uploadedFiles[0].type.substring(0, 5) == "image"){
                                 var url = uploadedFiles[0].fd;
                                 var start = url.search("images") - 1;
                                 url = url.slice(start);
@@ -623,10 +623,10 @@ module.exports = {
                             }
                             //非圖片檔
                             else{
-                                fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(uploadedFiles[0].fd, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                                 return res.end(JSON.stringify("檔案格式錯誤"));
                             }
                         }
@@ -638,20 +638,20 @@ module.exports = {
                             if (uploadedFiles.length > 0 && req.param("oldPhoto") != '/images/businessVisit/default.png') {
                                 var imagePath = sails.config.appPath+'/assets'+req.param("oldPhoto");
 
-                                fs.unlink(imagePath, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(imagePath, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                             }
                             res.end("success");
                         })
                         .catch(function(err){
                             //刪除上傳檔案
                             if (uploadedFiles.length > 0) {
-                                fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(uploadedFiles[0].fd, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                             }
                             res.end(JSON.stringify(err));
                         });
@@ -665,14 +665,14 @@ module.exports = {
                     break;
                 case Sharing:
                     value.th = req.param("th");
-                    
+                    value.name = req.param("name");
                     //上傳檔案
                     req.file('photo').upload({ dirname: '../../assets/images/sharing'}, function (err, uploadedFiles) {
-                        if (err) 
+                        if (err)
                             res.end(JSON.stringify(err));
                         if (uploadedFiles.length > 0) {
                             //圖片檔
-                            if(uploadedFiles[0].type.substring(0, 5) == "image"){           
+                            if(uploadedFiles[0].type.substring(0, 5) == "image"){
                                 var url = uploadedFiles[0].fd;
                                 var start = url.search("images") - 1;
                                 url = url.slice(start);
@@ -681,10 +681,10 @@ module.exports = {
                             }
                             //非圖片檔
                             else{
-                                fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(uploadedFiles[0].fd, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                                 return res.end(JSON.stringify("檔案格式錯誤"));
                             }
                         }
@@ -696,20 +696,20 @@ module.exports = {
                             if (uploadedFiles.length > 0 && req.param("oldPhoto") != '/images/sharing/default.png') {
                                 var imagePath = sails.config.appPath+'/assets'+req.param("oldPhoto");
 
-                                fs.unlink(imagePath, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(imagePath, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                             }
                             res.end("success");
                         })
                         .catch(function(err){
                             //刪除上傳檔案
                             if (uploadedFiles.length > 0) {
-                                fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(uploadedFiles[0].fd, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                             }
                             res.end(JSON.stringify(err));
                         });
@@ -730,7 +730,7 @@ module.exports = {
                     .catch(function(err){
                         res.end(JSON.stringify(err));
                     });
-            }     
+            }
         }
         else{
             return res.forbidden();
@@ -739,7 +739,7 @@ module.exports = {
     //發布
     publish: function(req, res){
         if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
-            var model = sails.models[req.param("model").toLowerCase()]; 
+            var model = sails.models[req.param("model").toLowerCase()];
             var criteria = {
                 id: req.param("id")
             }
@@ -762,7 +762,7 @@ module.exports = {
     //還原為草稿
     toDraft: function(req, res){
         if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
-            var model = sails.models[req.param("model").toLowerCase()]; 
+            var model = sails.models[req.param("model").toLowerCase()];
             var criteria = {
                 id: req.param("id")
             }
@@ -776,7 +776,7 @@ module.exports = {
             })
             .catch(function(err){
                 res.end(JSON.stringify(err));
-            });    
+            });
         }
         else{
             return res.forbidden();
@@ -785,7 +785,7 @@ module.exports = {
     //刪除
     delete: function(req, res){
         if(typeof req.session.authorized !== "undefined" && req.session.authorized.cms === true){
-            var model = sails.models[req.param("model").toLowerCase()]; 
+            var model = sails.models[req.param("model").toLowerCase()];
             var criteria = {
                 id: req.param("id")
             }
@@ -797,23 +797,23 @@ module.exports = {
                     CmsService.findOnePost(model, criteria)
                     .then(function(data){
                         var photo = data.photo;
-                        
+
                         CmsService.deletePost(model, criteria)
                         .then(function(){
                             //刪除照片
                             if (data.photo != '/images/courseInfo/default.png') {
                                 var imagePath = sails.config.appPath+'/assets'+data.photo;
 
-                                fs.unlink(imagePath, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(imagePath, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                             }
                             res.end("success");
                         })
                         .catch(function(err){
                             res.end(JSON.stringify(err));
-                        }); 
+                        });
                     })
                     .catch(function(err){
                         res.end(JSON.stringify(err));
@@ -823,23 +823,23 @@ module.exports = {
                     CmsService.findOnePost(model, criteria)
                     .then(function(data){
                         var photo = data.photo;
-                        
+
                         CmsService.deletePost(model, criteria)
                         .then(function(){
                             //刪除照片
                             if (data.photo != '/images/businessVisit/default.png') {
                                 var imagePath = sails.config.appPath+'/assets'+data.photo;
 
-                                fs.unlink(imagePath, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(imagePath, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                             }
                             res.end("success");
                         })
                         .catch(function(err){
                             res.end(JSON.stringify(err));
-                        }); 
+                        });
                     })
                     .catch(function(err){
                         res.end(JSON.stringify(err));
@@ -849,23 +849,23 @@ module.exports = {
                     CmsService.findOnePost(model, criteria)
                     .then(function(data){
                         var photo = data.photo;
-                        
+
                         CmsService.deletePost(model, criteria)
                         .then(function(){
                             //刪除照片
                             if (data.photo != '/images/sharing/default.png') {
                                 var imagePath = sails.config.appPath+'/assets'+data.photo;
 
-                                fs.unlink(imagePath, function (err) {  
-                                    if (err) 
-                                        console.error(err) 
-                                });  
+                                fs.unlink(imagePath, function (err) {
+                                    if (err)
+                                        console.error(err)
+                                });
                             }
                             res.end("success");
                         })
                         .catch(function(err){
                             res.end(JSON.stringify(err));
-                        }); 
+                        });
                     })
                     .catch(function(err){
                         res.end(JSON.stringify(err));
@@ -873,7 +873,7 @@ module.exports = {
                     break;
                 default:
                     break;
-            } 
+            }
 
             //刪除record
             switch(model)
@@ -891,8 +891,8 @@ module.exports = {
                     })
                     .catch(function(err){
                         res.end(JSON.stringify(err));
-                    }); 
-            } 
+                    });
+            }
         }
         else{
             return res.forbidden();
@@ -914,12 +914,12 @@ module.exports = {
 
                 CmsService.updatePost(model, criteria, value)
                 .then(function(){
-                    callback();  
+                    callback();
                 })
                 .catch(function(err){
                     res.end(JSON.stringify(err));
-                }); 
-            }, function(err){ 
+                });
+            }, function(err){
                 if(err){
                     res.end(JSON.stringify(err));
                 }
@@ -933,4 +933,3 @@ module.exports = {
         }
     },
 };
-
