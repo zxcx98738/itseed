@@ -499,6 +499,50 @@ module.exports = {
                         });
                     });
                     break;
+                    case Career:
+                        value.th = req.param("th");
+                        value.name = req.param("name");
+
+                        //上傳檔案
+                        req.file('photo').upload({ dirname: '../../assets/images/career'}, function (err, uploadedFiles) {
+                            if (err)
+                                return res.end(JSON.stringify(err));
+                            if (uploadedFiles.length > 0) {
+                                //圖片檔
+                                if(uploadedFiles[0].type.substring(0, 5) == "image"){
+                                    var url = uploadedFiles[0].fd;
+                                    var start = url.search("images") - 1;
+                                    url = url.slice(start);
+                                    url = url.replace(/\\/g, "/");
+                                    value.photo = url;
+                                }
+                                //非圖片檔
+                                else{
+                                    fs.unlink(uploadedFiles[0].fd, function (err) {
+                                        if (err)
+                                            console.error(err)
+                                    });
+                                    return res.end(JSON.stringify("檔案格式錯誤"));
+                                }
+                            }
+
+                            CmsService.createPost(model, value)
+                            .then(function(data){
+                                data.message = "success";
+                                res.end(JSON.stringify(data));
+                            })
+                            .catch(function(err){
+                                //刪除上傳檔案
+                                if (uploadedFiles.length > 0) {
+                                    fs.unlink(uploadedFiles[0].fd, function (err) {
+                                        if (err)
+                                            console.error(err)
+                                    });
+                                }
+                                res.end(JSON.stringify(err));
+                            });
+                        });
+                        break;
                 default:
                     break;
             }
@@ -509,6 +553,8 @@ module.exports = {
                 case BusinessVisit:
                     break;
                 case Sharing:
+                    break;
+                case Career:
                     break;
                 default:
                     CmsService.createPost(model, value)
