@@ -3,8 +3,8 @@
 *
 * @描述 : 職涯體驗
 * @文件 : http://sailsjs.org/#!documentation/models
-* 
-*/ 
+*
+*/
 
 module.exports = {
 
@@ -23,6 +23,12 @@ module.exports = {
         th: {
           type: 'integer',
           notNull: true
+        },
+        //分享人
+        name: {
+          type: 'string',
+          notNull: true,
+          maxLength: 30
         },
         //照片
         photo: {

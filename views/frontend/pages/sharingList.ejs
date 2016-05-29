@@ -9,13 +9,14 @@
 		<div class="row">
 		<% for(var i = 0; i < datas.length; i++){ %>
 			<div class="col-md-3 col-sm-6 col-xs-12">
+				<a href="<%= url + datas[i].id %>">
 				<div class="course-card">
 					<div class="photo text-center">
 						<img src="<%= datas[i].photo %>"></img>
 					</div>
 					<div class="image-overlay"></div>
 					<div class="view-details">
-						<a href="<%= url + datas[i].id %>">經驗分享</a>
+						經驗分享
 					</div>
 					<div class="intro">
 						<div class="title">
@@ -29,6 +30,7 @@
 						</div>
 					</div>
 				</div>
+				</a>
 			</div>
 		<% } %>
 		</div>

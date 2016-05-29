@@ -15,14 +15,14 @@
         /*綁定全選事件*/
         setSelectAll("#selectAll", "td.selector>input");
         /*綁定由checkbox觸發的事件*/
-        setGroupOperation("#publish", "td.selector>input:checked", "tr", publish, action.publish, 
+        setGroupOperation("#publish", "td.selector>input:checked", "tr", publish, action.publish,
             "確定要發佈選取的文章嗎?");
-        setGroupOperation("#toDraft", "td.selector>input:checked", "tr", toDraft, action.toDraft, 
+        setGroupOperation("#toDraft", "td.selector>input:checked", "tr", toDraft, action.toDraft,
             "確定要還原選取的文章為草稿嗎?");
-        setGroupOperation("#deletePost", "td.selector>input:checked", "tr", deletePost, action.delete, 
+        setGroupOperation("#deletePost", "td.selector>input:checked", "tr", deletePost, action.delete,
             "確定要刪除選取的文章嗎?");
         /*綁定事件*/
-        setOperation(action);        
+        setOperation(action);
     });
 </script>
 <div id="wrapper">
@@ -54,7 +54,7 @@
                 <button type="button" class="btn btn-default" id="deletePost"><i class="fa fa-trash-o fa-fw"></i></button>
             </div>
             <a class="btn btn-default pull-right" id="newPost" href="#">新增文章</a>
-            <a class="btn btn-default pull-right" href="<%= action.view %>" target="_blank">檢視頁面</a>  
+            <a class="btn btn-default pull-right" href="<%= action.view %>" target="_blank">檢視頁面</a>
         </header>
         <table class="table">
             <thead>
@@ -73,7 +73,7 @@
                     <th class="col-md-3">標題</th>
                 <% }else{ %>
                     <th class="col-md-6">標題</th>
-                <% } %>                 
+                <% } %>
                     <th class="col-md-1">狀態</th>
                     <th class="col-md-2">作者</th>
                     <th class="col-md-2">發佈時間</th>
@@ -92,7 +92,7 @@
                     <td class="selector">
                         <% if(status == "all" && action.sort != "disabled"){ %>
                             <i class="fa fa-bars fa-fw handle pull-left"></i>
-                        <% } %>                    
+                        <% } %>
                         <input type="checkbox">
                     </td>
 
@@ -103,7 +103,7 @@
                 <% if(postType == "businessVisit" || postType == "project" || postType == "overseaVisit"){ %>
                     <td><%= articles[i].th %></td>
                 <% } %>
-                <% if(postType == "sharing"){ %>
+                <% if(postType == "sharing" || postType == "careerList"){ %>
                     <td><%= articles[i].th %></td>
                     <td><%= articles[i].name %></td>
                 <% } %>
@@ -112,15 +112,15 @@
                             <a class="edit" href="#"><%= articles[i].title %></a>
                         </div>
                         <div class="operation">
-                            <a class="edit" href="#">編輯</a> | 
-                            <% if(articles[i].status == "D" || (articles[i].status == "P" && 
+                            <a class="edit" href="#">編輯</a> |
+                            <% if(articles[i].status == "D" || (articles[i].status == "P" &&
                                 (new Date(articles[i].createdAt).getTime() > new Date().getTime()) )){ %>
-                                <a class="preview" href="#" target="_blank">預覽</a> | 
+                                <a class="preview" href="#" target="_blank">預覽</a> |
                             <% } else { %>
-                                <a class="view" href="#" target="_blank">檢視</a> | 
+                                <a class="view" href="#" target="_blank">檢視</a> |
                             <% } %>
                                 <a class="deletePost">刪除</a>
-                        </div>    
+                        </div>
                     </td>
                     <% if(articles[i].status == "D"){ %>
                         <td class="status">草稿</td>
