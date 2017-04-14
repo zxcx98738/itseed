@@ -68,7 +68,7 @@ assets/files
 # 
 ################################################
 
-node_modules
+
 bower_components
 
 
@@ -98,7 +98,7 @@ lib-cov
 *.log
 *.out
 *.pid
-node_modules
+# node_modules
 npm-debug.log
 
 
