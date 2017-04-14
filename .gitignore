@@ -19,7 +19,6 @@
 
 
 
-
 ################################################
 # Local Configuration
 #
@@ -99,6 +98,7 @@ lib-cov
 *.log
 *.out
 *.pid
+node_modules
 npm-debug.log
 
 
