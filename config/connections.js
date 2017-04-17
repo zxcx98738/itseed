@@ -48,7 +48,7 @@ module.exports.connections = {
     user      : 'root',
     //user : 'dav1a1223',
     password  : 'ILoveItseed01017541',
-    //password : '00000000',
+    // password : '123',
     database  : 'itseed',
   },
 
