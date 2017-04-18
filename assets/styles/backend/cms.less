@@ -1,0 +1,171 @@
+/*
+  CSS書寫順序
+  1.位置屬性(position, top, right, z-index, display, float等)
+  2.大小(width, height, padding, margin)
+  3.文字系列(font, line-height, letter-spacing, color- text-align等)
+  4.背景(background, border等)
+  5.其他(animation, transition等)
+*/
+
+//網站目錄
+
+#wrapper>aside>div#menu {
+    position: absolute;
+    width: 250px;
+    height: calc(~"100vh - 50px");
+    margin-top: 49px;
+    padding: 30px;
+    overflow-y: scroll; 
+    background-color: @light-gray;
+
+    >ul {
+      >li {
+        border: 1px solid @light-gray;
+      }
+      >li>a {
+        padding: 15px 20px;
+        font-size: 13px;
+        color: black;
+        background: white;
+
+        &:hover {
+          background: @light-yellow;
+        }
+      }
+      >li.super>a {
+        cursor: default;
+
+        &:hover {
+          background: white;
+        }
+      }
+      >li.sub>a {
+        padding-left: 35px;
+      }
+      >li.open>a {
+        color: @green;
+        background-color: @light-yellow;
+      }
+      ul {
+        li a {
+          padding: 10px 20px;
+          font-size: 13px;
+          color: black;
+          background: white;
+
+          &:hover {
+            color: white;
+            background: @light-green;
+          }
+        }
+        li.active a {
+          color: red;
+        }
+        li.has-sub>a::after {
+          display: block;
+          position: absolute;
+          content: "";
+          width: 5px;
+          height: 5px;
+          right: 20px;
+          z-index: 10;
+          top: 11.5px;
+          border-top: 2px solid black;
+          border-left: 2px solid black;
+          -webkit-transform: rotate(-135deg);
+          -ms-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+        }
+      }
+    }
+
+    .holder {
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        &::after, ::before {
+          display: block;
+          position: absolute;
+          content: "";
+          width: 6px;
+          height: 6px;
+          right: 20px;
+          z-index: 10;
+          border-top: 2px solid black;
+          border-left: 2px solid black;
+          -webkit-transform: rotate(-135deg);
+          -ms-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+        }
+        &::after {
+            top: 17px;
+        }
+        &::before {
+            top: 18px;
+        }
+    }
+}
+
+//編輯區
+
+#wrapper>aside+div#page-wrapper {
+  margin-left: 250px;
+}
+#wrapper>div#page-wrapper {
+    >header {
+      padding: 15px 0 15px 0;
+
+      a {
+        margin-left: 10px;
+      }
+    }
+    table {
+      tr {
+        height: 62px;
+
+        &.highlight {
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0.10) 0%, rgba(0, 0, 0, 0.05) 15%, rgba(0, 0, 0, 0.05) 85%, rgba(0, 0, 0, 0.10) 100%); 
+        }
+        &.ui-sortable-helper {
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+          background-color: white;
+          border: 1px solid #272d39;
+
+          td {
+            border-top: 0px;
+          }
+        }
+        td.selector {
+          vertical-align: middle;
+          text-align: center;
+
+          i.handle:hover {
+            cursor: move;
+            color: #272d39;
+          }
+          input {
+            margin: 0px;
+          }
+        }
+        td.status {
+          font-style: italic;
+          color: red;
+        }
+        div.operation {
+          visibility: hidden;
+          margin-top: 5px;
+          
+          a {
+            color: #333;
+            cursor: pointer;
+          }
+        }
+      }  
+      tr:hover div.operation {
+        visibility: visible;
+      }
+    }
+}

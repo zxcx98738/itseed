@@ -1,0 +1,47 @@
+<!--HEADER-->
+<% include ../header %>
+<!--END HEADER-->
+<!-- <img src="/images/layout/1news.png" alt="banner" id="img-responsive" width="100%"> -->
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 schedule">
+      <div><h2 class="page-title"><b>最新消息</b></h2></div>
+      <div><h4 class="title-underline"><b>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</b></h4></div>
+    </div>
+  </div>
+</div>
+<section class="bg-white" id="newsList">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="col-md-8">標　題</th>
+              <th class="col-md-4">日　期</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% for(var i = datas.length-1; i >= 0; i--){ %>
+            <tr>
+              <td>
+                <a href="<%= url + datas[i].id %>" id="newsTitle">
+                  <%= datas[i].title %>
+                </a>
+              </td>
+              <td><%= datas[i].formatTime %></td>
+            </tr>
+          <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->

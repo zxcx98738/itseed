@@ -1,0 +1,95 @@
+<!--HEADER-->
+<% include ../header %>
+<!--END HEADER-->
+<!-- <img src="/images/layout/3-5china.png" id="img-responsive" width="100%"> -->
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 schedule">
+      <div><h2 class="page-title"><b>海外參訪專案</b></h2></div>
+      <div><h4 class="title-underline"><b>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</b></h4>
+        <div><h4 class="subtitle"><b><i class="fa fa-quote-left comma" aria-hidden="true"></i>   為期8天7夜的海外交流  <i class="fa fa-quote-right comma" aria-hidden="true"></i></b></h4></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container-fluid" >
+  <div class="row sign">
+    <div class="col-sm-12 col-md-4">
+      <div class="square thumbnail" >
+        <div class="inside thumbnail caption flowbody">
+        	<h1 align="center" style="color:black"><i class="fa fa-binoculars" aria-hidden="true"></i>  <b>拓展視野</b></h1><br>
+          <h4 class="flowbody-content" align="left">體驗不同文化面貌，了解當地風俗民情，參訪當地企業認識不一樣的職場文化。</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="square thumbnail" >
+
+         <div class="inside thumbnail caption flowbody">
+        	<h1 align="center" style="color:black" ><i class="fa fa-paper-plane fa-6" aria-hidden="true"></i> <b>兩岸交流</b></h1><br>
+          <h4 class="flowbody-content" align="left">與對岸的大學生進行學術型的競賽以及相關的議題討論，同時也聊聊彼此生活型態的差異。</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="square thumbnail" >
+
+         <div class="inside thumbnail caption flowbody">
+        	<h1 align="center" style="color:black" ><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <b>行銷台灣</b></h1><br>
+          <h4 class="flowbody-content" align="left">熱情展現台灣人的人情味，熱於分享台灣的特色景點及大學生平常的生活方式。</h4>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- <div id="myCarousel" class="carousel slide" style="max-width: 70%;  margin:auto;" > -->
+   <!-- 輪播（Carousel）指標 -->
+   <!-- <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+   </ol> -->
+   <!-- 輪播（Carousel）項目 -->
+   <!-- <div class="carousel-inner">
+      <div class="item active">
+         <img src="images/layout/poyaoone.jpg" alt="First slide">
+      </div>
+      <div class="item">
+         <img src="images/layout/poyaoone.jpg" alt="Second slide">
+      </div>
+      <div class="item">
+         <img src="images/layout/poyaoone.jpg" alt="Third slide">
+      </div>
+   </div> -->
+   <!-- 輪播（Carousel）導航 -->
+   <!-- <a class="carousel-control left" href="#myCarousel"
+      data-slide="prev">&lsaquo;</a>
+   <a class="carousel-control right" href="#myCarousel"
+      data-slide="next">&rsaquo;</a>
+</div> -->
+
+
+<section class="bg-white">
+	<div class="container">
+		<div class="row">
+		<% for(var i = 0; i < datas.length; i++){ %>
+			<div class="col-md-10 col-md-offset-1" id="<%= datas[i].id %>">
+				<!-- <h3 class="text-center"><%= datas[i].title %></h3> -->
+				<div><%- datas[i].content %></div>
+			</div>
+		<% } %>
+		</div>
+	</div>
+</section>
+
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->

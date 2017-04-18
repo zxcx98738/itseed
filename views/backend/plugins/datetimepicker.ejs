@@ -1,0 +1,51 @@
+<script src="/js/specifies/backend/plugins/jquery.datetimepicker.js"></script>
+<script src="/js/specifies/backend/plugins/datetimepicker.js"></script>
+<script>
+	$(function() {
+		/*接收後端傳來的參數*/
+		var status = <%- JSON.stringify(post.status) %>;
+		var createdAt = <%- JSON.stringify(post.createdAt) %>;
+
+		/*設定選擇器*/
+		setPicker(status, createdAt);
+		/*設定事件*/
+		setEvents();
+	});	
+</script>
+
+<li class='has-sub' id="time-setting">
+	<a>
+		<i class="fa fa-calendar fa-fw"></i>
+		<span>日期和時間</span>
+		<% if(post.status == "new"){ %>
+			<div>自動</div>
+		<% }else{ %>
+			<div><%- post.formatTime %></div>
+		<% } %>
+	</a>
+	<div class="settings">
+		<div class="radio">
+			<label>
+				<% if(post.status == "new"){ %>
+					<input type="radio" name="time" value="auto" checked>
+				<% }else{ %>
+					<input type="radio" name="time" value="auto">
+				<% } %>				
+				自動
+			</label>
+		</div>
+		<div class="radio">
+			<label id="dtpTrigger">
+				<% if(post.status == "new"){ %>
+					<input type="radio" name="time" value="manual">
+				<% }else{ %>
+					<input type="radio" name="time" value="manual" checked>
+				<% } %>
+				設定日期及時間
+			</label>
+			<input id="datetimepicker" type="text">
+		</div>
+		<button class="btn btn-default">完成</button>
+	</div>
+</li>
+

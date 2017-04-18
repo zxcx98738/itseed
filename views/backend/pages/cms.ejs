@@ -1,0 +1,143 @@
+<script src="/js/specifies/jquery-ui-1.11.4.min.js"></script>
+<script src="/js/specifies/backend/cms.js"></script>
+<script>
+    $(function() {
+        /*接收後端傳來的參數*/
+        var postType = <%- JSON.stringify(postType) %>;
+        var status = <%- JSON.stringify(status) %>;
+        var action = <%- JSON.stringify(action) %>;
+        var postAmounts = <%- JSON.stringify(postAmounts) %>;
+
+        /*根據正在管理的頁面調整menu的UI*/
+        menuUI(postType, status, postAmounts);
+        /*設定排序事件*/
+        setSorting(action.sort);
+        /*綁定全選事件*/
+        setSelectAll("#selectAll", "td.selector>input");
+        /*綁定由checkbox觸發的事件*/
+        setGroupOperation("#publish", "td.selector>input:checked", "tr", publish, action.publish,
+            "確定要發佈選取的文章嗎?");
+        setGroupOperation("#toDraft", "td.selector>input:checked", "tr", toDraft, action.toDraft,
+            "確定要還原選取的文章為草稿嗎?");
+        setGroupOperation("#deletePost", "td.selector>input:checked", "tr", deletePost, action.delete,
+            "確定要刪除選取的文章嗎?");
+        /*綁定事件*/
+        setOperation(action);
+    });
+</script>
+<div id="wrapper">
+    <!--HEADER-->
+    <% include ../header %>
+    <!--END HEADER-->
+
+    <!--ASIDE-->
+    <% include ../cms-menu %>
+    <!--END ASIDE-->
+
+    <div class="scrollY" id="page-wrapper">
+        <header>
+            <button type="button" class="btn btn-default"><input type="checkbox" id="selectAll"></button>
+            <div class="btn-group">
+                <% if(menu.tag == "on"){ %>
+                    <button type="button" class="btn btn-default" id="tags" data-toggle="dropdown" aria-expanded="true">
+                        <i class="fa fa-tag fa-fw"></i>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">標籤一</a></li>
+                        <li><a href="#">標籤二</a></li>
+                        <li><a href="#">標籤三</a></li>
+                    </ul>
+                <% } %>
+                <button type="button" class="btn btn-default" id="publish">發佈</button>
+                <button type="button" class="btn btn-default" id="toDraft">還原為草稿</button>
+                <button type="button" class="btn btn-default" id="deletePost"><i class="fa fa-trash-o fa-fw"></i></button>
+            </div>
+            <a class="btn btn-default pull-right" id="newPost" href="#">新增文章</a>
+            <a class="btn btn-default pull-right" href="<%= action.view %>" target="_blank">檢視頁面</a>
+        </header>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col-md-1"></th>
+                <% if(postType == "courseInfo"){ %>
+                    <th class="col-md-1">屆數</th>
+                    <th class="col-md-2">講者</th>
+                    <th class="col-md-3">標題</th>
+                <% }else if(postType == "businessVisit" || postType == "project" || postType == "overseaVisit"){ %>
+                    <th class="col-md-1">屆數</th>
+                    <th class="col-md-5">標題</th>
+                <% }else if(postType == "sharing"){ %>
+                    <th class="col-md-1">屆數</th>
+                    <th class="col-md-2">分享人</th>
+                    <th class="col-md-3">標題</th>
+                <% }else{ %>
+                    <th class="col-md-6">標題</th>
+                <% } %>
+                    <th class="col-md-1">狀態</th>
+                    <th class="col-md-2">作者</th>
+                    <th class="col-md-2">發佈時間</th>
+                </tr>
+            </thead>
+            <% if(status == "all" && action.sort != "disabled"){ %>
+                <tbody class="sortable">
+            <% }else{ %>
+                <tbody>
+            <% } %>
+            <% if(articles.length == 0){ %>
+                <h1>尚無任何文章</h1>
+            <% } %>
+            <% for(var i = 0; i < articles.length; i++){ %>
+                <tr id="<%= articles[i].id %>">
+                    <td class="selector">
+                        <% if(status == "all" && action.sort != "disabled"){ %>
+                            <i class="fa fa-bars fa-fw handle pull-left"></i>
+                        <% } %>
+                        <input type="checkbox">
+                    </td>
+
+                <% if(postType == "courseInfo"){ %>
+                    <td><%= articles[i].th %></td>
+                    <td><%= articles[i].speaker+" "+articles[i].speakerTitle %></td>
+                <% } %>
+                <% if(postType == "businessVisit" || postType == "project" || postType == "overseaVisit"){ %>
+                    <td><%= articles[i].th %></td>
+                <% } %>
+                <% if(postType == "sharing" || postType == "careerList"){ %>
+                    <td><%= articles[i].th %></td>
+                    <td><%= articles[i].name %></td>
+                <% } %>
+                    <td class="title">
+                        <div>
+                            <a class="edit" href="#"><%= articles[i].title %></a>
+                        </div>
+                        <div class="operation">
+                            <a class="edit" href="#">編輯</a> |
+                            <% if(articles[i].status == "D" || (articles[i].status == "P" &&
+                                (new Date(articles[i].createdAt).getTime() > new Date().getTime()) )){ %>
+                                <a class="preview" href="#" target="_blank">預覽</a> |
+                            <% } else { %>
+                                <a class="view" href="#" target="_blank">檢視</a> |
+                            <% } %>
+                                <a class="deletePost">刪除</a>
+                        </div>
+                    </td>
+                    <% if(articles[i].status == "D"){ %>
+                        <td class="status">草稿</td>
+                    <% } else if(new Date(articles[i].createdAt).getTime() > new Date().getTime()){ %>
+                        <td class="status">已排程</td>
+                    <% } else { %>
+                        <td class="status"></td>
+                    <% } %>
+                    <td class="author">
+                    <% if (typeof articles[i].author != "undefined") { %>
+                        <%= articles[i].author.name %>
+                    <% } %>
+                    </td>
+                    <td class="date"><%= articles[i].formatTime %></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<!--HEADER-->
+<% include ../header %>
+<!--END HEADER-->
+<img src="/images/layout/5toBe14.png" id="img-responsive" width="100%">
+<section class="bg-light-gray">
+	<!-- poyao 報名流程 -->
+	<div class="container-fluid">
+	  <div class="row sign">
+	    <div class="col-sm-6 col-md-3">
+	      <div class="contentdiv thumbnail" >
+	        <div class="circle" style=" background-color: #6fbbf4">
+	         <h1 align="center" style="line-height:80px;"><i class="fa fa-sign-in" style="color: white"></i></h1>
+	        </div>
+	        <div class="inside thumbnail caption">
+	          <h4 style="text-align: center">step1.<br><br>註冊登入himelight</h4>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="col-sm-6 col-md-3">
+	      <div class="contentdiv thumbnail" >
+	        <div class="circle" style=" background-color: #f4726f">
+	        <h1 align="center" style="line-height:80px;"><i class="fa fa-file-text-o" style="color: white"></i></h1>
+	        </div>
+	        <div class="thumbnail caption ">
+	          <h4 >step2.<br><br>填寫資種報名表單</h4>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="col-sm-6 col-md-3">
+	      <div class="contentdiv thumbnail" >
+	        <div class="circle" style="background-color: #FFBF57">
+	        <h1 align="center" style="line-height:80px;"><i class="fa fa-paper-plane" style="color: white"></i></h1>
+	        </div>
+	        <div class="thumbnail caption">
+	          <h4>step3.<br><br>寄送資料至指定信箱
+	          <!-- <li>2吋個人照</li>
+	          <li>學生證明</li>
+	          <li>作品集</li></h4> -->
+	        </div>
+	      </div>
+	    </div>
+	    <div class="col-sm-6 col-md-3">
+	      <div class="contentdiv thumbnail" >
+	        <div class="circle" style=" background-color: #6bc1b8">
+	        <h1 align="center" style="line-height:80px;"><i class="fa fa-usd" style="color: white"></i></h1>
+	        </div>
+	        <div class="thumbnail caption">
+	          <h4>step4.<br><br>繳交報名費</h4>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<% if (datas[0] != null) { %>
+					<h3><%= datas[0].title %></h3>
+					<div style="padding-left: 10px;"><%- datas[0].content %></div>
+				<% } %>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->

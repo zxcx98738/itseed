@@ -1,0 +1,35 @@
+<!--HEADER-->
+<% include ../header %>
+<!--END HEADER-->
+<img src="/images/layout/3-3doTUVs.png" id="img-responsive" width="100%">
+<br>
+<br>
+<br>
+
+
+<section class="bg-white" id="project">
+	<div class="container">
+    <div class="row col-md-9 col-md-offset-2">
+        <ul class="nav nav-tabs" id="myTabs">
+          <% for(var i = 0; i < datas.length; i++){ %>
+          <li  class="<% if(i==0){ %> active <% } %>" ><a id="tab-<%= datas[i].id %>" href="#pane-<%= datas[i].id %>" data-toggle="tab"><%= datas[i].title %></a></li>
+
+          <% } %>
+        </ul>
+    </div>
+    <div class="row col-md-7 col-md-offset-3">
+        <div class="tab-content">
+          <% for(var i = 0; i < datas.length; i++){ %>
+          <div class="tab-pane <% if(i==0){ %> active <% } %>" id="pane-<%= datas[i].id %>">
+              <%- datas[i].content %>
+          </div>
+          <% } %>
+        </div>
+    </div>
+
+	</div>
+</section>
+
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->

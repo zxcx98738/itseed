@@ -1,0 +1,117 @@
+/*
+  CSS書寫順序
+  1.位置屬性(position, top, right, z-index, display, float等)
+  2.大小(width, height, padding, margin)
+  3.文字系列(font, line-height, letter-spacing, color- text-align等)
+  4.背景(background, border等)
+  5.其他(animation, transition等)
+*/
+
+body>div#login, div#register {
+    margin-bottom: -90px;
+    height: 100vh;
+    background-color: @light-gray;
+
+    @media(min-width: 858px) {
+        background-image: url("/images/layout/header-bg.jpg");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    >div.window {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 360px;
+        height: 580px;
+        margin-top: -290px;
+        margin-left: -180px;
+        padding: 30px;
+        color: @dark-gray;
+        text-align: center;
+        border-radius: 5px;
+
+        @media(min-width: 858px) {
+           background-color: rgba(255,255,255,0.7);
+        }
+
+        >img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        >a.facebook {
+            margin-bottom: 10px;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-size: 15px;
+            line-height: 1.3333333;
+            color: white;
+            background-color: #507BBC;
+
+            i {
+                line-height: inherit;
+            }
+
+            &:hover {
+                background-color: #425F9B;
+            }
+        }
+
+        >div.or {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        >form {
+            margin-bottom: 10px;
+
+            >div {
+                height: 56px;
+                margin-bottom: 10px;
+                text-align: left;
+
+                >label.error {
+                    margin-bottom: 0px;
+                    font-size: 14px;
+                    color: @error;
+                }
+
+                >input {
+                    padding: 8px 16px;
+                    font-size: 15px;
+                    line-height: 1.3333333;
+                    border: 1px solid transparent;
+
+                    &.error {
+                        color: @error;
+                        border-color: @error;
+                        outline-color: @error;
+                    }
+                }
+
+                &.clearfix {
+                    height: 38px;
+                }
+
+                &:last-child {
+                    height: 38px;
+                }
+            }
+
+            a {
+                color: inherit;
+            }
+        }
+
+        >a.register, a.login {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            color: @dark-green;
+        }
+    }
+}
