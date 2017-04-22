@@ -7,7 +7,7 @@ function scroll_if_anchor(href) {
 
 	if(href.indexOf("#") == 0) {
 		var $target = $(href);
-		
+
 		if($target.length) {
 			$('html, body').animate({ scrollTop: $target.offset().top - fromTop });
 			if(history && "pushState" in history) {
@@ -16,4 +16,5 @@ function scroll_if_anchor(href) {
 			}
 		}
 	}
-}    
+}
+

@@ -1,0 +1,1 @@
+$('.testttt').css('display',"none");
