@@ -6,14 +6,14 @@
  */
 
  var md5 = require("MD5")
- var fs = require("fs"); 
+ var fs = require("fs");
 
  module.exports = {
     //移除blueprint內建的actions
-    _config: { 
-        actions: false, 
-        rest: false, 
-        shortcuts: false 
+    _config: {
+        actions: false,
+        rest: false,
+        shortcuts: false
     },
 
     /*前台*/
