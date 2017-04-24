@@ -109,12 +109,12 @@
 				</form>
 			</div>
 		</div>
-		<!-- <div class="row col-md-10 col-md-offset-1">
+		<div class="row col-md-10 col-md-offset-1">
 			<label for="receipt" class="col-sm-2 col-xs-12">匯款證明</label>
 			<div class="col-sm-8 col-xs-12">
 				<p class="formatInfo">
 					最新版本:
-					<% 
+					<%
 						if(files.receiptUT == null)
 							files.receiptUT = "";
 
@@ -129,9 +129,9 @@
 							start = url.search("/") + 1;
 							url = url.slice(start);
 						}
-					%> 
+					%>
 					<a href="<%= files.receipt %>"><%= url %></a><br>
-					上傳時間: 
+					上傳時間:
 					<b><%= files.receiptUT %></b>
 				</p>
 				<form action="/uploadRec" method="post" enctype="multipart/form-data">	
@@ -151,7 +151,7 @@
 				<% } %>
 				</form>
 			</div>
-		</div> -->
+		</div>
 	</div>
 </section>
 
