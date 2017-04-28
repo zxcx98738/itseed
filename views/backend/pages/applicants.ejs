@@ -7,7 +7,7 @@
     <!--END HEADER-->
 
     <div class="scrollY" id="page-wrapper">
-        <div id="applicantsTable"> 
+        <div id="applicantsTable">
             <header>
                 <h3>報名者資料</h3>
                 <button type="button" class="btn btn-default"><input type="checkbox" id="selectAll"></button>
@@ -20,9 +20,9 @@
                         <th class="col-md-1">照  片</th>
                         <th class="col-md-1">姓  名</th>
                         <th class="col-md-1">學  校</th>
-                        <th class="col-md-2">系  級</th> 
+                        <th class="col-md-2">系  級</th>
                         <th class="col-md-2">信  箱</th>
-                        <th class="col-md-1">電  話</th>              
+                        <th class="col-md-1">電  話</th>
                         <th class="col-md-1">報名表</th>
                         <th class="col-md-1">自  傳</th>
                         <th class="col-md-1">匯款證明</th>
@@ -31,7 +31,7 @@
                 <tbody>
                 <% for (var i = 0; i < users.length; i++) { %>
                     <tr>
-                        <td class="selector">                  
+                        <td class="selector">
                             <input type="checkbox">
                         </td>
                         <td>
@@ -77,12 +77,12 @@
                             <a href="<%= users[i].files.receipt %>" target="_blank">
                                 <%= users[i].files.receiptUT %>
                             </a>
-                        <% } %>     
+                        <% } %>
                         </td>
                     </tr>
                 <% } %>
                 </tbody>
             </table>
-        </div>   
+        </div>
     </div>
 </div>
