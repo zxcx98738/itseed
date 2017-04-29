@@ -1,114 +1,217 @@
+@img_height : 530px ;
+@name_size : 50px  ;
+@content_size : 18px ;
+@name_height : 53% ;
 
-.companyIBMdiv{
-	background-color:#61c2b9;
-	height: 330px;
-	width: 100%;
-	margin:0px;
-}
-.companyImgdiv{
-	background-color:#61c2b9;
-	height: 330px;
-	width: 100%;
-	align-items: flex-end;
-    display: flex;
-}
-.companyImgIBM{
-	width:95%;
-	opacity: 0.5;
-}
-.companyNameIBM{
-	padding-top: 5%;
-	color: #23524d;
-	font-size: 80px;
-	padding-left: 10%;
-}
+@font-face {
+    font-family: myFirstFont;
+    src: url("../fonts/Nexa Bold.otf");
 
-.companyContentIBM{
-	color:white;
-	font-size:20px;
-	padding-left:10%;
-	padding-right: 10%;
-	padding-top:2%;
-}
-
-.companyMSImgdiv{
-	background-color:#FDF399;
-	height: 330px;
-	width: 100%;
-	align-items: flex-end;
-    display: flex;
+    font-family: content_font;
+    src: url("../fonts/dorisbr.ttf");
 }
 
 .companyMSdiv{
-	margin:0px;
-	background-color:#FDF399;
-	height: 330px;
+	/*background-color:#83D6F7;*/
+	/*background-image: url("../images/businessVisit/businessVisit_MS.jpg");*/
+	height: @img_height;
 	width: 100%;
 	margin:0px;
-}
+	/*background-repeat:no-repeat;*/
+	/*-webkit-clip-path: polygon(0 0, 68% 0, 54% 100%, 0% 100%);*/
+	/*clip-path: polygon(0 0, 66% 0, 54% 100%, 0% 100%);*/
 
+}
+.companyMSImgdiv{
+	/*background-color:#83D6F7;*/
+	/*background-image: url("../images/businessVisit/businessVisit_MS.jpg");*/
+	height: @img_height;
+	/*width: 100%;*/
+	margin:0px;
+	/*background-repeat:no-repeat;*/
+	/*-webkit-clip-path: polygon(0 0, 68% 0, 54% 100%, 0% 100%);*/
+	-webkit-clip-path: polygon(100% 0, 0 0, 0 100%, 89% 100%);
+clip-path: polygon(100% 0, 0 0, 0 100%, 84% 100%);
+
+}
+.companyMSdiv2{
+	/*-webkit-clip-path: polygon(89% 0, 100% 0, 100% 100%, 65% 100%);*/
+	/*clip-path: polygon(89% 0, 100% 0, 100% 100%, 65% 100%);*/
+	background-color:#83D6F7;
+	height: @img_height;
+	width: 100%;
+	margin:0px;
+
+}
+.companyINNOdiv2{
+	background-color:#F57080;
+	height: @img_height;
+	width: 100%;
+	margin:0px;
+
+}
+.companyANKOdiv2{
+	background-color:#FAD248;
+	height: @img_height;
+	width: 100%;
+	margin:0px;
+
+}
+.companyAUROdiv2{
+	background-color:#ED6D60;
+	height: @img_height;
+	width: 100%;
+	margin:0px;
+
+}
+.companyImgdiv{
+	/*background-color:#000000;*/
+	height: @img_height;
+	width: 100%;
+	/*align-items: flex-start;*/
+    /*display: flex;*/
+}
+.companyImg_l{
+	width:80%;
+
+	/*opacity: 0.5;*/
+}
+.companyImg_r{
+	padding-left:20%;
+	width:100%;
+	/*opacity: 0.5;*/
+}
 .companyNameMS{
-	padding-top: 5%;
-	color: #FFA033;
-	font-size: 75px;
-	padding-left: 8%;
+	padding-top: @name_height;
+	color: #ffffff;
+	font-size: @name_size;
+	padding-left: 10%;
+	font-weight:bold ;
+	font-family: myFirstFont;
 }
 
 .companyContentMS{
-	color:#bb6400;
-	font-size:20px;
+	color: #ffffff ;
+	font-size:@content_size;
+	padding-left:10%;
+	padding-right: 10%;
+	padding-top:3%;
+	text-overflow: ellipsis;
+	align-items: flex-end;
+    display: flex;
+font-family: content_font;
+}
+
+.companyINNOdiv{
+	background-color:#F57080;
+	height: @img_height;
+	width: 100%;
+	/*align-items: flex-start;*/
+    /*display: flex;*/
+}
+
+
+.companyINNOImgdiv{
+	/*background-color:#83D6F7;*/
+	/*background-image: url("../images/businessVisit/businessVisit_MS.jpg");*/
+	height: @img_height;
+	/*width: 100%;*/
+	margin:0px;
+	/*background-repeat:no-repeat;*/
+	/*-webkit-clip-path: polygon(0 0, 68% 0, 54% 100%, 0% 100%);*/
+	/*-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 11% 100%);*/
+clip-path: polygon(0 0, 100% 0, 100% 100%, 16% 100%);
+
+}
+.companyNameINNO{
+	padding-top: @name_height;
+	color: #ffffff;
+	font-size: @name_size;
+	padding-left: 8%;
+	text-align: left;
+	font-weight:bold ;
+	font-family: myFirstFont;
+}
+
+.companyContentINNO{
+	color:#ffffff;
+	font-size:@content_size;
 	padding-left:10%;
 	padding-right: 10%;
 	padding-top:2%;
+	text-overflow: ellipsis;
+	text-align: left;
+	align-items: flex-end;
+    display: flex;
+    font-family: content_font;
 }
 
 .companyANKOdiv{
-	background-color:#8FCFFD;
-	height: 330px;
+	background-color:#FAD248;
+	height: @img_height;
 	width: 100%;
 	margin:0px;
 }
 .companyANKOImgdiv{
-	background-color:#8FCFFD;
-	height: 330px;
+	background-color:#000000;
+	height: @img_height;
 	width: 100%;
-	align-items: flex-end;
-    display: flex;
+	/*align-items: flex-start;*/
+    /*display: flex;*/
 }
 
 .companyNameANKO{
-	padding-top: 5%;
-	color: #0479ce;
-	font-size: 80px;
-	padding-left: 10%;
+	padding-top: @name_height;
+	color: #ffffff;
+	font-size: @name_size;
+	padding-left: 8%;
+	text-align: left;
+	font-weight:bold ;
+	font-family: myFirstFont;
 }
-
-.companyAuroimgdiv{
-	background-color:#FDA9A7;
-	height: 330px;
-	width: 100%;
-	margin:0px;
-	align-items: flex-end;
-    display: flex;
-}
-.companyAurodiv{
-	background-color:#FDA9A7;
-	height: 330px;
-	width: 100%;
-	margin:0px;
-}
-.companyNameAuro{
-	padding-top: 5%;
-	color: #c30904;
-	font-size: 80px;
-	padding-left: 10%;
-}
-.companyContentAuro {
-	color:#910703;
-	font-size:20px;
+.companyContentANKO{
+	color: #ffffff ;
+	font-size:@content_size;
 	padding-left:10%;
 	padding-right: 10%;
 	padding-top:2%;
+	text-overflow: ellipsis;
+	font-family: content_font;
+}
+.companyAUROimgdiv{
+	background-color:#000000;
+	height: @img_height;
+	width: 100%;
+	margin:0px;
+	/*align-items: flex-start;*/
+    /*display: flex;*/
+}
+.companyAUROdiv{
+	background-color:#ED6D60;
+	height: @img_height;
+	width: 100%;
+	margin:0px;
+}
+.companyNameAURO{
+	padding-top: @name_height;
+	color: #ffffff;
+	font-size: @name_size;
+	padding-left: 8%;
+	text-align: left;
+	font-weight:bold ;
+	text-overflow: ellipsis;
+	align-items: flex-end;
+    display: flex;
+    font-family: myFirstFont;
+}
+.companyContentAURO {
+	color:#ffffff;
+	font-size:@content_size;
+	padding-left:10%;
+	padding-right: 10%;
+	padding-top:2%;
+font-family: content_font;
+	text-overflow: ellipsis;
 }
 
 section#businessVisitList {
@@ -130,7 +233,7 @@ section#businessVisitList {
 		>div.image-overlay {
 			position: absolute;
 			top: 0;
-			left: 0;
+			left: 0;	
 			width: 100%;
 			height: 100%;
 			background-color: @green;

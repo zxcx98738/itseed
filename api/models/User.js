@@ -54,7 +54,7 @@ module.exports = {
         //推薦人
         reference : {
           type: 'string',
-          maxLength: 20                   
+          maxLength: 20
         },
         //大頭貼
         photo: {
