@@ -14,7 +14,11 @@
 		<div class="row">
 			<div class="col-md-12 reg-part">
 				<div>
-					<span><%= datas[0].title %></span>
+					<span>
+ 					<% if (datas[0] != null) { %>
+ 						<%= datas[0].title %>
+ 					<% } %>
+ 					</span>
 				</div>
 				<p>
 					<% if (datas[0] != null) { %>
@@ -22,7 +26,11 @@
 					<% } %>
 				</p>	
 				<div>
-					<span><%= datas[1].title %></span>
+					<span>
+ 					<% if (datas[1] != null) { %>
+ 						<%= datas[1].title %>
+ 					<% } %>
+ 					</span>
 				</div>
 				<p>
 					<% if (datas[1] != null) { %>
