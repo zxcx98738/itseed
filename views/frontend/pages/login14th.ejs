@@ -1,0 +1,38 @@
+<script src="/js/specifies/jquery.validate.min.js"></script>
+<script src="/js/specifies/messages_zh_TW.min.js"></script>
+<script src="/js/specifies/frontend/login.js"></script>
+
+
+<div class="container-fluid" id="login">
+  <div class="window">
+    <img src="images/layout/logo.png">
+    <!-- <a class="facebook btn-block" href="#"><i class="fa fa-facebook pull-left"></i>使用 Facebook 登入</a>
+    <div class="or">或</div> -->
+    <form action="/login" method="post">
+      <div>
+        <input class="btn-block" autofocus="autofocus" name="email" placeholder="電子信箱" type="email">
+      </div>
+      <div>
+        <input class="btn-block" name="pwd" placeholder="密碼" type="password">
+      </div>
+      <!-- <div class="clearfix">
+        <div class="pull-left">
+          <div>
+            <input name="remember_me" type="hidden" value="0">
+            <input id="user_remember_me" name="remember_me" type="checkbox" value="1">
+            <label for="user_remember_me">記住我</label>
+          </div>
+        </div>
+        <div class="pull-right">
+          <a href="">忘記密碼</a>
+        </div>
+      </div> -->
+      <div>
+        <input class="btn-green btn-block" type="submit" value="登入">
+      </div>
+    </form>
+  <% if (system == "open") { %>
+    <a class="register" href="/register">註冊新帳號</a>
+  <% } %>
+  </div>
+</div>
