@@ -1,10 +1,68 @@
 <!--HEADER-->
 <% include ../header %>
 <!--END HEADER-->
-<img src="/images/layout/5toBe14.png" id="img-responsive" width="100%">
-<section class="bg-light-gray">
+<!-- 13thstylesheader -->
+<!-- <img src="/images/layout/5toBe14.png" id="img-responsive" width="100%"> -->
+<section id="regInfo">
+	<div class="container">
+		<h2>一句很猛的slogan，讓他不要再猶豫了</h2>	
+		<div class="line"></div>
+	</div>
+	
+	<!-- 招生訊息敘述,後台控制要上的資料 -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 reg-part">
+				<div>
+					<span><%= datas[0].title %></span>
+				</div>
+				<p>
+					<% if (datas[0] != null) { %>
+						<%= datas[0].content %>
+					<% } %>
+				</p>	
+				<div>
+					<span><%= datas[1].title %></span>
+				</div>
+				<p>
+					<% if (datas[1] != null) { %>
+						<%= datas[1].content %>
+					<% } %>
+				</p>	
+			</div>
+		</div>
+	</div>
+	<!-- 倒數計時器regInfo.js and regInfo.js -->
+	<div id="clockdiv">
+	  <div>
+	    <span class="days"></span>
+	    <div class="smalltext">Days</div>
+	  </div>
+	  <div>
+	    <span class="hours"></span>
+	    <div class="smalltext">Hours</div>
+	  </div>
+	  <div>
+	    <span class="minutes"></span>
+	    <div class="smalltext">Minutes</div>
+	  </div>
+	  <div>
+	    <span class="seconds"></span>
+	    <div class="smalltext">Seconds</div>
+	  </div>
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 reg-part">
+				<div>
+					<span>- 報名流程 -</span>
+				</div>	
+			</div>
+		</div>
+	</div>
 	<!-- poyao 報名流程 -->
-	<div class="container-fluid">
+	<div class="container">
 	  <div class="row sign">
 	    <div class="col-sm-6 col-md-3">
 	      <div class="contentdiv thumbnail" >
@@ -51,18 +109,16 @@
 	    </div>
 	  </div>
 	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<% if (datas[0] != null) { %>
-					<h3><%= datas[0].title %></h3>
-					<div style="padding-left: 10px;"><%- datas[0].content %></div>
-				<% } %>
-			</div>
-		</div>
-	</div>
 </section>
+
+<div class="call-back">
+	<p>往後的你會感謝現在的自己（好像有這句XD）</p>
+	<button>馬上報名</button>
+</div>
 
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->
+
+
+<script src="/js/specifies/frontend/regInfo.js"></script>
