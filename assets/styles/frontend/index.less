@@ -9,12 +9,21 @@
 
 .videopart{
     margin-top: 45px;
+    position: relative;
+    height: 80vh;
+    video{
+        display: block;
+        height: 80vh;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+    }
     h1{
         padding-top: 200px;
         font-size: 40pt;
     }
     button{
-        background-color: green;
+        background-color: #CAE7D6;
         border-radius: 40px;
         color: white;
         font-size: 20pt;
@@ -24,23 +33,55 @@
     }
     .video{
         width: 100%;
-        height: 500px;
-        background: url("/images/index/test-bg.png") fixed no-repeat center center;
+        height: 500px;      
+        // background: url("/images/index/test-bg.png") fixed no-repeat center center;
         text-align: center;
     }
 }
+.fourtitle{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 20pt;
+    >p{
+        font-size: 16pt;
+    }
+}
+.d-line{
+    margin-top:0;
+    display: block;
+    width: 30%;
+    border-top: 3px solid #CAE7D6;
+}
+
 .threeReason{
-    background-color: green;
+    padding: 0 40px;
     >div{
         text-align: center;
-        // margin: 0 auto;
-        background-color: green;
         >div{
             height: 200px;
             width: 200px;
             border-radius: 100%;
+            border: 2px solid #CAE7D6;
             margin: 30px auto 10px;
-            background-image: url("/images/index/test-bg.png");
+            // background-image: url("/images/index/test-bg.png");
+        }
+    }
+}
+.attend{
+    // display: block;
+    height: 200px;
+    margin-bottom: 60px;
+    text-align: center;
+    button{
+        margin-top: 80px; 
+        width: 120px;
+        height: 60px;
+        border: 0px;
+        border-radius: 20px;
+        background-color: #FFD306;
+        a{
+            color:white;
+            font-size: 16pt;
         }
     }
 }
@@ -223,7 +264,8 @@ margin-bottom: 50px;
 /******************************************/
 
 .counter{
-    background-color: #6BC1B8;
+    background-color:#6BC1B8;
+    margin: 80px 0;
 }
 .counter .number{
     height: 100%;
@@ -358,3 +400,53 @@ margin-bottom: 50px;
     top: 11px;
     left: -6px;
 }
+
+
+.bar > li a{
+    color:#95989A;
+}
+
+.world{
+    position: relative;
+    display: block;
+    height: 500px;
+    img{
+        position: absolute;
+    }
+    .background{
+        margin: 50px 15%;
+    }
+    .grey{
+        width: 50px;
+        bottom:100px;
+        left:230px;
+        // transfrom: scale(0.01);
+    }
+    .grey-2{
+        transform: scale(5);
+        // width: 200px;
+        // transition-property: width;
+        transition-delay:1s;
+        transition-duration:1s;
+    }
+    .green{
+        width: 180px;
+        top:120px;
+        left:400px;
+    }
+}
+
+.drop-part-bg{
+    background-color: white;
+}
+.bar-set>li>a{
+    color:#95989A;
+}
+
+
+
+
+
+
+
+
