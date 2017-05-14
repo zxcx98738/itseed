@@ -876,13 +876,15 @@
                         res.end(JSON.stringify(err));
                     }
                     else {
-                        for (var i = 0; i < users.length; i++) { 
+                        for (var i = 0; i < users.length; i++) {
                             if (users[i].files.registrationUT != null)
                                 users[i].files.registrationUT = CmsService.formatTime(users[i].files.registrationUT);
                             if (users[i].files.autobiographyUT != null)
                                 users[i].files.autobiographyUT = CmsService.formatTime(users[i].files.autobiographyUT);
                             if (users[i].files.receiptUT != null)
                                 users[i].files.receiptUT = CmsService.formatTime(users[i].files.receiptUT);
+                            // if (users[i])
+                            // users[i].disc.q1 = CmsService.formatTime(users[i].disc.q1);
                         }
                         return res.view("backend/pages/applicants", {
                             users: users
