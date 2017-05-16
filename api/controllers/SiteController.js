@@ -550,6 +550,11 @@ module.exports = {
             res.end(JSON.stringify(err));
         });
     },
+    // TUV
+    tuv: function(req, res){
+        return res.view("frontend/pages/tuv",{
+        });
+    },
     hey: function(req, res){
         // return "AAA";
         var model = Faq; 

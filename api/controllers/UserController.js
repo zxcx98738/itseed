@@ -871,6 +871,7 @@
                     type: 'U'
                 })
                 .populate('files')
+                .populate('disc')
                 .exec(function (err, users) {
                     if (err) {
                         res.end(JSON.stringify(err));
@@ -883,11 +884,15 @@
                                 users[i].files.autobiographyUT = CmsService.formatTime(users[i].files.autobiographyUT);
                             if (users[i].files.receiptUT != null)
                                 users[i].files.receiptUT = CmsService.formatTime(users[i].files.receiptUT);
-                            // if (users[i])
+                            if (users[i].disc != null){
+                                // users[i].disc.q1 = CmsService.formatTime(users[i].disc.q1);
+                            }
                             // users[i].disc.q1 = CmsService.formatTime(users[i].disc.q1);
+
                         }
                         return res.view("backend/pages/applicants", {
                             users: users
+
                         });
                     }
                 });

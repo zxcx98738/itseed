@@ -20,12 +20,13 @@
                         <th class="col-md-1">照  片</th>
                         <th class="col-md-1">姓  名</th>
                         <th class="col-md-1">學  校</th>
-                        <th class="col-md-2">系  級</th>
+                        <th class="col-md-1">系  級</th>
                         <th class="col-md-2">信  箱</th>
                         <th class="col-md-1">電  話</th>
                         <th class="col-md-1">報名表</th>
                         <th class="col-md-1">自  傳</th>
                         <th class="col-md-1">匯款證明</th>
+                        <th class="col-md-1">DISC</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -78,6 +79,9 @@
                                 <%= users[i].files.receiptUT %>
                             </a>
                         <% } %>
+                        </td>
+                        <td>
+                            <%= users[i].disc.q1 %>
                         </td>
                     </tr>
                 <% } %>

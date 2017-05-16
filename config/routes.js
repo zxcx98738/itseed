@@ -153,6 +153,21 @@ module.exports.routes = {
     controller: 'Site',
     action: 'hey'
   },
+  'get /tuv': {
+    view: 'frontend/pages/tuv'
+  },
+  'get /spring': {
+    view: 'frontend/pages/spring'
+  },
+  'get /new': {
+    view: 'frontend/pages/new'
+  },
+  'get /end': {
+    view: 'frontend/pages/end'
+  },
+  'get /careers': {
+    view: 'frontend/pages/careers'
+  },
 
   /*前台-使用者相關*/
 

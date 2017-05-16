@@ -1,0 +1,62 @@
+.program-intro-title{
+    text-align: center;
+    >h2{
+        position: relative;
+        display: inline-block;
+        >b{
+            &:after{
+                background: rgb(252,228,228);
+                content:'';
+                width: 140px;
+                height: 30px;
+                position: absolute;
+                top: 10px;
+                left: -10px;
+                z-index:-1;
+            }
+        }
+    }
+}
+.mid-banner{
+    margin-top:30px;
+    background:rgb(240,145,146);
+    color:white;
+    .banner-content{
+        text-align: center;
+        font-size:2rem;
+        height:50px;
+        padding-top:13px;
+    }
+}
+
+.four-big{
+    margin-top:60px;
+    margin-bottom:60px;
+    text-align: center;
+    h4{
+        display: inline-block;
+        position: relative;
+        margin-bottom: 30px;
+        &:after{
+            background: rgb(252,228,228);
+            content:'';
+            width: 250px;
+            height: 3px;
+            position: absolute;
+            top: 25px;
+            left: -40px;
+        }
+    }
+    .col-sm-3{
+        text-align: left;
+        >div{
+            border:solid 1px rgb(240,145,146);
+            margin:15px 20px;
+            height:150px;
+            padding:15px 3px;
+            span{
+                font-size: 2.2rem;
+            }
+        }
+    }
+}
