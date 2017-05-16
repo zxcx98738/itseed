@@ -2,10 +2,199 @@
 <% include ../header %>
 <!--END HEADER-->
 <!-- <img src="/images/layout/3-5china.png" id="img-responsive" width="100%"> -->
-<br>
-<br>
-<br>
-<div class="container">
+
+<div class="sub-nav">
+  <ul>
+    <li><a href="/courseInfo">講座課程</a></li> |
+    <li><a href="/businessVisit">企業參訪</a></li> |
+    <li><a class="active" href="/tuv">六大專案</a></li>
+  </ul>
+</div>
+<div class="six-project">
+  <a href="/tuv">
+      <div class="m">
+          <p data-key="1" class="none-op">1</p>
+          <p class="op">TUV</p>
+          <div class="circles">
+            <svg class="circle-no">
+              <circle fill="grey" cx="15" cy="25" r="5"/>
+            </svg>
+            <svg class="circle2">
+              <path d="M15 0 V13" stroke="#F7D975"/>
+              <circle fill="white" stroke="#F7D975" stroke-width="1" cx="15" cy="25" r="12"/>
+              <circle fill="#F7D975" cx="15" cy="25" r="5"/>
+            </svg>
+          </div>
+      </div>
+    </a>
+    <div class="n">
+      <div></div>
+    </div>
+    <a href="/spring">
+      <div class="m">
+        <p data-key="2" class="none-op">2</p>
+        <p class="op">春酒</p>
+        <div class="circles">
+          <svg class="circle-no">
+              <circle fill="grey" cx="15" cy="25" r="5"/>
+          </svg>
+          <svg class="circle2">
+            <path d="M15 0 V13" stroke="#ED8F8F"/>
+            <circle fill="white" stroke="#ED8F8F" stroke-width="1" cx="15" cy="25" r="12"/>
+            <circle fill="#ED8F8F" cx="15" cy="25" r="5"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+    <div class="n">
+      <div></div>
+    </div>
+    <a href="/careers">
+    <div class="m">
+      <p data-key="3" class="none-op">3</p>
+      <p class="op">職涯</p> 
+      <div class="circles">
+        <svg class="circle-no">
+          <circle fill="grey" cx="15" cy="25" r="5"/>
+        </svg>
+        <svg class="circle2">
+          <path d="M15 0 V13" stroke="#8FBEED"/>
+          <circle fill="white" stroke="#8FBEED" stroke-width="1" cx="15" cy="25" r="12"/>
+          <circle fill="#8FBEED" cx="15" cy="25" r="5"/>
+        </svg>
+      </div>
+    </div>
+    </a>
+    <div class="n">
+      <div></div>
+    </div>
+    <a href="/new">
+    <div class="m">
+      <p data-key="4" class="none-op">4</p>
+      <p class="op">招生</p>
+      <div class="circles">
+        <svg class="circle-no">
+          <circle fill="grey" cx="15" cy="25" r="5"/>
+        </svg>
+        <svg class="circle2">
+          <path d="M15 0 V13" stroke="#9EE5CF"/>
+          <circle fill="white" stroke="#9EE5CF" stroke-width="1" cx="15" cy="25" r="12"/>
+          <circle fill="#9EE5CF" cx="15" cy="25" r="5"/>
+        </svg>
+      </div>
+    </div>
+    </a>
+    <div class="n">
+      <div></div>
+    </div>
+    <a href="/overseaVisit">
+    <div class="m">
+      <p data-key="5" class="none-op">海參</p>
+      <p class="op">海參</p>
+      <div class="circles">
+        <svg class="circle-no">
+          <path d="M15 0 V13" stroke="#A3E3F2"/>
+          <circle fill="white" stroke="#A3E3F2" stroke-width="1" cx="15" cy="25" r="12"/>
+          <circle fill="#A3E3F2" cx="15" cy="25" r="5"/>
+        </svg>
+        <svg class="circle2">
+          <path d="M15 0 V13" stroke="#A3E3F2"/>
+          <circle fill="white" stroke="#A3E3F2" stroke-width="1" cx="15" cy="25" r="12"/>
+          <circle fill="#A3E3F2" cx="15" cy="25" r="5"/>
+        </svg>
+      </div>
+    </div>
+    </a>
+    <div class="n">
+      <div></div>
+    </div>
+    <a href="/end">
+    <div class="m">
+      <p data-key="6" class="none-op">6</p>
+      <p class="op">結業</p>
+      <div class="circles">
+        <svg class="circle-no">
+          <circle fill="grey" cx="15" cy="25" r="5"/>
+        </svg>
+        <svg class="circle2">
+          <path d="M15 0 V13" stroke="#FFAF8B"/>
+          <circle fill="white" stroke="#FFAF8B" stroke-width="1" cx="15" cy="25" r="12"/>
+          <circle fill="#FFAF8B" cx="15" cy="25" r="5"/>
+        </svg>
+      </div>
+    </div>
+    </a>
+  </div>
+<script src="/js/specifies/frontend/sixproject.js"></script>
+
+<div class="six-hg-title">
+  <div class="six-hg-tit oversea">
+    <% if (datas[0] != null) { %>
+      <span><%- datas[0].title %></span>
+    <% } %>
+  </div>
+  <div class="six-hg-le oversea">
+    <% if (datas[0] != null) { %>
+      <span><%- datas[0].content %></span>
+    <% } %>
+  </div>
+</div>
+<div>
+  <div class="program-4-title">
+      <div>
+        <span class="oversea-border">
+        <% if (datas[1] != null) { %>
+          <%= datas[1].title %>
+        <% } %>
+        </span>
+      </div>
+  </div>
+  <div class="text-xs-center">
+    <% if (datas[1] != null) { %>
+      <%- datas[1].content %>
+    <% } %>
+  </div>
+  <div class="program-4-title">
+    <div>
+      <span class="oversea-border">
+      <% if (datas[2] != null) { %>
+        <%= datas[2].title %>
+      <% } %>
+      </span>
+    </div>
+  </div>
+  <div class="oversea-bg" style="height: 200px; margin-top:50px;">
+    
+  </div>  
+  <div class="program-4-title">
+    <div>
+      <span class="oversea-border">
+      <% if (datas[3] != null) { %>
+        <%= datas[3].title %>
+      <% } %>
+      </span>
+    </div>
+  </div>
+  <div class="six-pro-circle">
+    <div class="oversea-bg">冷光</div>
+    <div class="oversea-bg">成語劇</div>  
+    <div class="oversea-bg">樂團</div>
+    <div class="oversea-bg">舞蹈</div>
+    <div class="oversea-bg">戲劇</div>
+  </div>
+  <div class="text-xs-center">
+    <% if (datas[3] != null) { %>
+      <%- datas[3].content %>
+    <% } %>
+  </div>
+  <img src="/images/projects/project5.png" class="project-last-pic" alt="">
+</div>
+
+
+
+
+
+<!-- <div class="container">
   <div class="row">
     <div class="col-sm-12 schedule">
       <div><h2 class="page-title"><b>海外參訪專案</b></h2></div>
@@ -48,7 +237,7 @@
     </div>
 
   </div>
-</div>
+</div> -->
 
 <!-- <div id="myCarousel" class="carousel slide" style="max-width: 70%;  margin:auto;" > -->
    <!-- 輪播（Carousel）指標 -->
@@ -77,18 +266,18 @@
 </div> -->
 
 
-<section class="bg-white">
+<!-- <section class="bg-white">
 	<div class="container">
 		<div class="row">
 		<% for(var i = 0; i < datas.length; i++){ %>
 			<div class="col-md-10 col-md-offset-1" id="<%= datas[i].id %>">
-				<!-- <h3 class="text-center"><%= datas[i].title %></h3> -->
+				<h3 class="text-center"><%= datas[i].title %></h3>
 				<div><%- datas[i].content %></div>
 			</div>
 		<% } %>
 		</div>
 	</div>
-</section>
+</section> -->
 
 <!--FOOTER-->
 <% include ../footer %>
