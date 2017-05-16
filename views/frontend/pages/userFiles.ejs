@@ -28,7 +28,7 @@
 			<div class="col-sm-8 col-xs-12">
 				<p class="formatInfo">
 					最新版本:
-					<% 
+					<%
 						if(files.registrationUT == null)
 							files.registrationUT = "";
 
@@ -43,9 +43,9 @@
 							start = url.search("/") + 1;
 							url = url.slice(start);
 						}
-					%> 
+					%>
 					<a href="<%= files.registration %>"><%= url %></a><br>
-					上傳時間: 
+					上傳時間:
 					<b><%= files.registrationUT %></b>
 				</p>
 				<form action="/uploadReg" method="post" enctype="multipart/form-data">
@@ -71,7 +71,7 @@
 			<div class="col-sm-8 col-xs-12">
 				<p class="formatInfo">
 					最新版本:
-					<% 
+					<%
 						if(files.autobiographyUT == null)
 							files.autobiographyUT = "";
 
@@ -86,9 +86,9 @@
 							start = url.search("/") + 1;
 							url = url.slice(start);
 						}
-					%> 
+					%>
 					<a href="<%= files.autobiography %>"><%= url %></a><br>
-					上傳時間: 
+					上傳時間:
 					<b><%= files.autobiographyUT %></b>
 				</p>
 				<form action="/uploadAut" method="post" enctype="multipart/form-data">

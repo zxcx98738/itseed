@@ -1,0 +1,19 @@
+<div>hey page</div>
+<% var q = 8; %>
+
+<% for(var i = 0; i < q; i++){ %>
+	<% if (datas[i] != null) { %>
+		<div class="col-md-10 col-md-offset-1" id="<%= datas[i].id %>">
+			<div class="faq">
+				<a class="faq-heading faq-normal" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= datas[i].id %>" class="collapsed">
+					<%= datas[i].title %>
+				</a>
+				<div id="collapse<%= datas[i].id %>" class="faq-collapse collapse">
+					<div class="faq-body">
+						<%- datas[i].content %>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% } %>
+<% } %>

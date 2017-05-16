@@ -550,5 +550,43 @@ module.exports = {
             res.end(JSON.stringify(err));
         });
     },
+    hey: function(req, res){
+        // return "AAA";
+        var model = Faq; 
+        var action = CmsService.getAction(model);
+        CmsService.findPosts(model).then(function(datas){
+            for(var i = 0; i < datas.length; i++){
+                datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
+            }
+            return res.view("frontend/pages/hey",{
+                datas: datas
+            });
+            // return res.view(action.url, {
+            //     datas: datas
+            // });
+        });
+        // return res.send("hi i am here")
+
+        // var model = OverseaVisit; 
+        // var action = CmsService.getAction(model);
+        // var now = new Date();
+        // var criteria = {   
+        //     where: { status: "P" }, 
+        //     sort: { order: "asc" }
+        // }
+
+        // CmsService.findPosts(model, criteria)
+        // .then(function(datas){
+        //     for(var i = 0; i < datas.length; i++){
+        //         datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
+        //     }
+        //     return res.view(action.url, {
+        //         datas: datas
+        //     });
+        // })
+        // .catch(function(err){
+        //     res.end(JSON.stringify(err));
+        // });
+    }
 };
 

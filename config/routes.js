@@ -148,6 +148,12 @@ module.exports.routes = {
     action: 'video'
   },
 
+  'get /hey': {
+    // view: 'frontend/pages/hey'
+    controller: 'Site',
+    action: 'hey'
+  },
+
   /*前台-使用者相關*/
 
   'post /check-email': {
