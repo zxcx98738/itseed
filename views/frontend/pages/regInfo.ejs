@@ -16,25 +16,25 @@
 				<div>
 					<span>
  					<% if (datas[0] != null) { %>
- 						<%= datas[0].title %>
+ 						<%- datas[0].title %>
  					<% } %>
  					</span>
 				</div>
 				<p>
 					<% if (datas[0] != null) { %>
-						<%= datas[0].content %>
+						<%- datas[0].content %>
 					<% } %>
 				</p>	
 				<div>
 					<span>
  					<% if (datas[1] != null) { %>
- 						<%= datas[1].title %>
+ 						<%- datas[1].title %>
  					<% } %>
  					</span>
 				</div>
 				<p>
 					<% if (datas[1] != null) { %>
-						<%= datas[1].content %>
+						<%- datas[1].content %>
 					<% } %>
 				</p>	
 			</div>
@@ -70,7 +70,7 @@
 		</div>
 	</div>
 	<!-- poyao 報名流程 -->
-	<div class="container">
+	<div class="container-fluid">
 	  <div class="row sign">
 	    <div class="col-sm-6 col-md-3">
 	      <div class="contentdiv thumbnail" >
