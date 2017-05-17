@@ -406,7 +406,17 @@
         var value = {};
         
         if(req.session.userid){
-            for(var i = 1; i <= 26; i++){
+            var a =[ 0 , 0 , 0 , 0];
+            for(var i = 1; i <= 20; i++){
+                if(req.body["q" + i] == 1)
+                    a[0] += 1;
+                else if(req.body["q" + i] == 2)
+                    a[1] += 1;
+                else if(req.body["q" + i] == 3)
+                    a[2] += 1;
+                else if(req.body["q" + i] == 4)
+                    a[3] += 1;
+                value["animal"] = a.indexOf(Math.max(a[0],a[1],a[2],a[3])) +1;
                 if(req.body["q" + i] == undefined)
                     return res.end("測驗未完成");
                 value["q" + i] = req.body["q" + i];
@@ -885,7 +895,7 @@
                             if (users[i].files.receiptUT != null)
                                 users[i].files.receiptUT = CmsService.formatTime(users[i].files.receiptUT);
                             if (users[i].disc != null){
-                                // users[i].disc.q1 = CmsService.formatTime(users[i].disc.q1);
+                                users[i].disc.q1 = users[i].disc.animal;
                             }
                             // users[i].disc.q1 = CmsService.formatTime(users[i].disc.q1);
 

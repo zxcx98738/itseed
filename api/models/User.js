@@ -66,8 +66,8 @@ module.exports = {
           type: 'string',
           minLength: 1,
           maxLength: 1,
-          defaultsTo: 'A',
-          // defaultsTo: 'U',
+          // defaultsTo: 'A',
+          defaultsTo: 'U',
         },
         //報名屆數
         th: {
