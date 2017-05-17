@@ -20,23 +20,766 @@
 		</div>
 		<div class="row col-md-10 col-md-offset-1">
 			<form action="/editDisc" method="post" class="form-horizontal">
-				<div class="form-group">
-					<label class="col-xs-2 text-right">1.</label>
-					<label class="col-sm-5 col-xs-10">
+				<!-- 1 -->
+				<div  class="row col-sm-12 col-md-12 col-xs-12 ">
+					<p>1. 當你和朋友一起用餐時，在選擇用餐或是吃什麼時，你常是： </p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11">
 					<% if (disc.q1 == 1) { %>
-						<input type="radio" name="q1" value="1" required="" checked>走路較慢
+						<input type="radio" name="q1" value="1" required="" checked>決定者：意見不同時，通常都是決定者。
 					<% } else { %>
-						<input type="radio" name="q1" value="1" required="">走路較慢
+						<input type="radio" name="q1" value="1" required="">決定者：意見不同時，通常都是決定者。
 					<% } %>
 					</label>
-					<label class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11  col-xs-11 ">
 					<% if (disc.q1 == 2) { %>
-						<input type="radio" name="q1" value="2" required="" checked>走路較快
+						<input type="radio" name="q1" value="2" required="" checked>氣氛製造者：吃什麼，很能帶動情緒氣氛。
 					<% } else { %>
-						<input type="radio" name="q1" value="2" required="">走路較快
+						<input type="radio" name="q1" value="2" required="">氣氛製造者：吃什麼，很能帶動情緒氣氛。
 					<% } %>
-					</label>				
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-10 ">
+					<% if (disc.q1 == 3) { %>
+						<input type="radio" name="q1" value="3" required="" checked>附和者：隨便，沒意見。
+					<% } else { %>
+						<input type="radio" name="q1" value="3" required="">意見提供者：常去否定別人的提議，自己卻又沒意見，也不做任何決定。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q1 == 4) { %>
+						<input type="radio" name="q1" value="4" required="" checked>意見提供者：常去否定別人的提議，自己卻又沒意見，也不做任何決定。
+					<% } else { %>
+						<input type="radio" name="q1" value="4" required="">意見提供者：常去否定別人的提議，自己卻又沒意見，也不做任何決定。
+					<% } %>
+					</label>					
 				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				<!-- 2 -->
+				<div class="row col-sm-12 col-xs-12 col-md-12">
+					<p>2.當你買衣服時，你是： </p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q2 == 1) { %>
+						<input type="radio" name="q2" value="1" required="" checked>不易受售貨員影響，"心中自有定見"。
+					<% } else { %>
+						<input type="radio" name="q2" value="1" required="">不易受售貨員影響，"心中自有定見"。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q2 == 2) { %>
+						<input type="radio" name="q2" value="2" required="" checked>售貨員的親切及好的感受，常會促進你的購買。
+					<% } else { %>
+						<input type="radio" name="q2" value="2" required="">售貨員的親切及好的感受，常會促進你的購買。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q2 == 3) { %>
+						<input type="radio" name="q2" value="3" required="" checked>找熟悉的店購買。
+					<% } else { %>
+						<input type="radio" name="q2" value="3" required="">找熟悉的店購買。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q2 == 4) { %>
+						<input type="radio" name="q2" value="4" required="" checked>品質與價錢是否成比例，價錢是否合理?
+					<% } else { %>
+						<input type="radio" name="q2" value="4" required="">品質與價錢是否成比例，價錢是否合理?
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 3 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>3.你的消費習慣是：</p>
+					<label class="col-sm-1 "></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q3 == 1) { %>
+						<input type="radio" name="q3" value="1" required="" checked>找到要買的東西，付錢走人。
+					<% } else { %>
+						<input type="radio" name="q3" value="1" required="">找到要買的東西，付錢走人。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q3 == 2) { %>
+						<input type="radio" name="q3" value="2" required="" checked>很隨意的逛，不特定買什麼。
+					<% } else { %>
+						<input type="radio" name="q3" value="2" required="">很隨意的逛，不特定買什麼。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q3 == 3) { %>
+						<input type="radio" name="q3" value="3" required="" checked>有一定的消費習慣，不太喜歡變化。
+					<% } else { %>
+						<input type="radio" name="q3" value="3" required="">有一定的消費習慣，不太喜歡變化。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q3 == 4) { %>
+						<input type="radio" name="q3" value="4" required="" checked>較注意東西好不好，較有成本觀念。
+					<% } else { %>
+						<input type="radio" name="q3" value="4" required="">較注意東西好不好，較有成本觀念。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 4 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>4.你的朋友，以一句話來形容你，他們會說：</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q4 == 1) { %>
+						<input type="radio" name="q4" value="1" required="" checked>蠻"鴨霸"的。
+					<% } else { %>
+						<input type="radio" name="q4" value="1" required="">蠻"鴨霸"的。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q4 == 2) { %>
+						<input type="radio" name="q4" value="2" required="" checked>熱情洋溢。
+					<% } else { %>
+						<input type="radio" name="q4" value="2" required="">熱情洋溢。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q4 == 3) { %>
+						<input type="radio" name="q4" value="3" required="" checked>溫和斯文。
+					<% } else { %>
+						<input type="radio" name="q4" value="3" required="">溫和斯文。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q3 == 4) { %>
+						<input type="radio" name="q4" value="4" required="" checked>要求完美。
+					<% } else { %>
+						<input type="radio" name="q4" value="4" required="">要求完美。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 5 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>5.你自認那一種形容，最能表現你的特色：</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q5 == 1) { %>
+						<input type="radio" name="q5" value="1" required="" checked>果敢的，能接受挑戰。
+					<% } else { %>
+						<input type="radio" name="q5" value="1" required="">果敢的，能接受挑戰。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q5 == 2) { %>
+						<input type="radio" name="q5" value="2" required="" checked>生動活潑，不拘小節。
+					<% } else { %>
+						<input type="radio" name="q5" value="2" required="">生動活潑，不拘小節。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q5 == 3) { %>
+						<input type="radio" name="q5" value="3" required="" checked>溫愛傾聽，喜歡穩定。
+					<% } else { %>
+						<input type="radio" name="q5" value="3" required="">愛傾聽，喜歡穩定。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q5 == 4) { %>
+						<input type="radio" name="q5" value="4" required="" checked>處世謹慎小心，重數據分析。
+					<% } else { %>
+						<input type="radio" name="q5" value="4" required="">處世謹慎小心，重數據分析。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 6 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>6.你覺得做事的重點，應該是：</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q6 == 1) { %>
+						<input type="radio" name="q6" value="1" required="" checked>what，做什麼? 重結果
+					<% } else { %>
+						<input type="radio" name="q6" value="1" required="">what，做什麼? 重結果	
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q6 == 2) { %>
+						<input type="radio" name="q6" value="2" required="" checked>who，誰來做? 重感受(過程)
+					<% } else { %>
+						<input type="radio" name="q6" value="2" required="">who，誰來做? 重感受(過程)
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q6 == 3) { %>
+						<input type="radio" name="q6" value="3" required="" checked>why，為何做? 重品質。
+					<% } else { %>
+						<input type="radio" name="q6" value="3" required="">why，為何做? 重品質。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q6 == 4) { %>
+						<input type="radio" name="q6" value="4" required="" checked>why，為何做? 重品質。
+					<% } else { %>
+						<input type="radio" name="q6" value="4" required="">why，為何做? 重品質。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+
+				<!-- 7 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>7.與同事有意見衝突(或不同)時，你是：</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q7 == 1) { %>
+						<input type="radio" name="q7" value="1" required="" checked>說服對方，聽從自己的意見。
+					<% } else { %>
+						<input type="radio" name="q7" value="1" required="">說服對方，聽從自己的意見。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q7 == 2) { %>
+						<input type="radio" name="q7" value="2" required="" checked>問其他同事或上司之意見，尋求支持。
+					<% } else { %>
+						<input type="radio" name="q7" value="2" required="">問其他同事或上司之意見，尋求支持。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q7 == 3) { %>
+						<input type="radio" name="q7" value="3" required="" checked>退讓，以和為貴。
+					<% } else { %>
+						<input type="radio" name="q7" value="3" required="">退讓，以和為貴。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q7 == 4) { %>
+						<input type="radio" name="q7" value="4" required="" checked>與衝突者協調，找尋最好的意見。
+					<% } else { %>
+						<input type="radio" name="q7" value="4" required="">與衝突者協調，找尋最好的意見。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 8 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>8.什麼樣的工作環境，最能鼓舞你：</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q8 == 1) { %>
+						<input type="radio" name="q8" value="1" required="" checked>能讓你決定事情，具領導地位的。
+					<% } else { %>
+						<input type="radio" name="q8" value="1" required="">能讓你決定事情，具領導地位的。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q8 == 2) { %>
+						<input type="radio" name="q8" value="2" required="" checked>同事相處愉快，處處受歡迎。
+					<% } else { %>
+						<input type="radio" name="q8" value="2" required="">同事相處愉快，處處受歡迎。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q8 == 3) { %>
+						<input type="radio" name="q8" value="3" required="" checked>穩定中求發展。
+					<% } else { %>
+						<input type="radio" name="q8" value="3" required="">穩定中求發展。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q8 == 4) { %>
+						<input type="radio" name="q8" value="4" required="" checked>講品質，重效率的工作。
+					<% } else { %>
+						<input type="radio" name="q8" value="4" required="">講品質，重效率的工作。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 9 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>9.以下的溝通方式，那一項最符合你：</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q9 == 1) { %>
+						<input type="radio" name="q9" value="1" required="" checked>直接了當，較權威式的。
+					<% } else { %>
+						<input type="radio" name="q9" value="1" required="">直接了當，較權威式的。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q9 == 2) { %>
+						<input type="radio" name="q9" value="2" required="" checked>表情豐富，肢體語言較多。
+					<% } else { %>
+						<input type="radio" name="q9" value="2" required="">表情豐富，肢體語言較多。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q9 == 3) { %>
+						<input type="radio" name="q9" value="3" required="" checked>先聽聽別人意見，而後溫和的表達自己的意見。
+					<% } else { %>
+						<input type="radio" name="q9" value="3" required="">先聽聽別人意見，而後溫和的表達自己的意見。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q9 == 4) { %>
+						<input type="radio" name="q9" value="4" required="" checked>不露感情的，理多於情，愛分析，較冷靜。
+					<% } else { %>
+						<input type="radio" name="q9" value="4" required="">不露感情的，理多於情，愛分析，較冷靜。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 10 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>10.在每一次會議中或公司決議提案時，你所扮演的角色為何：</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q10 == 1) { %>
+						<input type="radio" name="q10" value="1" required="" checked>據理力爭者。
+					<% } else { %>
+						<input type="radio" name="q10" value="1" required="">據理力爭者。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q10 == 2) { %>
+						<input type="radio" name="q10" value="2" required="" checked>協調者。
+					<% } else { %>
+						<input type="radio" name="q10" value="2" required="">協調者。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q10 == 3) { %>
+						<input type="radio" name="q10" value="3" required="" checked>贊同多數者。
+					<% } else { %>
+						<input type="radio" name="q10" value="3" required="">贊同多數者。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q10 == 4) { %>
+						<input type="radio" name="q10" value="4" required="" checked>分析所有提案以供參考者。
+					<% } else { %>
+						<input type="radio" name="q10" value="4" required="">分析所有提案以供參考者。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 11 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>11.請選擇一項最符合你的</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q11 == 1) { %>
+						<input type="radio" name="q11" value="1" required="" checked>我做事一向以具體，短期能達到目標；決定快速，立即得到結果。
+					<% } else { %>
+						<input type="radio" name="q11" value="1" required="">我做事一向以具體，短期能達到目標；決定快速，立即得到結果。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q11 == 2) { %>
+						<input type="radio" name="q11" value="2" required="" checked>在本性上，我喜歡跟人交往，各式各樣的人都行，甚至陌生人也行。
+					<% } else { %>
+						<input type="radio" name="q11" value="2" required="">在本性上，我喜歡跟人交往，各式各樣的人都行，甚至陌生人也行。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q11 == 3) { %>
+						<input type="radio" name="q11" value="3" required="" checked>我不喜歡強出頭，寧可當後補。
+					<% } else { %>
+						<input type="radio" name="q11" value="3" required="">我不喜歡強出頭，寧可當後補。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q11 == 4) { %>
+						<input type="radio" name="q11" value="4" required="" checked>我是一個自我約束，很守紀律的人，凡事依既定目標行事。
+					<% } else { %>
+						<input type="radio" name="q11" value="4" required="">我是一個自我約束，很守紀律的人，凡事依既定目標行事。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 12 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>12.請選擇一項最符合你的</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q12 == 1) { %>
+						<input type="radio" name="q12" value="1" required="" checked>我喜歡有變化，激烈且競爭的環境，是個可接受挑戰的人。
+					<% } else { %>
+						<input type="radio" name="q12" value="1" required="">我喜歡有變化，激烈且競爭的環境，是個可接受挑戰的人。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q12 == 2) { %>
+						<input type="radio" name="q12" value="2" required="" checked>我喜歡社交，也喜歡招待人。
+					<% } else { %>
+						<input type="radio" name="q12" value="2" required="">我喜歡社交，也喜歡招待人。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q12 == 3) { %>
+						<input type="radio" name="q12" value="3" required="" checked>我喜歡成為小組的一份子，固守一般性程序。
+					<% } else { %>
+						<input type="radio" name="q12" value="3" required="">我喜歡成為小組的一份子，固守一般性程序。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q12 == 4) { %>
+						<input type="radio" name="q12" value="4" required="" checked>我會花很多時間去研究事與人。
+					<% } else { %>
+						<input type="radio" name="q12" value="4" required="">我會花很多時間去研究事與人。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 13 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>13.請選擇一項最符合你的</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q13 == 1) { %>
+						<input type="radio" name="q13" value="1" required="" checked>我喜歡按自己的方法做事，不在乎別人對我的觀感，只要成功。
+					<% } else { %>
+						<input type="radio" name="q13" value="1" required="">我喜歡按自己的方法做事，不在乎別人對我的觀感，只要成功。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q13 == 2) { %>
+						<input type="radio" name="q13" value="2" required="" checked>有人跟我意見不一致時，我會很難過(困擾)。
+					<% } else { %>
+						<input type="radio" name="q13" value="2" required="">有人跟我意見不一致時，我會很難過(困擾)。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q13 == 3) { %>
+						<input type="radio" name="q13" value="3" required="" checked>我知道做些改變是有必要的，但即使如此我還是覺得少冒險來的好。
+					<% } else { %>
+						<input type="radio" name="q13" value="3" required="">我知道做些改變是有必要的，但即使如此我還是覺得少冒險來的好。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q13 == 4) { %>
+						<input type="radio" name="q13" value="4" required="" checked>我對自己及他人的期望很高，這些都是為符合我的高標準。
+					<% } else { %>
+						<input type="radio" name="q13" value="4" required="">我對自己及他人的期望很高，這些都是為符合我的高標準。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 14 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>14.請選擇一項最符合你的</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q14 == 1) { %>
+						<input type="radio" name="q14" value="1" required="" checked>我擅長於處理棘手的問題。
+					<% } else { %>
+						<input type="radio" name="q14" value="1" required="">我擅長於處理棘手的問題。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q14 == 2) { %>
+						<input type="radio" name="q14" value="2" required="" checked>我是個很熱心的人，我喜歡跟別人一起工作。
+					<% } else { %>
+						<input type="radio" name="q14" value="2" required="">我是個很熱心的人，我喜歡跟別人一起工作。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q14 == 3) { %>
+						<input type="radio" name="q14" value="3" required="" checked>我喜歡聽而不喜歡說話，我一開口都說得很委婉溫和。
+					<% } else { %>
+						<input type="radio" name="q14" value="3" required="">我喜歡聽而不喜歡說話，我一開口都說得很委婉溫和。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q14 == 4) { %>
+						<input type="radio" name="q14" value="4" required="" checked>處理事我較不動感情，是就是，不把感情牽扯進來，也較少與人閒聊。
+					<% } else { %>
+						<input type="radio" name="q14" value="4" required="">處理事我較不動感情，是就是，不把感情牽扯進來，也較少與人閒聊。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 15 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>15.請選擇一項最符合你的</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q15 == 1) { %>
+						<input type="radio" name="q15" value="1" required="" checked>我喜歡有競爭，有競爭才能把潛能完全發揮出來。
+					<% } else { %>
+						<input type="radio" name="q15" value="1" required="">我喜歡有競爭，有競爭才能把潛能完全發揮出來。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q15 == 2) { %>
+						<input type="radio" name="q15" value="2" required="" checked>我較感性，與人相處或處事較不注意細節。
+					<% } else { %>
+						<input type="radio" name="q15" value="2" required="">我較感性，與人相處或處事較不注意細節。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q15 == 3) { %>
+						<input type="radio" name="q15" value="3" required="" checked>我是個理性的組員，順著群眾，具有高度的團體意識。
+					<% } else { %>
+						<input type="radio" name="q15" value="3" required="">我是個理性的組員，順著群眾，具有高度的團體意識。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q15 == 4) { %>
+						<input type="radio" name="q15" value="4" required="" checked>對事我喜歡去研究，講求證據與保證。
+					<% } else { %>
+						<input type="radio" name="q15" value="4" required="">對事我喜歡去研究，講求證據與保證。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 16 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>16.請選擇一項最符合你的</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q16 == 1) { %>
+						<input type="radio" name="q16" value="1" required="" checked>我喜歡能力與權威，這是我想要的。
+					<% } else { %>
+						<input type="radio" name="q16" value="1" required="">我喜歡能力與權威，這是我想要的。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q16 == 2) { %>
+						<input type="radio" name="q16" value="2" required="" checked>我有時情緒化，一旦生氣常氣過頭。有時置身於有趣事務中，往往無法掌握時間。
+					<% } else { %>
+						<input type="radio" name="q16" value="2" required="">我有時情緒化，一旦生氣常氣過頭。有時置身於有趣事務中，往往無法掌握時間。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q16 == 3) { %>
+						<input type="radio" name="q16" value="3" required="" checked>我喜歡按部就班，穩紮穩打，慢慢地做事，而不喜歡破斧沈舟般的方式。
+					<% } else { %>
+						<input type="radio" name="q16" value="3" required="">我喜歡按部就班，穩紮穩打，慢慢地做事，而不喜歡破斧沈舟般的方式。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q16 == 4) { %>
+						<input type="radio" name="q16" value="4" required="" checked>我很注意事務與人的細節。
+					<% } else { %>
+						<input type="radio" name="q16" value="4" required="">我很注意事務與人的細節。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 17 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>17.請選擇一項最符合你的</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q17 == 1) { %>
+						<input type="radio" name="q17" value="1" required="" checked>對直接關係的環境，我有喜歡去掌握及支配他人的傾向。
+					<% } else { %>
+						<input type="radio" name="q17" value="1" required="">對直接關係的環境，我有喜歡去掌握及支配他人的傾向。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q17 == 2) { %>
+						<input type="radio" name="q17" value="2" required="" checked>在團體中我喜歡打成一片，活活潑潑有氣氛，有感情的相處。
+					<% } else { %>
+						<input type="radio" name="q17" value="2" required="">在團體中我喜歡打成一片，活活潑潑有氣氛，有感情的相處。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q17 == 3) { %>
+						<input type="radio" name="q17" value="3" required="" checked>我較遵守傳統的步驟做事，不喜歡有很大的變化。
+					<% } else { %>
+						<input type="radio" name="q17" value="3" required="">我較遵守傳統的步驟做事，不喜歡有很大的變化。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q17 == 4) { %>
+						<input type="radio" name="q17" value="4" required="" checked>在沒有掌握事實的真象與更多資料之前，我寧可保持現狀。
+					<% } else { %>
+						<input type="radio" name="q17" value="4" required="">在沒有掌握事實的真象與更多資料之前，我寧可保持現狀。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 18 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>18.請選擇一項最符合你的</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q18 == 1) { %>
+						<input type="radio" name="q18" value="1" required="" checked>我在與人溝通時，直接了當的說，不喜歡兜圈子。
+					<% } else { %>
+						<input type="radio" name="q18" value="1" required="">我在與人溝通時，直接了當的說，不喜歡兜圈子。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q18 == 2) { %>
+						<input type="radio" name="q18" value="2" required="" checked>我喜歡幫助人，相親相愛。
+					<% } else { %>
+						<input type="radio" name="q18" value="2" required="">我喜歡幫助人，相親相愛。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q18 == 3) { %>
+						<input type="radio" name="q18" value="3" required="" checked>我不喜歡多變化的環境，而要穩定安全的生活方式。
+					<% } else { %>
+						<input type="radio" name="q18" value="3" required="">我不喜歡多變化的環境，而要穩定安全的生活方式。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q18 == 4) { %>
+						<input type="radio" name="q18" value="4" required="" checked>凡事我要求的是準確無誤，講求的是高品質，高標準的處事原則。
+					<% } else { %>
+						<input type="radio" name="q18" value="4" required="">凡事我要求的是準確無誤，講求的是高品質，高標準的處事原則。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 19 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>19.請選擇一項最符合你的</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q19 == 1) { %>
+						<input type="radio" name="q19" value="1" required="" checked>我不喜歡別人逗我開心，不喜歡太多話的人。
+					<% } else { %>
+						<input type="radio" name="q19" value="1" required="">我不喜歡別人逗我開心，不喜歡太多話的人。	
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q19 == 2) { %>
+						<input type="radio" name="q19" value="2" required="" checked>我喜歡參加團體活動，因為與很多人在一起感覺很好。
+					<% } else { %>
+						<input type="radio" name="q19" value="2" required="">我喜歡參加團體活動，因為與很多人在一起感覺很好。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q19 == 3) { %>
+						<input type="radio" name="q19" value="3" required="" checked>對事情我沒有太多要求與意見，喜歡靜靜的有耐心的做。
+					<% } else { %>
+						<input type="radio" name="q19" value="3" required="">對事情我沒有太多要求與意見，喜歡靜靜的有耐心的做。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q19 == 4) { %>
+						<input type="radio" name="q19" value="4" required="" checked>我做事要有一套經過計劃設計的標準作業程序，來引導作業方向。
+					<% } else { %>
+						<input type="radio" name="q19" value="4" required="">我做事要有一套經過計劃設計的標準作業程序，來引導作業方向。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+
+				<!-- 20 -->
+				<div  class="row col-sm-12 col-xs-12 col-md-12">
+					<p>20.請選擇一項最符合你的</p>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q20 == 1) { %>
+						<input type="radio" name="q20" value="1" required="" checked>我討厭別人告訴我事情該如何做，因我自有定見，我不喜歡被別人支配。
+					<% } else { %>
+						<input type="radio" name="q20" value="1" required="">我討厭別人告訴我事情該如何做，因我自有定見，我不喜歡被別人支配。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q20 == 2) { %>
+						<input type="radio" name="q20" value="2" required="" checked>我是個生氣勃勃外向的人，別人愛跟我一起工作，因為別人與我一起工作，就會激起他們的熱心，我就是有那能耐。
+					<% } else { %>
+						<input type="radio" name="q20" value="2" required="">我是個生氣勃勃外向的人，別人愛跟我一起工作，因為別人與我一起工作，就會激起他們的熱心，我就是有那能耐。
+					<% } %>
+					</label>
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q20 == 3) { %>
+						<input type="radio" name="q20" value="3" required="" checked>我喜歡獨處，若與人生活在一起，會注意儘量不去打擾他人的居家生活。
+					<% } else { %>
+						<input type="radio" name="q20" value="3" required="">我喜歡獨處，若與人生活在一起，會注意儘量不去打擾他人的居家生活。
+					<% } %>
+					</label>	
+					<label class="col-sm-1 col-xs-1"></label>
+					<label class="col-sm-11 col-xs-11 ">
+					<% if (disc.q20 == 4) { %>
+						<input type="radio" name="q20" value="4" required="" checked>我很少加入別人的閒聊中，當話題有趣時，我會找更多的資料，小心的進行外交策略。
+					<% } else { %>
+						<input type="radio" name="q20" value="4" required="">我很少加入別人的閒聊中，當話題有趣時，我會找更多的資料，小心的進行外交策略。
+					<% } %>
+					</label>					
+				</div>
+				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				<!-- 
 				<div class="form-group">
 					<label class="col-xs-2 text-right">2.</label>
 					<label class="col-sm-5 col-xs-10">
@@ -461,10 +1204,11 @@
 						<input type="radio" name="q26" value="2" required="">比較樂於助人
 					<% } %>
 					</label>
-				</div>
+				</div> -->
 				<div class="text-center">
 					<hr>
 					<button type="submit" class="btn-lg btn-green">完成測驗</button>
+					
 				</div>
 			</form>
 		</div>

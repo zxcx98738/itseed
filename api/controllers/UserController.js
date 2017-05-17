@@ -862,7 +862,7 @@
                 }
                 else {
                     if (parameter1 == undefined)
-                        th = '';
+                        th = null;
                     else
                         th = parameter1.value;
                 }
