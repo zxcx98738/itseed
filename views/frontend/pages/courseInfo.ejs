@@ -18,7 +18,11 @@
         <div class="project-content-style">
           <h3 class="text-xs-center"><%= datas[0].title %></h3>
           <h4 class="text-xs-center"><%= datas[0].speaker %><%= datas[0].speakerTitle %></h4>
-          <div><%- datas[0].content %></div>
+
+          <div class="content-y-m">
+            <h4>課程重點</h4>
+            <%- datas[0].content %>
+          </div>
         </div>
       </div>
     </div>

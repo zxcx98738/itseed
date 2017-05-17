@@ -18,11 +18,39 @@
 </div> -->
 
   <div class="title-title">
-    <span class="">- 企業參訪 -</span>
+    <span class="main-color-br">- 企業參訪 -</span>
   </div>
-<section class="bg-light-gray" id="businessVisitList">
+  <div class="bsv4">
+    <% for(var i = 0; i < datas.length; i++){ %>
+      <% if(i % 2 == 0 ){ %>
+        <div class="bsV">
+          <img src="<%= datas[i].photo %>">
+          <div>
+            <h3><%= datas[i].title %></h3>
+            <hr>
+            <p><%- datas[i].content %></p>
+          </div>
+        </div>
+      <% } %>
+      <% if(i % 2 == 1 ){ %>
+        <div class="bsV2">
+          
+          <img src="<%= datas[i].photo %>">
+          <div>
+            <h3><%= datas[i].title %></h3>
+            <hr>
+            <p><%- datas[i].content %></p>
+          </div>
+        </div>
+      <% } %>
+    <% } %>
+  </div>
+<!--   <div>
+    <img src="images/businessVisit/businessVisit_MS.jpg" class="companyImgdiv" id="img-responsive">
+  </div> -->
+
+<!-- <section class="bg-light-gray" id="businessVisitList">
   <div class="container-fluid">
-    
     <div class="row companyMSdiv2">
       <div class="col-md-12 hidden-sm hidden-xs ">
         <div class="companyMSdiv">
@@ -33,7 +61,6 @@
           <h3 class="companyNameMS">Microsoft</h3>
           <hr>
           <p class="companyContentMS">微軟微軟微軟軟微軟微軟微軟微軟微軟軟微軟微軟微軟微軟微軟軟微軟微軟微軟微軟微軟軟微軟微軟微軟微軟微軟微軟微軟微軟微軟微軟微軟微軟v</p>
-
          </div>
         </div>
       </div>
@@ -85,7 +112,7 @@
       </div>
     </div>
 
-    <!-- <% for(var i = 0; i < datas.length; i++){ %>
+    <% for(var i = 0; i < datas.length; i++){ %>
       <div class="col-md-3 col-sm-6 col-xs-12">
         <div class="course-card">
           <div class="photo text-center">
@@ -98,13 +125,14 @@
           <div class="intro">
             <div class="title">
               <%= datas[i].title %>
+              <%= datas[i].content %>
             </div>
           </div>
         </div>
       </div>
-    <% } %> -->
+    <% } %>
   </div>
-</section>
+</section> -->
 
 <!--FOOTER-->
 <% include ../footer %>

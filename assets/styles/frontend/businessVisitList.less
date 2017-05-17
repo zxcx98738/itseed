@@ -3,6 +3,173 @@
 @content_size : 18px ;
 @name_height : 53% ;
 
+.bsv4{
+	>div{
+		>div{
+			width: 40%;
+			display: inline-block;
+			margin-top: 6%;
+			color: white;
+			h3{
+				margin-left: 10%;
+				font-size: 50px;
+			}
+			p{
+				font-size: 12pt;
+				margin-bottom: 0;
+			}
+		}
+		img{
+			width:60%;
+		}
+	}
+	>div:nth-child(1){
+		background-color:#83D6F7;
+	}
+	>div:nth-child(2){
+		background-color:#F57080;
+	}
+	>div:nth-child(3){
+		background-color:#FAD248;
+	}
+	>div:nth-child(4){
+		background-color:#ED6D60;
+	}
+}
+
+.bsV{
+	position: relative;
+	img{
+		-webkit-clip-path: polygon(100% 0, 0 0, 0 100%, 89% 100%);
+		clip-path: polygon(100% 0, 0 0, 0 100%, 84% 100%);
+	}
+	div{
+		position: absolute;
+		right: 0;
+		p{
+			margin-left: 10%;
+			margin-right: 5%;	
+		}
+	}
+}
+.bsV2{
+	position: relative;
+	width: 100%;
+	div{
+		position: absolute;
+		left: 0;
+		p{
+			margin-left: 10%;
+		}
+	}
+	img{
+		position: relative;
+		margin-left:auto;
+		left: 40%;
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 16% 100%);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 16% 100%);
+	}
+}
+
+@media screen and (min-width: 0px) and (max-width: 940px) {
+	.bsv4{
+		>div{
+			>div{
+				width: 40%;
+				display: inline-block;
+				margin-top: 0%;
+				color: white;
+				hr{
+					margin: 4px 0;
+				}
+				h3{
+					margin-left: 10%;
+					font-size: 50px;
+				}
+				p{
+					font-size: 12pt;
+					margin-bottom: 0;
+				}
+			}
+			img{
+				width:60%;
+			}
+		}
+
+	}
+}
+@media screen and (min-width: 735px) and (max-width: 849px) {
+	.bsv4{
+		>div{
+			>div{
+				hr{
+					margin: 4px 0;
+				}
+				h3{
+					margin-top: 3%;
+					font-size: 40px;
+				}
+				p{
+					margin: 0 2%;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width: 0px) and (max-width: 735px) {
+	.bsv4{
+		>div{//bsv
+			padding-top: 2%;
+			>div{
+				position: relative;
+				width: 80%;
+				display: inline-block;
+				margin-top: 0%;
+				color: white;
+				margin:0 10% 10px 10%;
+				h3{
+					margin: 2% auto;
+					font-size: 40px;
+				}
+				p{
+					margin: 0 2%;
+				}
+			}
+			img{
+				left: 0;
+				display: block;
+				width: 80%;
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+				margin: 0 auto;
+			}
+		}
+	}
+}
+@media screen and (min-width: 0px) and (max-width: 570px) {
+	.bsv4{
+		>div{//bsv
+			padding-top: 0%;
+			img{
+				left: 0;
+				display: block;
+				width: 100%;
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+				margin: 0 auto;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
 @font-face {
     font-family: myFirstFont;
     // src: url("../fonts/Nexa Bold.otf");
@@ -31,8 +198,7 @@
 	/*background-repeat:no-repeat;*/
 	/*-webkit-clip-path: polygon(0 0, 68% 0, 54% 100%, 0% 100%);*/
 	-webkit-clip-path: polygon(100% 0, 0 0, 0 100%, 89% 100%);
-clip-path: polygon(100% 0, 0 0, 0 100%, 84% 100%);
-
+	clip-path: polygon(100% 0, 0 0, 0 100%, 84% 100%);
 }
 .companyMSdiv2{
 	/*-webkit-clip-path: polygon(89% 0, 100% 0, 100% 100%, 65% 100%);*/
@@ -112,7 +278,7 @@ font-family: content_font;
 
 
 .companyINNOImgdiv{
-	/*background-color:#83D6F7;*/
+	background-color:#83D6F7;
 	/*background-image: url("../images/businessVisit/businessVisit_MS.jpg");*/
 	height: @img_height;
 	/*width: 100%;*/
@@ -213,6 +379,7 @@ clip-path: polygon(0 0, 100% 0, 100% 100%, 16% 100%);
 font-family: content_font;
 	text-overflow: ellipsis;
 }
+
 
 section#businessVisitList {
 	div.course-card {

@@ -4,6 +4,10 @@
 <img src="/images/layout/2-3pastmember.png" alt="banner" id="img-responsive" width="100%">
 <section class="bg-white" id="memberList">
 	<div class="container">
+
+
+
+
 		<div class="row col-md-10 col-md-offset-1">
       <ul class="nav nav-tabs" id="myTabs">
         <% for(var i = 0; i < datas.length; i++){ %>
@@ -22,6 +26,47 @@
       </div>
     </div>
 	</div>
+<!-- xxxxxxxxx -->
+    <style type="text/css">
+      .newMenu>li{
+        display: block;
+        text-align: center;
+      }
+    </style>
+    <div class="navbar-collapse navbar-left">
+        <ul class="newMenu nav navbar-nav">
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">13th<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/13th-member">13th</a></li>
+              <li><a href="/12th-member">12th</a></li>
+              <li><a href="/11th-member">11th</a></li>
+              <li><a href="/10th-member">10th</a></li>
+            </ul>
+          </li>
+    <div class="row col-md-10 col-md-offset-1">
+      <ul class="nav nav-tabs" id="myTabs">
+        <% for(var i = 0; i < datas.length; i++){ %>
+        <li  class="<% if(i==0){ %> active <% } %>" ><a id="tab-<%= datas[i].id %>" href="#pane-<%= datas[i].id %>" data-toggle="tab"><%= datas[i].title %></a></li>
+
+        <% } %>
+      </ul>
+    </div>
+    <div class="row col-md-10 col-md-offset-1">
+      <div class="tab-content">
+        <% for(var i = 0; i < datas.length; i++){ %>
+        <div class="tab-pane <% if(i==0){ %> active <% } %>" id="pane-<%= datas[i].id %>">
+          <%- datas[i].content %>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+
+<!-- xxxxxxxxx -->
+
+
 </section>
 
 <!--FOOTER-->

@@ -14,21 +14,13 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
         <div class="title-title">
-          <span class="aboutITSeed-br">- 計畫簡介 -</span>
+          <span class="aboutITSeed-br"><%- datas[0].title %></span>
         </div>
 
         <div>
           <video src="" style="background:rgb(252,228,228); width:100%"></video>
           <div class="word-12pt project-content-style">
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;新北市電腦商業同業公會於2003年有鑒於IT產業人才缺口尚未補足，決心創立一有效整合性學習平台，提供有志投身IT產業的莘莘學子們寶貴的專業實務與產業實戰經驗，第一屆資訊種子培訓計畫應運而生。
-            </p>
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;資訊種子計畫整合社會資源進行完整、宏觀的課程薰陶及實務訓練，期許結業學員獲得跨領域產業知識、培養正確職場態度、提高思考深度與廣度、並累積產業人脈存摺，培育全方位人才。
-            </p>
-            <p>
-              &nbsp;&nbsp;&nbsp;&nbsp;參與學員在經過書審與面試後，即可加入為期一年的免費培訓計畫。目前培訓計畫已邁入第十五屆，廣納各大專院校系背景學科之學員，累積培養400多位校友投身各產業服務及創業，在各行各業逐漸發酵，同時回歸資訊種子進行傳承，締造善意的累積與循環。
-            </p>
+            <%- datas[0].content %>
           </div>
           <!--<h3><#% datas[0].title %></h3>-->
           <!--<div><#% datas[0].content %></div>-->
@@ -56,30 +48,30 @@
       
       <div class="col-sm-3">
         <div>
-          <div><span>01 </span>人我關係</div>
+          <div><span>01 </span><%- datas[1].title %></div>
           <hr>
-          <div>了解自己、認識他人、建立價值、創造連結</div>
+          <div><%- datas[1].content %></div>
         </div>
       </div>
       <div class="col-sm-3">
         <div>
-          <div><span>02 </span>產業動態</div>
+          <div><span>02 </span><%- datas[2].title %></div>
           <hr>
-          <div>群眾募資、智財專利、網路軟體、文化創意</div>
+          <div><%- datas[2].content %></div>
         </div>
       </div>
       <div class="col-sm-3">
         <div>
-          <div><span>03 </span>就業即戰力</div>
+          <div><span>03 </span><%- datas[3].title %></div>
           <hr>
-          <div>專案力、資訊力、創新力、行銷力</div>
+          <div><%- datas[3].content %></div>
         </div>
       </div>
       <div class="col-sm-3">
         <div>
-          <div><span>04 </span>職涯發展</div>
+          <div><span>04 </span><%- datas[4].title %></div>
           <hr>
-          <div>適性測驗、職涯規劃、職務體驗</div>
+          <div><%- datas[4].content %></div>
         </div>
       </div>
     </div>
