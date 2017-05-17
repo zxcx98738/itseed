@@ -11,18 +11,20 @@
 <section class="course-top">
   <h2 class="course-head">講座課程</h2>
   <div class="row">
-    <% for(var i = 0; i < datas.length; i++){ %> 
-      <div class="col-sm-6">
-        <img src="<%= datas[i].photo %>"></img>
-        <p class="course-title">
-          「<%= datas[i].title %> - <%= datas[i].speaker %>」
-        </p>
-        <div class="course-content">
-          <p class="course-content-part">
-            <%- datas[i].content %>
+    <% for(var i = 0; i < datas.length; i++){ %>
+      <a href="<%= url + datas[i].id %>">
+        <div class="col-sm-6">
+          <img src="<%= datas[i].photo %>"></img>
+          <p class="course-title">
+            「<%= datas[i].title %> - <%= datas[i].speaker %><%= datas[i].speakerTitle %>」
           </p>
+          <div class="course-content">
+            <p class="course-content-part">
+              <%- datas[i].content %>
+            </p>
+          </div>
         </div>
-      </div>
+      </a>
     <% } %>
     <div class="col-xs-12 text-xs-center top"><span class="top-box">回到最上</span></div>
   </div>
