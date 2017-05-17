@@ -1,19 +1,28 @@
 <!--HEADER-->
 <% include ../header %>
 <!--END HEADER-->
-<img src="/images/courseInfo/coursebanner.png" id="img-responsive" width="100%">
-<div class="container-fluid">
-  <section class="bg-light-gray article">
+<!-- <img src="/images/courseInfo/coursebanner.png" id="img-responsive" width="100%"> -->
+<div class="sub-nav">
+  <ul>
+    <li><a  class="active" href="/courseInfo">講座課程</a></li> |
+    <li><a href="/businessVisit">企業參訪</a></li> |
+    <li><a href="/tuv">六大專案</a></li>
+  </ul>
+</div>
+  <section class="bg-light-gray">
     <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <h3><%= datas[0].title %></h3>
+      <div class="row course-detail">
+        <div>
+          <img src="<%= datas[0].photo %>"></img>
+        </div>
+        <div class="project-content-style">
+          <h3 class="text-xs-center"><%= datas[0].title %></h3>
+          <h4 class="text-xs-center"><%= datas[0].speaker %><%= datas[0].speakerTitle %></h4>
           <div><%- datas[0].content %></div>
         </div>
       </div>
     </div>
   </section>
-</div>
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->

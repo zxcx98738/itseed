@@ -1,19 +1,206 @@
 <!--HEADER-->
 <% include ../header %>
 <!--END HEADER-->
-<br>
-<br>
-<br>
+<div class="sub-nav">
+  <ul>
+    <li><a href="/aboutITSeed">計畫簡介</a></li> |
+    <li><a class="active" href="/aboutNTCA">公會簡介</a></li> |
+    <li><a href="/memberList">歷屆名單</a></li>
+  </ul>
+</div>
 <div class="container">
+  <div class="title-title">
+    <span class="aboutNTCA-br">- 公會簡介 -</span>
+  </div>
   <div class="row">
-    <div class="col-sm-12 schedule">
-      <div class="page-title"><h2><b>公會簡介</b></h2></div>
-      <div class="title-underline"><h4><b>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</b></h4></div>
+    <div class="col-md-offset-2 col-md-8  NTCA-content">
+      <div>
+        <span class="word-12pt">
+            <% if (datas[0] != null) { %>
+            <%- datas[0].title %>
+            <% } %>
+        </span>
+      </div>
+      <div >
+          <% if (datas[0] != null) { %>
+          <p class="word-12pt"><%- datas[0].content %></p>
+          <% } %>
+      </div>
     </div>
   </div>
 </div>
 
-<section class="bg-light-gray">
+<div class="list">
+  <p>新北市電腦商業同業公會 第十一屆理監事名單</p>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+        <div class='rg-container'>
+          <div class='rg-content'>
+            <div class="rg-title">
+              <span>公司職稱</span>
+              <span>公司名稱</span> 
+              <span>姓名</span>
+              <span>職稱</span>
+            </div>
+            <table class='rg-table' >
+<!--          <thead>
+                <th class='text'>公司職稱</th>
+                <th class='text'>公司名稱</th>
+                <th class='text'>姓名</th>
+                <th class='text'>職稱</th>
+              </thead> -->
+              <tbody>
+<!--                 
+                <tr class=''>
+                  <td class='text' data-title='公司職稱'></td>
+                  <td class='text' data-title='公司名稱'></td>
+                  <td class='text' data-title='姓名'></td>
+                  <td class='text' data-title='職稱'></td>
+                </tr> -->
+              
+
+                <tr class=''>
+                  <td class='text' data-title='公司職稱'>理事長</td>
+                  <td class='text' data-title='公司名稱'>明日工作室股份有限公司</td>
+                  <td class='text' data-title='姓名'>張運揚</td>
+                  <td class='text' data-title='職稱'>總裁</td>
+                </tr>
+              
+
+                <tr class=''>
+                  <td class='text' data-title='公司職稱'>常務理事</td>
+                  <td class='text' data-title='公司名稱'>尚立股份有限公司</td>
+                  <td class='text' data-title='姓名'>簡剛民</td>
+                  <td class='text' data-title='職稱'>董事長</td>
+                </tr>
+              
+
+                <tr class=''>
+                  <td class='text' data-title='公司職稱'>常務理事</td>
+                  <td class='text' data-title='公司名稱'>工研院資通所</td>
+                  <td class='text' data-title='姓名'>邱振祥</td>
+                  <td class='text' data-title='職稱'>技術組長</td>
+                </tr>
+              
+
+                <tr class='hide-mobile'>
+                  <td class='text' data-title='公司職稱'>常務理事</td>
+                  <td class='text' data-title='公司名稱'>東新興記股份有限公司</td>
+                  <td class='text' data-title='姓名'>鄭滄光</td>
+                  <td class='text' data-title='職稱'>董事長</td>
+                </tr>
+              
+
+                <tr class='hide-mobile'>
+                  <td class='text' data-title='公司職稱'>常務理事</td>
+                  <td class='text' data-title='公司名稱'>皇輝科技股份有限公司</td>
+                  <td class='text' data-title='姓名'>張智強</td>
+                  <td class='text' data-title='職稱'>董事暨執行長</td>
+                </tr>
+              
+
+                <tr class='hide-mobile'>
+                  <td class='text' data-title='公司職稱'>理事</td>
+                  <td class='text' data-title='公司名稱'>玹唐創新股份有限公司</td>
+                  <td class='text' data-title='姓名'>邱英禎</td>
+                  <td class='text' data-title='職稱'>董事長</td>
+                </tr>
+              
+
+                <tr class='hide-mobile'>
+                  <td class='text' data-title='公司職稱'>理事</td>
+                  <td class='text' data-title='公司名稱'>宜鼎國際股份有限公司</td>
+                  <td class='text' data-title='姓名'>簡川勝</td>
+                  <td class='text' data-title='職稱'>董事長</td>
+                </tr>
+              
+
+                <tr class='hide-mobile'>
+                  <td class='text' data-title='公司職稱'>理事</td>
+                  <td class='text' data-title='公司名稱'>立寶電子工業股份有限公司</td>
+                  <td class='text' data-title='姓名'>許勝豪</td>
+                  <td class='text' data-title='職稱'>董事長</td>
+                </tr>
+              
+
+                <tr class='hide-mobile'>
+                  <td class='text' data-title='公司職稱'>理事</td>
+                  <td class='text' data-title='公司名稱'>文麥股份有限公司</td>
+                  <td class='text' data-title='姓名'>林高順</td>
+                  <td class='text' data-title='職稱'>董事長</td>
+                </tr>
+              
+
+                <tr class='hide-mobile'>
+                  <td class='text' data-title='公司職稱'>理事</td>
+                  <td class='text' data-title='公司名稱'>財團法人資訊工業策進會</td>
+                  <td class='text' data-title='姓名'>柯献堂</td>
+                  <td class='text' data-title='職稱'>產業推動與服務處處長</td>
+                </tr>
+              
+
+                <tr class='hide-mobile'>
+                  <td class='text' data-title='公司職稱'>理事</td>
+                  <td class='text' data-title='公司名稱'>全景軟體股份有限公司</td>
+                  <td class='text' data-title='姓名'>楊文和</td>
+                  <td class='text' data-title='職稱'>副總經理</td>
+                </tr>
+              
+
+                <tr class='hide-mobile'>
+                  <td class='text' data-title='公司職稱'>理事</td>
+                  <td class='text' data-title='公司名稱'>青暘企業股份有限公司</td>
+                  <td class='text' data-title='姓名'>錡玉色</td>
+                  <td class='text' data-title='職稱'>總經理</td>
+                </tr>
+              
+
+                <tr class='hide-mobile'>
+                  <td class='text' data-title='公司職稱'>理事</td>
+                  <td class='text' data-title='公司名稱'>新睿資訊服務股份有限公司</td>
+                  <td class='text' data-title='姓名'>張及人</td>
+                  <td class='text' data-title='職稱'>總經理</td>
+                </tr>
+              
+
+                <tr class='hide-mobile'>
+                  <td class='text' data-title='公司職稱'>理事</td>
+                  <td class='text' data-title='公司名稱'>博泓顧問服務股份有限公司</td>
+                  <td class='text' data-title='姓名'>余學鴻</td>
+                  <td class='text' data-title='職稱'>總經理</td>
+                </tr>
+              
+
+                <tr class='hide-mobile'>
+                  <td class='text' data-title='公司職稱'>理事</td>
+                  <td class='text' data-title='公司名稱'>亦聲電子有限公司</td>
+                  <td class='text' data-title='姓名'>簡基洋</td>
+                  <td class='text' data-title='職稱'>總經理</td>
+                </tr>
+              
+
+                <tr class='hide-mobile'>
+                  <td class='text' data-title='公司職稱'>常務監事</td>
+                  <td class='text' data-title='公司名稱'>台灣微軟股份有限公司</td>
+                  <td class='text' data-title='姓名'>吳勝雄</td>
+                  <td class='text' data-title='職稱'>消費通路事業群 總經理</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+ <div class="top">Top ▲ </div>       
+         
+
+<!-- <section class="bg-light-gray">
   <div class="container text-content">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
@@ -22,13 +209,16 @@
       </div>
     </div>
     <div class="row">
-        <div class="col-md-6 col-md-offset-1">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.1468326890795!2d121.5194383143956!3d25.0630119839588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a94475e6994b%3A0x248e8157b1372f67!2z5paw5YyX5biC6Zu76IWm5ZWG5qWt5ZCM5qWt5YWs5pyD!5e0!3m2!1szh-TW!2stw!4v1464594006480" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <div class="col-md-12 ">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.1468326890795!2d121.5194383143956!3d25.0630119839588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a94475e6994b%3A0x248e8157b1372f67!2z5paw5YyX5biC6Zu76IWm5ZWG5qWt5ZCM5qWt5YWs5pyD!5e0!3m2!1szh-TW!2stw!4v1464594006480" width="1200" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
-    </div>
+    </div> -->
 	</div>
 </section>
 
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->
+
+<script src="/js/specifies/frontend/aboutNTCA.js"></script>
+
