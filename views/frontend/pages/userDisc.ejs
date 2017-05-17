@@ -8,20 +8,21 @@
 
 <section class="bg-white" id="disc">
 	<div class="container">
-		<div class="row col-md-10 col-md-offset-1">
+		<div class="row col-md-10 col-md-offset-1  ">
 			<ul class="nav nav-tabs">
 				<li><a href="/profile">個人資料</a></li>
 				<li class="active"><a href="/disc">DISC測驗</a></li>
 				<li><a href="/files">書審資料</a></li>
 			</ul>
 		</div>
-		<div class="row col-md-10 col-md-offset-1">
+		<div class="row col-md-10 col-md-offset-1 ">
 		<span>此測驗不影響徵選結果，請選擇一個比較符合你人格特質的敘述，不需要太多思考，憑直覺就可以了！</span>
 		</div>
-		<div class="row col-md-10 col-md-offset-1">
+		<div class="row col-md-11  col-md-offset-1 ">
 			<form action="/editDisc" method="post" class="form-horizontal">
 				<!-- 1 -->
-				<div  class="row col-sm-12 col-md-12 col-xs-12 ">
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1 ">
 					<p>1. 當你和朋友一起用餐時，在選擇用餐或是吃什麼時，你常是： </p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11">
@@ -44,7 +45,7 @@
 					<% if (disc.q1 == 3) { %>
 						<input type="radio" name="q1" value="3" required="" checked>附和者：隨便，沒意見。
 					<% } else { %>
-						<input type="radio" name="q1" value="3" required="">意見提供者：常去否定別人的提議，自己卻又沒意見，也不做任何決定。
+						<input type="radio" name="q1" value="3" required="">附和者：隨便，沒意見。
 					<% } %>
 					</label>	
 					<label class="col-sm-1 col-xs-1"></label>
@@ -56,9 +57,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
+				<!-- <div class=" row">
+				<div  class="col-sm-12 col-md-12 col-xs-12 "></div> -->
 				<!-- 2 -->
-				<div class="row col-sm-12 col-xs-12 col-md-12">
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1 "> 
 					<p>2.當你買衣服時，你是： </p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -93,10 +97,14 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
+				<!-- <div class=" row">
+				<div  class="col-sm-12 col-md-12 col-xs-12 "></div> -->
 
 				<!-- 3 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>3.你的消費習慣是：</p>
 					<label class="col-sm-1 "></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -131,10 +139,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 4 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>4.你的朋友，以一句話來形容你，他們會說：</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -169,10 +179,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 5 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>5.你自認那一種形容，最能表現你的特色：</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -207,10 +219,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 6 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>6.你覺得做事的重點，應該是：</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -245,11 +259,13 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 
 				<!-- 7 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>7.與同事有意見衝突(或不同)時，你是：</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -284,10 +300,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 8 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>8.什麼樣的工作環境，最能鼓舞你：</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -322,10 +340,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 9 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>9.以下的溝通方式，那一項最符合你：</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -360,10 +380,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 10 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>10.在每一次會議中或公司決議提案時，你所扮演的角色為何：</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -398,10 +420,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 11 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>11.請選擇一項最符合你的</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -436,10 +460,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 12 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>12.請選擇一項最符合你的</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -474,10 +500,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 13 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>13.請選擇一項最符合你的</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -512,10 +540,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 14 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>14.請選擇一項最符合你的</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -550,10 +580,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 15 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>15.請選擇一項最符合你的</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -588,10 +620,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 16 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>16.請選擇一項最符合你的</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -626,10 +660,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 17 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>17.請選擇一項最符合你的</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -664,10 +700,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 18 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>18.請選擇一項最符合你的</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -702,10 +740,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 19 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>19.請選擇一項最符合你的</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -740,10 +780,12 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 
 				<!-- 20 -->
-				<div  class="row col-sm-12 col-xs-12 col-md-12">
+
+				<div class=" row">
+				<div  class="row  col-md-10 col-md-offset-1">
 					<p>20.請選擇一項最符合你的</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
@@ -778,7 +820,7 @@
 					<% } %>
 					</label>					
 				</div>
-				<div class="row col-sm-12 col-xs-12 col-md-12"></div>
+				</div>
 				<!-- 
 				<div class="form-group">
 					<label class="col-xs-2 text-right">2.</label>
