@@ -419,7 +419,7 @@
                     return res.end("測驗未完成");
                 value["q" + i] = req.body["q" + i];
             }
-            value["finished"] = "已完成";
+            value["finished"] = "已完成"; //未用到
             // window.alert('填寫完成');
 
             UserDISC.update({user: req.session.userid}, value)
@@ -872,7 +872,7 @@
                 }
                 else {
                     if (parameter1 == undefined)
-                        th = null;
+                        th = '';
                     else
                         th = parameter1.value;
                 }
