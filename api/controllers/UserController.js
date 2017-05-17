@@ -408,19 +408,19 @@
         if(req.session.userid){
             var a =[ 0 , 0 , 0 , 0];
             for(var i = 1; i <= 20; i++){
-                if(req.body["q" + i] == 1)
-                    a[0] += 1;
-                else if(req.body["q" + i] == 2)
-                    a[1] += 1;
-                else if(req.body["q" + i] == 3)
-                    a[2] += 1;
-                else if(req.body["q" + i] == 4)
-                    a[3] += 1;
-                value["animal"] = a.indexOf(Math.max(a[0],a[1],a[2],a[3])) +1;
+                for (var j = 1; j <5 ; j++){ //計算動物
+                    if(req.body["q" + i] == j)
+                        a[i-1] += 1;
+                }
+                var animal = ['老虎','孔雀','無尾熊','貓頭鷹'];
+                value["animal"] = animal[a.indexOf(Math.max(a[0],a[1],a[2],a[3]))] ; //算動物最大值
+                
                 if(req.body["q" + i] == undefined)
                     return res.end("測驗未完成");
                 value["q" + i] = req.body["q" + i];
             }
+            value["finished"] = "已完成";
+            // window.alert('填寫完成');
 
             UserDISC.update({user: req.session.userid}, value)
             .exec(function (err, datas) {

@@ -17,8 +17,11 @@
 		</div>
 		<div class="row col-md-10 col-md-offset-1 ">
 		<span>此測驗不影響徵選結果，請選擇一個比較符合你人格特質的敘述，不需要太多思考，憑直覺就可以了！</span>
+
 		</div>
 		<div class="row col-md-11  col-md-offset-1 ">
+
+		
 			<form action="/editDisc" method="post" class="form-horizontal">
 				<!-- 1 -->
 				<div class=" row">
@@ -1249,8 +1252,12 @@
 				</div> -->
 				<div class="text-center">
 					<hr>
-					<button type="submit" class="btn-lg btn-green">完成測驗</button>
-					
+					<button type="submit" onclick="ok()" class="btn-lg btn-green">完成測驗</button>
+					<script>
+						function ok() {
+    						alert("填寫完成");
+						}
+					</script>
 				</div>
 			</form>
 		</div>
