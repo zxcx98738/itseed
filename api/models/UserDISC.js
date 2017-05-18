@@ -9,6 +9,11 @@
 module.exports = {
 
     attributes: {
+      
+        finished: {
+          // model:'User'
+          type:'string'
+        },
         id: {
           type: 'integer',
           autoIncrement: true,
@@ -75,27 +80,13 @@ module.exports = {
         q20 : {          
           type: 'integer'
         },
-        q21 : {          
-          type: 'integer'
-        },
-        q22 : {          
-          type: 'integer'
-        },
-        q23 : {          
-          type: 'integer'
-        },
-        q24 : {          
-          type: 'integer'
-        },
-        q25 : {          
-          type: 'integer'
-        },
-        q26 : {          
-          type: 'integer'
-        },
         //使用者
         user: {
           model:'User'
+        },
+        animal: {
+          // model:'User'
+          type:'string'
         },
         //建立時間
         createdAt: {
