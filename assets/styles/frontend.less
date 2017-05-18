@@ -47,6 +47,10 @@ body {
     }
 }
 
+button:focus{
+    outline:none
+}
+
 //頁首
 @nav-fixed-height: 30px;
 @nav-border-bottom-width: 3px;
@@ -294,12 +298,12 @@ body>section {
 body > footer {
 /*    position: absolute;*/
     bottom: 0px;
-    padding: 25px 0;
+    padding: 40px 0;
     width: 100%;
     text-align: center;
     color: #a2a2a2;
-    background-color: @dark-gray;
-
+    // background-color: @dark-gray;
+    background-color: rgb(110, 110, 110);
     span.copyright {
         line-height: 40px;
     }
@@ -459,6 +463,9 @@ body > footer {
 
 .word-12pt{
     font-size: 12pt;
+}
+.word-18pt{
+    font-size: 18pt;    
 }
 .project-content-style{
     margin-right:5%;

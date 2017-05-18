@@ -76,8 +76,11 @@
     </div>
   </div>
   <div>
-    <h4 class="fourtitle">─ 脫離迷惘．四大絕 ─</h4>
-    <hr class="d-line">
+    <!-- <h4 class="fourtitle">─ 脫離迷惘．四大絕 ─</h4> -->
+    <div class="title-title">
+      <span style="border-color: #A4DAEC;">─ 脫離迷惘．四大絕 ─</span>
+    </div>
+    <!-- <hr class="d-line"> -->
     <!-- <div class="schedule"><h2><b>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</b></h2></div> -->
     <div class="row threeReason">
       <div class="col-md-3 col-sm-6">
@@ -90,7 +93,7 @@
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="">
-          <img src="/images/index/icon2.png">
+          <img src="/images/index/icon3.png">
           <p>跨世代交流</p>
         </div>
         <p>學員、學長姐、講師</p>
@@ -98,7 +101,7 @@
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="">
-          <img src="/images/index/icon3.png">
+          <img src="/images/index/icon2.png">
           <p>理論實務並進</p>
         </div>
         <p>跨領域專業授課</p>
@@ -266,7 +269,7 @@
       <p>即將離開校園的你，面對充滿未知的挑戰，是否已做好準備？</p>
       <p>資種提供完善的學習資源、環境，幫助你完成踏入職場前的最後一哩路！</p>
       <p>加入資種，啟動未來！ </p>
-      <button><a href="/regInfo">馬上報名</a></button>
+      <button><a href="/login">馬上報名</a></button>
       <!-- <h4>現在立刻按下按鈕報名囉！</h4> -->
     </div>
   </div>
@@ -302,10 +305,10 @@ $(document).ready(function(){
   $(window).scroll(function(){
     if ($('#target1').isOnScreen() && t1) {
       $('#target1').animateNumber({
-        number: 13
+        number: 14
       }, 2500,
       function() {
-        $('#target1').text('13')
+        $('#target1').text('14')
       });
       t1=false
     }

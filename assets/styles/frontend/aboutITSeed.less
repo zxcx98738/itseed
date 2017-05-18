@@ -30,6 +30,24 @@
             display: inline-block;
         }
 }
+@media screen and (min-width: 1px) and (max-width: 768px) {
+    .mid-banner{
+        text-align: center;
+        .banner-content{
+            width: 23%;
+            font-size: 2rem;
+        }
+    }
+}
+@media screen and (min-width: 1px) and (max-width: 494px) {
+    .mid-banner{
+        height: 164px;
+        .banner-content{
+            width: 40%;
+            font-size: 2rem;
+        }
+    }
+}
 
 .four-big{
     margin-top:60px;
@@ -40,14 +58,51 @@
         hr{
             border-color: grey;
         }
+        .four-big-title{
+            font-size: 15pt;
+           span{
+                font-size: 24pt;
+            }
+        }
         >div{
-            background-color: rgb(252,228,228);
+            background-color: #FBE0E0;
             // border:solid 1px rgb(240,145,146);
             margin:10px 10px;
-            height:170px;
+            height:180px;
             padding:15px 5px;
-            span{
-                font-size: 2.2rem;
+
+        }
+    }
+    @media screen and (min-width: 1px) and (max-width: 768px) {
+        .row{
+            >div{
+                vertical-align: top;
+                margin: 0;
+                width: 49%;
+                display: inline-block;
+                span{
+                    // font-size: 12pt;
+                }
+                >div{
+                    height: 190px;
+                }
+            }
+        }
+    }
+    @media screen and (min-width: 1px) and (max-width: 450px) {
+        margin-top:40px;
+        .row{
+            >div{
+                vertical-align: top;
+                margin: 0;
+                width: 100%;
+                display: inline-block;
+                span{
+                    // font-size: 12pt;
+                }
+                >div{
+                    height: 190px;
+                }
             }
         }
     }
