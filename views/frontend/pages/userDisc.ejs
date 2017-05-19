@@ -1254,12 +1254,9 @@
 				</div> -->
 				<div class="text-center">
 					<hr>
-					<button type="submit" onclick="ok()" class="btn-lg btn-green">完成測驗</button>
-					<script>
-						function ok() {
-    						alert("填寫完成");
-						}
-					</script>
+					<% if(disc.finished != 1) {%>
+					<button type="submit"  class="btn-lg btn-green">完成測驗</button>
+					<% } %>
 				</div>
 			</form>
 		</div>

@@ -412,7 +412,7 @@
             for(var i = 1; i <= 20; i++){
                 for (var j = 1; j <5 ; j++){ //計算動物
                     if(req.body["q" + i] == j)
-                        a[i-1] += 1;
+                        a[j-1] += 1;
                 }
                 var animal = ['老虎','孔雀','無尾熊','貓頭鷹'];
                 value["animal"] = animal[a.indexOf(Math.max(a[0],a[1],a[2],a[3]))] ; //算動物最大值
