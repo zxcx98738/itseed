@@ -149,6 +149,34 @@
 						<button type="submit" class="btn btn-green">送出</button>
 					</div>
 				<% } %>
+				<% if (files.finished == 1){ %>
+					<div>
+						<p>報名狀態：資料上傳完成</p>
+					</div>
+				<% } else {%>
+					<div>
+						<p>報名狀態：上傳尚未完成</p>
+					</div>
+				<% } %>
+				<% if (disc.finished == 1){ %>
+					<div>
+						<p>報名狀態：disc測驗完成</p>
+					</div>
+				<% } else {%>
+					<div>
+						<p>報名狀態：disc尚未完成</p>
+					</div>
+				<% } %>
+				<% if (user.finished == 1){ %>
+					<div>
+						<p>報名狀態：個人資料完成</p>
+					</div>
+				<% } else {%>
+					<div>
+						<p>報名狀態：個人資料尚未完成</p>
+					</div>
+				<% } %>
+
 				</form>
 			</div>
 		</div>

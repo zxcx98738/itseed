@@ -15,6 +15,9 @@ module.exports = {
           primaryKey: true,
           unique: true
         },
+        finished : {
+          type: 'integer'
+        },
         //報名表
         registration : {
           type: 'string'

@@ -12,7 +12,7 @@ module.exports = {
       
         finished: {
           // model:'User'
-          type:'string'
+          type:'integer'
         },
         id: {
           type: 'integer',
