@@ -301,7 +301,8 @@
                 //有上傳檔案
                 if (uploadedFiles.length > 0) {
                     //圖片檔
-                    if (uploadedFiles[0].type.substring(0, 5) == "image") {    
+                    if (uploadedFiles[0].type.substring(0, 5) == "image") { 
+
                         if (uploadedFiles[0].size > 2 * 1024 * 1024) {
                             return res.end("圖片大小須小於2MB");
                         }
@@ -310,6 +311,7 @@
                         url = url.slice(start);
                         url = url.replace(/\\/g, "/");
                         value.photo = url;
+                        value.finished = 1 ;
                     }
                     //非圖片檔
                     else {
@@ -419,7 +421,7 @@
                     return res.end("測驗未完成");
                 value["q" + i] = req.body["q" + i];
             }
-            value["finished"] = "已完成"; //未用到
+            value["finished"] = 1; //未用到
             // window.alert('填寫完成');
 
             UserDISC.update({user: req.session.userid}, value)
@@ -439,6 +441,7 @@
     },
     //報名資料
     files: function (req, res) {
+        
         if (req.session.userid) {
             UserFiles.findOne({
                 user: req.session.userid
@@ -448,13 +451,23 @@
                     res.end(JSON.stringify(err));
                 }
                 else {
-                    if (files.registrationUT != null)
+                    var f = 0; //判斷完成
+                    files.finished = 0
+                    if (files.registrationUT != null){
+                        f += 1;
                         files.registrationUT = CmsService.formatTime(files.registrationUT);
-                    if (files.autobiographyUT != null)
+                    }
+                    if (files.autobiographyUT != null){
+                        f += 1;
                         files.autobiographyUT = CmsService.formatTime(files.autobiographyUT);
-                    if (files.receiptUT != null)
+                    }
+                    if (files.receiptUT != null){
+                        f += 1;
                         files.receiptUT = CmsService.formatTime(files.receiptUT);
-
+                    }
+                    if(f == 3){
+                        files.finished = 1;
+                    }
                     var startDate, endDate;
 
                     //判斷系統開放與否
@@ -485,32 +498,62 @@
                                     else {
                                         endDate = (new Date(parameter2.value)).getTime();
                                     }
+                                    //================ 報名狀態顯示顯示
+                                    User.findOne({
+                                        id: req.session.userid
+                                    })
+                                    .exec(function(err, user) {
+                                        if(err){
+                                            res.end(JSON.stringify(err));
+                                        }
+                                        else{
+                                            //disc 顯示
+                                            UserDISC.findOne({  
+                                                user: req.session.userid
+                                            })
+                                            .exec(function (err, disc) {
+                                                if (err) {
+                                                    return res.end(JSON.stringify(err));
+                                                }
+                                                else {
 
-                                    //還沒設定
-                                    if (startDate == "" || endDate == "") {
-                                        return res.view("frontend/pages/userFiles", {
-                                            system: "open",
-                                            files: files
-                                        });
-                                    }
-                                    else {
-                                        var now = (new Date()).getTime();
+                                                    //還沒設定
+                                                    if (startDate == "" || endDate == "") {
+                                                        return res.view("frontend/pages/userFiles", {
+                                                            system: "open",
+                                                            files: files,
+                                                            disc:disc,
+                                                            user:user
+                                                        });
+                                                    }
+                                                    else {
+                                                        var now = (new Date()).getTime();
 
-                                        //系統開放
-                                        if (startDate < now && now < endDate){
-                                            return res.view("frontend/pages/userFiles", {
-                                                system: "open",
-                                                files: files
+                                                        //系統開放
+                                                        if (startDate < now && now < endDate){
+                                                            return res.view("frontend/pages/userFiles", {
+                                                                system: "open",
+                                                                files: files,
+                                                                disc:disc,
+                                                                user:user
+                                                            });
+                                                        }
+                                                        //系統關閉
+                                                        else {
+                                                            return res.view("frontend/pages/userFiles", {
+                                                                system: "close",
+                                                                files: files,
+                                                                disc:disc,
+                                                                user:user
+                                                            });
+                                                        }
+                                                    }
+
+                                                }
                                             });
                                         }
-                                        //系統關閉
-                                        else {
-                                            return res.view("frontend/pages/userFiles", {
-                                                system: "close",
-                                                files: files
-                                            });
-                                        }
-                                    }
+                                    });
+                                //=======
                                 }
                             });
                         }
@@ -857,7 +900,7 @@
     },
 
     /*後台*/
-
+   
     //報名者資料
     applicants: function (req, res) {
         if (req.session.userid) {

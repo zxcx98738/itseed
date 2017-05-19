@@ -15,6 +15,9 @@ module.exports = {
           primaryKey: true,
           unique: true
         },
+        finished : {
+          type: 'integer'
+        },
         //作者ID
         author: {
           model:'User'
