@@ -9,16 +9,16 @@
   </div>
   <hr> -->
   <div class="title-title">
-    <span class="main-color-br">- 登入 -</span>
+    <span class="main-color-br">- 登入 -</span> 
   </div>
   <div class="login-main">
     <form action="/login" method="post">
       <div>
-        <span>帳號：</span>
+        <span><img src="/images/layout/ACCOUNT.png"> 帳號：</span>
         <input class="btn-block" autofocus="autofocus" name="email" placeholder="電子信箱" type="email">
       </div>
       <div>
-        <span>密碼：</span>
+        <span><img src="/images/layout/LOCK.png"> 密碼：</span>
         <input class="btn-block" name="pwd" placeholder="密碼" type="password">
       </div>
       <div>
@@ -26,8 +26,10 @@
       </div>
     </form>
     <% if (system == "open") { %>
+
       <div style="padding-bottom: 0">
-        <a class="register" href="/register">註冊新帳號</a>
+        <span>尚未註冊嗎？</span>
+        <a class="register" href="/register">立即註冊新帳號</a>
       </div>
     <% } %>
   </div>

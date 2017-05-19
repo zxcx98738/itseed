@@ -12,7 +12,7 @@ body>div#login, div#register {
     height: 100vh;
     background-color: @light-gray;
 
-    @media(min-width: 858px) {
+    @media screen and (max-width: 858px) {
         // background-image: url("/images/layout/header-bg.jpg");
         background-size: 100%;
         background-repeat: no-repeat;
@@ -132,12 +132,13 @@ body>div#login, div#register {
         display: inline-block;
         border: 1px solid black;
     }
+
     .login-main{
         border-radius: 20px;
         padding: 40px 30px;
         margin: 30px auto;
         max-width: 100%;
-        width: 320px;
+        width: 350px;
         background-color: #CAE7D6;
         div{
             padding: 10px 0; 
@@ -145,16 +146,25 @@ body>div#login, div#register {
         }
         form>div>span{
             display: inline-block;
-            width: 20%;
+            width: 30%;
+            img{
+                vertical-align: top;
+                width: 15px;
+            }
         }
         form>div>input{
             display: inline-block;
-            width: 70%;
+            width: 65%;
         }
         .login-btn{
-            width: 70px;
+            width: 120px;
             background-color: white;
             border-radius: 20px;
+        }
+    }
+    @media and screen (max-width: 275px) {
+        .login-main{
+            padding: 50px 10px;
         }
     }
 }
