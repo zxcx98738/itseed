@@ -169,6 +169,46 @@ module.exports.routes = {
     view: 'frontend/pages/careers'
   },
 
+  'get /13th-member': {
+    view: 'frontend/pages/13th-member'
+  },
+  'get /12th-member': {
+    view: 'frontend/pages/12th-member'
+  },
+  'get /11th-member': {
+    view: 'frontend/pages/11th-member'
+  },
+  'get /10th-member': {
+    view: 'frontend/pages/10th-member'
+  },
+  'get /9th-member': {
+    view: 'frontend/pages/9th-member'
+  },
+  'get /8th-member': {
+    view: 'frontend/pages/8th-member'
+  },
+  'get /7th-member': {
+    view: 'frontend/pages/7th-member'
+  },
+  'get /6th-member': {
+    view: 'frontend/pages/6th-member'
+  },
+  'get /5th-member': {
+    view: 'frontend/pages/5th-member'
+  },
+  'get /4th-member': {
+    view: 'frontend/pages/4th-member'
+  },
+  'get /3th-member': {
+    view: 'frontend/pages/3th-member'
+  },
+  'get /2th-member': {
+    view: 'frontend/pages/2th-member'
+  },
+  'get /1th-member': {
+    view: 'frontend/pages/1th-member'
+  },
+
   /*前台-使用者相關*/
 
   'post /check-email': {
