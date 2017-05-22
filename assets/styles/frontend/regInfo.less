@@ -1,10 +1,11 @@
+@regInfo:rgb(0,133,194);
 .regSlogan{
 	width: 50%;
 	h2{
 		text-align: center;
 		font-size: 40pt;
 	}
-	border-bottom: 4px solid #78C8C1;
+	border-bottom: 4px solid @regInfo;
 }
 @media screen and (min-width: 0px) and (max-width: 991px) {
 	.regSlogan{
@@ -68,21 +69,115 @@
 	}
 }
 .reg-part{
-	margin-top: 70px;
+	// margin-top: 70px;
 	div{
 		text-align: center;
 		margin: 30px 0 30px 0;
 		span{
 			padding: 5px 10px;
-			border: 1px solid #78C8C1;
+			border: 1px solid @regInfo;
 			font-size: 16pt;
 		}
 	}
 	p{
-		text-align: center;
+		text-align: left;
+		margin: 30px 0 30px 0;
+		font-size: 16pt;
 	}
 }
-
+@media screen  and (min-width: 1px) and (max-width: 768px) {
+	.reg-part{
+		// margin-top: 70px;
+		p{
+			text-align: center;
+			margin: 5px 0;
+			font-size: 16pt;
+			line-height: 30px;
+		}
+	}
+}
+.regInfo-xx{
+	display: block;
+	width: 50%;
+	text-align: center;
+	margin-top: 5px;
+	font-size: 20pt;
+}
+@media screen  and (min-width: 1px) and (max-width: 730px) {
+	.regInfo-xx{
+		width: 70%;
+	}
+}
+@media screen  and (min-width: 1px) and (max-width: 400px) {
+	.regInfo-xx{
+		width: 90%;
+		font-size: 16pt;
+	}
+}
+.reg-step{
+	margin-bottom: 40px;
+	>div{
+		>div{
+			position: relative;
+			height: 180px;
+			margin-bottom: 20px;
+			.icon{
+				display: inline-block;
+				width: 80px;
+				height: 80px;
+				// background-color: black;
+				border-radius: 100%;
+				img{
+					margin-top: 15px;
+					width: 50px;
+				}
+			}
+			.reg-step-word{
+				padding: 50px 0 20px 0;
+				top:50px;
+				left: 10%;
+				display: inline-block;
+				width: 80%;
+				position: absolute;
+				border-width: 2px;
+				border-style: solid;
+				z-index: -1;
+				font-size: 14pt;
+				font-weight: 500;
+				p{
+					margin-bottom: 5px;
+				}
+			}
+		}
+		>p{
+			font-size: 14pt;
+			margin-bottom: 0px;
+			line-height: 33px;
+			color: black;
+		}
+	}
+	>div:nth-child(1){
+		color:rgb(237, 101, 100);
+		border: rgb(237, 101, 100);
+		.icon{
+			background-color: rgb(237, 101, 100);
+		}
+	}
+	>div:nth-child(2){
+		color:rgb(255, 195, 19);
+		border: rgb(255, 195, 19);
+		.icon{
+			background-color: rgb(255, 195, 19);
+		}
+	}
+	>div:nth-child(3){
+		color:rgb(104, 180, 247);
+		border: rgb(104, 180, 247);
+		.icon{
+			background-color: rgb(104, 180, 247);
+		}
+	}
+}
 #clockdiv{
 	margin: 70px 0 0 0;
 	padding:50px 0px;
@@ -92,7 +187,7 @@
 	// color: #fff;
 	font-weight: 100;
 	text-align: center;
-	background-color: #78C8C1;
+	background-color: @regInfo;
 	font-size: 30px;
 	>div{
 		width:23%;
@@ -102,7 +197,7 @@
 #clockdiv > div{
 	padding: 10px;
 	border-radius: 3px;
-	background: #78C8C1;
+	background: @regInfo;
 	display: inline-block;
 }
 
@@ -154,11 +249,20 @@
 	}
 }
 
+.reg-remind{
+	font-size: 14pt; 
+	line-height: 40px;
+	p{
+		margin: 0;
+	}
+}
+
 .call-back{
-	background-color: #78C8C1;
+	background-color: @regInfo;
 	text-align: center;
 	height: 300px;
 	padding-top: 110px;
+	margin-top: 30px;
 	p{
 		color: white;
 		font-size: 24pt;
@@ -168,9 +272,9 @@
 		width: 160px;
 		height: 50px;
 		border-radius: 40px;
-		color: grey;
+		color: white;
 		font-size: 16pt;
 		border: 0;
-		background-color: rgb(212, 252, 249);
+		background-color: rgb(133, 200, 224);
 	}
 }

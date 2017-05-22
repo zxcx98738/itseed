@@ -28,7 +28,7 @@ module.exports = {
         speaker: {
           type: 'string',
           required: true,
-          maxLength: 10
+          maxLength: 30
         },
         //講者頭銜
         speakerTitle: {

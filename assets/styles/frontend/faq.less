@@ -7,8 +7,15 @@ section#faq {
 		float: right;
 		>img{
 			height: 10px;
+			
 		}
 	}
+	// a span{
+	.triangle-rotate{
+		transform:rotate(-90deg);
+		transition:transform 1s;
+	}
+	// }
 	a.faq-heading {
 		display: block;
 		padding: 6px 15px;
@@ -36,4 +43,8 @@ section#faq {
 
 		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 	}
+}
+.rotate{
+	transform:rotate(0deg);
+	transition:transform 1s;
 }
