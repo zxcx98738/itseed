@@ -2087,8 +2087,8 @@ var thirteen = [
 	},
 	{
 		name:'林瑜禎',       
-		school:' 淡江大', 
-		dep:'學 管理科學學系'
+		school:' 淡江大學', 
+		dep:'管理科學學系'
 	}
 ];
 
