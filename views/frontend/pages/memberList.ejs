@@ -11,38 +11,52 @@
 <div class="title-title">
   <span class="member-color-br">- 歷屆名單 -</span>
 </div>
-<div class="text-xs-center">
+<div class="text-xs-center drop-but">
   <div class="dropdown">
     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
       屆數
       <span class="caret"></span>
     </button>
-    <div class="text-xs-center">
+    <div>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Another action</a></li>
-        <li><a href="#">Something else here</a></li>
-        <li role="separator" class="divider"></li>
-        <li><a href="#">Separated link</a></li>
+        <li class="list-num" data-key="1">1</li>
+        <li class="list-num" >2</li>
+        <li class="list-num" >3</li>
+        <li class="list-num" >4</li>
+        <li class="list-num" >5</li>
+        <li class="list-num" >6</li>
+        <li class="list-num" >7</li>
+        <li class="list-num" >8</li>
+        <li class="list-num" >9</li>
+        <li class="list-num" >10</li>
+        <li class="list-num" >11</li>
+        <li class="list-num" >12</li>
+        <li class="list-num" >13</li>
+        <li class="list-num" >14</li>
       </ul>
     </div>
   </div>
 </div>
+<div class="member-table">
+  <div class="member-head">
+    <span>姓名</span>
+    <span>學校</span>
+    <span>學系</span>
+  </div> 
+  <table id="member-content">
+  </table>
+</div>
+<div class="top">Top ▲ </div>
+<script src="/js/specifies/frontend/memberList.js"></script>
 
-
-
-<!-- <img src="/images/layout/2-3pastmember.png" alt="banner" id="img-responsive" width="100%"> -->
+<!-- 13th -->
+<!-- <img src="/images/layout/2-3pastmember.png" alt="banner" id="img-responsive" width="100%">
 <section class="bg-white" id="memberList">
 	<div class="container">
-
-
-
-
 		<div class="row col-md-10 col-md-offset-1">
       <ul class="nav nav-tabs" id="myTabs">
         <% for(var i = 0; i < datas.length; i++){ %>
         <li  class="<% if(i==0){ %> active <% } %>" ><a id="tab-<%= datas[i].id %>" href="#pane-<%= datas[i].id %>" data-toggle="tab"><%= datas[i].title %></a></li>
-
         <% } %>
       </ul>
     </div>
@@ -56,51 +70,7 @@
       </div>
     </div>
 	</div>
-
-<!-- xxxxxxxxx -->
-    <style type="text/css">
-      .newMenu>li{
-        display: block;
-        text-align: center;
-      }
-    </style>
-    <div class="navbar-collapse navbar-left">
-        <ul class="newMenu nav navbar-nav">
-          <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">13th<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="/13th-member">13th</a></li>
-              <li><a href="/12th-member">12th</a></li>
-              <li><a href="/11th-member">11th</a></li>
-              <li><a href="/10th-member">10th</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    <div class="row col-md-10 col-md-offset-1">
-      <ul class="nav nav-tabs" id="myTabs">
-        <% for(var i = 0; i < datas.length; i++){ %>
-        <li  class="<% if(i==0){ %> active <% } %>" ><a id="tab-<%= datas[i].id %>" href="#pane-<%= datas[i].id %>" data-toggle="tab"><%= datas[i].title %></a></li>
-
-        <% } %>
-      </ul>
-    </div>
-    <div class="row col-md-10 col-md-offset-1">
-      <div class="tab-content">
-        <% for(var i = 0; i < datas.length; i++){ %>
-        <div class="tab-pane <% if(i==0){ %> active <% } %>" id="pane-<%= datas[i].id %>">
-          <%- datas[i].content %>
-        </div>
-        <% } %>
-      </div>
-    </div>
-  </div>
-
-
-<!-- xxxxxxxxx -->
-
-
-</section>
+</section> -->
 
 <!--FOOTER-->
 <% include ../footer %>

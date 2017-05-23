@@ -36,7 +36,7 @@
 
 		<!-- q = 有幾個"關於資種"的faq  -->
 		<% var q = 8; %>
-			<% for(var i = 0; i < q; i++){ %>
+			<% for(var i = 0; i < datas.length; i++){ %>
 				<% if (datas[i] != null) { %>
 					<div class="col-md-6 col-md-offset-3" id="<%= datas[i].id %>">
 						<div class="faq">
