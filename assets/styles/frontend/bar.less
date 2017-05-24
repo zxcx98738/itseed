@@ -16,6 +16,7 @@
 	list-style-type: none;
 	font-size: 16px;
 	>li{
+		margin-top: 5px;
 		display: inline-block;
 		// display: block;
 		width: 75px;
@@ -98,44 +99,32 @@
 @media screen and (min-width: 0px) and (max-width: 767px) {
 	.bar{
 		padding-left: 5px;
-		li{
+		display: block;
+		>li{
 			display: block;
 			width: 100%;
-			text-align: center;
+			text-align: left;
+			a{
+				display: block;
+				font-size: 14pt;
+			}
+			ul{
+				// display: block;
+				width: 100%;
+				position: relative;
+			}
 		}
 	}
 }
-.bar{
-	// display: inline-block;
-	// ul{
-	// 	padding-left:0;
-	// 	li{
-	// 		display: inline-block;
-	// 		list-style-type: none;
-	// 		width: 60px;
-	// 		text-align: center;
-	// 		a{
-	// 			color:black;
-	// 		}
-	// 		a:hover{
-	// 			text-decoration: none;
-	// 			ul{
-	// 				display: block;
-	// 			}
-	// 		}
-	// 	}
-	// 	li>ul{
-	// 		display: none;
-	// 	}
-	// }
-}
+
 
 
 
 // footer
 footer{
 	a{
-		margin: 0 2%;
+		margin: 0 1%;
+		font-size: 13pt;
 	}
 	a:hover{
 		text-decoration: none;
@@ -155,11 +144,9 @@ footer{
 		width: 40px;
 	}
 	color: white;
-	font-size: 13pt;
 }
 .ntca-part{
 	color:white;
-	font-size: 13pt;
 	a{
 		display: inline;
 	}
@@ -170,5 +157,4 @@ footer{
 }
 .in-contact{
 	color:white;
-	font-size: 13pt;
 }
