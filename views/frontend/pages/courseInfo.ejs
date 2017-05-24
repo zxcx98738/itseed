@@ -19,7 +19,13 @@
           <div class="title-title">
             <span class="course-title"><%= datas[0].title %></span>
           </div>    
-          <h4 class="text-xs-center"><%= datas[0].speaker %><%= datas[0].speakerTitle %></h4>
+          <h4 class="text-xs-center">
+            <%= datas[0].speaker %>
+            <% if (datas[0].speakerTitle != ".") {%>
+              <%= datas[0].speakerTitle %>
+            <% } %>
+            
+          </h4>
 
           <div class="content-y-m">
             <h4>課程重點</h4>
