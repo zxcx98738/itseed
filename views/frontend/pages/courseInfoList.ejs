@@ -19,8 +19,8 @@
   <!-- <h2 class="course-head">講座課程</h2> -->
   <div class="row">
     <% for(var i = 0; i < datas.length; i++){ %>
-      <a href="<%= url + datas[i].id %>">
-        <div class="col-sm-6">
+      <div class="col-sm-6">
+        <a href="<%= url + datas[i].id %>">
           <div class="course-pic">
             <img src="<%= datas[i].photo %>">
           </div>
@@ -38,9 +38,9 @@
               </p>
             </div>
           </div>
-        </div>
+        </a>
+      </div>
         <!-- <span class="keep">(繼續閱讀)</span> -->
-      </a>
     <% } %>
     <!-- <div class="col-xs-12 text-xs-center top"><span class="top-box">回到最上</span></div> -->
   </div>
