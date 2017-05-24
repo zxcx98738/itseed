@@ -21,22 +21,22 @@
     <% for(var i = 0; i < datas.length; i++){ %>
       <a href="<%= url + datas[i].id %>">
         <div class="col-sm-6">
-          <img src="<%= datas[i].photo %>"></img>
-          <p class="course-title">
-            「<%= datas[i].title %>」
-          <!-- </p> -->
-          <!-- <p class="course-title"> -->
-            <br>
-            <span>講師介紹 - <%= datas[i].speaker %><%= datas[i].speakerTitle %></span>
-            <!-- <span>課程重點</span> -->
-          </p>
-          <p style="font-size: 13pt; margin-bottom: 0">課程重點</p>
-          <div class="course-content">
-            <p class="course-content-part">
-              <%- datas[i].content %>
-
+          <div class="course-pic">
+            <img src="<%= datas[i].photo %>">
+          </div>
+          <div>
+            <p class="course-title">
+              「<%= datas[i].title %>」
+              <br>
+              <span>講師介紹 - <%= datas[i].speaker %><%= datas[i].speakerTitle %></span>
+              <!-- <span>課程重點</span> -->
             </p>
-            
+            <p style="font-size: 13pt; margin-bottom: 0">課程重點</p>
+            <div class="course-content">
+              <p class="course-content-part">
+                <%- datas[i].content %>
+              </p>
+            </div>
           </div>
         </div>
         <!-- <span class="keep">(繼續閱讀)</span> -->

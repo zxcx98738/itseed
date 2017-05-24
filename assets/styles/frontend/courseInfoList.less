@@ -21,7 +21,9 @@
 	font-size: 34pt;
 }
 .course-top{
+	
 	padding: 30px 5% 40px 7%;
+
 	a{
 		color:black;
 		text-decoration: none;
@@ -35,6 +37,19 @@
 	}
 	.row{
 		margin: 0 20px;
+		.course-pic {
+		    position: relative;
+		    overflow: hidden;
+		    padding-bottom: 62%;
+			img {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+			}
+		}
 		div{
 			padding: 15px;
 			.course-title{
@@ -76,6 +91,18 @@
 	}
 	img{
 		width: 100%;
+	}
+	@media screen and (min-width: 1px) and (max-width: 500px) {
+		padding: 30px 0 40px 0;
+		.row{
+			margin:0;
+			.col-sm-6{
+				padding:0;
+				>div:nth-child(2){
+					padding:10px;
+				}
+			}
+		}
 	}
 }
 

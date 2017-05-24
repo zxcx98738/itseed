@@ -49,12 +49,14 @@ $(".list-num").click(function(){
 	if($(this).html()==14){
 		changeList(fourteen);
 	}
+	$(".list-th>span").html($(this).html());
 });
 
 function changeList( list ){
 	$("#member-content").html("");
 	for(var i=0;i<list.length;i++){
 		$("#member-content").append("<tr><td>"+list[i].name+"</td><td>"+list[i].school+"</td><td>"+list[i].dep+"</td></tr>");
+		
 	}
 }
 
@@ -2062,7 +2064,7 @@ var thirteen = [
 	},
 	{
 		name:'吳沛璇',       
-		school:'臺北大學', 
+		school:'臺灣大學', 
 		dep:' 資訊管理學系'
 	},
 	{
@@ -2077,7 +2079,7 @@ var thirteen = [
 	},
 	{
 		name:'賴冠廷',       
-		school:'臺北大學', 
+		school:'臺灣大學', 
 		dep:' 資訊管理學系'
 	},
 	{
