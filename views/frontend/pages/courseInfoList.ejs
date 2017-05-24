@@ -19,7 +19,7 @@
   <!-- <h2 class="course-head">講座課程</h2> -->
   <div class="row">
     <% for(var i = 0; i < datas.length; i++){ %>
-      <div class="col-sm-6">
+      <div class="col-sm-6 eachcourse">
         <a href="<%= url + datas[i].id %>">
           <div class="course-pic">
             <img src="<%= datas[i].photo %>">
@@ -31,16 +31,16 @@
               <span>講師：<%= datas[i].speaker %><!-- <%= datas[i].speakerTitle %> --></span>
               <!-- <span>課程重點</span> -->
             </p>
-            <p style="font-size: 13pt; margin-bottom: 0">課程重點</p>
             <div class="course-content">
               <p class="course-content-part">
-                <%- datas[i].content %>
+                課程介紹
+                <!-- <%- datas[i].content %> -->
+                <span style="float: right;">（繼續閱讀）</span>
               </p>
             </div>
           </div>
         </a>
       </div>
-        <!-- <span class="keep">(繼續閱讀)</span> -->
     <% } %>
     <!-- <div class="col-xs-12 text-xs-center top"><span class="top-box">回到最上</span></div> -->
   </div>
