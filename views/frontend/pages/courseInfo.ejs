@@ -16,9 +16,11 @@
           <img src="<%= datas[0].photo %>"></img>
         </div>
         <div class="project-content-style">
-          <div class="title-title">
-            <span class="course-title"><%= datas[0].title %></span>
-          </div>    
+          <div class="text-xs-center">
+            <div class="course-bor">
+              <span class="course-title"><b>- </b> <%= datas[0].title %> <b> -</b></span>
+            </div>    
+          </div>
           <h4 class="text-xs-center">
             <%= datas[0].speaker %>
             <% if (datas[0].speakerTitle != ".") {%>
@@ -29,6 +31,9 @@
 
           <div class="content-y-m">
             <%- datas[0].content %>
+          </div>
+          <div class="text-xs-center back-to-course">
+            <a href="/courseInfo">上一頁</a>
           </div>
         </div>
       </div>
