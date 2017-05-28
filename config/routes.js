@@ -343,6 +343,14 @@ module.exports.routes = {
     action: 'applicants'
   },
 
+  'get /.well-known/acme-challenge/BNRPlqdr0QzFXDsg6dAgO2Gjv3L9Woc5JOLieDlz2Rk':{
+    view: 'frontend/pages/.well-known/acme-challenge/BNRPlqdr0QzFXDsg6dAgO2Gjv3L9Woc5JOLieDlz2Rk',
+  },
+
+  'get /.well-known/acme-challenge/O2GOvBV-ZXbsKl7xTSx6AdYWboZfYVZqGc7_nnpAk_k':{
+    view: 'frontend/pages/.well-known/acme-challenge/O2GOvBV-ZXbsKl7xTSx6AdYWboZfYVZqGc7_nnpAk_k',
+  }
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
