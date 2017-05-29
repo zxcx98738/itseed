@@ -343,6 +343,9 @@ module.exports.routes = {
     action: 'applicants'
   },
 
+
+  // 'get /'
+
   'get /.well-known/acme-challenge/BNRPlqdr0QzFXDsg6dAgO2Gjv3L9Woc5JOLieDlz2Rk':{
     view: 'frontend/pages/.well-known/acme-challenge/BNRPlqdr0QzFXDsg6dAgO2Gjv3L9Woc5JOLieDlz2Rk',
   },

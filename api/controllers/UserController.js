@@ -452,21 +452,28 @@
                 }
                 else {
                     var f = 0; //判斷完成
-                    files.finished = 0
-                    if (files.registrationUT != null){
-                        f += 1;
-                        files.registrationUT = CmsService.formatTime(files.registrationUT);
+                    if( files.finished != 1){
+
+                        files.finished = 0;
+                        if (files.registrationUT != null){
+                            f += 1;
+                            files.registrationUT = CmsService.formatTime(files.registrationUT);
+                        }
+                        if (files.autobiographyUT != null){
+                            f += 1;
+                            files.autobiographyUT = CmsService.formatTime(files.autobiographyUT);
+                        }
                     }
-                    if (files.autobiographyUT != null){
-                        f += 1;
-                        files.autobiographyUT = CmsService.formatTime(files.autobiographyUT);
-                    }
-                    if (files.receiptUT != null){
-                        f += 1;
-                        files.receiptUT = CmsService.formatTime(files.receiptUT);
+                    // if (files.receiptUT != null){
+                    //     f += 1;
+                    //     files.receiptUT = CmsService.formatTime(files.receiptUT);
+                    // }
+                    if(f == 2){
+                        // files.allFiles = 1;
+                        files.finished = 1;
                     }
                     if(f == 3){
-                        files.finished = 1;
+                        files.allFiles = 2;
                     }
                     var startDate, endDate;
 

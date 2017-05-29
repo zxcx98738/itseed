@@ -42,6 +42,9 @@ module.exports = {
         receiptUT : {
           type: 'datetime'
         },
+        allFiles:{
+          type:'integer'
+        },
         //使用者
         user: {
           model:'User'

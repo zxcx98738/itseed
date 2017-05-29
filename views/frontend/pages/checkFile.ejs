@@ -1,0 +1,27 @@
+
+<div class="col-xs-12 check-data" style=" margin: 40px 0;">
+	<h4>資料繳交狀況</h4>
+	<% if (user.finished == 1){ %>
+		<div class="done">
+			<p>完成個人資料</p>
+		</div>
+	<% } else {%>
+		<div class="notdone">
+			<p>尚未完成個人資料</p>
+		</div>
+	<% } %>
+	<% if (disc.finished == 1){ %>
+		<div class="done">
+			<p>完成disc測驗</p>
+		</div>
+	<% } else {%>
+		<div class="notdone" >
+			<p>尚未完成disc測驗</p>
+		</div>
+	<% } %>
+	<% if (files.finished == 1){ %>
+		<div class="done">完成書面資料繳交</div>
+	<% } else { %>
+		<div class="notdone" >尚未完成書面資料繳交</div>
+	<% } %>
+</div>

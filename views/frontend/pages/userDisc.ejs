@@ -7,20 +7,21 @@
 <!--END HEADER-->
 
 <section class="bg-white" id="disc">
-	<div class="container">
-		<div class="row col-md-10 col-md-offset-1  ">
+	<div class="container disc-contain">
+		<div class="row col-md-10 col-md-offset-1 ">
 			<ul class="nav nav-tabs">
 				<li><a href="/profile">個人資料</a></li>
 				<li class="active"><a href="/disc">DISC測驗</a></li>
 				<li><a href="/files">書審資料</a></li>
 			</ul>
 		</div>
-		<div class="row col-md-10 col-md-offset-1 ">
 		<% if(disc.finished == 1) {%>
-			<span>恭喜您已經填完問測驗，此測驗不影響徵選結果</span>
+			<div class="row col-xs-12 disc-over">
+				<span>恭喜您已完成DISC測驗，此測驗不影響徵選結果</span>
+			</div>
 		<% }else {%>
-		<span>此測驗不影響徵選結果，請選擇一個比較符合你人格特質的敘述，不需要太多思考，憑直覺就可以了！</span>
-		<% } %>
+		<div class="row col-md-10 col-md-offset-1 ">
+			<span>此測驗不影響徵選結果，請選擇一個比較符合你人格特質的敘述，不需要太多思考，憑直覺就可以了！</span>
 		</div>
 		<div class="row col-md-11  col-md-offset-1 ">
 		
@@ -1254,12 +1255,16 @@
 				</div> -->
 				<div class="text-center">
 					<hr>
-					<% if(disc.finished != 1) {%>
-					<button type="submit"  class="btn-lg btn-green">完成測驗</button>
-					<% } %>
+					<button type="submit" class="btn-lg btn-green" style="color:white;" onclick="discF()">完成測驗</button>
+					<script type="text/javascript">
+						function discF(){
+							confirm("若確定完成，請按下確認鍵");
+						}
+					</script>
 				</div>
 			</form>
 		</div>
+		<% } %>
 	</div>
 </section>
 
