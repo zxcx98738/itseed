@@ -292,7 +292,10 @@
         };
         if(req.session.type == "A")
             value.th = req.body.th;
-
+        
+        if(value.name!=null && value.gender!=null && value.school!=null && value.grade!=null){
+            value.finished = 1 ;
+        }
         if (req.session.userid) {
             req.file("photo").upload({ dirname: sails.config.appPath+"/assets/files/"+req.session.userid}
                 , function (err, uploadedFiles) {
@@ -311,7 +314,7 @@
                         url = url.slice(start);
                         url = url.replace(/\\/g, "/");
                         value.photo = url;
-                        value.finished = 1 ;
+                        // value.finished = 1;
                     }
                     //非圖片檔
                     else {
