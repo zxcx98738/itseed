@@ -35,24 +35,29 @@
 <!-- 			<div style="background-color:#95989A;width:800px;height:1pt;margin:30px auto 30px auto"></div> -->
 		<% for(var i = 0; i < datas.length; i++){ %>
 			<% if (datas[i] != null) { %>
-				<div class="col-md-6 col-md-offset-3" id="<%= datas[i].id %>">
+				<div class="col-md-8 col-md-offset-2" id="<%= datas[i].id %>">
 					<div class="faq">
-						<a class="faq-heading faq-normal" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= datas[i].id %>" class="collapsed">
-							<%= datas[i].title %>
+						<a  data-toggle="collapse" data-parent="#accordion" href="#collapse<%= datas[i].id %>" class="collapsed">
+							<div class="faq-heading" style="text-decoration: none;">
+							<span><%= datas[i].title %></span>
 							<span class="triangle triangle-rotate"><img src="/images/layout/triangle.png"></span>
-						</a>
+							</div>
 						<div id="collapse<%= datas[i].id %>" class="faq-collapse collapse">
 							<div class="faq-body">
 								<%- datas[i].content %>
 							</div>
 						</div>
+						</a>
 					</div>
 				</div>
 			<% } %>
 		<% } %>
 
 	</div>
-	<div class="top">Top ▲ </div>
+	 <div class="top">
+    <div><img src="/images/index/top.png"></div>
+	    Top
+	 </div>
 	<script>
 		$(".top").click(function() {
     		$("html, body").animate({scrollTop: 0}, 500);
