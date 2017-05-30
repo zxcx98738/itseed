@@ -314,27 +314,69 @@
     },
     //個人資料
     profile: function (req, res) {
-        if(req.session.userid){
-            User.findOne({
-                id: req.session.userid
-            })
-            .exec(function(err, user) {
-                if(err){
-                    res.end(JSON.stringify(err));
+        //================ 報名狀態顯示顯示
+        UserFiles.findOne({
+            user: req.session.userid
+        })
+        .exec(function(err, files) {
+            if(err){
+                res.end(JSON.stringify(err));
+            }
+            else{
+                var f = 0;
+                if( files.finished != 1){
+                    files.finished = 0;
+                    if (files.registrationUT != null){
+                        f += 1;
+                        files.registrationUT = CmsService.formatTime(files.registrationUT);
+                    }
+                    if (files.autobiographyUT != null){
+                        f += 1;
+                        files.autobiographyUT = CmsService.formatTime(files.autobiographyUT);
+                    }
                 }
-                else{
-                    return res.view("frontend/pages/userProfile", {
-                        user: user
-                    });
+                if(f == 2){
+                    // files.allFiles = 1;
+                    files.finished = 1;
                 }
-            });
-        }
-        else{
-            return res.forbidden();
-        }  
+                //disc 顯示
+                UserDISC.findOne({  
+                    user: req.session.userid
+                })
+                .exec(function (err, disc) {
+                    if (err) {
+                        return res.end(JSON.stringify(err));
+                    }
+                    else {
+                        if(req.session.userid){
+                            User.findOne({
+                                id: req.session.userid
+                            })
+                            .exec(function(err, user) {
+                                if(err){
+                                    res.end(JSON.stringify(err));
+                                }
+                                else{
+                                    return res.view("frontend/pages/userProfile", {
+                                        user: user,
+                                        disc: disc,
+                                        files:files
+
+                                    });
+                                }
+                            });
+                        }
+                        else{
+                            return res.forbidden();
+                        }  
+                    }
+                });
+            }
+        });
     },
     //編輯個人資料
     editProfile: function (req, res) {
+        var t = 0;
         var value = {
             email: req.body.email,
             pwd: md5(req.body.pwd),
@@ -349,7 +391,8 @@
             value.th = req.body.th;
         
         if(value.name!=null && value.gender!=null && value.school!=null && value.grade!=null){
-            value.finished = 1 ;
+            // value.finished = 1 ;
+            t++;
         }
         if (req.session.userid) {
             req.file("photo").upload({ dirname: sails.config.appPath+"/assets/files/"+req.session.userid}
@@ -369,7 +412,11 @@
                         url = url.slice(start);
                         url = url.replace(/\\/g, "/");
                         value.photo = url;
+                        t++;
                         // value.finished = 1;
+                    }
+                    if(t==2){
+                        value.finished = 1;
                     }
                     //非圖片檔
                     else {
@@ -442,24 +489,64 @@
     },
     //DISC
     disc: function (req, res) {
-        if(req.session.userid){
-            UserDISC.findOne({
-                user: req.session.userid
-            })
-            .exec(function(err, disc) {
-                if(err){
-                    res.end(JSON.stringify(err));
-                }
-                else{
-                    return res.view("frontend/pages/userDisc", {
-                        disc: disc
-                    });
-                }
-            });
-        }
-        else{
-            return res.forbidden();
-        }  
+        //================ 報名狀態顯示顯示
+        User.findOne({
+            id: req.session.userid
+        })
+        .exec(function(err, user) {
+            if(err){
+                res.end(JSON.stringify(err));
+            }
+            else{
+                //disc 顯示
+                UserFiles.findOne({  
+                    user: req.session.userid
+                })
+                .exec(function (err, files) {
+                    if (err) {
+                        return res.end(JSON.stringify(err));
+                    }
+                    else {
+                        var f = 0;
+                        if( files.finished != 1){
+                            files.finished = 0;
+                            if (files.registrationUT != null){
+                                f += 1;
+                                files.registrationUT = CmsService.formatTime(files.registrationUT);
+                            }
+                            if (files.autobiographyUT != null){
+                                f += 1;
+                                files.autobiographyUT = CmsService.formatTime(files.autobiographyUT);
+                            }
+                        }
+                        if(f == 2){
+                            // files.allFiles = 1;
+                            files.finished = 1;
+                        }
+                        if(req.session.userid){
+                            UserDISC.findOne({
+                                user: req.session.userid
+                            })
+                            .exec(function(err, disc) {
+                                if(err){
+                                    res.end(JSON.stringify(err));
+                                }
+                                else{
+                                    return res.view("frontend/pages/userDisc", {
+                                        disc: disc,
+                                        files:files,
+                                        user:user
+                                    });
+                                }
+                            });
+                        }
+                        else{
+                            return res.forbidden();
+                        }
+                    }
+                });
+            }
+        });  
     },
     //編輯DISC
     editDisc: function (req, res) {

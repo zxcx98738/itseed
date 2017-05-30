@@ -7,10 +7,11 @@
 
 <!--END HEADER-->
 
+<% include ../pages/checkFile %>
 <section class="bg-white" id="files">
 	<div class="container">
-		<div class="row col-md-10 col-md-offset-1">
-			<ul class="nav nav-tabs">
+		<div id="profile-nav" class="row col-md-10 col-md-offset-1">
+			<ul class="nav nav-tabs profile-ul">
 				<li><a href="/profile">個人資料</a></li>
 				<li><a href="/disc">DISC測驗</a></li>
 				<li class="active"><a href="/files">書審資料</a></li>
@@ -27,7 +28,7 @@
 			</label>
 		</div>
 		<div class="row col-md-10 col-md-offset-1">
-			<label for="registration" class="col-sm-2 col-xs-12">書審題目</label>
+			<label for="registration" class="col-sm-2 col-xs-12">書審題目：</label>
 			<div class="col-sm-8 col-xs-12">
 				<p class="formatInfo">
 					最新版本:
@@ -66,14 +67,14 @@
 					<div class="text-xs-center">
 						<input type="file" name="registration">
 						<button type="button" class="btn btn-default">選擇檔案</button>
-						<button type="submit" style="color:white;" class="btn btn-green">送出</button>
+						<button type="submit" style="color:white;" class="btn btn-green">上傳</button>
 					</div>
 				<% } %>
 				</form>
 			</div>
 		</div>
 		<div class="row col-md-10 col-md-offset-1">
-			<label for="autobiography" class="col-sm-2 col-xs-12">基本資料</label>
+			<label for="autobiography" class="col-sm-2 col-xs-12">基本資料：</label>
 			<div class="col-sm-8 col-xs-12">
 				<p class="formatInfo">
 					最新版本:
@@ -131,7 +132,7 @@
 					<div class="text-xs-center">
 						<input type="file" name="autobiography">
 						<button type="button" class="btn btn-default">選擇檔案</button>
-						<button type="submit" style="color:white;" class="btn btn-green">送出</button>
+						<button type="submit" style="color:white;" class="btn btn-green">上傳</button>
 					</div>
 				<% } %>
 				</form>
@@ -240,12 +241,12 @@
 			<% } %>
 		</div> -->
 		<div class="row col-md-10 col-md-offset-1">
-			<label for="autobiography" class="col-sm-2 col-xs-12">貝殼集器</label>
+			<label for="autobiography" class="col-sm-2 col-xs-12">貝殼集器：</label>
 			<div class="col-sm-8 col-xs-12">
 				<p class="formatInfo">
 					完成資料填寫後，請至貝殼集器繳交100元報名費<br>
-					繳交完畢後預計於一個工作天內回覆<br>
-					<a href="https://itseed15.backme.tw/checkout/585/2936" target="_blank">
+					繳交完畢後預計於三個工作天內回覆<br>
+					<a style="display: block; text-align: center;" href="https://itseed15.backme.tw/checkout/585/2936" target="_blank">
 						<img src="/images/index/backme.png" class="backme">
 					</a>
 				</p>
@@ -256,7 +257,6 @@
 				</div>
 			</div>
 		</div>
-		<% include ../pages/checkFile %>
 	</div>
 </section>
 

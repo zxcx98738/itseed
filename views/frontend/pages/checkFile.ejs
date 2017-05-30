@@ -1,27 +1,38 @@
-
-<div class="col-xs-12 check-data" style=" margin: 40px 0;">
-	<h4>資料繳交狀況</h4>
-	<% if (user.finished == 1){ %>
-		<div class="done">
-			<p>完成個人資料</p>
-		</div>
-	<% } else {%>
-		<div class="notdone">
-			<p>尚未完成個人資料</p>
-		</div>
-	<% } %>
-	<% if (disc.finished == 1){ %>
-		<div class="done">
-			<p>完成disc測驗</p>
-		</div>
-	<% } else {%>
-		<div class="notdone" >
-			<p>尚未完成disc測驗</p>
-		</div>
-	<% } %>
-	<% if (files.finished == 1){ %>
-		<div class="done">完成書面資料</div>
-	<% } else { %>
-		<div class="notdone">尚未完成書面資料</div>
-	<% } %>
+<div class="container" style="margin: 0; padding: 0; width: 100%;">
+	<div class="col-xs-12 check-data" style=" margin: 40px 0;">
+		<h4>資料繳交狀況</h4>
+		<% if (user.finished == 1){ %>
+			<div class="first-file">
+				<span><b>1</b></span>
+				<p>完成個人資料</p>
+			</div>
+		<% } else { %>
+			<div >
+				<span><b>1</b></span>
+				<p>尚未完成個人資料</p>
+			</div>
+		<% } %>
+		<% if (disc.finished == 1){ %>
+			<div class="second-file">
+				<span><b>2</b></span>
+				<p>完成DISC測驗</p>
+			</div>
+		<% } else { %>
+			<div>
+				<span><b>2</b></span>
+				<p>尚未完成DISC測驗</p>
+			</div>
+		<% } %>
+		<% if (files.finished == 1 == 1){ %>
+			<div class="third-file">
+				<span><b>3</b></span>
+				<p>完成書面資料</p>
+			</div>
+		<% } else { %>
+			<div>
+				<span><b>2</b></span>
+				<p>尚未完成書面資料</p>
+			</div>
+		<% } %>
+	</div>
 </div>

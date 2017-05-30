@@ -9,7 +9,8 @@
 .disc-over{
 	text-align: center;
 	// min-height: 70vh;
-	
+	width: 100%;
+	margin:0 auto;
 	span{
 		font-size: 16pt;
 		display: inline-block;
@@ -50,34 +51,112 @@
 }
 .check-data{
 	text-align: center;
-	font-size: 15pt;
+	font-size: 14pt;
 	>div{
-		vertical-align: top;
-		padding: 36px 5px;
-		max-width: 200px;
-		height: 100px;
 		display: inline-block;
-		width: 30%;
+		width: 20%;
+		max-width: 200px;
+		vertical-align: top;
+		margin: 0 10px;
+		position: relative;
+		span{
+			position: absolute;
+			display: inline-block;
+			vertical-align: middle;
+			width: 40px;
+			height: 40px;
+			background-color: lightgrey;
+			border-radius: 100%;
+			left: 50%;
+			transform:translateX(-50%);
+			z-index: 10;
+			b{
+				display: inline-block;
+				height: 100%;
+				padding-top: 7px;
+				padding-right: 1px;
+				color:grey;
+			}
+		}
+		p{
+			position: relative;
+			top:30px;
+			border: 2px solid lightgrey;
+			padding:30px 5px;
+			color:grey;
+
+		}
 	}
-	.done{
-		border: 3px solid #027F67;
-		background-color: #78C8C1;
-		color: white;
+	.first-file{
+		span{
+			background-color:#ed6564;
+			b{
+				color:white;
+			}
+		}
+		p{
+			border: 2px solid #ed6564;
+			color:#ed6564;
+		}
 	}
-	.notdone{
-		border: 3px dotted grey;
-		background-color: lightgrey;
+	.second-file{
+		span{
+			background-color:#ffc313;
+			b{
+				color:white;
+			}
+		}
+		p{
+			border: 2px solid #ffc313;
+			color:#ffc313;
+		}
 	}
-	@media screen and (min-width: 1px) and (max-width: 600px) {
-		>div{
-			max-width: 100%;
-			text-align: center;
-			width: 80%;
-			margin-bottom: 10px;
+	.third-file{
+		span{
+			background-color:#68b4f7;
+			b{
+				color:white;
+			}
+		}
+		p{
+			border: 2px solid #68b4f7;
+			color:#68b4f7;
 		}
 	}
 }
 .backme{
 	width: 80%;
 	max-width: 370px;
+}
+
+#profile-nav{
+	.profile-ul{
+		.active{			
+			>a{
+				background-color: #78C8C1;
+				color:white;
+			}
+		}
+		li{
+			>a{
+				font-size: 13pt;
+				font-weight: 400;
+				border: 1px solid lightgrey;
+				border-bottom-width: 0;
+				color:grey;
+			}
+			>a:hover{
+				background-color: lightgrey;
+				color:white;
+			}
+		}
+	}
+}
+.set-profile{
+	padding-right: 20px;
+}
+@media screen and (min-width: 1px) and (max-width: 768px) {
+	.set-profile{
+		padding: 20px;
+	}
 }

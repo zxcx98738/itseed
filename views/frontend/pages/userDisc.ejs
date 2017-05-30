@@ -6,10 +6,11 @@
 <% include ../header %>
 <!--END HEADER-->
 
+<% include ../pages/checkFile %>
 <section class="bg-white" id="disc">
 	<div class="container disc-contain">
-		<div class="row col-md-10 col-md-offset-1 ">
-			<ul class="nav nav-tabs">
+		<div id="profile-nav"  class="row col-md-10 col-md-offset-1">
+			<ul class="nav nav-tabs profile-ul">
 				<li><a href="/profile">個人資料</a></li>
 				<li class="active"><a href="/disc">DISC測驗</a></li>
 				<li><a href="/files">書審資料</a></li>
@@ -253,7 +254,7 @@
 					<% if (disc.q6 == 3) { %>
 						<input type="radio" name="q6" value="3" required="" checked>why，為何做? 重品質。
 					<% } else { %>
-						<input type="radio" name="q6" value="3" required="">why，為何做? 重品質。
+						<input type="radio" name="q6" value="3" required="">how，怎麼做? 重執行。
 					<% } %>
 					</label>	
 					<label class="col-sm-1 col-xs-1"></label>
