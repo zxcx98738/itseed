@@ -35,25 +35,25 @@ module.exports.routes = {
 
   // email
 
-  '/re': {
-    view: 'frontend/pages/re'
-  },
-  'post /rem': {
-    controller: 'User',
-    action: 'rem'
-  },
-  'post /register': {
-    controller: 'User',
-    action: 'register'    
-  },
-  '/register/:email': {
-    controller: 'User',
-    action: 'reg'    
-  },
-  '/register': {
-     controller: 'User',
-     action: 'reg' 
-  },
+  // '/re': {
+  //   view: 'frontend/pages/re'
+  // },
+  // 'post /rem': {
+  //   controller: 'User',
+  //   action: 'rem'
+  // },
+  // 'post /register': {
+  //   controller: 'User',
+  //   action: 'register'    
+  // },
+  // '/register/:email': {
+  //   controller: 'User',
+  //   action: 'reg'    
+  // },
+  // '/register': {
+  //    controller: 'User',
+  //    action: 'reg' 
+  // },
   
   /*前台-一般頁面*/
   '/': {
@@ -204,14 +204,14 @@ module.exports.routes = {
     action: 'checkPwd'    
   },
 
-  // 'get /register': {
-  //   view: 'frontend/pages/register'    
-  // },
+  'get /register': {
+    view: 'frontend/pages/register'    
+  },
 
-  // 'post /register': {
-  //   controller: 'User',
-  //   action: 'register'    
-  // },
+  'post /register': {
+    controller: 'User',
+    action: 'register'    
+  },
 
 
   'get /login': {
