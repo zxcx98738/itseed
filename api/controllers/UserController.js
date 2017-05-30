@@ -17,7 +17,62 @@
     },
 
     /*前台*/
+    
+    // email驗證
 
+    rem: function (req, res) {
+        // var q = req.session.userid
+        // if(req.session.userid){
+            var userregister ={
+
+            mailmd5 : md5(req.body.email),
+            email : req.body.email
+            }
+            emailV.findOne({
+                mailmd5: md5(req.body.email)
+            })
+            .exec(function (err , emailvo) {
+                if (err) {
+                    
+                    res.end(JSON.stringify(err));
+                }else if(emailvo){
+                   Mailer.sendWelcomeMail(userregister);
+                   return res.view("frontend/pages/rem" , { emailV:userregister });
+                }else{
+                    emailV.create(userregister)
+                    .exec(function(err, emailV) {
+                        if(err){
+                            res.end(JSON.stringify(err));
+                        }
+                        else{
+                            Mailer.sendWelcomeMail(userregister);
+                            return res.view("frontend/pages/rem" , { emailV:emailV });
+                        }
+                    });
+                }
+            });
+
+            
+
+    },
+    reg:function (req,res){
+        emailV.findOne({
+            mailmd5: req.param('email')
+        })
+        .exec(function (err , emailV) {
+            if (err) {
+                res.end(JSON.stringify(err));
+                
+            }else if(emailV.mailmd5 == null){
+                return res.view("frontend/pages/register" ,{emailV : null});
+            }else{
+                return res.view("frontend/pages/register", {
+                    emailV:emailV
+                });
+            
+            }
+        });
+    },
     //登入頁
     loginPage: function (req, res) {
         //判斷系統開放與否

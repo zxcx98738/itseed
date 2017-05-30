@@ -22,7 +22,7 @@ $(function(){
   		},
   		pwd: {
   			required: true,
-  			minlength: 6
+  			minlength: 8
   		},
   		pwd_confirmation: {
   			equalTo : '#pwd'
@@ -34,4 +34,8 @@ $(function(){
   		}
   	}
   });
+  // $("#resend").click(function(){
+  //   window.history.forward(-1);　
+  // });
 });
+

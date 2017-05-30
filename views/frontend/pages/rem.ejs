@@ -1,0 +1,28 @@
+<script src="/js/specifies/jquery.validate.min.js"></script>
+<script src="/js/specifies/messages_zh_TW.min.js"></script>
+<!-- <script src="/js/specifies/frontend/login.js"></script> -->
+<script src="/js/specifies/frontend/register.js"></script>
+
+<% include ../header %>
+<div class="login-part" style="margin-top: 100px;">
+	<div class="title-title">
+	    <span class="main-color-br">- 寄驗證信 -</span> 
+	</div>
+	<div class="login-main">
+		<form action="/rem" method="post">
+		<div>
+        <span><img src="/images/layout/ACCOUNT.png"> 信箱：</span>
+        <input type="label" readonly="readonly" name="email" value="<%=emailV.email%>">
+        <br>
+        <p>信件已寄出，請到信箱收信</p>
+        <br>
+        <br>
+		<input class="login-btn" id="resend" type="submit" value="重新寄出">
+		</form>
+	    </div>
+	</div>
+</div>
+
+<% include ../footer %>
+
+
