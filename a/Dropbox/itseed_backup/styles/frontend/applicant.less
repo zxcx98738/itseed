@@ -1,0 +1,162 @@
+.disc-contain{
+	min-height: calc(~"100vh - 250px");
+}
+@media screen and (min-width: 1px) and (max-width: 370px) {
+	.disc-contain{
+		min-height: calc(~"100vh - 300px");
+	}
+}
+.disc-over{
+	text-align: center;
+	// min-height: 70vh;
+	width: 100%;
+	margin:0 auto;
+	span{
+		font-size: 16pt;
+		display: inline-block;
+		border: 3px solid #027F67;
+		background-color: #78C8C1;
+		color:white;
+		// #78C8C1;
+		margin:50px;
+		padding:50px;
+	}
+}
+.applicant-file{
+	padding-left: 30px;
+	margin-bottom: 20px;
+    padding: 20px;
+    background-color: white;
+    border-left: 5px solid #eee;
+    border-color: @light-green;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+	// height: 500px;
+	>div{
+		margin-bottom: 10px;
+		ol{
+			margin-bottom: 0;
+		}
+		span{
+			display: inline-block;
+			width: 15%;
+			// text-align: center;
+			font-weight: 700;
+			vertical-align: top;
+		}
+		div{
+			display: inline-block;
+			width: 82%;
+		}
+	}
+}
+.check-data{
+	text-align: center;
+	font-size: 14pt;
+	>div{
+		display: inline-block;
+		width: 20%;
+		max-width: 200px;
+		vertical-align: top;
+		margin: 0 10px;
+		position: relative;
+		span{
+			position: absolute;
+			display: inline-block;
+			vertical-align: middle;
+			width: 40px;
+			height: 40px;
+			background-color: lightgrey;
+			border-radius: 100%;
+			left: 50%;
+			transform:translateX(-50%);
+			z-index: 10;
+			b{
+				display: inline-block;
+				height: 100%;
+				padding-top: 7px;
+				padding-right: 1px;
+				color:grey;
+			}
+		}
+		p{
+			position: relative;
+			top:30px;
+			border: 2px solid lightgrey;
+			padding:30px 5px;
+			color:grey;
+
+		}
+	}
+	.first-file{
+		span{
+			background-color:#ed6564;
+			b{
+				color:white;
+			}
+		}
+		p{
+			border: 2px solid #ed6564;
+			color:#ed6564;
+		}
+	}
+	.second-file{
+		span{
+			background-color:#ffc313;
+			b{
+				color:white;
+			}
+		}
+		p{
+			border: 2px solid #ffc313;
+			color:#ffc313;
+		}
+	}
+	.third-file{
+		span{
+			background-color:#68b4f7;
+			b{
+				color:white;
+			}
+		}
+		p{
+			border: 2px solid #68b4f7;
+			color:#68b4f7;
+		}
+	}
+}
+.backme{
+	width: 80%;
+	max-width: 370px;
+}
+
+#profile-nav{
+	.profile-ul{
+		.active{			
+			>a{
+				background-color: #78C8C1;
+				color:white;
+			}
+		}
+		li{
+			>a{
+				font-size: 13pt;
+				font-weight: 400;
+				border: 1px solid lightgrey;
+				border-bottom-width: 0;
+				color:grey;
+			}
+			>a:hover{
+				background-color: lightgrey;
+				color:white;
+			}
+		}
+	}
+}
+.set-profile{
+	padding-right: 20px;
+}
+@media screen and (min-width: 1px) and (max-width: 768px) {
+	.set-profile{
+		padding: 20px;
+	}
+}
