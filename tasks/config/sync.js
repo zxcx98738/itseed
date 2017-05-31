@@ -20,6 +20,21 @@ module.exports = function(grunt) {
 				src: ['**/*.!(coffee)'],
 				dest: '.tmp/public'
 			}]
+		},
+		files_dropbox: {
+			files: [{
+				cwd: './assets',
+				src: ['**/*.!(coffee)'],
+				dest: '~/Dropbox/itseed_backup'
+			}]
+		},
+		db_dropbox: {
+			files: [{
+				cwd: '.tmp/',
+				src: ['localDiskDb.db'],
+				dest: '~/Dropbox/itseed_DB_backup'
+			},
+			]
 		}
 	});
 
