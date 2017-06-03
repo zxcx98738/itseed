@@ -584,9 +584,44 @@
             return res.forbidden();
         }  
     },
+
+    confirm:function(req,res){
+        var value ={};
+        if (req.session.userid) {
+            UserFiles.findOne({
+                user: req.session.userid
+            })
+            .exec(function (err, files) {
+                if (err) {
+                    res.end(JSON.stringify(err));
+                }
+                else {
+                    
+                    if(files.finished==1){
+                        files.confirm = 1;
+                        value.confirm =1;
+                    }
+                    UserFiles.update({user: req.session.userid}, value)
+                    .exec(function (err, datas) {
+                        if(err){
+                            res.end(JSON.stringify(err));
+                        }else{
+                            res.redirect("/files");
+                        }
+                    });
+                    
+
+                    
+                }
+            });
+        }
+    },
+
+    
+    
     //報名資料
     files: function (req, res) {
-        
+        var value = {};
         if (req.session.userid) {
             UserFiles.findOne({
                 user: req.session.userid
@@ -597,6 +632,7 @@
                 }
                 else {
                     var f = 0; //判斷完成
+
                     if( files.finished != 1){
 
                         files.finished = 0;
@@ -616,10 +652,16 @@
                     if(f == 2){
                         // files.allFiles = 1;
                         files.finished = 1;
+                        value.finished = 1;
                     }
-                    if(f == 3){
-                        files.allFiles = 2;
-                    }
+
+                    UserFiles.update({user: req.session.userid}, value)
+                    .exec(function (err, datas) {
+                        if(err){
+                            res.end(JSON.stringify(err));
+                        }
+                    });
+
                     var startDate, endDate;
 
                     //判斷系統開放與否
@@ -1055,6 +1097,10 @@
    
     //報名者資料
     applicants: function (req, res) {
+        // if (req.session.userid)
+        if(req.session.type != "A"){
+            return res.forbidden();
+        }
         if (req.session.userid) {
             var th;
 

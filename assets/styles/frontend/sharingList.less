@@ -1,4 +1,112 @@
+@school:rgb(255,195,19);
+@leader:rgb(83,194,196);
+@miwan:rgb(84,199,138);
+@graduate:rgb(81,158,247);
+.leader-color{
+	color: @leader;
+}
+.share-page{
+	margin: 0 5%;
+}
+.share-but-part{
+	text-align: center;
+	padding: 0 auto;
+	margin: 40px auto;
+	.share-but{
+		display: inline-block;
+		height: 40px;
+		line-height: 36px;
+		max-width: 200px;
+		padding-right:20px;
+		padding-left:20px;
+		border-radius: 20px;
+		font-size: 14pt;
+	}
+	.share-but:nth-child(1){
+		// background-color: @school;
+		border: 2px solid @school;
+	}
+	.share-but:nth-child(2){
+		// background-color: @leader;
+		border: 2px solid @leader;
+	}
+	.share-but:nth-child(3){
+		// background-color: @miwan;
+		border: 2px solid @miwan;
+	}
+	.share-but:nth-child(4){
+		// background-color: @graduate;
+		border: 2px solid @graduate;
+	}
+}
+.share-part{
+	>div{
+		text-align: center;
+		padding:10px;
+		>div{
+			padding:11px;
+			background-color: @school;
+			position: relative;
+			img{
+				width: 100%;
+			}
+			.share-title{
+				background-color: white;
+				width: 100%;
+				margin-top:11px;
+				padding: 4px 0;
+				h4{
+					font-size: 13pt;
+				}
+				h5{
+					font-size: 11pt;
+				}
+			}
+			.share-active{
+				color:white;
+				background-color: @school;
+				h4{
+					font-size: 13pt;
+				}
+				h5{
+					font-size: 11pt;
+				}
+			}
+		}
+		.share-triangle{
+			position: absolute;
+			bottom: -40px;
+			left: 50%;
+			transform:translateX(-50%);
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 0 25px 30px 25px;
+			border-color: transparent transparent rgb(118,121,123) transparent;
+			background-color: transparent;
+			padding:0;
+		}
+		.sharing-box{
+			background-color: transparent;
+			padding:0;
+			margin-top: 15px;
+			.sharing-word{
+				background-color: rgb(118,121,123);
+				color:white;
+				text-align: left;
+				padding:10px 5%;
+			}
+		}
 
+	}
+}
+
+
+
+
+
+
+// 13th
 section#sharingList {
 	padding-right: 5%;
 	padding-left: 7%;

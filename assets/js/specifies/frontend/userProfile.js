@@ -124,4 +124,19 @@ $(function(){
   		},
   	}
   });
+  console.log("aa");
+  var pass;
+  $(".pwd-btn").click(function(){
+    $(".password-hide").css('display','none');
+    $(".password-part").css('display','block');
+    pass = $("#pwd").val();
+    console.log(pass);
+  });
+
+  $(".pwd-stop-btn").click(function(){
+    $(".password-hide").css('display','block');
+    $(".password-part").css('display','none');
+    $("#pwd").val(pass);
+    $("#conpwd").val(pass);
+  });
 });

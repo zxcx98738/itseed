@@ -31,10 +31,33 @@
         <span>尚未註冊嗎？</span>
         <a class="register" href="/register">立即註冊新帳號</a>
         <!-- <a class="register" href="/re">立即註冊新帳號</a> -->
+        <br><br>
+        <a href="" data-toggle="modal" data-target="#myModal">忘記密碼</a>
       </div>
     <% } %>
   </div>
 </div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+
+    <div class="modal-content ask-question">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">忘記密碼</h4>
+      </div>
+      <div class="modal-body ask-question" style="width: 400px;">
+        如果您不幸遺失了密碼，請將您的帳號寄至ITseed信箱(itseed15th@gmail.com)並告知遇到的狀況，將由專人為您處理
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="container" id="login" style="display: none;">
   <div class="window">
     <img src="images/layout/logo.png">

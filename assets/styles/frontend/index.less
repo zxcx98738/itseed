@@ -67,6 +67,7 @@
         font-size: 16pt;
     }
 }
+
 .d-line{
     margin-top:0;
     display: block;
@@ -97,6 +98,29 @@
         }
         >p{
             font-size: 12pt;
+        }
+    }
+}
+@media screen and (min-width: 1px) and (max-width: 550px) {
+    .container-no-pad{
+        padding:0;
+    }
+    .threeReason{
+        margin-right:0;
+        margin-left:0;
+        padding: 0px;
+        >div{
+            padding: 0;
+            >div{
+                height: 120px;
+                width: 120px;
+                img{
+                    width: 40%;
+                }
+                p{
+                    font-size: 12pt;
+                }
+            }
         }
     }
 }
@@ -131,6 +155,8 @@
 
 @media screen and (min-width: 1px) and (max-width: 750px) {
     .whatyouget{
+        margin: auto 5%;
+        background: url(/images/layout/inbg.png);
         p{
             span{
                 display: inline;
@@ -236,7 +262,16 @@ section#index {
   margin-bottom: 40px;
   p{
     font-size: 14pt;
+    line-height: 32px;
+    margin-bottom: 0;
   }
+}
+@media screen and (min-width: 1px) and (max-width: 550px) {
+    .fourdiv{
+        p{
+            font-size: 12.5pt;
+        }
+    }
 }
 
 .fourtitle{

@@ -253,7 +253,10 @@ module.exports.routes = {
     controller: 'User',
     action: 'files'    
   },
-
+  '/confirm': {
+    controller: 'User',
+    action: 'confirm'    
+  },
   '/uploadReg': {
     controller: 'User',
     action: 'uploadReg'

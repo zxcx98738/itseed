@@ -14,9 +14,16 @@
 			<ul class="nav nav-tabs profile-ul">
 				<li><a href="/profile">個人資料</a></li>
 				<li><a href="/disc">DISC測驗</a></li>
+				<!-- <%=files.confirm%> -->
+				<!-- <%=files.finished%> -->
 				<li class="active"><a href="/files">書審資料</a></li>
 			</ul>
 		</div>
+		<% if(files.confirm == 1) {%>
+			<div class="row col-xs-12 disc-over">
+				<span>恭喜您已完成書審資料繳交</span>
+			</div>
+		<% }else {%>
 		<div class="row col-md-10 col-md-offset-1">
 <!-- 			<label class="col-sm-2 col-xs-12">
 			<a class="btn btn-green" href="/regfile" target="_blank">繳交說明</a>
@@ -56,9 +63,13 @@
 					<p class="formatInfo">
 						完成下載培訓計畫報名表，並填寫完畢後<br>
 						請以<b class="red">「pdf」</b>檔案格式上傳報名表。上傳限制大小為<b class="red"> 5MB</b><br>
-						檔案命名規則請依照此格式撰寫
+						
+						檔案命名規則請依此格式撰寫
 						<b>「姓名_第十五屆資訊種子書審題目」</b><br>
 						(如：報名者姓名為 陳資種 ，則將檔案命名為<b>陳資種_第十五屆資訊種子書審題目</b>)
+						<br><br>
+						上傳方式：點選「選擇檔案」，完成選取檔案後，點選「上傳」<br>
+						※ 可以重複上傳檔案<br>
 						<!-- <b>「英文名子_Registration」</b>。<br> -->
 						<!-- (如：報名者林資種的英文翻譯名字為Zi-Zhong,Lin，則將檔案命名為 -->
 						<!-- 「ZiZhongLin_Registration」)。 -->
@@ -67,7 +78,7 @@
 					<div class="text-xs-center">
 						<input type="file" name="registration">
 						<button type="button" class="btn btn-default">選擇檔案</button>
-						<button type="submit" style="color:white;" class="btn btn-green">上傳</button>
+						<button type="submit" style="color:white;" class="btn btn-main-file">上傳</button>
 					</div>
 				<% } %>
 				</form>
@@ -108,7 +119,7 @@
 						<div>
 						<ol>
 							<li>一頁以內</li>
-							<li>建議內含基本資料，姓名、聯絡方式、系級、照片、學歷、經歷、專長能力</li>
+							<li>建議內含基本資料，姓名、聯絡方式、系級（未來一學年）、照片、學歷、經歷、專長能力</li>
 							<li>其他有利審查資料，此為選擇繳交</li>
 						</ol>
 						</div>
@@ -123,21 +134,40 @@
 					</div>
 					<!-- <p class="formatInfo"> -->
 						
-						檔案命名規則請依照此格式撰寫<b>「姓名_基本資料」</b>。<br>
+						檔案命名規則請依此格式撰寫<b>「姓名_基本資料」</b>。<br>
 						(如：報名者 陳資種，則將檔案命名為
 						<b>「陳資種_基本資料」</b>)。
+						<br><br>
+						上傳方式：點選「選擇檔案」，完成選取檔案後，點選「上傳」<br>
+						※ 可以重複上傳檔案<br>
 					<!-- </p> -->
 				</div>
 				<% if (system == "open") {%>
 					<div class="text-xs-center">
 						<input type="file" name="autobiography">
 						<button type="button" class="btn btn-default">選擇檔案</button>
-						<button type="submit" style="color:white;" class="btn btn-green">上傳</button>
+						<button type="submit" style="color:white;" class="btn btn-main-file">上傳</button>
 					</div>
 				<% } %>
 				</form>
+				
+			</div>
+			<div class="col-xs-12 confirm-btn">
+				<form action="/confirm" method="post">
+					<div class="text-xs-center">
+						<p>當完成撰寫並上傳書審題目和基本資料</p>
+						<p>且確定不再更改後，請按下此按鈕完成繳交的動作</p>
+						<button type="submit" class="btn-lg btn-green" style="color:white" onclick="fileF()">完成書審資料</button>
+					</div>
+				</form>
+				<script type="text/javascript">
+					function fileF(){
+						confirm("若確定完成書審資料，請按下確定鍵\n（按下確定鍵後，即無法修改）");
+					}
+				</script>
 			</div>
 		</div>
+		<% } %>
 
 <!-- 		<div class="row col-md-10 col-md-offset-1">
 			<label for="receipt" class="col-sm-2 col-xs-12">匯款證明</label>
@@ -240,12 +270,14 @@
 				</div>
 			<% } %>
 		</div> -->
+		<hr>
 		<div class="row col-md-10 col-md-offset-1">
 			<label for="autobiography" class="col-sm-2 col-xs-12">貝殼集器：</label>
 			<div class="col-sm-8 col-xs-12">
 				<p class="formatInfo">
 					完成資料填寫後，請至貝殼集器繳交100元報名費<br>
 					繳交完畢後預計於三個工作天內回覆<br>
+					若三天內未收到回覆，請來信至itseed15th@gmail.com詢問<br>
 					<a style="display: block; text-align: center;" href="https://itseed15.backme.tw/checkout/585/2936" target="_blank">
 						<img src="/images/index/backme.png" class="backme">
 					</a>

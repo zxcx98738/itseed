@@ -18,6 +18,9 @@ module.exports = {
         finished : {
           type: 'integer'
         },
+        confirm : {
+          type: 'integer'
+        },
         //報名表
         registration : {
           type: 'string'

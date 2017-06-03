@@ -23,9 +23,10 @@
                         <th class="col-md-1">系  級</th>
                         <th class="col-md-2">信  箱</th>
                         <th class="col-md-1">電  話</th>
+                        <th class="col-md-1">推薦人</th>
                         <th class="col-md-1">報名表</th>
                         <th class="col-md-1">自  傳</th>
-                        <th class="col-md-1">匯款證明</th>
+                        <!-- <th class="col-md-1">匯款證明</th> -->
                         <th class="col-md-1">DISC</th>
                     </tr>
                 </thead>
@@ -39,39 +40,77 @@
                             <img src="<%= users[i].photo %>" class="img-responsive">
                         </td>
                         <td>
-                            <%= users[i].name %>
+                            <% if (users[i].name == null) { %>
+                                <span>.</span>
+                            <% } else { %>
+                                <%= users[i].name %>
+                            <% } %>
+                            
                         </td>
                         <td>
-                            <%= users[i].school %>
+                            <% if (users[i].school == null) { %>
+                                <span>.</span>
+                            <% } else { %>
+                                <%= users[i].school %>
+                            <% } %>
                         </td>
                         <td>
-                            <%= users[i].grade %>
+                            <% if (users[i].grade == null) { %>
+                                <span>.</span>
+                            <% } else { %>
+                                <%= users[i].grade %>
+                            <% } %>
                         </td>
                         <td>
                             <a class="email" href="https://mail.google.com/mail/?view=cm&fs=1&to=<%= users[i].email %>" target="_blank"><%= users[i].email %></a>
                         </td>
                         <td>
-                            <%= users[i].phone %>
+                            <% if (users[i].phone == null) { %>
+                                <span>.</span>
+                            <% } else { %>
+                                <%= users[i].phone %>
+                            <% } %>
                         </td>
                         <td>
-                        <% if (users[i].files.registration == null) { %>
-                            <b class="red">未上傳</b>
-                        <% } else { %>
-                            <a href="<%= users[i].files.registration %>" target="_blank">
-                                <%= users[i].files.registrationUT %>
-                            </a>
-                        <% } %>
+                            <% if (users[i].reference == null) { %>
+                                <span>無</span>
+                            <% } else { %>
+                                <%= users[i].reference%>
+                            <% } %>
                         </td>
-                        <td>
-                        <% if (users[i].files.autobiography == null) { %>
-                            <b class="red">未上傳</b>
-                        <% } else { %>
-                            <a href="<%= users[i].files.autobiography %>" target="_blank">
-                                <%= users[i].files.autobiographyUT %>
-                            </a>
-                        <% } %> 
-                        </td>
-                        <td>
+                        <% if (users[i].files.confirm == 1) { %>
+                            <td style="background-color: #FFDDAA;">
+                                <a href="<%= users[i].files.registration %>" target="_blank">
+                                    <%= users[i].files.registrationUT %>
+                                </a>                                
+                            </td>
+                            <td style="background-color: #FFDDAA;">
+                                <a href="<%= users[i].files.autobiography %>" target="_blank">
+                                    <%= users[i].files.autobiographyUT %>
+                                </a>                               
+                            </td>
+                        <% } else {%>
+                            <td>
+                                <% if (users[i].files.registration == null) { %>
+                                    <b class="red">未上傳</b>
+                                <% } else { %>
+                                    <a href="<%= users[i].files.registration %>" target="_blank">
+                                        <%= users[i].files.registrationUT %>
+                                    </a>
+                                <% } %>
+                            </td>
+                            <td>
+                            <% if (users[i].files.autobiography == null) { %>
+                                <b class="red">未上傳</b>
+                            <% } else { %>
+                                <a href="<%= users[i].files.autobiography %>" target="_blank">
+                                    <%= users[i].files.autobiographyUT %>
+                                </a>
+                            <% } %> 
+                            </td>
+                        <% }%>
+
+                        <!-- <td>
                         <% if (users[i].files.receipt == null) { %>
                             <b class="red">未上傳</b>
                         <% } else { %>
@@ -79,9 +118,17 @@
                                 <%= users[i].files.receiptUT %>
                             </a>
                         <% } %>
-                        </td>
-                        <td>
-                            <%= users[i].disc.q1 %>
+                        </td> -->
+
+                            <% if (users[i].disc.q1 == null) { %>
+                                <td>
+                                    <span>未填寫</span>
+                                </td>
+                            <% } else { %>
+                                <td style="background-color: #FFDDAA;">
+                                    <%= users[i].disc.q1 %>
+                                </td>
+                            <% } %>
                         </td>
                     </tr>
                 <% } %>

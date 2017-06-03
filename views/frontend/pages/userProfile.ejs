@@ -7,6 +7,11 @@
 <!--END HEADER-->
 
 <% include ../pages/checkFile %>
+<style type="text/css">
+	.darkred{
+		color: #FF3333;
+	}
+</style>
 <section class="bg-white" id="profile">
 	<div class="container">
 		<div id="profile-nav" class="row col-md-10 col-md-offset-1">
@@ -18,30 +23,45 @@
 			<% } %>
 			</ul>
 		</div>
+		<div class="col-xs-12 col-md-10 col-md-offset-1">
+			<p style="font-size: 13pt; height: 40px;">有標注 <b class="darkred">*</b> 為必填資料</p>
+		</div>
 		<div class="row col-md-10 col-md-offset-1">
 			<form action="/editProfile" method="post" enctype="multipart/form-data" class="form-horizontal">
 				<div class="col-sm-9 col-xs-12 set-profile">
 					<div class="form-group">
 						<label class="col-sm-2 col-xs-12 control-label" for="email">帳號：</label>
 						<div class="col-sm-10 col-xs-12">
-							<input type="text" name="email" readonly="readonly"  class="btn-block" value="<%= user.email %>">
+							<input type="text" name="email" readonly="readonly" class="btn-block" value="<%= user.email %>">
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group password-hide">
+						<label class="col-sm-2 col-xs-12 control-label">密碼：</label>
+						<div  class="col-sm-10 col-xs-12">
+							<span class="btn btn-default pwd-btn">更改密碼</span>
+						</div>
+					</div>
+					<div class="form-group password-part">
 						<label class="col-sm-2 col-xs-12 control-label" for="pwd">密碼：</label>
 						<div class="col-sm-10 col-xs-12">
 							<input type="password" name="pwd" class="btn-block" id="pwd" value="<%= req.session.pwd %>">
 						</div>
 					</div>
-					<div class="form-group">
+					<div class="form-group password-part">
 						<label class="col-sm-2 col-xs-12 control-label" for="pwd_confirmation">確認密碼：</label>
 						<div class="col-sm-10 col-xs-12">
-							<input type="password" name="pwd_confirmation" class="btn-block" value="<%= req.session.pwd %>">
+							<input type="password" name="pwd_confirmation" id="conpwd" class="btn-block" value="<%= req.session.pwd %>">
+						</div>
+					</div>
+					<div class="form-group password-part">
+						<div class="col-xs-12" style="text-align: right;">
+							<button type="submit" class="btn btn-green" style="color:white;">確認</button>
+							<span class="btn btn-default pwd-stop-btn">取消</span>
 						</div>
 					</div>
 				<% if(req.session.type == "U"){ %>
 					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" for="phone">連絡電話：</label>
+						<label class="col-sm-2 col-xs-12 control-label" for="phone">連絡電話<b class="darkred">*</b>：</label>
 						<div class="col-sm-10 col-xs-12">
 						<% if(user.phone == null){%>
 							<input type="text" name="phone" class="btn-block" id="phone" placeholder="ex: 0800090000" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
@@ -64,7 +84,7 @@
 					</div>
 				<% } %>
 					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" for="name">真實姓名：</label>
+						<label class="col-sm-2 col-xs-12 control-label" for="name">真實姓名<b class="darkred">*</b>：</label>
 						<div class="col-sm-10 col-xs-12">
 						<% if(user.name == null){%>
 							<input type="text" name="name" class="btn-block" id="name" placeholder="ex: 林資種">
@@ -75,7 +95,7 @@
 					</div>
 				<% if(req.session.type == "U" || req.session.type == "A" ){ %>
 					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" class="control-label">性別：</label>
+						<label class="col-sm-2 col-xs-12 control-label" class="control-label">性別<b class="darkred">*</b>：</label>
 						<div class="col-sm-10 col-xs-12">
 							<label class="radio-inline">
 							<% if(user.gender == "M"){%>
@@ -94,17 +114,17 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" for="school">就讀學校：</label>
+						<label class="col-sm-2 col-xs-12 control-label" for="school">就讀學校<b class="darkred">*</b>：</label>
 						<div class="col-sm-10 col-xs-12">
 						<% if(user.school == null){%>
-							<input type="text" name="school" class="btn-block" id="school" placeholder="ex: 台灣大學">
+							<input type="text" name="school" class="btn-block" id="school" placeholder="ex: 資種大學">
 						<% } else{ %>
-							<input type="text" name="school" class="btn-block" id="school" placeholder="ex: 台灣大學" value="<%= user.school %>">
+							<input type="text" name="school" class="btn-block" id="school" placeholder="ex: 資種大學" value="<%= user.school %>">
 						<% } %>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" for="grade">系所/年級：</label>
+						<label class="col-sm-2 col-xs-12 control-label" for="grade">系所/年級<b class="darkred">*</b>：</label>
 						<div class="col-sm-10 col-xs-12">
 						<% if(user.grade == null){%>
 							<input type="text" name="grade" class="btn-block" id="grade" placeholder="ex: 資訊管理學系（請輸入系所全名）/三年級">
@@ -112,6 +132,7 @@
 							<input type="text" name="grade" class="btn-block" id="grade" value="<%= user.grade %>" placeholder="ex: 資訊管理學系（請輸入系所全名）/三年級">
 						<% } %>
 						</div>
+						<div class="col-sm-offset-2 col-sm-10 col-xs-12" style="height: 40px;">※ 請填寫未來一學年即將就讀系所及年級</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 col-xs-12 control-label" for="reference">推薦人：</label>
@@ -122,6 +143,7 @@
 							<input type="text" name="reference" class="btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種" value="<%= user.reference %>">
 						<% } %>
 						</div>
+						<div class="col-sm-offset-2 col-sm-10 col-xs-12" style="height: 40px;">※ 此選項<b>不影響</b>徵選結果</div>
 					</div>
 				<% } %>
 				</div>
