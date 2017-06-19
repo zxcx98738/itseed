@@ -21,22 +21,22 @@
 		padding-left:20px;
 		border-radius: 20px;
 		font-size: 14pt;
-		background-color: white;
-	}
-	.share-but:nth-child(1){
-		// background-color: @school;
-		border: 2px solid @school;
+		color: white;
 	}
 	.share-but:nth-child(2){
-		// background-color: @leader;
-		border: 2px solid @leader;
+		background-color: @school;
+		border: 2px solid @school;
 	}
 	.share-but:nth-child(3){
-		// background-color: @miwan;
-		border: 2px solid @miwan;
+		background-color: @leader;
+		border: 2px solid @leader;
 	}
 	.share-but:nth-child(4){
-		// background-color: @graduate;
+		background-color: @miwan;
+		border: 2px solid @miwan;
+	}
+	.share-but:nth-child(1){
+		background-color: @graduate;
 		border: 2px solid @graduate;
 	}
 }
@@ -111,11 +111,16 @@
 				background-color: white;
 				width: 100%;
 				margin-top:11px;
-				padding: 4px 0;
+				padding: 6px 0;
 				h4{
 					font-size: 13pt;
+					line-height: 23px;
+					margin-bottom: 0px;
+					margin-top: 3px;
 				}
 				h5{
+					margin: 0px;
+					line-height: 23px;
 					font-size: 11pt;
 				}
 			}
@@ -141,17 +146,13 @@
 			opacity: 1;
 		}
 	}
+	.school-see,.leader-see,.miwan-see,.graduate-see{
+		display: block;
+		text-align: center;
+	}
 }
 
-.leader-block{
-	display: none;
-}
-.miwan-block{
-	display: none;
-}
-.graduate-block{
-	display: none;
-}
+
 
 
 
@@ -172,10 +173,16 @@
 		.share-in-title{
 			font-size: 30pt;
 			color: #6bc1b8;
-			padding-bottom: 20px;
+			padding-bottom: 15px;
 		}
 		h3,h4{
 			text-align: center;
+		}
+		h4{
+			line-height: 26px;
+		}
+		.sharing-title{
+			line-height: 28pt;
 		}
 		.sharing-word{
 			margin: 0 5%;

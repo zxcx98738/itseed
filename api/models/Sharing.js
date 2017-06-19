@@ -44,7 +44,7 @@ module.exports = {
         //內容
         content: {
           type: 'text',
-          notNull: true
+          notNull: true,
         },
         //標籤
         /*tags: {

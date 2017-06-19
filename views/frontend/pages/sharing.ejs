@@ -10,7 +10,7 @@
 				<div class="image">
 					<img src="<%= datas[0].photo %>"></img>
 				</div>
-				<h3><%= datas[0].title %></h3>
+				<h3 class="sharing-title"><%- datas[0].title %></h3>
 				<h4>
 					<% if(datas[0].th != 4) {%>
 						<span>第十四屆資訊種子學員</span>
@@ -18,7 +18,7 @@
 					<% if(datas[0].th == 4) {%>
 						<span>資訊種子歷屆校友</span>
 					<% } %>
-					<%= datas[0].name %>
+					<%- datas[0].name %>
 				</h4>
 				<hr class="share-line">
 				<div class="sharing-word"><%- datas[0].content %></div>
