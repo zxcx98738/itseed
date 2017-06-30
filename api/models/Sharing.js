@@ -28,7 +28,7 @@ module.exports = {
         name: {
           type: 'string',
           notNull: true,
-          maxLength: 30
+          maxLength: 40
         },
         //相片
         photo: {
@@ -38,7 +38,7 @@ module.exports = {
         //標題
         title: {
           type: 'string',
-          maxLength: 30,
+          maxLength: 50,
           notNull: true
         },
         //內容

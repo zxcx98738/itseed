@@ -31,7 +31,15 @@ module.exports = function(grunt) {
 				src: ['**/*'],
 				dest: 'www'
 			}]
+		},build2:{
+			files: [{
+				expand: true,
+				wd: '.assets/',
+				src: ['localDiskDb.db'],
+				dest: '/root/Dropbox/itseed_DB_backup'
+			}]
 		}
+
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-copy');
