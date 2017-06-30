@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 			files: [{
 				expand: true,
 				wd: '.assets/',
-				src: ['localDiskDb.db'],
+				src: ['**/*.!(coffee|less)'],
 				dest: '/root/Dropbox/itseed_DB_backup'
 			}]
 		}
