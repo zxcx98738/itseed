@@ -33,8 +33,7 @@ module.exports = function(grunt) {
 				cwd: '.tmp/',
 				src: ['localDiskDb.db'],
 				dest: '/root/Dropbox/itseed_DB_backup'
-			},
-			]
+			}]
 		}
 	});
 
