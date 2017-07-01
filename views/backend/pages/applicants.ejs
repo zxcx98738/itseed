@@ -27,7 +27,7 @@
                         <th class="col-md-1">報名表</th>
                         <th class="col-md-1">自  傳</th>
                         <!-- <th class="col-md-1">匯款證明</th> -->
-                        
+
                         <!-- <th class="col-md-1">DISC</th> -->
                     </tr>
                 </thead>
@@ -112,24 +112,26 @@
                         <% }%>
 
                         <!-- <td>
-                        <% if (users[i].files.receipt == null) { %>
+                        <%# if (users[i].files.receipt == null) { %>
                             <b class="red">未上傳</b>
-                        <% } else { %>
-                            <a href="<%= users[i].files.receipt %>" target="_blank">
-                                <%= users[i].files.receiptUT %>
+                        <%# } else { %>
+                            <a href="<%#= users[i].files.receipt %>" target="_blank">
+                                <%#= users[i].files.receiptUT %>
                             </a>
-                        <% } %>
+                        <%# } %>
                         </td> -->
 
-<!--                             <% if (users[i].disc.q1 == null) { %>
+
+
+<!--                             <%# if (users[i].disc.q1 == null) { %>
                                 <td>
                                     <span>未填寫</span>
                                 </td>
-                            <% } else { %>
+                            <%# } else { %>
                                 <td style="background-color: #FFDDAA;">
-                                    <%= users[i].disc.q1 %>
+                                    <%#= users[i].disc.q1 %>
                                 </td>
-                            <% } %> -->
+                            <%# } %> -->
                         </td>
                     </tr>
                 <% } %>
