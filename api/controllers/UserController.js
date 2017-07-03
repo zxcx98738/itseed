@@ -266,6 +266,36 @@
     },
     //登入
     login: function (req, res) {
+//改密碼
+// User.findOne({
+//       id: 142
+//   })
+//   .exec(function(err, user) {
+      
+        // var value ={
+        //     pwd:md5("12345678") //密碼
+        // };
+        // console.log(user);
+        // User.update({
+        //     id:142
+        // },value)
+        // .exec(function (err, datas) {
+        //     console.log(err);
+        // });
+// });
+
+    // UserDISC.find({id:50}).exec(function(err, disc) {
+
+    //     if (err) {
+    //         console.log(err);
+    //     }else{
+            
+    //         console.log(disc.id);
+    //     }
+            
+    // });
+
+
         User.findOne({
             email: req.body.email
         })
