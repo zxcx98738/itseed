@@ -284,13 +284,13 @@
         // });
 // });
 
-    // UserDISC.find({id:50}).exec(function(err, disc) {
+    // UserDISC.find({id:189}).exec(function(err, disc) {
 
     //     if (err) {
     //         console.log(err);
     //     }else{
             
-    //         console.log(disc.id);
+    //         console.log(disc);
     //     }
             
     // });
