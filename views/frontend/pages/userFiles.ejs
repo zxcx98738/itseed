@@ -56,7 +56,7 @@
 						}
 					%>
 					<!-- <a href="<%= files.registration %>"><%= url %></a><br> -->
-					<%= url %>
+					<strong><%= url %></strong>
 					<br>
 					<!-- 上傳時間: -->
 					<!-- <b><%= files.registrationUT %></b> -->
@@ -82,14 +82,9 @@
 					<div class="text-xs-center">
 						<input type="file" name="registration">
 						<button type="button" class="btn btn-default">選擇檔案</button>
-						<button type="submit" style="color:white;" class="btn btn-main-file" onclick="fileD()">上傳</button>
+						<button type="submit" style="color:white;" class="btn btn-main-file">上傳</button>
 					</div>
 				<% } %>
-					<script type="text/javascript">
-						function fileD(){
-							confirm("上傳完成！");
-						}
-					</script>
 				</form>
 			</div>
 		</div>
@@ -115,7 +110,7 @@
 						}
 					%>
 					<!-- <a href="<%= files.autobiography %>"><%= url %></a><br> -->
-					<%= url %>
+					<strong><%= url %></strong>
 					<!-- <br> -->
 					<!-- 上傳時間: -->
 					<!-- <b><%= files.autobiographyUT %></b> -->
@@ -159,14 +154,9 @@
 					<div class="text-xs-center">
 						<input type="file" name="autobiography">
 						<button type="button" class="btn btn-default">選擇檔案</button>
-						<button type="submit" style="color:white;" class="btn btn-main-file" onclick="fileC()">上傳</button>
+						<button type="submit" style="color:white;" class="btn btn-main-file">上傳</button>
 					</div>
 				<% } %>
-					<script type="text/javascript">
-						function fileC(){
-							confirm("上傳完成！");
-						}
-					</script>
 				</form>
 				
 			</div>
