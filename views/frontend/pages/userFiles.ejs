@@ -55,9 +55,13 @@
 							url = url.slice(start);
 						}
 					%>
-					<a href="<%= files.registration %>"><%= url %></a><br>
-					上傳時間:
-					<b><%= files.registrationUT %></b>
+					<!-- <a href="<%= files.registration %>"><%= url %></a><br> -->
+					<%= url %>
+					<br>
+					<!-- 上傳時間: -->
+					<!-- <b><%= files.registrationUT %></b> -->
+					<br>
+					<span>因系統因素，目前檔案上傳後無法檢視，但資料上傳功能皆正常，請報名者不用擔心！</span>
 				</p>
 				<form action="/uploadReg" method="post" enctype="multipart/form-data">
 					<p class="formatInfo">
@@ -78,9 +82,14 @@
 					<div class="text-xs-center">
 						<input type="file" name="registration">
 						<button type="button" class="btn btn-default">選擇檔案</button>
-						<button type="submit" style="color:white;" class="btn btn-main-file">上傳</button>
+						<button type="submit" style="color:white;" class="btn btn-main-file" onclick="fileD()">上傳</button>
 					</div>
 				<% } %>
+					<script type="text/javascript">
+						function fileD(){
+							confirm("上傳完成！");
+						}
+					</script>
 				</form>
 			</div>
 		</div>
@@ -105,9 +114,13 @@
 							url = url.slice(start);
 						}
 					%>
-					<a href="<%= files.autobiography %>"><%= url %></a><br>
-					上傳時間:
-					<b><%= files.autobiographyUT %></b>
+					<!-- <a href="<%= files.autobiography %>"><%= url %></a><br> -->
+					<%= url %>
+					<!-- <br> -->
+					<!-- 上傳時間: -->
+					<!-- <b><%= files.autobiographyUT %></b> -->
+					<br><br>
+					<span>因系統因素，目前檔案上傳後無法檢視，但資料上傳功能皆正常，請報名者不用擔心！</span>
 				</p>
 				<form action="/uploadAut" method="post" enctype="multipart/form-data">
 					<div class="applicant-file">
@@ -146,9 +159,14 @@
 					<div class="text-xs-center">
 						<input type="file" name="autobiography">
 						<button type="button" class="btn btn-default">選擇檔案</button>
-						<button type="submit" style="color:white;" class="btn btn-main-file">上傳</button>
+						<button type="submit" style="color:white;" class="btn btn-main-file" onclick="fileC()">上傳</button>
 					</div>
 				<% } %>
+					<script type="text/javascript">
+						function fileC(){
+							confirm("上傳完成！");
+						}
+					</script>
 				</form>
 				
 			</div>
@@ -157,14 +175,14 @@
 					<div class="text-xs-center">
 						<p>當完成撰寫並上傳書審題目和基本資料</p>
 						<p>且確定不再更改後，請按下此按鈕完成繳交的動作</p>
-						<button type="submit" class="btn-lg btn-green" style="color:white" onclick="fileF()">完成書審資料</button>
+						<button type="submit" class="btn-lg btn-green" style="color:white">完成書審資料</button>
 					</div>
 				</form>
-				<script type="text/javascript">
+<!-- 				<script type="text/javascript">
 					function fileF(){
 						confirm("若確定完成書審資料，請按下確定鍵\n（按下確定鍵後，即無法修改）");
 					}
-				</script>
+				</script> -->
 			</div>
 		</div>
 		<% } %>

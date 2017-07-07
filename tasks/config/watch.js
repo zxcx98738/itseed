@@ -27,7 +27,13 @@ module.exports = function(grunt) {
 
 			// When assets are changed:
 			tasks: ['syncAssets' , 'linkAssets']
-		}
+		},
+		views: {
+            files: ['views/**/*']
+    },
+		options: {
+      livereload: true,
+    },
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-watch');
