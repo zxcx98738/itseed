@@ -9,7 +9,18 @@
 module.exports = {
 
     attributes: {
-      
+        a1: {
+          type:'string'
+        },
+        a2: {
+          type:'string'
+        },
+        a3: {
+          type:'string'
+        },
+        a4: {
+          type:'string'
+        },
         finished: {
           // model:'User'
           type:'integer'

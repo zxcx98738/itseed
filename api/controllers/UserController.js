@@ -590,6 +590,10 @@
                         a[j-1] += 1;
                 }
                 var animal = ['老虎','孔雀','無尾熊','貓頭鷹'];
+                value["a1"] = a[0] ;
+                value["a2"] = a[1] ;
+                value["a3"] = a[2] ;
+                value["a4"] = a[3] ;
                 value["animal"] = animal[a.indexOf(Math.max(a[0],a[1],a[2],a[3]))] ; //算動物最大值
                 
                 if(req.body["q" + i] == undefined)
@@ -1166,7 +1170,7 @@
                             if (users[i].files.receiptUT != null)
                                 users[i].files.receiptUT = CmsService.formatTime(users[i].files.receiptUT);
                             if (users[i].disc != null){
-                                users[i].disc.q1 = users[i].disc.animal;
+                                // users[i].disc.q1 = users[i].disc.animal;
                             }
                             // users[i].disc.q1 = CmsService.formatTime(users[i].disc.q1);
 
