@@ -14,164 +14,141 @@ module.exports = {
     },
     //報名系統
     systemSetting: function (req, res) {
-        if (typeof req.session.authorized !== "undefined" && req.session.authorized.systemSetting === true) {
-            var th, startDate, endDate;
+        var th, startDate, endDate;
+
+        SystemSetting.findOne({
+            name: "th"
+        })
+        .exec(function (err, parameter1) {
+            if(err){
+                return res.end(JSON.stringify(err));
+            }
+            else{
+                if(parameter1 == undefined)
+                    th = "";
+                else
+                    th = parameter1.value;
+            }
 
             SystemSetting.findOne({
-                name: "th"
+                name: "startDate"
             })
-            .exec(function (err, parameter1) {
+            .exec(function (err, parameter2) {
                 if(err){
                     return res.end(JSON.stringify(err));
                 }
                 else{
-                    if(parameter1 == undefined)
-                        th = "";
+                    if(parameter2 == undefined)
+                        startDate = "";
                     else
-                        th = parameter1.value;
+                        startDate = parameter2.value;
                 }
 
                 SystemSetting.findOne({
-                    name: "startDate"
+                    name: "endDate"
                 })
-                .exec(function (err, parameter2) {
+                .exec(function (err, parameter3) {
                     if(err){
                         return res.end(JSON.stringify(err));
                     }
                     else{
-                        if(parameter2 == undefined)
-                            startDate = "";
+                        if(parameter3 == undefined)
+                            endDate = "";
                         else
-                            startDate = parameter2.value;
+                            endDate = parameter3.value;
                     }
-
-                    SystemSetting.findOne({
-                        name: "endDate"
-                    })
-                    .exec(function (err, parameter3) {
-                        if(err){
-                            return res.end(JSON.stringify(err));
-                        }
-                        else{
-                            if(parameter3 == undefined)
-                                endDate = "";
-                            else
-                                endDate = parameter3.value;
-                        }
-                        return res.view("backend/pages/systemSetting", {
-                            th: th,
-                            startDate: startDate,
-                            endDate: endDate,
-                        });
+                    return res.view("backend/pages/systemSetting", {
+                        th: th,
+                        startDate: startDate,
+                        endDate: endDate,
                     });
                 });
             });
-        }
-        else {
-            return res.forbidden();
-        }
+        });
     },
     //更新報名屆數
     updateTh: function (req, res) {
-        if (typeof req.session.authorized !== "undefined" && req.session.authorized.systemSetting === true) {
-
-            SystemSetting.update({name: "th"}, {value: req.body.th})
-            .exec(function (err, datas) {
-                if (err) {
-                    res.end(JSON.stringify(err));
+        SystemSetting.update({name: "th"}, {value: req.body.th})
+        .exec(function (err, datas) {
+            if (err) {
+                res.end(JSON.stringify(err));
+            }
+            else {
+                if(datas.length == 0){
+                    SystemSetting.create({
+                        name: "th",
+                        value: req.body.th,
+                        description: "報名屆數"
+                    })
+                    .exec(function (err, user) {
+                        if (err) {
+                            res.end(JSON.stringify(err));
+                        }
+                        else {
+                            res.redirect("/systemSetting");
+                        }
+                    });
                 }
-                else {
-                    if(datas.length == 0){
-                        SystemSetting.create({
-                            name: "th",
-                            value: req.body.th,
-                            description: "報名屆數"
-                        })
-                        .exec(function (err, user) {
-                            if (err) {
-                                res.end(JSON.stringify(err));
-                            }
-                            else {
-                                res.redirect("/systemSetting");
-                            }
-                        });
-                    }
-                    else
-                        res.redirect("/systemSetting");
-                }
-            });
-        }
-        else {
-            return res.forbidden();
-        }
+                else
+                    res.redirect("/systemSetting");
+            }
+        });
     },
     //更新報名開始時間
     updateStartDate: function (req, res) {
-        if (typeof req.session.authorized !== "undefined" && req.session.authorized.systemSetting === true) {
-
-            SystemSetting.update({name: "startDate"}, {value: req.body.startDate})
-            .exec(function (err, datas) {
-                if (err) {
-                    res.end(JSON.stringify(err));
+        SystemSetting.update({name: "startDate"}, {value: req.body.startDate})
+        .exec(function (err, datas) {
+            if (err) {
+                res.end(JSON.stringify(err));
+            }
+            else {
+                if(datas.length == 0){
+                    SystemSetting.create({
+                        name: "startDate",
+                        value: req.body.startDate,
+                        description: "報名開始時間"
+                    })
+                    .exec(function (err, user) {
+                        if (err) {
+                            res.end(JSON.stringify(err));
+                        }
+                        else {
+                            res.redirect("/systemSetting");
+                        }
+                    });
                 }
-                else {
-                    if(datas.length == 0){
-                        SystemSetting.create({
-                            name: "startDate",
-                            value: req.body.startDate,
-                            description: "報名開始時間"
-                        })
-                        .exec(function (err, user) {
-                            if (err) {
-                                res.end(JSON.stringify(err));
-                            }
-                            else {
-                                res.redirect("/systemSetting");
-                            }
-                        });
-                    }
-                    else
-                        res.redirect("/systemSetting");
-                }
-            });
-        }
-        else {
-            return res.forbidden();
-        }
+                else
+                    res.redirect("/systemSetting");
+            }
+        });
     },
     //更新報名結束時間
     updateEndDate: function (req, res) {
-        if (typeof req.session.authorized !== "undefined" && req.session.authorized.systemSetting === true) {
-
-            SystemSetting.update({name: "endDate"}, {value: req.body.endDate})
-            .exec(function (err, datas) {
-                if (err) {
-                    res.end(JSON.stringify(err));
+        SystemSetting.update({name: "endDate"}, {value: req.body.endDate})
+        .exec(function (err, datas) {
+            if (err) {
+                res.end(JSON.stringify(err));
+            }
+            else {
+                if(datas.length == 0){
+                    SystemSetting.create({
+                        name: "endDate",
+                        value: req.body.endDate,
+                        description: "報名結束時間"
+                    })
+                    .exec(function (err, user) {
+                        if (err) {
+                            res.end(JSON.stringify(err));
+                        }
+                        else {
+                            res.redirect("/systemSetting");
+                        }
+                    });
                 }
-                else {
-                    if(datas.length == 0){
-                        SystemSetting.create({
-                            name: "endDate",
-                            value: req.body.endDate,
-                            description: "報名結束時間"
-                        })
-                        .exec(function (err, user) {
-                            if (err) {
-                                res.end(JSON.stringify(err));
-                            }
-                            else {
-                                res.redirect("/systemSetting");
-                            }
-                        });
-                    }
-                    else
-                        res.redirect("/systemSetting");
-                }
-            });
-        }
-        else {
-            return res.forbidden();
-        }
-    },
+                else
+                    res.redirect("/systemSetting");
+            }
+        });
+    }
 };
 
