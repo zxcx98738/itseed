@@ -23,37 +23,34 @@
     rem: function (req, res) {
         // var q = req.session.userid
         // if(req.session.userid){
-            var userregister ={
+        var userregister ={
 
-            mailmd5 : md5(req.body.email),
-            email : req.body.email
+        mailmd5 : md5(req.body.email),
+        email : req.body.email
+        }
+        emailV.findOne({
+            mailmd5: md5(req.body.email)
+        })
+        .exec(function (err , emailvo) {
+            if (err) {
+                
+                res.end(JSON.stringify(err));
+            }else if(emailvo){
+                Mailer.sendWelcomeMail(userregister);
+                return res.view("frontend/pages/rem" , { emailV:userregister });
+            }else{
+                emailV.create(userregister)
+                .exec(function(err, emailV) {
+                    if(err){
+                        res.end(JSON.stringify(err));
+                    }
+                    else{
+                        Mailer.sendWelcomeMail(userregister);
+                        return res.view("frontend/pages/rem" , { emailV:emailV });
+                    }
+                });
             }
-            emailV.findOne({
-                mailmd5: md5(req.body.email)
-            })
-            .exec(function (err , emailvo) {
-                if (err) {
-                    
-                    res.end(JSON.stringify(err));
-                }else if(emailvo){
-                   Mailer.sendWelcomeMail(userregister);
-                   return res.view("frontend/pages/rem" , { emailV:userregister });
-                }else{
-                    emailV.create(userregister)
-                    .exec(function(err, emailV) {
-                        if(err){
-                            res.end(JSON.stringify(err));
-                        }
-                        else{
-                            Mailer.sendWelcomeMail(userregister);
-                            return res.view("frontend/pages/rem" , { emailV:emailV });
-                        }
-                    });
-                }
-            });
-
-            
-
+        });
     },
     reg:function (req,res){
         emailV.findOne({
