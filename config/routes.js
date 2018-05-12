@@ -80,7 +80,10 @@ module.exports.routes = {
     controller: 'Site',
     action: 'aboutITSeed'
   }, 
-
+  '/studentIntro': {
+    controller: 'Site',
+    action: 'studentIntro'
+  }, 
   '/memberList': {
     controller: 'Site',
     action: 'memberList'
@@ -165,6 +168,19 @@ module.exports.routes = {
     controller: 'Site',
     action: 'faq'
   },
+  '/careersharing': {
+    controller: 'Site',
+    action: 'careersharing'
+  },
+  '/seminar': {
+    controller: 'Site',
+    action: 'seminar'
+  },
+  '/workshop': {
+    controller: 'Site',
+    action: 'workshop'
+  },
+ 
 
   '/video': {
     controller: 'Site',
