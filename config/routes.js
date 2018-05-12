@@ -180,7 +180,10 @@ module.exports.routes = {
     controller: 'Site',
     action: 'workshop'
   },
- 
+  '/apply': {
+    controller: 'Site',
+    action: 'apply'
+  },
 
   '/video': {
     controller: 'Site',

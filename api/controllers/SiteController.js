@@ -632,5 +632,9 @@ module.exports = {
         return res.view("frontend/pages/workshop",{
         });
     },
+    apply: function(req, res){
+        return res.view("frontend/pages/apply",{
+        });
+    },
 };
 
