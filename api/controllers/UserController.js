@@ -8,6 +8,46 @@
  var md5 = require("MD5")
  var fs = require("fs");
 
+function registerAccount(res,newuser,callback){
+	// 		 一般會員  email + pwd 		註冊
+	// goolge登入會員  email + gIdToken 註冊
+	SystemSetting.findOne({
+		name: "th"
+	})
+	.exec(function (err, parameter) {
+		if (err) { return res.end(JSON.stringify(err)); }
+		if (parameter != undefined) {
+			newuser.th = parameter.value;
+		}
+		//新增使用者
+		User.create(newuser)
+		.exec(function (err, user) {
+			if (err) { res.end(JSON.stringify(err)); }
+			//新增DISC
+			UserDISC.create({ user: user.id })
+			.exec(function (err, disc) {
+				if (err) { res.end(JSON.stringify(err)); }
+				//新增報名資料
+				UserFiles.create({ user: user.id })
+				.exec(function (err, files) {
+					if (err) { res.end(JSON.stringify(err)); }
+					//連結table
+					User.update({
+						id: user.id
+					}, {
+						disc: disc.id,
+						files: files.id
+					})
+					.exec(function (err, data) {
+						if (err) { res.end(JSON.stringify(err)); }
+						callback(user);
+					});
+				});
+			});
+		});
+	});
+}
+
  module.exports = {
     //移除blueprint內建的actions
     _config: {
@@ -131,76 +171,20 @@
     //註冊
     register: function(req, res){
         //TODO: 系統開關
-
         var newuser = {
             email: req.body.email,
             pwd: md5(req.body.pwd),
         };
-
-        SystemSetting.findOne({
-            name: "th"
-        })
-        .exec(function (err, parameter) {
-            if(err){
-                return res.end(JSON.stringify(err));
-            }
-            else{
-                if(parameter != undefined){
-                    newuser.th = parameter.value;
-                }
-                //新增使用者
-                User.create(newuser)
-                .exec(function(err, user) {
-                    if(err){
-                        res.end(JSON.stringify(err));
-                    }
-                    else{
-                        //新增DISC
-                        UserDISC.create({user: user.id})
-                        .exec(function(err, disc) {
-                            if(err){
-                                res.end(JSON.stringify(err));
-                            }
-                            else{
-                                //新增報名資料
-                                UserFiles.create({user: user.id})
-                                .exec(function(err, files) {
-                                    if(err){
-                                        res.end(JSON.stringify(err));
-                                    }
-                                    else{
-                                        //連結table
-                                        User.update({
-                                            id: user.id
-                                        },{
-                                            disc: disc.id,
-                                            files: files.id
-                                        })
-                                        .exec(function(err, data) {
-                                            if(err){
-                                                res.end(JSON.stringify(err));
-                                            }
-                                            else{
-                                                //完成
-                                                req.session.userid = user.id;
-                                                req.session.email = req.body.email;
-                                                req.session.pwd = req.body.pwd;
-                                                req.session.type =  user.type;
-                                                req.session.authorized = {
-                                                    cms: false,
-                                                    systemSetting: false,
-                                                };
-
-                                                res.redirect("/profile");
-                                            }
-                                        });
-                                    }
-                                });     
-                            }
-                        });
-                    }
-                });    
-            }
+		registerAccount(res,newuser,function(user){
+			req.session.userid = user.id;
+			req.session.email = req.body.email;
+			req.session.pwd  = req.body.pwd;
+			req.session.type =  user.type;
+			req.session.authorized = {
+				cms: false,
+				systemSetting: false,
+			};
+			res.redirect("/profile");  
         });                
     },
     //檢查信箱是否已存在
@@ -263,36 +247,6 @@
     },
     //登入
     login: function (req, res) {
-//改密碼
-// User.findOne({
-//       id: 142
-//   })
-//   .exec(function(err, user) {
-      
-        // var value ={
-        //     pwd:md5("12345678") //密碼
-        // };
-        // console.log(user);
-        // User.update({
-        //     id:142
-        // },value)
-        // .exec(function (err, datas) {
-        //     console.log(err);
-        // });
-// });
-
-    // UserDISC.find({id:189}).exec(function(err, disc) {
-
-    //     if (err) {
-    //         console.log(err);
-    //     }else{
-            
-    //         console.log(disc);
-    //     }
-            
-    // });
-
-
         User.findOne({
             email: req.body.email
         })
@@ -329,6 +283,67 @@
                 res.redirect("/profile");
             }
         });
+    },
+    google_login: function (req, res) {
+        const CLIENT_ID = "847827161541-aong4n8kqb4jnq804cn43ca0vv3d6j0d.apps.googleusercontent.com";
+        const { OAuth2Client } = require('google-auth-library');
+        const client = new OAuth2Client(CLIENT_ID);
+        async function verify() {
+            const ticket = await client.verifyIdToken({
+                idToken: req.body.idtoken,
+                audience: CLIENT_ID,
+            });
+			const payload = ticket.getPayload();
+			const gIdToken = md5(payload.sub);
+			console.log(payload);
+            User.findOne({
+				gIdToken: gIdToken
+            }).exec(function (err, user) {
+                if (err) { return res.end(JSON.stringify(err)); }
+                if (user == undefined) {
+					const newuser = {
+						email: payload.email,
+						gIdToken: gIdToken
+					}
+					registerAccount(res, newuser, function (user) {
+						req.session.userid = user.id;
+						req.session.email = payload.email;
+						req.session.gIDToken = gIdToken;
+						req.session.type = user.type;
+						req.session.authorized = {
+							cms: false,
+							systemSetting: false,
+						};
+						res.redirect("/profile");
+					});
+                }else{
+					req.session.userid = user.id;
+					req.session.email = payload.email;
+					req.session.gIDToken = gIdToken;
+					req.session.type = user.type;
+					req.session.authorized = {
+						cms: false,
+						systemSetting: false,
+					};
+					if (user.type == "A") {
+						req.session.authorized = {
+							cms: true,
+							systemSetting: true,
+						};
+					}
+					else {
+						req.session.authorized = {
+							cms: false,
+							systemSetting: false,
+						};
+					}
+					res.end(JSON.stringify({
+						redirect:"/profile"
+					}));
+				}
+            });  
+        }
+        verify().catch(console.error);   
     },
     //登出
     logout: function (req, res) {

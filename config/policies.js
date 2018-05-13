@@ -42,7 +42,9 @@ module.exports.policies = {
     'register':true ,
     'checkEmail':true ,
     'checkPwd':true ,
-    'login': true
+    'logout':true,
+    'login': true,
+    'google_login': true
   },
   CmsController: {
     '*': 'isLoginCms'

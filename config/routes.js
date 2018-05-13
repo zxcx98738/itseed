@@ -216,12 +216,16 @@ module.exports.routes = {
 
   'get /login': {
     controller: 'User',
-    action: 'loginPage'   
+    action: 'loginPage' 
   },
 
   'post /login': {
     controller: 'User',
     action: 'login'    
+  },
+  'post /google_login': {
+    controller: 'User',
+    action: 'google_login'
   },
 
   'get /logout': {
