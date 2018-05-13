@@ -9,7 +9,17 @@
       }
     });
   })()
+
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+      document.location.href = "/logout";
+    });
+    document.location.href = "/logout";
+  }
 </script>
+
 
 <header>
 
@@ -113,7 +123,12 @@
           <li><a href="/sharing">經驗分享</a></li>
           <li><a href="/regInfo">招生訊息</a></li>
           <li><a href="/faq">常見問題</a></li>
-          <li id="signin"><a href="/login" >馬上報名<span>→</span></a></li>
+          <% if (session.userid == undefined ) { %>
+            <li id="signin"><a href="/login" >馬上報名<span>→</span></a></li>
+          <% } else { %>
+            <li id="account-profile"><a href="/profile" >報名頁面</a></li>
+            <li id="signout"><a href="#" onclick="signOut();">Sign out</a></li>
+          <% } %>
         </ul>
 
 <!--    <ul class="nav navbar-right navbar-nav" id="signin" >

@@ -15,6 +15,10 @@ module.exports = {
           primaryKey: true,
           unique: true
         },
+        gIdToken:{
+          type: 'string',
+          unique: true
+        },
         finished : {
           type: 'integer'
         },

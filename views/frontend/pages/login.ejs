@@ -1,6 +1,41 @@
 <script src="/js/specifies/jquery.validate.min.js"></script>
 <script src="/js/specifies/messages_zh_TW.min.js"></script>
 <script src="/js/specifies/frontend/login.js"></script>
+<script async defer>
+  function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId());
+    console.log('Full Name: ' + profile.getName());
+    console.log('Given Name: ' + profile.getGivenName());
+    console.log('Family Name: ' + profile.getFamilyName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail());
+
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log(id_token);
+    console.log(googleUser.getAuthResponse());
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/google_login');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+      console.log(xhr);
+      console.log('Signed in as: ' + xhr.responseText);
+
+      var res = JSON.parse(xhr.responseText);
+      document.location.href = res.redirect;
+    };
+    xhr.send(`idtoken=${id_token}`);
+
+  }
+
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
 
 <% include ../header %>
 <div class="login-part" style="margin-top: 100px;">
@@ -17,7 +52,7 @@
         <span><img src="/images/layout/ACCOUNT.png"> 帳號：</span>
         <input class="btn-block" autofocus="autofocus" name="email" placeholder="電子信箱" type="email">
       </div>
-      <div>
+      <div> 
         <span><img src="/images/layout/LOCK.png"> 密碼：</span>
         <input class="btn-block" name="pwd" placeholder="密碼" type="password">
       </div>
@@ -26,7 +61,7 @@
       </div>
     </form>
     <% if (system == "open") { %>
-
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
       <div style="padding-bottom: 0">
         <span>尚未註冊嗎？</span>
         <a class="register" href="/register">立即註冊新帳號</a>

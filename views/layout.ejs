@@ -11,7 +11,7 @@
     <meta name="DEscription" content="培訓計畫,itseed">
     <meta property="og:image" content="/images/index/index1.png">
     <link rel="shortcut icon" type="image/png" href="/images/layout/logo.ico"/>
-
+    
     <!--
         Stylesheets and Preprocessors
         ==============================
@@ -49,7 +49,18 @@
     <script src="/js/specifies/jquery-1.11.2.min.js"></script>
     <script src="/js/specifies/jquery.animateNumber.min.js"></script>
     <script src="/js/specifies/jquery.color.min.js"></script>
-    
+
+    <!-- google-login -->
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <meta name="google-signin-client_id" content="847827161541-aong4n8kqb4jnq804cn43ca0vv3d6j0d.apps.googleusercontent.com>
+    <script>
+      function onLoad() {
+        gapi.load('auth2', function () {
+          gapi.auth2.init();
+        });
+      }
+    </script>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116242302-1"></script>
     <script>
@@ -58,6 +69,18 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-116242302-1');
+    </script>
+    
+    <!-- Hotjar Tracking Code for http://www.itseed.tw/ -->
+    <script>
+      (function (h, o, t, j, a, r) {
+        h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+        h._hjSettings = { hjid: 867549, hjsv: 6 };
+        a = o.getElementsByTagName('head')[0];
+        r = o.createElement('script'); r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
     </script>
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -84,10 +107,7 @@
       window._fbq.push(['track', 'PixelInitialized', {}]);
     </script>
     <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=227111357648472&amp;ev=PixelInitialized" /></noscript>
-
-
   </head>
-
   <body>
     <div id="fb-root"></div>
     <%- body %>
