@@ -979,5 +979,53 @@ toDraft: function(req, res){
             req.session.pwd = req.body.pwd;
             res.redirect("/backend");
         });
+    },
+        //報名者資料
+    applicants: function (req, res) {
+        console.log(res.session)
+        var th;
+        SystemSetting.findOne({
+            name: 'th'
+        })
+        .exec(function (err, parameter1) {
+            if (err) {
+                return res.end(JSON.stringify(err));
+            }
+            else {
+                if (parameter1 == undefined)
+                    th = '';
+                else
+                    th = parameter1.value;
+            }
+            User.find({
+                th: th,
+                type: 'U'
+            })
+            .populate('files')
+            .populate('disc')
+            .exec(function (err, users) {
+                if (err) {
+                    res.end(JSON.stringify(err));
+                }
+                else {
+                    for (var i = 0; i < users.length; i++) {
+                        if (users[i].files.registrationUT != null)
+                            users[i].files.registrationUT = CmsService.formatTime(users[i].files.registrationUT);
+                        if (users[i].files.autobiographyUT != null)
+                            users[i].files.autobiographyUT = CmsService.formatTime(users[i].files.autobiographyUT);
+                        if (users[i].files.receiptUT != null)
+                            users[i].files.receiptUT = CmsService.formatTime(users[i].files.receiptUT);
+                        if (users[i].disc != null){
+                            // users[i].disc.q1 = users[i].disc.animal;
+                        }
+                        // users[i].disc.q1 = CmsService.formatTime(users[i].disc.q1);
+
+                    }
+                    return res.view("backend/pages/applicants", {
+                        users: users
+                    });
+                }
+            });
+        });
     }
 };

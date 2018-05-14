@@ -305,7 +305,11 @@ module.exports.routes = {
     controller: 'Cms',
     action: 'editor'
   },
-  
+  /*報名者資料*/
+  'get /applicants': {
+    controller: 'Cms',
+    action: 'applicants'
+  },
   'get /cms/edit/:model': {
     controller: 'Cms',
     action: 'editor'
@@ -386,13 +390,6 @@ module.exports.routes = {
     controller: 'System',
     action: 'updateEndDate'
   },
-
-  /*報名者資料*/
-  'get /applicants': {
-    controller: 'User',
-    action: 'applicants'
-  },
-
 
   // 'get /'
 

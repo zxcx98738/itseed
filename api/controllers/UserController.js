@@ -290,18 +290,8 @@ function registerAccount(res,newuser,callback){
                 req.session.email = user.email;
                 req.session.pwd = req.body.pwd;
                 req.session.type =  user.type;
-                
-                if (user.type == "A") {
-                    req.session.authorized = {
-                        cms: true,
-                        systemSetting: true,
-                    };
-                }
-                else {
-                    req.session.authorized = {
-                        cms: false,
-                        systemSetting: false,
-                    };
+                req.session.authorized = {
+                    user:true
                 }
                 res.redirect("/profile");
             }
@@ -333,10 +323,9 @@ function registerAccount(res,newuser,callback){
                         req.session.email = new_user.email;
                         req.session.gIdToken = new_user.gIdToken;
                         req.session.type = new_user.type;
-						req.session.authorized = {
-							cms: false,
-							systemSetting: false,
-						};
+                        req.session.authorized = {
+                            user: true
+                        }
                         res.end(JSON.stringify({
                             redirect: "/profile"
                         }));
@@ -346,22 +335,9 @@ function registerAccount(res,newuser,callback){
 					req.session.email = payload.email;
                     req.session.gIdToken = gIdToken;
 					req.session.type = user.type;
-					req.session.authorized = {
-						cms: false,
-						systemSetting: false,
-					};
-					if (user.type == "A") {
-						req.session.authorized = {
-							cms: true,
-							systemSetting: true,
-						};
-					}
-					else {
-						req.session.authorized = {
-							cms: false,
-							systemSetting: false,
-						};
-					}
+                    req.session.authorized = {
+                        user: true
+                    }
 					res.end(JSON.stringify({
 						redirect:"/profile"
 					}));
@@ -414,26 +390,21 @@ function registerAccount(res,newuser,callback){
                     return res.end(JSON.stringify(err));
                 }
                 else {
-                    if(req.session.userid){
-                        User.findOne({
-                            id: req.session.userid
-                        })
-                        .exec(function(err, user) {
-                            if(err){
-                                res.end(JSON.stringify(err));
-                            }
-                            else{
-                                return res.view("frontend/pages/userProfile", {
-                                    user: user,
-                                    disc: disc,
-                                    files:files
-                                });
-                            }
-                        });
-                    }
-                    else{
-                        return res.forbidden();
-                    }  
+                    User.findOne({
+                        id: req.session.userid
+                    })
+                    .exec(function(err, user) {
+                        if(err){
+                            res.end(JSON.stringify(err));
+                        }
+                        else{
+                            return res.view("frontend/pages/userProfile", {
+                                user: user,
+                                disc: disc,
+                                files:files
+                            });
+                        }
+                    });
                 }
             });
         });
@@ -451,105 +422,98 @@ function registerAccount(res,newuser,callback){
             grade: req.body.grade,
             reference: req.body.reference,
         };
-        if(req.session.type == "A")
-            value.th = req.body.th;
         
         if(value.name!=null && value.gender!=null && value.school!=null && value.grade!=null){
             // value.finished = 1 ;
             t++;
         }
-        if (req.session.userid) {
-            req.file("photo").upload({ dirname: sails.config.appPath+"/assets/files/"+req.session.userid}
-                , function (err, uploadedFiles) {
-                    if (err) 
-                        return res.end(JSON.stringify(err));
-                //有上傳檔案
-                if (uploadedFiles.length > 0) {
-                    //圖片檔
-                    if (uploadedFiles[0].type.substring(0, 5) == "image") { 
+        req.file("photo").upload({ dirname: sails.config.appPath+"/assets/files/"+req.session.userid}
+            , function (err, uploadedFiles) {
+                if (err) 
+                    return res.end(JSON.stringify(err));
+            //有上傳檔案
+            if (uploadedFiles.length > 0) {
+                //圖片檔
+                if (uploadedFiles[0].type.substring(0, 5) == "image") { 
 
-                        if (uploadedFiles[0].size > 2 * 1024 * 1024) {
-                            return res.end("圖片大小須小於2MB");
-                        }
-                        var url = uploadedFiles[0].fd;
-                        var start = url.search("files") - 1;
-                        url = url.slice(start);
-                        url = url.replace(/\\/g, "/");
-                        value.photo = url;
-                        t++;
-                        // value.finished = 1;
+                    if (uploadedFiles[0].size > 2 * 1024 * 1024) {
+                        return res.end("圖片大小須小於2MB");
                     }
-                    if(t==2){
-                        value.finished = 1;
+                    var url = uploadedFiles[0].fd;
+                    var start = url.search("files") - 1;
+                    url = url.slice(start);
+                    url = url.replace(/\\/g, "/");
+                    value.photo = url;
+                    t++;
+                    // value.finished = 1;
+                }
+                if(t==2){
+                    value.finished = 1;
+                }
+                //非圖片檔
+                else {
+                    fs.unlink(uploadedFiles[0].fd, function (err) {  
+                        if (err) 
+                            console.error(err) 
+                    });  
+                    return res.end("檔案格式錯誤");
+                }      
+
+                //取得舊照片位址
+                User.findOne({
+                    id: req.session.userid
+                })
+                .exec(function (err, user) {
+                    if (err) {
+                        res.end(JSON.stringify(err));
                     }
-                    //非圖片檔
                     else {
-                        fs.unlink(uploadedFiles[0].fd, function (err) {  
-                            if (err) 
-                                console.error(err) 
-                        });  
-                        return res.end("檔案格式錯誤");
-                    }      
+                        var oldPhoto = user.photo;
 
-                    //取得舊照片位址
-                    User.findOne({
-                        id: req.session.userid
-                    })
-                    .exec(function (err, user) {
-                        if (err) {
-                            res.end(JSON.stringify(err));
-                        }
-                        else {
-                            var oldPhoto = user.photo;
+                        User.update({id: user.id}, value)
+                        .exec(function (err, datas) {
+                            if (err) {
+                                //刪除上傳檔案
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                                
+                                res.end(JSON.stringify(err));
+                            }
+                            else {
+                                //刪除舊檔案
+                                if (oldPhoto != "/images/layout/logo.png") {
+                                    var imagePath = sails.config.appPath + "/assets" + oldPhoto;
 
-                            User.update({id: user.id}, value)
-                            .exec(function (err, datas) {
-                                if (err) {
-                                    //刪除上傳檔案
-                                    fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    fs.unlink(imagePath, function (err) {  
                                         if (err) 
                                             console.error(err) 
                                     });  
-                                    
-                                    res.end(JSON.stringify(err));
                                 }
-                                else {
-                                    //刪除舊檔案
-                                    if (oldPhoto != "/images/layout/logo.png") {
-                                        var imagePath = sails.config.appPath + "/assets" + oldPhoto;
-
-                                        fs.unlink(imagePath, function (err) {  
-                                            if (err) 
-                                                console.error(err) 
-                                        });  
-                                    }
-                                    req.session.email = req.body.email;
-                                    req.session.pwd = req.body.pwd;
-                                    res.redirect("/profile");
-                                }
-                            });
-                        }
-                    });             
-                }
-                //沒上傳檔案
-                else{
-                    User.update({id: req.session.userid}, value)
-                    .exec(function (err, datas) {
-                        if (err) {
-                            res.end(JSON.stringify(err));
-                        }
-                        else {
-                            req.session.email = req.body.email;
-                            req.session.pwd = req.body.pwd;
-                            res.redirect("/profile");
-                        }     
-                    });
-                }
-            });
-        }
-        else{
-            return res.forbidden();
-        }  
+                                req.session.email = req.body.email;
+                                req.session.pwd = req.body.pwd;
+                                res.redirect("/profile");
+                            }
+                        });
+                    }
+                });             
+            }
+            //沒上傳檔案
+            else{
+                User.update({id: req.session.userid}, value)
+                .exec(function (err, datas) {
+                    if (err) {
+                        res.end(JSON.stringify(err));
+                    }
+                    else {
+                        req.session.email = req.body.email;
+                        req.session.pwd = req.body.pwd;
+                        res.redirect("/profile");
+                    }     
+                });
+            }
+        });
     },
     //DISC
     disc: function (req, res) {
@@ -587,27 +551,22 @@ function registerAccount(res,newuser,callback){
                             // files.allFiles = 1;
                             files.finished = 1;
                         }
-                        if(req.session.userid){
-                            UserDISC.findOne({
-                                user: req.session.userid
-                            })
-                            .exec(function(err, disc) {
-                                if(err){
-                                    res.end(JSON.stringify(err));
-                                }
-                                else{
-                                    return res.view("frontend/pages/userDisc", {
-                                        disc: disc,
-                                        files:files,
-                                        user:user
-                                    });
-                                }
-                            });
-                        }
-                        else{
-                            return res.forbidden();
-                        }
-                    }
+                        UserDISC.findOne({
+                            user: req.session.userid
+                        })
+                        .exec(function(err, disc) {
+                            if(err){
+                                res.end(JSON.stringify(err));
+                            }
+                            else{
+                                return res.view("frontend/pages/userDisc", {
+                                    disc: disc,
+                                    files:files,
+                                    user:user
+                                });
+                            }
+                        });
+                }
                 });
             }
         });  
@@ -615,42 +574,35 @@ function registerAccount(res,newuser,callback){
     //編輯DISC
     editDisc: function (req, res) {
         var value = {};
-        
-        if(req.session.userid){
-            var a =[ 0 , 0 , 0 , 0];
-            for(var i = 1; i <= 20; i++){
-                for (var j = 1; j <5 ; j++){ //計算動物
-                    if(req.body["q" + i] == j)
-                        a[j-1] += 1;
-                }
-                var animal = ['老虎','孔雀','無尾熊','貓頭鷹'];
-                value["a1"] = a[0] ;
-                value["a2"] = a[1] ;
-                value["a3"] = a[2] ;
-                value["a4"] = a[3] ;
-                value["animal"] = animal[a.indexOf(Math.max(a[0],a[1],a[2],a[3]))] ; //算動物最大值
-                
-                if(req.body["q" + i] == undefined)
-                    return res.end("測驗未完成");
-                value["q" + i] = req.body["q" + i];
+        var a =[ 0 , 0 , 0 , 0];
+        for(var i = 1; i <= 20; i++){
+            for (var j = 1; j <5 ; j++){ //計算動物
+                if(req.body["q" + i] == j)
+                    a[j-1] += 1;
             }
-            value["finished"] = 1; //未用到
-            // window.alert('填寫完成');
-
-            UserDISC.update({user: req.session.userid}, value)
-            .exec(function (err, datas) {
-                if(err){
-                    res.end(JSON.stringify(err));
-                }
-                else{
-                    res.redirect("/disc");
-                }
-            });
-
+            var animal = ['老虎','孔雀','無尾熊','貓頭鷹'];
+            value["a1"] = a[0] ;
+            value["a2"] = a[1] ;
+            value["a3"] = a[2] ;
+            value["a4"] = a[3] ;
+            value["animal"] = animal[a.indexOf(Math.max(a[0],a[1],a[2],a[3]))] ; //算動物最大值
+            
+            if(req.body["q" + i] == undefined)
+                return res.end("測驗未完成");
+            value["q" + i] = req.body["q" + i];
         }
-        else{
-            return res.forbidden();
-        }  
+        value["finished"] = 1; //未用到
+        // window.alert('填寫完成');
+
+        UserDISC.update({user: req.session.userid}, value)
+        .exec(function (err, datas) {
+            if(err){
+                res.end(JSON.stringify(err));
+            }
+            else{
+                res.redirect("/disc");
+            }
+        });
     },
 
     confirm:function(req,res){
@@ -690,97 +642,108 @@ function registerAccount(res,newuser,callback){
     //報名資料
     files: function (req, res) {
         var value = {};
-        if (req.session.userid) {
-            UserFiles.findOne({
-                user: req.session.userid
-            })
-            .exec(function (err, files) {
-                if (err) {
-                    res.end(JSON.stringify(err));
+        UserFiles.findOne({
+            user: req.session.userid
+        })
+        .exec(function (err, files) {
+            if (err) {
+                res.end(JSON.stringify(err));
+            }
+            else {
+                var f = 0; //判斷完成
+
+                if( files.finished != 1){
+
+                    files.finished = 0;
+                    if (files.registrationUT != null){
+                        f += 1;
+                        files.registrationUT = CmsService.formatTime(files.registrationUT);
+                    }
+                    if (files.autobiographyUT != null){
+                        f += 1;
+                        files.autobiographyUT = CmsService.formatTime(files.autobiographyUT);
+                    }
                 }
-                else {
-                    var f = 0; //判斷完成
+                // if (files.receiptUT != null){
+                //     f += 1;
+                //     files.receiptUT = CmsService.formatTime(files.receiptUT);
+                // }
+                if(f == 2){
+                    // files.allFiles = 1;
+                    files.finished = 1;
+                    value.finished = 1;
+                }
 
-                    if( files.finished != 1){
-
-                        files.finished = 0;
-                        if (files.registrationUT != null){
-                            f += 1;
-                            files.registrationUT = CmsService.formatTime(files.registrationUT);
-                        }
-                        if (files.autobiographyUT != null){
-                            f += 1;
-                            files.autobiographyUT = CmsService.formatTime(files.autobiographyUT);
-                        }
+                UserFiles.update({user: req.session.userid}, value)
+                .exec(function (err, datas) {
+                    if(err){
+                        res.end(JSON.stringify(err));
                     }
-                    // if (files.receiptUT != null){
-                    //     f += 1;
-                    //     files.receiptUT = CmsService.formatTime(files.receiptUT);
-                    // }
-                    if(f == 2){
-                        // files.allFiles = 1;
-                        files.finished = 1;
-                        value.finished = 1;
+                });
+
+                var startDate, endDate;
+
+                //判斷系統開放與否
+                SystemSetting.findOne({
+                    name: "startDate"
+                })
+                .exec(function (err, parameter1) {
+                    if (err) {
+                        return res.end(JSON.stringify(err));
                     }
-
-                    UserFiles.update({user: req.session.userid}, value)
-                    .exec(function (err, datas) {
-                        if(err){
-                            res.end(JSON.stringify(err));
-                        }
-                    });
-
-                    var startDate, endDate;
-
-                    //判斷系統開放與否
-                    SystemSetting.findOne({
-                        name: "startDate"
-                    })
-                    .exec(function (err, parameter1) {
-                        if (err) {
-                            return res.end(JSON.stringify(err));
-                        }
+                    else {
+                        if (parameter1 == undefined)
+                            startDate = "";
                         else {
-                            if (parameter1 == undefined)
-                                startDate = "";
-                            else {
-                                startDate = (new Date(parameter1.value)).getTime();
-                            }
+                            startDate = (new Date(parameter1.value)).getTime();
+                        }
 
-                            SystemSetting.findOne({
-                                name: "endDate"
-                            })
-                            .exec(function (err, parameter2) {
-                                if (err) {
-                                    return res.end(JSON.stringify(err));
-                                }
+                        SystemSetting.findOne({
+                            name: "endDate"
+                        })
+                        .exec(function (err, parameter2) {
+                            if (err) {
+                                return res.end(JSON.stringify(err));
+                            }
+                            else {
+                                if (parameter2 == undefined)
+                                    endDate = "";
                                 else {
-                                    if (parameter2 == undefined)
-                                        endDate = "";
-                                    else {
-                                        endDate = (new Date(parameter2.value)).getTime();
+                                    endDate = (new Date(parameter2.value)).getTime();
+                                }
+                                //================ 報名狀態顯示顯示
+                                User.findOne({
+                                    id: req.session.userid
+                                })
+                                .exec(function(err, user) {
+                                    if(err){
+                                        res.end(JSON.stringify(err));
                                     }
-                                    //================ 報名狀態顯示顯示
-                                    User.findOne({
-                                        id: req.session.userid
-                                    })
-                                    .exec(function(err, user) {
-                                        if(err){
-                                            res.end(JSON.stringify(err));
-                                        }
-                                        else{
-                                            //disc 顯示
-                                            UserDISC.findOne({  
-                                                user: req.session.userid
-                                            })
-                                            .exec(function (err, disc) {
-                                                if (err) {
-                                                    return res.end(JSON.stringify(err));
+                                    else{
+                                        //disc 顯示
+                                        UserDISC.findOne({  
+                                            user: req.session.userid
+                                        })
+                                        .exec(function (err, disc) {
+                                            if (err) {
+                                                return res.end(JSON.stringify(err));
+                                            }
+                                            else {
+
+                                                //還沒設定
+                                                if (startDate == "" || endDate == "") {
+                                                    return res.view("frontend/pages/userFiles", {
+                                                        system: "open",
+                                                        files: files,
+                                                        disc:disc,
+                                                        user:user
+                                                    });
                                                 }
                                                 else {
+                                                    var now = (new Date()).getTime();
 
-                                                    //還沒設定
-                                                    if (startDate == "" || endDate == "") {
+                                                    //系統開放
+                                                    if (startDate < now && now < endDate){
                                                         return res.view("frontend/pages/userFiles", {
                                                             system: "open",
                                                             files: files,
@@ -788,437 +751,344 @@ function registerAccount(res,newuser,callback){
                                                             user:user
                                                         });
                                                     }
+                                                    //系統關閉
                                                     else {
-                                                        var now = (new Date()).getTime();
-
-                                                        //系統開放
-                                                        if (startDate < now && now < endDate){
-                                                            return res.view("frontend/pages/userFiles", {
-                                                                system: "open",
-                                                                files: files,
-                                                                disc:disc,
-                                                                user:user
-                                                            });
-                                                        }
-                                                        //系統關閉
-                                                        else {
-                                                            return res.view("frontend/pages/userFiles", {
-                                                                system: "close",
-                                                                files: files,
-                                                                disc:disc,
-                                                                user:user
-                                                            });
-                                                        }
+                                                        return res.view("frontend/pages/userFiles", {
+                                                            system: "close",
+                                                            files: files,
+                                                            disc:disc,
+                                                            user:user
+                                                        });
                                                     }
-
                                                 }
-                                            });
-                                        }
-                                    });
-                                //=======
-                                }
-                            });
-                        }
-                    });
-                }
-            });
-        }
-        else{
-            return res.forbidden();
-        }  
+
+                                            }
+                                        });
+                                    }
+                                });
+                            //=======
+                            }
+                        });
+                    }
+                });
+            }
+        });
     },
     //上傳報名表
     uploadReg: function (req, res) {
         var value = {};
-
         //TODO: 系統開關
-        if(req.session.userid){
-            var uploadOptions = {
-                dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
-                saveAs: function (__newFileStream, cb) {
-                    var i = 0;
-                    var uploadFile = req.file("registration")._files[0].stream.filename;
-                    var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
-                    var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
-                    
-                    //檔名重複時重新命名舊檔案
-                    if (fs.existsSync(newPath)) {
-                        fs.renameSync(newPath, tmpPath)
-                    }
-                    cb(null, __newFileStream.filename);
-                },
-            }
-
-            req.file("registration").upload(uploadOptions, function (err, uploadedFiles) {
-                if (err) 
-                    return res.end(JSON.stringify(err));
-                //有上傳檔案
-                if (uploadedFiles.length > 0) {
-                    //PDF檔
-                    if (uploadedFiles[0].type == "application/pdf") {    
-                        if (uploadedFiles[0].size > 5 * 1024 * 1024) {
-                            return res.end("檔案需小於5MB");
-                        }
-                        var url = uploadedFiles[0].fd;
-                        var start = url.search("files") - 1;
-                        url = url.slice(start);
-                        url = url.replace(/\\/g, "/");
-                        value.registration = url;
-                        value.registrationUT = new Date();
-                    }
-                    //非PDF檔
-                    else {
-                        fs.unlink(uploadedFiles[0].fd, function (err) {  
-                            if (err) 
-                                console.error(err) 
-                        });  
-                        return res.end("檔案格式錯誤");
-                    }      
-
-                    //取得舊檔案位址
-                    UserFiles.findOne({
-                        user: req.session.userid
-                    })
-                    .exec(function (err, file) {
-                        if (err)
-                            res.end(JSON.stringify(err));
-                        else {
-                            var oldFile = file.registration;
-
-                            UserFiles.update({id: file.id}, value)
-                            .exec(function (err, datas) {
-                                var uploadFile = req.file("registration")._files[0].stream.filename;
-                                var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
-                                var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
-
-                                if (err) {
-                                    //刪除上傳檔案
-                                    fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                        if (err) 
-                                            console.error(err) 
-                                    });  
-
-                                    //還原舊檔案
-                                    if (fs.existsSync(tmpPath)) {
-                                        fs.renameSync(tmpPath, newPath)
-                                    }
-                                    res.end(JSON.stringify(err));
-                                }
-                                else {
-                                    if(oldFile != null){                     
-                                        var filePath = sails.config.appPath + "/assets" + oldFile;
-
-                                        //刪除舊檔案
-                                        if (fs.existsSync(tmpPath)) {
-                                            fs.unlink(tmpPath, function (err) {  
-                                                if (err) 
-                                                    console.error(err) 
-                                            }); 
-                                        }
-                                        else {
-                                            fs.unlink(filePath, function (err) {  
-                                                if (err) 
-                                                    console.error(err) 
-                                            }); 
-                                        }
-                                    }
-                                    res.redirect("/files");
-                                }
-                            });
-                        }
-                    });                        
+        var uploadOptions = {
+            dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
+            saveAs: function (__newFileStream, cb) {
+                var i = 0;
+                var uploadFile = req.file("registration")._files[0].stream.filename;
+                var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
+                var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
+                
+                //檔名重複時重新命名舊檔案
+                if (fs.existsSync(newPath)) {
+                    fs.renameSync(newPath, tmpPath)
                 }
-                //沒上傳檔案
-                else{
-                    return res.end("未上傳檔案");
-                }
-            });
+                cb(null, __newFileStream.filename);
+            },
         }
-        else{
-            return res.forbidden();
-        }  
+
+        req.file("registration").upload(uploadOptions, function (err, uploadedFiles) {
+            if (err) 
+                return res.end(JSON.stringify(err));
+            //有上傳檔案
+            if (uploadedFiles.length > 0) {
+                //PDF檔
+                if (uploadedFiles[0].type == "application/pdf") {    
+                    if (uploadedFiles[0].size > 5 * 1024 * 1024) {
+                        return res.end("檔案需小於5MB");
+                    }
+                    var url = uploadedFiles[0].fd;
+                    var start = url.search("files") - 1;
+                    url = url.slice(start);
+                    url = url.replace(/\\/g, "/");
+                    value.registration = url;
+                    value.registrationUT = new Date();
+                }
+                //非PDF檔
+                else {
+                    fs.unlink(uploadedFiles[0].fd, function (err) {  
+                        if (err) 
+                            console.error(err) 
+                    });  
+                    return res.end("檔案格式錯誤");
+                }      
+
+                //取得舊檔案位址
+                UserFiles.findOne({
+                    user: req.session.userid
+                })
+                .exec(function (err, file) {
+                    if (err)
+                        res.end(JSON.stringify(err));
+                    else {
+                        var oldFile = file.registration;
+
+                        UserFiles.update({id: file.id}, value)
+                        .exec(function (err, datas) {
+                            var uploadFile = req.file("registration")._files[0].stream.filename;
+                            var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
+                            var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
+
+                            if (err) {
+                                //刪除上傳檔案
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+
+                                //還原舊檔案
+                                if (fs.existsSync(tmpPath)) {
+                                    fs.renameSync(tmpPath, newPath)
+                                }
+                                res.end(JSON.stringify(err));
+                            }
+                            else {
+                                if(oldFile != null){                     
+                                    var filePath = sails.config.appPath + "/assets" + oldFile;
+
+                                    //刪除舊檔案
+                                    if (fs.existsSync(tmpPath)) {
+                                        fs.unlink(tmpPath, function (err) {  
+                                            if (err) 
+                                                console.error(err) 
+                                        }); 
+                                    }
+                                    else {
+                                        fs.unlink(filePath, function (err) {  
+                                            if (err) 
+                                                console.error(err) 
+                                        }); 
+                                    }
+                                }
+                                res.redirect("/files");
+                            }
+                        });
+                    }
+                });                        
+            }
+            //沒上傳檔案
+            else{
+                return res.end("未上傳檔案");
+            }
+        });
     },
     //上傳自傳
     uploadAut: function (req, res) {
         var value = {};
 
         //TODO: 系統開關
-        if(req.session.userid){
-            var uploadOptions = {
-                dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
-                saveAs: function (__newFileStream, cb) {
-                    var i = 0;
-                    var uploadFile = req.file("autobiography")._files[0].stream.filename;
-                    var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
-                    var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
-                    
-                    //檔名重複時重新命名舊檔案
-                    if (fs.existsSync(newPath)) {
-                        fs.renameSync(newPath, tmpPath)
-                    }
-                    cb(null, __newFileStream.filename);
-                },
-            }
-
-            req.file("autobiography").upload(uploadOptions, function (err, uploadedFiles) {
-                if (err) 
-                    return res.end(JSON.stringify(err));
-                //有上傳檔案
-                if (uploadedFiles.length > 0) {
-                    //PDF檔
-                    if (uploadedFiles[0].type == "application/pdf") {    
-                        if (uploadedFiles[0].size > 5 * 1024 * 1024) {
-                            return res.end("檔案需小於5MB");
-                        }
-                        var url = uploadedFiles[0].fd;
-                        var start = url.search("files") - 1;
-                        url = url.slice(start);
-                        url = url.replace(/\\/g, "/");
-                        value.autobiography = url;
-                        value.autobiographyUT = new Date();
-                    }
-                    //非PDF檔
-                    else {
-                        fs.unlink(uploadedFiles[0].fd, function (err) {  
-                            if (err) 
-                                console.error(err) 
-                        });  
-                        return res.end("檔案格式錯誤");
-                    }      
-
-                    //取得舊檔案位址
-                    UserFiles.findOne({
-                        user: req.session.userid
-                    })
-                    .exec(function (err, file) {
-                        if (err)
-                            res.end(JSON.stringify(err));
-                        else {
-                            var oldFile = file.autobiography;
-
-                            UserFiles.update({id: file.id}, value)
-                            .exec(function (err, datas) {
-                                var uploadFile = req.file("autobiography")._files[0].stream.filename;
-                                var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
-                                var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
-
-                                if (err) {
-                                    //刪除上傳檔案
-                                    fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                        if (err) 
-                                            console.error(err) 
-                                    });  
-                                    
-                                    //還原舊檔案
-                                    if (fs.existsSync(tmpPath)) {
-                                        fs.renameSync(tmpPath, newPath)
-                                    }
-                                    res.end(JSON.stringify(err));
-                                }
-                                else {
-                                    if(oldFile != null){                     
-                                        var filePath = sails.config.appPath + "/assets" + oldFile;
-
-                                        //刪除舊檔案
-                                        if (fs.existsSync(tmpPath)) {
-                                            fs.unlink(tmpPath, function (err) {  
-                                                if (err) 
-                                                    console.error(err) 
-                                            }); 
-                                        }
-                                        else {
-                                            fs.unlink(filePath, function (err) {  
-                                                if (err) 
-                                                    console.error(err) 
-                                            }); 
-                                        }
-                                    }
-                                    res.redirect("/files");
-                                }
-                            });
-                        }
-                    });                        
+        var uploadOptions = {
+            dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
+            saveAs: function (__newFileStream, cb) {
+                var i = 0;
+                var uploadFile = req.file("autobiography")._files[0].stream.filename;
+                var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
+                var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
+                
+                //檔名重複時重新命名舊檔案
+                if (fs.existsSync(newPath)) {
+                    fs.renameSync(newPath, tmpPath)
                 }
-                //沒上傳檔案
-                else{
-                    return res.end("未上傳檔案");
-                }
-            });
+                cb(null, __newFileStream.filename);
+            },
         }
-        else{
-            return res.forbidden();
-        }    
+
+        req.file("autobiography").upload(uploadOptions, function (err, uploadedFiles) {
+            if (err) 
+                return res.end(JSON.stringify(err));
+            //有上傳檔案
+            if (uploadedFiles.length > 0) {
+                //PDF檔
+                if (uploadedFiles[0].type == "application/pdf") {    
+                    if (uploadedFiles[0].size > 5 * 1024 * 1024) {
+                        return res.end("檔案需小於5MB");
+                    }
+                    var url = uploadedFiles[0].fd;
+                    var start = url.search("files") - 1;
+                    url = url.slice(start);
+                    url = url.replace(/\\/g, "/");
+                    value.autobiography = url;
+                    value.autobiographyUT = new Date();
+                }
+                //非PDF檔
+                else {
+                    fs.unlink(uploadedFiles[0].fd, function (err) {  
+                        if (err) 
+                            console.error(err) 
+                    });  
+                    return res.end("檔案格式錯誤");
+                }      
+
+                //取得舊檔案位址
+                UserFiles.findOne({
+                    user: req.session.userid
+                })
+                .exec(function (err, file) {
+                    if (err)
+                        res.end(JSON.stringify(err));
+                    else {
+                        var oldFile = file.autobiography;
+
+                        UserFiles.update({id: file.id}, value)
+                        .exec(function (err, datas) {
+                            var uploadFile = req.file("autobiography")._files[0].stream.filename;
+                            var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
+                            var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
+
+                            if (err) {
+                                //刪除上傳檔案
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                                
+                                //還原舊檔案
+                                if (fs.existsSync(tmpPath)) {
+                                    fs.renameSync(tmpPath, newPath)
+                                }
+                                res.end(JSON.stringify(err));
+                            }
+                            else {
+                                if(oldFile != null){                     
+                                    var filePath = sails.config.appPath + "/assets" + oldFile;
+
+                                    //刪除舊檔案
+                                    if (fs.existsSync(tmpPath)) {
+                                        fs.unlink(tmpPath, function (err) {  
+                                            if (err) 
+                                                console.error(err) 
+                                        }); 
+                                    }
+                                    else {
+                                        fs.unlink(filePath, function (err) {  
+                                            if (err) 
+                                                console.error(err) 
+                                        }); 
+                                    }
+                                }
+                                res.redirect("/files");
+                            }
+                        });
+                    }
+                });                        
+            }
+            //沒上傳檔案
+            else{
+                return res.end("未上傳檔案");
+            }
+        });
     },
     //上傳匯款證明
     uploadRec: function (req, res) {
         var value = {};
 
         //TODO: 系統開關
-        if(req.session.userid){
-            var uploadOptions = {
-                dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
-                saveAs: function (__newFileStream, cb) {
-                    var i = 0;
-                    var uploadFile = req.file("receipt")._files[0].stream.filename;
-                    var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
-                    var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
-                    
-                    //檔名重複時重新命名舊檔案
-                    if (fs.existsSync(newPath)) {
-                        fs.renameSync(newPath, tmpPath)
-                    }
-                    cb(null, __newFileStream.filename);
-                },
-            }
-
-            req.file("receipt").upload(uploadOptions, function (err, uploadedFiles) {
-                if (err) 
-                    return res.end(JSON.stringify(err));
-                //有上傳檔案
-                if (uploadedFiles.length > 0) {
-                    //PDF檔
-                    if (uploadedFiles[0].type == "application/pdf") {    
-                        if (uploadedFiles[0].size > 5 * 1024 * 1024) {
-                            return res.end("檔案需小於5MB");
-                        }
-                        var url = uploadedFiles[0].fd;
-                        var start = url.search("files") - 1;
-                        url = url.slice(start);
-                        url = url.replace(/\\/g, "/");
-                        value.receipt = url;
-                        value.receiptUT = new Date();
-                    }
-                    //非PDF檔
-                    else {
-                        fs.unlink(uploadedFiles[0].fd, function (err) {  
-                            if (err) 
-                                console.error(err) 
-                        });  
-                        return res.end("檔案格式錯誤");
-                    }      
-
-                    //取得舊檔案位址
-                    UserFiles.findOne({
-                        user: req.session.userid
-                    })
-                    .exec(function (err, file) {
-                        if (err)
-                            res.end(JSON.stringify(err));
-                        else {
-                            var oldFile = file.receipt;
-
-                            UserFiles.update({id: file.id}, value)
-                            .exec(function (err, datas) {
-                                var uploadFile = req.file("receipt")._files[0].stream.filename;
-                                var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
-                                var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
-                                
-                                if (err) {
-                                    //刪除上傳檔案
-                                    fs.unlink(uploadedFiles[0].fd, function (err) {  
-                                        if (err) 
-                                            console.error(err) 
-                                    });  
-                                    
-                                    //還原舊檔案
-                                    if (fs.existsSync(tmpPath)) {
-                                        fs.renameSync(tmpPath, newPath)
-                                    }
-                                    res.end(JSON.stringify(err));
-                                }
-                                else {
-                                    if(oldFile != null){                     
-                                        var filePath = sails.config.appPath + "/assets" + oldFile;
-
-                                        //刪除舊檔案
-                                        if (fs.existsSync(tmpPath)) {
-                                            fs.unlink(tmpPath, function (err) {  
-                                                if (err) 
-                                                    console.error(err) 
-                                            }); 
-                                        }
-                                        else {
-                                            fs.unlink(filePath, function (err) {  
-                                                if (err) 
-                                                    console.error(err) 
-                                            }); 
-                                        }
-                                    }
-                                    res.redirect("/files");
-                                }
-                            });
-                        }
-                    });                        
+        var uploadOptions = {
+            dirname: sails.config.appPath+"/assets/files/"+req.session.userid,
+            saveAs: function (__newFileStream, cb) {
+                var i = 0;
+                var uploadFile = req.file("receipt")._files[0].stream.filename;
+                var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
+                var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
+                
+                //檔名重複時重新命名舊檔案
+                if (fs.existsSync(newPath)) {
+                    fs.renameSync(newPath, tmpPath)
                 }
-                //沒上傳檔案
-                else{
-                    return res.end("未上傳檔案");
-                }
-            });
+                cb(null, __newFileStream.filename);
+            },
         }
-        else{
-            return res.forbidden();
-        }  
-    },
 
-    /*後台*/
-   
-    //報名者資料
-    applicants: function (req, res) {
-        // if (req.session.userid)
-        if(req.session.type != "A"){
-            return res.forbidden();
-        }
-        if (req.session.userid) {
-            var th;
-
-            SystemSetting.findOne({
-                name: 'th'
-            })
-            .exec(function (err, parameter1) {
-                if (err) {
-                    return res.end(JSON.stringify(err));
+        req.file("receipt").upload(uploadOptions, function (err, uploadedFiles) {
+            if (err) 
+                return res.end(JSON.stringify(err));
+            //有上傳檔案
+            if (uploadedFiles.length > 0) {
+                //PDF檔
+                if (uploadedFiles[0].type == "application/pdf") {    
+                    if (uploadedFiles[0].size > 5 * 1024 * 1024) {
+                        return res.end("檔案需小於5MB");
+                    }
+                    var url = uploadedFiles[0].fd;
+                    var start = url.search("files") - 1;
+                    url = url.slice(start);
+                    url = url.replace(/\\/g, "/");
+                    value.receipt = url;
+                    value.receiptUT = new Date();
                 }
+                //非PDF檔
                 else {
-                    if (parameter1 == undefined)
-                        th = '';
-                    else
-                        th = parameter1.value;
-                }
-                User.find({
-                    th: th,
-                    type: 'U'
+                    fs.unlink(uploadedFiles[0].fd, function (err) {  
+                        if (err) 
+                            console.error(err) 
+                    });  
+                    return res.end("檔案格式錯誤");
+                }      
+
+                //取得舊檔案位址
+                UserFiles.findOne({
+                    user: req.session.userid
                 })
-                .populate('files')
-                .populate('disc')
-                .exec(function (err, users) {
-                    if (err) {
+                .exec(function (err, file) {
+                    if (err)
                         res.end(JSON.stringify(err));
-                    }
                     else {
-                        for (var i = 0; i < users.length; i++) {
-                            if (users[i].files.registrationUT != null)
-                                users[i].files.registrationUT = CmsService.formatTime(users[i].files.registrationUT);
-                            if (users[i].files.autobiographyUT != null)
-                                users[i].files.autobiographyUT = CmsService.formatTime(users[i].files.autobiographyUT);
-                            if (users[i].files.receiptUT != null)
-                                users[i].files.receiptUT = CmsService.formatTime(users[i].files.receiptUT);
-                            if (users[i].disc != null){
-                                // users[i].disc.q1 = users[i].disc.animal;
+                        var oldFile = file.receipt;
+
+                        UserFiles.update({id: file.id}, value)
+                        .exec(function (err, datas) {
+                            var uploadFile = req.file("receipt")._files[0].stream.filename;
+                            var newPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/"+uploadFile;
+                            var tmpPath = sails.config.appPath+"/assets/files/"+req.session.userid+"/tmp.pdf";
+                            
+                            if (err) {
+                                //刪除上傳檔案
+                                fs.unlink(uploadedFiles[0].fd, function (err) {  
+                                    if (err) 
+                                        console.error(err) 
+                                });  
+                                
+                                //還原舊檔案
+                                if (fs.existsSync(tmpPath)) {
+                                    fs.renameSync(tmpPath, newPath)
+                                }
+                                res.end(JSON.stringify(err));
                             }
-                            // users[i].disc.q1 = CmsService.formatTime(users[i].disc.q1);
+                            else {
+                                if(oldFile != null){                     
+                                    var filePath = sails.config.appPath + "/assets" + oldFile;
 
-                        }
-                        return res.view("backend/pages/applicants", {
-                            users: users
-
+                                    //刪除舊檔案
+                                    if (fs.existsSync(tmpPath)) {
+                                        fs.unlink(tmpPath, function (err) {  
+                                            if (err) 
+                                                console.error(err) 
+                                        }); 
+                                    }
+                                    else {
+                                        fs.unlink(filePath, function (err) {  
+                                            if (err) 
+                                                console.error(err) 
+                                        }); 
+                                    }
+                                }
+                                res.redirect("/files");
+                            }
                         });
                     }
-                });
-            });
-        }
-        else{
-            return res.forbidden();
-        }  
+                });                        
+            }
+            //沒上傳檔案
+            else{
+                return res.end("未上傳檔案");
+            }
+        });
     },
 };
