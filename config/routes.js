@@ -277,6 +277,25 @@ module.exports.routes = {
   },
 
   /*後台*/
+  'get /backend/login': {
+    view:'backend/pages/login'
+  },
+  'get /backend/profile': {
+    controller: 'cms',
+    action: 'profile'
+  },
+  'post /backend/profile': {
+    controller: 'cms',
+    action: 'editProfile'
+  },
+  'post /backend/login': {
+    controller: 'cms',
+    action: 'login'
+  },
+
+
+  '/backend': '/cms',
+
   '/backend': '/cms',
 
   /*後台-CMS*/

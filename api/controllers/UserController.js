@@ -151,52 +151,41 @@ function registerAccount(res,newuser,callback){
         SystemSetting.findOne({
             name: "startDate"
         })
-        .exec(function (err, parameter1) {
+        .exec(function (err, strStartDate) {
             if (err) {
                 return res.end(JSON.stringify(err));
             }
             else {
-                if (parameter1 == undefined)
+                if (strStartDate == undefined)
                     startDate = "";
                 else {
-                    startDate = (new Date(parameter1.value)).getTime();
+                    startDate = (new Date(strStartDate.value)).getTime();
                 }
 
                 SystemSetting.findOne({
                     name: "endDate"
                 })
-                .exec(function (err, parameter2) {
+                .exec(function (err, strEndDate) {
                     if (err) {
                         return res.end(JSON.stringify(err));
                     }
                     else {
-                        if (parameter2 == undefined)
+                        if (strEndDate == undefined)
                             endDate = "";
                         else {
-                            endDate = (new Date(parameter2.value)).getTime();
+                            endDate = (new Date(strEndDate.value)).getTime();
                         }
 
-                        //還沒設定
-                        if (startDate == "" || endDate == "") {
-                            return res.view("frontend/pages/login", {
-                                system: "open"
-                            });
-                        }
-                        else {
-                            var now = (new Date()).getTime();
-
+                        var now = (new Date()).getTime();
+                        if (startDate < now && now < endDate){
                             //系統開放
-                            if (startDate < now && now < endDate){
-                                return res.view("frontend/pages/login", {
-                                    system: "open"
-                                });
-                            }
-                            //系統關閉
-                            else {
-                                return res.view("frontend/pages/login", {
-                                    system: "close"
-                                });
-                            }
+                            return res.view("frontend/pages/login");
+                        } else if (startDate == "" || endDate == ""){
+                            //還沒設定
+                            return res.view("frontend/pages/login");
+                        }else{
+                            return res.view("frontend/pages/login");
+                            // return res.forbidden('目前非報名時間');
                         }
                     }
                 });
@@ -314,7 +303,6 @@ function registerAccount(res,newuser,callback){
                         systemSetting: false,
                     };
                 }
-
                 res.redirect("/profile");
             }
         });
@@ -341,7 +329,6 @@ function registerAccount(res,newuser,callback){
 						gIdToken: gIdToken
 					}
 					registerAccount(res, newuser, function (new_user) {
-                        console.log("google register : ", new_user);
                         req.session.userid = new_user.id;
                         req.session.email = new_user.email;
                         req.session.gIdToken = new_user.gIdToken;
@@ -394,7 +381,6 @@ function registerAccount(res,newuser,callback){
     },
     //個人資料
     profile: function (req, res) {
-        console.log("profile userid:",req.session.userid);
         UserFiles.findOne({
             user: req.session.userid
         })

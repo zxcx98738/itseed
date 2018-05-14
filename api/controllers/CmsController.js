@@ -6,6 +6,7 @@
  */
 
 var fs = require("fs");
+var md5 = require("MD5")
 
 module.exports = {
     //移除blueprint內建的actions
@@ -928,4 +929,55 @@ toDraft: function(req, res){
             }
         });
     },
+    //登入頁
+    login: function (req, res) {
+        User.findOne({
+            email: req.body.email
+        })
+        .exec(function(err, user) {
+            if(err){ res.end(JSON.stringify(err));}
+            if (user == undefined || user.type != "A"){
+                return res.forbidden("無權限觀看此頁");
+            }
+            if (md5(req.body.pwd) != user.pwd) {
+                res.redirect("/backend");
+            }
+            req.session.userid = user.id;
+            req.session.email = user.email;
+            req.session.pwd = req.body.pwd;
+            req.session.type =  user.type;
+            req.session.authorized = {
+                cms: true,
+                systemSetting: true,
+            };
+            res.redirect("/backend");
+        });
+    },
+    //個人資料
+    profile: function (req, res) {
+        console.log(req.session.userid);
+        User.findOne({
+            id: req.session.userid
+        }).exec(function(err, user) {
+            if(err){ res.end(JSON.stringify(err));}
+            console.log(user);
+            return res.view("backend/pages/profile", {
+                user: user
+            });
+        });
+    },
+    //編輯個人資料
+    editProfile: function (req, res) {
+        var t = 0;
+        var value = {
+            pwd: md5(req.body.pwd),
+            name: req.body.name,
+            gender: req.body.gender,
+        };
+        User.update({ id: req.session.userid }, value).exec(function (err, datas) {
+            req.session.email = req.body.email;
+            req.session.pwd = req.body.pwd;
+            res.redirect("/backend");
+        });
+    }
 };
