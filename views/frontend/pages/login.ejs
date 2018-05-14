@@ -60,7 +60,6 @@
         <input class="login-btn" id="login-btn" type="submit" value="登入">
       </div>
     </form>
-    <% if (system == "open") { %>
       <div class="g-signin2" data-onsuccess="onSignIn"></div>
       <div style="padding-bottom: 0">
         <span>尚未註冊嗎？</span>
@@ -69,7 +68,6 @@
         <br><br>
         <a href="" data-toggle="modal" data-target="#myModal">忘記密碼</a>
       </div>
-    <% } %>
   </div>
   <div style="text-align: center; margin-bottom: 30px;">
     <p>如有遇到無法登入官網，或無法上傳資料等問題，</p>
@@ -126,9 +124,7 @@
         <input class="btn-green btn-block" type="submit" value="登入">
       </div>
     </form>
-  <% if (system == "open") { %>
     <a class="register" href="/register">註冊新帳號</a>
-  <% } %>
   </div>
 </div>
 
