@@ -11,41 +11,76 @@
 function registerAccount(res,newuser,callback){
 	// 		 一般會員  email + pwd 		註冊
 	// goolge登入會員  email + gIdToken 註冊
-	SystemSetting.findOne({
-		name: "th"
-	})
-	.exec(function (err, parameter) {
-		if (err) { return res.end(JSON.stringify(err)); }
-		if (parameter != undefined) {
-			newuser.th = parameter.value;
-		}
-		//新增使用者
-		User.create(newuser)
-		.exec(function (err, user) {
-			if (err) { res.end(JSON.stringify(err)); }
-			//新增DISC
-			UserDISC.create({ user: user.id })
-			.exec(function (err, disc) {
-				if (err) { res.end(JSON.stringify(err)); }
-				//新增報名資料
-				UserFiles.create({ user: user.id })
-				.exec(function (err, files) {
-					if (err) { res.end(JSON.stringify(err)); }
-					//連結table
-					User.update({
-						id: user.id
-					}, {
-						disc: disc.id,
-						files: files.id
-					})
-					.exec(function (err, data) {
-						if (err) { res.end(JSON.stringify(err)); }
-						callback(user);
-					});
-				});
-			});
-		});
-	});
+
+    //驗證是否重複註冊（信箱是否被使用過）
+    //  一般會員     註冊 => 已經被 google登入註冊過 => 補上 password
+    //  google登入  註冊 => 已經被 一般註冊註冊過    => 補上 gIdToken
+    var value = {};
+    User.findOne({ email: newuser.email }).exec(function (err, user) {
+        if (err) { return res.end(JSON.stringify(err)); }
+        if(user != undefined){
+            // 補上 gIdToken
+            if (!user.gIdToken && newuser.gIdToken){
+                value.gIdToken = newuser.gIdToken;
+                User.update({
+                    id: user.id
+                },value).exec(function (err,data) {
+                    if (err) { res.end(JSON.stringify(err)); }
+                    User.findOne({id: user.id}).exec(function (err, updated_user) {
+                        if (err) { res.end(JSON.stringify(err)); }
+                        callback(updated_user);
+                    });
+                });
+            }else  if (!user.pwd  && newuser.pwd ){
+                // 補上 pwd
+                value.pwd = newuser.pwd;
+                User.update({id: user.id}, {value}).exec(function (err, user) {
+                    if (err) { res.end(JSON.stringify(err)); }
+                    User.findOne({ id: user.id }).exec(function (err, updated_user) {
+                        if (err) { res.end(JSON.stringify(err)); }
+                        callback(updated_user);
+                    });
+                });
+            }
+        }else{
+            SystemSetting.findOne({ name: "th" }).exec(function (err, itseed_th) {
+                if (err) { return res.end(JSON.stringify(err)); }
+                if (itseed_th != undefined) {
+                    newuser.th = itseed_th.value;
+                }
+                User.create(newuser)
+                .exec(function (err, user) {
+                    if (err) { res.end(JSON.stringify(err)); }
+                    //新增DISC
+                    UserDISC.create({ user: user.id })
+                    .exec(function (err, disc) {
+                        if (err) { res.end(JSON.stringify(err)); }
+                        //新增報名資料
+                        UserFiles.create({ user: user.id })
+                        .exec(function (err, files) {
+                            if (err) { res.end(JSON.stringify(err)); }
+                            //連結table
+                            User.update({
+                                id: user.id
+                            }, {
+                                disc: disc.id,
+                                files: files.id
+                            })
+                            .exec(function (err, data) {
+                                if (err) { res.end(JSON.stringify(err)); }
+                                User.findOne({
+                                    id: user.id
+                                }).exec(function (err, updated_user) {
+                                    if (err) { res.end(JSON.stringify(err)); }
+                                    callback(updated_user);
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        }
+    });
 }
 
  module.exports = {
@@ -177,8 +212,8 @@ function registerAccount(res,newuser,callback){
         };
 		registerAccount(res,newuser,function(user){
 			req.session.userid = user.id;
-			req.session.email = req.body.email;
-			req.session.pwd  = req.body.pwd;
+            req.session.email = user.email;
+            req.session.pwd = user.pwd;
 			req.session.type =  user.type;
 			req.session.authorized = {
 				cms: false,
@@ -285,7 +320,7 @@ function registerAccount(res,newuser,callback){
         });
     },
     google_login: function (req, res) {
-        const CLIENT_ID = "847827161541-aong4n8kqb4jnq804cn43ca0vv3d6j0d.apps.googleusercontent.com";
+        const CLIENT_ID = "546336040138-r09etvgqm60i76lim1lpubsk5csso2e5.apps.googleusercontent.com";
         const OAuth2Client = require('google-auth-library').OAuth2Client;
         const client = new OAuth2Client(CLIENT_ID);
         async function verify() {
@@ -305,21 +340,24 @@ function registerAccount(res,newuser,callback){
 						email: payload.email,
 						gIdToken: gIdToken
 					}
-					registerAccount(res, newuser, function (user) {
-						req.session.userid = user.id;
-						req.session.email = payload.email;
-						req.session.gIDToken = gIdToken;
-						req.session.type = user.type;
+					registerAccount(res, newuser, function (new_user) {
+                        console.log("google register : ", new_user);
+                        req.session.userid = new_user.id;
+                        req.session.email = new_user.email;
+                        req.session.gIdToken = new_user.gIdToken;
+                        req.session.type = new_user.type;
 						req.session.authorized = {
 							cms: false,
 							systemSetting: false,
 						};
-						res.redirect("/profile");
+                        res.end(JSON.stringify({
+                            redirect: "/profile"
+                        }));
 					});
                 }else{
 					req.session.userid = user.id;
 					req.session.email = payload.email;
-					req.session.gIDToken = gIdToken;
+                    req.session.gIdToken = gIdToken;
 					req.session.type = user.type;
 					req.session.authorized = {
 						cms: false,
@@ -356,64 +394,62 @@ function registerAccount(res,newuser,callback){
     },
     //個人資料
     profile: function (req, res) {
-        //================ 報名狀態顯示顯示
+        console.log("profile userid:",req.session.userid);
         UserFiles.findOne({
             user: req.session.userid
         })
         .exec(function(err, files) {
-            if(err){
-                res.end(JSON.stringify(err));
+            if(err){ res.end(JSON.stringify(err));}
+            if(files == undefined){
+                res.redirect('/logout');
             }
-            else{
-                var f = 0;
-                if( files.finished != 1){
-                    files.finished = 0;
-                    if (files.registrationUT != null){
-                        f += 1;
-                        files.registrationUT = CmsService.formatTime(files.registrationUT);
-                    }
-                    if (files.autobiographyUT != null){
-                        f += 1;
-                        files.autobiographyUT = CmsService.formatTime(files.autobiographyUT);
-                    }
+            var f = 0;
+            if( files.finished != 1){
+                files.finished = 0;
+                if (files.registrationUT != null){
+                    f += 1;
+                    files.registrationUT = CmsService.formatTime(files.registrationUT);
                 }
-                if(f == 2){
-                    // files.allFiles = 1;
-                    files.finished = 1;
+                if (files.autobiographyUT != null){
+                    f += 1;
+                    files.autobiographyUT = CmsService.formatTime(files.autobiographyUT);
                 }
-                //disc 顯示
-                UserDISC.findOne({  
-                    user: req.session.userid
-                })
-                .exec(function (err, disc) {
-                    if (err) {
-                        return res.end(JSON.stringify(err));
-                    }
-                    else {
-                        if(req.session.userid){
-                            User.findOne({
-                                id: req.session.userid
-                            })
-                            .exec(function(err, user) {
-                                if(err){
-                                    res.end(JSON.stringify(err));
-                                }
-                                else{
-                                    return res.view("frontend/pages/userProfile", {
-                                        user: user,
-                                        disc: disc,
-                                        files:files
-
-                                    });
-                                }
-                            });
-                        }
-                        else{
-                            return res.forbidden();
-                        }  
-                    }
-                });
             }
+            if(f == 2){
+                // files.allFiles = 1;
+                files.finished = 1;
+            }
+            //disc 顯示
+            UserDISC.findOne({  
+                user: req.session.userid
+            })
+            .exec(function (err, disc) {
+                if (err) {
+                    return res.end(JSON.stringify(err));
+                }
+                else {
+                    if(req.session.userid){
+                        User.findOne({
+                            id: req.session.userid
+                        })
+                        .exec(function(err, user) {
+                            if(err){
+                                res.end(JSON.stringify(err));
+                            }
+                            else{
+                                return res.view("frontend/pages/userProfile", {
+                                    user: user,
+                                    disc: disc,
+                                    files:files
+                                });
+                            }
+                        });
+                    }
+                    else{
+                        return res.forbidden();
+                    }  
+                }
+            });
         });
     },
     //編輯個人資料
