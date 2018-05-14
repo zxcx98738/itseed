@@ -286,7 +286,7 @@ function registerAccount(res,newuser,callback){
     },
     google_login: function (req, res) {
         const CLIENT_ID = "847827161541-aong4n8kqb4jnq804cn43ca0vv3d6j0d.apps.googleusercontent.com";
-        const { OAuth2Client } = require('google-auth-library');
+        const OAuth2Client = require('google-auth-library').OAuth2Client;
         const client = new OAuth2Client(CLIENT_ID);
         async function verify() {
             const ticket = await client.verifyIdToken({
