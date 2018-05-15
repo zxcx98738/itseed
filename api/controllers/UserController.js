@@ -205,8 +205,7 @@ function registerAccount(res,newuser,callback){
             req.session.pwd = user.pwd;
 			req.session.type =  user.type;
 			req.session.authorized = {
-				cms: false,
-				systemSetting: false,
+				user: true
 			};
 			res.redirect("/profile");  
         });                
