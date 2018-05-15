@@ -4,7 +4,7 @@
  * @描述 : 前台顯示內容
  * @文件 : See http://links.sailsjs.org/docs/controllers
  */
-
+require('dotenv').config()
 module.exports = {
     //移除blueprint內建的actions
     _config: { 

@@ -5,8 +5,9 @@
  * @文件 : Se http://links.sailsjs.org/docs/controllers
  */
 
- var md5 = require("MD5")
- var fs = require("fs");
+require('dotenv').config()
+var md5 = require("MD5")
+var fs = require("fs");
 
 function registerAccount(res,newuser,callback){
 	// 		 一般會員  email + pwd 		註冊
@@ -741,7 +742,6 @@ function registerAccount(res,newuser,callback){
                                                 }
                                                 else {
                                                     var now = (new Date()).getTime();
-
                                                     //系統開放
                                                     if (startDate < now && now < endDate){
                                                         return res.view("frontend/pages/userFiles", {
