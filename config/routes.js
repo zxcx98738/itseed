@@ -277,6 +277,25 @@ module.exports.routes = {
   },
 
   /*後台*/
+  'get /backend/login': {
+    view:'backend/pages/login'
+  },
+  'get /backend/profile': {
+    controller: 'cms',
+    action: 'profile'
+  },
+  'post /backend/profile': {
+    controller: 'cms',
+    action: 'editProfile'
+  },
+  'post /backend/login': {
+    controller: 'cms',
+    action: 'login'
+  },
+
+
+  '/backend': '/cms',
+
   '/backend': '/cms',
 
   /*後台-CMS*/
@@ -286,7 +305,11 @@ module.exports.routes = {
     controller: 'Cms',
     action: 'editor'
   },
-  
+  /*報名者資料*/
+  'get /applicants': {
+    controller: 'Cms',
+    action: 'applicants'
+  },
   'get /cms/edit/:model': {
     controller: 'Cms',
     action: 'editor'
@@ -367,13 +390,6 @@ module.exports.routes = {
     controller: 'System',
     action: 'updateEndDate'
   },
-
-  /*報名者資料*/
-  'get /applicants': {
-    controller: 'User',
-    action: 'applicants'
-  },
-
 
   // 'get /'
 

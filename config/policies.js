@@ -47,7 +47,8 @@ module.exports.policies = {
     'google_login': true
   },
   CmsController: {
-    '*': 'isLoginCms'
+    '*': 'isLoginCms',
+    'login': true
   },
   SystemController: {
     '*': 'isLoginSystem'
