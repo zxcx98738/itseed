@@ -298,7 +298,7 @@ function registerAccount(res,newuser,callback){
         });
     },
     google_login: function (req, res) {
-        const CLIENT_ID = "546336040138-r09etvgqm60i76lim1lpubsk5csso2e5.apps.googleusercontent.com";
+        const CLIENT_ID = process.env.googleLoginId;
         const OAuth2Client = require('google-auth-library').OAuth2Client;
         const client = new OAuth2Client(CLIENT_ID);
         async function verify() {
