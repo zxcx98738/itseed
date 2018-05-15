@@ -52,7 +52,7 @@
 
     <!-- google-login -->
     <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-    <meta name="google-signin-client_id" content="847827161541-2fr18jaokob1kr3irbbkvfesm5ktsg6q.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content=<%= process.env.googleLoginId %> >
     <script>
       function onLoad() {
         gapi.load('auth2', function () {
