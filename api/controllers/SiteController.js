@@ -428,7 +428,29 @@ module.exports = {
             res.end(JSON.stringify(err));
         });
     },
+    studentIntro: function(req, res){
+        var model = Sharing; 
+        var action = CmsService.getAction(model);
+        var now = new Date();
+        var criteria = {   
+            where: { status: "P" }, 
+            sort: { order: "asc" }
+        }
 
+        CmsService.findPosts(model, criteria)
+        .then(function(datas){
+            for(var i = 0; i < datas.length; i++){
+                datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
+            }
+            return res.view(action.list, {
+                url: action.view,
+                datas: datas
+            });
+        })
+        .catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    },
     //報名資訊
     regInfo: function(req, res){
         var model = RegInfo; 
@@ -592,6 +614,27 @@ module.exports = {
         // .catch(function(err){
         //     res.end(JSON.stringify(err));
         // });
-    }
+    },
+    // TUV
+    studentIntro: function(req, res){
+        return res.view("frontend/pages/studentIntro",{
+        });
+    },
+    careersharing: function(req, res){
+        return res.view("frontend/pages/careersharing",{
+        });
+    },
+    seminar: function(req, res){
+        return res.view("frontend/pages/seminar",{
+        });
+    },
+    workshop: function(req, res){
+        return res.view("frontend/pages/workshop",{
+        });
+    },
+    apply: function(req, res){
+        return res.view("frontend/pages/apply",{
+        });
+    },
 };
 
