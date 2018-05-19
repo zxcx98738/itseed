@@ -305,7 +305,6 @@ function registerAccount(res,newuser,callback){
         });
     },
     google_login: function (req, res) {
-        const redirect = req.query.redirect;
         const CLIENT_ID = process.env.googleLoginId;
         const OAuth2Client = require('google-auth-library').OAuth2Client;
         const client = new OAuth2Client(CLIENT_ID);
@@ -335,7 +334,7 @@ function registerAccount(res,newuser,callback){
                             user: true
                         }
                         res.end(JSON.stringify({
-                            redirect: req.body.redirect != 'undefined'?redirect:"/profile"
+                            redirect: req.body.redirect != 'undefined' ? req.body.redirect:"/profile"
                         }));
 					});
                 }else{
@@ -347,7 +346,7 @@ function registerAccount(res,newuser,callback){
                         user: true
                     }
 					res.end(JSON.stringify({
-                        redirect: redirect ? redirect :"/profile"
+                        redirect: req.body.redirect != 'undefined' ? req.body.redirect : "/profile"
 					}));
 				}
             });  
