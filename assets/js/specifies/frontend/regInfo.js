@@ -27,32 +27,28 @@ function initializeClock(id, endtime) {
   var hoursSpan = clock.querySelector('.hours');
   var minutesSpan = clock.querySelector('.minutes');
   var secondsSpan = clock.querySelector('.seconds');
+  daysSpan.innerHTML = 0;
+  hoursSpan.innerHTML = 0;
+  minutesSpan.innerHTML = 0;
+  secondsSpan.innerHTML = 0;
 
   function updateClock() {
     var t = getTimeRemaining(endtime);
 
-    daysSpan.innerHTML = 0;
-    hoursSpan.innerHTML = 0;
-    minutesSpan.innerHTML = 0;
-    secondsSpan.innerHTML = 0;
-
-    // daysSpan.innerHTML = t.days;
-    // hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-    // minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-    // secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
     if (t.total <= 0) {
       clearInterval(timeinterval);
+      return;
     }
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
   }
 
   updateClock();
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-var deadline = new Date( 2017, 06, 9, 12, 0, 0);
-// var deadline = new Date( 2017, 05, 01);
-
-console.log(deadline);
+var deadline = new Date( 2018, 07, 01, 23, 59, 59);
 
 initializeClock('clockdiv', deadline);
