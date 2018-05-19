@@ -14,7 +14,7 @@
     var id_token = googleUser.getAuthResponse().id_token;
     console.log(id_token);
     console.log(googleUser.getAuthResponse());
-
+    var redirect_link = docuemnt.getElementById('redirect').value;
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/google_login');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -25,7 +25,7 @@
       var res = JSON.parse(xhr.responseText);
       document.location.href = res.redirect;
     };
-    xhr.send(`idtoken=${id_token}`);
+    xhr.send(`idtoken=${id_token}&redirect=${redirect_link}`);
 
   }
 
@@ -48,6 +48,7 @@
   </div>
   <div class="login-main">
     <form action="/login" method="post">
+      <input hidden type="text" name="redirect" value="<%= redirect %>" id="redirect">
       <div>
         <span><img src="/images/layout/ACCOUNT.png"> 帳號：</span>
         <input class="btn-block" autofocus="autofocus" name="email" placeholder="電子信箱" type="email">

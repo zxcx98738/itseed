@@ -34,6 +34,9 @@ module.exports.policies = {
   * and its actions                                                          *
   *                                                                          *
   ***************************************************************************/
+  SiteController:{
+    'apply': 'isLoginUser',
+  },
   UserController: {
     '*': 'isLoginUser',
     'rem': true ,
