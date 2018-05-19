@@ -172,6 +172,10 @@ module.exports.routes = {
     controller: 'Site',
     action: 'careersharing'
   },
+  '/careerSharingContent': {
+    controller: 'Site',
+    action: 'careerSharingContent'
+  },
   '/seminar': {
     controller: 'Site',
     action: 'seminar'
