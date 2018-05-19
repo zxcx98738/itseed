@@ -300,7 +300,7 @@ function registerAccount(res,newuser,callback){
                 req.session.authorized = {
                     user:true
                 }
-                res.redirect(req.body.redirect ? req.body.redirect: "/profile" ) ;
+                res.redirect(req.body.redirect!='undefined'? req.body.redirect: "/profile" ) ;
             }
         });
     },
@@ -335,7 +335,7 @@ function registerAccount(res,newuser,callback){
                             user: true
                         }
                         res.end(JSON.stringify({
-                            redirect: redirect?redirect:"/profile"
+                            redirect: req.body.redirect != 'undefined'?redirect:"/profile"
                         }));
 					});
                 }else{
