@@ -14,7 +14,7 @@
     var id_token = googleUser.getAuthResponse().id_token;
     console.log(id_token);
     console.log(googleUser.getAuthResponse());
-    var redirect_link = docuemnt.getElementById('redirect').value;
+    var redirect_link = document.getElementById('redirect').value;
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/google_login');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
