@@ -148,6 +148,7 @@ function registerAccount(res,newuser,callback){
     },
     //登入頁
     loginPage: function (req, res) {
+        let redirect = req.query.redirect;
         //判斷系統開放與否
         SystemSetting.findOne({
             name: "startDate"
@@ -180,12 +181,18 @@ function registerAccount(res,newuser,callback){
                         var now = (new Date()).getTime();
                         if (startDate < now && now < endDate){
                             //系統開放
-                            return res.view("frontend/pages/login");
+                            return res.view("frontend/pages/login",{
+                                redirect: redirect
+                            });
                         } else if (startDate == "" || endDate == ""){
                             //還沒設定
-                            return res.view("frontend/pages/login");
+                            return res.view("frontend/pages/login", {
+                                redirect: redirect
+                            });
                         }else{
-                            return res.view("frontend/pages/login");
+                            return res.view("frontend/pages/login", {
+                                redirect: redirect
+                            });
                             // return res.forbidden('目前非報名時間');
                         }
                     }
@@ -293,7 +300,7 @@ function registerAccount(res,newuser,callback){
                 req.session.authorized = {
                     user:true
                 }
-                res.redirect("/profile");
+                res.redirect(req.body.redirect!='undefined'? req.body.redirect: "/profile" ) ;
             }
         });
     },
@@ -327,7 +334,7 @@ function registerAccount(res,newuser,callback){
                             user: true
                         }
                         res.end(JSON.stringify({
-                            redirect: "/profile"
+                            redirect: req.body.redirect != 'undefined' ? req.body.redirect:"/profile"
                         }));
 					});
                 }else{
@@ -339,7 +346,7 @@ function registerAccount(res,newuser,callback){
                         user: true
                     }
 					res.end(JSON.stringify({
-						redirect:"/profile"
+                        redirect: req.body.redirect != 'undefined' ? req.body.redirect : "/profile"
 					}));
 				}
             });  
