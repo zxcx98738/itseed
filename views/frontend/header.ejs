@@ -64,10 +64,10 @@
           </li>
           <li><a href="/faq">常見問題</a></li>
           <% if (session.userid == undefined ) { %>
-            <li id="signin"><a href="/login" >馬上報名<span>→</span></a></li>
+            <li id="signin"><button onclick="document.location='/login'" >馬上報名<span>→</span></button></li>
           <% } else { %>
             <li id="account-profile"><a href="/profile" >報名頁面</a></li>
-            <li id="signout" onclick="signOut();" ><a href="#" onclick="signOut();">Sign out</a></li>
+            <li id="signout" onclick="signOut();" ><a href="#" onclick="signOut();">登出</a></li>
           <% } %>
         </ul>
       </div>
