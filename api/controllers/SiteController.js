@@ -620,6 +620,10 @@ module.exports = {
         return res.view("frontend/pages/studentIntro",{
         });
     },
+    projectIntro: function(req, res){
+        return res.view("frontend/pages/projectIntro",{
+        });
+    },
     careersharing: function(req, res){
         return res.view("frontend/pages/careersharing",{
         });
