@@ -1,96 +1,43 @@
 <script>
   (function(){
-    $(window).scroll(function(){
-      if($(this).scrollTop() > 300) {
-        $("nav").addClass("navbar-shrink");
-      }
-      else{
-        $("nav").removeClass("navbar-shrink");
-      }
-    });
+    // $(window).scroll(function(){
+    //   if($(this).scrollTop() > 300) {
+    //     $("nav").addClass("navbar-shrink");
+    //   }
+    //   else{
+    //     $("nav").removeClass("navbar-shrink");
+    //   }
+    // });
+
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+        document.location.href = "/logout";
+      });
+      document.location.href = "/logout";
+    }
+
   })()
 
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-      document.location.href = "/logout";
-    });
-    document.location.href = "/logout";
-  }
 </script>
 
 
 <header>
-
-
-<!-- <div>
-  <div class="logo"><img src="/images/layout/logo2.png" width="200px" alt=""></div>
-  <div class="bar">
-    <ul>
-      <li><a href="">關於資種</a>
-          <ul>
-            <li>計畫簡介</li>
-            <li>公會簡介</li>
-            <li>歷屆名單</li>
-          </ul>
-      </li>
-      <li><a href="">培訓計畫</a>
-          <ul>
-          <li><a href="/courseInfo">講座課程</a></li>
-              <li><a href="/businessVisit">企業參訪</a></li>
-              <li><a href="/xx">六大專案</a>
-                  <ul>
-                      <li><a href="">TUV專案</a></li>
-                      <li><a href="">春酒專案</a></li>
-                      <li><a href="">職涯體驗</a></li>
-                      <li><a href="">招生專案</a></li>
-                      <li><a href="">海外參訪</a></li>
-                      <li><a href="">結業專案</a></li>
-                  </ul>
-              </li>
-            </ul>
-      </li>
-      <li><a href="">經驗分享</a>
-        <ul>
-          <li>各校系怎麼看</li>
-          <li>領導者怎麼看</li>
-          <li>迷惘者怎麼看</li>
-          <li>畢業人怎麼看</li>
-        </ul>
-      </li>
-      <li><a href="">招生訊息</a>
-      </li>
-      <li>
-        <a href="">常見問題</a>
-      </li>
-      <li><a href="">登入</a></li>
-      <li><a href="">馬上報名</a></li>
-    </ul>
-
-  </div>
-</div> -->
-
-
-
 <!-- 導覽列 -->
- <div class="navbar navbar-default navbar-fixed-top nav-bar-color">
-    <div class="nav-bar-container nav-bar-fix">
+ <div class="navbar navbar-default navbar-fixed-top">
+    <div class="nav-bar-container">
       <div class="navbar-header">
+        <img class="navbar-brand" src="/images/layout/logo1.png" alt="" onclick="document.location='/'" >
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand bar-brand" href="/">
-          <img src="/images/layout/logo1.png" style="height: 100%; margin-top:9px;" alt="">
-        </a>
       </div>
 
-      <div class="collapse navbar-collapse navbar-right nav-word navbar-wight">
-        <!-- newMenu nav navbar-nav -->
-        <ul class="bar bar-height">
-          <!-- <li><a href="/news">最新消息</a></li> -->
+      <div class="collapse navbar-collapse navbar-right ">
+        <ul class="bar">
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">資種起源<!-- <b class="caret"></b> --></a>
             <ul class="dropdown-menu drop-bg">
@@ -117,7 +64,6 @@
               <li><a href="/seminar">說明會</a></li>
               <li><a href="/workshop">工作坊</a></li>
             </ul>
-
           </li>
           <li><a href="/faq">常見問題</a></li>
           <% if (session.userid == undefined ) { %>
@@ -127,11 +73,7 @@
             <li id="signout"><a href="#" onclick="signOut();">Sign out</a></li>
           <% } %>
         </ul>
-
-<!--    <ul class="nav navbar-right navbar-nav" id="signin" >
-          <li><a href="http://bit.ly/254x1is" target="_blank"><b>馬上報名</b><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a></li>
-        </ul> -->
-      </div> <!-- /.nav-collapse -->
+      </div>
     </div>
   </div>
 <hr>
