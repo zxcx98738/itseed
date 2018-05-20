@@ -1,0 +1,153 @@
+.logo{
+	display: inline-block;
+	border:1px solid black;
+}
+
+.nav-bar-container{
+	padding:0;
+	margin:0;
+	max-width:1280px;
+	min-height: 67px;
+	margin:0 auto;
+	font-size:16px;
+	.navbar-header{
+		height:67px;
+		position: relative;
+		.navbar-brand{
+			height:50%;
+			position: relative;
+			top:50%;
+			transform: translateY(-50%);
+			cursor: pointer;
+		}
+		.navbar-toggle{
+			margin:0;
+			position: relative;
+			top:50%;
+			transform: translateY(-50%);
+		}
+	}
+	.navbar-right{
+		height:67px;
+		position: relative;
+		.bar{
+			position: relative;
+			top:50%;
+			transform: translateY(-50%);
+			list-style-type: none;
+			font-size:16px;
+			li{
+				display: inline-block;
+				position: relative;
+				a{
+					padding:4px 8px;
+					color:white;
+					transition: 0.1s;
+					cursor: pointer;
+					text-decoration: initial;
+					&:not(.dropdown-toggle):hover{
+						border-bottom: 3px solid white;
+					}
+				}
+				ul{
+					position: absolute;
+					background-color: transparent;
+					box-shadow: none;
+					-webkit-box-shadow:none;
+					left: 0;
+					padding:10px 5px;
+					background-color: white;
+					border: 1px solid white;
+					li{
+						padding-top: 2px;
+						margin: 0 2px;
+						border-bottom: 1px solid transparent;
+						a{
+							padding:0;
+							margin: 0;
+							color:#fda085;
+						}
+						&:hover{
+							border-bottom: 1px solid #fda085;
+						}
+					}
+				}
+			}
+			#signin{
+				background-color: white;
+				border: 0px;
+				border-radius: 20px;
+				text-align: center;
+				box-shadow: 0px 1px 2px grey;
+				transition: 0.3s;
+				&:hover{
+					transform: translateY(-4px);
+					box-shadow: 0px 2px 4px black;
+				}
+				a{
+					padding:0;
+					border: none;
+					color: #fda085;
+					span{
+						font-size: 10pt
+					}
+				}
+				padding:8px 16px;
+
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+	.nav-bar-container{
+		.navbar-header{
+			img.navbar-brand{
+				margin-left:24px;
+			}
+		}
+		.navbar-right{
+			margin-right:24px;
+		}
+	}
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+	.nav-bar-container{
+		.navbar-header{
+			img.navbar-brand{
+				margin-left:24px;
+			}
+			.navbar-toggle{
+				margin-right:24px;
+			}
+		}
+		.navbar-right.navbar-collapse{
+			height:auto;
+			.bar{
+				top:0;
+				transform: none;
+			}
+		}
+		.navbar-collapse{
+			padding:0 16px 8px 16px;
+			.bar{
+				padding-left: 5px;
+				display: block;
+				>li{
+					display: block;
+					width: 100%;
+					text-align: left;
+					a{
+						display: block;
+						font-size: 14pt;
+					}
+					ul{
+						width: 100%;
+						position: relative;
+					}
+				}
+			}
+		}
+	}
+}
