@@ -74,22 +74,22 @@
 
 
 <!-- 導覽列 -->
-  <div class="navbar navbar-default navbar-fixed-top">
-    <div class="container nav-bar-fix">
+ <div class="navbar navbar-default navbar-fixed-top nav-bar-color">
+    <div class="nav-bar-container nav-bar-fix">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand bar-brand" href="/">
           <img src="/images/layout/logo1.png" style="height: 100%; margin-top:9px;" alt="">
         </a>
       </div>
 
-      <div class="collapse navbar-collapse navbar-right nav-word">
+      <div class="collapse navbar-collapse navbar-right nav-word navbar-wight">
         <!-- newMenu nav navbar-nav -->
-        <ul class="bar">
+        <ul class="bar bar-height">
           <!-- <li><a href="/news">最新消息</a></li> -->
           <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">資種起源<!-- <b class="caret"></b> --></a>
@@ -105,24 +105,20 @@
             <ul class="dropdown-menu drop-part-bg">
               <li><a href="/courseInfo">講座課程</a></li>
               <li><a href="/businessVisit">企業參訪</a></li>
-              <li><a href="/tuv">六大專案</a>
-<!--                   <ul>
-                      <li><a href="">TUV專案</a></li>
-                      <li><a href="">春酒專案</a></li>
-                      <li><a href="">職涯體驗</a></li>
-                      <li><a href="">招生專案</a></li>
-                      <li><a href="">海外參訪</a></li>
-                      <li><a href="">結業專案</a></li>
-                  </ul> -->
-              </li>
-              <!-- <li><a href="/career">職涯體驗</a></li> -->
-              <!-- <li><a href="/project">專案實作</a></li> -->
-              <!-- <li><a href="/overseaVisit">海外參訪</a></li> -->
+              <li><a href="/tuv">六大專案</a></li>
             </ul>
           </li>
           <li><a href="/sharing">經驗分享</a></li>
           <li><a href="/careerSharing">職涯分享</a></li>
-          <li><a href="/regInfo">招生訊息</a></li>
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">招生訊息</a>
+            <ul class="dropdown-menu drop-part-bg">
+              <li><a href="/regInfo">招生資訊</a></li>
+              <li><a href="/seminar">說明會</a></li>
+              <li><a href="/workshop">工作坊</a></li>
+            </ul>
+
+          </li>
           <li><a href="/faq">常見問題</a></li>
           <% if (session.userid == undefined ) { %>
             <li id="signin"><a href="/login" >馬上報名<span>→</span></a></li>
