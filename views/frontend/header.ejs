@@ -81,9 +81,9 @@
       lastScrollY = 0;
     window.addEventListener('scroll', function () {
       var st = this.scrollY;
-      if (st > 67 && st < lastScrollY) {
+      if (st < lastScrollY) {
         navbarClass.remove('hideUp');
-      } else {
+      } else if(st > 67){
         navbarClass.add('hideUp');
       }
       lastScrollY = st;
