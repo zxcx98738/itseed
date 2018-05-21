@@ -73,6 +73,21 @@
       </div>
     </div>
   </div>
-<hr>
+<script>
+  var navbarClass = document.querySelector('.navbar').classList,
+      lastScrollY = 0;
+    window.addEventListener('scroll', function () {
+      var st = this.scrollY;
+      console.log(st);
+      console.log(navbarClass);
+      // 判斷是向上捲動，而且捲軸超過 200px
+      if (st < lastScrollY) {
+        navbarClass.remove('hideUp');
+      } else {
+        navbarClass.add('hideUp');
+      }
+      lastScrollY = st;
+    });
+</script>
 </header>
 
