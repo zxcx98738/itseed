@@ -73,9 +73,6 @@ body>header {
     & +section{
         padding-top:67px;
     }
-    .navbar{
-        background-image: linear-gradient(120deg,  #fda085 0%, #f6d365 100%);
-    }
 }
 
 //主內容
@@ -120,56 +117,57 @@ body>section {
 //頁尾
 
 body > footer {
-    bottom: 0px;
-    padding: 40px 0;
+    font-family: NotoSansCJKtc;
+    height:170px;
     width: 100%;
-    text-align: center;
-    color: #a2a2a2;
-    // background-color: @dark-gray;
-    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-    span.copyright {
-        line-height: 40px;
-    }
-    .fb{
-        img{
-            width: 40px;
-        }
-        color: white;
-    }
-    .ntca-part{
-        color:white;
+    background-color: @main-light-blue;
+    font-size: 16px;
+    // padding:21px 0;
+    div{
+        text-align: center;
         a{
-            display: inline;
+            text-decoration:none;
+            color:white;
+            img{
+                vertical-align: middle;
+            }
+            &:hover{
+                text-decoration:none;
+                color:#eee;
+            }
         }
-        img{
-            width: 80px;
-            margin: 0;
+        &.contact-itseed{
+            padding:42px 0 21px 0;
+            .fb,.email{
+                margin:22px;
+                img{
+                    width: 28px;
+                }
+                &:hover img{
+                    transform: scale(1.2);
+                }
+            }
+        }
+        &.contact-ntca{
+            margin:4px 0;
+            .ntca{
+                line-height: 24px;
+                img{
+                    width: 92px;
+                    height: 25px;
+                    margin-top:-8px;
+                }
+            }
+        }
+        span.copyright {
+            color:white;
+            line-height: 20px;
+            font-size: 12px;
+            letter-spacing: 0.4px;
         }
     }
-    .in-contact{
-        color:white;
-    }
-
 }
 
-// footer
-// footer{
-// 	a{
-// 		margin: 0 1%;
-// 		font-size: 13pt;
-// 	}
-// 	a:hover{
-// 		text-decoration: none;
-// 		color: #a2a2a2;
-// 	}
-// 	@media screen and (max-width: 991px) {
-// 		a{
-// 			display: block;
-// 			width: 100%;
-// 			height: 50px;
-// 		}
-// 	}
-// }
 
 .article img {
   padding: 5px;

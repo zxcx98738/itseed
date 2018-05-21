@@ -3,11 +3,13 @@
 	border:1px solid black;
 }
 .navbar{
-    transition: top .4s ease-in-out;
+	transition: top .4s ease-in-out;
+	box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.5);
     &.hideUp{
         top: -67px
 	}
 }
+
 .nav-bar-container{
 	padding:0;
 	margin:0;
@@ -19,7 +21,7 @@
 		height:67px;
 		position: relative;
 		.navbar-brand{
-			height:40%;
+			height:32px;
 			position: relative;
 			top:50%;
 			transform: translateY(-50%);
@@ -36,6 +38,7 @@
 		height:67px;
 		position: relative;
 		.bar{
+			font-family: NotoSansCJKtc;
 			position: relative;
 			top:50%;
 			padding:0;
@@ -46,48 +49,51 @@
 				display: inline-block;
 				position: relative;
 				a{
-					padding:4px 8px;
-					color:white;
+					padding:1px 0;
+					margin:0px 22px;
+					letter-spacing: 0.5px;
+					font-size:16px;
+					color: @main-blue;
 					transition: 0.1s;
 					cursor: pointer;
 					text-decoration: initial;
 					&:not(.dropdown-toggle):hover{
-						border-bottom: 3px solid white;
+						border-bottom: 1.5px solid @main-blue;
 					}
 				}
 				ul{
 					position: absolute;
 					background-color: transparent;
-					box-shadow: none;
-					-webkit-box-shadow:none;
-					left: 0;
-					padding:10px 5px;
+					left: 50%;
+					transform: translateX(-50%);
+					padding:10px 20px;
 					background-color: white;
 					border: 1px solid white;
+				  	box-shadow: 1px 2px 4px 0 #9b9b9b;
 					li{
 						padding-top: 2px;
 						margin: 0 2px;
-						border-bottom: 1px solid transparent;
 						a{
-							padding:0;
+							padding:1px 3px;
 							margin: 0;
-							color:#fda085;
-						}
-						&:hover{
-							border-bottom: 1px solid #fda085;
+							color:@main-blue;
+							&:hover{
+								border-bottom: 0.5px solid @main-blue;
+							}
 						}
 					}
 				}
 			}
 			#signin{
 				button{
+					margin:0 22px;
+					color: white;
+					padding:7px 22px;
+					background-color:@main-blue;
 					border: none;
-					color: #fda085;
-					padding:8px 16px;
-					background-color: white;
-					border-radius: 20px;
+					border-radius: 38.5px;
+					box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.5);
 					text-align: center;
-					box-shadow: 0px 1px 2px grey;
 					transition: 0.3s;
 					&:hover{
 						transform: translateY(-4px);
@@ -101,36 +107,42 @@
 		}
 	}
 }
+#fixed_signin{
+	margin:0;
+	padding:0;
+	position: fixed;
+	bottom:16px;
+	right:16px;
+	width:80px;
+	height:80px;
+	color: white;
+	background-color:@main-blue;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+}
 
 @media screen and (min-width: 768px) and (max-width: 1280px) {
 	.nav-bar-container{
 		.navbar-header{
 			img.navbar-brand{
-				margin-left:24px;
+				margin-left:45px;
 			}
 		}
 		.navbar-right{
-			margin-right:24px;
 			.bar{
-				font-size:14px;
-				padding:6px 10px;
+				li{
+					a{
+						margin:0 16px;
+					}
+				}
 				#signin{
 					button{
-						border: none;
-						color: #fda085;
-						padding:6px 10px;
-						background-color: white;
-						border-radius: 16px;
-						text-align: center;
-						box-shadow: 0px 1px 2px grey;
-						transition: 0.3s;
-						&:hover{
-							transform: translateY(-4px);
-							box-shadow: 0px 2px 4px black;
-						}
-						span{
-							font-size:inherit;
-						}
+						margin:0 16px;
+						padding:4px 14px;
+						color: white;
 					}
 				}
 			}
@@ -158,22 +170,29 @@
 		.navbar-collapse{
 			padding:0 16px 8px 16px;
 			.bar{
-				padding-left: 5px;
+				padding-left: 16px;
 				display: block;
 				>li{
 					display: block;
-					width: 100%;
 					text-align: left;
 					a{
+						width:auto;
 						display: block;
-						font-size: 14pt;
 					}
 					ul{
-						width: 100%;
-						position: relative;
+						margin-top:-24px;
+						matgin-left:24px;
+					}
+				}
+				#signin{
+					button{
+						display:none;
 					}
 				}
 			}
 		}
+	}
+	#fixed_signin{
+		visibility: visible;
 	}
 }

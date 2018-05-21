@@ -64,7 +64,7 @@
           </li>
           <li><a href="/faq">常見問題</a></li>
           <% if (session.userid == undefined ) { %>
-            <li id="signin"><button onclick="document.location='/login'" >馬上報名<span>→</span></button></li>
+            <li id="signin"><button onclick="document.location='/login'" >馬上報名</button></li>
           <% } else { %>
             <li id="account-profile"><a href="/profile" >報名頁面</a></li>
             <li id="signout" onclick="signOut();" ><a href="#" onclick="signOut();">登出</a></li>
@@ -73,20 +73,28 @@
       </div>
     </div>
   </div>
+  <% if (session.userid == undefined && req.path.indexOf('/login') == -1) { %>
+      <a id="fixed_signin" href="/login">馬上報名</a>
+  <%}%>
 <script>
   var navbarClass = document.querySelector('.navbar').classList,
       lastScrollY = 0;
     window.addEventListener('scroll', function () {
       var st = this.scrollY;
-      console.log(st);
-      console.log(navbarClass);
-      // 判斷是向上捲動，而且捲軸超過 200px
-      if (st < lastScrollY) {
+      if (st > 67 && st < lastScrollY) {
         navbarClass.remove('hideUp');
       } else {
         navbarClass.add('hideUp');
       }
       lastScrollY = st;
+      
+      var footer_display_pos = $('footer').offset().top  - $(window).height();
+      if(st > footer_display_pos){
+        $('#fixed_signin').css("bottom", 16 + (st- footer_display_pos) + 'px');
+      }else{
+        $('#fixed_signin').css("bottom", "16px");
+      }
+      console.log(st, footer_display_pos);
     });
 </script>
 </header>
