@@ -221,6 +221,7 @@
 /******************************************/
 
 .data{
+    overflow: hidden;
     height:600px;
     position: relative;
     .whatyouget,.counter{
@@ -245,22 +246,39 @@
         }
     }
     .whatyouget{
-        left:-100%;
+        transform: translateX(-100%);
         height:150px;
         border-radius:0 75px 75px 0px;
         background: linear-gradient(to left,#F8BA00,#F27200);
         &.scroll{
-            left:0;
+            transform: translateX(0);
         }
     }
     .counter{
         float:right;
-        right:-100%;
+        transform: translateX(100%);
         height:150px;
         border-radius:75px 0 0 75px;
         background: linear-gradient(to right,#F8BA00,#F27200);
         &.scroll{
-            right:0;
+            transform: translateX(0);
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+    .data{
+        .whatyouget,.counter{
+            width:80%;
+        }
+    }
+}
+
+
+@media screen and (min-width: 1px) and (max-width: 768px) {
+    .data{
+        .whatyouget,.counter{
+            width:100%;
         }
     }
 }
