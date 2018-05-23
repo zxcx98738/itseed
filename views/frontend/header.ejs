@@ -79,6 +79,7 @@
 <script>
   var navbarClass = document.querySelector('.navbar').classList,
       lastScrollY = 0;
+      var footer_display_pos = $('footer').offset().top - $(window).height();
     window.addEventListener('scroll', function () {
       var st = this.scrollY;
       if (st < lastScrollY) {
@@ -87,8 +88,6 @@
         navbarClass.add('hideUp');
       }
       lastScrollY = st;
-      
-      var footer_display_pos = $('footer').offset().top  - $(window).height();
       if(st > footer_display_pos){
         $('#fixed_signin').css("bottom", 16 + (st- footer_display_pos) + 'px');
       }else{
