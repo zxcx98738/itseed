@@ -1,7 +1,7 @@
 @tuv: #F7D975;
 @spring: #ED8F8F;
 @career: #8FBEED;
-@new: #9EE5CF;
+@new: #eeb61d;
 @oversea : #A3E3F2;
 @end: #FFAF8B;
 
@@ -79,8 +79,19 @@
 		border-bottom: 1px solid grey;
 		margin-bottom: 23px;
 	}
+
+
 }
 .six-hg-title{
+	.img{
+		display: block;
+		text-align:center;
+		padding-top: 40px;
+	}
+	.title{
+		padding-top: 15px;
+		font-style: 16px;
+	}
 	.six-hg-tit{
 		display: inline-block;
 		width: 50%;
@@ -90,6 +101,7 @@
 			display: inline-block;
 			font-size: 50pt;
 			font-weight: 700;
+			float: left;
 		}
 		border-bottom: 4px solid;
 	}
@@ -101,6 +113,7 @@
 		font-size: 15pt;
 	}
 }
+
 
 @media screen and (min-width: 0px) and (max-width: 730px) {
 	.six-project{
@@ -130,7 +143,7 @@
 		.six-hg-le{
 			width: 80%;
 			font-size: 11pt;
-			text-align: left;
+			text-align: center;
 			margin-left: 10px;
 		}
 	}
@@ -152,7 +165,7 @@
 		.six-hg-le{
 			width: 100%;
 			font-size: 10pt;
-			text-align: left;
+			text-align: center;
 			margin-left: 2px;
 		}
 	}
@@ -199,7 +212,7 @@
 @tuv: #F7D975;
 @spring: #ED8F8F;
 @career: #8FBEED;
-@new: #9EE5CF;
+@new: #eeb61d;
 @oversea : #A3E3F2;
 @end: #FFAF8B;
 
@@ -237,9 +250,15 @@
 .new{
 	color: @new;
 }
+
+.clearfix{
+	clear: both;
+}
 .new-border{
 	border: 1px solid @new;
 	border-color: @new;
+	float: left;
+	clear: both;
 }
 .new-bg{
 	background-color: @new;
@@ -263,4 +282,28 @@
 }
 .end-bg{
 	background-color: @end;
+}
+
+.sixhire{
+	.rec4 {
+		float: left;
+		width: 163px;
+		height: 44px;
+		border-style: solid;
+		border-width: 1px;
+		border-image-source: linear-gradient(292deg, #ffffff, #eeb61d);
+		border-image-slice: 1;
+		margin-bottom: 20px;	
+	  }
+	
+	  .hire{
+		margin-top: 20px;
+		width: 60%;
+		margin:0 auto;
+		// text-align: center;
+	  }
+	
+}
+.six-hg-title .six-hg-tit span{
+	padding-left: 131px;
 }

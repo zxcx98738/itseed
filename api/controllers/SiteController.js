@@ -636,5 +636,9 @@ module.exports = {
         return res.view("frontend/pages/apply",{
         });
     },
+    careerSharingContent: function(req, res){
+        return res.view("frontend/pages/careerSharingContent",{
+        });
+    },
 };
 
