@@ -147,6 +147,10 @@
       <p class="number2">校友人脈</p>
     </div>
   </div>
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+  <div class="cloud cloud4"></div>
 </div>
 
 
@@ -188,7 +192,7 @@ $(document).ready(function(){
   var whatyouget_display_pos = $('.whatyouget').offset().top - $(window).height()*4/5;
   var counter_display_pos = $('.counter').offset().top - $(window).height()*4/5;
   $(window).scroll(function(){
-    var st = $(window).scrollTop();
+    let st = $(window).scrollTop();
     if( st > whatyouget_display_pos  && !isDataScroll1){
       $('.whatyouget').addClass('scroll');
       isDataScroll1 = true;
@@ -236,7 +240,6 @@ $(document).ready(function(){
     }
   });
 });
-
 </script>
 
 </section>
@@ -245,44 +248,6 @@ $(document).ready(function(){
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->
-<!-- 回到頂端按鈕 start -->
-<script>
-
-//<![CDATA[
-(function () {
-  var img = "http://i.imgur.com/IFInFUr.png",
-  locatioin = 4/5, // 按鈕出現在螢幕的高度
-  right = 1, // 距離右邊 px 值
-  opacity = 0.4, // 透明度
-  speed = 500, // 捲動速度
-  $button = $("#goTopButton"),
-  $body = $(document),
-  $win = $(window);
-  $button.attr("src", img);
-  $button.on({
-    mouseover: function() { $button.css("opacity", 1); },
-    mouseout: function() { $button.css("opacity", opacity); },
-    click: function() { $("html, body").animate({scrollTop: 0}, speed); }
-  });
-  window.goTopMove = function () {
-    var scrollH = $body.scrollTop(),
-    winH = $win.height(),
-    css = {"top": winH * locatioin + "px", "position": "fixed", "right": right, "opacity": opacity};
-    if(scrollH > 20) {
-      $button.css(css);
-      $button.fadeIn("slow");
-    } else {
-      $button.fadeOut("slow");
-    }
-  };
-  $win.on({
-    scroll: function() { goTopMove(); },
-    resize: function() { goTopMove(); }
-  });
-})();
-//]]>
-</script>
-<!-- 回到頂端按鈕 end -->
 
 
 <script src="/js/specifies/frontend/index.js"></script>

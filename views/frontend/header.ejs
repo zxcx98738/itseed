@@ -77,23 +77,25 @@
       <a id="fixed_signin" href="/login">馬上報名</a>
   <%}%>
 <script>
-  var navbarClass = document.querySelector('.navbar').classList,
-      lastScrollY = 0;
-      var footer_display_pos = $('footer').offset().top - $(window).height();
-    window.addEventListener('scroll', function () {
-      var st = this.scrollY;
+  $(document).ready(function () {
+    var lastScrollY = 0;
+    var footer_display_pos = $('footer').offset().top - $(window).height();
+    $(window).scroll(function () {
+      let st = $(window).scrollTop();
       if (st < lastScrollY) {
-        navbarClass.remove('hideUp');
-      } else if(st > 67){
-        navbarClass.add('hideUp');
+        $('.navbar').removeClass('hideUp');
+      } else if (st > 67) {
+        $('.navbar').addClass('hideUp');
       }
+
       lastScrollY = st;
-      if(st > footer_display_pos){
-        $('#fixed_signin').css("bottom", 16 + (st- footer_display_pos) + 'px');
-      }else{
+      if (st > footer_display_pos) {
+        $('#fixed_signin').css("bottom", 16 + (st - footer_display_pos) + 'px');
+      } else {
         $('#fixed_signin').css("bottom", "16px");
       }
     });
+  });
 </script>
 </header>
 
