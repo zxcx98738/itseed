@@ -3,17 +3,11 @@
 <!--END HEADER-->
 
 <section class="course-top section-courseInfoList">
-  <div class="sub-nav">
+  <div class="sub-nav course-nav">
     <ul>
-      <li>
-        <a class="active" href="/courseInfo">講座課程</a>
-      </li> |
-      <li>
-        <a href="/businessVisit">企業參訪</a>
-      </li> |
-      <li>
-        <a href="/tuv">六大專案</a>
-      </li>
+      <li><a  class="active" href="/courseInfo">講座課程</a></li> 
+      <li><a href="/businessVisit">企業參訪</a></li> 
+      <li><a href="/tuv">六大專案</a></li>
     </ul>
   </div>
   <br>
@@ -23,26 +17,23 @@
     </div>
   </div>
   <div class="row">
-    <% for(var i = 0; i < datas.length; i++){ %>
+    <% for(var i = 0; i <datas.length; i++){ %>
       <div class="col-sm-6 eachcourse">
         <a href="<%= url + datas[i].id %>">
-          <div class="course-pic">
-            <img src="<%= datas[i].photo %>">
-          </div>
+          
           <div>
+            <p class= "course-number"  >Class <%= i+1 %></p>
             <p class="course-title">
-              「<%= datas[i].title %>」
-              <br>
-              <span>講師：<%= datas[i].speaker %><!-- <%= datas[i].speakerTitle %> --></span>
+              「<%= datas[i].title %>」</p>
+            <br>
+            <p class="teacher">講師：<br><%= datas[i].speaker %><!-- <%= datas[i].speakerTitle %> --></p>
               <!-- <span>課程重點</span> -->
-            </p>
-            <div class="course-content">
-              <p class="course-content-part">
-                課程介紹
+            
+            <div class="keepRead">了解更多</div>
+              <!-- <p class="course-content-part"></p> -->
                 <!-- <%- datas[i].content %> -->
-                <span style="float: right;">（繼續閱讀）</span>
-              </p>
-            </div>
+              
+            
           </div>
         </a>
       </div>

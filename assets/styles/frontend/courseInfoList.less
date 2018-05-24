@@ -1,39 +1,61 @@
 .sub-nav{
-	padding: 40px 5% 0px 7%;
+	padding: 70px 5% 5px 15%;
+	
 	>ul{
-		text-align: right;
+		text-align: left;
 		list-style-type: none;
 		li{
 			display: inline-block;
+			border: solid #2196F3;
+			padding: 5px;
 			a{
-				color:black;
+				color:white;
 				text-decoration: none;
 				cursor: pointer;
 			}
 			.active{
-				color:#6bc1b8;
+				border-bottom:solid white;
 			}
 		}
 	}
+	.course-nav{
+		border:solid #2196F3;
+		background-color: #2196F3;
+	}
+}
+.course-nav{
+	border:solid #2196F3;
+	background-color: #2196F3;
 }
 .course-head{
-	color:rgb(124,194,155);
+	color: #2196F3;
 	font-size: 34pt;
 		font-family:@font-chainese @font-english;
 }
 .course-top{
 	
 	padding: 30px 5% 40px 5%;
-		font-family:@font-chainese @font-english;
+	font-family:@font-chainese @font-english;
+	border: solid black;
 	.eachcourse{
 		padding:0;
+		margin:15px;
+		width: 30%;
+		height: 253px;
+		box-shadow: 5px 5px 10px; 
+		
 	}
-	.eachcourse:hover{
-		background-color: #F5F5F5;
-		// opacity: 0.2;
-	}
+	// .eachcourse:hover{
+	// 	background-color: #2196F3;
+	// 	box-shadow: 5px 5px 10px; 
+	// 	color: white;
+	// 	.courser-number{
+	// 		color: white;
+	// 	}
+	// 	// opacity: 0.2;
+	// }
 	a{
-		color:black;
+		color:#2196F3 ;
 		text-decoration: none;
 	}
 	h2{
@@ -56,30 +78,53 @@
 		}
 		div{
 			padding: 15px;
+			.courser-number{
+				color: #2196F3;
+			}
 			.course-title{
+				color: #2196F3;
 				padding: 15px 0 10px 0;
 				margin: 0;
 				font-size: 14pt;
 				font-weight:500;
-				span{
-					display: block;
-					margin-top: 5px;
-					font-size: 13pt;
-					font-weight:400;	
-				}
+				
+			}
+			.teacher{
+				color:black;
+				display: block;
+				
+				font-size: 13pt;
+				font-weight:400;	
 			}
 			.course-content{
 				padding: 0;
-				border-bottom: 3px solid grey;
-				height: 40px;
+				border: none;
+				height: 50px;
 				overflow:hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;
-				position: relative;
-				.course-content-part{
-					font-size: 14pt;
-				}
+				
+				
+				// .course-content-part{
+				// 	font-size: 12pt;
+				// }
+				
 
+			}
+			.keepRead{
+				padding: 0;
+				border: none;
+				overflow:hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			
+				position: absolute;
+				right:5px;
+				padding: 5px;
+				bottom:5px;
+				border:solid #2196F3;
+				border-radius: 20px;
+				color: #2196F3;
 			}
 		}
 		.top{
@@ -96,8 +141,26 @@
 	img{
 		width: 100%;
 	}
-	@media screen and (min-width: 1px) and (max-width: 500px) {
+	@media screen and (min-width: 1px) and (max-width: 1080px) {
 		padding: 30px 0 40px 0;
+		.eachcourse{
+			width: 45%;
+		}
+		.row{
+			margin:0;
+			.col-sm-6{
+				padding:0;
+				>div:nth-child(2){
+					padding:10px;
+				}
+			}
+		}
+	}
+	@media screen and (min-width: 1px) and (max-width: 770px) {
+		padding: 30px 0 40px 0;
+		.eachcourse{
+			width: 90%;
+		}
 		.row{
 			margin:0;
 			.col-sm-6{
@@ -109,11 +172,14 @@
 		}
 	}
 }
-
+@media screen and (min-width: 1px) and (max-width: 1280px) {
+	
+}
 
 .course-detail{
-	margin: 0 5%;
-		font-family:@font-chainese @font-english;
+	font-family:@font-chainese @font-english;
+	margin: 5% 5%;
+	
 	img{
 		width: 80%;
 		text-align: center;
@@ -121,24 +187,14 @@
 		margin:0 auto;
 	}
 	.course-bor{
-		border: 2px solid #7cc29b;
+		border: 2px solid #2196F3;
 		padding:7px 10px 5px 10px;
 		margin:15px auto;
 		display: inline-block;
 
 		text-align: center;
 	}
-	.course-title{
-		font-size: 19pt;
-		font-weight: 900;
-		line-height: 100%;
-		b{
-			display: inline-block;
-			@media screen and (min-width: 1px) and (max-width: 600px) {
-				display: none;
-			}
-		}
-	}
+	
 	.content-y-m{
 		margin:0 10%;
 	}
@@ -157,6 +213,18 @@
 			text-decoration: none;
 			background-color: #66CDAA;
 			box-shadow: 2px 2px 3px lightgrey;
+		}
+	}
+}
+.course-title{
+	color: #2196F3;
+	font-size: 18pt;
+	font-weight: 900;
+	line-height: 100%;
+	b{
+		display: inline-block;
+		@media screen and (min-width: 1px) and (max-width: 600px) {
+			display: none;
 		}
 	}
 }

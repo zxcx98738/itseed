@@ -3,49 +3,45 @@
 <!--END HEADER-->
 <!-- <img src="/images/courseInfo/coursebanner.png" id="img-responsive" width="100%"> -->
 
-  <section class="section-courseInfo bg-light-gray">
-    <div class="sub-nav">
-      <ul>
-        <li>
-          <a class="active" href="/courseInfo">講座課程</a>
-        </li> |
-        <li>
-          <a href="/businessVisit">企業參訪</a>
-        </li> |
-        <li>
-          <a href="/tuv">六大專案</a>
-        </li>
-      </ul>
+<section class="section-courseInfo bg-light-gray">
+  <div class="sub-nav course-nav">
+    <ul>
+      <li><a  class="active" href="/courseInfo">講座課程</a></li> 
+      <li><a href="/businessVisit">企業參訪</a></li> 
+      <li><a href="/tuv">六大專案</a></li>
+    </ul>
+  </div>
+  <div class="six-hg-title">
+    <div class=" course-title">
+        <%= datas[0].title %> 
     </div>
-    <div class="container">
-      <div class="row course-detail">
-        <div>
-          <img src="<%= datas[0].photo %>"></img>
-        </div>
-        <div class="project-content-style">
-          <div class="text-xs-center">
-            <div class="course-bor">
-              <span class="course-title"><b>- </b> <%= datas[0].title %> <b> -</b></span>
-            </div>    
-          </div>
-          <h4 class="text-xs-center">
-            <%= datas[0].speaker %>
-            <% if (datas[0].speakerTitle != ".") {%>
-              <%= datas[0].speakerTitle %>
-            <% } %>
-            
-          </h4>
+  </div>
 
-          <div class="content-y-m">
-            <%- datas[0].content %>
-          </div>
-          <div class="text-xs-center back-to-course">
-            <a href="/courseInfo">Back</a>
-          </div>
+  <div class="container">
+    <div class="row course-detail">
+      <div>
+        <img src="<%= datas[0].photo %>"></img>
+      </div>
+      <div class="project-content-style">
+        
+        <h4 class="text-xs-center">
+          
+          <!-- <% if (datas[0].speakerTitle != ".") {%>
+            <%= datas[0].speakerTitle %>
+          <% } %> -->
+          
+        </h4>
+
+        <div class="content-y-m">
+          <%- datas[0].content %>
+        </div>
+        <div class="text-xs-center back-to-course">
+          <a href="/courseInfo">Back</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->

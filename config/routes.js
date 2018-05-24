@@ -84,6 +84,10 @@ module.exports.routes = {
     controller: 'Site',
     action: 'studentIntro'
   }, 
+  '/projectIntro': {
+    controller: 'Site',
+    action: 'projectIntro'
+  },
   '/memberList': {
     controller: 'Site',
     action: 'memberList'

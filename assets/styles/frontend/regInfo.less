@@ -1,4 +1,4 @@
-@regInfo:rgb(0,133,194);
+@regInfo:#145488;
 .regSlogan{
 	width: 50%;
 	h2{
@@ -34,12 +34,15 @@
 		}
 	}	
 }
+.regInfo-title{
+	top:50px;
+}
 #regInfo{
 	// margin-top: 80px;
 	.line{
 		width: 500px; 
 		height: 7px; 
-		background: #78C8C1; 
+		background: #145488; 
 		overflow:hidden;
 	}
 
@@ -47,7 +50,7 @@
 	    .line{
 			width: 350px; 
 			height: 7px; 
-			background: #78C8C1; 
+			background: #145488; 
 			overflow:hidden;
 		}
 	}
@@ -55,7 +58,7 @@
 	    .line{
 			width: 300px; 
 			height: 7px; 
-			background: #78C8C1; 
+			background: #145488; 
 			overflow:hidden;
 		}
 	}
@@ -63,7 +66,7 @@
 	    .line{
 			width: 150px; 
 			height: 7px; 
-			background: #78C8C1; 
+			background: #145488; 
 			overflow:hidden;
 		}
 	}
@@ -77,6 +80,7 @@
 			padding: 5px 10px;
 			border: 1px solid @regInfo;
 			font-size: 16pt;
+			color: #145488;
 		}
 	}
 	p{
@@ -101,7 +105,7 @@
 	width: 50%;
 	text-align: center;
 	margin-top: 5px;
-	font-size: 20pt;
+	font-size: 14pt;
 }
 @media screen  and (min-width: 1px) and (max-width: 730px) {
 	.regInfo-xx{
@@ -115,7 +119,9 @@
 	}
 }
 .reg-step{
-	margin-bottom: 40px;
+	margin: 40px;
+	margin-left: 80px;
+	margin-right:80px;
 	>div{
 		>div{
 			position: relative;
@@ -157,24 +163,24 @@
 		}
 	}
 	>div:nth-child(1){
-		color:rgb(237, 101, 100);
-		border: rgb(237, 101, 100);
+		color:#00a7ba;
+		border: #00a7ba;
 		.icon{
-			background-color: rgb(237, 101, 100);
+			background-color:#00a7ba;
 		}
 	}
 	>div:nth-child(2){
-		color:rgb(255, 195, 19);
-		border: rgb(255, 195, 19);
+		color:#145488;
+		border: #145488;
 		.icon{
-			background-color: rgb(255, 195, 19);
+			background-color: #145488;
 		}
 	}
 	>div:nth-child(3){
-		color:rgb(104, 180, 247);
-		border: rgb(104, 180, 247);
+		color:#efb61e;
+		border: #efb61e;
 		.icon{
-			background-color: rgb(104, 180, 247);
+			background-color: #efb61e;
 		}
 	}
 }
@@ -261,11 +267,11 @@
 	background-color: @regInfo;
 	text-align: center;
 	
-	padding-top: 80px;
-	margin-top: 30px;
+	padding-top: 49px;
+	padding-bottom: 57px;
 	p{
 		color: white;
-		font-size: 24pt;
+		font-size: 36pt;
 		text-align: center;
 	}
 	h6{
@@ -274,27 +280,50 @@
 		text-align: center;
 	}
 	button{
-		width: 160px;
+		width: 11%;
 		height: 50px;
 		border-radius: 40px;
 		color: white;
-		font-size: 16pt;
+		font-size: 14pt;
 		border: 0;
-		background-color: rgb(133, 200, 224);
+		background-color: #efb61e;
 		box-shadow: 1px 1px 2px grey;
 
 	}
+	
+	button:hover{
+		background-color: #efb61e;
+		box-shadow: 1px 1px 2px lightgrey;
+	}
+}
+.reg-activity{
+	position: relative;
+	padding: 5%;
+	text-align: center;
+	display: inline-block;
+	font-size: 18px;
+	width: 100%;
 	.block1{
-		width:250px;
-		height:200px;
-		border: solid 1px black;
+		width:34.8%;
+		height:8.8%;
 		display: inline-block;
 		margin: 15px;
 		margin-top: 0px;
-		background-color: gray; 
+		text-align: center;
+		img{
+			width: 100%;
+		}
 	}
-	button:hover{
-		background-color: #33CCFF;
-		box-shadow: 1px 1px 2px lightgrey;
+}
+@media screen and (min-width: 0px) and (max-width: 860px) {
+    .call-back{
+		p{
+			font-size: 26px;
+		}
+		button{
+			font-size: 12px;
+		}
+		
 	}
+	
 }
