@@ -81,6 +81,9 @@
         .content{
             position: static;
             transform: initial;
+            h2{
+                font-size:24px;
+            }
         }
     }
 }
@@ -164,7 +167,7 @@
     margin-top: 60px;
     margin-bottom: 100px;
     text-align: center;
-    font-size: 14pt;
+    font-size: 16px;
     button{
         margin:5% 0;
         width: 160px;
@@ -342,6 +345,16 @@
         height:400px;
         .whatyouget,.counter{
             width:80%;
+            .number{
+                .number1{
+                    font-size: 32px;
+                    line-height: 40px;
+                }
+                .number2{
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
         }
         .cloud{
             &.cloud1{
@@ -363,16 +376,14 @@
 
 @media screen and (min-width: 1px) and (max-width: 768px) {
     .data{
-        height:400px;
-        .whatyouget,.counter{
+        div.whatyouget,div.counter{
+            padding:0;
             width:100%;
         }
         .whatyouget.scroll{
-            padding-right:10%;
             border-radius:0;
         }
         .counter.scroll{
-            padding-left:10%;
             border-radius:0;
         }
         .cloud{
