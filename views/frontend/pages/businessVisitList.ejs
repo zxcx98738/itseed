@@ -16,22 +16,34 @@
 </div>
   <br>
   <br>
-  <div class="why-bsv main-color-br">
-    <h4 class="main-color">參訪宗旨</h4>
-    <p>透過參訪不同領域之企業，讓資種學員有機會實際前進企業，了解不同企業的組織文化、工作環境、公司現況、產業趨勢與未來發展，提早探索未來職涯，幫助學員更有方向規劃生涯，並提升自我高度與競爭力。</p>
+  <div class="why-bsv main1-color-br">
+    <h4 class="main1-color">參訪宗旨</h4>
+    <p>透過不同產業的企業參訪，了解各產業的趨勢，並藉此深入接觸企業文化、職場環境、公司發展與未來規劃。讓學員能更貼近職場，也更能增進對未來職涯探索的規劃。</p>
   </div>
+
+  <div class="why-bsv1">
+    <h4 class="main1-color">參訪簡介</h4>
+    <p>  　　Google 在今年 3 月發布「Google 台灣智慧計劃」，並同時釋出300餘個職缺，將Google 台灣打造成亞洲最大的研發基地。
+    <br>    
+     &nbsp;這次企參前往位於台北101的Google台灣總部，除了一探Google 舒適宜人的工作環境，更把握與內部職員互動的機會，更加了解Google 的企業文化及項目發展</p>
+　
+  </div>
+
+    <div class="six-hg-title">
+  <div class="six-hg-tit main1-color">
+      <span>Google台灣</span>
+  </div>
+</div>
   <div class="bsv4">
     
     <% for(var i = 0; i < datas.length; i++){ %>
       <% if(i % 2 == 0 ){ %>
         <div class="bsV">
           <img src="<%= datas[i].photo %>">
-          <div>
-            <h3><%= datas[i].title %></h3>
-            <hr>
-            <p><%- datas[i].content %></p>
+          <div class="Google">
+          <p>有一位在Google 任職的學姊說，雖然她大學的唸的是法律相關的科系，和她在工作時接觸到的領域差異非常不同，但保持著好奇心與不斷學習的態度，足以讓她勇敢地面對眼前所帶來的差異和挑戰，而且她到現在還是不斷在自我精進、學習。另外，看到Eric 熱情的分享，讓我骨子裡的熱血又燃燒了起來，未來我也會更加努力，期許自己成為心目中的斜槓青年。加油吧！</p></div>
           </div>
-        </div>
+        
       <% } %>
       <% if(i % 2 == 1 ){ %>
         <div class="bsV2">
