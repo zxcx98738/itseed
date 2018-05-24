@@ -163,13 +163,17 @@
 			}
 		}
 		.navbar-right.navbar-collapse{
-			overflow: visible;
+			overflow: hidden;
 			height:auto;
 			.bar{
 				top:0;
 				transform: none;
 			}
+			&.in{
+				overflow: visible;
+			}
 		}
+
 		.navbar-collapse{
 			padding:0 16px 8px 16px;
 			.bar{
@@ -186,6 +190,9 @@
 						top:0;
 						left:110px;
 						transform: none;
+					}
+					ul.regList{
+						transform: translateY(-50%);
 					}
 				}
 				#signin{
