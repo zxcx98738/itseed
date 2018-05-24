@@ -17,13 +17,14 @@
 .main{
     width: 100%;
     margin:5% 0;
+    overflow: hidden;
     position: relative;
     img{
         position: relative;
         width:100%;
     }
     .circle{
-        width:50%;
+        width:40%;
         position: absolute;
         top:50%;
         left:50%;
@@ -57,7 +58,17 @@
                 font-size:20px;
             }
         }
-        @media screen and (min-width: 860px) and (max-width: 1024px) {
+    }
+    @media screen and (min-width: 860px) and (max-width: 1280px) {
+        img{
+            width:110%;
+            left:50%;
+            transform:translateX(-50%);
+        }
+        .circle{
+            width:45%;
+        }
+        .content{
             h2{
                 font-size:24px;
                 color:@main-blue;
@@ -66,30 +77,54 @@
             div{
                 padding:4px;
                 p{
-                    line-height:24px;
+                    line-height:20px;
                     font-size:16px;
                 }
             }
         }
     }
-}
-@media screen and (min-width: 1px) and (max-width: 859px) {
-    .main{
-        img,.circle{
-            display: none;
+    @media screen and (min-width: 551px) and (max-width: 859px) {
+        img{
+            width:180%;
+            left:50%;
+            transform:translateX(-50%);
+        }
+        .circle{
+            width:80%;
         }
         .content{
-            position: static;
-            transform: initial;
             h2{
                 font-size:24px;
-                line-height: 28px;
+                line-height: 32px;
             }
             div{
                 padding:4px;
                 p{
                     line-height:20px;
-                    font-size:14px;
+                    font-size:16px;
+                }
+            }
+        }
+    }
+    @media screen and (min-width: 1px) and (max-width: 550px) {
+        img{
+            width:200%;
+            left:50%;
+            transform:translateX(-50%);
+        }
+        .circle{
+            width:85%;
+        }
+        .content{
+            h2{
+                font-size:14px;
+                line-height: 20px;
+            }
+            div{
+                padding:4px;
+                p{
+                    line-height:14px;
+                    font-size:10px;
                 }
             }
         }
@@ -99,6 +134,12 @@
 
 .part-fourFuture{
     padding:80px 0;
+ 
+}
+@media screen and (min-width: 1px) and (max-width: 550px) {
+    .part-fourFuture{
+        padding:40px 0;
+    }
 }
 
 .fourtitle{
@@ -189,15 +230,13 @@
 
 
 .attend{
-    height: 200px;
-    margin-top: 100px;
-    margin-bottom: 150px;
     text-align: center;
     font-size: 16px;
+    padding:40px 0;
     button{
-        margin:5% 0;
         width: 160px;
         height: 50px;
+        margin:40px 0;
         border-radius: 40px;
         border: 2px solid @main-blue;
         transition: 0.3s;
@@ -221,7 +260,6 @@
 .section-index{
     .landing-img{
         width:100%;
-        margin-top:-2%;
     }
 }
 
@@ -255,7 +293,7 @@
 /******************************************/
 
 .data{
-    margin:80px 0;
+    margin:100px 0;
     overflow: hidden;
     height:400px;
     position: relative;
@@ -359,6 +397,7 @@
 
 @media screen and (min-width: 768px) and (max-width: 1280px) {
     .data{
+        margin: 80px 0;
         height:400px;
         .whatyouget,.counter{
             width:80%;
@@ -394,6 +433,7 @@
 @media screen and (min-width: 1px) and (max-width: 768px) {
     .data{
         height: 400px;
+        margin:60px 0;
         div.whatyouget,div.counter{
             padding:0;
             width:100%;
@@ -406,6 +446,20 @@
         }
         .cloud{
             display: none;
+            &.cloud2{
+                width:80%;
+                left:100%;
+                top:150px;
+                transform:translateX(-50%) translateY(-50%);
+                display: block;
+            }
+            &.cloud4{
+                width:80%;
+                left:0%;
+                bottom:150px;
+                transform:translateX(-50%) translateY(50%);
+                display: block;
+            }
         }
     }
 }
