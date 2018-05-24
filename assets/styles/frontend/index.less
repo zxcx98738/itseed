@@ -53,21 +53,21 @@
         div{
             padding:8px;
             p{
-                line-height:20px;
-                font-size:16px;
+                line-height:24px;
+                font-size:20px;
             }
         }
         @media screen and (min-width: 860px) and (max-width: 1024px) {
             h2{
-                font-size:20px;
+                font-size:24px;
                 color:@main-blue;
                 line-height: 32px;
             }
             div{
                 padding:4px;
                 p{
-                    line-height:16px;
-                    font-size:14px;
+                    line-height:20px;
+                    font-size:16px;
                 }
             }
         }
@@ -83,11 +83,23 @@
             transform: initial;
             h2{
                 font-size:24px;
+                line-height: 28px;
+            }
+            div{
+                padding:4px;
+                p{
+                    line-height:16px;
+                    font-size:14px;
+                }
             }
         }
     }
 }
 
+
+.part-fourFuture{
+    padding:80px 0;
+}
 .fourDiv{
     >div{
         margin:5% 0;
@@ -99,25 +111,25 @@
                 justify-content: center;
                 align-items: center;
                 margin:0 auto;
-                width:30%;
-                height:100px;
+                width:40%;
+                height:140px;
                 img{
                     width:100%;
                 }
             }
             p{
-                font-size: 20px;
-                line-height: 36px;
+                font-size: 24px;
+                line-height: 32px;
                 color:@main-blue;
             }
         }
         p{
-            font-size: 14px;
-            line-height:12px;
+            font-size: 18px;
+            line-height:18px;
         }
     }
 }
-@media screen and (min-width: 768px) and (max-width: 990px) {
+@media screen and (min-width: 551px) and (max-width: 990px) {
     .fourDiv{
         >div{
             .tilteDiv{
@@ -125,25 +137,38 @@
                     width:35%;
                     height:150px;
                 }
-            }
-        }
-    }
-}
-@media screen and (min-width: 551px) and (max-width: 767px) {
-    .container-no-pad{
-        padding:0;
-    }
-    .fourDiv{
-        >div{
-            .tilteDiv{
-                .imgDiv{
-                    width:15%;
-                    height:120px;
+                p{
+                font-size: 24px;
+                line-height: 24px;
                 }
             }
+            p{
+                font-size: 16px;
+                line-height: 16px;
+            }
         }
     }
 }
+// @media screen and (min-width: 551px) and (max-width: 767px) {
+//     .fourDiv{
+//         >div{
+//             .tilteDiv{
+//                 .imgDiv{
+//                     width:15%;
+//                     height:120px;
+//                 }
+//                 p{
+//                 font-size: 24px;
+//                 line-height: 32px;
+//                 }
+//             }
+//             p{
+//                 font-size: 16px;
+//                 line-height: 14px;
+//             }
+//         }
+//     }
+// }
 @media screen and (min-width: 1px) and (max-width: 550px) {
     .container-no-pad{
         padding:0;
@@ -152,9 +177,17 @@
         >div{
             .tilteDiv{
                 .imgDiv{
-                    width:25%;
-                    height:120px;
+                    width:30%;
+                    height:85px;
                 }
+                p{
+                    font-size: 20px;
+                    line-height: 20px;
+                }
+            }
+            p{
+                font-size: 14px;
+                line-height: 12px;
             }
         }
     }
@@ -162,10 +195,9 @@
 
 
 .attend{
-    // display: block;
     height: 200px;
-    margin-top: 60px;
-    margin-bottom: 100px;
+    margin-top: 100px;
+    margin-bottom: 150px;
     text-align: center;
     font-size: 16px;
     button{
@@ -239,8 +271,9 @@
 /******************************************/
 
 .data{
+    margin:80px 0;
     overflow: hidden;
-    height:500px;
+    height:400px;
     position: relative;
     .whatyouget,.counter{
         position: absolute;
@@ -376,6 +409,7 @@
 
 @media screen and (min-width: 1px) and (max-width: 768px) {
     .data{
+        height: 400px;
         div.whatyouget,div.counter{
             padding:0;
             width:100%;

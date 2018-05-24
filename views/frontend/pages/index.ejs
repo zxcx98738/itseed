@@ -62,10 +62,10 @@
 
 <!-- poyao 四大理由 -->
 <div class="container container-no-pad">
-  <div>
+  <div class="part-fourFuture">
     <h4 class="fourtitle">─ 啟動未來．四大絕 ─</h4>
     <div class="row fourDiv">
-      <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="tilteDiv">
           <div class="imgDiv">
             <img src="/images/index/icon15-1.png">
@@ -75,7 +75,7 @@
         <p>全國各大專院校</p>
         <p>多元背景科系學員齊聚</p>
       </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="tilteDiv">
           <div class="imgDiv">
             <img src="/images/index/icon15-2.png">
@@ -85,7 +85,7 @@
         <p>學員﹅學長姊﹅講師﹅</p>
         <p>企業前輩長期密集互動</p>
       </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="tilteDiv">
           <div class="imgDiv">
             <img src="/images/index/icon15-3.png">
@@ -95,7 +95,7 @@
         <p>海外學術交流與</p>
         <p>國際企業參訪</p>
       </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="tilteDiv">
           <div class="imgDiv">
             <img src="/images/index/icon15-4.png">
@@ -189,8 +189,8 @@ var t3=true;
 var t4=true;
 
 $(document).ready(function(){
-  var whatyouget_display_pos = $('.whatyouget').offset().top - $(window).height()*4/5;
-  var counter_display_pos = $('.counter').offset().top - $(window).height()*4/5;
+  var whatyouget_display_pos = $('.whatyouget').offset().top - $(window).height();
+  var counter_display_pos = $('.counter').offset().top - $(window).height();
   $(window).scroll(function(){
     let st = $(window).scrollTop();
     if( st > whatyouget_display_pos  && !isDataScroll1){
