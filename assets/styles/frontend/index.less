@@ -48,12 +48,12 @@
         h2{
             font-size:28px;
             color:@main-blue;
-            line-height: 40px;
+            line-height: 36px;
         }
         div{
             padding:8px;
             p{
-                line-height:24px;
+                line-height:28px;
                 font-size:20px;
             }
         }
@@ -66,7 +66,7 @@
             div{
                 padding:4px;
                 p{
-                    line-height:20px;
+                    line-height:24px;
                     font-size:16px;
                 }
             }
@@ -88,7 +88,7 @@
             div{
                 padding:4px;
                 p{
-                    line-height:16px;
+                    line-height:20px;
                     font-size:14px;
                 }
             }
@@ -100,7 +100,20 @@
 .part-fourFuture{
     padding:80px 0;
 }
+
+.fourtitle{
+    color: @main-blue;
+    text-align: center;
+    line-height: 36px;
+    font-size: 28px;
+}
+@media screen and (min-width: 1px) and (max-width: 550px) {
+    .fourtitle{
+        font-size: 24px;
+    }
+}
 .fourDiv{
+    padding:0 5%;
     >div{
         margin:5% 0;
         text-align: center;
@@ -119,13 +132,13 @@
             }
             p{
                 font-size: 24px;
-                line-height: 32px;
+                line-height: 56px;
                 color:@main-blue;
             }
         }
         p{
-            font-size: 18px;
-            line-height:18px;
+            font-size: 20px;
+            line-height:28px;
         }
     }
 }
@@ -138,37 +151,18 @@
                     height:150px;
                 }
                 p{
-                font-size: 24px;
-                line-height: 24px;
+                font-size: 20px;
+                line-height: 40px;
                 }
             }
             p{
                 font-size: 16px;
-                line-height: 16px;
+                line-height: 24px;
             }
         }
     }
 }
-// @media screen and (min-width: 551px) and (max-width: 767px) {
-//     .fourDiv{
-//         >div{
-//             .tilteDiv{
-//                 .imgDiv{
-//                     width:15%;
-//                     height:120px;
-//                 }
-//                 p{
-//                 font-size: 24px;
-//                 line-height: 32px;
-//                 }
-//             }
-//             p{
-//                 font-size: 16px;
-//                 line-height: 14px;
-//             }
-//         }
-//     }
-// }
+
 @media screen and (min-width: 1px) and (max-width: 550px) {
     .container-no-pad{
         padding:0;
@@ -182,12 +176,12 @@
                 }
                 p{
                     font-size: 20px;
-                    line-height: 20px;
+                    line-height:32px;
                 }
             }
             p{
                 font-size: 14px;
-                line-height: 12px;
+                line-height: 20px;
             }
         }
     }
@@ -248,17 +242,7 @@
 //     }
 // }
 
-.fourtitle{
-    color: @main-blue;
-    text-align: center;
-    line-height: 36px;
-    font-size: 28px;
-}
-@media screen and (min-width: 1px) and (max-width: 550px) {
-    .fourtitle{
-        font-size: 24px;
-    }
-}
+
 
 
 .sign{
