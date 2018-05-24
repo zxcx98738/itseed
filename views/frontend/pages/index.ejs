@@ -164,82 +164,82 @@
 
 <script type="text/javascript">
 
-$.fn.isOnScreen = function(){
-  var win = $(window);
-  var viewport = {
-    top : win.scrollTop(),
-    left : win.scrollLeft()
+  $.fn.isOnScreen = function () {
+    var win = $(window);
+    var viewport = {
+      top: win.scrollTop(),
+      left: win.scrollLeft()
+    };
+    viewport.right = viewport.left + win.width();
+    viewport.bottom = viewport.top + win.height();
+
+    var bounds = this.offset();
+    bounds.right = bounds.left + this.outerWidth();
+    bounds.bottom = bounds.top + this.outerHeight();
+
+    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
   };
-  viewport.right = viewport.left + win.width();
-  viewport.bottom = viewport.top + win.height();
-
-  var bounds = this.offset();
-  bounds.right = bounds.left + this.outerWidth();
-  bounds.bottom = bounds.top + this.outerHeight();
-
-  return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
-};
 
 
-var isDataScroll1 = false;
-var isDataScroll2 = false;
-var t1=true;
-var t2=true;
-var t3=true;
-var t4=true;
+  var isDataScroll1 = false;
+  var isDataScroll2 = false;
+  var t1 = true;
+  var t2 = true;
+  var t3 = true;
+  var t4 = true;
 
-$(document).ready(function(){
-  var whatyouget_display_pos = $('.whatyouget').offset().top - $(window).height();
-  var counter_display_pos = $('.counter').offset().top - $(window).height();
-  $(window).scroll(function(){
-    let st = $(window).scrollTop();
-    if( st > whatyouget_display_pos  && !isDataScroll1){
-      $('.whatyouget').addClass('scroll');
-      isDataScroll1 = true;
-    }
-    if (st > counter_display_pos && !isDataScroll2) {
-      $('.counter').addClass('scroll');
-      isDataScroll2 = true;
-    }
-    if ($('#target1').isOnScreen() && t1) {
-      $('#target1').animateNumber({
-        number: 15
-      }, 2500,
-      function() {
-        $('#target1').text('15')
-      });
-      t1=false
-    }
-    if ($('#target2').isOnScreen() && t2) {
-      $('#target2').animateNumber({
-        number: 400
-      }, 3000,
-      function() {
-        $('#target2').text('400+')
-      });
-      t2=false
-    }
-    if ($('#target3').isOnScreen() && t3) {
-      $('#target3').animateNumber({
-        number: 100
-      }, 3500,
-      function() {
-        $('#target3').text('100+')
-      });
-      t3=false
-    }
-    if ($('#target4').isOnScreen() && t4) {
-      $('#target4').animateNumber({
-        number: 35
-      }, 4000,
-      function() {
-        $('#target4').text('35')
+  $(document).ready(function () {
+    var whatyouget_display_pos = $('.whatyouget').offset().top - $(window).height();
+    var counter_display_pos = $('.counter').offset().top - $(window).height();
+    $(window).scroll(function () {
+      let st = $(window).scrollTop();
+      if (st > whatyouget_display_pos && !isDataScroll1) {
+        $('.whatyouget').addClass('scroll');
+        isDataScroll1 = true;
+      }
+      if (st > counter_display_pos && !isDataScroll2) {
+        $('.counter').addClass('scroll');
+        isDataScroll2 = true;
+      }
+      if ($('#target1').isOnScreen() && t1) {
+        $('#target1').animateNumber({
+          number: 15
+        }, 2500,
+          function () {
+            $('#target1').text('15')
+          });
+        t1 = false
+      }
+      if ($('#target2').isOnScreen() && t2) {
+        $('#target2').animateNumber({
+          number: 400
+        }, 3000,
+          function () {
+            $('#target2').text('400+')
+          });
+        t2 = false
+      }
+      if ($('#target3').isOnScreen() && t3) {
+        $('#target3').animateNumber({
+          number: 100
+        }, 3500,
+          function () {
+            $('#target3').text('100+')
+          });
+        t3 = false
+      }
+      if ($('#target4').isOnScreen() && t4) {
+        $('#target4').animateNumber({
+          number: 35
+        }, 4000,
+          function () {
+            $('#target4').text('35')
 
-      });
-      t4=false
-    }
+          });
+        t4 = false
+      }
+    });
   });
-});
 </script>
 
 </section>
