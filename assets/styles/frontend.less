@@ -550,6 +550,8 @@ body > footer {
 }
 
 .main-title-div{
+    position: relative;
+    z-index: -1;
     display:flex;
     align-items: center;
     margin: 36px 0;
@@ -564,7 +566,7 @@ body > footer {
         height:100%;
         display:flex;
         align-items: center;
-        @media screen and (min-width:551px and max-width(991px)){
+        @media screen and (min-width:551px) and (max-width:991px){
             width:100px;
         }
         @media screen and (max-width:550px){
@@ -584,6 +586,12 @@ body > footer {
             .studentIntro-section &,
             .section-sharingList &,
             .section-careerSharing{ background-color: @main-light-blue;}
+            .section-tuv     &{ background-color: @color-tuv;}
+            .section-spring  &{ background-color: @color-spring;}
+            .section-careers  &{ background-color: @color-career;}
+            .section-new     &{ background-color: @color-new;}
+            .section-overseaVisit &{ background-color: @color-oversea;}
+            .section-end     &{ background-color: @color-end;}
         }
         .circle{
             width:12px;
@@ -601,16 +609,23 @@ body > footer {
             .section-aboutNTCA & ,
             .section-memberList & ,
             .section-studentIntro &{ background-color: @main-light-blue;}
+            .section-tuv     &{ background-color: @color-tuv;}
+            .section-spring  &{ background-color: @color-spring;}
+            .section-careers  &{ background-color: @color-career;}
+            .section-new     &{ background-color: @color-new;}
+            .section-overseaVisit &{ background-color: @color-oversea;}
+            .section-end     &{ background-color: @color-end;}
         }
 
     }
     h1{
         margin:0;
         font-size: 48px;
+        line-height:70px;
         font-weight: bold;
         letter-spacing: 1.6px;
         text-align: left;
-        @media screen and (min-width:551px and max-width(991px)){
+        @media screen and (min-width:551px) and (max-width:991px){
             font-size:40px;
         }
         @media screen and (max-width:550px){
@@ -626,5 +641,40 @@ body > footer {
         .studentIntro-section &,
         .section-sharingList &,
         .section-careerSharing{color: @main-light-blue;}
+        .section-tuv     &{ color: @color-tuv;}
+        .section-spring  &{ color: @color-spring;}
+        .section-careers  &{ color: @color-career;}
+        .section-new     &{ color: @color-new;}
+        .section-overseaVisit &{ color: @color-oversea;}
+        .section-end     &{ color: @color-end;}
+    }
+    h2{
+        position: absolute;
+        z-index: -1;
+        bottom:0;
+        left:140px;;
+        transform: translateY(100% + 3px);
+        font-size:20px;
+        line-height: 30px;
+        letter-spacing: 0.7px;
+        @media screen and (min-width:551px) and (max-width:991px){
+            left:110px;;
+            font-size:16px;
+            transform: translateY(80%);
+        }
+        @media screen and (max-width:550px){
+            left:40px;
+            font-size:14px;
+            transform: translateY(40%);
+        }
+        @media screen and (max-width:350px){
+            left:0px;
+        }
+        .section-tuv     &{ color: @color-tuv;}
+        .section-spring  &{ color: @color-spring;}
+        .section-careers  &{ color: @color-career;}
+        .section-new     &{ color: @color-new;}
+        .section-overseaVisit &{ color: @color-oversea;}
+        .section-end     &{ color: @color-end;}
     }
 }
