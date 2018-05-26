@@ -640,6 +640,10 @@ module.exports = {
         return res.view("frontend/pages/apply",{
         });
     },
+    apply2: function(req, res){
+        return res.view("frontend/pages/apply2",{
+        });
+    },
     careerSharingContent: function(req, res){
         return res.view("frontend/pages/careerSharingContent",{
         });

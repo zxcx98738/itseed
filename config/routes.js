@@ -192,7 +192,10 @@ module.exports.routes = {
     controller: 'Site',
     action: 'apply'
   },
-
+  '/apply2': {
+    controller: 'Site',
+    action: 'apply2'
+  },
   '/video': {
     controller: 'Site',
     action: 'video'
