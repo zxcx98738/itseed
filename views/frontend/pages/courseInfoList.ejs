@@ -3,18 +3,9 @@
 <!--END HEADER-->
 
 <section class="course-top section-courseInfoList">
-  <div class="sub-nav course-nav">
-    <ul>
-      <li><a  class="active" href="/courseInfo">講座課程</a></li> 
-      <li><a href="/businessVisit">企業參訪</a></li> 
-      <li><a href="/tuv">六大專案</a></li>
-    </ul>
-  </div>
-  <br>
-  <div class="six-hg-title">
-    <div class="six-hg-tit course-head">
-      <span>講座課程</span>
-    </div>
+  <% include ./sub-nav %>
+  <div class="">
+    <h1>講座課程</g1>
   </div>
   <div class="row">
     <% for(var i = 0; i <datas.length; i++){ %>
@@ -23,17 +14,9 @@
           
           <div>
             <p class= "course-number"  >Class <%= i+1 %></p>
-            <p class="course-title">
-              「<%= datas[i].title %>」</p>
-            <br>
-            <p class="teacher">講師：<br><%= datas[i].speaker %><!-- <%= datas[i].speakerTitle %> --></p>
-              <!-- <span>課程重點</span> -->
-            
+            <p class="course-title">「<%= datas[i].title %>」</p>
+            <p class="teacher">講師：<br><%= datas[i].speaker %></p>
             <div class="keepRead">了解更多</div>
-              <!-- <p class="course-content-part"></p> -->
-                <!-- <%- datas[i].content %> -->
-              
-            
           </div>
         </a>
       </div>
@@ -41,35 +24,6 @@
     <!-- <div class="col-xs-12 text-xs-center top"><span class="top-box">回到最上</span></div> -->
   </div>
 </section>
- <div class="top">
-    <div><img src="/images/index/top.png"></div>
-    Top
- </div>
-    <script src="/js/specifies/frontend/aboutNTCA.js"></script>
-<!-- <section class="bg-light-gray" id="cousreInfoList">
-  <div class="row">
-    <% for(var i = 0; i < datas.length; i++){ %>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <a href="<%= url + datas[i].id %>">
-          <div class="course-card">
-            <div class="photo text-center"><img src="<%= datas[i].photo %>"></img></div>
-            <div class="image-overlay"></div>
-            <div class="view-details">課程介紹</div>
-            <div class="intro">
-              <div class="title"><%= datas[i].title %></div>
-              <div class="instructor">
-                <strong>講師</strong>
-                <span style="font-size: 16px;"><%= datas[i].speaker %></span>
-                <p><%= datas[i].speakerTitle %></p>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-    <% } %>
-  </div>
-</section> -->
-
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->

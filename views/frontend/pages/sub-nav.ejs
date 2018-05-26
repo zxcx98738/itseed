@@ -1,0 +1,18 @@
+<div class="sub-nav">
+    <ul>
+        <li><a class="sub-nav-link" href="/courseInfo">講座課程</a></li> 
+        <li><a class="sub-nav-link" href="/businessVisit">企業參訪</a></li> 
+        <li><a class="sub-nav-link" href="/tuv">六大專案</a></li>
+    </ul>
+</div>
+<script>
+    let now_loction_path = document.location.pathname;
+    // $("a.sub-nav-link").filter((ele)=>{
+    //     $(ele).attr('href').split("/")[1] === window.now_loction_path;
+    // }).addClass('active');
+
+    $("a.sub-nav-link").map((ele)=>{
+        console.log($(ele));
+    }).addClass('active');
+
+</script>
