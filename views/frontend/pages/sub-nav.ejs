@@ -1,11 +1,47 @@
-<div class="sub-nav">
+<div style="display: none;" class="sub-nav sub-nav-studentIntro">
+    <ul>
+      <li><a  class="sub-nav-link" href="/studentIntro">基本制度</a></li>
+      <li><a  class="sub-nav-link" href="/projectIntro">專案制度</a></li>
+    </ul>
+</div>
+
+<div style="display: none;" class="sub-nav sub-nav-introduction">
+    <ul>
+      <li><a  class="sub-nav-link" href="/aboutITSeed">計畫簡介</a></li>
+      <li><a  class="sub-nav-link" href="/aboutNTCA">公會簡介</a></li>
+      <li><a  class="sub-nav-link" href="/memberList">歷屆名單</a></li>
+      <li><a  class="sub-nav-link dont-be-selected" href="/studentIntro">學員制度</a></li>
+    </ul>
+</div>
+
+<div style="display: none;" class="sub-nav sub-nav-plan">
     <ul>
         <li><a class="sub-nav-link" href="/courseInfo">講座課程</a></li> 
         <li><a class="sub-nav-link" href="/businessVisit">企業參訪</a></li> 
-        <li><a class="sub-nav-link" href="/tuv">六大專案</a></li>
+        <li><a class="sub-nav-link dont-be-selected" href="/tuv">六大專案</a></li>
     </ul>
 </div>
+
+<div style="display: none;" class="sub-nav sub-nav-plan">
+    <ul class="link-nav">
+        <li><a class="sub-nav-link dont-be-selected" href="/courseInfo">講座課程</a></li> 
+        <li><a class="sub-nav-link dont-be-selected" href="/businessVisit">企業參訪</a></li> 
+        <li><a class="sub-nav-link active" href="/tuv">六大專案</a></li>
+    </ul>
+    <ul class="small-link-nav">
+        <li><a class="sub-nav-small-link" href="/tuv">TUV</a></li> 
+        <li><a class="sub-nav-small-link" href="/spring">春酒</a></li> 
+        <li><a class="sub-nav-small-link" href="/careers">職涯</a></li>
+        <li><a class="sub-nav-small-link" href="/new">招生</a></li> 
+        <li><a class="sub-nav-small-link" href="/overseaVisit">海參</a></li> 
+        <li><a class="sub-nav-small-link" href="/end">結業</a></li>
+    </ul>
+</div>
+
+
 <script>
     let now_loction_path = document.location.pathname;
-    $(`a.sub-nav-link[href='${now_loction_path}']`).addClass('active');
+    $(`.sub-nav a[href='${now_loction_path}']:not('.dont-be-selected')`)
+        .addClass('active')
+        .closest(".sub-nav").show();
 </script>

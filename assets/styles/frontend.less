@@ -394,39 +394,95 @@ body > footer {
 .sub-nav{
     width:100%;
     height:100px;
-    background-color:@main-blue2;
     display: flex;
     align-items: center;
+    background-color:@main-blue2;
 	>ul{
-        margin-left:18%;
         display:flex;
         justify-content: space-around;
         align-items: center;
-		list-style-type: none;
-		li{
-			a.sub-nav-link{
-                font-size:18px;
-                margin-right:40px;
-                padding: 4px 5px;
-				color:white;
-				text-decoration: none;
-                cursor: pointer;
-                &.active{
-                    border-bottom:solid 3px white;
-                }
-                @media screen and (max-width:550px){
-                    font-size:14px;
-                    margin-right:20px;
-                }
-			}
-		}
-	}
+        list-style-type: none;
+        margin-left:18%;
+        &.small-link-nav{
+            margin-left:0;
+            margin-bottom:-52px;
+        }
+        .sub-nav-link{
+            font-size:18px;
+            margin-right:40px;
+            padding: 4px 5px;
+            color:white;
+            text-decoration: none;
+            letter-spacing: 0.6px;
+            cursor: pointer;
+            &.active{
+                border-bottom:solid 3px white;
+            }
+        }
+        .sub-nav-small-link{
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            padding: 4px 6px;
+            margin-right:44px;
+            margin-bottom:-100px;
+            color:white;
+            letter-spacing: 0.6px;
+            &.active{
+                border-bottom:solid 3px white; //default
+            }
+        }
+    }
+    // &.sub-nav-plan{
+    //     background-color:@main-blue2;
+    //     >ul {
+    //         .sub-nav-link,.sub-nav-small-link{
+    //             color:white;
+    //             &.active{
+    //                 border-color: white;
+    //             }
+    //         }
+    //     }
+    // }
+    // &.sub-nav-studentIntro , &.sub-nav-introduction{
+    //     >ul .sub-nav-link{
+    //         color:@main-yellow;
+    //         &.active{
+    //             border-color: @main-yellow;
+    //         }
+    //     } 
+    // }
+    @media screen and (min-width:551px) and (max-width:990px){
+        height:80px;
+        >ul{
+            margin-left:10%;
+            .sub-nav-link{
+                font-size:16px;
+                margin-right:32px;
+            }
+        }
+    }
+    @media screen and (max-width:550px){
+        height:60px;
+        >ul{
+            margin: 0 auto;
+            .sub-nav-link{
+                font-size:14px;
+                margin-right:10px;
+            }
+        }
+    }
 }
 
 .main-title-div{
     display:flex;
     align-items: center;
     margin: 36px 0;
+    @media screen and (min-width:551px and max-width(991px)){
+        margin: 32px 0;
+    }
+    @media screen and (max-width:550px){
+        margin: 28px 0;
+    }
     .line-and-circle{
         width:130px;
         height:100%;
@@ -445,6 +501,13 @@ body > footer {
             .section-courseInfoList  &{ background-color: @main-light-blue;}
             .section-courseInfo  &{ background-color:@main-light-blue;}
             .section-businessVisitList &{ background-color: @main-light-blue;}
+            .section-aboutITSeed &,
+            .section-aboutNTCA &,
+            .section-memberList &,
+            .section-studentIntro &,
+            .studentIntro-section &,
+            .section-sharingList &,
+            .section-careerSharing{ background-color: @main-light-blue;}
         }
         .circle{
             width:12px;
@@ -455,6 +518,13 @@ body > footer {
             .section-courseInfoList &{ background-color: @main-light-blue;}
             .section-courseInfo &{ background-color: @main-light-blue;}
             .section-businessVisitList &{ background-color: @main-light-blue;}
+            .studentIntro-section & ,
+            .section-sharingList & ,
+            .section-careerSharing,
+            .section-aboutITSeed & ,
+            .section-aboutNTCA & ,
+            .section-memberList & ,
+            .section-studentIntro &{ background-color: @main-light-blue;}
         }
 
     }
@@ -473,5 +543,12 @@ body > footer {
         .section-courseInfoList &{ color: @main-light-blue;}
         .section-courseInfo &{ color: @main-light-blue;}
         .section-businessVisitList &{ color: @main-light-blue;}
+        .section-aboutITSeed &,
+        .section-aboutNTCA &,
+        .section-memberList &,
+        .section-studentIntro &,
+        .studentIntro-section &,
+        .section-sharingList &,
+        .section-careerSharing{color: @main-light-blue;}
     }
 }
