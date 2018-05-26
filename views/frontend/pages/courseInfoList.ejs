@@ -2,7 +2,7 @@
 <% include ../header %>
 <!--END HEADER-->
 
-<section class="course-top section-courseInfoList">
+<section class="section-courseInfoList">
   <% include ./sub-nav %>
   <div class="main-title-div">
     <div class="line-and-circle">
@@ -11,23 +11,23 @@
     </div>
     <h1>講座課程</g1>
   </div>
-  
+<div class="container course-container">
   <div class="row">
     <% for(var i = 0; i <datas.length; i++){ %>
-      <div class="col-sm-6 eachcourse">
+      <div class=".col-xs-12 .col-sm-6  .col-md-4 course-div">
         <a href="<%= url + datas[i].id %>">
-          
-          <div>
-            <p class= "course-number"  >Class <%= i+1 %></p>
-            <p class="course-title">「<%= datas[i].title %>」</p>
-            <p class="teacher">講師：<br><%= datas[i].speaker %></p>
+            <h3 class= "course-number"  >Class <%= '0'+(i+1) %></h3>
+            <div class="course-content">
+              <h3 class="course-title">「<%= datas[i].title %>」</h3>
+              <p class="content">講師：<p>
+              <p class="content"><%= datas[i].speaker %></p>
+            </div>
             <div class="keepRead">了解更多</div>
-          </div>
         </a>
       </div>
     <% } %>
-    <!-- <div class="col-xs-12 text-xs-center top"><span class="top-box">回到最上</span></div> -->
   </div>
+</div>
 </section>
 <!--FOOTER-->
 <% include ../footer %>
