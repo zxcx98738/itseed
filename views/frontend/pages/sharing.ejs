@@ -3,22 +3,39 @@
 <!--END HEADER-->
 
 <section class="section-sharing bg-light-gray article ">
-	<h3 class="share-in-title">經驗分享</h3>
-	<div class="data3">
-		<div class="cloud"></div>
-	</div>	
+	
+    <% include ./sub-nav %>
+<div class="main-title-div">
+  <div class="line-and-circle">
+    <div class="line"></div>
+    <div class="circle"></div>
+  </div>
+  <h1>經驗分享</h1>
+</div>
+		
 	<div class="container">
 		
 		<div class="row sharing-content-pp">
 			
 			<div class="col-md-10 col-md-offset-1">
 				<div class="image">
-					<img src="<%= datas[0].photo %>"></img>
 					
 					
-				
+					<div class="data3">
+						<div class="whatyouget">
+							<h3 class="sharing-title"><%- datas[0].name %></h3>
+							<div class="number">
+							<h3 class="sharing-title"><%- datas[0].title %></h3>
+								
+							</div>
+							
+							
+						</div>
+						<img src="<%= datas[0].photo %>"></img>
 				</div>
-				<h3 class="sharing-title"><%- datas[0].title %></h3>
+				
+				 		 	
+				 
 				<h4>
 					<% if(datas[0].th != 4) {%>
 						<span>第十五屆資訊種子學員</span>
