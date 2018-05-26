@@ -4,17 +4,13 @@
 <!-- <img src="/images/courseInfo/coursebanner.png" id="img-responsive" width="100%"> -->
 
 <section class="section-courseInfo bg-light-gray">
-  <div class="sub-nav course-nav">
-    <ul>
-      <li><a  class="active" href="/courseInfo">講座課程</a></li> 
-      <li><a href="/businessVisit">企業參訪</a></li> 
-      <li><a href="/tuv">六大專案</a></li>
-    </ul>
-  </div>
-  <div class="six-hg-title">
-    <div class=" course-title">
-        <%= datas[0].title %> 
+  <% include ./sub-nav %>
+  <div class="main-title-div">
+    <div class="line-and-circle">
+      <div class="line"></div>
+      <div class="circle"></div>
     </div>
+    <h1><%= datas[0].title %></h1>
   </div>
 
   <div class="container">

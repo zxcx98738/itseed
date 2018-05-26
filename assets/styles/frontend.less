@@ -96,7 +96,7 @@ body>section {
             }
         }
     }
-    &#businessVisitList {
+    &#section-businessVisitList {
       padding-bottom: 0px;
     }
 
@@ -393,8 +393,8 @@ body > footer {
         justify-content: space-around;
         align-items: center;
 		list-style-type: none;
-		li.sub-nav-itme{
-			a{
+		li{
+			a.sub-nav-link{
                 font-size:18px;
                 margin-right:40px;
                 padding: 4px 5px;
@@ -404,8 +404,64 @@ body > footer {
                 &.active{
                     border-bottom:solid 3px white;
                 }
+                @media screen and (max-width:550px){
+                    font-size:14px;
+                    margin-right:20px;
+                }
 			}
-
 		}
 	}
+}
+
+.main-title-div{
+    display:flex;
+    align-items: center;
+    margin: 36px 0;
+    .line-and-circle{
+        width:130px;
+        height:100%;
+        display:flex;
+        align-items: center;
+        @media screen and (min-width:551px and max-width(991px)){
+            width:100px;
+        }
+        @media screen and (max-width:550px){
+            width:80px;
+        }
+        .line{
+            width:65%;
+            height:3px;
+            background-color:#000; //default
+            .section-courseInfoList  &{ background-color: @main-light-blue;}
+            .section-courseInfo  &{ background-color:@main-light-blue;}
+            .section-businessVisitList &{ background-color: @main-light-blue;}
+        }
+        .circle{
+            width:12px;
+            height:12px;
+            border-radius:100%;
+            transform:translateX(-50%);
+            background-color:#000; //default
+            .section-courseInfoList &{ background-color: @main-light-blue;}
+            .section-courseInfo &{ background-color: @main-light-blue;}
+            .section-businessVisitList &{ background-color: @main-light-blue;}
+        }
+
+    }
+    h1{
+        margin:0;
+        font-size: 48px;
+        font-weight: bold;
+        letter-spacing: 1.6px;
+        text-align: left;
+        @media screen and (min-width:551px and max-width(991px)){
+            font-size:40px;
+        }
+        @media screen and (max-width:550px){
+            font-size:32px;
+        }
+        .section-courseInfoList &{ color: @main-light-blue;}
+        .section-courseInfo &{ color: @main-light-blue;}
+        .section-businessVisitList &{ color: @main-light-blue;}
+    }
 }
