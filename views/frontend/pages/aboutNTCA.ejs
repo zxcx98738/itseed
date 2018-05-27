@@ -15,13 +15,13 @@
   <div class="row">
     <div class="col-md-offset-2 col-md-8  NTCA-content">
       <div>
-        <span class="word-18pt font-ms">
+        <h2 class="title font-ms">
             <% if (datas[0] != null) { %>
             <%- datas[0].title %>
             <% } %>
-        </span>
+        </h2>
       </div>
-      <div >
+      <div class="content">
           <% if (datas[0] != null) { %>
           <p class="word-12pt NTCA-content-con"><%- datas[0].content %></p>
           <% } %>
@@ -197,17 +197,10 @@
     </div>
   </div>
 </div>
-
-
- <div class="top">
-    <div><img src="/images/index/top.png"></div>
-    Top
- </div>   
+ 
 </section>
 
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->
-
-<script src="/js/specifies/frontend/aboutNTCA.js"></script>
 
