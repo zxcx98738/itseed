@@ -13,6 +13,7 @@
     padding:0;
     margin:0;
     font-family: @font-chainese,@font-english;
+    line-height: 2;
 }
 
 body {
@@ -314,9 +315,7 @@ body > footer {
 .word-12pt{
     font-size: 12pt;
 }
-.word-18pt{
-    font-size: 18pt;    
-}
+
 .project-content-style{
     margin-right:5%;
     margin-left: 5%;
@@ -348,10 +347,10 @@ body > footer {
     border-color:@faq;
 }
 
-@aboutITSeed:#205686;
-.aboutITSeed-br{
-    border-color:@aboutITSeed;
-}
+// @aboutITSeed:#00a0e8;
+// .aboutITSeed-br{
+//     border-color:@aboutITSeed
+// }
 
 @aboutNTCA:#205686;
 .aboutNTCA-br{
@@ -467,13 +466,23 @@ body > footer {
     //         }
     //     }
     // }
-    @media screen and (max-width:550px){
+    @media screen and (min-width:361px) and (max-width:600px){
         height:67px;
         >ul{
             margin-left: 12%;
             .sub-nav-link{
                 font-size:14px;
                 margin-right:10px;
+            }
+        }
+    }
+    @media screen and (max-width:360px){
+        height:67px;
+        >ul{
+            margin-left: 8%;
+            .sub-nav-link{
+                font-size:12px;
+                margin-right:8px;
             }
         }
     }
