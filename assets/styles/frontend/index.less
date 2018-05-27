@@ -17,9 +17,26 @@
     margin:5% 0;
     overflow: hidden;
     position: relative;
+    z-index:-1;
     img{
         position: relative;
         width:100%;
+    }
+    .filter{
+        display:none;
+        position: absolute;
+        width:100%;
+        top:50%;
+        left:50%;
+        transform: translateX(-50%) translateY(-50%);
+        overflow: hidden;
+        background-color: white;
+        opacity: 0.8;
+        &:before{
+            content: "";
+            display: block;
+            padding-top: 100%; 	/* initial ratio of 1:1*/
+        }
     }
     .circle{
         width:40%;
@@ -47,13 +64,13 @@
         h2{
             font-size:28px;
             color:@main-blue;
-            line-height: 36px;
+            line-height: 56px;
         }
         div{
             padding:8px;
             p{
-                line-height:28px;
                 font-size:20px;
+                line-height:28px;
             }
         }
     }
@@ -64,26 +81,26 @@
             transform:translateX(-50%);
         }
         .circle{
-            width:45%;
+            width:50%;
         }
         .content{
             h2{
                 font-size:24px;
                 color:@main-blue;
-                line-height: 32px;
+                line-height: 48px;
             }
             div{
                 padding:4px;
                 p{
-                    line-height:20px;
                     font-size:16px;
+                    line-height:24px;
                 }
             }
         }
     }
-    @media screen and (min-width: 551px) and (max-width: 859px) {
+    @media screen and (min-width: 641px) and (max-width: 859px) {
         img{
-            width:180%;
+            width:170%;
             left:50%;
             transform:translateX(-50%);
         }
@@ -93,18 +110,18 @@
         .content{
             h2{
                 font-size:24px;
-                line-height: 32px;
+                line-height: 48px;
             }
             div{
                 padding:4px;
                 p{
-                    line-height:20px;
-                    font-size:16px;
+                    font-size:20px;
+                    line-height:24px;
                 }
             }
         }
     }
-    @media screen and (min-width: 1px) and (max-width: 550px) {
+    @media screen and (min-width: 471px) and (max-width: 640px) {
         img{
             width:200%;
             left:50%;
@@ -113,16 +130,45 @@
         .circle{
             width:85%;
         }
+        .filter{
+            display:block;
+        }
         .content{
             h2{
-                font-size:14px;
-                line-height: 20px;
+                font-size:24px;
+                line-height: 48px;
             }
             div{
                 padding:4px;
                 p{
-                    line-height:14px;
-                    font-size:10px;
+                    line-height:16px;
+                    font-size:20px;
+                }
+            }
+        }
+    }
+    @media screen and (min-width: 1px) and (max-width: 470px) {
+        padding:10% 0;
+        img{
+            width:200%;
+            left:50%;
+            transform:translateX(-50%);
+        }
+        .circle{
+            width:85%;
+        }
+        .filter{
+            display:block;
+        }
+        .content{
+            h2{
+                font-size:16px;
+                line-height: 32px;
+            }
+            div{
+                padding:4px;
+                p{
+                    font-size:12px;
                 }
             }
         }
@@ -142,12 +188,16 @@
         line-height: 36px;
         font-size: 28px;
     }
-    @media screen and (min-width: 1px) and (max-width: 550px) {
+    @media screen and (min-width: 351px) and (max-width: 550px) {
         .fourtitle{
             font-size: 24px;
         }
     }
-
+    @media screen and (min-width: 1px) and (max-width: 350px) {
+        .fourtitle{
+            font-size: 20px;
+        }
+    }
     .fourDiv{
         padding:0 5%;
         >div{
@@ -198,7 +248,7 @@
             }
         }
     }
-    @media screen and (min-width: 1px) and (max-width: 550px) {
+    @media screen and (min-width: 351px) and (max-width: 550px) {
         .fourDiv{
             >div{
                 .tilteDiv{
@@ -214,6 +264,26 @@
                 p{
                     font-size: 14px;
                     line-height: 20px;
+                }
+            }
+        }
+    }
+    @media screen and (min-width: 1px) and (max-width: 350px) {
+        .fourDiv{
+            >div{
+                .tilteDiv{
+                    .imgDiv{
+                        width:30%;
+                        height:60px;
+                    }
+                    p{
+                        font-size: 16px;
+                        line-height:40px;
+                    }
+                }
+                p{
+                    font-size: 12px;
+                    line-height: 16px;
                 }
             }
         }
@@ -271,8 +341,10 @@
     overflow: hidden;
     height:400px;
     position: relative;
+    z-index:-1;
     .whatyouget,.counter{
         position: absolute;
+        z-index:-1;
         display:flex;
         justify-content: space-around;
         align-items: center;
@@ -321,6 +393,7 @@
 
     .cloud{
         position: absolute;
+        z-index:-1;
         background: linear-gradient(to left,#F8BA00,#F27200);
         width:15%;
         height:40px;
@@ -332,6 +405,7 @@
             border-radius:20px;
             background-color: #fff;
             position: absolute;
+            z-index:-1;
             top:50%;
             left:50%;
             transform: translateX(-50%) translateY(-50%);
@@ -427,6 +501,20 @@
                 bottom:150px;
                 transform:translateX(-50%) translateY(50%);
                 display: block;
+            }
+        }
+    }
+    @media screen and (min-width: 1px) and (max-width: 350px) {
+        .whatyouget,.counter{
+            .number{
+                .number1{
+                    font-size: 28px;
+                    line-height: 36px;
+                }
+                .number2{
+                    font-size: 14px;
+                    line-height: 20px;
+                }
             }
         }
     }
