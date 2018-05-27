@@ -180,6 +180,26 @@ module.exports.routes = {
     controller: 'Site',
     action: 'careerSharingContent'
   },
+  '/careerSharingContent1': {
+    controller: 'Site',
+    action: 'careerSharingContent1'
+  },
+  '/careerSharingContent2': {
+    controller: 'Site',
+    action: 'careerSharingContent2'
+  },
+  '/careerSharingContent3': {
+    controller: 'Site',
+    action: 'careerSharingContent3'
+  },
+  '/careerSharingContent4': {
+    controller: 'Site',
+    action: 'careerSharingContent4'
+  },
+  '/careerSharingContent5': {
+    controller: 'Site',
+    action: 'careerSharingContent5'
+  },
   '/seminar': {
     controller: 'Site',
     action: 'seminar'

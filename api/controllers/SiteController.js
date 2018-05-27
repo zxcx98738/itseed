@@ -648,5 +648,25 @@ module.exports = {
         return res.view("frontend/pages/careerSharingContent",{
         });
     },
+    careerSharingContent1: function(req, res){
+        return res.view("frontend/pages/careerSharingContent1",{
+        });
+    },
+    careerSharingContent2: function(req, res){
+        return res.view("frontend/pages/careerSharingContent2",{
+        });
+    },
+    careerSharingContent3: function(req, res){
+        return res.view("frontend/pages/careerSharingContent3",{
+        });
+    },
+    careerSharingContent4: function(req, res){
+        return res.view("frontend/pages/careerSharingContent4",{
+        });
+    },
+    careerSharingContent5: function(req, res){
+        return res.view("frontend/pages/careerSharingContent5",{
+        });
+    },
 };
 
