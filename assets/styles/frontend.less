@@ -55,10 +55,6 @@ p{
     background-color: white;
 }
 
-.bg-light-gray {
-	background-color: @light-gray;
-}
-
 .btn-green {
     // color: white;
     background-color: @green;
@@ -661,11 +657,12 @@ body > footer {
         position: absolute;
         z-index: -1;
         bottom:0;
-        left:140px;;
+        left:140px;
         transform: translateY(100% + 3px);
         font-size:20px;
-        line-height: 30px;
+        line-height: 20px;
         letter-spacing: 0.7px;
+        
         @media screen and (min-width:551px) and (max-width:991px){
             left:110px;;
             font-size:16px;
@@ -674,10 +671,17 @@ body > footer {
         @media screen and (max-width:550px){
             left:40px;
             font-size:14px;
-            transform: translateY(40%);
+            transform: translateY(60%);
+            &.double-line{
+                width:70%;
+            }
         }
         @media screen and (max-width:350px){
             left:0px;
+            transform: translateY(60%);
+            &.double-line{
+                width:80%;
+            }
         }
         .section-tuv     &{ color: @color-tuv;}
         .section-spring  &{ color: @color-spring;}
