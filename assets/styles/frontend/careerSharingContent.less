@@ -1,69 +1,87 @@
-
-
-.section-careerSharingContent content{
-    .sharing-content-pp > div .image img.seminar-imgae{
-        width:80%;
-        margin: 20px;
+.section-careerSharingContent .careerSharingContent-container{
+    width:65%;
+    margin:0 auto;
+    color: #000;
+    .share-in-title{
+        font-size: 36px;
+        font-weight: 500;
+        line-height: 2;
+        letter-spacing: 1.2px;
+        color: #000;
     }
-    @media screen and (max-width: 620px) and (min-width: 1px){
-        .sharing-content-pp > div .image img.seminar-imgae {
-            width: 80%;
+    .mentor-name{
+        font-size: 20px;
+        letter-spacing: 0.7px;
+        margin-bottom:20px;
+    }
+    .content{
+        width:80%;
+        margin:0 auto;
+        margin-bottom:100px;
+        .foreword{
+            margin:48px 0;
+            font-size: 20px;
+            line-height: 1.71;
+            letter-spacing: 0.7px;
+            color: @main-light-blue;
+        }
+        .share-part{
+            margin:28px 0;
+            h3{
+                font-size: 20px;
+                font-weight: bold;
+                line-height: 2;
+                letter-spacing: 0.7px;
+                margin:28px 0;
+            }
+            img{
+                display: block;
+                width:auto;
+                margin:0px auto;
+                max-width:90%;
+            }
+            p{
+                font-size: 18px;
+                line-height: 2;
+                letter-spacing: 0.6px;
+                margin:20px 0;
+            }
         }
     }
-    h2{
-        text-align: left;
-    }
-    
-
-    .sh-word{
-        margin: 0 auto;
-
+    @media screen and (max-width:991px){
         width:80%;
+        .share-in-title{
+            font-size: 32px;
+        }
     }
-    
-    .sh-word p{
-        font-size: 18px;
-        line-height: 35px;
-        margin-bottom: 50px;
-        
+    @media screen and (max-width:600px){
+        width:90%;
+        .share-in-title{
+            font-size: 28px;
+        }
+        .content{
+            .share-part{
+                h3{
+                    font-size:18px;
+                }
+                p{
+                    font-size: 16px;
+                }
+            }
+        }
     }
-
-    .sh-word .foreword p{
-        width: 758px;
-        height: 72px;
-        font-family: NotoSansCJKtc;
-        font-size: 18px;
-        font-weight: 500;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: 1.71;
-        letter-spacing: 0.7px;
-        text-align: left;
-        color: #205686;
-        padding-top:20px; 
+    @media screen and (max-width:600px){
+        width:90%;
+        .share-in-title{
+            font-size: 20px;
+        }
+        .content{
+            h3{
+                font-size:16px;
+            }
+            p{
+                font-size: 14px;
+            }
+        }
     }
-    
-    // .seminar-submit_btn{
-    //     width: 160px;
-    //     height: 50px;
-    //     border: 0px;
-    //     border-radius: 40px;
-    //     background-color: #FFBB00;
-    //     box-shadow: 1px 1px 2px grey;
-    //     text-align: center;
-    //     margin:30px auto;
-    //     a{
-    //         color:white;
-    //         font-size: 16pt;
-    //         text-decoration: none;
-    //         line-height: 50px;
-    //     }
-    // }
-    // .seminar-submit_btn:hover{
-    //     background-color: #FFD306;
-    //     box-shadow: 1px 1px 2px lightgrey;
-    // }
 }
-
-  
-
