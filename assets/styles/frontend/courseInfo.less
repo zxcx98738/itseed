@@ -1,0 +1,38 @@
+.section-courseInfo{
+    margin-bottom:100px;
+    .container{
+        .row  
+        .course-img-div{
+            width:80%;
+            margin:0 auto;
+            img{
+                width:100%;
+            }
+        }
+
+        .project-content-style{
+            margin-right:5%;
+            margin-left: 5%;
+            line-height: 30px;
+            font-size: 13pt;
+        }
+        @media screen and (min-width: 0px) and (max-width: 730px) {
+            .project-content-style{
+                font-size: 12pt;
+            }
+        }
+        .back-to-course{
+            margin:30px auto;
+            a{
+                padding:8px 16px;
+                color:@main-light-blue;
+                border: 1px solid @main-light-blue;
+                border-radius: 4px;
+                &:hover{
+                    background-color: @main-light-blue;
+                    color: white;
+                }
+            }
+        }
+    }
+}

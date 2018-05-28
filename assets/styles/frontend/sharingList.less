@@ -9,59 +9,69 @@
 	margin: 0 5%;
 }
 .share-but-part{
-	position: relative;
-	z-index:0;
-	text-align: center;
-	padding: 0 auto;
-	margin: 40px auto;
+	margin:40px auto;
+	width:60%;
+	display:flex;
+	justify-content: space-around;
 	.share-but{
-		display: inline-block;
 		height: 40px;
-		line-height: 34px;
-		max-width: 200px;
-		padding-right:20px;
-		padding-left:20px;
+		padding:0 16px;
+		margin:0 16px;
+		font-size: 20px;
+		line-height: 40px;
+		text-align: center;
 		border-radius: 20px;
-		font-size: 14pt;
 		color: white;
-	}
-	.share-but:nth-child(2){
-		background-color: @school;
-		border: 2px solid @school;
-	}
-	.share-but:nth-child(3){
-		background-color: @leader;
-		border: 2px solid @leader;
-	}
-	
-	.share-but:nth-child(1){
-		background-color: @graduate;
-		border: 2px solid @graduate;
+		&:nth-child(1){
+			background-color: @graduate;
+			border: 2px solid @graduate;
+		}
+		&:nth-child(2){
+			background-color: @school;
+			border: 2px solid @school;
+		}
+		&:nth-child(3){
+			background-color: @leader;
+			border: 2px solid @leader;
+		}
 	}
 }
-@media screen and (min-width: 1px) and (max-width: 500px) {
+@media screen and (min-width: 771px) and (max-width: 990px) {
 	.share-but-part{
-		margin: 10px 0;
+		margin:32px auto;
+		width:75%;
 		.share-but{
-			margin: 10px 0;
-			font-size: 12pt;
+			font-size:18px;
+			padding:0 12px;
 		}
 	}
 }
-@media screen and (min-width: 501px) and (max-width: 700px) {
+@media screen and (min-width:551px) and (max-width: 770px) {
 	.share-but-part{
-		margin: 10px 0;
+		margin:28px auto;
+		width:80%;
 		.share-but{
-			margin: 10px 10px;
-			font-size: 12pt;
-		}
-		a:hover{
-			text-decoration: none;
-			background-color: rgb(216, 16, 16);
-			box-shadow: 2px 2px 3px lightgrey;
+			font-size:16px;
+			padding:0 12px;
 		}
 	}
 }
+@media screen and (min-width:1px) and (max-width: 550px) {
+	.share-but-part{
+		margin:20px auto;
+		flex-direction: column;
+		width:90%;
+		.share-but{
+			height:28px;
+			padding:0 8px;
+			font-size:16px;
+			line-height:28px;
+			margin:8px auto;
+			min-width:200px;
+		}
+	}
+}
+
 .share-part{
 	margin-bottom: 50px;
 	>div{
@@ -356,93 +366,4 @@ section#sharingList {
 			}
 		}
 	}
-}
-//
-.section-sharing{
-    .data3{
-        margin:20px 0;
-        overflow: hidden;
-        height:400px;
-        position: relative;
-        .whatyouget{
-            position: absolute;
-            display:flex;
-            justify-content: space-around;
-            align-items: center;
-            width:-50%;
-			height:100px;
-	         .number{
-                text-align: center;
-                color: #FFFFFF;
-                .number1{
-                    font-size: 36px;
-                    line-height: 44px;
-                    font-weight: bold;
-                }
-              
-            }
-        }
-        .whatyouget{
-            top:0;
-            left:0;
-            width: 55%;
-            padding-right:75px;
-            transform: translateX(0);
-            border-radius:0 75px 75px 0px;
-            background: linear-gradient(to left, #309aea, #205686);
-            
-        }
-     
-
-        .cloud{
-            position: absolute;
-            background: linear-gradient(to left, #309aea, #205686);
-            width:1000px;
-            height:100px;
-            border-radius:20px;
-            &::before{
-                content:'';
-                height:~"calc(100% - 6px)";
-                width:~"calc(100% - 6px)";
-                border-radius:20px;
-                background-color: #fff;
-                position: absolute;
-                top:50%;
-                left:50%;
-                transform: translateX(-50%) translateY(-50%);
-            }
-         
-        }
-    }
-}
-@media screen and (min-width: 768px) and (max-width: 1280px) {
-    .data3{
-        height:400px;
-        .whatyouget{
-            width:100%;
-            .number{
-                .number1{
-                    font-size: 32px;
-                    line-height: 40px;
-                }
-               
-            }
-        }
-      
-    }
-}
-
-
-@media screen and (min-width: 1px) and (max-width: 768px) {
-    .data3{
-        height: 400px;
-        div.whatyouget,{
-            padding:0;
-            width:100%;
-        }
-       
-        .cloud{
-            display: none;
-        }
-    }
 }

@@ -2,7 +2,7 @@
 <% include ../header %>
 <!--END HEADER-->
 
-<section class="section-sharing bg-light-gray article ">
+<section class="section-sharing  ">
 	
 	<% include ./sub-nav %>
 	<div class="main-title-div">
@@ -14,44 +14,29 @@
 	</div>
 		
 	<div class="container">
-		<div class="row sharing-content-pp">
-			
-			<div class="col-md-10 col-md-offset-1">
-				<div class="image">
-					
-					<h3 class="sharing-title"><%- datas[0].name %></h3>
-					<div class="data3">
-						<div class="whatyouget">
-							
-							<div class="number">
-							<h3 class="sharing-title"><%- datas[0].title %></h3>
-								
-						</div>
-							
-							
-						</div>
-						<img src="<%= datas[0].photo %>"></img>
+		<div class="row title-row">
+			<div class="row-div col-md-7">
+				<div class="div sharing-title-div">
+					<h3 class="sharing-title">
+						<%- datas[0].name %>
+					</h3>
+					<div class="bar">
+						<h3 class="sharing-title"><%- datas[0].title %></h3>
+					</div>
 				</div>
-				
-				 		 	
-				 
-				<h4>
-					<% if(datas[0].th != 4) {%>
-						<span>第十五屆資訊種子學員</span>
-					<% } %>
-					<% if(datas[0].th == 4) {%>
-						<span>資訊種子歷屆校友</span>
-					<% } %>
-					<%- datas[0].name %>
-				</h4>
-				<hr class="share-line">
-				<div class="sharing-word"><%- datas[0].content %></div>
-				<hr class="share-line">
+			</div>
+			<div class="row-div col-md-5">
+				<div class="image-div">
+					<img src="<%= datas[0].photo %>"></img>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="text-xs-center back-to-share">
-		<a href="/sharing">Back</a>
+		<div class="row content">
+			<div class="sharing-word"><%- datas[0].content %></div>
+		</div>
+		<div class="row text-xs-center back-to-share">
+			<a href="/sharing">Back</a>
+		</div>
 	</div>
 </section>
 
