@@ -140,7 +140,11 @@ body>div#login, div#register {
         max-width: 100%;
         width: 350px;
         background-color: #CAE7D6;
-        div{
+        div:not('.signin2'){
+            padding: 10px 0; 
+            text-align: center;
+        }
+        form>div{
             padding: 10px 0; 
             text-align: center;
         }
@@ -162,7 +166,7 @@ body>div#login, div#register {
             border-radius: 20px;
         }
     }
-    @media and screen (max-width: 275px) {
+    @media only screen and (max-width: 275px) {
         .login-main{
             padding: 50px 10px;
         }

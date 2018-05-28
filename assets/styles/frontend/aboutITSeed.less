@@ -1,108 +1,226 @@
-.program-intro-title{
-    text-align: center;
-    font-family: '微軟正黑體';
-    >h2{
-        position: relative;
-        display: inline-block;
-        >b{
-            &:after{
-                background: rgb(252,228,228);
-                content:'';
-                width: 140px;
-                height: 30px;
-                position: absolute;
-                top: 10px;
-                left: -10px;
-                z-index:-1;
-            }
-        }
-    }
-}
-.mid-banner{
-    margin-top:30px;
-    background:rgb(240,145,146);
-    color:white;
-    height:100px;
-        .banner-content{
-            text-align: center;
-            font-size:2.5rem;
-            padding-top:36px;
-            // margin: auto 0;
-            display: inline-block;
-        }
-}
-@media screen and (min-width: 1px) and (max-width: 768px) {
-    .mid-banner{
-        text-align: center;
-        .banner-content{
-            width: 23%;
-            font-size: 2rem;
-        }
-    }
-}
-@media screen and (min-width: 1px) and (max-width: 494px) {
-    .mid-banner{
-        height: 164px;
-        .banner-content{
-            width: 40%;
-            font-size: 2rem;
-        }
-    }
-}
-
-.four-big{
-    margin-top:60px;
+.section-aboutITSeed .four-big {
     margin-bottom:60px;
-    text-align: center;
-    .col-sm-3{
-        text-align: left;
-        hr{
-            border-color: grey;
-        }
-        .four-big-title{
-            font-size: 15pt;
-           span{
-                font-size: 24pt;
+    .title{
+        width:163px;
+        height:54px;
+        line-height: 54px;
+        margin:0 auto;
+        font-size:20px;
+        text-align: center;
+        color: #222;
+        border: 2px solid #222;
+    }
+    .row{
+        margin:40px 0;
+        // &:nth-child(1) .card{background-color: #3c98e4;}
+        // &:nth-child(2) .card{background-color: #2d7ee8;}
+        // &:nth-child(3) .card{background-color: #1056f1;}
+        // &:nth-child(4) .card{background-color: #0044f5;}
+        .card{
+            padding:8px 16px;
+            margin:8px 16px;
+            border-radius: 4px;
+            text-align: left;
+            background-color: @sub-blue;
+            color: #222;
+            .four-big-title{
+                display: flex;
+                align-items: center;
+                font-size: 28px;
+                letter-spacing: 0.5px;
+                span{
+                    font-size: 20px;
+                    padding:0 4px;
+                }
+            }
+            hr{
+                margin:8px 0;
+                border-color: #222;
+            }
+            @media screen and (max-width:1280px){
+                max-width:80%;
+                margin:30px auto;
+                text-align: center;
+                padding:8px 16px;
             }
         }
-        >div{
-            background-color: #FBE0E0;
-            // border:solid 1px rgb(240,145,146);
-            margin:10px 10px;
-            height:180px;
-            padding:15px 5px;
+    }
+}
 
-        }
-    }
-    @media screen and (min-width: 1px) and (max-width: 768px) {
-        .row{
-            >div{
-                vertical-align: top;
-                margin: 0;
-                width: 49%;
-                display: inline-block;
-                span{
-                    // font-size: 12pt;
+/* cloud */
+/******************************************/
+.section-aboutITSeed{
+    .data2{
+        margin:100px 0;
+        overflow: hidden;
+        height:400px;
+        position: relative;
+        z-index:-1;
+        .whatyouget,.counter{
+            position: absolute;
+            z-index:-1;
+            display:flex;
+            justify-content: space-around;
+            align-items: center;
+            width:50%;
+            height:150px;
+            transition: 1.5s;
+            .number{
+                text-align: center;
+                color: #FFFFFF;
+                .number1{
+                    font-size: 36px;
+                    line-height: 44px;
+                    font-weight: bold;
                 }
-                >div{
-                    height: 190px;
+                .number2{
+                    font-size: 20px;
+                    font-weight: bold;
+                    line-height: 28px;
                 }
             }
         }
-    }
-    @media screen and (min-width: 1px) and (max-width: 450px) {
-        margin-top:40px;
-        .row{
-            >div{
-                vertical-align: top;
-                margin: 0;
-                width: 100%;
-                display: inline-block;
-                span{
-                    // font-size: 12pt;
+        .whatyouget{
+            top:0;
+            left:0;
+            width: 55%;
+            padding-right:75px;
+            border-radius:0 75px 75px 0px;
+            background: linear-gradient(to left,#F8BA00,#F27200);
+        }
+        .counter{
+            right:0;
+            bottom:0;
+            width: 55%;
+            padding-left:75px;
+            border-radius:75px 0 0 75px;
+            background: linear-gradient(to right,#F8BA00,#F27200);
+        }
+
+        .cloud{
+            position: absolute;
+            z-index:-1;
+            background: linear-gradient(to left,#F8BA00,#F27200);
+            width:15%;
+            height:40px;
+            border-radius:20px;
+            &::before{
+                content:'';
+                height:~"calc(100% - 6px)";
+                width:~"calc(100% - 6px)";
+                border-radius:20px;
+                background-color: #fff;
+                position: absolute;
+                z-index:-1;
+                top:50%;
+                left:50%;
+                transform: translateX(-50%) translateY(-50%);
+            }
+            &.cloud1{
+                width:60%;
+                transform: translateX(50%);
+                height:80px;
+                border-radius: 40px;
+                top:0;
+                right:0;
+                &::before{
+                    border-radius:40px;
                 }
-                >div{
-                    height: 190px;
+            }
+            &.cloud2{
+                top:110px;
+                left:58%;
+            }
+            &.cloud3{
+                bottom:70px;
+                left:0;
+                width:60%;
+                height:80px;
+                transform: translateX(-50%);
+                border-radius: 40px;  
+                &::before{
+                    border-radius:40px;
+                }
+            }
+            &.cloud4{
+                bottom:0;
+                left:25%;
+            }
+        }
+
+        @media screen and (min-width: 768px) and (max-width: 1280px) {
+            margin: 80px 0;
+            height:400px;
+            .whatyouget,.counter{
+                width:80%;
+                .number{
+                    .number1{
+                        font-size: 32px;
+                        line-height: 40px;
+                    }
+                    .number2{
+                        font-size: 16px;
+                        line-height: 24px;
+                    }
+                }
+            }
+            .cloud{
+                &.cloud1{
+                    transform: translateX(80%);
+                }
+                &.cloud2{
+                    left:80%;
+                }
+                &.cloud3{
+                    transform: translateX(-80%);
+                }
+                &.cloud4{
+                    left:5%;
+                }
+            }
+        }
+        @media screen and (min-width: 1px) and (max-width: 768px) {
+            height: 400px;
+            margin:60px 0;
+            div.whatyouget,div.counter{
+                padding:0;
+                width:100%;
+            }
+            .whatyouget{
+                border-radius:0;
+            }
+            .counter{
+                border-radius:0;
+            }
+            .cloud{
+                display: none;
+                &.cloud2{
+                    width:80%;
+                    left:100%;
+                    top:150px;
+                    transform:translateX(-50%) translateY(-50%);
+                    display: block;
+                }
+                &.cloud4{
+                    width:80%;
+                    left:0%;
+                    bottom:150px;
+                    transform:translateX(-50%) translateY(50%);
+                    display: block;
+                }
+            }
+        }
+        @media screen and (min-width: 1px) and (max-width: 350px) {
+            .whatyouget,.counter{
+                .number{
+                    .number1{
+                        font-size: 28px;
+                        line-height: 36px;
+                    }
+                    .number2{
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
                 }
             }
         }

@@ -15,6 +15,10 @@ module.exports = {
           primaryKey: true,
           unique: true
         },
+        gIdToken:{
+          type: 'string',
+          defaultsTo: null
+        },
         finished : {
           type: 'integer'
         },
@@ -26,7 +30,8 @@ module.exports = {
         },
         //密碼
         pwd: {
-          type: 'string'
+          type: 'string',
+          defaultsTo: null
         },
         //連絡電話
         phone: {

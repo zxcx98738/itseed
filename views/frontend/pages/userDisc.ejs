@@ -6,8 +6,9 @@
 <% include ../header %>
 <!--END HEADER-->
 
-<% include ../pages/checkFile %>
-<section class="bg-white" id="disc">
+
+<section class="section-disc bg-white" id="disc">
+	<% include ../pages/checkFile %>
 	<div class="container disc-contain">
 		<div id="profile-nav"  class="row col-md-10 col-md-offset-1">
 			<ul class="nav nav-tabs profile-ul">
@@ -832,9 +833,7 @@
 
 				<div class="text-center">
 					<hr>
-					<% if(req.session.type == 'A') { %>
 					<button type="submit" class="btn-lg btn-green" style="color:white;" onclick="discF()">完成測驗</button>
-					<% } %>
 					<script type="text/javascript">
 						function discF(){
 							confirm("若確定完成，請按下確認鍵");

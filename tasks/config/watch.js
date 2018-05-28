@@ -32,7 +32,7 @@ module.exports = function(grunt) {
             files: ['views/**/*']
     },
 		options: {
-      livereload: true,
+      livereload: 1338,
     },
 	});
 

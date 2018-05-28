@@ -44,7 +44,6 @@ assets/images/businessVisit
 assets/images/sharing
 assets/images/TUV
 assets/images/career
-assets/images/projects
 assets/files
 
 
@@ -125,3 +124,5 @@ package-lock.json
 nbproject
 .idea
 .node_history
+.env
+.DS_Store

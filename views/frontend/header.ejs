@@ -1,93 +1,47 @@
 <script>
   (function(){
-    $(window).scroll(function(){
-      if($(this).scrollTop() > 300) {
-        $("nav").addClass("navbar-shrink");
-      }
-      else{
-        $("nav").removeClass("navbar-shrink");
-      }
-    });
+    // $(window).scroll(function(){
+    //   if($(this).scrollTop() > 300) {
+    //     $("nav").addClass("navbar-shrink");
+    //   }
+    //   else{
+    //     $("nav").removeClass("navbar-shrink");
+    //   }
+    // });
   })()
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+      document.location.href = "/logout";
+    });
+    document.location.href = "/logout";
+  }
 </script>
 
+
 <header>
-
-
-<!-- <div>
-  <div class="logo"><img src="/images/layout/logo2.png" width="200px" alt=""></div>
-  <div class="bar">
-    <ul>
-      <li><a href="">關於資種</a>
-          <ul>
-            <li>計畫簡介</li>
-            <li>公會簡介</li>
-            <li>歷屆名單</li>
-          </ul>
-      </li>
-      <li><a href="">培訓計畫</a>
-          <ul>
-          <li><a href="/courseInfo">講座課程</a></li>
-              <li><a href="/businessVisit">企業參訪</a></li>
-              <li><a href="/xx">六大專案</a>
-                  <ul>
-                      <li><a href="">TUV專案</a></li>
-                      <li><a href="">春酒專案</a></li>
-                      <li><a href="">職涯體驗</a></li>
-                      <li><a href="">招生專案</a></li>
-                      <li><a href="">海外參訪</a></li>
-                      <li><a href="">結業專案</a></li>
-                  </ul>
-              </li>
-            </ul>
-      </li>
-      <li><a href="">經驗分享</a>
-        <ul>
-          <li>各校系怎麼看</li>
-          <li>領導者怎麼看</li>
-          <li>迷惘者怎麼看</li>
-          <li>畢業人怎麼看</li>
-        </ul>
-      </li>
-      <li><a href="">招生訊息</a>
-      </li>
-      <li>
-        <a href="">常見問題</a>
-      </li>
-      <li><a href="">登入</a></li>
-      <li><a href="">馬上報名</a></li>
-    </ul>
-
-  </div>
-</div> -->
-
-
-
 <!-- 導覽列 -->
-  <div class="navbar navbar-default navbar-fixed-top">
-    <div class="container nav-bar-fix">
+ <div class="navbar navbar-default navbar-fixed-top">
+    <div class="nav-bar-container">
       <div class="navbar-header">
+        <img class="navbar-brand" src="/images/layout/logo1.png" alt="" onclick="document.location='/'" >
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">
-          <img src="/images/layout/logo1.png" style="height: 100%; margin-top:9px;" alt="">
-        </a>
       </div>
 
-      <div class="collapse navbar-collapse navbar-right nav-word">
-        <!-- newMenu nav navbar-nav -->
+      <div class="collapse navbar-collapse navbar-right ">
         <ul class="bar">
-          <!-- <li><a href="/news">最新消息</a></li> -->
           <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">關於資種<!-- <b class="caret"></b> --></a>
-            <ul class="dropdown-menu drop-bg">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">資種起源<!-- <b class="caret"></b> --></a>
+            <ul class="dropdown-menu drop-part-bg">
               <li><a href="/aboutITSeed">計畫簡介</a></li>
               <li><a href="/aboutNTCA">公會簡介</a></li>
               <li><a href="/memberList">歷屆名單</a></li>
-              <!-- <li><a href="/courseList">歷屆課程</a></li> -->
+              <li><a href="/studentIntro">學員制度</a></li>
             </ul>
           </li>
           <li class="dropdown">
@@ -95,33 +49,53 @@
             <ul class="dropdown-menu drop-part-bg">
               <li><a href="/courseInfo">講座課程</a></li>
               <li><a href="/businessVisit">企業參訪</a></li>
-              <li><a href="/tuv">六大專案</a>
-<!--                   <ul>
-                      <li><a href="">TUV專案</a></li>
-                      <li><a href="">春酒專案</a></li>
-                      <li><a href="">職涯體驗</a></li>
-                      <li><a href="">招生專案</a></li>
-                      <li><a href="">海外參訪</a></li>
-                      <li><a href="">結業專案</a></li>
-                  </ul> -->
-              </li>
-              <!-- <li><a href="/career">職涯體驗</a></li> -->
-              <!-- <li><a href="/project">專案實作</a></li> -->
-              <!-- <li><a href="/overseaVisit">海外參訪</a></li> -->
+              <li><a href="/tuv">六大專案</a></li>
             </ul>
           </li>
           <li><a href="/sharing">經驗分享</a></li>
-          <li><a href="/regInfo">招生訊息</a></li>
+          <li><a href="/careerSharing">職涯分享</a></li>
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">招生訊息</a>
+            <ul class="dropdown-menu drop-part-bg">
+              <li><a href="/regInfo">招生資訊</a></li>
+              <li><a href="/workshop">說明會</a></li>
+              <li><a href="/seminar">工作坊</a></li>
+            </ul>
+          </li>
           <li><a href="/faq">常見問題</a></li>
-          <li id="signin"><a href="/login" >馬上報名<span>→</span></a></li>
+          <% if (session.userid == undefined ) { %>
+            <li id="signin"><button onclick="document.location='/login'" >馬上報名</button></li>
+          <% } else { %>
+            <li id="account-profile"><a href="/profile" >報名頁面</a></li>
+            <li id="signout" onclick="signOut();" ><a href="#" onclick="signOut();">登出</a></li>
+          <% } %>
         </ul>
-
-<!--    <ul class="nav navbar-right navbar-nav" id="signin" >
-          <li><a href="http://bit.ly/254x1is" target="_blank"><b>馬上報名</b><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a></li>
-        </ul> -->
-      </div> <!-- /.nav-collapse -->
+      </div>
     </div>
   </div>
-<hr>
+  <% if (session.userid == undefined && req.path.indexOf('/login') == -1) { %>
+      <a id="fixed_signin" href="/login">馬上報名</a>
+  <%}%>
+<script>
+  $(document).ready(function () {
+    var lastScrollY = 0;
+    var footer_display_pos = $('footer').offset().top - $(window).height();
+    $(window).scroll(function () {
+      let st = $(window).scrollTop();
+      if (st < lastScrollY) {
+        $('.navbar').removeClass('hideUp');
+      } else if (st > 67) {
+        $('.navbar').addClass('hideUp');
+      }
+
+      lastScrollY = st;
+      if (st > footer_display_pos) {
+        $('#fixed_signin').css("bottom", 16 + (st - footer_display_pos) + 'px');
+      } else {
+        $('#fixed_signin').css("bottom", "16px");
+      }
+    });
+  });
+</script>
 </header>
 

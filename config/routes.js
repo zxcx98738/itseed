@@ -80,7 +80,14 @@ module.exports.routes = {
     controller: 'Site',
     action: 'aboutITSeed'
   }, 
-
+  '/studentIntro': {
+    controller: 'Site',
+    action: 'studentIntro'
+  }, 
+  '/projectIntro': {
+    controller: 'Site',
+    action: 'projectIntro'
+  },
   '/memberList': {
     controller: 'Site',
     action: 'memberList'
@@ -165,7 +172,50 @@ module.exports.routes = {
     controller: 'Site',
     action: 'faq'
   },
-
+  '/careersharing': {
+    controller: 'Site',
+    action: 'careersharing'
+  },
+  '/careerSharingContent': {
+    controller: 'Site',
+    action: 'careerSharingContent'
+  },
+  '/careerSharingContent1': {
+    controller: 'Site',
+    action: 'careerSharingContent1'
+  },
+  '/careerSharingContent2': {
+    controller: 'Site',
+    action: 'careerSharingContent2'
+  },
+  '/careerSharingContent3': {
+    controller: 'Site',
+    action: 'careerSharingContent3'
+  },
+  '/careerSharingContent4': {
+    controller: 'Site',
+    action: 'careerSharingContent4'
+  },
+  '/careerSharingContent5': {
+    controller: 'Site',
+    action: 'careerSharingContent5'
+  },
+  '/seminar': {
+    controller: 'Site',
+    action: 'seminar'
+  },
+  '/workshop': {
+    controller: 'Site',
+    action: 'workshop'
+  },
+  '/apply': {
+    controller: 'Site',
+    action: 'apply'
+  },
+  '/apply2': {
+    controller: 'Site',
+    action: 'apply2'
+  },
   '/video': {
     controller: 'Site',
     action: 'video'
@@ -216,12 +266,16 @@ module.exports.routes = {
 
   'get /login': {
     controller: 'User',
-    action: 'loginPage'   
+    action: 'loginPage' 
   },
 
   'post /login': {
     controller: 'User',
     action: 'login'    
+  },
+  'post /google_login': {
+    controller: 'User',
+    action: 'google_login'
   },
 
   'get /logout': {
@@ -273,6 +327,25 @@ module.exports.routes = {
   },
 
   /*後台*/
+  'get /backend/login': {
+    view:'backend/pages/login'
+  },
+  'get /backend/profile': {
+    controller: 'cms',
+    action: 'profile'
+  },
+  'post /backend/profile': {
+    controller: 'cms',
+    action: 'editProfile'
+  },
+  'post /backend/login': {
+    controller: 'cms',
+    action: 'login'
+  },
+
+
+  '/backend': '/cms',
+
   '/backend': '/cms',
 
   /*後台-CMS*/
@@ -282,7 +355,11 @@ module.exports.routes = {
     controller: 'Cms',
     action: 'editor'
   },
-  
+  /*報名者資料*/
+  'get /applicants': {
+    controller: 'Cms',
+    action: 'applicants'
+  },
   'get /cms/edit/:model': {
     controller: 'Cms',
     action: 'editor'
@@ -363,13 +440,6 @@ module.exports.routes = {
     controller: 'System',
     action: 'updateEndDate'
   },
-
-  /*報名者資料*/
-  'get /applicants': {
-    controller: 'User',
-    action: 'applicants'
-  },
-
 
   // 'get /'
 

@@ -1,27 +1,27 @@
 <!--HEADER-->
 <% include ../header %>
 <!--END HEADER-->
-<div class="sub-nav">
-  <ul>
-    <li><a href="/aboutITSeed">計畫簡介</a></li> |
-    <li><a class="active" href="/aboutNTCA">公會簡介</a></li> |
-    <li><a href="/memberList">歷屆名單</a></li>
-  </ul>
-</div>
-<div class="container">
-  <div class="title-title">
-    <span class="aboutNTCA-br">- 公會簡介 -</span>
+<section class="section-aboutNTCA">
+<% include ./sub-nav %>
+<div class="main-title-div">
+  <div class="line-and-circle">
+    <div class="line"></div>
+    <div class="circle"></div>
   </div>
+  <h1>公會簡介</h1>
+</div>
+
+<div class="container">
   <div class="row">
     <div class="col-md-offset-2 col-md-8  NTCA-content">
       <div>
-        <span class="word-18pt font-ms">
+        <h2 class="title font-ms">
             <% if (datas[0] != null) { %>
             <%- datas[0].title %>
             <% } %>
-        </span>
+        </h2>
       </div>
-      <div >
+      <div class="content">
           <% if (datas[0] != null) { %>
           <p class="word-12pt NTCA-content-con"><%- datas[0].content %></p>
           <% } %>
@@ -32,8 +32,8 @@
 
 <div class="list">
   <!-- <p>新北市電腦商業同業公會 第十一屆理監事名單</p> -->
-  <span class="font-ms">新北市電腦商業同業公會</span>
-  <span class="font-ms">第十一屆理監事名單</span>
+  <span>-新北市電腦商業同業公會-</span>
+  <span>第十一屆理監事名單</span>
 </div>
 
 <div class="container">
@@ -197,33 +197,10 @@
     </div>
   </div>
 </div>
-
-
- <div class="top">
-    <div><img src="/images/index/top.png"></div>
-    Top
- </div>   
-         
-
-<!-- <section class="bg-light-gray">
-  <div class="container text-content">
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <h3><%= datas[0].title %></h3>
-        <div><%- datas[0].content %></div>
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 ">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.1468326890795!2d121.5194383143956!3d25.0630119839588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a94475e6994b%3A0x248e8157b1372f67!2z5paw5YyX5biC6Zu76IWm5ZWG5qWt5ZCM5qWt5YWs5pyD!5e0!3m2!1szh-TW!2stw!4v1464594006480" width="1200" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-    </div> -->
-	</div>
+ 
 </section>
 
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->
-
-<script src="/js/specifies/frontend/aboutNTCA.js"></script>
 

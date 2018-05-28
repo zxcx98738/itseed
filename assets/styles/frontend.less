@@ -9,17 +9,34 @@
 
 //全域元件
 
+*{
+    padding:0;
+    margin:0;
+    font-family: @font-chainese,@font-english;
+    line-height: 2;
+}
+
 body {
     position: relative;
     /*padding-bottom: 90px;*/
     min-height: 100vh;
-	font-family: '微軟正黑體';
+	font-family:@font-chainese @font-english;
 }
+
+a{
+    color:@main-light-blue;
+}
+a:hover{
+    color:@main-light-blue;
+	text-decoration: none;
+}
+
+
 .font-ms{
-    font-family: '微軟正黑體';
+	font-family:@font-chainese @font-english;
 }
 p{
-    font-family: '微軟正黑體';
+	font-family:@font-chainese @font-english;
 }
 
 .full-width {
@@ -38,10 +55,6 @@ p{
     background-color: white;
 }
 
-.bg-light-gray {
-	background-color: @light-gray;
-}
-
 .btn-green {
     // color: white;
     background-color: @green;
@@ -58,210 +71,23 @@ button:focus{
 }
 
 //頁首
-@nav-fixed-height: 30px;
+@nav-fixed-height: 67px;
 @nav-border-bottom-width: 3px;
 @nav-padding: 15px;
 
 
 
-
+body{
+    padding-top:67px;
+}
 body>header {
-    // height: 25px;
-    @media(max-width:767px) {
-        // height: @nav-fixed-height;
-    }
-
-	>nav.navbar-default {
-        height: inherit;
-
-	    /*border-bottom: solid @nav-border-bottom-width;
-        border-bottom-color: @green;*/
-	    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-        background-color: white;
-        >div.container {
-            height: calc(@nav-fixed-height - @nav-border-bottom-width);;
-            @media(max-width:767px) {
-                background-color: inherit;
-            }
-            div.navbar-header {
-                margin-left: -30px;
-                @media(max-width:767px) {
-                    height: @nav-fixed-height;
-                }
-                padding: @nav-padding;
-
-                .navbar-toggle {
-                    float: left;
-                    margin-right: 0px;
-                    border: 0px;
-                    background-color: @green;
-
-                    .icon-bar {
-                        background-color: #fff;
-                    }
-                }
-                .navbar-brand {
-                    padding: 0px;
-
-                    @media(max-width:767px) {
-                        float: none;
-                        line-height: calc(@nav-fixed-height - 2 * @nav-padding);
-                    }
-
-                    >img {
-                        max-width: 100%;
-                        max-height: 100%;
-
-                        @media(max-width:767px) {
-                            display: inline;
-                            margin: 0 auto;
-                        }
-                    }
-                }
-            }
-            div.navbar-collapse {
-                margin-top: 10px;
-                margin-right: -50px;
-                max-height: none;
-                background-color: transparent;
-                @media(max-width:767px) {
-                    background-color: inherit;
-                }
-
-                .login-area{
-                    float: right;
-
-                    li a {
-                        margin: 15px 0px 0px 10px;
-                        padding: 10px 20px;
-                        font-size: 16px;
-                        color: #11D392;
-                        background-color: transparent;
-                        border: 2px solid #11D392;
-                        transition: all 0.3s;
-
-                        @media(max-width:767px) {
-                            margin: 5px 10px;
-                        }
-
-                        &:after {
-                            content: '';
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            z-index: -1;
-                            width: 0%;
-                            height: 100%;
-                            background: #11D392;
-                            transition: all 0.3s;
-                        }
-                        &:hover{
-                            // color: white;
-
-                            &:after {
-                              width: 100%;
-                            }
-                        }
-                    }
-
-                    @media(max-width:767px) {
-                        float: none;
-                        margin: 0px -15px;
-                        text-align: center;
-
-                        li {
-                            display: block;
-
-                            a {
-                                color: white;
-                                background: @green;
-
-                                &:hover {
-                                    // background: @dark-green;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .main-nav {
-                    clear: both;
-
-                    @media(max-width:767px) {
-                        margin: 0px -15px;
-                    }
-
-                    >li>a {
-                        top: 0px;
-                        color: white;
-                        border-width: 0px 1px 0px 1px;
-                        border-radius: 4px 4px 0px 0px;
-                        border-color: @green;
-                        border-style: solid;
-                        background: @light-green;
-                        box-shadow: 0 3px @green;
-                        transition: all 0.1s;
-
-                        &:hover, &[aria-expanded="true"] {
-                            top: -3px;
-                            color: @green;
-                            background-color: @light-yellow;
-                        }
-
-                        @media(max-width:767px) {
-                            border-width: 0px 1px 2px 1px;
-                        }
-                    }
-                    >li.active>a {
-                        top: -3px;
-                        color: @green;
-                        background-color: @light-yellow;
-                    }
-                    ul.dropdown-menu {
-                        padding: 0px 0px 3px 0px;
-                        width: 100%;
-                        min-width: 0px;
-                        background-color: @green;
-
-                        >li>a {
-                            color: white;
-                            border-width: 1px 1px 0px 1px;
-                            border-color: @green;
-                            border-style: solid;
-                            background: @light-green;
-
-                            @media(max-width:767px) {
-                                border-width: 0px 1px 1px 1px;
-                                color: @green;
-                                background-color: white;
-                            }
-
-                            &:hover, &:focus {
-                                // color: @green;
-                                // background-color: @light-yellow;
-                            }
-                        }
-                    }
-                }
-            }
-            >button {
-                @media(min-width:768px) {
-                    display: none;
-                }
-
-                float: right;
-                margin-top: -1px;
-                margin-right: -15px;
-            }
-        }
-	}
+    position: fixed;
+    z-index: 9999;
+    width:100%;
 }
 
 //主內容
 body>section {
-    padding-top: 30px;
-    padding-bottom: 30px;
-
     &#index, &#newsList {
         tbody>tr {
             a {
@@ -277,7 +103,7 @@ body>section {
             }
         }
     }
-    &#businessVisitList {
+    &#section-businessVisitList {
       padding-bottom: 0px;
     }
 
@@ -300,20 +126,59 @@ body>section {
 }
 
 //頁尾
-
 body > footer {
-/*    position: absolute;*/
-    bottom: 0px;
-    padding: 40px 0;
+    font-family: @font-chainese;
+    min-height:170px;
     width: 100%;
-    text-align: center;
-    color: #a2a2a2;
-    // background-color: @dark-gray;
-    background-color: rgb(110, 110, 110);
-    span.copyright {
-        line-height: 40px;
+    background-color: @main-light-blue;
+    font-size: 16px;
+    // padding:21px 0;
+    div{
+        text-align: center;
+        a{
+            text-decoration:none;
+            color:white;
+            img{
+                vertical-align: middle;
+            }
+            &:hover{
+                text-decoration:none;
+                color:#eee;
+            }
+        }
+        &.contact-itseed{
+            padding:42px 0 21px 0;
+            .fb,.email{
+                margin:22px;
+                img{
+                    width: 28px;
+                }
+                &:hover img{
+                    transform: scale(1.2);
+                }
+            }
+        }
+        &.contact-ntca{
+            .ntca{
+                line-height: 24px;
+                img{
+                    width: 92px;
+                    height: 25px;
+                    margin-top:-8px;
+                }
+            }
+        }
+        span.copyright {
+            margin:2px 0;
+            color:white;
+            line-height: 20px;
+            font-size: 12px;
+            letter-spacing: 0.4px;
+        }
     }
 }
+
+
 
 .article img {
   padding: 5px;
@@ -328,30 +193,6 @@ body > footer {
     color: gray;
 }
 
-#signin{
-  margin-top: 5px;
-  margin-left: 3px;
-  padding: 0;
-  border: solid;
-  border-color: #6BC1B8;
-  border-radius: 7px;
-  a {
-    color: #6BC1B8;
-    font-size: 16px;
-  }
-  &:hover, &:focus {
-    a {
-      color: white;
-
-    }
-    background-color: #6BC1B8;
-    text-decoration: none;
-    -o-transition: background-color .20s linear;
-    -webkit-transition: background-color .20s linear;
-    -moz-transition: background-color .20s linear;
-    transition:  background-color .20s linear;
-  }
-}
 
 .page-title {
   color: @main-green;
@@ -412,7 +253,6 @@ body > footer {
                 position: absolute;
                 top: 10px;
                 left: -40px;
-                z-index:-1;
             }
         }
     }
@@ -431,7 +271,6 @@ body > footer {
                 position: absolute;
                 top: 10px;
                 left: -10px;
-                z-index:-1;
             }
         }
     }
@@ -470,40 +309,32 @@ body > footer {
 .word-12pt{
     font-size: 12pt;
 }
-.word-18pt{
-    font-size: 18pt;    
-}
-.project-content-style{
-    margin-right:5%;
-    margin-left: 5%;
-    line-height: 30px;
-    font-size: 13pt;
-}
-@media screen and (min-width: 0px) and (max-width: 730px) {
-    .project-content-style{
-        font-size: 12pt;
-    }
-}
 
-@main-color: #78C8C1;
+@main-color: #205686;
 .main-color{
     color: @main-color;
 }
 .main-color-br{
     border-color: @main-color;
 }
-
-@faq:#76C197;
+@main1-color: #00a0e8;
+.main1-color{
+    color:  @main1-color;
+}
+.main1-color-br{
+    border-color:  @main1-color;
+}
+@faq:#205686;
 .faq-br{
     border-color:@faq;
 }
 
-@aboutITSeed:#f09192;
-.aboutITSeed-br{
-    border-color:@aboutITSeed;
-}
+// @aboutITSeed:#00a0e8;
+// .aboutITSeed-br{
+//     border-color:@aboutITSeed
+// }
 
-@aboutNTCA:#FFCC33;
+@aboutNTCA:#205686;
 .aboutNTCA-br{
     border-color:@aboutNTCA;
 }
@@ -524,3 +355,336 @@ body > footer {
     background-color: @memberList;
 }
 
+
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
+    margin-top: 0;
+}
+
+.drop-part-bg{
+    background-color: white;
+}
+
+
+
+
+.sub-nav{
+    width:100%;
+    height:100px;
+    display: flex;
+    align-items: center;
+    background-color:@main-blue2;
+	>ul{
+        display:flex;
+        align-items: center;
+        list-style-type: none;
+        margin-left:18%;
+        &.small-link-nav{
+            margin-left:0;
+            margin-bottom:-52px;
+        }
+        .sub-nav-link{
+            font-size:18px;
+            margin-right:40px;
+            padding: 4px 5px;
+            color:white;
+            text-decoration: none;
+            letter-spacing: 0.6px;
+            cursor: pointer;
+            &.active{
+                border-bottom:solid 3px white;
+            }
+        }
+        .sub-nav-small-link{
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            padding: 4px 6px;
+            margin-right:44px;
+            margin-bottom:-100px;
+            color:white;
+            letter-spacing: 0.6px;
+            &.active{
+                border-bottom:solid 3px white; //default
+            }
+        }
+    }
+    // &.sub-nav-plan{
+    //     background-color:@main-blue2;
+    //     >ul {
+    //         .sub-nav-link,.sub-nav-small-link{
+    //             color:white;
+    //             &.active{
+    //                 border-color: white;
+    //             }
+    //         }
+    //     }
+    // }
+    // &.sub-nav-studentIntro , &.sub-nav-introduction{
+    //     >ul .sub-nav-link{
+    //         color:@main-yellow;
+    //         &.active{
+    //             border-color: @main-yellow;
+    //         }
+    //     } 
+    // }
+    // @media screen and (min-width:551px) and (max-width:990px){
+    //     height:80px;
+    //     >ul{
+    //         margin-left:6%;
+    //         .sub-nav-link{
+    //             font-size:16px;
+    //             margin-right:32px;
+    //         }
+    //         &.small-link-nav{
+    //             margin-left:0;
+    //             margin-bottom:-36px;
+    //         }
+    //         .sub-nav-small-link{
+    //             font-size: 14px;
+    //         }
+    //     }
+    // }
+    @media screen and (min-width:361px) and (max-width:600px){
+        height:67px;
+        >ul{
+            margin-left: 12%;
+            .sub-nav-link{
+                font-size:14px;
+                margin-right:10px;
+            }
+        }
+    }
+    @media screen and (max-width:360px){
+        height:67px;
+        >ul{
+            margin-left: 8%;
+            .sub-nav-link{
+                font-size:12px;
+                margin-right:8px;
+            }
+        }
+    }
+    &.dobule-sub-nav{
+        @media screen and (min-width:991px) and (max-width:1280px){
+            ul{
+                margin-left:10%;
+                .sub-nav-link{
+                    font-size:16px;
+                    margin-right:32px;
+                }
+                &.small-link-nav{
+                    margin-left:0;
+                    margin-bottom:-52px;
+                }
+                .sub-nav-small-link{
+                    font-size: 14px;
+                }
+            }
+        }
+        @media screen and (min-width:1px) and (max-width:990px){
+            display:block;
+            position: relative;
+            ul{
+                position: absolute;
+                top:50%;
+            }
+        }
+        @media screen and (min-width:551px) and (max-width:990px){
+            ul{
+                height:40px;
+                margin-left:10%;
+                width:90%;      
+                &.link-nav{
+                    transform: translateY(-50% - 40px);
+                    .sub-nav-link{
+                        margin-right:32px;
+                    }
+                }
+                &.small-link-nav{
+                    transform: translateY(-50% + 50px);
+                    .sub-nav-small-link{
+                        margin-right:36px;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:550px){
+            height:80px;
+            ul{
+                height:40px;
+                margin-left:5%;
+                width:95%;      
+                &.link-nav{
+                    transform: translateY(-50% - 30px);
+                    .sub-nav-link{
+                        font-size:16px;
+                        margin-right:16px;
+                        padding:1px 2px;
+                    }
+                }
+                &.small-link-nav{
+                    transform: translateY(-50% + 50px);
+                    .sub-nav-small-link{
+                        font-size:14px;
+                        padding:1px 2px;
+                        margin-right:20px;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:350px){
+            ul{  
+                &.small-link-nav{
+                    .sub-nav-small-link{
+                        margin-right:14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.main-title-div{
+    display:flex;
+    position: relative;
+    align-items: center;
+    margin: 36px 0;
+    @media screen and (min-width:551px and max-width(991px)){
+        margin: 32px 0;
+    }
+    @media screen and (max-width:550px){
+        margin: 28px 0;
+    }
+    .line-and-circle{
+        width:130px;
+        height:100%;
+        display:flex;
+        align-items: center;
+        @media screen and (min-width:551px) and (max-width:991px){
+            width:100px;
+        }
+        @media screen and (max-width:550px){
+            width:80px;
+        }
+        .line{
+            width:65%;
+            height:3px;
+            background-color:@main-blue; //default
+            .section-courseInfoList  &{ background-color: @main-light-blue;}
+            .section-courseInfo  &{ background-color:@main-light-blue;}
+            .section-businessVisitList &{ background-color: @main-light-blue;}
+            .section-careerSharingContent &{ background-color: @main-light-blue;}
+            .section-aboutITSeed &,
+            .section-aboutNTCA &,
+            .section-memberList &,
+            .section-studentIntro &,
+            .studentIntro-section &,
+            .section-sharingList &,
+            .section-careerSharing &{ background-color: @main-light-blue;}
+            .section-tuv     &{ background-color: @color-tuv;}
+            .section-spring  &{ background-color: @color-spring;}
+            .section-careers  &{ background-color: @color-career;}
+            .section-new     &{ background-color: @color-new;}
+            .section-overseaVisit &{ background-color: @color-oversea;}
+            .section-end     &{ background-color: @color-end;}
+        }
+        .circle{
+            width:12px;
+            height:12px;
+            border-radius:100%;
+            transform:translateX(-50%);
+            background-color:@main-blue; //default
+            .section-courseInfoList &{ background-color: @main-light-blue;}
+            .section-courseInfo &{ background-color: @main-light-blue;}
+            .section-businessVisitList &{ background-color: @main-light-blue;}
+            .section-careerSharingContent &{ background-color: @main-light-blue;}
+            .studentIntro-section & ,
+            .section-sharingList & ,
+            .section-careerSharing &,
+            .section-aboutITSeed & ,
+            .section-aboutNTCA & ,
+            .section-memberList & ,
+            .section-studentIntro &{ background-color: @main-light-blue;}
+            .section-tuv     &{ background-color: @color-tuv;}
+            .section-spring  &{ background-color: @color-spring;}
+            .section-careers  &{ background-color: @color-career;}
+            .section-new     &{ background-color: @color-new;}
+            .section-overseaVisit &{ background-color: @color-oversea;}
+            .section-end     &{ background-color: @color-end;}
+        }
+
+    }
+    h1{
+        margin:0;
+        font-size: 48px;
+        line-height:70px;
+        font-weight: bold;
+        letter-spacing: 1.6px;
+        text-align: left;
+        @media screen and (min-width:551px) and (max-width:991px){
+            font-size:40px;
+        }
+        @media screen and (max-width:550px){
+            font-size:32px;
+        }
+        color:@main-blue;
+        .section-courseInfoList &{ color: @main-light-blue;}
+        .section-courseInfo &{ color: @main-light-blue;}
+        .section-businessVisitList &{ color: @main-light-blue;}
+        .section-careerSharingContent &{ color: @main-light-blue;}
+        .section-aboutITSeed &,
+        .section-aboutNTCA &,
+        .section-memberList &,
+        .section-studentIntro &,
+        .studentIntro-section &,
+        .section-sharingList &,
+        .section-careerSharing &{color: @main-light-blue;}
+        .section-tuv     &{ color: @color-tuv;}
+        .section-spring  &{ color: @color-spring;}
+        .section-careers  &{ color: @color-career;}
+        .section-new     &{ color: @color-new;}
+        .section-overseaVisit &{ color: @color-oversea;}
+        .section-end     &{ color: @color-end;}
+    }
+    h2{
+        position: absolute;
+        bottom:0;
+        left:140px;
+        transform: translateY(100% + 3px);
+        font-size:20px;
+        line-height: 20px;
+        letter-spacing: 0.7px;
+        
+        @media screen and (min-width:551px) and (max-width:991px){
+            left:110px;
+            font-size:16px;
+            transform: translateY(80%);
+        }
+        @media screen and (max-width:550px){
+            left:40px;
+            font-size:14px;
+            transform: translateY(60%);
+            &.double-line{
+                width:70%;
+            }
+        }
+        @media screen and (max-width:350px){
+            left:60px;
+            transform: translateY(60%);
+            &.double-line{
+                width:70%;
+            }
+        }
+       color:@main-blue;
+        .section-tuv     &{ color: @color-tuv;}
+        .section-spring  &{ color: @color-spring;}
+        .section-careers  &{ color: @color-career;}
+        .section-new     &{ color: @color-new;}
+        .section-overseaVisit &{ color: @color-oversea;}
+        .section-end     &{ color: @color-end;}
+    }
+}

@@ -1,79 +1,41 @@
 <!--HEADER-->
 <% include ../header %>
 <!--END HEADER-->
-  <div class="sub-nav">
-    <ul>
-      <li><a  class="active" href="/courseInfo">講座課程</a></li> |
-      <li><a href="/businessVisit">企業參訪</a></li> |
-      <li><a href="/tuv">六大專案</a></li>
-    </ul>
-  </div>
-  <br>
-  <div class="six-hg-title">
-    <div class="six-hg-tit course-head">
-        <span>講座課程</span>
-    </div>
-  </div>
 
-<section class="course-top">
-  <!-- <h2 class="course-head">講座課程</h2> -->
+<section class="section-courseInfoList">
+<% include ./sub-nav %>
+<div class="main-title-div">
+  <div class="line-and-circle">
+    <div class="line"></div>
+    <div class="circle"></div>
+  </div>
+  <h1>講座課程</h1>
+</div>
+<div class="container course-container">
   <div class="row">
-    <% for(var i = 0; i < datas.length; i++){ %>
-      <div class="col-sm-6 eachcourse">
+    <% for(var i = 0; i <datas.length; i++){ %>
+      <div class=".col-xs-12 .col-sm-6  .col-md-4 course-div">
         <a href="<%= url + datas[i].id %>">
-          <div class="course-pic">
-            <img src="<%= datas[i].photo %>">
-          </div>
-          <div>
-            <p class="course-title">
-              「<%= datas[i].title %>」
-              <br>
-              <span>講師：<%= datas[i].speaker %><!-- <%= datas[i].speakerTitle %> --></span>
-              <!-- <span>課程重點</span> -->
-            </p>
+            <h3 class= "course-number"  >
+              <% if (i<9){ %>
+                Class <%= '0'+(i+1) %>
+              <% } %>
+              <% if (i>9){ %>
+                  Class <%= (i+1) %>
+                <% } %>
+            </h3>
             <div class="course-content">
-              <p class="course-content-part">
-                課程介紹
-                <!-- <%- datas[i].content %> -->
-                <span style="float: right;">（繼續閱讀）</span>
-              </p>
+              <h3 class="course-title">「<%= datas[i].title %>」</h3>
+              <p class="content">講師：<p>
+              <p class="content"><%= datas[i].speaker %></p>
             </div>
-          </div>
+            <div class="keepRead">了解更多</div>
         </a>
       </div>
     <% } %>
-    <!-- <div class="col-xs-12 text-xs-center top"><span class="top-box">回到最上</span></div> -->
   </div>
+</div>
 </section>
- <div class="top">
-    <div><img src="/images/index/top.png"></div>
-    Top
- </div>
-    <script src="/js/specifies/frontend/aboutNTCA.js"></script>
-<!-- <section class="bg-light-gray" id="cousreInfoList">
-  <div class="row">
-    <% for(var i = 0; i < datas.length; i++){ %>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <a href="<%= url + datas[i].id %>">
-          <div class="course-card">
-            <div class="photo text-center"><img src="<%= datas[i].photo %>"></img></div>
-            <div class="image-overlay"></div>
-            <div class="view-details">課程介紹</div>
-            <div class="intro">
-              <div class="title"><%= datas[i].title %></div>
-              <div class="instructor">
-                <strong>講師</strong>
-                <span style="font-size: 16px;"><%= datas[i].speaker %></span>
-                <p><%= datas[i].speakerTitle %></p>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-    <% } %>
-  </div>
-</section> -->
-
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->

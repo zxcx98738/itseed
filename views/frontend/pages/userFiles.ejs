@@ -6,9 +6,8 @@
 <% include ../header %>
 
 <!--END HEADER-->
-
-<% include ../pages/checkFile %>
-<section class="bg-white" id="files">
+<section class="section-files bg-white" id="files">
+	<% include ../pages/checkFile %>
 	<div class="container">
 		<div id="profile-nav" class="row col-md-10 col-md-offset-1">
 			<ul class="nav nav-tabs profile-ul">
@@ -30,7 +29,7 @@
 			</label> -->
 			<label class="col-xs-12">
 			<div class="text-xs-center">
-				<a class="btn btn-green" style="color:white;" href="_Registration.docx" target="_blank">下載第十五屆資訊種子培訓計畫書審題目</a>
+				<a class="btn btn-green" style="color:white;" href="_Registration.docx" target="_blank">下載第十六屆資訊種子培訓計畫書審題目</a>
 			</div>
 			</label>
 		</div>
@@ -69,8 +68,8 @@
 						請以<b class="red">「pdf」</b>檔案格式上傳報名表。上傳限制大小為<b class="red"> 5MB</b><br>
 						
 						檔案命名規則請依此格式撰寫
-						<b>「姓名_第十五屆資訊種子書審題目」</b><br>
-						(如：報名者姓名為 陳資種 ，則將檔案命名為<b>陳資種_第十五屆資訊種子書審題目</b>)
+						<b>「姓名_第十六屆資訊種子書審題目」</b><br>
+						(如：報名者姓名為 陳資種 ，則將檔案命名為<b>陳資種_第十六屆資訊種子書審題目</b>)
 						<br><br>
 						上傳方式：點選「選擇檔案」，完成選取檔案後，點選「上傳」<br>
 						※ 可以重複上傳檔案<br>
@@ -78,13 +77,11 @@
 						<!-- (如：報名者林資種的英文翻譯名字為Zi-Zhong,Lin，則將檔案命名為 -->
 						<!-- 「ZiZhongLin_Registration」)。 -->
 					</p>
-				<% if (system == "open") {%>
 					<div class="text-xs-center">
 						<input type="file" name="registration">
 						<button type="button" class="btn btn-default">選擇檔案</button>
 						<button type="submit" style="color:white;" class="btn btn-main-file">上傳</button>
 					</div>
-				<% } %>
 				</form>
 			</div>
 		</div>
@@ -150,13 +147,11 @@
 						※ 可以重複上傳檔案<br>
 					<!-- </p> -->
 				</div>
-				<% if (system == "open") {%>
 					<div class="text-xs-center">
 						<input type="file" name="autobiography">
 						<button type="button" class="btn btn-default">選擇檔案</button>
 						<button type="submit" style="color:white;" class="btn btn-main-file">上傳</button>
 					</div>
-				<% } %>
 				</form>
 				
 			</div>
@@ -260,12 +255,12 @@
 					完成資料填寫後，請至貝殼集器繳交100元報名費<br>
 					繳交完畢後預計於三個工作天內回覆<br>
 					若三天內未收到回覆，請來信至itseed15th@gmail.com詢問<br>
-					<a style="display: block; text-align: center;" href="https://itseed15.backme.tw/checkout/585/2936" target="_blank">
+					<a style="display: block; text-align: center;" href=<%= process.env.payLink %> target="_blank">
 						<img src="/images/index/backme.png" class="backme">
 					</a>
 				</p>
 				<div class="text-xs-center">
-					<a href="https://itseed15.backme.tw/checkout/585/2936" target="_blank">
+					<a href=<%= process.env.payLink %> target="_blank">
 						<button class="btn btn-green" style="color:white; font-size: 15px;">馬上前往</button>
 					</a>
 				</div>

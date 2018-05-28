@@ -34,18 +34,25 @@ module.exports.policies = {
   * and its actions                                                          *
   *                                                                          *
   ***************************************************************************/
+  SiteController:{
+    'apply': 'isLoginUser',
+    'apply2': 'isLoginUser',
+  },
   UserController: {
-    '*': 'isLoginUser',
+    '*': ['isLoginUser','isOpenPlan'],
     'rem': true ,
     'reg':true ,
     'loginPage':true ,
     'register':true ,
     'checkEmail':true ,
     'checkPwd':true ,
-    'login': true
+    'logout':true,
+    'login': true,
+    'google_login': true
   },
   CmsController: {
-    '*': 'isLoginCms'
+    '*': 'isLoginCms',
+    'login': true
   },
   SystemController: {
     '*': 'isLoginSystem'

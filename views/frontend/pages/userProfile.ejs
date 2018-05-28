@@ -6,21 +6,19 @@
 <% include ../header %>
 <!--END HEADER-->
 
-<% include ../pages/checkFile %>
 <style type="text/css">
 	.darkred{
 		color: #FF3333;
 	}
 </style>
-<section class="bg-white" id="profile">
+<section class="section-profile" class="bg-white" id="profile">
+	<% include ../pages/checkFile %>
 	<div class="container">
 		<div id="profile-nav" class="row col-md-10 col-md-offset-1">
 			<ul class="nav nav-tabs profile-ul">
 				<li class="active"><a href="/profile">個人資料</a></li>
-			<% if(req.session.type == "U"){ %>
 				<li><a href="/disc">DISC測驗</a></li>
 				<li><a href="/files">書審資料</a></li>
-			<% } %>
 			</ul>
 		</div>
 		<div class="col-xs-12 col-md-10 col-md-offset-1">
@@ -55,13 +53,10 @@
 					</div>
 					<div class="form-group password-part">
 						<div class="col-xs-12" style="text-align: right;">
-							<% if(req.session.type == 'A') { %>
 							<button type="submit" class="btn btn-green" style="color:white;">確認</button>
 							<span class="btn btn-default pwd-stop-btn">取消</span>
-							<% } %>
 						</div>
 					</div>
-				<% if(req.session.type == "U"){ %>
 					<div class="form-group">
 						<label class="col-sm-2 col-xs-12 control-label" for="phone">連絡電話<b class="darkred">*</b>：</label>
 						<div class="col-sm-10 col-xs-12">
@@ -72,19 +67,6 @@
 						<% } %>
 						</div>
 					</div>
-				<% } %>
-				<% if(req.session.type == 'A') { %>
-					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" for="th">屆數：</label>
-						<div class="col-sm-10 col-xs-12">
-						<% if(user.th == null){%>
-							<input type="text" name="th" class="btn-block" id="th">
-						<% } else{ %>
-							<input type="text" name="th" class="btn-block" id="th" value="<%= user.th %>">
-						<% } %>
-						</div>
-					</div>
-				<% } %>
 					<div class="form-group">
 						<label class="col-sm-2 col-xs-12 control-label" for="name">真實姓名<b class="darkred">*</b>：</label>
 						<div class="col-sm-10 col-xs-12">
@@ -95,7 +77,6 @@
 						<% } %>
 						</div>
 					</div>
-				<% if(req.session.type == "U" || req.session.type == "A" ){ %>
 					<div class="form-group">
 						<label class="col-sm-2 col-xs-12 control-label" class="control-label">性別<b class="darkred">*</b>：</label>
 						<div class="col-sm-10 col-xs-12">
@@ -147,17 +128,14 @@
 						</div>
 						<div class="col-sm-offset-2 col-sm-10 col-xs-12" style="height: 40px;">※ 此選項<b>不影響</b>徵選結果</div>
 					</div>
-				<% } %>
 				</div>
 				<div class="col-sm-3 col-xs-12 uploadPhoto">
 					<div class="col-sm-12 col-xs-6">
 						<img src="<%= user.photo %>" alt="" class="img-responsive">
 					</div>
 					<div class="col-sm-12 col-xs-6 text-center">
-						<% if(req.session.type == 'A') { %>
 						<button type="button" class="btn btn-default" id="uploadBtn">選擇照片</button>
 						<button type="submit" class="btn btn-green" style="color:white;">上傳</button>
-						<% } %>
 						<input type="file" class="" name="photo">
 						<p>
 							建議使用尺寸為 250x250 以上正方形圖片，檔案大小限制為2MB。
@@ -169,9 +147,7 @@
 				</div>
 				<div class="col-sm-12 col-xs-12 text-center">
 					<hr>
-					<% if(req.session.type == 'A') { %>
 					<button type="submit" class="btn-lg btn-green" style="color:white;">儲存個人資料</button>
-					<% } %>
 				</div>
 			</form>
 		</div>

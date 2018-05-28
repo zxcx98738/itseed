@@ -4,7 +4,7 @@
  * @描述 : 前台顯示內容
  * @文件 : See http://links.sailsjs.org/docs/controllers
  */
-
+require('dotenv').config()
 module.exports = {
     //移除blueprint內建的actions
     _config: { 
@@ -428,7 +428,29 @@ module.exports = {
             res.end(JSON.stringify(err));
         });
     },
+    studentIntro: function(req, res){
+        var model = Sharing; 
+        var action = CmsService.getAction(model);
+        var now = new Date();
+        var criteria = {   
+            where: { status: "P" }, 
+            sort: { order: "asc" }
+        }
 
+        CmsService.findPosts(model, criteria)
+        .then(function(datas){
+            for(var i = 0; i < datas.length; i++){
+                datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
+            }
+            return res.view(action.list, {
+                url: action.view,
+                datas: datas
+            });
+        })
+        .catch(function(err){
+            res.end(JSON.stringify(err));
+        });
+    },
     //報名資訊
     regInfo: function(req, res){
         var model = RegInfo; 
@@ -592,6 +614,59 @@ module.exports = {
         // .catch(function(err){
         //     res.end(JSON.stringify(err));
         // });
-    }
+    },
+    // TUV
+    studentIntro: function(req, res){
+        return res.view("frontend/pages/studentIntro",{
+        });
+    },
+    projectIntro: function(req, res){
+        return res.view("frontend/pages/projectIntro",{
+        });
+    },
+    careersharing: function(req, res){
+        return res.view("frontend/pages/careersharing",{
+        });
+    },
+    seminar: function(req, res){
+        return res.view("frontend/pages/seminar",{
+        });
+    },
+    workshop: function(req, res){
+        return res.view("frontend/pages/workshop",{
+        });
+    },
+    apply: function(req, res){
+        return res.view("frontend/pages/apply",{
+        });
+    },
+    apply2: function(req, res){
+        return res.view("frontend/pages/apply2",{
+        });
+    },
+    careerSharingContent: function(req, res){
+        return res.view("frontend/pages/careerSharingContent",{
+        });
+    },
+    careerSharingContent1: function(req, res){
+        return res.view("frontend/pages/careerSharingContent1",{
+        });
+    },
+    careerSharingContent2: function(req, res){
+        return res.view("frontend/pages/careerSharingContent2",{
+        });
+    },
+    careerSharingContent3: function(req, res){
+        return res.view("frontend/pages/careerSharingContent3",{
+        });ㄇ
+    },
+    careerSharingContent4: function(req, res){
+        return res.view("frontend/pages/careerSharingContent4",{
+        });
+    },
+    careerSharingContent5: function(req, res){
+        return res.view("frontend/pages/careerSharingContent5",{
+        });
+    },
 };
 
