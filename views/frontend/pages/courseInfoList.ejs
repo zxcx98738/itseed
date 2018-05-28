@@ -16,7 +16,14 @@
     <% for(var i = 0; i <datas.length; i++){ %>
       <div class=".col-xs-12 .col-sm-6  .col-md-4 course-div">
         <a href="<%= url + datas[i].id %>">
-            <h3 class= "course-number"  >Class <%= '0'+(i+1) %></h3>
+            <h3 class= "course-number"  >
+              <% if (i<9){ %>
+                Class <%= '0'+(i+1) %>
+              <% } %>
+              <% if (i>9){ %>
+                  Class <%= (i+1) %>
+                <% } %>
+            </h3>
             <div class="course-content">
               <h3 class="course-title">「<%= datas[i].title %>」</h3>
               <p class="content">講師：<p>
