@@ -668,5 +668,9 @@ module.exports = {
         return res.view("frontend/pages/careerSharingContent5",{
         });
     },
+    unsignpage: function(req, res){
+        return res.view("frontend/pages/unsignpage",{
+        });
+    },
 };
 
