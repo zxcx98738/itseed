@@ -24,10 +24,10 @@ body {
 }
 
 a{
-    color:#000;
+    color:@main-light-blue;
 }
 a:hover{
-    color:#000;
+    color:@main-light-blue;
 	text-decoration: none;
 }
 
@@ -82,12 +82,14 @@ body{
 }
 body>header {
     position: fixed;
-    z-index: 0;
+    z-index: 9999;
     width:100%;
 }
 
 //主內容
 body>section {
+    position: relative;
+    z-index:-1;
     &#index, &#newsList {
         tbody>tr {
             a {
@@ -126,7 +128,6 @@ body>section {
 }
 
 //頁尾
-
 body > footer {
     font-family: @font-chainese;
     height:170px;
@@ -178,6 +179,7 @@ body > footer {
         }
     }
 }
+
 
 
 .article img {
@@ -502,7 +504,7 @@ body > footer {
         @media screen and (min-width:1px) and (max-width:990px){
             display:block;
             position: relative;
-            // z-index: -1;
+            z-index: -1;
             ul{
                 position: absolute;
                 top:50%;
@@ -551,6 +553,15 @@ body > footer {
                 }
             }
         }
+        @media screen and (max-width:350px){
+            ul{  
+                &.small-link-nav{
+                    .sub-nav-small-link{
+                        margin-right:14px;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -580,7 +591,7 @@ body > footer {
         .line{
             width:65%;
             height:3px;
-            background-color:#000; //default
+            background-color:@main-blue; //default
             .section-courseInfoList  &{ background-color: @main-light-blue;}
             .section-courseInfo  &{ background-color:@main-light-blue;}
             .section-businessVisitList &{ background-color: @main-light-blue;}
@@ -590,7 +601,7 @@ body > footer {
             .section-studentIntro &,
             .studentIntro-section &,
             .section-sharingList &,
-            .section-careerSharing{ background-color: @main-light-blue;}
+            .section-careerSharing &{ background-color: @main-light-blue;}
             .section-tuv     &{ background-color: @color-tuv;}
             .section-spring  &{ background-color: @color-spring;}
             .section-careers  &{ background-color: @color-career;}
@@ -603,13 +614,13 @@ body > footer {
             height:12px;
             border-radius:100%;
             transform:translateX(-50%);
-            background-color:#000; //default
+            background-color:@main-blue; //default
             .section-courseInfoList &{ background-color: @main-light-blue;}
             .section-courseInfo &{ background-color: @main-light-blue;}
             .section-businessVisitList &{ background-color: @main-light-blue;}
             .studentIntro-section & ,
             .section-sharingList & ,
-            .section-careerSharing,
+            .section-careerSharing &,
             .section-aboutITSeed & ,
             .section-aboutNTCA & ,
             .section-memberList & ,
@@ -636,6 +647,7 @@ body > footer {
         @media screen and (max-width:550px){
             font-size:32px;
         }
+        color:@main-blue;
         .section-courseInfoList &{ color: @main-light-blue;}
         .section-courseInfo &{ color: @main-light-blue;}
         .section-businessVisitList &{ color: @main-light-blue;}
@@ -645,7 +657,7 @@ body > footer {
         .section-studentIntro &,
         .studentIntro-section &,
         .section-sharingList &,
-        .section-careerSharing{color: @main-light-blue;}
+        .section-careerSharing &{color: @main-light-blue;}
         .section-tuv     &{ color: @color-tuv;}
         .section-spring  &{ color: @color-spring;}
         .section-careers  &{ color: @color-career;}
@@ -655,7 +667,7 @@ body > footer {
     }
     h2{
         position: absolute;
-        z-index: -1;
+        z-index: 1;
         bottom:0;
         left:140px;
         transform: translateY(100% + 3px);
@@ -664,7 +676,7 @@ body > footer {
         letter-spacing: 0.7px;
         
         @media screen and (min-width:551px) and (max-width:991px){
-            left:110px;;
+            left:110px;
             font-size:16px;
             transform: translateY(80%);
         }
@@ -677,12 +689,13 @@ body > footer {
             }
         }
         @media screen and (max-width:350px){
-            left:0px;
+            left:60px;
             transform: translateY(60%);
             &.double-line{
-                width:80%;
+                width:70%;
             }
         }
+       color:@main-blue;
         .section-tuv     &{ color: @color-tuv;}
         .section-spring  &{ color: @color-spring;}
         .section-careers  &{ color: @color-career;}
