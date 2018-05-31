@@ -20,13 +20,16 @@
 		<% if( disc !=undefined ) {%>
 		<% if( disc.finished == 1 ) {%>
 			<div class="row col-xs-12 disc-over">
-				<span>恭喜您已完成DISC測驗，此測驗不影響徵選結果</span>
+				<p>
+					恭喜您已完成DISC測驗，此測驗不影響徵選結果<br>
+					測驗結果為：<%= disc.animal %>
+				</p>
 			</div>
 		<% }else {%>
 		<div class="row col-md-10 col-md-offset-1" style="font-size: 13pt;">
 			<span>此測驗<b>不影響徵選結果</b>，請選擇一個比較符合你人格特質的敘述，不需要太多思考，憑直覺就可以了！</span>
 		</div>
-		<div class="row col-md-11  col-md-offset-1 col-xs-offset-0">
+		<div class="row col-md-11  col-md-offset-1 col-xs-offset-0 disc-content">
 		
 			<form action="/editDisc" method="post" class="form-horizontal">
 				<!-- 1 -->
@@ -451,11 +454,11 @@
 
 				<div class="text-center">
 					<hr>
-					<button type="submit" class="btn-lg btn-green" style="color:white;" onclick="discF()">完成測驗</button>
+					<button type="submit" class="btn-lg btn-blue" style="color:white;" onclick="discF()">完成測驗</button>
 					<script type="text/javascript">
 						function discF(){
 							confirm("若確定完成，請按下確認鍵");
-						}
+					
 					</script>
 				</div>
 			</form>
@@ -471,6 +474,9 @@
 			</div>
 		<% } %>
 	</div>
+	<% if( disc.finished == 1 ) {%>
+		<% include ./discResult %>
+	<% } %>
 </section>
 
 <!--FOOTER-->

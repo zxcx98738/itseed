@@ -1,37 +1,37 @@
 <div class="container" style="margin: 0; padding: 0; width: 100%;">
-	<div class="col-xs-12 check-data" style=" margin: 40px 0;">
+	<div class="col-xs-12 check-data">
 		<h4>資料繳交狀況</h4>
 		<% if (disc !=undefined && disc.finished == 1){ %>
-			<div class="second-file">
-				<span><b>1</b></span>
-				<p>完成DISC測驗</p>
+			<div class="first-file">
+				
+				<p><span>1</span>完成DISC測驗</p>
 			</div>
 		<% } else { %>
 			<div>
-				<span><b>1</b></span>
-				<p>尚未完成DISC測驗</p>
+				
+				<p><span>1</span>尚未完成DISC測驗</p>
 			</div>
 		<% } %>
 		<% if (user.finished == 1){ %>
-			<div class="first-file">
-				<span><b>2</b></span>
-				<p>完成個人資料</p>
+			<div class="second-file">
+				
+				<p><span>2</span>完成個人資料</p>
 			</div>
 		<% } else { %>
 			<div >
-				<span><b>2</b></span>
-				<p>尚未完成個人資料</p>
+				
+				<p><span>2</span>尚未完成個人資料</p>
 			</div>
 		<% } %>
 		<% if ( files.confirm == 1){ %>
 			<div class="third-file">
-				<span><b>3</b></span>
-				<p>完成書面資料</p>
+				
+				<p><span>3</span>完成書面資料</p>
 			</div>
 		<% } else { %>
 			<div>
-				<span><b>3</b></span>
-				<p>尚未完成書面資料</p>
+				
+				<p><span>3</span>尚未完成書面資料</p>
 			</div>
 		<% } %>
 	</div>

@@ -220,11 +220,6 @@ module.exports.routes = {
     controller: 'Site',
     action: 'video'
   },
-  '/unsignpage': {
-    controller: 'Site',
-    action: 'unsignpage'
-  }, 
-
   'get /hey': {
     // view: 'frontend/pages/hey'
     controller: 'Site',

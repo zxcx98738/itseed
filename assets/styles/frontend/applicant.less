@@ -1,29 +1,26 @@
-.section-disc{
-	margin-bottom:100px;
-}
 
-.disc-contain{
-	min-height: calc(~"100vh - 250px");
-}
-@media screen and (min-width: 1px) and (max-width: 370px) {
-	.disc-contain{
-		min-height: calc(~"100vh - 300px");
-	}
-}
 .disc-over{
 	text-align: center;
 	// min-height: 70vh;
 	width: 100%;
 	margin:0 auto;
-	span{
-		font-size: 16pt;
+	p{
+		font-size: 20px;
 		display: inline-block;
-		border: 3px solid #027F67;
-		background-color: #78C8C1;
+		border: 3px solid @main-blue;
+		background-color: @main-light-blue;
 		color:white;
 		// #78C8C1;
 		margin:50px;
 		padding:50px;
+	}
+	@media screen and (max-width:991px){
+		p{
+			font-size: 16px;
+			margin:20px;
+			padding:20px;
+		}
+		
 	}
 }
 .applicant-file{
@@ -55,34 +52,26 @@
 }
 .check-data{
 	text-align: center;
-	font-size: 14pt;
+	font-size: 20px;
+	margin:60px 0;
 	>div{
-		display: inline-block;
-		width: 20%;
-		max-width: 200px;
-		vertical-align: top;
-		margin: 0 10px;
+		display:inline-block;
 		position: relative;
-		span{
-			position: absolute;
-			display: inline-block;
-			vertical-align: middle;
-			width: 40px;
-			height: 40px;
-			background-color: lightgrey;
-			border-radius: 100%;
-			left: 50%;
-			transform:translateX(-50%);
-			z-index: 1;
-			b{
-				display: inline-block;
-				height: 100%;
-				padding-top: 7px;
-				padding-right: 1px;
-				color:grey;
-			}
-		}
+		width: 20%;
+		margin:20px;
 		p{
+			span{
+				position: absolute;
+				top:0;
+				left:50%;
+				display: block;
+				width: 40px;
+				height: 40px;
+				background-color: lightgrey;
+				transform: translateX(-50%) translateY(-50%);
+				border-radius: 100%;
+				z-index: 1;
+			}
 			position: relative;
 			top:30px;
 			border: 2px solid lightgrey;
@@ -94,9 +83,7 @@
 	.first-file{
 		span{
 			background-color:#ed6564;
-			b{
-				color:white;
-			}
+			color:white;
 		}
 		p{
 			border: 2px solid #ed6564;
@@ -106,9 +93,7 @@
 	.second-file{
 		span{
 			background-color:#ffc313;
-			b{
-				color:white;
-			}
+			color:white;
 		}
 		p{
 			border: 2px solid #ffc313;
@@ -118,9 +103,7 @@
 	.third-file{
 		span{
 			background-color:#68b4f7;
-			b{
-				color:white;
-			}
+			color:white;
 		}
 		p{
 			border: 2px solid #68b4f7;
@@ -135,9 +118,10 @@
 
 #profile-nav{
 	.profile-ul{
+		margin-bottom:40px;
 		.active{			
 			>a{
-				background-color: #78C8C1;
+				background-color: @main-light-blue;
 				color:white;
 			}
 		}

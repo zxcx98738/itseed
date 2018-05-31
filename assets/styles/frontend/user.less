@@ -8,10 +8,6 @@
 */
 
 body>section#profile, section#disc, section#files {
-  div.row {
-    margin-bottom: 30px;
-  }
-
   form {
     font-size: 15px;
   }
@@ -37,7 +33,11 @@ body>section#profile, section#disc, section#files {
 }
 
 body>section#profile {
+  .container{
+    height:1500px;
+  }
   form {
+    margin-bottom:100px;
     >div {
       margin-bottom: 15px;
 
@@ -46,7 +46,7 @@ body>section#profile {
         margin-right: 0px;
 
         >div {
-          height: 60px;
+          // height: 60px;
           
           >input {
             padding: 7px 16px;
@@ -82,10 +82,17 @@ body>section#profile {
       }
     }
   }
+  label.survey{
+    width:200px;
+  }
 }
 
 body>section#disc {
+  .disc-content{
+    margin-bottom:100px;
+  }
   form {
+    margin-bottom:100px;
     >div {
       height: 50px;
       margin-bottom: 15px;

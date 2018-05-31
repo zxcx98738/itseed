@@ -39,7 +39,7 @@ module.exports.policies = {
     'apply2': 'isLoginUser',
   },
   UserController: {
-    '*': ['isLoginUser','isOpenPlan'],
+    '*':'isLoginUser',
     'rem': true ,
     'reg':true ,
     'loginPage':true ,
