@@ -61,36 +61,6 @@ module.exports = {
         q10 : {
           type: 'integer'
         },
-        q11 : {
-          type: 'integer'
-        },
-        q12 : {
-          type: 'integer'
-        },
-        q13 : {
-          type: 'integer'
-        },
-        q14 : {
-          type: 'integer'
-        },
-        q15 : {          
-          type: 'integer'
-        },
-        q16 : {
-          type: 'integer'
-        },
-        q17 : {
-          type: 'integer'
-        },
-        q18 : {          
-          type: 'integer'
-        },
-        q19 : {          
-          type: 'integer'
-        },
-        q20 : {          
-          type: 'integer'
-        },
         //使用者
         user: {
           model:'User'

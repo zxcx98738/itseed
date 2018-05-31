@@ -6,7 +6,7 @@
 <% include ../header %>
 
 <!--END HEADER-->
-<section class="section-files bg-white" id="files">
+<section class="section-files bg-white" style="margin-bottom:100px" id="files">
 	<% include ../pages/checkFile %>
 	<div class="container">
 		<div id="profile-nav" class="row col-md-10 col-md-offset-1">
@@ -25,11 +25,11 @@
 		<% }else {%>
 		<div class="row col-md-10 col-md-offset-1">
 <!-- 			<label class="col-sm-2 col-xs-12">
-			<a class="btn btn-green" href="/regfile" target="_blank">繳交說明</a>
+			<a class="btn btn-blue" href="/regfile" target="_blank">繳交說明</a>
 			</label> -->
 			<label class="col-xs-12">
 			<div class="text-xs-center">
-				<a class="btn btn-green" style="color:white;" href="XXX_第十六屆資訊種子書審題目.docx" target="_blank">下載第十六屆資訊種子培訓計畫書審題目</a>
+				<a class="btn btn-blue" style="color:white;" href="XXX_第十六屆資訊種子書審題目.docx" target="_blank">下載第十六屆資訊種子培訓計畫書審題目</a>
 			</div>
 			</label>
 		</div>
@@ -159,7 +159,7 @@
 					<div class="text-xs-center">
 						<p>當完成撰寫並上傳書審題目和基本資料</p>
 						<p>且確定不再更改後，請按下此按鈕完成繳交的動作</p>
-						<button type="submit" class="btn-lg btn-green" style="color:white">完成書審資料</button>
+						<button type="submit" class="btn-lg btn-blue" style="color:white">完成書審資料</button>
 					</div>
 				</form>
 <!-- 				<script type="text/javascript">
@@ -208,7 +208,7 @@
 					<div>
 						<input type="file" name="receipt">
 						<button type="button" class="btn btn-default">選擇檔案</button>
-						<button type="submit" class="btn btn-green">送出</button>
+						<button type="submit" class="btn btn-blue">送出</button>
 					</div>
 				<% } %>
 				
@@ -219,7 +219,7 @@
 		
 <!-- 		<div class=" row col-xs-12">
 			<% if (files.allFiles == 1){ %>
-				<button class="btn-lg btn-green" onclick="discF()">完成書審資料</button>
+				<button class="btn-lg btn-blue" onclick="discF()">完成書審資料</button>
 				<script type="text/javascript">
 					function discF(){
 						confirm("若確定完成，請按下確認鍵");
@@ -231,7 +231,7 @@
 				<%= files.finished %>
 				<div>
 					<form action="/files" method="post">
-						<button type="submit" name="allFiles" value="2" class="btn-lg btn-green" onclick="discF()">確認書審資料</button>
+						<button type="submit" name="allFiles" value="2" class="btn-lg btn-blue" onclick="discF()">確認書審資料</button>
 						<script type="text/javascript">
 							function discF(){
 								confirm("若確定完成書審資料，請按下確定\n ※按下確定後即不可修改");
@@ -260,7 +260,7 @@
 				</p>
 				<div class="text-xs-center">
 					<a href=<%= process.env.payLink %> target="_blank">
-						<button class="btn btn-green" style="color:white; font-size: 15px;">馬上前往</button>
+						<button class="btn btn-blue" style="color:white; font-size: 15px;">馬上前往</button>
 					</a>
 				</div>
 			</div>

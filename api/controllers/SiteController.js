@@ -658,7 +658,7 @@ module.exports = {
     },
     careerSharingContent3: function(req, res){
         return res.view("frontend/pages/careerSharingContent3",{
-        });ㄇ
+        });
     },
     careerSharingContent4: function(req, res){
         return res.view("frontend/pages/careerSharingContent4",{
@@ -667,10 +667,6 @@ module.exports = {
     careerSharingContent5: function(req, res){
         return res.view("frontend/pages/careerSharingContent5",{
         });
-    },
-    unsignpage: function(req, res){
-        return res.view("frontend/pages/unsignpage",{
-        });
-    },
+    }
 };
 
