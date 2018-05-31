@@ -1,4 +1,8 @@
 section#faq {
+	margin:100px 0;
+	.faq-br{
+		margin:40px 0;
+	}
 	div.faq {
 		margin: 9px 0px;
 		border-left-style:solid;
@@ -12,12 +16,10 @@ section#faq {
 			height: 10px;
 		}
 	}
-	// a span{
 	.triangle-rotate{
-		transform:rotate(0deg);
+		transform:rotate(180deg);
 		transition:transform 0.5s;
 	}
-	// }
 	a, a:hover, a:active, a:visited, a:focus {
     	text-decoration:none;
 	}
@@ -38,28 +40,22 @@ section#faq {
 		background-color: #70C8D9;
 	}
 	div.faq-body {
-		padding: 10px 15px 8px 15px;
-		color:#95989A;
-		background-color:#f4f4f4;
+		padding:20px 24px 20px 32px;
+		color:#222;
+		background-color:white;
 		font-size: 20px;
-
-		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+		box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 	}
 }
 .rotate{
-	transform:rotate(180deg);
+	transform:rotate(0deg);
 	transition:transform 0.5s;
 }
 .ask-question{
 	border: 2px solid #205686;
 	padding:15px 20px;
-	display: inline-block;
-	margin-left: 50%;
-	transform:translateX(-50%);
-	margin-top: 30px;
-	margin-bottom: 20px;
-
+	margin:40px auto;
 	max-width: 600px;
-	font-size: 14pt;
-	background-color: #F5F5F5;
+	font-size: 18px;
+	background-color: white;
 }

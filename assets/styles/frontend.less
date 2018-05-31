@@ -296,13 +296,15 @@ body > footer {
 
 .title-title{
     text-align: center;
-    margin: 30px 0 30px 0;
+    margin:36px 0;
     span{
-        padding: 5px 10px;
+        padding: 8px 40px;
+        color: @main-blue;
+        border-color: @main-blue;
         // border: 1px solid ;
         border-width: 1px;
         border-style: solid;
-        font-size: 16pt;
+        font-size: 28px;
     }
 }
 
@@ -574,23 +576,25 @@ body > footer {
             width:65%;
             height:3px;
             background-color:@main-blue; //default
-            .section-courseInfoList  &{ background-color: @main-light-blue;}
-            .section-courseInfo  &{ background-color:@main-light-blue;}
-            .section-businessVisitList &{ background-color: @main-light-blue;}
-            .section-careerSharingContent &{ background-color: @main-light-blue;}
+            .section-courseInfoList  & ,
+            .section-courseInfo  &,
+            .section-businessVisitList &,
             .section-aboutITSeed &,
             .section-aboutNTCA &,
             .section-memberList &,
             .section-studentIntro &,
+            .section-projectIntro &,
             .studentIntro-section &,
             .section-sharingList &,
-            .section-careerSharing &{ background-color: @main-light-blue;}
+            .section-careerSharing &,
+            .section-seminar & { background-color: @main-light-blue;}
             .section-tuv     &{ background-color: @color-tuv;}
             .section-spring  &{ background-color: @color-spring;}
             .section-careers  &{ background-color: @color-career;}
             .section-new     &{ background-color: @color-new;}
             .section-overseaVisit &{ background-color: @color-oversea;}
             .section-end     &{ background-color: @color-end;}
+            .section-workshop     &{ background-color: @sub-purple;}
         }
         .circle{
             width:12px;
@@ -598,23 +602,25 @@ body > footer {
             border-radius:100%;
             transform:translateX(-50%);
             background-color:@main-blue; //default
-            .section-courseInfoList &{ background-color: @main-light-blue;}
-            .section-courseInfo &{ background-color: @main-light-blue;}
-            .section-businessVisitList &{ background-color: @main-light-blue;}
-            .section-careerSharingContent &{ background-color: @main-light-blue;}
+            .section-courseInfoList & ,
+            .section-courseInfo & ,
+            .section-businessVisitList & ,
             .studentIntro-section & ,
             .section-sharingList & ,
             .section-careerSharing &,
             .section-aboutITSeed & ,
             .section-aboutNTCA & ,
             .section-memberList & ,
-            .section-studentIntro &{ background-color: @main-light-blue;}
+            .section-studentIntro &,
+            .section-projectIntro &,
+            .section-seminar &{ background-color: @main-light-blue;}
             .section-tuv     &{ background-color: @color-tuv;}
             .section-spring  &{ background-color: @color-spring;}
             .section-careers  &{ background-color: @color-career;}
             .section-new     &{ background-color: @color-new;}
             .section-overseaVisit &{ background-color: @color-oversea;}
             .section-end     &{ background-color: @color-end;}
+            .section-workshop     &{ background-color: @sub-purple;}
         }
 
     }
@@ -632,23 +638,25 @@ body > footer {
             font-size:32px;
         }
         color:@main-blue;
-        .section-courseInfoList &{ color: @main-light-blue;}
-        .section-courseInfo &{ color: @main-light-blue;}
-        .section-businessVisitList &{ color: @main-light-blue;}
-        .section-careerSharingContent &{ color: @main-light-blue;}
+        .section-courseInfoList & ,
+        .section-courseInfo & ,
+        .section-businessVisitList & ,
         .section-aboutITSeed &,
         .section-aboutNTCA &,
         .section-memberList &,
         .section-studentIntro &,
+        .section-projectIntro &,
         .studentIntro-section &,
         .section-sharingList &,
-        .section-careerSharing &{color: @main-light-blue;}
+        .section-careerSharing &,
+        .section-seminar &,{color: @main-light-blue;}
         .section-tuv     &{ color: @color-tuv;}
         .section-spring  &{ color: @color-spring;}
         .section-careers  &{ color: @color-career;}
         .section-new     &{ color: @color-new;}
         .section-overseaVisit &{ color: @color-oversea;}
         .section-end     &{ color: @color-end;}
+        .section-workshop     &{ color: @sub-purple;}
     }
     h2{
         position: absolute;
