@@ -26,9 +26,8 @@
                         <th class="col-md-1">推薦人</th>
                         <th class="col-md-1">報名表</th>
                         <th class="col-md-1">自  傳</th>
-                        <!-- <th class="col-md-1">匯款證明</th> -->
-
                         <th class="col-md-1">DISC</th>
+                        <th class="col-md-1">消息來源</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -111,15 +110,24 @@
                             </td>
                         <% }%>
                         <% if (users[i].disc !=undefined && users[i].disc.animal == null) { %>
-                                <td>
-                                    <span>未填寫</span>
-                                </td>
-                            <% } else { %>
-                                <td style="background-color: #FFDDAA;">
-                                    <%= users[i].disc.animal %><br>
-                                    <p>老虎(<%= users[i].disc.a1 %>),孔雀(<%= users[i].disc.a2 %>),無尾熊(<%= users[i].disc.a3 %>),貓頭鷹(<%= users[i].disc.a4 %>)  </p>
-                                </td>
-                            <% } %> 
+                            <td>
+                                <span>未填寫</span>
+                            </td>
+                        <% } else { %>
+                            <td style="background-color: #FFDDAA;">
+                                <%= users[i].disc.animal %><br>
+                                <p>老虎(<%= users[i].disc.a1 %>),孔雀(<%= users[i].disc.a2 %>),無尾熊(<%= users[i].disc.a3 %>),貓頭鷹(<%= users[i].disc.a4 %>)  </p>
+                            </td>
+                        <% } %> 
+                        <% if (users[i].survey !=undefined ) { %>
+                            <td>
+                                <span><%= users[i].survey %></span>
+                            </td>
+                        <% } else { %>
+                            <td>
+                                <span>為提供來源</span>
+                            </td>
+                        <% } %> 
                         </td>
                     </tr>
                 <% } %>

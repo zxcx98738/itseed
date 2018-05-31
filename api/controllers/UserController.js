@@ -428,8 +428,9 @@ function registerAccount(res,newuser,callback){
             school: req.body.school,
             grade: req.body.grade,
             reference: req.body.reference,
+            survey: req.body.survey.join(',')
         };
-        
+        console.log(value);
         if(value.name!=null && value.gender!=null && value.school!=null && value.grade!=null){
             // value.finished = 1 ;
             t++;

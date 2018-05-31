@@ -128,6 +128,19 @@
 						</div>
 						<div class="col-sm-offset-2 col-sm-10 col-xs-12" style="height: 40px;">※ 此選項<b>不影響</b>徵選結果</div>
 					</div>
+					<div class="form-group">
+						<div class="col-sm-12 col-xs-12" >請問你是透過何種管道得知資種？（可複選）</div>
+						<div class="col-sm-12 col-xs-12">
+							<label><input type="checkbox" name="survey" value="海報" />　海報　</label>
+							<label><input type="checkbox" name="survey" value="說明會" />　說明會　</label>
+							<label><input type="checkbox" name="survey" value="工作坊" />　工作坊　</label>
+							<label><input type="checkbox" name="survey" value="FB粉專" />　FB粉專（懶人包、宣傳影片等）　</label>
+							<label><input type="checkbox" name="survey" value="官網" />　官網　</label>
+							<label><input type="checkbox" name="survey" value="Blink" />　Blink　</label>
+							<label><input type="checkbox" name="survey" value="親朋好友推薦" />　親朋好友推薦　</label>
+							<label><input type="checkbox" name="survey" class="survey-other" value="其他" />　其他：<input hidden type="text" class="survey-input"></label>
+						</div>
+					</div>
 				</div>
 				<div class="col-sm-3 col-xs-12 uploadPhoto">
 					<div class="col-sm-12 col-xs-6">
@@ -152,7 +165,31 @@
 			</form>
 		</div>
 	</div>
+	<script>
+		
+		let source_reulst_text = "<%= user.survey %>";
+		source_reulst_text.split(',').forEach(str => {
+			if(str.indexOf('其他:') > -1){
+				$('input[value="其他"]').prop('checked', true);
+				$('input.survey-input').show();
+				$('input.survey-input').val(str.split('其他:')[1]);
+			}else{
+				$(`input[value='${str}']`).prop('checked', true);
+			}
+		});
 
+		$('input.survey-other').click(function(){
+			if( $(this).prop("checked") ){
+				$('input.survey-input').show();
+			}else{
+				$('input.survey-input').hide();
+			}
+		})
+		$('input.survey-input').keypress(function(){
+			$('input.survey-other').val( '其他:' + $(this).val() );
+		})
+
+	</script>
 </section>
 
 <!--FOOTER-->
