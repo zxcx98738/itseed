@@ -1,63 +1,49 @@
 <!--HEADER-->
 <% include ../header %>
 <!--END HEADER-->
-<% include ./sub-nav %>
-<div class="main-title-div">
-	<div class="line-and-circle">
-		<div class="line"></div>
-		<div class="circle"></div>
+
+<section class="section-workshop">
+	<% include ./sub-nav %>
+	<div class="main-title-div">
+		<div class="line-and-circle">
+			<div class="line"></div>
+			<div class="circle"></div>
+		</div>
+		<h1>活動資訊</h1>
 	</div>
-	<h1>活動資訊</h1>
+
+	<div class="activity-container">
+		<h2 class="title">履歷面試工作坊</h2>
+		<div class="image-div">
+			<img class="activity-imgae" src="images/activity-workshop.jpg"></img>
+		</div>
+
+		<h2 class="shtitle">活動時間和地點</h2>
+		<p>
+			第一場時間：6/17（日） 14：00 – 16：00
+			<br> 第二場時間：6/24（日） 14：00 – 16：00
+			<br> 地點：新北市電腦商業同業公會（台北市中山區民權西路 19 號 9 樓）
+		</p>
+		<p>
+			師大場時間：6/16（五） 19：00 – 21：00
+			<br> 地點：臺灣師範大學校本部 正大樓101教室
+		</p>
+		<h2>活動介紹</h2>
+		<p>
+			 永遠記得第一次寫履歷，在電腦前靜坐了一個小時，只打了自己的名字。如果可以回到那時候，真希望自己能有一位好教練，給我一些指導，讓我可以交出一份好的作品。但是，時間不能倒流，既然以前的我不夠好，那就讓現在的我來補救吧！這場履歷面試工作坊，將以投遞第十六屆資訊種子作為範例，但是心法是都有所相通的，歡迎各位朋友一起參與，和我一起學習履歷＆面試的小撇步吧！
+		</p>
+		
+		<a href="#"><button id="submit" >尚未解鎖</button></a>
+		
+	</div>
+</section>
 </div>
 
-<div class="sem">
-		<section class="bg-light-gray article ">
-				<div class="container">
-					<div class="row sharing-content-pp">
-						<div class="col-md-10 col-md-offset-1">
-							<div class="seminar-word">
-							<div class="rec">
-								<div class="shtitle">履歷面試工作坊</div>
-							</div>
-							
-							<div class="image">
-								<img class="seminar-imgae" src="images/activity-workshop.jpg"></img>
-							</div>
-							
-							
-									<div class="rec">
-											<div class="shtitle">活動時間和地點</div>
-									</div>
-			
-								
-								<p>
-									第一場時間：6/17（日） 14：00 – 16：00  <br>
-									第二場時間：6/24（日） 14：00 – 16：00  <br>
-									地點：新北市電腦商業同業公會（台北市中山區民權西路 19 號 9 樓）
-								</p>
-								<div class="rec">
-										<div class="shtitle">活動介紹</div>
-								</div>
-			
-								
-								<p>
-									永遠記得第一次寫履歷，在電腦前靜坐了一個小時，只打了自己的名字。如果可以回到那時候，真希望自己能有一位好教練，給我一些指導，讓我可以交出一份好的作品。但是，時間不能倒流，既然以前的我不夠好，那就讓現在的我來補救吧！這場履歷面試工作坊，將以投遞第十六屆資訊種子作為範例，但是心法是都有所相通的，歡迎各位朋友一起參與，和我一起學習履歷＆面試的小撇步吧！
-		</p>
-							</div>
-							<div class="seminar-submit_btn">
-								<!-- <a href="/apply">馬上報名</a> -->
-								<a id="submit" href="#">馬上報名</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-</div>
 <script>
 	$('#submit').click(function () {
 		swal(
-			'目前尚未開放報名',
-			'即將在 6 / 2 開放報名，盡請期待',
+			'尚未解鎖',
+			'將在 粉絲團貼文達到 100 分享時即免費開放',
 			'success'
 		)
 	});
