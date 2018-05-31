@@ -215,7 +215,7 @@ function registerAccount(res,newuser,callback){
 			req.session.authorized = {
 				user: true
 			};
-			res.redirect("/profile");  
+			res.redirect("/disc");  
         });                
     },
     //檢查信箱是否已存在
@@ -300,7 +300,7 @@ function registerAccount(res,newuser,callback){
                 req.session.authorized = {
                     user:true
                 }
-                res.redirect(req.body.redirect!='undefined'? req.body.redirect: "/profile" ) ;
+                res.redirect(req.body.redirect!='undefined'? req.body.redirect: "/disc" ) ;
             }
         });
     },
@@ -334,7 +334,7 @@ function registerAccount(res,newuser,callback){
                             user: true
                         }
                         res.end(JSON.stringify({
-                            redirect: req.body.redirect != 'undefined' ? req.body.redirect:"/profile"
+                            redirect: req.body.redirect != 'undefined' ? req.body.redirect:"/disc"
                         }));
 					});
                 }else{
@@ -346,7 +346,7 @@ function registerAccount(res,newuser,callback){
                         user: true
                     }
 					res.end(JSON.stringify({
-                        redirect: req.body.redirect != 'undefined' ? req.body.redirect : "/profile"
+                        redirect: req.body.redirect != 'undefined' ? req.body.redirect : "/disc"
 					}));
 				}
             });  
@@ -582,7 +582,7 @@ function registerAccount(res,newuser,callback){
     editDisc: function (req, res) {
         var value = {};
         var a =[ 0 , 0 , 0 , 0];
-        for(var i = 1; i <= 20; i++){
+        for(var i = 1; i <= 10; i++){
             for (var j = 1; j <5 ; j++){ //計算動物
                 if(req.body["q" + i] == j)
                     a[j-1] += 1;
