@@ -3,32 +3,13 @@
 <% include ../header %>
 <!--END HEADER-->
 
-<section class="" id="faq" style="padding-top: 0">
+<section class="section-faq" id="faq" style="padding-top: 0">
 	<div class="container">
 		<div class="row">
-			<!--<img src="/images/layout/bg-faq.png"; style="display:block; margin:auto;" width="200px"; />-->
 			<div class="title-title">
-				<span class="faq-br">- 常見問題 -</span>
+				<span class="faq-br">常見問題</span>
 			</div>
-			<!-- <div class="col-md-10 col-md-offset-1">
-				<span>如有任何相關問題，請私訊<a href="https://www.facebook.com/iloveitseed" target="_blank">資訊種子粉絲專頁</a>，或寄信到ITseed信箱(itseed14th@gmail.com)，將由專人為您服務</span>
-			</div>
-			<div class="col-md-10 col-md-offset-1">
-				<h3 class="testttt">關於資訊種子</h3>
-			</div> -->
-			</div>
-				
-				<!--
-				<div class="text-center" id="top">
-				<span style="color:#606060;font-size:25px;">
-					
-					<br>
-					&nbsp&nbsp&nbsp&nbsp<font>常見問題</font>&nbsp&nbsp&nbsp&nbsp</span>
-				</div>
-				-->
-				
-			
-<!-- 			<div style="background-color:#95989A;width:800px;height:1pt;margin:30px auto 30px auto"></div> -->
+		</div>
 		<% for(var i = 0; i < datas.length; i++){ %>
 			<% if (datas[i] != null) { %>
 				<div class="col-md-8 col-md-offset-2" id="<%= datas[i].id %>">
@@ -48,12 +29,14 @@
 				</div>
 			<% } %>
 		<% } %>
-		<div class="col-xs-12 ask-question">
-			<span>如有任何其他相關問題，請私訊資訊種子粉絲專頁 <a href="https://www.facebook.com/iloveitseed" target="_blank">資訊種子粉絲專頁</a>，或寄信至ITseed信箱(itseed16th@gmail.com )，將由專人為您回答</span>
+		</div>
+		<div class="ask-question">
+			<p>
+				如有任何其他相關問題，請私訊資訊種子粉絲專頁
+				<a href="https://www.facebook.com/iloveitseed" target="_blank">資訊種子粉絲專頁</a>，或寄信至ITseed信箱(itseed16th@gmail.com )，將由專人為您回答
+			</p>
 		</div>
 	</div>
-	 <div class="top">
-    
 	<script>
 		$(".top").click(function() {
     		$("html, body").animate({scrollTop: 0}, 500);
