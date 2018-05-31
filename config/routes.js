@@ -220,9 +220,9 @@ module.exports.routes = {
     controller: 'Site',
     action: 'video'
   },
-  '/unsignpage': {
+  '/signresult': {
     controller: 'Site',
-    action: 'unsignpage'
+    action: 'signresult'
   }, 
 
   'get /hey': {
