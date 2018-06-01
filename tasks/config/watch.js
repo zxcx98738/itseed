@@ -30,10 +30,7 @@ module.exports = function(grunt) {
 		},
 		views: {
             files: ['views/**/*']
-    },
-		options: {
-      livereload: 1338,
-    },
+    	}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-watch');
