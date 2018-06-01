@@ -22,6 +22,7 @@
                         <th class="col-md-1">學  校</th>
                         <th class="col-md-1">系  級</th>
                         <th class="col-md-2">信  箱</th>
+                        <th class="col-md-1">是否為google登入</th>
                         <th class="col-md-1">電  話</th>
                         <th class="col-md-1">推薦人</th>
                         <th class="col-md-1">報名表</th>
@@ -63,6 +64,13 @@
                         </td>
                         <td>
                             <a class="email" href="https://mail.google.com/mail/?view=cm&fs=1&to=<%= users[i].email %>" target="_blank"><%= users[i].email %></a>
+                        </td>
+                        <td>
+                            <% if (users[i].gIdToken == null) { %>
+                                否
+                            <% } else { %>
+                                是
+                            <% } %>
                         </td>
                         <td>
                             <% if (users[i].phone == null) { %>
