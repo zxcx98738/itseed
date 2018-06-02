@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 				expand: true,
 				wd: './assets',
 				src: ['**/*.!(coffee|less)'],
-				dest: '/root/Dropbox/itseed_backup'
+				dest: '/Users/chenjianyu/code/itseed_back'
 			}]
 		}
 

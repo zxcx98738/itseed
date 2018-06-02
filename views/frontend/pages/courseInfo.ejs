@@ -12,30 +12,11 @@
     </div>
     <h1><%= datas[0].title %></h1>
   </div>
-
-  <div class="container">
-    <div class="row course-detail">
-      <div class="course-img-div">
-        <img src="<%= datas[0].photo %>"></img>
-      </div>
-      
-      <div class="project-content-style">
-        
-        <h4 class="text-xs-center">
-          
-          <!-- <% if (datas[0].speakerTitle != ".") {%>
-            <%= datas[0].speakerTitle %>
-          <% } %> -->
-          
-        </h4>
-
-        <div class="content-y-m">
-          <%- datas[0].content %>
-        </div>
-        <div class="text-xs-center back-to-course">
-          <a href="/courseInfo">Back</a>
-        </div>
-      </div>
+  <div class="course-container">
+    <img src="<%= datas[0].photo %>"></img>
+    <%- datas[0].content %>
+    <div class="text-xs-center back-to-course">
+      <a href="/courseInfo">Back</a>
     </div>
   </div>
 </section>

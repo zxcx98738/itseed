@@ -1,9 +1,4 @@
-<div style="display: none;" class="sub-nav sub-nav-studentIntro">
-    <ul>
-      <li><a  class="sub-nav-link" href="/studentIntro">基本組織架構</a></li>
-      <li><a  class="sub-nav-link" href="/projectIntro">專案組織架構</a></li>
-    </ul>
-</div>
+
 
 <div style="display: none;" class="sub-nav sub-nav-introduction">
     <ul>
@@ -13,6 +8,20 @@
       <li><a  class="sub-nav-link dont-be-selected" href="/studentIntro">組織架構</a></li>
     </ul>
 </div>
+
+<div style="display: none;" class="sub-nav sub-nav-studentIntro">
+    <ul class="link-nav">
+        <li><a  class="sub-nav-link dont-be-selected" href="/aboutITSeed">計畫簡介</a></li>
+        <li><a  class="sub-nav-link dont-be-selected" href="/aboutNTCA">公會簡介</a></li>
+        <li><a  class="sub-nav-link dont-be-selected" href="/memberList">歷屆名單</a></li>
+        <li><a  class="sub-nav-link active" href="/studentIntro">組織架構</a></li>
+    </ul>
+    <ul class="small-link-nav">
+        <li><a class="sub-nav-small-link" href="/studentIntro">基本組織架構</a></li> 
+        <li><a class="sub-nav-small-link" href="/projectIntro">專案組織架構</a></li> 
+    </ul>
+</div>
+
 
 <div style="display: none;" class="sub-nav sub-nav-plan">
     <ul>
@@ -41,6 +50,7 @@
 
 <script>
     let now_loction_path = document.location.pathname;
+    if(now_loction_path.includes('/courseInfo')) now_loction_path = '/courseInfo';
     $(`.sub-nav a[href='${now_loction_path}']:not('.dont-be-selected')`)
         .addClass('active')
         .closest(".sub-nav").show();

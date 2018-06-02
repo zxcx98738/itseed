@@ -667,6 +667,10 @@ module.exports = {
     careerSharingContent5: function(req, res){
         return res.view("frontend/pages/careerSharingContent5",{
         });
+    },
+    courseInfoTest: function (req, res) {
+        return res.view("frontend/pages/courseInfoTest", {
+        });
     }
 };
 
