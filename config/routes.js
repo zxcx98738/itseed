@@ -102,11 +102,15 @@ module.exports.routes = {
     controller: 'Site',
     action: 'courseInfoList'
   }, 
-
+  '/courseInfo/test': {
+    view: 'frontend/pages/courseInfoTest'
+  }, 
   '/courseInfo/:id': {
     controller: 'Site',
     action: 'courseInfo'
   }, 
+
+
 
   '/career': {
     controller: 'Site',

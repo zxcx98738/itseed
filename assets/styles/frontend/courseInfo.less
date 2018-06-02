@@ -1,24 +1,58 @@
 .section-courseInfo{
     margin-bottom:100px;
-    .container{
-        .row  
-        .course-img-div{
-            width:80%;
-            margin:0 auto;
-            img{
-                width:100%;
-            }
+    .course-container{
+        width:55%;
+        margin:0 auto;
+        h2{
+            line-height: 50px;
+            text-align: right;
+            font-size: 36px;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            color: @main-blue;
         }
-
-        .project-content-style{
-            margin-right:5%;
-            margin-left: 5%;
-            line-height: 30px;
-            font-size: 13pt;
+        h3{
+            display: inline-block;
+            color: @main-light-blue;
+            padding:10px 40px;
+            border:1px solid @main-light-blue;
+            font-size:20px;
+            margin:20px 0;
+            transform: translateX(-50%);
         }
-        @media screen and (min-width: 0px) and (max-width: 730px) {
-            .project-content-style{
-                font-size: 12pt;
+        img{
+            margin:20px 0;
+            width:100%;
+        }
+        p{
+            margin:16px 0;
+            font-size:18px;
+            letter-spacing: 0.6px;
+        }
+        ul{
+            margin:16px 0;
+            li{
+                font-size: 18px;
+                list-style-type: none;
+                margin:0px;
+                &:nth-child(odd):before{
+                    content:'';
+                    display:inline-block;
+                    margin-right:36px;
+                    height:9px;
+                    width:9px;
+                    background-color:@main-light-blue;
+                    transform: rotate(45deg);
+                }
+                &:nth-child(even):before{
+                    content:'';
+                    display:inline-block;
+                    margin-right:36px;
+                    height:9px;
+                    width:9px;
+                    border: 1px solid @main-light-blue;
+                    transform: rotate(45deg);
+                }
             }
         }
         .back-to-course{
@@ -32,6 +66,24 @@
                     background-color: @main-light-blue;
                     color: white;
                 }
+            }
+        }
+        @media screen and (min-width:551px)and (max-width:990px){
+            width:75%;
+            h3{
+                transform: none;
+            }
+            ul,p,img{
+                padding-left:36px;
+            }
+        }
+        @media screen and (max-width:550px){
+            width:90%;
+            h3{
+                transform: none;
+            }
+            ul,p,img{
+                padding-left:36px;
             }
         }
     }
