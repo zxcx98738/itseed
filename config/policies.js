@@ -36,7 +36,6 @@ module.exports.policies = {
   ***************************************************************************/
   SiteController:{
     'apply': 'isLoginUser',
-    'apply2': 'isLoginUser',
   },
   UserController: {
     '*':'isLoginUser',

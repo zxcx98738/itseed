@@ -48,3 +48,33 @@ function sendEmail(button, checkboxs) {
 			window.open("https://mail.google.com/mail/?view=cm&fs=1&to="+emailList);
 	});
 }
+
+function resetUserPass(){
+    var user_name = $(this).data('name');
+    var user_email = $(this).data('email');
+    swal({
+        title: `你確定要重設 ${user_name} 的密碼`,
+        text: `信箱: ${user_email}`,
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.value) {
+            $.ajax({
+                type: "POST",
+                url: 'cms/resetPass',
+                data: { email: user_email },
+                success: function (result) {
+                    swal(
+                        `成功更新 ${user_name} 的密碼!`,
+                        '密碼重設為 00000000',
+                        'success'
+                    )
+                }
+            });
+        }
+    })
+}
+$('.reset-pass-btn').click(resetUserPass);

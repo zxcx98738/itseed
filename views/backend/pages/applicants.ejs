@@ -1,6 +1,5 @@
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-<script src="/js/specifies/backend/applicants.js"></script>
 <div id="wrapper">
     <!--HEADER-->
     <% include ../header %>
@@ -29,6 +28,7 @@
                         <th class="col-md-1">自  傳</th>
                         <th class="col-md-1">DISC</th>
                         <th class="col-md-1">消息來源</th>
+                        <th class="col-md-1">操作</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -137,6 +137,9 @@
                             </td>
                         <% } %> 
                         </td>
+                        <td>
+                            <button data-name="<%=users[i].name%>" data-email="<%=users[i].email%>" class="btn-danger reset-pass-btn">重設密碼</button>
+                        </td>
                     </tr>
                 <% } %>
                 </tbody>
@@ -144,3 +147,4 @@
         </div>
     </div>
 </div>
+<script src="/js/specifies/backend/applicants.js"></script>
