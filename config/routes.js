@@ -423,6 +423,11 @@ module.exports.routes = {
     action: 'sort'
   },
 
+  'post /cms/resetPass':{
+    controller: 'Cms',
+    action: 'resetPass'
+  },
+
   /*系統設定*/
   '/systemSetting': {
     controller: 'System',

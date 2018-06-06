@@ -980,9 +980,8 @@ toDraft: function(req, res){
             res.redirect("/backend");
         });
     },
-        //報名者資料
+    //報名者資料
     applicants: function (req, res) {
-        console.log(res.session)
         var th;
         SystemSetting.findOne({
             name: 'th'
@@ -1026,6 +1025,18 @@ toDraft: function(req, res){
                     });
                 }
             });
+        });
+    },
+    resetPass:function(req,res){
+        var value = {
+            pwd: md5('00000000'),
+        };
+        User.update({ email: req.body.email }, value).exec(function (err, datas) {
+            if(err){
+                console.error(err);
+                res.end('fail');
+            }
+            res.end('success');
         });
     }
 };
