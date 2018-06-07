@@ -64,7 +64,7 @@ function resetUserPass(){
         if (result.value) {
             $.ajax({
                 type: "POST",
-                url: 'cms/resetPass',
+                url: '/cms/resetPass',
                 data: { email: user_email },
                 success: function (result) {
                     swal(

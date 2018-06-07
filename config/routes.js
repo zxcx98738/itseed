@@ -359,9 +359,13 @@ module.exports.routes = {
     action: 'editor'
   },
   /*報名者資料*/
-  'get /applicants': {
+  'get /cms/applicants': {
     controller: 'Cms',
     action: 'applicants'
+  },
+  'get /cms/accounts': {
+    controller: 'Cms',
+    action: 'accounts'
   },
   'get /cms/edit/:model': {
     controller: 'Cms',
@@ -426,6 +430,10 @@ module.exports.routes = {
   'post /cms/resetPass':{
     controller: 'Cms',
     action: 'resetPass'
+  },
+  'post /cms/setUserType': {
+    controller: 'Cms',
+    action: 'setUserType'
   },
 
   /*系統設定*/

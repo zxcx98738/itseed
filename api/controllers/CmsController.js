@@ -1027,6 +1027,52 @@ toDraft: function(req, res){
             });
         });
     },
+    //會員資料
+    accounts: function (req, res) {
+        var th;
+        SystemSetting.findOne({
+            name: 'th'
+        })
+        .exec(function (err, parameter1) {
+            if (err) {
+                return res.end(JSON.stringify(err));
+            }
+            else {
+                if (parameter1 == undefined)
+                    th = '';
+                else
+                    th = parameter1.value;
+            }
+            User.find({
+                th: th,
+            })
+            .populate('files')
+            .populate('disc')
+            .exec(function (err, users) {
+                if (err) {
+                    res.end(JSON.stringify(err));
+                }
+                else {
+                    for (var i = 0; i < users.length; i++) {
+                        if (users[i].files.registrationUT != null)
+                            users[i].files.registrationUT = CmsService.formatTime(users[i].files.registrationUT);
+                        if (users[i].files.autobiographyUT != null)
+                            users[i].files.autobiographyUT = CmsService.formatTime(users[i].files.autobiographyUT);
+                        if (users[i].files.receiptUT != null)
+                            users[i].files.receiptUT = CmsService.formatTime(users[i].files.receiptUT);
+                        if (users[i].disc != null){
+                            // users[i].disc.q1 = users[i].disc.animal;
+                        }
+                        // users[i].disc.q1 = CmsService.formatTime(users[i].disc.q1);
+
+                    }
+                    return res.view("backend/pages/accounts", {
+                        users: users
+                    });
+                }
+            });
+        });
+    },
     resetPass:function(req,res){
         var value = {
             pwd: md5('00000000'),
@@ -1034,9 +1080,24 @@ toDraft: function(req, res){
         User.update({ email: req.body.email }, value).exec(function (err, datas) {
             if(err){
                 console.error(err);
-                res.end('fail');
+                res.status(500).end('fail');
             }
-            res.end('success');
+            res.status(200).end('success');
+        });
+    },
+    setUserType: function (req, res) {
+        // if (!['A','U','T'].includes(req.body.type)){
+        //     res.end('fail:invaild data');
+        // }
+        var value = {
+            type: req.body.type
+        };
+        User.update({ email: req.body.email }, value).exec(function (err, datas) {
+            if (err) {
+                console.error(err);
+                res.status(500).send('fail');
+            }
+            res.status(200).send('success');
         });
     }
 };
