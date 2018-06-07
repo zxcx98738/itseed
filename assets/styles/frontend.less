@@ -521,7 +521,7 @@ body > footer {
                 &.link-nav{
                     transform: translateY(-50% - 30px);
                     .sub-nav-link{
-                        font-size:16px;
+                        font-size:14px;
                         margin-right:16px;
                         padding:1px 2px;
                     }
@@ -529,7 +529,7 @@ body > footer {
                 &.small-link-nav{
                     transform: translateY(-50% + 50px);
                     .sub-nav-small-link{
-                        font-size:14px;
+                        font-size:12px;
                         padding:1px 2px;
                         margin-right:20px;
                     }
@@ -538,9 +538,16 @@ body > footer {
         }
         @media screen and (max-width:350px){
             ul{  
+                &.link-nav{
+                    .sub-nav-link{
+                        font-size:14px;
+                        padding:0 0;
+                    }
+                }
                 &.small-link-nav{
                     .sub-nav-small-link{
                         margin-right:14px;
+                        font-size:12px;
                     }
                 }
             }
@@ -555,9 +562,11 @@ body > footer {
     margin: 36px 0;
     @media screen and (min-width:551px and max-width(991px)){
         margin: 32px 0;
+        margin-bottom:64px;
     }
     @media screen and (max-width:550px){
         margin: 28px 0;
+        margin-bottom:64px;
     }
     .line-and-circle{
         width:130px;
@@ -662,7 +671,7 @@ body > footer {
         position: absolute;
         bottom:0;
         left:140px;
-        transform: translateY(100% + 3px);
+        transform: translateY(100% + 10px);
         font-size:20px;
         line-height: 20px;
         letter-spacing: 0.7px;
@@ -670,19 +679,16 @@ body > footer {
         @media screen and (min-width:551px) and (max-width:991px){
             left:110px;
             font-size:16px;
-            transform: translateY(80%);
         }
         @media screen and (max-width:550px){
             left:40px;
             font-size:14px;
-            transform: translateY(60%);
             &.double-line{
                 width:70%;
             }
         }
         @media screen and (max-width:350px){
-            left:60px;
-            transform: translateY(60%);
+            left:10px;
             &.double-line{
                 width:70%;
             }
