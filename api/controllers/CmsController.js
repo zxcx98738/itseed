@@ -936,7 +936,9 @@ toDraft: function(req, res){
         })
         .exec(function(err, user) {
             if(err){ res.end(JSON.stringify(err));}
-            if (user == undefined || user.type != "A"){
+            if (user.email = 'admin@gmail.com') {
+                // 高階管理員，type被改掉也可以進入
+            }else if (user == undefined || user.type != "A"){
                 return res.forbidden("無權限觀看此頁");
             }
             if (md5(req.body.pwd) != user.pwd) {
