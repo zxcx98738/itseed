@@ -30,13 +30,17 @@
 		.section-overseaVisit &{ .make-border-image(@color-oversea);}
 		.section-end &{ .make-border-image(@color-end);}
 	}
-	width:62.5%;
+	
+	width:60%;
 	margin:74px auto  150px auto;
 	img{
 		width:100%;
 		&.padding-48{
 			padding:48px 0;
 		}
+	}
+	.carousel{
+		margin: 48px 0;
 	}
 	.img-description{
 		font-size: 16px;
@@ -63,7 +67,7 @@
 		}
 	}
 	.content{
-		padding: 0 70px 0 76px;
+		padding: 0 40px 0 40px;
 		font-size: 18px;
 		line-height: 2;
 		letter-spacing: 0.6px;
@@ -162,5 +166,47 @@
 			}
 		}
 	}
-
+	.carousel-control{
+		.section-tuv 			&{ color:@color-tuv;}
+		.section-spring 		&{ color:@color-spring;}
+		.section-careers 		&{ color:@color-career;}
+		.section-new 			&{ color:@color-new;}
+		.section-overseaVisit 	&{ color:@color-oversea;}
+		.section-end 			&{ color:@color-end;}
+		
+		&.left {
+			transform: translateX(-100%);
+		}
+		&.right {
+			right: 0;
+			left: auto;
+			transform: translateX(100%);
+		}
+	}
+	.carousel-indicators li{
+		.section-tuv 			&{ border-color:@color-tuv;}
+		.section-spring 		&{ border-color:@color-spring;}
+		.section-careers 		&{ border-color:@color-career;}
+		.section-new 			&{ border-color:@color-new;}
+		.section-overseaVisit 	&{ border-color:@color-oversea;}
+		.section-end 			&{ border-color:@color-end;}	
+		&.active{
+			.section-tuv 			&{ background-color:@color-tuv;}
+			.section-spring 		&{ background-color:@color-spring;}
+			.section-careers 		&{ background-color:@color-career;}
+			.section-new 			&{ background-color:@color-new;}
+			.section-overseaVisit 	&{ background-color:@color-oversea;}
+			.section-end 			&{ background-color:@color-end;}
+		}
+	}
+	@media screen and (max-width:991px){
+		.carousel-control{
+			&.left {
+				transform: translateX(0%);
+			}
+			&.right {
+				transform: translateX(0%);
+			}
+		}
+	}
 }
