@@ -1022,8 +1022,16 @@ toDraft: function(req, res){
                         // users[i].disc.q1 = CmsService.formatTime(users[i].disc.q1);
 
                     }
+                    registered_count = users.length;
+                    finished_count = users.filter(function(user){
+                        return user.finished == 1 
+                            && user.disc.finished == 1
+                            && user.files.finished == 1
+                    }).length;
                     return res.view("backend/pages/applicants", {
-                        users: users
+                        users: users,
+                        registered_count: registered_count,
+                        finished_count: finished_count
                     });
                 }
             });
