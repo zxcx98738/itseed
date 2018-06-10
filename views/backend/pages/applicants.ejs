@@ -4,13 +4,15 @@
     <!--HEADER-->
     <% include ../header %>
     <!--END HEADER-->
-
     <div class="scrollY" id="page-wrapper">
         <div id="applicantsTable">
             <header>
                 <h3>報名者資料</h3>
                 <button type="button" class="btn btn-default"><input type="checkbox" id="selectAll"></button>
                 <button type="button" class="btn btn-default" id="mailTo">寄信</button>
+                <button class="btn btn-info">已註冊：<%= registered_count %> 人</button>
+                <button class="btn btn-info">已報名：<%= finished_count %> 人</button>
+                <button class="btn btn-info">未報名：<%= registered_count -  finished_count %> 人</button>
             </header>
             <table class="table table-hover">
                 <thead>
