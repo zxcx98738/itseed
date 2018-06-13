@@ -17,10 +17,18 @@ module.exports = function(grunt) {
 			src: require('../pipeline').jsFilesToInject,
 			dest: '.tmp/public/concat/production.js'
 		},
+		jsAdmin: {
+			src: require('../pipeline').jsAdminFilesToInject,
+			dest: '.tmp/public/concat/productionAdmin.js'
+		},
 		css: {
 			src: require('../pipeline').cssFilesToInject,
 			dest: '.tmp/public/concat/production.css'
-		}
+		},
+		cssAdmin: {
+			src: require('../pipeline').cssAdminFilesToInject,
+			dest: '.tmp/public/concat/productionAdmin.css'
+		},
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-concat');

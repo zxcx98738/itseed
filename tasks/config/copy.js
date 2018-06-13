@@ -31,15 +31,7 @@ module.exports = function(grunt) {
 				src: ['**/*'],
 				dest: 'www'
 			}]
-		},build2:{
-			files: [{
-				expand: true,
-				wd: './assets',
-				src: ['**/*.!(coffee|less)'],
-				dest: '/Users/chenjianyu/code/itseed_back'
-			}]
 		}
-
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-copy');

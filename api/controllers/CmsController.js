@@ -65,6 +65,7 @@ module.exports = {
             menu = CmsService.getMenu(model);
 
             return res.view("backend/pages/editor", {
+                layout: 'layoutadmin',
                 action: action,
                 post: post,
                 menu: menu
@@ -87,6 +88,7 @@ module.exports = {
                     menu = CmsService.getMenu(model);
 
                     return res.view("backend/pages/editor", {
+                        layout: 'layoutadmin',
                         action: action,
                         post: data,
                         menu: menu
@@ -115,6 +117,7 @@ module.exports = {
             }
 
             return res.view("backend/pages/preview", {
+                layout: 'layoutadmin',
                 preview: preview
             });
         }
@@ -129,6 +132,7 @@ module.exports = {
             }
 
             return res.view("backend/pages/preview", {
+                layout: 'layoutadmin',
                 preview: preview
             });
         }
@@ -144,6 +148,7 @@ module.exports = {
                 content: req.param("content")
             }
             return res.view(action.url, {
+                layout: 'layoutadmin',
                 datas: [data]
             });
         }
@@ -160,6 +165,7 @@ module.exports = {
                 }
                 else{
                     return res.view(action.url, {
+                        layout: 'layoutadmin',
                         datas: [data]
                     });
                 }
@@ -308,6 +314,7 @@ module.exports = {
                     }
 
                     return res.view("backend/pages/cms", {
+                        layout: 'layoutadmin',
                         articles: datas,
                         postType: req.param("model"),
                         status: status,
@@ -964,6 +971,7 @@ toDraft: function(req, res){
             if(err){ res.end(JSON.stringify(err));}
             console.log(user);
             return res.view("backend/pages/profile", {
+                layout: 'layoutadmin',
                 user: user
             });
         });
@@ -1029,6 +1037,7 @@ toDraft: function(req, res){
                             && user.files.finished == 1
                     }).length;
                     return res.view("backend/pages/applicants", {
+                        layout: 'layoutadmin',
                         users: users,
                         registered_count: registered_count,
                         finished_count: finished_count
@@ -1077,6 +1086,7 @@ toDraft: function(req, res){
 
                     }
                     return res.view("backend/pages/accounts", {
+                        layout: 'layoutadmin',
                         users: users
                     });
                 }
