@@ -10,7 +10,7 @@ module.exports.sendWelcomeMail = function(obj) {
 	  {
 	    to: obj.email, 
 	    // "woji4zs@gmail.com",
-	    subject: "第十五屆資訊種子註冊報名驗證信" 
+	    subject: "第十六屆資訊種子註冊報名驗證信" 
 	  },
 	  function(err) {console.log(err|| "mailed to : ", obj.email );}
 	)
