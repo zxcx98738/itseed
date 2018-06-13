@@ -58,6 +58,7 @@ module.exports = {
                             endDate = parameter3.value;
                     }
                     return res.view("backend/pages/systemSetting", {
+                        layout: 'layoutadmin',
                         th: th,
                         startDate: startDate,
                         endDate: endDate,

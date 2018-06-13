@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
-  <head>
-    <title>資訊種子培訓計畫</title>
+
+<head>
+    <title>資訊種子培訓計畫後台</title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta charset="utf-8">
@@ -10,152 +11,96 @@
     <meta name="KeyWords" content="培訓計畫,資訊種子,課程,itseed,講座,實習計畫,實習機會,夥伴,學習">
     <meta name="DEscription" content="培訓計畫,itseed">
     <meta property="og:image" content="/images/index/section15-1.jpg">
-    <link rel="shortcut icon" type="image/png" href="/images/layout/logo.ico"/>
-    
+    <link rel="shortcut icon" type="image/png" href="/images/layout/logo.ico" />
     <!--
         Stylesheets and Preprocessors
         ==============================
-
         You can always bring in CSS files manually with `<link>` tags, or asynchronously
         using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
         of Sails' conventional asset pipeline (boilerplate Gruntfile).
-
         By default, stylesheets from your `assets/styles` folder are included
         here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
         are supported. In production, your styles will be minified and concatenated into
         a single file.
-
         To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
         For example, here are a few things you could do:
-
             + Change the order of your CSS files
             + Import stylesheets from other directories
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-      crossorigin="anonymous">
-    <!--STYLES-->
-    <link rel="stylesheet" href="/styles/dependencies/bootstrap.css">
-    <link rel="stylesheet" href="/styles/importer.css">
-    <!--STYLES END-->
-
+    
     <!--手動添加-->
     <script src="/js/specifies/jquery-1.11.2.min.js"></script>
     <script src="/js/specifies/jquery.color.min.js"></script>
-    <!-- google-login -->
-    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-    <meta name="google-signin-client_id" content=<%= process.env.googleLoginId %> >
-    <script>
-      function onLoad() {
-        gapi.load('auth2', function () {
-          gapi.auth2.init();
-        });
-      }
-    </script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116242302-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
+    <!--STYLES_ADMIN-->
+    <link rel="stylesheet" href="/styles/dependencies/bootstrap.css">
+    <link rel="stylesheet" href="/styles/Admin/jquery.datetimepicker.css">
+    <link rel="stylesheet" href="/styles/Admin/owl.carousel.css">
+    <link rel="stylesheet" href="/styles/Admin/owl.theme.css">
+    <link rel="stylesheet" href="/styles/Admin/owl.transitions.css">
+    <link rel="stylesheet" href="/styles/Admin/summernote.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <!--STYLES_ADMIN END-->
+</head>
 
-      gtag('config', 'UA-116242302-1');
-    </script>
-    
-    <!-- Hotjar Tracking Code for http://www.itseed.tw/ -->
-    <script>
-      (function (h, o, t, j, a, r) {
-        h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
-        h._hjSettings = { hjid: 867549, hjsv: 6 };
-        a = o.getElementsByTagName('head')[0];
-        r = o.createElement('script'); r.async = 1;
-        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-        a.appendChild(r);
-      })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-    </script>
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
-      </script>
-    <![endif]-->
-  </head>
-  <body>
-    <div id="fb-root"></div>
+<body>
     <%- body %>
 
-    <!--
+
+
+        <!--
         Client-side Templates
         ========================
-
         HTML templates are important prerequisites of modern, rich client applications.
-        To work their magic, layoutworks like Backbone, Angular, Ember, and Knockout require
+        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
         that you load these templates client-side.
-
         By default, your Gruntfile is configured to automatically load and precompile
         client-side JST templates in your `assets/templates` folder, then
         include them here automatically (between TEMPLATES and TEMPLATES END).
-
         To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
         For example, here are a few things you could do:
-
             + Import templates from other directories
             + Use a different template engine (handlebars, jade, dust, etc.)
             + Internationalize your client-side templates using a server-side
               stringfile before they're served.
     -->
 
-    <!--TEMPLATES-->
-    
-    <!--TEMPLATES END-->
+        <!--TEMPLATES-->
+        
+        <!--TEMPLATES END-->
 
 
-    <!--
-
+        <!--
       Client-side Javascript
       ========================
-
       You can always bring in JS files manually with `script` tags, or asynchronously
       on the client using a solution like AMD (RequireJS).  Or, if you like, you can
       take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
-
       By default, files in your `assets/js` folder are included here
       automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
       CoffeeScript (.coffee) are supported. In production, your scripts will be minified
       and concatenated into a single file.
-
       To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
       For example, here are a few things you could do:
-
           + Change the order of your scripts
           + Import scripts from other directories
           + Use a different preprocessor, like TypeScript
-
     -->
 
-    <!--SCRIPTS-->
-    <script src="/js/dependencies/sails.io.js"></script>
-    <script src="/js/dependencies/bootstrap.js"></script>
-    <script src="/js/dependencies/fb.js"></script>
-    <script src="/js/dependencies/sweetalert2-7.21.1.js"></script>
-    <!--SCRIPTS END-->
-    <script>(function () {
-        var _fbq = window._fbq || (window._fbq = []);
-        if (!_fbq.loaded) {
-          var fbds = document.createElement('script');
-          fbds.async = true;
-          fbds.src = '//connect.facebook.net/en_US/fbds.js';
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(fbds, s);
-          _fbq.loaded = true;
-        }
-        _fbq.push(['addPixelId', '227111357648472']);
-      })();
-      window._fbq = window._fbq || [];
-      window._fbq.push(['track', 'PixelInitialized', {}]);
-    </script>
-    <noscript>
-      <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=227111357648472&amp;ev=PixelInitialized"
-      />
-    </noscript>
-  </body>
+        <!--SCRIPTS_ADMIN-->
+        <script src="/js/dependencies/sails.io.js"></script>
+        <script src="/js/dependencies/bootstrap.js"></script>
+        <script src="/js/dependencies/fb.js"></script>
+        <script src="/js/dependencies/sweetalert2-7.21.1.js"></script>
+        <script src="/js/Admin/dependencies/dataTables1.10.7.js"></script>
+        <script src="/js/Admin/dependencies/datetimepicker.js"></script>
+        <script src="/js/Admin/dependencies/jquery-ui-1.11.4.min.js"></script>
+        <script src="/js/Admin/dependencies/jquery.datetimepicker.js"></script>
+        <script src="/js/Admin/dependencies/slider.js"></script>
+        <script src="/js/Admin/dependencies/summernote-zh-TW.js"></script>
+        <script src="/js/Admin/dependencies/summernote.min.js"></script>
+        <script src="/js/Admin/dependencies/youtube.js"></script>
+        <!--SCRIPTS_ADMIN END-->
+</body>
+
 </html>

@@ -58,12 +58,24 @@ p{
 .btn-blue {
     background-color: @main-light-blue;
     border: none;
-
     &:hover {
         background-color: @main-blue;
     }
 }
-
+.btn-yellow {
+    background-color: @main-yellow;
+    border: none;
+    &:hover {
+        -webkit-filter:brightness(1.2);
+    }
+}
+.btn-purple {
+    background-color: @main-purple;
+    border: none;
+    &:hover {
+        -webkit-filter:brightness(1.2);
+    }
+}
 button:focus{
     outline:none
 }
@@ -601,7 +613,7 @@ body > footer {
             .section-new     &{ background-color: @color-new;}
             .section-overseaVisit &{ background-color: @color-oversea;}
             .section-end     &{ background-color: @color-end;}
-            .section-workshop     &{ background-color: @sub-purple;}
+            .section-workshop     &{ background-color: @main-purple;}
         }
         .circle{
             width:12px;
@@ -627,7 +639,7 @@ body > footer {
             .section-new     &{ background-color: @color-new;}
             .section-overseaVisit &{ background-color: @color-oversea;}
             .section-end     &{ background-color: @color-end;}
-            .section-workshop     &{ background-color: @sub-purple;}
+            .section-workshop     &{ background-color: @main-purple;}
         }
 
     }
@@ -665,7 +677,7 @@ body > footer {
         .section-new     &{ color: @color-new;}
         .section-overseaVisit &{ color: @color-oversea;}
         .section-end     &{ color: @color-end;}
-        .section-workshop     &{ color: @sub-purple;}
+        .section-workshop     &{ color: @main-purple;}
     }
     h2{
         position: absolute;
