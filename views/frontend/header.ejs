@@ -18,11 +18,6 @@
     document.location.href = "/logout";
   }
 </script>
-
-
-
-
-
 <header>
 <!-- 導覽列 -->
  <div class="navbar navbar-default navbar-fixed-top">
@@ -93,7 +88,7 @@
 
       lastScrollY = st;
       if (st > footer_display_pos) {
-        $('#fixed_signin').css("bottom", 16 + (st - footer_display_pos) + 'px');
+        $('#fixed_signin').css("bottom", ( 16 + st - footer_display_pos) + 'px');
       } else {
         $('#fixed_signin').css("bottom", "16px");
       }
