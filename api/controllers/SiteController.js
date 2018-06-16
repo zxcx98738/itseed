@@ -543,8 +543,6 @@ module.exports = {
             });
         })
         .catch(function(err){
-                        console.log("4")
-
             res.end(JSON.stringify(err));
         });
     },
