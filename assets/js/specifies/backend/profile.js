@@ -71,13 +71,11 @@ $(function(){
   		},
   	}
   });
-  console.log("aa");
   var pass;
   $(".pwd-btn").click(function(){
     $(".password-hide").css('display','none');
     $(".password-part").css('display','block');
     pass = $("#pwd").val();
-    console.log(pass);
   });
 
   $(".pwd-stop-btn").click(function(){

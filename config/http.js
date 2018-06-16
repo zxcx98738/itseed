@@ -74,7 +74,7 @@ module.exports.http = {
         limit:'10mb'
       }
       return require('skipper')(opts);
-    }
+    },
     // bodyParser: require('skipper')
 
   // },
@@ -89,5 +89,5 @@ module.exports.http = {
   *                                                                          *
   ***************************************************************************/
 
-  // cache: 31557600000
+  cache: 31557600000
 };

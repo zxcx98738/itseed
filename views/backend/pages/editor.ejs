@@ -107,7 +107,7 @@
                                 <% if(post.status == "new"){ %>
                                     <input type="file" name="photo">
                                 <% } else{ %>
-                                    <img src="<%= post.photo %>" class="photo-preview img-responsive">
+                                    <img alt="" src="<%= post.photo %>" class="photo-preview img-responsive">
                                     <input type="text" class="hidden" name="oldPhoto" value="<%= post.photo %>">
                                     <input type="file" name="photo" accept="image/*">
                                 <% } %>

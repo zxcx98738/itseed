@@ -190,7 +190,6 @@ module.exports = {
             async.series({
                 total: function(callback){
                     var criteria = {};
-
                     CmsService.countPost(sails.models[model.toLowerCase()], criteria)
                     .then(function(count){
                         callback(null, count);
@@ -200,7 +199,6 @@ module.exports = {
                     var criteria = {
                         status: "D"
                     };
-
                     CmsService.countPost(sails.models[model.toLowerCase()], criteria)
                     .then(function(count){
                         callback(null, count);
@@ -211,7 +209,6 @@ module.exports = {
                         status: "P",
                         createdAt: { "<=": now }
                     };
-
                     CmsService.countPost(sails.models[model.toLowerCase()], criteria)
                     .then(function(count){
                         callback(null, count);
@@ -314,7 +311,7 @@ module.exports = {
                     }
 
                     return res.view("backend/pages/cms", {
-                        layout: 'layoutadmin',
+                        layout: 'layoutAdmin',
                         articles: datas,
                         postType: req.param("model"),
                         status: status,
@@ -964,12 +961,10 @@ toDraft: function(req, res){
     },
     //個人資料
     profile: function (req, res) {
-        console.log(req.session.userid);
         User.findOne({
             id: req.session.userid
         }).exec(function(err, user) {
             if(err){ res.end(JSON.stringify(err));}
-            console.log(user);
             return res.view("backend/pages/profile", {
                 layout: 'layoutadmin',
                 user: user
