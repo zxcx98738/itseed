@@ -311,7 +311,7 @@ module.exports = {
                     }
 
                     return res.view("backend/pages/cms", {
-                        layout: 'layoutAdmin',
+                        layout: 'layoutadmin',
                         articles: datas,
                         postType: req.param("model"),
                         status: status,
