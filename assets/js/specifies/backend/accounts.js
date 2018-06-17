@@ -122,11 +122,13 @@ $(document).ready(function(){
     $('.js-authority-all-btn').click(function () {
         $(".js-search-authority  input[name='authority[]']").each(function () {
             $(this).prop("checked", true);
+            table.draw();
         });
     });
     $('.js-login-all-btn').click(function () {
         $(".js-search-login  input[name='login[]']").each(function () {
             $(this).prop("checked", true);
+            table.draw();
         });
     });
 });

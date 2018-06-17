@@ -69,6 +69,7 @@ $(function() {
     $('.js-login-all-btn').click(function () {
         $(".js-search-login  input[name='login[]']").each(function () {
             $(this).prop("checked", true);
+            table.draw();
         });
     });
 });
