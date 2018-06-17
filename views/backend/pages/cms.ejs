@@ -24,7 +24,7 @@
                 <% } %>
                 <button type="button" class="btn btn-default" id="publish">發佈</button>
                 <button type="button" class="btn btn-default" id="toDraft">還原為草稿</button>
-                <button type="button" class="btn btn-default" id="deletePost"><i class="fa fa-trash-o fa-fw"></i></button>
+                <button type="button" class="btn btn-default" id="deletePost">刪除</button>
             </div>
             <a class="btn btn-default pull-right" id="newPost" href="#">新增文章</a>
             <a class="btn btn-default pull-right" href="<%= action.view %>" target="_blank">檢視頁面</a>
@@ -118,10 +118,10 @@
 <script>
     $(function () {
         /*接收後端傳來的參數*/
-        var postType = <% - JSON.stringify(postType) %>;
-        var status = <% - JSON.stringify(status) %>;
-        var action = <% - JSON.stringify(action) %>;
-        var postAmounts = <% - JSON.stringify(postAmounts) %>;
+        var postType = <%- JSON.stringify(postType) %>;
+        var status = <%- JSON.stringify(status) %>;
+        var action = <%- JSON.stringify(action) %>;
+        var postAmounts = <%- JSON.stringify(postAmounts) %>;
 
         /*根據正在管理的頁面調整menu的UI*/
         menuUI(postType, status, postAmounts);
