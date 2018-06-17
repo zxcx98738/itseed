@@ -4342,7 +4342,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-left: 15px;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 991px) {
   .navbar-left {
     float: left !important;
   }
@@ -4409,7 +4409,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: #ddd;
 }
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: white;
+  background-color: #dedede;
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
