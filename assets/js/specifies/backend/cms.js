@@ -189,3 +189,21 @@ function deletePost(postID, url) {
         }
     }); 
 }
+
+function sendEmail(button, checkboxs) {
+    $(button).click(function () {
+        var emailList = "";
+
+        $(checkboxs).each(function () {
+            if ($(this).prop("checked") == true) {
+                emailList += $(this).parents("tr").find(".email").text();
+                emailList += ";";
+            }
+        });
+
+        if (emailList == "")
+            alert("未選取任何報名者");
+        else
+            window.open("https://mail.google.com/mail/?view=cm&fs=1&to=" + emailList);
+    });
+}

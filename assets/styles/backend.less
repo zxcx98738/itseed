@@ -11,34 +11,55 @@
   overflow-y: scroll;
 }
 
-#wrapper {
-  width: 100%;
-  padding-top: 1px;
-}
-
 //頁首
-
-#wrapper>header>nav {
-    margin-bottom: 0px;
-    background-color: #272d39;
-
-    .navbar-header {
-        left: 0;
-        padding-right: 15px;
-        width: 100%;
-
-        .login-area {
-            a.profile-pic {
-                padding: 10px;
-
-                img {
-                    width: 30px;
-                    border-radius: 15px;
-                }
-            }
+header{
+  .background-navbar{
+    background-color: @main-light-blue;
+    min-height:67px;
+    .container-fluid{
+      position: relative;
+      height:67px;
+      .navbar-header{
+        position: relative;
+        top:50%;
+        transform: translateY(-50%);
+        .navbar-brand{
+          margin:0;
+          padding:0 8px;
+          color:white;
         }
+      }
+      .navbar-collapse{
+        position: relative;
+        height:67px;
+        .navbar-nav{
+          position: relative;
+          top:50%;
+          transform: translateY(-50%);
+          li{
+            a{
+              color:white;
+              &:hover{
+                color:@main-blue
+              }
+            }
+          }
+        }
+        @media screen and (max-width:990px){
+          height: auto;
+          .navbar-nav{
+            position: static;
+            transform: none;
+            li{
+              padding:0 8px;
+            }
+          }
+        }
+      }
     }
+  }
 }
+
 
 //側邊欄
 

@@ -1,34 +1,55 @@
 <header>
-<!-- 導覽列 -->
-	<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
-        <div class="navbar-header">
-            
-            <ul class="main-nav nav navbar-nav">
-                <li>
-                    <a class="navbar-brand" href="/cms">資訊種子招生網站 後台管理系統 v1.0</a>
-                </li>
-            <% if(req.session.authorized.systemSetting) { %>
-                <li>
-                    <a href="/systemSetting">系統設定</a>
-                </li>
-            <% } %>
-            <% if(req.session.authorized.cms) { %>
-                <li>
-                    <a href="/cms">文章管理</a>
-                </li>
-            <% } %>
-                <li>
-                    <a href="/cms/accounts">帳戶管理</a>
-                </li>
-                <li>
-                    <a href="/cms/applicants">報名者資料</a>
-                </li>
-            </ul>
-            <ul class="login-area nav navbar-nav navbar-right">
-                <li><a href="/">回到首頁</a></li>
-                <li><a href="/backend/profile">我的帳戶</a></li>
-                <li><a href="/logout">登出</a></li>
-            </ul>
+    <!-- 導覽列 -->
+    <nav class="background-navbar navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h3>
+                    <a class="navbar-brand" href="/cms">後台管理系統</a>
+                </h3>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                    <% if(req.session.authorized.systemSetting) { %>
+                        <li>
+                            <a href="/systemSetting">系統設定</a>
+                        </li>
+                    <% } %>
+                    <% if(req.session.authorized.cms) { %>
+                        <li>
+                            <a href="/cms">文章管理</a>
+                        </li>
+                    <% } %>
+                    <li>
+                        <a href="/cms/accounts">帳戶管理</a>
+                    </li>
+                    <li>
+                        <a href="/cms/applicants">報名者資料</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">回到前端頁面</a>
+                    </li>
+                    <li>
+                        <a href="/backend/profile">我的後台帳戶</a>
+                    </li>
+                    <li>
+                        <a href="/logout">登出</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
+        <!-- /.container-fluid -->
     </nav>
 </header>
