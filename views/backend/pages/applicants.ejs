@@ -1,4 +1,4 @@
-<div id="wrapper">
+<section class="section-applicants">
     <!--HEADER-->
     <% include ../header %>
     <!--END HEADER-->
@@ -6,27 +6,67 @@
         <div id="applicantsTable">
             <header>
                 <h3>報名者資料</h3>
-                <button type="button" class="btn btn-default"><input type="checkbox" id="selectAll"></button>
-                <button type="button" class="btn btn-default" id="mailTo">寄信</button>
                 <button class="btn btn-info">已註冊：<%= registered_count %> 人</button>
                 <button class="btn btn-info">已報名：<%= finished_count %> 人</button>
                 <button class="btn btn-info">未報名：<%= registered_count -  finished_count %> 人</button>
             </header>
+            <div class="row customer-search">
+                <div class="col-md-3 js-search-date">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>
+                                註冊日期查詢
+                                <button class="js-date-clear-btn btn btn-default">清除</button>
+                            </h4>
+                        </div>
+                        <div class="panel-body">
+                            從
+                            <input type="date" class="js-from">
+                            <br> 到
+                            <input type="date" class="js-to">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 js-search-login">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>
+                                登入方式
+                                <button class="js-login-all-btn btn btn-default">全選</button>
+                            </h4>
+                        </div>
+                        <div class="panel-body">
+                            <label>
+                                <input name="login[]" value="google" type="checkbox" checked> google登入
+                            </label>
+                            </br>
+                            <label>
+                                <input name="login[]" value="normal" type="checkbox" checked> 一般登入
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="button" class="btn btn-default" id="mailTo">寄信</button>
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="col-md-1"></th>
+                        <th class="col-md-1">
+                            <button type="button" class="btn btn-default"><input type="checkbox" id="selectAll"></button>
+                        </th>
+                        <th class="col-md-2">註冊日期</th>
                         <th class="col-md-1">照  片</th>
                         <th class="col-md-1">姓  名</th>
                         <th class="col-md-1">學  校</th>
                         <th class="col-md-1">系  級</th>
                         <th class="col-md-2">信  箱</th>
-                        <th class="col-md-1">是否為google登入</th>
+                        <th class="col-md-1">登入方式</th>
                         <th class="col-md-1">電  話</th>
                         <th class="col-md-1">推薦人</th>
                         <th class="col-md-1">報名表</th>
                         <th class="col-md-1">自  傳</th>
-                        <th class="col-md-1">DISC</th>
+                        <th class="col-md-1">DISC(虎,孔,無,鷹)</th>
                         <th class="col-md-1">消息來源</th>
                         <th class="col-md-1">操作</th>
                     </tr>
@@ -38,6 +78,9 @@
                             <input type="checkbox">
                         </td>
                         <td>
+                            <%=users[i].createdAt%>
+                        </td>
+                        <td>
                             <img alt="" src="<%= users[i].photo %>" class="img-responsive">
                         </td>
                         <td>
@@ -46,7 +89,6 @@
                             <% } else { %>
                                 <%= users[i].name %>
                             <% } %>
-                            
                         </td>
                         <td>
                             <% if (users[i].school == null) { %>
@@ -67,9 +109,9 @@
                         </td>
                         <td>
                             <% if (users[i].gIdToken == null) { %>
-                                否
+                                normal
                             <% } else { %>
-                                是
+                                google
                             <% } %>
                         </td>
                         <td>
@@ -124,7 +166,7 @@
                         <% } else { %>
                             <td style="background-color: #FFDDAA;">
                                 <%= users[i].disc.animal %><br>
-                                <p>老虎(<%= users[i].disc.a1 %>),孔雀(<%= users[i].disc.a2 %>),無尾熊(<%= users[i].disc.a3 %>),貓頭鷹(<%= users[i].disc.a4 %>)  </p>
+                                <p><%= users[i].disc.a1 %>,<%= users[i].disc.a2 %>,<%= users[i].disc.a3 %>,<%= users[i].disc.a4 %></p>
                             </td>
                         <% } %> 
                         <% if (users[i].survey !=undefined ) { %>
@@ -146,5 +188,5 @@
             </table>
         </div>
     </div>
-</div>
+</section>
 <script src="/js/specifies/backend/applicants.js"></script>

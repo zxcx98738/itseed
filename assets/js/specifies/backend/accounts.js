@@ -39,8 +39,9 @@ function toReverseObject(arr) {
 
 
 /* Custom filtering function which will search data in column four between two values */
-let index_name_arr = "selection,photo,authority,name,school,major_and_degree,email,login,register_date,operation".split(',');
+let index_name_arr = "selection,date,photo,,name,school,major_and_degree,email,login,register_date,operation".split(',');
 let index_name_obj = toReverseObject(index_name_arr);
+
 // 註冊日期查詢
 $.fn.dataTable.ext.search.push(
     function (settings, data, dataIndex) {
@@ -88,7 +89,7 @@ $.fn.dataTable.ext.search.push(
     }
 );
 
-// 第三方登入
+// 登入方式
 $.fn.dataTable.ext.search.push(
     function (settings, data, dataIndex) {
         $checked_box = $(`input[name="login[]"]:checked`);
