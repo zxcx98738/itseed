@@ -1,91 +1,157 @@
-<div id="wrapper">
+<section class="section-acctouns">
     <!--HEADER-->
     <% include ../header %>
-        <!--END HEADER-->
+    <!--END HEADER-->
 
-        <div class="scrollY" id="page-wrapper">
-            <div id="applicantsTable">
-                <header>
-                    <h3>使用者資料</h3>
-                </header>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th class="col-md-1"></th>
-                            <th class="col-md-1">照 片</th>
-                            <th class="col-md-1">會員權限</th>
-                            <th class="col-md-1">姓 名</th>
-                            <th class="col-md-1">學 校</th>
-                            <th class="col-md-1">系 級</th>
-                            <th class="col-md-2">信 箱</th>
-                            <th class="col-md-1">是否為google登入</th>
-                            <th class="col-md-2">建立時間</th>
-                            <th class="col-md-1">操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% for (var i = 0; i < users.length; i++) { %>
-                            <tr>
-                                <td class="selector">
-                                    <input type="checkbox">
-                                </td>
-                                <td>
-                                    <img src="<%= users[i].photo %>" class="img-responsive">
-                                </td>
-                                <td class="user-type">
-                                    <% if (users[i].type == null) { %>
-                                        <span>.</span>
-                                    <% } else { %>
-                                        <%= users[i].type %>
-                                    <% } %>
-
-                                </td>
-                                <td>
-                                    <% if (users[i].name == null) { %>
-                                        <span>.</span>
-                                    <% } else { %>
-                                        <%= users[i].name %>
-                                    <% } %>
-
-                                </td>
-                                <td>
-                                    <% if (users[i].school == null) { %>
-                                        <span>.</span>
-                                    <% } else { %>
-                                        <%= users[i].school %>
-                                    <% } %>
-                                </td>
-                                <td>
-                                    <% if (users[i].grade == null) { %>
-                                        <span>.</span>
-                                    <% } else { %>
-                                        <%= users[i].grade %>   
-                                    <% } %>
-                                </td>
-                                <td>
-                                    <a class="email" href="https://mail.google.com/mail/?view=cm&fs=1&to=<%= users[i].email %>" target="_blank">
-                                        <%= users[i].email %>
-                                    </a>
-                                </td>
-                                <td>
-                                    <% if (users[i].gIdToken == null) { %>
-                                        否
-                                    <% } else { %>
-                                        是
-                                    <% } %>
-                                </td>
-                                <td><%=users[i].createdAt%></td>
-                                <td>
-                                    <button data-name="<%=users[i].name%>" data-email="<%=users[i].email%>" class="btn-danger reset-pass-btn">重設密碼</button>
-                                    <button data-name="<%=users[i].name%>" data-email="<%=users[i].email%>" data-type="A" class="btn-warning set-user-type-btn">設為管理員</button>
-                                    <button data-name="<%=users[i].name%>" data-email="<%=users[i].email%>" data-type="U" class="btn-warning set-user-type-btn">設為報名會員</button>
-                                    <button data-name="<%=users[i].name%>" data-email="<%=users[i].email%>" data-type="T" class="btn-warning set-user-type-btn">設為測試會員</button>
-                                </td>
-                            </tr>
-                            <% } %>
-                    </tbody>
-                </table>
+    <div class="scrollY" id="page-wrapper">
+        <div id="applicantsTable">
+            <header>
+                <h3>使用者資料</h3>
+            </header>
+            <div class="row customer-search">
+                <div class="col-md-3 js-search-date">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>
+                                註冊日期查詢
+                                <button class="js-date-clear-btn btn btn-default">清除</button>
+                            </h4> 
+                        </div>
+                        <div class="panel-body">
+                            從　<input type="date" class="js-from"><br>
+                            到　<input type="date" class="js-to">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 js-search-authority">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>
+                                會員權限
+                                <button class="js-authority-all-btn btn btn-default">全選</button>
+                            </h4> 
+                        </div>
+                        <div class="panel-body">
+                            <label>
+                                <input name="authority[]" value="A" type="checkbox" checked >
+                                管理員
+                            </label></br>
+                            <label>
+                                <input name="authority[]" value="T" type="checkbox" checked>
+                                測試人員
+                            </label></br>
+                            <label>
+                                <input name="authority[]" value="U" type="checkbox" checked>
+                                一般會員
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 js-search-login">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>
+                                 登入方式
+                                <button class="js-login-all-btn btn btn-default">全選</button>
+                            </h4>
+                        </div>
+                        <div class="panel-body">
+                            <label>
+                                <input name="login[]" value="google" type="checkbox" checked> google登入
+                            </label>
+                            </br>
+                            <label>
+                                <input name="login[]" value="normal" type="checkbox" checked> 一般登入
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+            <button type="button" class="btn btn-default" id="mailTo">寄信</button>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-md-1">
+                            <label class="btn btn-default">
+                                <input type="checkbox" id="selectAll">
+                            </label>
+                        </th>
+                        <th class="col-md-1">照 片</th>
+                        <th class="col-md-1">會員權限</th>
+                        <th class="col-md-1">姓 名</th>
+                        <th class="col-md-1">學 校</th>
+                        <th class="col-md-1">系 級</th>
+                        <th class="col-md-2">信 箱</th>
+                        <th class="col-md-1">登入方式</th>
+                        <th class="col-md-2">建立時間</th>
+                        <th class="col-md-1">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (var i = 0; i < users.length; i++) { %>
+                        <tr>
+                            <td class="selector">
+                                <input type="checkbox">
+                            </td>
+                            <td>
+                                <img src="<%= users[i].photo %>" class="img-responsive">
+                            </td>
+                            <td class="user-type">
+                                <% if (users[i].type == null) { %>
+                                    <span>.</span>
+                                <% } else { %>
+                                    <%= users[i].type %>
+                                <% } %>
+
+                            </td>
+                            <td>
+                                <% if (users[i].name == null) { %>
+                                    <span>.</span>
+                                <% } else { %>
+                                    <%= users[i].name %>
+                                <% } %>
+
+                            </td>
+                            <td>
+                                <% if (users[i].school == null) { %>
+                                    <span>.</span>
+                                <% } else { %>
+                                    <%= users[i].school %>
+                                <% } %>
+                            </td>
+                            <td>
+                                <% if (users[i].grade == null) { %>
+                                    <span>.</span>
+                                <% } else { %>
+                                    <%= users[i].grade %>   
+                                <% } %>
+                            </td>
+                            <td>
+                                <a class="email" href="https://mail.google.com/mail/?view=cm&fs=1&to=<%= users[i].email %>" target="_blank">
+                                    <%= users[i].email %>
+                                </a>
+                            </td>
+                            <td>
+                                <% if (users[i].gIdToken == null) { %>
+                                    normal
+                                <% } else { %>
+                                    google
+                                <% } %>
+                            </td>
+                            <td><%=users[i].createdAt%></td>
+                            <td>
+                                <button data-name="<%=users[i].name%>" data-email="<%=users[i].email%>" class="btn-danger reset-pass-btn">重設密碼</button>
+                                <button data-name="<%=users[i].name%>" data-email="<%=users[i].email%>" data-type="A" class="btn-warning set-user-type-btn">設為管理員</button>
+                                <button data-name="<%=users[i].name%>" data-email="<%=users[i].email%>" data-type="U" class="btn-warning set-user-type-btn">設為報名會員</button>
+                                <button data-name="<%=users[i].name%>" data-email="<%=users[i].email%>" data-type="T" class="btn-warning set-user-type-btn">設為測試會員</button>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
         </div>
-</div>
+    </div>
+</section>
+<script src="/js/specifies/backend/cms.js"></script>
 <script src="/js/specifies/backend/accounts.js"></script>

@@ -309,7 +309,6 @@ module.exports = {
                     for(var i = 0; i < datas.length; i++){
                         datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
                     }
-
                     return res.view("backend/pages/cms", {
                         layout: 'layoutadmin',
                         articles: datas,
