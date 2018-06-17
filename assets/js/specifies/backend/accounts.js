@@ -39,7 +39,7 @@ function toReverseObject(arr) {
 
 
 /* Custom filtering function which will search data in column four between two values */
-let index_name_arr = "selection,date,photo,,name,school,major_and_degree,email,login,register_date,operation".split(',');
+let index_name_arr = "selection,photo,authority,name,school,major_and_degree,email,login,register_date,operation".split(',');
 let index_name_obj = toReverseObject(index_name_arr);
 
 // 註冊日期查詢
@@ -58,29 +58,15 @@ $.fn.dataTable.ext.search.push(
         return false;
     }
 );
-$.fn.dataTable.ext.search.push(
-    function (settings, data, dataIndex) {
-        let from = $('.js-search-authority').val();
-        let to = $('.js-search-date input.js-to').val();
-        let index = index_name_obj['register_date'];
-        let date = data[index]; // use data for the date column
-        if ((from == "" && to == "") ||
-            (from == "" && date <= to) ||
-            (from <= date && to == "") ||
-            (from <= date && date <= to)) {
-            return true;
-        }
-        return false;
-    }
-);
-
 // 會員身份查詢
 $.fn.dataTable.ext.search.push(
     function (settings, data, dataIndex) {
         $checked_box = $(`input[name="authority[]"]:checked`);
         let checked_arr = $.map($checked_box,(ele => $(ele).val()));
         let index = index_name_obj['authority'];
-        let authority = data[index]; // use data for the date column
+        let authority = data[index]; // use data for the authority column
+        console.log(checked_arr, authority);
+        console.log(checked_arr.includes(authority));
         if (checked_arr == [] ||
             checked_arr.includes(authority)) {
             return true;
@@ -95,7 +81,9 @@ $.fn.dataTable.ext.search.push(
         $checked_box = $(`input[name="login[]"]:checked`);
         let checked_arr = $.map($checked_box, (ele => $(ele).val()));
         let index = index_name_obj['login'];
-        let login = data[index]; // use data for the date column
+        let login = data[index]; // use data for the login column
+        console.log(checked_arr, login);
+        console.log(checked_arr.includes(login));
         if (checked_arr == [] ||
             checked_arr.includes(login)) {
             return true;
