@@ -1,6 +1,34 @@
 function resetUserPass() {
     var user_name = $(this).data('name');
     var user_email = $(this).data('email');
+    swal({
+        title: `你確定要重設 ${user_name} 的密碼`,
+        text: `信箱: ${user_email}`,
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.value) {
+            $.ajax({
+                type: "POST",
+                url: '/cms/resetPass',
+                data: { email: user_email },
+                success: function (result) {
+                    swal(
+                        `成功更新 ${user_name} 的密碼!`,
+                        '密碼重設為 00000000',
+                        'success'
+                    )
+                }
+            });
+        }
+    })
+}
+function resetUserType() {
+    var user_name = $(this).data('name');
+    var user_email = $(this).data('email');
     var set_type = $(this).data('type');
     var $btn = $(this);
     swal({
@@ -25,6 +53,41 @@ function resetUserPass() {
                     )
                     $btn.parent().parent().find('.user-type').text(set_type);
                 },
+            })
+        }
+    })
+}
+function deleteUser() {
+    var user_name = $(this).data('name');
+    var user_email = $(this).data('email');
+    var $btn = $(this);
+    swal({
+        title: `你確定要把 ${user_name} 會員刪除嗎`,
+        text: `信箱: ${user_email}`,
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '確定刪除'
+    }).then((result) => {
+        if (result.value) {
+            $.ajax({
+                type: "POST",
+                url: '/cms/deleteUser',
+                data: { email: user_email },
+                success: function (result) {
+                    swal(
+                        `成功刪除 ${user_name} 的會員!`,
+                        'success'
+                    )
+                    window.table
+                        .row($btn.parents('tr'))
+                        .remove()
+                        .draw();
+                },
+                error: function (err){
+                    console.log(err);
+                }
             })
         }
     })
@@ -65,8 +128,6 @@ $.fn.dataTable.ext.search.push(
         let checked_arr = $.map($checked_box,(ele => $(ele).val()));
         let index = index_name_obj['authority'];
         let authority = data[index]; // use data for the authority column
-        console.log(checked_arr, authority);
-        console.log(checked_arr.includes(authority));
         if (checked_arr == [] ||
             checked_arr.includes(authority)) {
             return true;
@@ -82,8 +143,6 @@ $.fn.dataTable.ext.search.push(
         let checked_arr = $.map($checked_box, (ele => $(ele).val()));
         let index = index_name_obj['login'];
         let login = data[index]; // use data for the login column
-        console.log(checked_arr, login);
-        console.log(checked_arr.includes(login));
         if (checked_arr == [] ||
             checked_arr.includes(login)) {
             return true;
@@ -93,7 +152,7 @@ $.fn.dataTable.ext.search.push(
 );
 
 $(document).ready(function(){
-    var table = $('#applicantsTable table').DataTable({
+    window.table = $('#applicantsTable table').DataTable({
         "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "所有"]],
         "order": [],
         "columnDefs": [
@@ -106,7 +165,9 @@ $(document).ready(function(){
     });
     setSelectAll("#selectAll", ".selector>input");
     sendEmail("#mailTo", ".selector>input");
-    $('.set-user-type-btn').click(resetUserPass);
+    $('.reset-pass-btn').click(resetUserPass);
+    $('.set-user-type-btn').click(resetUserType);
+    $('.delete-btn').click(deleteUser);
     $('.js-search-date input.js-from , .js-search-date input.js-to').change(function () {
         table.draw();
     });
