@@ -65,30 +65,38 @@ function deleteUser() {
         title: `你確定要把 ${user_name} 會員刪除嗎`,
         text: `信箱: ${user_email}`,
         type: 'warning',
+        input: 'text',
+        inputAttributes: {
+            autocapitalize: 'off'
+        },
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: '確定刪除'
-    }).then((result) => {
-        if (result.value) {
-            $.ajax({
-                type: "POST",
-                url: '/cms/deleteUser',
-                data: { email: user_email },
-                success: function (result) {
-                    swal(
-                        `成功刪除 ${user_name} 的會員!`,
-                        'success'
-                    )
-                    window.table
-                        .row($btn.parents('tr'))
-                        .remove()
-                        .draw();
-                },
-                error: function (err){
-                    console.log(err);
-                }
-            })
+        confirmButtonText: '確定刪除',
+        inputValidator: (value) => {
+            return value != 'itseed15' && '驗證碼錯誤'
+        },
+        preConfirm: (value) => {
+            if (value) {
+                $.ajax({
+                    type: "POST",
+                    url: '/cms/deleteUser',
+                    data: { email: user_email },
+                    success: function (result) {
+                        swal(
+                            `成功刪除 ${user_name} 的會員!`,
+                            'success'
+                        )
+                        window.table
+                            .row($btn.parents('tr'))
+                            .remove()
+                            .draw();
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                })
+            }
         }
     })
 }
