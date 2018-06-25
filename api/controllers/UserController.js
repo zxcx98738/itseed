@@ -315,7 +315,6 @@ function registerAccount(res,newuser,callback){
             });
 			const payload = ticket.getPayload();
 			const gIdToken = md5(payload.sub);
-			console.log(payload);
             User.findOne({
 				gIdToken: gIdToken
             }).exec(function (err, user) {

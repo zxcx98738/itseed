@@ -1025,8 +1025,27 @@ toDraft: function(req, res){
 
                     }
                     registered_count = users.length;
-                    finished_count = users.filter(function(user){
+                    finished_disc_part_count = users.filter(function (user) {
+                        return user.finished == 1
+                            && user.disc.finished == 1
+                            && user.files.finished != 1
+                    }).length;
+                    finished_regi_part_count = users.filter(function (user) {
+                        return user.finished == 1
+                            && user.disc.finished == 1
+                            && user.files.finished != 1
+                            && user.files.registration != null
+                            && user.files.autobiographyUT == null
+                    }).length;
+                    finished_resu_part_count = users.filter(function(user){
                         return user.finished == 1 
+                            && user.disc.finished == 1
+                            && user.files.finished != 1
+                            && user.files.registration == null
+                            && user.files.autobiographyUT != null
+                    }).length;
+                    finished_count = users.filter(function (user) {
+                        return user.finished == 1
                             && user.disc.finished == 1
                             && user.files.finished == 1
                     }).length;
@@ -1034,6 +1053,9 @@ toDraft: function(req, res){
                         layout: 'layoutadmin',
                         users: users,
                         registered_count: registered_count,
+                        finished_disc_part_count: finished_disc_part_count,
+                        finished_regi_part_count: finished_regi_part_count,
+                        finished_resu_part_count: finished_resu_part_count,
                         finished_count: finished_count
                     });
                 }
@@ -1113,5 +1135,21 @@ toDraft: function(req, res){
             }
             res.status(200).send('success');
         });
-    }
+    },
+    deleteUser: function (req, res) {
+        User.findOne({ email: req.body.email })
+        .then(function(user){
+            const d_user = User.destroy({ id: user.id });
+            const d_user_disc = UserDISC.destroy({ id: user.disc });
+            const d_user_files = UserFiles.destroy({ id: user.files });
+            return Promise.all([d_user, d_user_disc, d_user_files])
+        })
+        .then(function(){
+            return res.status(200).end('success');
+        })
+        .catch(function (err) {
+            sails.log(err);
+            res.status(500).end(JSON.stringify(err));
+        });
+    },
 };

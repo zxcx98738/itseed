@@ -435,7 +435,10 @@ module.exports.routes = {
     controller: 'Cms',
     action: 'setUserType'
   },
-
+  'post /cms/deleteUser': {
+    controller: 'Cms',
+    action: 'deleteUser'
+  },
   /*系統設定*/
   '/systemSetting': {
     controller: 'System',
