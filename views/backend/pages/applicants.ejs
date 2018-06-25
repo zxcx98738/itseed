@@ -3,204 +3,202 @@
     <% include ../header %>
     <!--END HEADER-->
     <div class="scrollY" id="page-wrapper">
-        <div id="applicantsTable">
-            <header>
-                <div class="row"><h3>報名者資料</h3></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <button class="btn btn-info">已註冊：<%= registered_count %> 人</button>
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn btn-info">未報名：<%= registered_count -  finished_count %> 人</button>
-                            <button class="btn btn-info">已完成disc：<%= finished_disc_part_count %> 人</button>
-                            <button class="btn btn-info">單繳交報名表：<%= finished_regi_part_count %> 人</button>
-                            <button class="btn btn-info">單繳交自傳： <%= finished_resu_part_count %> 人</button>
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn btn-info">已報名：<%= finished_count %> 人</button>
-                        </div>
+        <header>
+            <div class="row"><h3>報名者資料</h3></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <button class="btn btn-info">已註冊：<%= registered_count %> 人</button>
                     </div>
-                </div>
-            </header>
-            <div class="row customer-search">
-                <div class="col-md-3 js-search-date">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4>
-                                註冊日期查詢
-                                <button class="js-date-clear-btn btn btn-default">清除</button>
-                            </h4>
-                        </div>
-                        <div class="panel-body">
-                            從
-                            <input type="date" class="js-from">
-                            <br> 到
-                            <input type="date" class="js-to">
-                        </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-info">未報名：<%= registered_count -  finished_count %> 人</button>
+                        <button class="btn btn-info">已完成disc：<%= finished_disc_part_count %> 人</button>
+                        <button class="btn btn-info">單繳交報名表：<%= finished_regi_part_count %> 人</button>
+                        <button class="btn btn-info">單繳交自傳： <%= finished_resu_part_count %> 人</button>
                     </div>
-                </div>
-                <div class="col-md-3 js-search-login">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4>
-                                登入方式
-                                <button class="js-login-all-btn btn btn-default">全選</button>
-                            </h4>
-                        </div>
-                        <div class="panel-body">
-                            <label>
-                                <input name="login[]" value="google" type="checkbox" checked> google登入
-                            </label>
-                            </br>
-                            <label>
-                                <input name="login[]" value="normal" type="checkbox" checked> 一般登入
-                            </label>
-                        </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-info">已報名：<%= finished_count %> 人</button>
                     </div>
                 </div>
             </div>
-            
-            <button type="button" class="btn btn-default" id="mailTo">寄信</button>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th class="col-md-1">
-                            <button type="button" class="btn btn-default"><input type="checkbox" id="selectAll"></button>
-                        </th>
-                        <th class="col-md-2">註冊日期</th>
-                        <th class="col-md-1">照  片</th>
-                        <th class="col-md-1">姓  名</th>
-                        <th class="col-md-1">學  校</th>
-                        <th class="col-md-1">系  級</th>
-                        <th class="col-md-2">信  箱</th>
-                        <th class="col-md-1">登入方式</th>
-                        <th class="col-md-1">電  話</th>
-                        <th class="col-md-1">推薦人</th>
-                        <th class="col-md-1">報名表</th>
-                        <th class="col-md-1">自  傳</th>
-                        <th class="col-md-1">DISC(虎,孔,無,鷹)</th>
-                        <th class="col-md-1">消息來源</th>
-                        <th class="col-md-1">操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <% for (var i = 0; i < users.length; i++) { %>
-                    <tr>
-                        <td class="selector">
-                            <input type="checkbox">
+        </header>
+        <div class="row customer-search">
+            <div class="col-md-3 js-search-date">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>
+                            註冊日期查詢
+                            <button class="js-date-clear-btn btn btn-default">清除</button>
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        從
+                        <input type="date" class="js-from">
+                        <br> 到
+                        <input type="date" class="js-to">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 js-search-login">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>
+                            登入方式
+                            <button class="js-login-all-btn btn btn-default">全選</button>
+                        </h4>
+                    </div>
+                    <div class="panel-body">
+                        <label>
+                            <input name="login[]" value="google" type="checkbox" checked> google登入
+                        </label>
+                        </br>
+                        <label>
+                            <input name="login[]" value="normal" type="checkbox" checked> 一般登入
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button type="button" class="btn btn-default" id="mailTo">寄信</button>
+        <table id="data-table" class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="col-md-1">
+                        <button type="button" class="btn btn-default"><input type="checkbox" id="selectAll"></button>
+                    </th>
+                    <th class="col-md-2">註冊日期</th>
+                    <th class="col-md-1">照  片</th>
+                    <th class="col-md-1">姓  名</th>
+                    <th class="col-md-1">學  校</th>
+                    <th class="col-md-1">系  級</th>
+                    <th class="col-md-2">信  箱</th>
+                    <th class="col-md-1">登入方式</th>
+                    <th class="col-md-1">電  話</th>
+                    <th class="col-md-1">推薦人</th>
+                    <th class="col-md-1">報名表</th>
+                    <th class="col-md-1">自  傳</th>
+                    <th class="col-md-1">DISC(虎,孔,無,鷹)</th>
+                    <th class="col-md-1">消息來源</th>
+                    <th class="col-md-1">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for (var i = 0; i < users.length; i++) { %>
+                <tr>
+                    <td class="selector">
+                        <input type="checkbox">
+                    </td>
+                    <td>
+                        <%=users[i].createdAt%>
+                    </td>
+                    <td>
+                        <img alt="" src="<%= users[i].photo %>" class="img-responsive">
+                    </td>
+                    <td>
+                        <% if (users[i].name == null) { %>
+                            <span>.</span>
+                        <% } else { %>
+                            <%= users[i].name %>
+                        <% } %>
+                    </td>
+                    <td>
+                        <% if (users[i].school == null) { %>
+                            <span>.</span>
+                        <% } else { %>
+                            <%= users[i].school %>
+                        <% } %>
+                    </td>
+                    <td>
+                        <% if (users[i].grade == null) { %>
+                            <span>.</span>
+                        <% } else { %>
+                            <%= users[i].grade %>
+                        <% } %>
+                    </td>
+                    <td>
+                        <a class="email" href="https://mail.google.com/mail/?view=cm&fs=1&to=<%= users[i].email %>" target="_blank"><%= users[i].email %></a>
+                    </td>
+                    <td>
+                        <% if (users[i].gIdToken == null) { %>
+                            normal
+                        <% } else { %>
+                            google
+                        <% } %>
+                    </td>
+                    <td>
+                        <% if (users[i].phone == null) { %>
+                            <span>.</span>
+                        <% } else { %>
+                            <%= users[i].phone %>
+                        <% } %>
+                    </td>
+                    <td>
+                        <% if (users[i].reference == null) { %>
+                            <span>無</span>
+                        <% } else { %>
+                            <%= users[i].reference%>
+                        <% } %>
+                    </td>
+                    <% if (users[i].files.confirm == 1) { %>
+                        <td style="background-color: #FFDDAA;">
+                            <a href="<%= users[i].files.registration %>" target="_blank">
+                                <%= users[i].files.registrationUT %>
+                            </a>                                
                         </td>
+                        <td style="background-color: #FFDDAA;">
+                            <a href="<%= users[i].files.autobiography %>" target="_blank">
+                                <%= users[i].files.autobiographyUT %>
+                            </a>                               
+                        </td>
+                    <% } else {%>
                         <td>
-                            <%=users[i].createdAt%>
-                        </td>
-                        <td>
-                            <img alt="" src="<%= users[i].photo %>" class="img-responsive">
-                        </td>
-                        <td>
-                            <% if (users[i].name == null) { %>
-                                <span>.</span>
-                            <% } else { %>
-                                <%= users[i].name %>
-                            <% } %>
-                        </td>
-                        <td>
-                            <% if (users[i].school == null) { %>
-                                <span>.</span>
-                            <% } else { %>
-                                <%= users[i].school %>
-                            <% } %>
-                        </td>
-                        <td>
-                            <% if (users[i].grade == null) { %>
-                                <span>.</span>
-                            <% } else { %>
-                                <%= users[i].grade %>
-                            <% } %>
-                        </td>
-                        <td>
-                            <a class="email" href="https://mail.google.com/mail/?view=cm&fs=1&to=<%= users[i].email %>" target="_blank"><%= users[i].email %></a>
-                        </td>
-                        <td>
-                            <% if (users[i].gIdToken == null) { %>
-                                normal
-                            <% } else { %>
-                                google
-                            <% } %>
-                        </td>
-                        <td>
-                            <% if (users[i].phone == null) { %>
-                                <span>.</span>
-                            <% } else { %>
-                                <%= users[i].phone %>
-                            <% } %>
-                        </td>
-                        <td>
-                            <% if (users[i].reference == null) { %>
-                                <span>無</span>
-                            <% } else { %>
-                                <%= users[i].reference%>
-                            <% } %>
-                        </td>
-                        <% if (users[i].files.confirm == 1) { %>
-                            <td style="background-color: #FFDDAA;">
-                                <a href="<%= users[i].files.registration %>" target="_blank">
-                                    <%= users[i].files.registrationUT %>
-                                </a>                                
-                            </td>
-                            <td style="background-color: #FFDDAA;">
-                                <a href="<%= users[i].files.autobiography %>" target="_blank">
-                                    <%= users[i].files.autobiographyUT %>
-                                </a>                               
-                            </td>
-                        <% } else {%>
-                            <td>
-                                <% if (users[i].files.registration == null) { %>
-                                    <b class="red">未上傳</b>
-                                <% } else { %>
-                                    <a href="<%= users[i].files.registration %>" target="_blank">
-                                        <%= users[i].files.registrationUT %>
-                                    </a>
-                                <% } %>
-                            </td>
-                            <td>
-                            <% if (users[i].files.autobiography == null) { %>
+                            <% if (users[i].files.registration == null) { %>
                                 <b class="red">未上傳</b>
                             <% } else { %>
-                                <a href="<%= users[i].files.autobiography %>" target="_blank">
-                                    <%= users[i].files.autobiographyUT %>
+                                <a href="<%= users[i].files.registration %>" target="_blank">
+                                    <%= users[i].files.registrationUT %>
                                 </a>
-                            <% } %> 
-                            </td>
-                        <% }%>
-                        <% if (users[i].disc !=undefined && users[i].disc.animal == null) { %>
-                            <td>
-                                <span>未填寫</span>
-                            </td>
-                        <% } else { %>
-                            <td style="background-color: #FFDDAA;">
-                                <%= users[i].disc.animal %><br>
-                                <p><%= users[i].disc.a1 %>,<%= users[i].disc.a2 %>,<%= users[i].disc.a3 %>,<%= users[i].disc.a4 %></p>
-                            </td>
-                        <% } %> 
-                        <% if (users[i].survey !=undefined ) { %>
-                            <td>
-                                <span><%= users[i].survey %></span>
-                            </td>
-                        <% } else { %>
-                            <td>
-                                <span>無提供來源</span>
-                            </td>
-                        <% } %> 
+                            <% } %>
                         </td>
                         <td>
-                            <button data-name="<%=users[i].name%>" data-email="<%=users[i].email%>" class="btn-danger reset-pass-btn">重設密碼</button>
-                            <button data-name="<%=users[i].name%>" data-email="<%=users[i].email%>" data-type="T" class="btn-warning set-user-type-btn">設為測試會員</button>
+                        <% if (users[i].files.autobiography == null) { %>
+                            <b class="red">未上傳</b>
+                        <% } else { %>
+                            <a href="<%= users[i].files.autobiography %>" target="_blank">
+                                <%= users[i].files.autobiographyUT %>
+                            </a>
+                        <% } %> 
                         </td>
-                    </tr>
-                <% } %>
-                </tbody>
-            </table>
-        </div>
+                    <% }%>
+                    <% if (users[i].disc !=undefined && users[i].disc.animal == null) { %>
+                        <td>
+                            <span>未填寫</span>
+                        </td>
+                    <% } else { %>
+                        <td style="background-color: #FFDDAA;">
+                            <%= users[i].disc.animal %><br>
+                            <p><%= users[i].disc.a1 %>,<%= users[i].disc.a2 %>,<%= users[i].disc.a3 %>,<%= users[i].disc.a4 %></p>
+                        </td>
+                    <% } %> 
+                    <% if (users[i].survey !=undefined ) { %>
+                        <td>
+                            <span><%= users[i].survey %></span>
+                        </td>
+                    <% } else { %>
+                        <td>
+                            <span>無提供來源</span>
+                        </td>
+                    <% } %> 
+                    </td>
+                    <td>
+                        <button data-name="<%=users[i].name%>" data-email="<%=users[i].email%>" class="btn-danger reset-pass-btn">重設密碼</button>
+                        <button data-name="<%=users[i].name%>" data-email="<%=users[i].email%>" data-type="T" class="btn-warning set-user-type-btn">設為測試會員</button>
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
     </div>
 </section>
 <script src="/js/specifies/backend/applicants.js"></script>

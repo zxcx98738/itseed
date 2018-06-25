@@ -141,18 +141,19 @@ $.fn.dataTable.ext.search.push(
 );
 
 $(function() {
-    table = $('#applicantsTable table').DataTable({
+    table = $('#data-table').DataTable({
+        dom: 'Bfrtip',
         buttons: [
-            'csv'
+            'copy', 'csv', 'excel', 'pdf'
         ],
-        "lengthMenu": [ [ 10, 25, 50, 100, -1 ], [10, 25, 50, 100, "所有"] ],
-        "order": [],
-        "columnDefs": [
-        	{ "orderable": false, "targets": 0 },
-        	{ "orderable": false, "targets": 1 },
+        lengthMenu: [ [ 10, 25, 50, 100, -1 ], [10, 25, 50, 100, "所有"] ],
+        order: [],
+        columnDefs: [
+        	{ orderable: false, "targets": 0 },
+        	{ orderable: false, "targets": 1 },
         ],
-        "language": {
-            "url": "/js/specifies/backend/plugins/Chinese-traditional.json"
+        language: {
+            url: "/js/specifies/backend/plugins/Chinese-traditional.json"
         }
     });
 
