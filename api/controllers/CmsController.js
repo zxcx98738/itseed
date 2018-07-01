@@ -1025,22 +1025,22 @@ toDraft: function(req, res){
 
                     }
                     registered_count = users.length;
-                    finished_disc_part_count = users.filter(function (user) {
+                    finished_user_part_count = users.filter(function (user) {
                         return user.finished == 1
-                            && user.disc.finished == 1
+                            && (user.disc.finished != 1
+                                || user.files.finished != 1)
+                    }).length;
+                    finished_disc_part_count = users.filter(function (user) {
+                        return user.disc.finished == 1
                             && user.files.finished != 1
                     }).length;
                     finished_regi_part_count = users.filter(function (user) {
-                        return user.finished == 1
-                            && user.disc.finished == 1
-                            && user.files.finished != 1
+                        return user.files.finished != 1
                             && user.files.registration != null
                             && user.files.autobiographyUT == null
                     }).length;
                     finished_resu_part_count = users.filter(function(user){
-                        return user.finished == 1 
-                            && user.disc.finished == 1
-                            && user.files.finished != 1
+                        return user.files.finished != 1
                             && user.files.registration == null
                             && user.files.autobiographyUT != null
                     }).length;
@@ -1053,6 +1053,7 @@ toDraft: function(req, res){
                         layout: 'layoutadmin',
                         users: users,
                         registered_count: registered_count,
+                        finished_user_part_count: finished_user_part_count,
                         finished_disc_part_count: finished_disc_part_count,
                         finished_regi_part_count: finished_regi_part_count,
                         finished_resu_part_count: finished_resu_part_count,
