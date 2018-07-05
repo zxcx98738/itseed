@@ -497,9 +497,19 @@ function registerAccount(res,newuser,callback){
                                             console.error(err) 
                                     });  
                                 }
-                                req.session.email = req.body.email;
-                                req.session.pwd = req.body.pwd;
-                                res.redirect("/profile");
+                                // 複製到 public 讓使用者可以觀看
+                                if (!fs.existsSync(sails.config.appPath + "/.tmp/public/files/" + req.session.userid)){
+                                    fs.mkdirSync(sails.config.appPath + "/.tmp/public/files/" + req.session.userid);
+                                }
+                                var source = fs.createReadStream(sails.config.appPath + "/assets" + datas[0].photo);
+                                var desti = fs.createWriteStream(sails.config.appPath + "/.tmp/public" + datas[0].photo);
+                                source.pipe(desti);
+                                source.on('end',function() {
+                                    source.close();
+                                    req.session.email = req.body.email;
+                                    req.session.pwd = req.body.pwd;
+                                    res.redirect("/profile");
+                                });
                             }
                         });
                     }
@@ -872,7 +882,16 @@ function registerAccount(res,newuser,callback){
                                         }); 
                                     }
                                 }
-                                res.redirect("/files");
+                                if (!fs.existsSync(sails.config.appPath + "/.tmp/public/files/" + req.session.userid)){
+                                    fs.mkdirSync(sails.config.appPath + "/.tmp/public/files/" + req.session.userid);
+                                }
+                                var source = fs.createReadStream(sails.config.appPath + "/assets" + datas[0].registration);
+                                var desti = fs.createWriteStream(sails.config.appPath + "/.tmp/public" + datas[0].registration);
+                                source.pipe(desti);
+                                source.on('end',function() {
+                                    source.close();
+                                    res.redirect("/files");
+                                });
                             }
                         });
                     }
@@ -978,7 +997,16 @@ function registerAccount(res,newuser,callback){
                                         }); 
                                     }
                                 }
-                                res.redirect("/files");
+                                if (!fs.existsSync(sails.config.appPath + "/.tmp/public/files/" + req.session.userid)){
+                                    fs.mkdirSync(sails.config.appPath + "/.tmp/public/files/" + req.session.userid);
+                                }
+                                var source = fs.createReadStream(sails.config.appPath + "/assets" + datas[0].autobiography);
+                                var desti = fs.createWriteStream(sails.config.appPath + "/.tmp/public" + datas[0].autobiography);
+                                source.pipe(desti);
+                                source.on('end',function() {
+                                    source.close();
+                                    res.redirect("/files");
+                                });
                             }
                         });
                     }
