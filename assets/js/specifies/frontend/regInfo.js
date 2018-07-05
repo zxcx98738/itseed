@@ -50,7 +50,7 @@ function initializeClock(id, line_time) {
 }
 
 var startline = new Date(2018, 06-1, 01,  0,  0,  0);
-var deadline = new Date( 2018, 07-1, 09, 23, 59, 59);
+var deadline = new Date( 2018, 07-1, 07, 23, 59, 59);
 if( new Date() < startline){
   $('#clock-title').text('距離報名開始');
   initializeClock('clockdiv', startline);
