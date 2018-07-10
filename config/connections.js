@@ -43,12 +43,10 @@ module.exports.connections = {
   mysql: {
     module    : 'sails-mysql',
     //host      : '106.187.46.113',
-    host      : 'localhost',
+    host      : '139.162.117.152',
     port      : 3306,
     user      : 'root',
-    //user : 'dav1a1223',
-    password  : 'ILoveItseed01017541',
-    // password : '123',
+    password  : 'itseed15',
     database  : 'itseed',
   },
 
