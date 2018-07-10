@@ -49,28 +49,37 @@ function initializeClock(id, line_time) {
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-var startline = new Date(2018, 06-1, 01,  0,  0,  0);
-var deadline = new Date( 2018, 07-1, 09, 23, 59, 59);
-if( new Date() < startline){
-  $('#clock-title').text('距離報名開始');
-  initializeClock('clockdiv', startline);
-} else if (new Date() < deadline ){
-  $('#clock-title').text('距離報名截止');
-  initializeClock('clockdiv', deadline);
-}else{
-  $('#clock-title').text('報名已經截止');
-}
+$('document').ready(function(){
+  var startline = new Date(2018, 06-1, 01,  0,  0,  0);
+  var deadline = new Date( 2018, 07-1, 09, 23, 59, 59);
+  if( new Date() < startline){
+    $('#clock-title').text('距離報名開始');
+    initializeClock('clockdiv', startline);
+  } else if (new Date() < deadline ){
+    $('#clock-title').text('距離報名截止');
+    initializeClock('clockdiv', deadline);
+  }else{
+    $('#clock-title').text('報名已經截止');
+  }
 
-function getUrlParam(name) {
-  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-  var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-  if (r != null) return unescape(r[2]); return null; //返回参数值
-}
+  function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]); return null; //返回参数值
+  }
 
-if (getUrlParam('hint') == "true"){
-  swal(
-    '目前尚未開放報名',
-    '即將在 6 / 1 開放報名，盡請期待',
-    'success'
-  )
-}
+  if (getUrlParam('hint') == "true"){
+    swal(
+      '目前尚未開放報名',
+      '即將在 6 / 1 開放報名，盡請期待',
+      'success'
+    )
+  }
+  if (getUrlParam('system') == "close") {
+    swal(
+      '報名已截止',
+      '第十六屆資訊種子報名已在 2018/7/10 截止',
+      'info'
+    )
+  }
+});

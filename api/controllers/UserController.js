@@ -177,7 +177,6 @@ function registerAccount(res,newuser,callback){
                         else {
                             endDate = (new Date(strEndDate.value)).getTime();
                         }
-
                         var now = (new Date()).getTime();
                         if (startDate < now && now < endDate){
                             //系統開放
@@ -190,10 +189,8 @@ function registerAccount(res,newuser,callback){
                                 redirect: redirect
                             });
                         }else{
-                            return res.view("frontend/pages/login", {
-                                redirect: redirect
-                            });
-                            // return res.forbidden('目前非報名時間');
+                            //系統關閉
+                            return res.redirect('/regInfo?system=close');
                         }
                     }
                 });
