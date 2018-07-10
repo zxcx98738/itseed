@@ -1024,30 +1024,29 @@ toDraft: function(req, res){
                         // users[i].disc.q1 = CmsService.formatTime(users[i].disc.q1);
 
                     }
-                    registered_count = users.length;
-                    finished_user_part_count = users.filter(function (user) {
-                        return user.finished == 1
-                            && (user.disc.finished != 1
-                                || user.files.finished != 1)
-                    }).length;
-                    finished_disc_part_count = users.filter(function (user) {
-                        return user.disc.finished == 1
-                            && user.files.finished != 1
-                    }).length;
-                    finished_regi_part_count = users.filter(function (user) {
-                        return user.files.finished != 1
-                            && user.files.registration != null
-                            && user.files.autobiographyUT == null
-                    }).length;
-                    finished_resu_part_count = users.filter(function(user){
-                        return user.files.finished != 1
-                            && user.files.registration == null
-                            && user.files.autobiographyUT != null
-                    }).length;
-                    finished_count = users.filter(function (user) {
+                    finished_users = users.filter(function (user) {
                         return user.finished == 1
                             && user.disc.finished == 1
                             && user.files.finished == 1
+                    });
+                    unfinished_users = users.filter(function (user) {
+                        return !(user.finished == 1
+                            && user.disc.finished == 1
+                            && user.files.finished == 1)
+                    });
+                    registered_count = users.length;
+                    finished_count = finished_users.length;
+                    finished_user_part_count = unfinished_users.filter(function (user) {
+                        return user.finished == 1
+                    }).length;
+                    finished_disc_part_count = unfinished_users.filter(function (user) {
+                        return user.disc.finished == 1
+                    }).length;
+                    finished_regi_part_count = unfinished_users.filter(function (user) {
+                        return user.files.registration != null
+                    }).length;
+                    finished_resu_part_count = unfinished_users.filter(function(user){
+                        return user.files.autobiographyUT != null
                     }).length;
                     return res.view("backend/pages/applicants", {
                         layout: 'layoutadmin',

@@ -105,7 +105,7 @@ function sendEmail(button, checkboxs) {
 
 
 /* Custom filtering function which will search data in column four between two values */
-let index_name_arr = "selection,register_date,photo,name,school,major_and_degree,email,login,phone,reference,file1,file2,disc,marketing,operation".split(',');
+let index_name_arr = "selection,register_date,photo,name,school,major_and_degree,email,login,phone,reference,private_info,file1,file2,disc,marketing,operation".split(',');
 let index_name_obj = toReverseObject(index_name_arr);
 
 // 註冊日期查詢
@@ -132,7 +132,7 @@ $.fn.dataTable.ext.search.push(
         let checked_arr = $.map($checked_box, (ele => $(ele).val()));
         let index = index_name_obj['login'];
         let login = data[index]; // use data for the date column
-        if (checked_arr == [] ||
+        if (checked_arr.length == 0 ||
             checked_arr.includes(login)) {
             return true;
         }
@@ -140,6 +140,36 @@ $.fn.dataTable.ext.search.push(
     }
 );
 
+// 申請狀況
+$.fn.dataTable.ext.search.push(
+    function (settings, data, dataIndex) {
+        $checked_box = $(`input[class*='process-']:checked`);
+        let checked_arr = $.map($checked_box, (ele => $(ele).val()));
+        let private_info_index = index_name_obj['private_info'];
+        let file1_index = index_name_obj['file1'];
+        let file2_index = index_name_obj['file2'];
+        let disc_index = index_name_obj['disc'];
+        let private_info = data[private_info_index]; // use data for the date column
+        let file1 = data[file1_index]; // use data for the date column
+        let file2 = data[file2_index]; // use data for the date column
+        let disc = data[disc_index]; // use data for the date column
+        console.log(checked_arr);
+        console.log(checked_arr.includes('private_info'));
+        if (checked_arr.length == 0) {
+            return true;
+        }else if(
+            (!checked_arr.includes('private_info') || private_info == '完成' ) &&
+            (!checked_arr.includes('file1') || file1 != '未上傳' ) &&
+            (!checked_arr.includes('file2') || file2 != '未上傳' ) &&
+            (!checked_arr.includes('disc')  || disc != '未填寫' )
+        ) {
+            return true;
+        }
+        return false;
+    }
+);
+
+// 申請
 $(function() {
     table = $('#data-table').DataTable({
         dom: 'Bfrtip',
@@ -167,11 +197,21 @@ $(function() {
     $(".js-search-login  input[name='login[]'").change(function () {
         table.draw();
     });
+    $(".js-search-process  input[class*='process-']").change(function () {
+        table.draw();
+    });
     $('.js-date-clear-btn').click(function () {
         $('.js-search-date input.js-from , .js-search-date input.js-to').val('');
+        table.draw();
     });
     $('.js-login-all-btn').click(function () {
         $(".js-search-login  input[name='login[]']").each(function () {
+            $(this).prop("checked", true);
+            table.draw();
+        });
+    });
+    $('.js-process-all-btn').click(function () {
+        $(".js-search-process  input[class*='process-']").each(function () {
             $(this).prop("checked", true);
             table.draw();
         });
