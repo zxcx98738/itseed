@@ -174,7 +174,7 @@ $(function() {
     table = $('#data-table').DataTable({
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf'
+            'pageLength','copy', 'csv', 'excel', 'pdf'
         ],
         lengthMenu: [ [ 10, 25, 50, 100, -1 ], [10, 25, 50, 100, "所有"] ],
         order: [],
