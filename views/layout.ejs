@@ -81,8 +81,21 @@
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
       </script>
     <![endif]-->
+
+    <!-- Loading Code  -->
+    <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.6.1.min.js"></script>
   </head>
   <body>
+      <div id="floatingCirclesG">
+          <div class="f_circleG" id="frotateG_01"></div>
+          <div class="f_circleG" id="frotateG_02"></div>
+          <div class="f_circleG" id="frotateG_03"></div>
+          <div class="f_circleG" id="frotateG_04"></div>
+          <div class="f_circleG" id="frotateG_05"></div>
+          <div class="f_circleG" id="frotateG_06"></div>
+          <div class="f_circleG" id="frotateG_07"></div>
+          <div class="f_circleG" id="frotateG_08"></div>
+        </div>
     <div id="fb-root"></div>
     <%- body %>
 
@@ -156,6 +169,12 @@
       window._fbq = window._fbq || [];
       window._fbq.push(['track', 'PixelInitialized', {}]);
     </script>
+     <!-- Loading Code  -->
+    <script>
+        $(window).load(function(){
+                $('#floatingCirclesG').hide();
+                });
+        </script>
     <noscript>
       <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=227111357648472&amp;ev=PixelInitialized"
       />
