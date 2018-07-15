@@ -18,7 +18,7 @@
  * For more information on configuration, check out:
  * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html
  */
-
+require('dotenv').config()
 module.exports.connections = {
 
   /***************************************************************************
@@ -42,12 +42,11 @@ module.exports.connections = {
   ***************************************************************************/
   mysql: {
     module    : 'sails-mysql',
-    //host      : '106.187.46.113',
-    host      : '139.162.117.152',
-    port      : 3306,
-    user      : 'root',
-    password  : 'itseed15',
-    database  : 'itseed',
+    host      : process.env.mysql_host,
+    port      : process.env.mysql_port || 3306,
+    user      : process.env.mysql_user,
+    password  : process.env.mysql_password,
+    database  : process.env.mysql_database,
   },
 
 
