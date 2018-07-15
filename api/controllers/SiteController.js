@@ -461,16 +461,21 @@ module.exports = {
             sort: { createdAt: "asc" }
         }
 
-        CmsService.findPosts(model, criteria)
-        .then(function(datas){
-            for(var i = 0; i < datas.length; i++){
-                datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
-            }
+        var p_startDate  = SystemSetting.findOne({
+            name: "startDate"
+        });
+        var p_endDate = SystemSetting.findOne({
+            name: "endDate"
+        })
+        Promise.all([p_startDate, p_endDate]).then( dates => {
+            var startDate = dates[0];
+            var endDate = dates[1];
             return res.view(action.url, {
-                datas: datas
+                startDate: startDate.value,
+                endDate: endDate.value
             });
         })
-        .catch(function(err){
+        .catch(function (err) {
             res.end(JSON.stringify(err));
         });
     },

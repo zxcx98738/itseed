@@ -10,34 +10,19 @@
 		<h1>招生訊息</h1>
 		<h2>「加入資種，遇見更好的自己！」</h2>
 	</div>
-
 	<!-- 招生訊息敘述,後台控制要上的資料 -->
 	<div class="container reg-right-time-container">
 		<div class="row">
 			<div class="col-md-12 reg-part">
 				<div class="col-sm-4 col-xs-12">
-					<span>
-					<% if (datas[0] != null) { %>
-						<%= datas[0].title %>
-					<% } %>
-					</span>
+					<span>- 報名資格 -</span>
 				</div>
-				<p  class="col-sm-8 col-xs-12">
-					<% if (datas[0] != null) { %>
-						<%- datas[0].content %>
-					<% } %>
-				</p>	
+				<p  class="col-sm-8 col-xs-12">升大三至升碩一之全台大專院校學生，不限科系</p>	
 				<div class="col-sm-4 col-xs-12">
-					<span>
-					<% if (datas[1] != null) { %>
-						<%= datas[1].title %>
-					<% } %>
-					</span>
+					<span>- 報名時間 -</span>
 				</div>
-				<p class="col-sm-8 col-xs-12">
-					<% if (datas[1] != null) { %>
-						<%- datas[1].content %>
-					<% } %>
+				<p class="col-sm-8 col-xs-12 js-register_date">
+					
 				</p>	
 			</div>
 		</div>
@@ -46,19 +31,19 @@
 	<div id="clockdiv">
 	  <h1 id="clock-title" style="color:white; font-family: '微軟正黑體'; ">距離報名截止</h1>
 	  <div>
-	    <span class="days"></span>
+	    <span class="days">0</span>
 	    <div class="smalltext">Days</div>
 	  </div>
 	  <div>
-	    <span class="hours"></span>
+	    <span class="hours">0</span>
 	    <div class="smalltext">Hours</div>
 	  </div>
 	  <div>
-	    <span class="minutes"></span>
+	    <span class="minutes">0</span>
 	    <div class="smalltext">Minutes</div>
 	  </div>
 	  <div>
-	    <span class="seconds"></span>
+	    <span class="seconds">0</span>
 	    <div class="smalltext">Seconds</div>
 	  </div>
 	</div>
@@ -167,4 +152,15 @@
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->
+<script>
+	var startDate = <%- JSON.stringify(startDate) %>;
+	var endDate = <%- JSON.stringify(endDate) %>;
+	var start_n = new Date(startDate).getDay();
+	var end_n = new Date(endDate).getDay();
+	var week_name_arr = "日,一,二,三,四,五,六".split(',');
+	var start_week_name = week_name_arr[start_n];
+	var end_week_name = week_name_arr[end_n];
+	var register_date_str = `${startDate}（${start_week_name}）至 ${endDate}（${end_week_name}）`
+	$('.js-register_date').text(register_date_str);
+</script>
 <script src="/js/specifies/frontend/regInfo.js"></script>
