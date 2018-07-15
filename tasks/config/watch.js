@@ -17,7 +17,9 @@ module.exports = function(grunt) {
 	grunt.config.set('watch', {
 		api: {
 			// API files to watch:
-			files: ['api/**/*']
+			files: ['api/**/*'],
+			// When api are changed:
+			tasks: ['syncAssets', 'linkAssets']
 		},
 		assets: {
 			// Assets to watch:
