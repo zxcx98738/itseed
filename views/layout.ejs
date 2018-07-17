@@ -82,11 +82,9 @@
       </script>
     <![endif]-->
 
-    <!-- Loading Code  -->
-    <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.6.1.min.js"></script>
   </head>
   <body>
-      <div id="floatingCirclesG">
+      <!-- <div id="floating-circlesG">
           <div class="f_circleG" id="frotateG_01"></div>
           <div class="f_circleG" id="frotateG_02"></div>
           <div class="f_circleG" id="frotateG_03"></div>
@@ -95,9 +93,21 @@
           <div class="f_circleG" id="frotateG_06"></div>
           <div class="f_circleG" id="frotateG_07"></div>
           <div class="f_circleG" id="frotateG_08"></div>
-        </div>
+        </div> -->
+        <div id="fountain-textG">
+          <div id="fountainTextG_1" class="fountainTextG">L</div>
+          <div id="fountainTextG_2" class="fountainTextG">o</div>
+          <div id="fountainTextG_3" class="fountainTextG">a</div>
+          <div id="fountainTextG_4" class="fountainTextG">d</div>
+          <div id="fountainTextG_5" class="fountainTextG">i</div>
+          <div id="fountainTextG_6" class="fountainTextG">n</div>
+          <div id="fountainTextG_7" class="fountainTextG">g</div>
+      </div>
     <div id="fb-root"></div>
-    <%- body %>
+    <div id="layout-body" style="display: none;">
+      <%- body %>
+    </div>
+    
 
     <!--
         Client-side Templates
@@ -172,9 +182,11 @@
      <!-- Loading Code  -->
     <script>
         $(window).load(function(){
-                $('#floatingCirclesG').hide();
-                });
-        </script>
+          $('#fountain-textG').fadeOut(1000,function(){
+            $('#layout-body').fadeIn(1000);
+          });
+        });
+    </script>
     <noscript>
       <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=227111357648472&amp;ev=PixelInitialized"
       />
