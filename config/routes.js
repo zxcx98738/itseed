@@ -110,8 +110,6 @@ module.exports.routes = {
     action: 'courseInfo'
   }, 
 
-
-
   '/career': {
     controller: 'Site',
     action: 'careerList'
@@ -135,11 +133,6 @@ module.exports.routes = {
   '/project': {
     controller: 'Site',
     action: 'project'
-  }, 
-
-  '/overseaVisit': {
-    controller: 'Site',
-    action: 'overseaVisit'
   }, 
 
   '/instructor': {
@@ -230,19 +223,22 @@ module.exports.routes = {
     action: 'hey'
   },
   'get /tuv': {
-    view: 'frontend/pages/tuv'
+    view: 'frontend/pages/sixproject_tuv'
   },
   'get /spring': {
-    view: 'frontend/pages/spring'
-  },
-  'get /new': {
-    view: 'frontend/pages/new'
-  },
-  'get /end': {
-    view: 'frontend/pages/end'
+    view: 'frontend/pages/sixproject_spring'
   },
   'get /careers': {
-    view: 'frontend/pages/careers'
+    view: 'frontend/pages/sixproject_careers'
+  },
+  'get /new': {
+    view: 'frontend/pages/sixproject_new'
+  },
+  'get /overseaVisit': {
+    view: 'frontend/pages/sixproject_overseaVisit'
+  },
+  'get /end': {
+    view: 'frontend/pages/sixproject_end'
   },
 
   /*前台-使用者相關*/
