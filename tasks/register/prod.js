@@ -8,10 +8,6 @@ module.exports = function (grunt) {
 		'sails-linker:devJsAdmin',
 		'sails-linker:prodStyles',
 		'sails-linker:devStylesAdmin',
-		'sails-linker:devTpl',
-		'sails-linker:prodJsJade',
-		'sails-linker:prodStylesJade',
-		'sails-linker:devTplJade',
 		'sync:files_dropbox',
 		'sync:db_dropbox'
 	]);

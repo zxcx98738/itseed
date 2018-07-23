@@ -4,9 +4,5 @@ module.exports = function (grunt) {
 		'sails-linker:devJsAdmin',
 		'sails-linker:devStyles',
 		'sails-linker:devStylesAdmin',
-		'sails-linker:devTpl',
-		'sails-linker:devJsJade',
-		'sails-linker:devStylesJade',
-		'sails-linker:devTplJade'
 	]);
 };
