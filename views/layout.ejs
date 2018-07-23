@@ -84,7 +84,7 @@
   </head>
   <body>
     <div class="loading-div">
-      <div id="fountain-textG">
+      <div class="text">
         <div id="fountainTextG_1" class="fountainTextG">L</div>
         <div id="fountainTextG_2" class="fountainTextG">o</div>
         <div id="fountainTextG_3" class="fountainTextG">a</div>
@@ -92,8 +92,8 @@
         <div id="fountainTextG_5" class="fountainTextG">i</div>
         <div id="fountainTextG_6" class="fountainTextG">n</div>
         <div id="fountainTextG_7" class="fountainTextG">g</div>
+      </div>
     </div>
-  </div>
     <div id="fb-root"></div>
     <%- body %>
     <!--
@@ -169,8 +169,8 @@
      <!-- Loading Code  -->
     <script>
         $(window).load(function(){
-          $('.loading-div').fadeOut(1000,function(){
-            $('body > section').fadeIn(1000);
+          $('.loading-div').fadeOut(300,function(){
+            $('body > section').fadeIn(300);
           });
         });
     </script>
