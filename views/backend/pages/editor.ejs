@@ -81,6 +81,16 @@
                                 <% } %>
                                 </div>
                             <% } %>
+                            <% if(typeof post.description !== 'undefined'){ %>
+                                <div>
+                                    <label>敘述</label>
+                                    <% if(post.status == "new"){ %>
+                                        <input type="text" class="form-control" name="description" placeholder="ex: 文字...">
+                                    <% } else{ %>
+                                        <input type="text" class="form-control" name="description" placeholder="ex: 文字..." value="<%= post.description %>">
+                                    <% } %>
+                                </div>
+                            <% } %>
                             <% if(typeof post.speaker !== 'undefined'){ %>
                                 <div>
                                     <label>講者</label>

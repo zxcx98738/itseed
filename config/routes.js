@@ -109,17 +109,6 @@ module.exports.routes = {
     controller: 'Site',
     action: 'courseInfo'
   }, 
-
-  '/career': {
-    controller: 'Site',
-    action: 'careerList'
-  }, 
-
-  '/career/:id': {
-    controller: 'Site',
-    action: 'career'
-  }, 
-
   '/businessVisit': {
     controller: 'Site',
     action: 'businessVisitList'
@@ -169,33 +158,13 @@ module.exports.routes = {
     controller: 'Site',
     action: 'faq'
   },
-  '/careersharing': {
+  '/careerList': {
+    controller: 'Site',
+    action: 'careerList'
+  },
+  '/careersharing/:id': {
     controller: 'Site',
     action: 'careersharing'
-  },
-  '/careerSharingContent': {
-    controller: 'Site',
-    action: 'careerSharingContent'
-  },
-  '/careerSharingContent1': {
-    controller: 'Site',
-    action: 'careerSharingContent1'
-  },
-  '/careerSharingContent2': {
-    controller: 'Site',
-    action: 'careerSharingContent2'
-  },
-  '/careerSharingContent3': {
-    controller: 'Site',
-    action: 'careerSharingContent3'
-  },
-  '/careerSharingContent4': {
-    controller: 'Site',
-    action: 'careerSharingContent4'
-  },
-  '/careerSharingContent5': {
-    controller: 'Site',
-    action: 'careerSharingContent5'
   },
   '/seminar': {
     controller: 'Site',
@@ -349,7 +318,6 @@ module.exports.routes = {
 
   /*後台-CMS*/
   '/cms': '/cms/list/news/all',
-
   'get /cms/new/:model': {
     controller: 'Cms',
     action: 'editor'
@@ -441,19 +409,9 @@ module.exports.routes = {
     action: 'systemSetting'
   },
 
-  'post /updateTh': {
+  'post /updateSystemSetting': {
     controller: 'System',
-    action: 'updateTh'
-  },
-
-  'post /updateStartDate': {
-    controller: 'System',
-    action: 'updateStartDate'
-  },
-
-  'post /updateEndDate': {
-    controller: 'System',
-    action: 'updateEndDate'
+    action: 'updateSystemSetting'
   },
 
   // 'get /'

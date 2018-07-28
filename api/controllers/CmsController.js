@@ -45,6 +45,7 @@ module.exports = {
                     post.th = "";
                     post.name = "";
                     post.photo = "";
+                    post.description = "";
                     break;
                 case Project:
                     post.th = "";
@@ -86,7 +87,6 @@ module.exports = {
                     data.formatTime = CmsService.formatTime(data.createdAt);
                     action = CmsService.getAction(model);
                     menu = CmsService.getMenu(model);
-
                     return res.view("backend/pages/editor", {
                         layout: 'layoutadmin',
                         action: action,
@@ -485,7 +485,7 @@ module.exports = {
             case Career:
                 value.th = req.param("th");
                 value.name = req.param("name");
-
+                
                 //上傳檔案
                 req.file('photo').upload({ dirname: '../../assets/images/career'}, function (err, uploadedFiles) {
                     if (err)
@@ -739,6 +739,60 @@ module.exports = {
                     });
                 });
                 break;
+            case Career:
+                value.th = req.param("th");
+                value.name = req.param("name");
+                value.description = req.param("description");
+                //上傳檔案
+                req.file('photo').upload({ dirname: '../../assets/images/career'}, function (err, uploadedFiles) {
+                    if (err)
+                        res.end(JSON.stringify(err));
+                    if (uploadedFiles.length > 0) {
+                        //圖片檔
+                        if(uploadedFiles[0].type.substring(0, 5) == "image"){
+                            var url = uploadedFiles[0].fd;
+                            var start = url.search("images") - 1;
+                            url = url.slice(start);
+                            url = url.replace(/\\/g, "/");
+                            value.photo = url;
+                        }
+                        //非圖片檔
+                        else{
+                            fs.unlink(uploadedFiles[0].fd, function (err) {
+                                if (err)
+                                    console.error(err)
+                            });
+                            return res.end(JSON.stringify("檔案格式錯誤"));
+                        }
+                    }
+
+                    CmsService.updatePost(model, criteria, value)
+                    .then(function(){
+
+                        //刪除原始檔案
+                        if (uploadedFiles.length > 0 && req.param("oldPhoto") != '/images/sharing/default.png') {
+                            var imagePath = sails.config.appPath+'/assets'+req.param("oldPhoto");
+
+                            fs.unlink(imagePath, function (err) {
+                                if (err)
+                                    console.error(err)
+                            });
+                        }
+                        res.end("success");
+                    })
+                    .catch(function(err){
+                        //刪除上傳檔案
+                        if (uploadedFiles.length > 0) {
+                            fs.unlink(uploadedFiles[0].fd, function (err) {
+                                if (err)
+                                    console.error(err)
+                            });
+                        }
+                        res.end(JSON.stringify(err));
+                    });
+                });
+                break;
+                break
             default:
                 break;
         }

@@ -170,10 +170,10 @@ module.exports = {
                 action.new = "/cms/new/career";
                 action.edit = "/cms/edit/career";
 
-                action.view = "/career/";
+                action.view = "/careerList";
                 action.preview = "/cms/preview/career";
                 action.load = "/cms/load/career";
-                action.url = "frontend/pages/career";
+                action.url = "frontend/pages/careerSharing";
                 action.list = "frontend/pages/careerList"
                 
                 action.create = "/cms/create/career";

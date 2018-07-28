@@ -35,10 +35,15 @@ module.exports = {
           type: 'string',
           defaultsTo: '/images/career/default.png'
         },
+        //敘述
+        description: {
+          type: 'text',
+          defaultsTo: ''
+        },
         //標題
         title: {
           type: 'string',
-          maxLength: 30,
+          maxLength: 100,
           notNull: true
         },
         //內容
