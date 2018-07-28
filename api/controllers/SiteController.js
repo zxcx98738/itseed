@@ -273,15 +273,13 @@ module.exports = {
         var action = CmsService.getAction(model);
         var now = new Date();
         var criteria = {   
+            select: ['id','title', 'description','photo'],
             where: { status: "P" }, 
             sort: { order: "asc" }
         }
 
         CmsService.findPosts(model, criteria)
         .then(function(datas){
-            for(var i = 0; i < datas.length; i++){
-                datas[i].formatTime = CmsService.formatTime(datas[i].createdAt);
-            }
             return res.view(action.list, {
                 url: action.view,
                 datas: datas
@@ -291,27 +289,6 @@ module.exports = {
             res.end(JSON.stringify(err));
         });
     },
-    career: function(req, res){
-        var model = Career; 
-        var action = CmsService.getAction(model);
-        var now = new Date();
-        var criteria = {   
-            id: req.param("id")
-        }
-
-        CmsService.findOnePost(model, criteria)
-        .then(function(data){
-            data.formatTime = CmsService.formatTime(data.createdAt);
-
-            return res.view(action.url, {
-                datas: [data]
-            });
-        })
-        .catch(function(err){
-            res.end(JSON.stringify(err));
-        });
-    },
-
     //專案實作
     project: function(req, res){
         var model = Project; 
@@ -605,8 +582,21 @@ module.exports = {
         });
     },
     careersharing: function(req, res){
-        return res.view("frontend/pages/careersharing",{
-        });
+        var model = Career;
+        var action = CmsService.getAction(model);
+        var now = new Date();
+        var criteria = {
+            id: req.param("id")
+        }
+        CmsService.findOnePost(model, criteria)
+            .then(function (data) {
+                return res.view(action.url, {
+                    content: data.content
+                });
+            })
+            .catch(function (err) {
+                res.end(JSON.stringify(err));
+            });
     },
     seminar: function(req, res){
         return res.view("frontend/pages/seminar",{
@@ -625,6 +615,7 @@ module.exports = {
         });
     },
     careerSharingContent: function(req, res){
+        var id = req.param("id")
         return res.view("frontend/pages/careerSharingContent",{
         });
     },
