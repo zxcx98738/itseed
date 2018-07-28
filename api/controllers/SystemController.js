@@ -19,12 +19,9 @@ module.exports = {
         var p_endDate = SystemSetting.findOne({ name: "endDate" })
         Promise.all([p_th,p_startDate, p_endDate])
         .then(function (values) {
-            var th = values[0].value;
-            var startDate = values[1].value;
-            var endDate = values[2].value;
-            if (th == undefined) th = "";
-            if (startDate == undefined) startDate = "";
-            if (endDate == undefined) endDate = "";
+            var th = (values[0] == undefined) ? "" : values[0].value;
+            var startDate = (values[1] == undefined) ? "" : values[1].value;
+            var endDate = (values[2] == undefined) ? "" : values[2].value;
             return res.view("backend/pages/systemSetting", {
                 layout: 'layoutadmin',
                 th: th,
@@ -32,91 +29,28 @@ module.exports = {
                 endDate: endDate,
             });
         }).catch(function(err){
-            return res.end(JSON.stringify(err));
+            return res.serverError(err);
         })
     },
-    //更新報名屆數
-    updateTh: function (req, res) {
-        SystemSetting.update({name: "th"}, {value: req.body.th})
-        .exec(function (err, datas) {
-            if (err) {
-                res.end(JSON.stringify(err));
-            }
-            else {
-                if(datas.length == 0){
-                    SystemSetting.create({
-                        name: "th",
-                        value: req.body.th,
-                        description: "報名屆數"
-                    })
-                    .exec(function (err, user) {
-                        if (err) {
-                            res.end(JSON.stringify(err));
-                        }
-                        else {
-                            res.redirect("/systemSetting");
-                        }
-                    });
-                }
-                else
-                    res.redirect("/systemSetting");
-            }
+    //更新系統資料
+    updateSystemSetting: function (req, res) {
+        var p_update_th = SystemSetting.updateOrCreate({ name: "th" }, {
+            name: "th" ,
+            value: req.body.th 
         });
-    },
-    //更新報名開始時間
-    updateStartDate: function (req, res) {
-        SystemSetting.update({name: "startDate"}, {value: req.body.startDate})
-        .exec(function (err, datas) {
-            if (err) {
-                res.end(JSON.stringify(err));
-            }
-            else {
-                if(datas.length == 0){
-                    SystemSetting.create({
-                        name: "startDate",
-                        value: req.body.startDate,
-                        description: "報名開始時間"
-                    })
-                    .exec(function (err, user) {
-                        if (err) {
-                            res.end(JSON.stringify(err));
-                        }
-                        else {
-                            res.redirect("/systemSetting");
-                        }
-                    });
-                }
-                else
-                    res.redirect("/systemSetting");
-            }
+        var p_update_startDate = SystemSetting.updateOrCreate({name: "startDate" }, {
+            name: "startDate",
+            value: req.body.startDate 
         });
-    },
-    //更新報名結束時間
-    updateEndDate: function (req, res) {
-        SystemSetting.update({name: "endDate"}, {value: req.body.endDate})
-        .exec(function (err, datas) {
-            if (err) {
-                res.end(JSON.stringify(err));
-            }
-            else {
-                if(datas.length == 0){
-                    SystemSetting.create({
-                        name: "endDate",
-                        value: req.body.endDate,
-                        description: "報名結束時間"
-                    })
-                    .exec(function (err, user) {
-                        if (err) {
-                            res.end(JSON.stringify(err));
-                        }
-                        else {
-                            res.redirect("/systemSetting");
-                        }
-                    });
-                }
-                else
-                    res.redirect("/systemSetting");
-            }
+        var p_update_endDate = SystemSetting.updateOrCreate({ name: "endDate" }, {
+            name: "endDate",
+            value: req.body.endDate 
+        });
+        Promise.all([p_update_th, p_update_startDate, p_update_endDate])
+        .then(function (values) {
+            res.redirect("/systemSetting");
+        }).catch(function (err) {
+            return res.end(JSON.stringify(err));
         });
     }
 };

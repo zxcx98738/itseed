@@ -441,19 +441,9 @@ module.exports.routes = {
     action: 'systemSetting'
   },
 
-  'post /updateTh': {
+  'post /updateSystemSetting': {
     controller: 'System',
-    action: 'updateTh'
-  },
-
-  'post /updateStartDate': {
-    controller: 'System',
-    action: 'updateStartDate'
-  },
-
-  'post /updateEndDate': {
-    controller: 'System',
-    action: 'updateEndDate'
+    action: 'updateSystemSetting'
   },
 
   // 'get /'
