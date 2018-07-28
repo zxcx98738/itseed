@@ -14,58 +14,26 @@ module.exports = {
     },
     //報名系統
     systemSetting: function (req, res) {
-        var th, startDate, endDate;
-
-        SystemSetting.findOne({
-            name: "th"
-        })
-        .exec(function (err, parameter1) {
-            if(err){
-                return res.end(JSON.stringify(err));
-            }
-            else{
-                if(parameter1 == undefined)
-                    th = "";
-                else
-                    th = parameter1.value;
-            }
-
-            SystemSetting.findOne({
-                name: "startDate"
-            })
-            .exec(function (err, parameter2) {
-                if(err){
-                    return res.end(JSON.stringify(err));
-                }
-                else{
-                    if(parameter2 == undefined)
-                        startDate = "";
-                    else
-                        startDate = parameter2.value;
-                }
-
-                SystemSetting.findOne({
-                    name: "endDate"
-                })
-                .exec(function (err, parameter3) {
-                    if(err){
-                        return res.end(JSON.stringify(err));
-                    }
-                    else{
-                        if(parameter3 == undefined)
-                            endDate = "";
-                        else
-                            endDate = parameter3.value;
-                    }
-                    return res.view("backend/pages/systemSetting", {
-                        layout: 'layoutadmin',
-                        th: th,
-                        startDate: startDate,
-                        endDate: endDate,
-                    });
-                });
+        var p_th = SystemSetting.findOne({ name: "th" })
+        var p_startDate = SystemSetting.findOne({ name: "startDate" })
+        var p_endDate = SystemSetting.findOne({ name: "endDate" })
+        Promise.all([p_th,p_startDate, p_endDate])
+        .then(function (values) {
+            var th = values[0].value;
+            var startDate = values[1].value;
+            var endDate = values[2].value;
+            if (th == undefined) th = "";
+            if (startDate == undefined) startDate = "";
+            if (endDate == undefined) endDate = "";
+            return res.view("backend/pages/systemSetting", {
+                layout: 'layoutadmin',
+                th: th,
+                startDate: startDate,
+                endDate: endDate,
             });
-        });
+        }).catch(function(err){
+            return res.end(JSON.stringify(err));
+        })
     },
     //更新報名屆數
     updateTh: function (req, res) {
