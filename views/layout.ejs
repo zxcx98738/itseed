@@ -84,17 +84,8 @@
 
   </head>
   <body>
-      <!-- <div id="floating-circlesG">
-          <div class="f_circleG" id="frotateG_01"></div>
-          <div class="f_circleG" id="frotateG_02"></div>
-          <div class="f_circleG" id="frotateG_03"></div>
-          <div class="f_circleG" id="frotateG_04"></div>
-          <div class="f_circleG" id="frotateG_05"></div>
-          <div class="f_circleG" id="frotateG_06"></div>
-          <div class="f_circleG" id="frotateG_07"></div>
-          <div class="f_circleG" id="frotateG_08"></div>
-        </div> -->
-        <div id="fountain-textG">
+      <div class="loading-div">
+        <div class="text">
           <div id="fountainTextG_1" class="fountainTextG">L</div>
           <div id="fountainTextG_2" class="fountainTextG">o</div>
           <div id="fountainTextG_3" class="fountainTextG">a</div>
@@ -102,9 +93,10 @@
           <div id="fountainTextG_5" class="fountainTextG">i</div>
           <div id="fountainTextG_6" class="fountainTextG">n</div>
           <div id="fountainTextG_7" class="fountainTextG">g</div>
+        </div>
       </div>
+        
     <div id="fb-root"></div>
-    <div id="layout-body" style="display: none;">
       <%- body %>
     </div>
     
@@ -182,8 +174,8 @@
      <!-- Loading Code  -->
     <script>
         $(window).load(function(){
-          $('#fountain-textG').fadeOut(1000,function(){
-            $('#layout-body').fadeIn(1000);
+          $('.loading-div').fadeOut(100,function(){
+            $('body > section').fadeIn(100);
           });
         });
     </script>
