@@ -22,7 +22,7 @@ var cssFilesToInject = [
 var cssAdminFilesToInject = [
   'styles/dependencies/*.css',
   'styles/Admin/*.css',
-  'styles/importer.css'
+  'styles/b_importer.css'
 ];
 
 // Client-side javascript files to inject in order
