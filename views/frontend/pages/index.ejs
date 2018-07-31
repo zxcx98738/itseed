@@ -1,6 +1,17 @@
 <!--HEADER-->
 <% include ../header %>
 <!--END HEADER-->
+<div class="loading-div">
+  <div class="text">
+    <div id="fountainTextG_1" class="fountainTextG">L</div>
+    <div id="fountainTextG_2" class="fountainTextG">o</div>
+    <div id="fountainTextG_3" class="fountainTextG">a</div>
+    <div id="fountainTextG_4" class="fountainTextG">d</div>
+    <div id="fountainTextG_5" class="fountainTextG">i</div>
+    <div id="fountainTextG_6" class="fountainTextG">n</div>
+    <div id="fountainTextG_7" class="fountainTextG">g</div>
+  </div>
+</div>
 
 <section class="section-index">
   
@@ -246,5 +257,13 @@
 <% include ../footer %>
 <!--END FOOTER-->
 
+<!-- Loading Code  -->
+<script>
+  $(window).load(function () {
+    $('.loading-div').fadeOut(50, function () {
+      $('body > section').fadeIn(50);
+    });
+  });
+</script>
 <script src="/js/specifies/jquery.animateNumber.min.js"></script>
 <script src="/js/specifies/frontend/index.js"></script>

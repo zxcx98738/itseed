@@ -39,7 +39,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
       crossorigin="anonymous">
     <!--STYLES-->
-    <link rel="stylesheet" href="/min/production.min.css">
+    <link rel="stylesheet" href="/styles/dependencies/bootstrap.css">
+    <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
 
     <!--手動添加-->
@@ -83,21 +84,8 @@
 
   </head>
   <body>
-      <div class="loading-div">
-        <div class="text">
-          <div id="fountainTextG_1" class="fountainTextG">L</div>
-          <div id="fountainTextG_2" class="fountainTextG">o</div>
-          <div id="fountainTextG_3" class="fountainTextG">a</div>
-          <div id="fountainTextG_4" class="fountainTextG">d</div>
-          <div id="fountainTextG_5" class="fountainTextG">i</div>
-          <div id="fountainTextG_6" class="fountainTextG">n</div>
-          <div id="fountainTextG_7" class="fountainTextG">g</div>
-        </div>
-      </div>
-        
     <div id="fb-root"></div>
     <%- body %>
-
     <!--
         Client-side Templates
         ========================
@@ -148,7 +136,10 @@
     -->
 
     <!--SCRIPTS-->
-    <script src="/min/production.min.js"></script>
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/bootstrap.js"></script>
+    <script src="/js/dependencies/fb.js"></script>
+    <script src="/js/dependencies/sweetalert2-7.21.1.js"></script>
     <!--SCRIPTS END-->
     <script>(function () {
         var _fbq = window._fbq || (window._fbq = []);
@@ -164,14 +155,6 @@
       })();
       window._fbq = window._fbq || [];
       window._fbq.push(['track', 'PixelInitialized', {}]);
-    </script>
-     <!-- Loading Code  -->
-    <script>
-        $(window).load(function(){
-          $('.loading-div').fadeOut(50,function(){
-            $('body > section').fadeIn(50);
-          });
-        });
     </script>
     <noscript>
       <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=227111357648472&amp;ev=PixelInitialized"
