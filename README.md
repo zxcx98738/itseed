@@ -5,11 +5,12 @@
 * 基本介紹
   * [網站架構](#structure)
   * [後台系統](#backend)
+  * [追蹤工具](#analytics)
 * 開發者專區
   * [使用語言&工具](#tool)
   * [環境架設](#environment)
+  * [專案架構](#system_content)
   * [伺服器教學](#server)
-  * [待解決問題及未開發功能](#issue)
 
 ## 基本介紹
 
@@ -52,77 +53,113 @@
 * **報名者資料**：當屆報名者個人資料與書審資料
 
 
+<a name="analytics"></a>
+> 追蹤工具
+* **Google Analytics**
+* **Hotjar**
+
 ## 開發者專區
 
 <a name="tool"></a>
+
 ### 使用語言&工具
->前端
->> html, css, javascript  
+
+前端
+> html, css, javascript  
    ejs (http://www.embeddedjs.com/)   
    less (http://lesscss.org/)   
    jQuery (https://jquery.com/)   
    Bootstrap (http://getbootstrap.com/)
 
->後端
->> Node.js 10.x (https://nodejs.org/)   
-   Sails.js (http://sailsjs.org/)   
-   MySQL (https://www.mysql.com/)
+後端
+> Node.js 10.x (https://nodejs.org/)   
+  Sails.js (http://sailsjs.org/)   
+  MySQL (https://www.mysql.com/)
 
-### 版本控制
-* git (https://git-scm.com/)
-* git-flow (https://github.com/petervanderdoes/gitflow)
+### 管理制度
+版控規則  
+1. 一個功能開一個分支，
+2. 開發完自行 push 到 GitHub
+3. 發 merge request 到 master 分支
+4. 由需至少由一位開發員 code review 後才能 merge
+5. 更新到線上關
 
-### 專案管理
-* trello (https://trello.com)
+* 上線分支：master
+* 開發分支名牌：
+  * 開發功能 => feature-<use_underline_to_describe_name>
+  * Debug   => hotfix-<use_underline_to_describe_name>
+
+
+專案管理
+
+* trello：[資訊種子官方網站](https://trello.com/b/IGv87eCD/%E8%B3%87%E8%A8%8A%E7%A8%AE%E5%AD%90%E5%AE%98%E7%B6%B2%E5%9C%98%E9%9A%8A)
+![]()
+* 安裝 [EleGantt](https://elegantt.com/?ref=share) 工具顯示甘特圖
+* 使用方式
+  1. issue：一個功能開一張卡片
+  2. 規劃研究中：被分配issue後，研究並列出規格與資訊團隊討論，最終訂出製作時限
+  3. 開發中: 已經討論確定後的 issue 移動到此區代表開發中，並依照命名規則開新 分支
+  4. 審查區：已經 push 到GitHub的分支 並發 merge request 階段
+  5. 二次修改：如審查未通過則移動到此區 Debug 後再回到 4.審查區
+  6. 已上線：完成 merge 後並且手動更新到 官網伺服器上時，即可將卡片移到此區
+* 卡片流程
+  issue => 規劃研究中
+![](/assets/images/doc/EleGantt.png)
+![](/assets/images/doc/trello.png)
+
 
 <a name="environment"></a>
 ## 環境架設
 
-1. **安裝 nodeJS**
-
-  http://nodejs.org/
-
-2. **安裝 sails**
-
-  `npm -g install sails`
-
+1. **安裝 nodeJS 10.x版本**：http://nodejs.org/
+2. **安裝 sails**：
+```
+  npm -g install sails
+```
 3. **下載專案**
-
-  `git clone https://github.com/b00705008/itseed.git`
-
+```
+  git clone https://github.com/ntcaitseed/itseed.git
+```
 4. **安裝模組**
+```
+  cd itseed
+  npm install
+```
+5. 設定開發環境參數
+- 複製 .env.copy 檔案到同目錄下並改名為 .env
+
+```
+  googleLoginId=
+  payLink=
+  mysql_host= 
+  mysql_port= 
+  mysql_user= 
+  mysql_password= 
+  mysql_database=  
+```
 
-  `npm install`
+6. **開船囉**
+```
+  sails lift
+```
 
-5. **開船囉**
-
-  `sails lift`
-
-6. **進入網站**
+7. **進入網站**
 
   [http://localhost:1337/](http://localhost:1337/)
 
+<a name="system_content"></a>
+![專案架構](/assets/images/doc/system_content.png)
+![MVC架構](/assets/images/doc/MVC.png)
+
 <a name="server"></a>
-## 伺服器教學
-* **VPS**
+### 伺服器教學
 
-  linode (https://www.linode.com/)
-
-* **主機位址**
-
-  `106.187.46.113`
-
-* **帳號密碼**
-
-  請洽
-  
-  11th 張文源 https://www.facebook.com/casey.chang.106
-  
-  12th 陳凱鵬 https://www.facebook.com/kk.chen.999
-
-* **儲存庫路徑**
-
-  `/srv/www/itseed.tw/itseed`
+**VPS**：inode (https://www.linode.com/)  
+**主機位址**：`106.187.46.113`  
+**儲存庫路徑**：`/srv/www/itseed.tw/itseed`  
+**帳號密碼**：請洽當前官網負責人 
+* 15th 陳建宇 https://www.facebook.com/nick03008
+* 15th 高聖哲 https://www.facebook.com/kk.chen.999
 
 ### 常用指令
 **執行專案**
@@ -131,50 +168,8 @@
 cd /srv/www/itseed.tw/itseed
 forever start app.js
 ```
-
 **停止專案**
-
 ```
 cd /srv/www/itseed.tw/itseed
 forever stop app.js
 ```
-
-<a name="issue"></a>
-## 待解決問題及未開發功能
-
-<a name="issue_1"></a>
-
-* **帳戶管理**
-
-  包括帳戶的權限設定、測試帳戶的刪除、不同屆的帳戶管理等等功能
-
-<a name="issue_2"></a>
-
-* **屆數設定**
-
-  目前的設計是會自動設定當屆新註冊帳號的屆數，報名者無須自行填寫。
-  這在一般情形下不會有任何問題，但若報名者隔屆再次使用同一帳號報名時，便會出現問題:
-	  
-    1. 後台「報名者資料」顯示當屆報名者的清單時不會出現前屆註冊的帳號
-	  
-    2. 報名者前屆所上傳的資料會被覆蓋，書審時無法作為參考
-
-* **忘記密碼**
-
-  使用者忘記密碼時，重設密碼及發送郵件的功能
-	
-* **社群登入**
-
-  直接使用FB帳號註冊及登入的功能
-
-* **編輯器外掛元件**
-
-  更多的自訂插件
-
-* **前端優化**
-
-  圖片壓縮、延遲載入...
-
-
-
-* 測試
