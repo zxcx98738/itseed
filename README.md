@@ -9,6 +9,7 @@
 * 開發者專區
   * [使用語言&工具](#tool)
   * [環境架設](#environment)
+  * [專案架構](#system_content)
   * [伺服器教學](#server)
 
 ## 基本介紹
@@ -146,6 +147,10 @@
 
   [http://localhost:1337/](http://localhost:1337/)
 
+<a name="system_content"></a>
+![專案架構](/assets/images/doc/system_content.png)
+![MVC架構](/assets/images/doc/MVC.png)
+
 <a name="server"></a>
 ### 伺服器教學
 
@@ -155,7 +160,6 @@
 **帳號密碼**：請洽當前官網負責人 
 * 15th 陳建宇 https://www.facebook.com/nick03008
 * 15th 高聖哲 https://www.facebook.com/kk.chen.999
-
 
 ### 常用指令
 **執行專案**
