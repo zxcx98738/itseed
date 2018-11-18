@@ -1134,7 +1134,7 @@ var eight = [
 	{
 		name:'黃閔綉',
 		school:'交通大學',
-		dep:' 管理科系'
+		dep:' 管理科學系'
 	},
 	{
 		name:'林吾軒',
@@ -1907,7 +1907,7 @@ var twelve = [
 	{
 		name:'陳彥淇',
 		school:'淡江大學', 
-		dep:'管理科系'
+		dep:'管理科學系'
 	},
 	{
 		name:'余曉雯',
@@ -1958,7 +1958,7 @@ var thirteen = [
 	{
 		name:'林宜穎',       
 		school:'淡江大學', 
-		dep:'管理科系'
+		dep:'管理科學系'
 	},
 	{
 		name:'鄭濡萱',       
@@ -2093,7 +2093,7 @@ var thirteen = [
 	{
 		name:'林瑜禎',       
 		school:' 淡江大學', 
-		dep:'管理科系'
+		dep:'管理科學系'
 	}
 ];
 var fourteen = [
@@ -2120,7 +2120,7 @@ var fourteen = [
 	{
 		name: "莊志朋",
 		school: "淡江大學",
-		dep: "管理科系"
+		dep: "管理科學系"
 	},
 	{
 		name: "郭士庭",
@@ -2130,7 +2130,7 @@ var fourteen = [
 	{
 		name: "易政霖",
 		school: "淡江大學",
-		dep: "管理科系"
+		dep: "管理科學系"
 	},
 	{
 		name: "黃雲",
@@ -2277,7 +2277,7 @@ var fifteen = [
 	{
 		name: "杜佳穎",
 		school: "淡江大學",
-		dep: "管理科系"
+		dep: "管理科學系"
 	},
 	{
 		name: "簡智緯",
@@ -2342,7 +2342,7 @@ var fifteen = [
 	{
 		name: "張安媞",
 		school: "淡江大學",
-		dep: "管理科系"
+		dep: "管理科學系"
 	},
 	{
 		name: "洪肇男",
