@@ -67,12 +67,12 @@ var first = [
 	{
 		name:"高培翔",
 		school:"國立政治大學",
-		dep:"企業管理學系"
+		dep:"企業管理系"
 	},
 	{
 		name:"曾曉婷",
 		school:"國立實踐大學",
-		dep:"企業管理學系"
+		dep:"企業管理系"
 	},
 	{
 		name:"段繼忠",
@@ -162,7 +162,7 @@ var first = [
 	{
 		name:"劉柏廷",
 		school:"輔仁大學",
-		dep:"哲學系"
+		dep:"哲系"
 	},
 	{
 		name:"岑岡霖",
@@ -387,7 +387,7 @@ var third = [
 	{
 		name:'王仲偉',
 		school:'成功大學',
-		dep:'化學系'
+		dep:'化系'
 	},
 	{
 		name:'李雅雯',
@@ -441,7 +441,7 @@ var forth =[
 	{
 		name:'陳怡真',
 		school:'銘傳大學', 
-		dep:'企業管理學系'
+		dep:'企業管理系'
 	},
 	{
 		name:'王嫚謙',
@@ -451,7 +451,7 @@ var forth =[
 	{
 		name:'蔡因因',
 		school:'台灣科大', 
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'呂瑾玟',
@@ -461,27 +461,27 @@ var forth =[
 	{
 		name:'葉菁萍',
 		school:'台灣科大', 
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'敖富琪',
 		school:'台灣大學', 
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'鍾安綾',
 		school:'台灣大學', 
-		dep:'財務金融學系'
+		dep:'財務金融系'
 	},
 	{
 		name:'蔡宜娜',
 		school:'台灣大學', 
-		dep:'工商管理學系'
+		dep:'工商管理系'
 	},
 	{
 		name:'黃琦芳',
 		school:'台灣大學', 
-		dep:'生物科技學系'
+		dep:'生物科技系'
 	},
 	{
 		name:'王郁婷',
@@ -491,12 +491,12 @@ var forth =[
 	{
 		name:'賴怜均',
 		school:'元智大學', 
-		dep:'應用外語學系'
+		dep:'應用外語系'
 	},
 	{
 		name:'賴盈如',
 		school:'清華大學', 
-		dep:'資訊工程學系'
+		dep:'資訊工程系'
 	},
 	{
 		name:'徐琬婷',
@@ -511,12 +511,12 @@ var forth =[
 	{
 		name:'張翔猛',
 		school:'台灣科大', 
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'廖晉毅',
 		school:'臺灣大學', 
-		dep:'財務金融學系'
+		dep:'財務金融系'
 	},
 	{
 		name:'王佑哲',
@@ -526,12 +526,12 @@ var forth =[
 	{
 		name:'林宜儒',
 		school:'政治大學', 
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'呂政道',
 		school:'政治大學', 
-		dep:'風險管理與保險學系'
+		dep:'風險管理與保險系'
 	},
 	{
 		name:'林彥丞',
@@ -541,7 +541,7 @@ var forth =[
 	{
 		name:'張　明',
 		school:'台灣科大', 
-		dep:'資訊工程學系'
+		dep:'資訊工程系'
 	},
 	{
 		name:'楊荏傑',
@@ -551,7 +551,7 @@ var forth =[
 	{
 		name:'徐斌欽',
 		school:'台灣大學', 
-		dep:'化學系'
+		dep:'化系'
 	},
 	{
 		name:'王俊諺',
@@ -566,7 +566,7 @@ var forth =[
 	{
 		name:'黃俊凱',
 		school:'長庚大學',
-		dep:'資訊工程學系'
+		dep:'資訊工程系'
 	}
 ]
 
@@ -575,17 +575,17 @@ var fifth = [
 	{
 		name:'劉安蓉',
 		school:'台灣科大',
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'劉曉盈',
 		school:'長庚大學',
-		dep:'醫務管理學系'
+		dep:'醫務管理系'
 	},
 	{
 		name:'廖彗吟',
 		school:'台北科大',
-		dep:'工商管理學系'
+		dep:'工商管理系'
 	},
 	{
 		name:'廖晨雅',
@@ -600,32 +600,32 @@ var fifth = [
 	{
 		name:'李浩瑜',
 		school:'台灣大學',
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'林佳慧',
 		school:'台灣大學',
-		dep:'生物科技學系'
+		dep:'生物科技系'
 	},
 	{
 		name:'林育竹',
 		school:'長庚大學',
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'楊斯涵',
 		school:'台灣大學',
-		dep:'醫學檢驗生物技術學系'
+		dep:'醫學檢驗生物技術系'
 	},
 	{
 		name:'童偲媁',
 		school:'政治大學',
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'紀芷芸',
 		school:'台灣大學',
-		dep:'農業化學系'
+		dep:'農業化系'
 	},
 	{
 		name:'翁瑜璘',
@@ -645,17 +645,17 @@ var fifth = [
 	{
 		name:'陳怡君',
 		school:'台灣科大',
-		dep:'資訊管理學學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'高若馨',
 		school:'中央大學',
-		dep:'地球科學系'
+		dep:'地球科系'
 	},
 	{
 		name:'張毓容',
 		school:'長庚大學',
-		dep:'資訊管理學學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'柳佳林',
@@ -665,7 +665,7 @@ var fifth = [
 	{
 		name:'吳鴻慶',
 		school:'台灣大學',
-		dep:'財務金融學系'
+		dep:'財務金融系'
 	},
 	{
 		name:'周哲揚',
@@ -685,7 +685,7 @@ var fifth = [
 	{
 		name:'曹瀚勻',
 		school:'台灣大學',
-		dep:'生命科學系'
+		dep:'生命科系'
 	},
 	{
 		name:'林挺正',
@@ -695,17 +695,17 @@ var fifth = [
 	{
 		name:'梁耀升',
 		school:'東吳大學',
-		dep:'企業管理學系'
+		dep:'企業管理系'
 	},
 	{
 		name:'程仲駿',
 		school:'長庚大學',
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'胡佳寧',
 		school:'台灣大學',
-		dep:'電機工程學系'
+		dep:'電機工程系'
 	},
 	{
 		name:'蕭創元',
@@ -838,7 +838,7 @@ var sixth = [
 	{
 		name:'李妍皓',
 		school:'臺灣師大', 
-		dep:'工業科技教育學系'
+		dep:'工業科技教育系'
 	},
 	{
 		name:'黃筱涵',
@@ -876,7 +876,7 @@ var seventh = [
 	{
 		name:'王皓',		
 		school:'台灣大學 ',
-		dep:'生物環境系統工程學系'
+		dep:'生物環境系統工程系'
 	},
 	{
 		name:'吳蕙盈',
@@ -916,7 +916,7 @@ var seventh = [
 	{
 		name:'劉智偉',
 		school:'台灣科大', 
-		dep:'電子工程學系'
+		dep:'電子工程系'
 	},
 	{
 		name:'楊媛婷',
@@ -1124,7 +1124,7 @@ var eight = [
 	{
 		name:'吳宗倫',
 		school:'台師大 ',
-		dep:'數學系'
+		dep:'數系'
 	},
 	{
 		name:'孫瑞駿',
@@ -1134,7 +1134,7 @@ var eight = [
 	{
 		name:'黃閔綉',
 		school:'交通大學',
-		dep:' 管理科學系'
+		dep:' 管理科系'
 	},
 	{
 		name:'林吾軒',
@@ -1301,7 +1301,7 @@ var nine = [
 {
 	name:'陳均旻',
 	school:'中央大學',
-	dep: '英美語文學系'
+	dep: '英美語文系'
 },
 {
 	name:'王俊淇',
@@ -1351,17 +1351,17 @@ var nine = [
 {
 	name:'鐘詩淵',
 	school:'政治大學',
-	dep: '資管學系'
+	dep: '資管系'
 },
 {
 	name:'張毓庭',
 	school:'台灣大學',
-	dep: '電機學系'
+	dep: '電機系'
 },
 {
 	name:'廖育萱',
 	school:'台灣大學',
-	dep: '資管學系'
+	dep: '資管系'
 },
 {
 	name:'張國豐',
@@ -1371,7 +1371,7 @@ var nine = [
 {
 	name:'陳冠如',
 	school:'清華大學',
-	dep: '經濟學系'
+	dep: '經濟系'
 },
 {
 	name:'李珈蓉',
@@ -1381,7 +1381,7 @@ var nine = [
 {
 	name:'張孝誠',
 	school:'陽明大學',
-	dep: '醫學系'
+	dep: '醫系'
 }
 ];
 
@@ -1476,7 +1476,7 @@ var ten = [
 {
 	name:'吳耀中',
 	school:'東吳大學', 
-	dep:'化學系'
+	dep:'化系'
 },
 {
 	name:'徐曼寧',
@@ -1486,7 +1486,7 @@ var ten = [
 {
 	name:'顏正淵',
 	school:'臺灣師範大學',
-	dep:'公民教育與活動領導學系'
+	dep:'公民教育與活動領導系'
 },
 {
 	name:'蘇芸生',
@@ -1586,7 +1586,7 @@ eleven = [
 	{
 		name:'杜怡萱',
 		school:'長庚大學', 
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'林佳龍',
@@ -1596,7 +1596,7 @@ eleven = [
 	{
 		name:'林明毅',
 		school:'台灣科技大學',
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'林欣瑜',
@@ -1611,12 +1611,12 @@ eleven = [
 	{
 		name:'侯詠齡',
 		school:'政治大學', 
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'紀宇軒',
 		school:'政治大學', 
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'胡騏久',
@@ -1636,12 +1636,12 @@ eleven = [
 	{
 		name:'彭怡翔',
 		school:'臺北大學', 
-		dep:'經濟學系'
+		dep:'經濟系'
 	},
 	{
 		name:'黃詩媛',
 		school:'東吳大學', 
-		dep:'英國語文學系'
+		dep:'英國語文系'
 	},
 	{
 		name:'常心瀚',
@@ -1676,7 +1676,7 @@ eleven = [
 	{
 		name:'詹博雯',
 		school:'台灣大學', 
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'陳又綾',
@@ -1686,7 +1686,7 @@ eleven = [
 	{
 		name:'張文源',
 		school:'台灣大學', 
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'曾郁琇',
@@ -1752,7 +1752,7 @@ var twelve = [
 	{
 		name:'謝慧霖',
 		school:'台灣大學', 
-		dep:'化學系'
+		dep:'化系'
 	},
 	{
 		name:'簡子翔',
@@ -1762,7 +1762,7 @@ var twelve = [
 	{
 		name:'蔡奕敏',
 		school:'臺北教育大學',
-		dep:'資訊科學系'
+		dep:'資訊科系'
 	},
 	{
 		name:'胡柏榕',
@@ -1782,7 +1782,7 @@ var twelve = [
 	{
 		name:'黃詩晴',
 		school:'淡江大學', 
-		dep:'國際企業學系'
+		dep:'國際企業系'
 	},
 	{
 		name:'黃雅琪',
@@ -1882,12 +1882,12 @@ var twelve = [
 	{
 		name:'陳怡臻',
 		school:'東華大學', 
-		dep:'國際企業學系'
+		dep:'國際企業系'
 	},
 	{
 		name:'楊博凱',
 		school:'銘傳大學', 
-		dep:'餐旅管理學系'
+		dep:'餐旅管理系'
 	},
 	{
 		name:'郭展境',
@@ -1897,7 +1897,7 @@ var twelve = [
 	{
 		name:'陳怡卉',
 		school:'長庚大學', 
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'石庭維',
@@ -1907,7 +1907,7 @@ var twelve = [
 	{
 		name:'陳彥淇',
 		school:'淡江大學', 
-		dep:'管理科學系'
+		dep:'管理科系'
 	},
 	{
 		name:'余曉雯',
@@ -1933,37 +1933,37 @@ var thirteen = [
 	{
 		name:'蒲冠吉',
 		school:'台灣大學', 
-		dep:'心理學系研究所'
+		dep:'心理系研究所'
 	},
 	{
 		name:'曾子芸',
 		school:'長庚大學', 
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'張慧慈',
 		school:'台北大學', 
-		dep:'公共行政暨政策學系'
+		dep:'公共行政暨政策系'
 	},
 	{
 		name:'周卓徵',
 		school:'清華大學', 
-		dep:'工程與系統科學系'
+		dep:'工程與系統科系'
 	},
 	{
 		name:'薛翔文',       
 		school:'長庚大學', 
-		dep:'醫務管理學系'
+		dep:'醫務管理系'
 	},
 	{
 		name:'林宜穎',       
 		school:'淡江大學', 
-		dep:'管理科學學系'
+		dep:'管理科系'
 	},
 	{
 		name:'鄭濡萱',       
 		school:'輔仁大學', 
-		dep:'生命科學系'
+		dep:'生命科系'
 	},
 	{
 		name:'莊佳宜',       
@@ -1973,67 +1973,67 @@ var thirteen = [
 	{
 		name:'廖芷寧',       
 		school:'臺北大學', 
-		dep:'公共行政暨政策學系'
+		dep:'公共行政暨政策系'
 	},
 	{
 		name:'翁珮玲',       
 		school:'台灣大學', 
-		dep:'資訊管理學系研究所'
+		dep:'資訊管理系研究所'
 	},
 	{
 		name:'張懷彬',       
 		school:'台灣大學', 
-		dep:' 財務金融學系'
+		dep:' 財務金融系'
 	},
 	{
 		name:'彭証鴻',       
 		school:'中央大學', 
-		dep:' 資訊管理學系'
+		dep:' 資訊管理系'
 	},
 	{
 		name:'葉柏良',       
 		school:'臺北教育大學', 
-		dep:'教育經營與管理學系'
+		dep:'教育經營與管理系'
 	},
 	{
 		name:'麥蕙蓮',       
 		school:'臺北大學', 
-		dep:' 經濟學系'
+		dep:' 經濟系'
 	},
 	{
 		name:'林均洋',       
 		school:'台灣大學', 
-		dep:' 機械工程學系研究所'
+		dep:' 機械工程系研究所'
 	},
 	{
 		name:'楊雁婷',       
 		school:'政治大學', 
-		dep:' 會計學系'
+		dep:' 會計系'
 	},
 	{
 		name:'王靖婷',       
 		school:'臺北商業大學', 
-		dep:'企業管理學系'
+		dep:'企業管理系'
 	},
 	{
 		name:'吳鴻毅',       
 		school:'清華大學', 
-		dep:' 工程與系統科學系'
+		dep:' 工程與系統科系'
 	},
 	{
 		name:'黃浩銘',       
 		school:'實踐大學', 
-		dep:' 資訊管理學系'
+		dep:' 資訊管理系'
 	},
 	{
 		name:'簡立昕',       
 		school:'東華大學', 
-		dep:' 資訊管理學系'
+		dep:' 資訊管理系'
 	},
 	{
 		name:'張博堯',       
 		school:'台灣科技大學', 
-		dep:'資訊管理學系'
+		dep:'資訊管理系'
 	},
 	{
 		name:'林裕翔',       
@@ -2043,37 +2043,37 @@ var thirteen = [
 	{
 		name:'陳珮穎',       
 		school:'淡江大學', 
-		dep:' 資訊與圖書館學系'
+		dep:' 資訊與圖書館系'
 	},
 	{
 		name:'廖芳盈',       
 		school:'台灣藝術大學', 
-		dep:'雕塑學系'
+		dep:'雕塑系'
 	},
 	{
 		name:'張盈禎',       
 		school:'台灣科技大學', 
-		dep:'資訊管理學系研究所'
+		dep:'資訊管理系研究所'
 	},
 	{
 		name:'黃禹棻',       
 		school:'臺北大學', 
-		dep:' 企業管理學系'
+		dep:' 企業管理系'
 	},
 	{
 		name:'許庭瑜',       
 		school:'政治大學', 
-		dep:' 經濟學系研究所'
+		dep:' 經濟系研究所'
 	},
 	{
 		name:'吳沛璇',       
 		school:'臺灣大學', 
-		dep:' 資訊管理學系'
+		dep:' 資訊管理系'
 	},
 	{
 		name:'宋進益',       
 		school:'政治大學', 
-		dep:' 國際經營與貿易學系'
+		dep:' 國際經營與貿易系'
 	},
 	{
 		name:'徐薇茹',       
@@ -2083,44 +2083,44 @@ var thirteen = [
 	{
 		name:'賴冠廷',       
 		school:'臺灣大學', 
-		dep:' 資訊管理學系'
+		dep:' 資訊管理系'
 	},
 	{
 		name:'邱芮毅',       
 		school:'台灣師範大學', 
-		dep:'科技應用與人力資源發展學系'
+		dep:'科技應用與人力資源發展系'
 	},
 	{
 		name:'林瑜禎',       
 		school:' 淡江大學', 
-		dep:'管理科學學系'
+		dep:'管理科系'
 	}
 ];
 var fourteen = [
 	{
 		name: "鄭宇婷",
 		school: "臺灣科技大學",
-		dep: "電子工程學系"
+		dep: "電子工程系"
 	},
 	{
 		name: "吳宜修",
 		school: "臺北大學",
-		dep: "經濟學系"
+		dep: "經濟系"
 	},
 	{
 		name: "魏佑容",
 		school: "臺灣大學",
-		dep: "農業經濟學系"
+		dep: "農業經濟系"
 	},
 	{
 		name: "劉宭守",
 		school: "中央大學",
-		dep: "資訊管理學系"
+		dep: "資訊管理系"
 	},
 	{
 		name: "莊志朋",
 		school: "淡江大學",
-		dep: "管理科學學系"
+		dep: "管理科系"
 	},
 	{
 		name: "郭士庭",
@@ -2130,27 +2130,27 @@ var fourteen = [
 	{
 		name: "易政霖",
 		school: "淡江大學",
-		dep: "管理科學學系"
+		dep: "管理科系"
 	},
 	{
 		name: "黃雲",
 		school: "臺北大學",
-		dep: "經濟學系"
+		dep: "經濟系"
 	},
 	{
 		name: "劉皪",
 		school: "政治大學",
-		dep: "資訊管理學系"
+		dep: "資訊管理系"
 	},
 	{
 		name: "李沛璇",
 		school: "臺灣大學",
-		dep: "國際企業學系"
+		dep: "國際企業系"
 	},
 	{
 		name: "施心茹",
 		school: "政治大學",
-		dep: "企業管理學系"
+		dep: "企業管理系"
 	},
 	{
 		name: "翁子崴",
@@ -2160,62 +2160,62 @@ var fourteen = [
 	{
 		name: "林書攸",
 		school: "臺灣大學",
-		dep: "資訊管理學系"
+		dep: "資訊管理系"
 	},
 	{
 		name: "黃建翰",
 		school: "政治大學",
-		dep: "資訊管理學系"
+		dep: "資訊管理系"
 	},
 	{
 		name: "韓宜庭",
 		school: "淡江大學",
-		dep: "教育科技學系"
+		dep: "教育科技系"
 	},
 	{
 		name: "吳少午",
 		school: "元智大學",
-		dep: "資訊傳播學系"
+		dep: "資訊傳播系"
 	},
 	{
 		name: "陳姿臻",
 		school: "東吳大學",
-		dep: "政治學系"
+		dep: "政治系"
 	},
 	{
 		name: "張簡翊珽",
 		school: "中正大學",
-		dep: "企業管理學系"
+		dep: "企業管理系"
 	},
 	{
 		name: "謝宛蓁",
 		school: "臺灣科技大學",
-		dep: "工商業設計學系"
+		dep: "工商業設計系"
 	},
 	{
 		name: "蕭惟心",
 		school: "清華大學",
-		dep: "數學系"
+		dep: "數系"
 	},
 	{
 		name: "謝欣芸",
 		school: "臺灣大學",
-		dep: "工商管理學系  英文專班"
+		dep: "工商管理系  英文專班"
 	},
 	{
 		name: "張睿君",
 		school: "臺灣大學",
-		dep: "資訊管理學系"
+		dep: "資訊管理系"
 	},
 	{
 		name: "林柏聿",
 		school: "輔仁大學",
-		dep: "資訊管理學系"
+		dep: "資訊管理系"
 	},
 	{
 		name: "陳威宇",
 		school: "長庚大學",
-		dep: "醫務管理學系"
+		dep: "醫務管理系"
 	},
 	{
 		name: "陳冠瑋",
@@ -2225,27 +2225,27 @@ var fourteen = [
 	{
 		name: "陳呈祐",
 		school: "中央大學",
-		dep: "資訊管理學系"
+		dep: "資訊管理系"
 	},
 	{
 		name: "賴品竹",
 		school: "臺灣大學",
-		dep: "國際企業學系"
+		dep: "國際企業系"
 	},
 	{
 		name: "徐佑昀",
 		school: "臺灣大學",
-		dep: "圖書資訊學系"
+		dep: "圖書資訊系"
 	},
 	{
 		name: "林秉橙",
 		school: "元智大學",
-		dep: "資訊管理學系"
+		dep: "資訊管理系"
 	},
 	{
 		name: "黃琬淳",
 		school: "臺灣大學",
-		dep: "外國語文學系雙修動物科技學系"
+		dep: "外國語文系雙修動物科技系"
 	},
 	{
 		name: "蔡曜宇",
@@ -2262,7 +2262,7 @@ var fifteen = [
 	{
 		name: "張少謙",
 		school: "臺灣師範大學",
-		dep: "教育學系"
+		dep: "教育系"
 	},
 	{
 		name: "陳莉羚",
@@ -2272,12 +2272,12 @@ var fifteen = [
 	{
 		name: "李宛儒",
 		school: "中央大學",
-		dep: "經濟學系"
+		dep: "經濟系"
 	},
 	{
 		name: "杜佳穎",
 		school: "淡江大學",
-		dep: "管理科學系"
+		dep: "管理科系"
 	},
 	{
 		name: "簡智緯",
@@ -2287,7 +2287,7 @@ var fifteen = [
 	{
 		name: "廖文豪",
 		school: "臺灣大學",
-		dep: "會計學系"
+		dep: "會計系"
 	},
 	{
 		name: "黃國禎",
@@ -2297,7 +2297,7 @@ var fifteen = [
 	{
 		name: "郭容榕",
 		school: "政治大學",
-		dep: "國際經營與貿易學系"
+		dep: "國際經營與貿易系"
 	},
 	{
 		name: "黃家儀",
@@ -2307,12 +2307,12 @@ var fifteen = [
 	{
 		name: "陳瑀婕",
 		school: "清華大學",
-		dep: "經濟學系"
+		dep: "經濟系"
 	},
 	{
 		name: "黃俊友",
 		school: "臺北大學",
-		dep: "經濟學系"
+		dep: "經濟系"
 	},
 	{
 		name: "黃薏瑄",
@@ -2320,7 +2320,7 @@ var fifteen = [
 		dep: "社會教育研究所"
 	},
 	{
-		name: "汪俊志",
+		name: "汪峻志",
 		school: "臺灣科技大學",
 		dep: "企業管理系"
 	},
@@ -2330,6 +2330,11 @@ var fifteen = [
 		dep: "資訊工程系"
 	},
 	{
+		name: "王昇",
+		school: "臺灣科技大學",
+		dep: "機械工程研究所"
+	},
+	{
 		name: "高嘉涓",
 		school: "中央大學",
 		dep: "資訊管理系"
@@ -2337,32 +2342,32 @@ var fifteen = [
 	{
 		name: "張安媞",
 		school: "淡江大學",
-		dep: "管理科學系"
+		dep: "管理科系"
 	},
 	{
 		name: "洪肇男",
 		school: "政治大學",
-		dep: "國際經營與貿易學系"
+		dep: "國際經營與貿易系"
 	},
 	{
 		name: "吳懿璇",
 		school: "臺北大學",
-		dep: "經濟學系"
+		dep: "經濟系"
 	},
 	{
 		name: "黃鶴聞",
 		school: "臺灣大學",
-		dep: "經濟學系"
+		dep: "經濟系"
 	},
 	{
 		name: "潘冠樺",
 		school: "政治大學",
-		dep: "經濟學系"
+		dep: "經濟系"
 	},
 	{
 		name: "呂紹靖",
 		school: "臺北大學",
-		dep: "金融與合作經營學系"
+		dep: "金融與合作經營系"
 	},
 	{
 		name: "張嘉芬",
@@ -2402,22 +2407,22 @@ var fifteen = [
 	{
 		name: "宋隆維",
 		school: "臺灣大學",
-		dep: "經濟學系"
+		dep: "經濟系"
 	},
 	{
 		name: "蔡承裕",
 		school: "淡江大學",
-		dep: "財務金融學系"
+		dep: "財務金融系"
 	},
 	{
 		name: "蔡佩誼",
 		school: "輔仁大學",
-		dep: "企業管理學系"
+		dep: "企業管理系"
 	},
 	{
 		name: "洪丞柔",
-		school: "輔仁大學",
-		dep: "化學工程學系"
+		school: "中原大學",
+		dep: "化學工程系"
 	}
 ];
 changeList(fifteen);
