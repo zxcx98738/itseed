@@ -155,7 +155,7 @@ issue => 規劃研究中
 **儲存庫路徑**：`/srv/www/itseed.tw/itseed`  
 **帳號密碼**：請洽當前官網負責人 
 * 15th 陳建宇 https://www.facebook.com/nick03008
-* 15th 高聖哲 https://www.facebook.com/kk.chen.999
+* 15th 高聖哲 https://www.facebook.com/profile.php?id=100001822796240
 
 ### 常用指令
 **執行專案**
