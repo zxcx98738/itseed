@@ -49,6 +49,9 @@ $(".list-num").click(function(){
 	if($(this).html()==14){
 		changeList(fourteen);
 	}
+	if($(this).html()==15){
+		changeList(fifteen);
+	}
 	$(".list-th>span").html($(this).html());
 });
 
@@ -2250,5 +2253,172 @@ var fourteen = [
 		dep: "資訊管理所"
 	}
 ];
-changeList(fourteen);
+var fifteen = [
+	{
+		name: "高聖哲",
+		school: "臺灣科技大學",
+		dep: "資訊管理系"
+	},
+	{
+		name: "張少謙",
+		school: "臺灣師範大學",
+		dep: "教育學系"
+	},
+	{
+		name: "陳莉羚",
+		school: "政治大學",
+		dep: "資訊管理系"
+	},
+	{
+		name: "李宛儒",
+		school: "中央大學",
+		dep: "經濟學系"
+	},
+	{
+		name: "杜佳穎",
+		school: "淡江大學",
+		dep: "管理科學系"
+	},
+	{
+		name: "簡智緯",
+		school: "淡江大學",
+		dep: "資訊與圖書管理系"
+	},
+	{
+		name: "廖文豪",
+		school: "臺灣大學",
+		dep: "會計學系"
+	},
+	{
+		name: "黃國禎",
+		school: "臺灣科技大學",
+		dep: "資訊管理系"
+	},
+	{
+		name: "郭容榕",
+		school: "政治大學",
+		dep: "國際經營與貿易學系"
+	},
+	{
+		name: "黃家儀",
+		school: "文化大學",
+		dep: "資訊管理系"
+	},
+	{
+		name: "陳瑀婕",
+		school: "清華大學",
+		dep: "經濟學系"
+	},
+	{
+		name: "黃俊友",
+		school: "臺北大學",
+		dep: "經濟學系"
+	},
+	{
+		name: "黃薏瑄",
+		school: "臺灣師範大學",
+		dep: "社會教育研究所"
+	},
+	{
+		name: "汪俊志",
+		school: "臺灣科技大學",
+		dep: "企業管理系"
+	},
+	{
+		name: "楊舒媛",
+		school: "臺灣大學",
+		dep: "資訊工程系"
+	},
+	{
+		name: "高嘉涓",
+		school: "中央大學",
+		dep: "資訊管理系"
+	},
+	{
+		name: "張安媞",
+		school: "淡江大學",
+		dep: "管理科學系"
+	},
+	{
+		name: "洪肇男",
+		school: "政治大學",
+		dep: "國際經營與貿易學系"
+	},
+	{
+		name: "吳懿璇",
+		school: "臺北大學",
+		dep: "經濟學系"
+	},
+	{
+		name: "黃鶴聞",
+		school: "臺灣大學",
+		dep: "經濟學系"
+	},
+	{
+		name: "潘冠樺",
+		school: "政治大學",
+		dep: "經濟學系"
+	},
+	{
+		name: "呂紹靖",
+		school: "臺北大學",
+		dep: "金融與合作經營學系"
+	},
+	{
+		name: "張嘉芬",
+		school: "逢甲大學",
+		dep: "行銷系"
+	},
+	{
+		name: "陳奕儒",
+		school: "輔仁大學",
+		dep: "資訊管理系"
+	},
+	{
+		name: "陳建宇",
+		school: "臺灣科技大學",
+		dep: "機械工程系"
+	},
+	{
+		name: "賈加平",
+		school: "臺灣科技大學",
+		dep: "資訊管理研究所"
+	},
+	{
+		name: "張家惟",
+		school: "臺灣師範大學",
+		dep: "社會教育系"
+	},
+	{
+		name: "陳睿言",
+		school: "政治大學",
+		dep: "資訊管理系"
+	},
+	{
+		name: "蕭文惠",
+		school: "臺灣科技大學",
+		dep: "管理學士班"
+	},
+	{
+		name: "宋隆維",
+		school: "臺灣大學",
+		dep: "經濟學系"
+	},
+	{
+		name: "蔡承裕",
+		school: "淡江大學",
+		dep: "財務金融學系"
+	},
+	{
+		name: "蔡佩誼",
+		school: "輔仁大學",
+		dep: "企業管理學系"
+	},
+	{
+		name: "洪丞柔",
+		school: "輔仁大學",
+		dep: "化學工程學系"
+	}
+];
+changeList(fifteen);
 
