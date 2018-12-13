@@ -44,12 +44,27 @@
       <span>學系</span>
     </div> 
     <table id="member-content">
+      <% for(var i = 0; i < datas.length; i++){ %>
+        <% if(datas[i].class == 15){%>
+          <tr><td><%- datas[i].name %></td><td><%-datas[i].school %></td><td><%-datas[i].dep %></td></tr>
+        <% } %>  
+      <% } %>   
     </table>
   </div>
- 
 </section>
-<script src="/js/specifies/frontend/memberList.js"></script>
-
+<!--script src="/js/specifies/frontend/memberList.js"></script-->
+<script type="text/javascript">
+var datas = <%-JSON.stringify(datas)%>
+$(".list-num").click(function(){
+  $(".list-th>span").html($(this).html());
+  $("#member-content").html("");
+  for(var i=0;i<datas.length;i++){
+   if(datas[i].class == $(this).html()){
+      $("#member-content").append("<tr><td>"+datas[i].name+"</td><td>"+datas[i].school+"</td><td>"+datas[i].dep+"</td></tr>");
+    }
+  }
+});
+</script> 
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->

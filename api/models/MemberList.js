@@ -19,15 +19,22 @@ module.exports = {
         author: {
           model:'User'
         },
-        //標題
-        title: {
+        name: {
           type: 'string',
-          maxLength: 30,
+          notNull: true
+        },
+        class:{
+          type: 'integer',
+          notNull: true
+        },
+        //標題
+        school: {
+          type: 'string',
           notNull: true
         },
         //內容
-        content: {
-          type: 'text',
+        dep: {
+          type: 'string',
           notNull: true
         },
         //排序
