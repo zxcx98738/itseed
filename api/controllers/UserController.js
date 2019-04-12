@@ -295,8 +295,9 @@ function registerAccount(res,newuser,callback){
                 req.session.pwd = req.body.pwd;
                 req.session.type =  user.type;
                 req.session.authorized = {
-                    user:true
+                    user: true
                 }
+                //console.log(req.session);
                 res.redirect(req.body.redirect!='undefined'? req.body.redirect: "/disc" ) ;
             }
         });
@@ -531,6 +532,8 @@ function registerAccount(res,newuser,callback){
     //DISC
     disc: function (req, res) {
         //================ 報名狀態顯示顯示
+        console.log("fuck you disc");
+        console.log("fuck you disc");
         User.findOne({
             id: req.session.userid
         })
