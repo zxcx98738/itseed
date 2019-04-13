@@ -20,5 +20,6 @@ module.exports = {
   models: {
     connection: 'mysql',
     migrate: 'safe'
-  }
+  },
+  port: 8080,
 };
