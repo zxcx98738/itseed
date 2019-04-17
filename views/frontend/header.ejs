@@ -1,20 +1,20 @@
 <script>
-  (function(){
-    // $(window).scroll(function(){
-    //   if($(this).scrollTop() > 300) {
-    //     $("nav").addClass("navbar-shrink");
-    //   }
-    //   else{
-    //     $("nav").removeClass("navbar-shrink");
-    //   }
-    // });
-  })()
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      document.location.href = "/logout";
-    });
-    document.location.href = "/logout";
+  function signOut() {    
+    swal({
+      title: '確定要登出嗎?',
+      confirmButtonText: '確定',
+      cancelButtonText: '取消',
+      showCancelButton: true
+    })
+    .then(function(result) {
+      if (result.value) {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          document.location.href = "/logout";
+        });
+        document.location.href = "/logout";   
+      }
+    })
   }
 </script>
 <header>

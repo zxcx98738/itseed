@@ -295,8 +295,9 @@ function registerAccount(res,newuser,callback){
                 req.session.pwd = req.body.pwd;
                 req.session.type =  user.type;
                 req.session.authorized = {
-                    user:true
+                    user: true
                 }
+                //console.log(req.session);
                 res.redirect(req.body.redirect!='undefined'? req.body.redirect: "/disc" ) ;
             }
         });
