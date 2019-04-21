@@ -330,18 +330,35 @@
 	}
 	
 }
-.look_forward-container{
-	height : 45vh;
-	margin-top: 3vh;
-	margin-bottom: 3vh;
-	.roww{
-		position: relative; 
-		top:50%; 
-		transform:translateY(-50%);
-		>div{
-			text-align: center;
-			font-size: 16vh;
-			font : 微軟正黑體;
-		}
+
+@media screen and (min-width: 812px) {
+    .test_font{
+	font-size: 16vh;
+	text-align: center;
+	}
+	.seeusoondiv{
+	margin: 5vh;
+	}
+}
+
+    /*介於480px與767px之間*/
+@media screen and (min-width: 480px) and (max-width: 811px) {
+    .test_font{
+	font-size: 12vh;
+	text-align: center;
+	}
+	.seeusoondiv{
+	margin: 4vh;
+	}
+}
+
+    /*未滿480px，即479px以下*/
+ @media screen and (max-width: 479px) {
+    .test_font{
+	font-size: 10vh;
+	text-align: center;
+	}
+	.seeusoondiv{
+	margin: 3vh;
 	}
 }
