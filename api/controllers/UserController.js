@@ -532,8 +532,6 @@ function registerAccount(res,newuser,callback){
     //DISC
     disc: function (req, res) {
         //================ 報名狀態顯示顯示
-        console.log("fuck you disc");
-        console.log("fuck you disc");
         User.findOne({
             id: req.session.userid
         })
