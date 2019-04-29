@@ -99,33 +99,58 @@ function registerAccount(res,newuser,callback){
     rem: function (req, res) {
         // var q = req.session.userid
         // if(req.session.userid){
-        var userregister ={
 
-        mailmd5 : md5(req.body.email),
-        email : req.body.email
-        }
-        emailV.findOne({
-            mailmd5: md5(req.body.email)
-        })
-        .exec(function (err , emailvo) {
-            if (err) {
+        // var userregister ={
+
+        // mailmd5 : md5(req.body.email),
+        // email : req.body.email
+        // }
+        // emailV.findOne({
+        //     mailmd5: md5(req.body.email)
+        // })
+        // .exec(function (err , emailvo) {
+        //     if (err) {
                 
-                res.end(JSON.stringify(err));
-            }else if(emailvo){
-                Mailer.sendWelcomeMail(userregister);
-                return res.view("frontend/pages/rem" , { emailV:userregister });
-            }else{
-                emailV.create(userregister)
-                .exec(function(err, emailV) {
-                    if(err){
-                        res.end(JSON.stringify(err));
-                    }
-                    else{
-                        Mailer.sendWelcomeMail(userregister);
-                        return res.view("frontend/pages/rem" , { emailV:emailV });
-                    }
-                });
-            }
+        //         res.end(JSON.stringify(err));
+        //     }else if(emailvo){
+        //         Mailer.sendWelcomeMail(userregister);
+        //         return res.view("frontend/pages/rem" , { emailV:userregister });
+        //     }else{
+        //         emailV.create(userregister)
+        //         .exec(function(err, emailV) {
+        //             if(err){
+        //                 res.end(JSON.stringify(err));
+        //             }
+        //             else{
+        //                 Mailer.sendWelcomeMail(userregister);
+        //                 return res.view("frontend/pages/rem" , { emailV:emailV });
+        //             }
+        //         });
+        //     }
+        // });
+        var nodemailer = require('nodemailer');
+
+        var transporter = nodemailer.createTransport({
+         service: 'gmail',
+         auth: {
+           user: 'apple556621@gmail.com',
+           pass: 'iuhmsgkrcmivemod'
+         }
+        });
+
+            var mailOptions = {
+            from: 'apple556621@gmail.com',
+            to: 'apple5566221@gmail.com',
+            subject: 'Sending Email using Node.js',
+            text: 'That was easy!'
+            };
+
+        transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+            console.log(error);
+          } else {
+           console.log('Email sent: ' + info.response);
+          }
         });
     },
     reg:function (req,res){
@@ -212,6 +237,31 @@ function registerAccount(res,newuser,callback){
 			req.session.authorized = {
 				user: true
 			};
+        //註冊完寄送驗證信    
+        var nodemailer = require('nodemailer');
+
+        var transporter = nodemailer.createTransport({
+         service: 'gmail',
+         auth: {
+           user: 'apple556621@gmail.com',
+           pass: 'iuhmsgkrcmivemod'
+         }
+        });
+
+            var mailOptions = {
+            from: 'apple556621@gmail.com',
+            to: req.session.email,
+            subject: '資訊種子註冊成功驗證信',
+            html: '<p>親愛的報名者您好,</p><br><p>請點擊連結繼續完成註冊手續</p><a href="http://www.itseed.tw/register?email=<%= mailmd5 %>"> 請點擊此連結 </a><br><p>第十六屆資訊種子招生團隊敬上</p>'
+            };
+
+        transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+            console.log(error);
+          } else {
+           console.log('Email sent: ' + info.response +' 寄件的信箱為：'+req.session.email);
+          }
+        });
 			res.redirect("/disc");  
         });                
     },

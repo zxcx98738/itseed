@@ -42,6 +42,13 @@ module.exports.routes = {
   //   controller: 'User',
   //   action: 'rem'
   // },
+  'get /rem': {
+    view: 'frontend/pages/rem'
+  },
+  'post /rem': {
+    controller: 'User',
+    action: 'rem'
+  },
   // 'post /register': {
   //   controller: 'User',
   //   action: 'register'    
