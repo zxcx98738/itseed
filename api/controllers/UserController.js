@@ -254,7 +254,7 @@ function registerAccount(res,newuser,callback){
         from: 'itseed17th@gmail.com',
         to: req.session.email,
         subject: '資訊種子註冊成功驗證信',
-        html: '<p>親愛的報名者您好,</p><br><p>請點擊連結繼續完成註冊手續</p><a href="http://www.itseed.tw/register?email=<%= mailmd5 %>"> 請點擊此連結 </a><br><p>第十六屆資訊種子招生團隊敬上</p>'
+        html: '<p>親愛的報名者您好,</p><br><p>感謝您的註冊</p><br><p>資訊種子為一年期的陪ㄒ運計畫......</p><br><p>第十六屆資訊種子招生團隊敬上</p>'
         };
 
         transporter.sendMail(mailOptions, function(error, info){
