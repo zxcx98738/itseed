@@ -8,6 +8,7 @@
 require('dotenv').config()
 var md5 = require("MD5")
 var fs = require("fs");
+var nodemailer = require('nodemailer');
 
 function registerAccount(res,newuser,callback){
 	// 		 一般會員  email + pwd 		註冊
@@ -99,33 +100,57 @@ function registerAccount(res,newuser,callback){
     rem: function (req, res) {
         // var q = req.session.userid
         // if(req.session.userid){
-        var userregister ={
 
-        mailmd5 : md5(req.body.email),
-        email : req.body.email
-        }
-        emailV.findOne({
-            mailmd5: md5(req.body.email)
-        })
-        .exec(function (err , emailvo) {
-            if (err) {
+        // var userregister ={
+
+        // mailmd5 : md5(req.body.email),
+        // email : req.body.email
+        // }
+        // emailV.findOne({
+        //     mailmd5: md5(req.body.email)
+        // })
+        // .exec(function (err , emailvo) {
+        //     if (err) {
                 
-                res.end(JSON.stringify(err));
-            }else if(emailvo){
-                Mailer.sendWelcomeMail(userregister);
-                return res.view("frontend/pages/rem" , { emailV:userregister });
-            }else{
-                emailV.create(userregister)
-                .exec(function(err, emailV) {
-                    if(err){
-                        res.end(JSON.stringify(err));
-                    }
-                    else{
-                        Mailer.sendWelcomeMail(userregister);
-                        return res.view("frontend/pages/rem" , { emailV:emailV });
-                    }
-                });
-            }
+        //         res.end(JSON.stringify(err));
+        //     }else if(emailvo){
+        //         Mailer.sendWelcomeMail(userregister);
+        //         return res.view("frontend/pages/rem" , { emailV:userregister });
+        //     }else{
+        //         emailV.create(userregister)
+        //         .exec(function(err, emailV) {
+        //             if(err){
+        //                 res.end(JSON.stringify(err));
+        //             }
+        //             else{
+        //                 Mailer.sendWelcomeMail(userregister);
+        //                 return res.view("frontend/pages/rem" , { emailV:emailV });
+        //             }
+        //         });
+        //     }
+        // });
+
+        var transporter = nodemailer.createTransport({
+         service: 'gmail',
+         auth: {
+           user: 'itseed17th@gmail.com',
+           pass: 'weareitseed17'
+         }
+        });
+
+        var mailOptions = {
+        from: 'itseed17th@gmail.com',
+        to: 'itseed17th@gmail.com',
+        subject: 'Sending Email using Node.js',
+        text: 'That was easy!'
+        };s
+
+        transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+            console.log(error);
+          } else {
+           console.log('Email sent: ' + info.response);
+          }
         });
     },
     reg:function (req,res){
@@ -188,7 +213,10 @@ function registerAccount(res,newuser,callback){
                             return res.view("frontend/pages/login", {
                                 redirect: redirect
                             });
-                        }else{
+                        } else if ( now < startDate ){
+                            return res.redirect('/regInfo?hint=true');
+                        }
+                        else{
                             //系統關閉
                             return res.redirect('/regInfo?system=close');
                         }
@@ -212,6 +240,30 @@ function registerAccount(res,newuser,callback){
 			req.session.authorized = {
 				user: true
 			};
+        //註冊完寄送驗證信    
+
+        var transporter = nodemailer.createTransport({
+         service: 'gmail',
+         auth: {
+           user: 'itseed17th@gmail.com',
+           pass: 'weareitseed17'
+         }
+        });
+
+        var mailOptions = {
+        from: 'itseed17th@gmail.com',
+        to: req.session.email,
+        subject: '資訊種子註冊成功驗證信',
+        html: '<p>親愛的報名者您好,</p><br><p>請點擊連結繼續完成註冊手續</p><a href="http://www.itseed.tw/register?email=<%= mailmd5 %>"> 請點擊此連結 </a><br><p>第十六屆資訊種子招生團隊敬上</p>'
+        };
+
+        transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+            console.log(error);
+          } else {
+           console.log('Email sent: ' + info.response +' 寄件的信箱為：'+req.session.email);
+          }
+        });
 			res.redirect("/disc");  
         });                
     },
