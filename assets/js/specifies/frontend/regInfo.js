@@ -72,13 +72,13 @@ $('document').ready(function(){
     swal(
       '目前尚未開放報名',
       '即將在 6 / 1 開放報名，盡請期待',
-      'success'
+      'info'
     )
   }
-  if (getUrlParam('system') == "close") {
+  else if (getUrlParam('system') == "close") {
     swal(
       '報名已截止',
-      '第十六屆資訊種子報名已在 2018/7/10 截止',
+      '第十六屆資訊種子報名已在 2019/7/6 截止',
       'info'
     )
   }
