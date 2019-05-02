@@ -8,7 +8,7 @@
 require('dotenv').config()
 var md5 = require("MD5")
 var fs = require("fs");
-
+var rand;
 function registerAccount(res,newuser,callback){
 	// 		 一般會員  email + pwd 		註冊
 	// goolge登入會員  email + gIdToken 註冊
@@ -95,36 +95,92 @@ function registerAccount(res,newuser,callback){
     /*前台*/
     
     // email驗證
-
     rem: function (req, res) {
-        // var q = req.session.userid
-        // if(req.session.userid){
+        // 新增使用者的帳號資料
         var userregister ={
-
-        mailmd5 : md5(req.body.email),
-        email : req.body.email
+            mailmd5 : md5(req.body.email),
+            email : req.body.email
         }
         emailV.findOne({
             mailmd5: md5(req.body.email)
         })
         .exec(function (err , emailvo) {
             if (err) {
-                
+                console.log("資料庫查詢失敗")
                 res.end(JSON.stringify(err));
             }else if(emailvo){
-                Mailer.sendWelcomeMail(userregister);
+                console.log("emailV已經有此帳戶，寄信")                
+                var link="http://"+req.get('host')+"/check-code?email="+userregister.email+"&token="+userregister.mailmd5;                
+                var mail = {
+                    from: '資訊種子',
+                    subject: '資訊種子註冊信',
+                    to: userregister.email,
+                    text: "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>" 
+                };
+                // 寄信API
+                Mailer.sendWelcomeMail(mail);
                 return res.view("frontend/pages/rem" , { emailV:userregister });
             }else{
+                // emalV無此帳戶
                 emailV.create(userregister)
                 .exec(function(err, emailV) {
                     if(err){
                         res.end(JSON.stringify(err));
                     }
                     else{
-                        Mailer.sendWelcomeMail(userregister);
-                        return res.view("frontend/pages/rem" , { emailV:emailV });
+                        console.log("新帳戶寄信")
+                        var link="http://"+req.get('host')+"/check-code?email="+userregister.email+"&token="+userregister.mailmd5;
+                        var mail = {
+                            from: '資訊種子',
+                            subject: '测试',
+                            to: userregister.email,
+                            text: "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>" 
+                        };
+                        Mailer.sendWelcomeMail(mail);
+                        return res.view("frontend/pages/rem" , { emailV:userregister });
                     }
                 });
+            }
+        });
+    },
+    // email驗證檢查
+    checkCode: function (req, res) {
+        // console.log(req.protocol+":/"+req.get('host'));
+        // console.log(req.query.token);
+        // console.log(req.query.email);
+        emailV.findOne({
+            email: req.query.email
+        })
+        .exec(function (err , emailV) {
+            if (err) {
+                console.log("資料庫錯誤");
+                return res.end(JSON.stringify(err));
+                
+            }else if(emailV == null){
+                // 沒有找到使用者
+                console.log("此帳戶尚未註冊")
+                res.end("<h1>err account</h1>");
+            }else{
+                // 有此帳戶
+                // console.log(emailV.email);
+                // console.log(req.query.email);
+                // 如果帳戶的token與帳戶的mailmd5相同
+                if(emailV.mailmd5 ==req.query.token){
+                    // 驗證成功
+                    return res.view("frontend/pages/remSucess", {
+                        emailV:emailV,
+                        status:'驗證成功',
+                        text:'信箱已經驗證成功，您現在可以去填寫DISC'
+                    });                
+                }else{
+                    // 驗證失敗
+                    return res.view("frontend/pages/remSucess", {
+                        emailV:emailV,
+                        status:'驗證失敗',
+                        text:'請重新驗證信箱'
+                    });
+                }
+            
             }
         });
     },
@@ -204,6 +260,7 @@ function registerAccount(res,newuser,callback){
             email: req.body.email,
             pwd: md5(req.body.pwd),
         };
+        
 		registerAccount(res,newuser,function(user){
 			req.session.userid = user.id;
             req.session.email = user.email;
@@ -212,8 +269,8 @@ function registerAccount(res,newuser,callback){
 			req.session.authorized = {
 				user: true
 			};
-			res.redirect("/disc");  
-        });                
+            res.redirect("/disc");  
+        });           
     },
     //檢查信箱是否已存在
     checkEmail: function (req, res) {
@@ -289,7 +346,6 @@ function registerAccount(res,newuser,callback){
                 if(md5(req.body.pwd) != user.pwd){
                     return res.end("密碼錯誤");
                 }
-
                 req.session.userid = user.id;
                 req.session.email = user.email;
                 req.session.pwd = req.body.pwd;

@@ -44,6 +44,8 @@ module.exports.policies = {
     'loginPage':true ,
     'register':true ,
     'checkEmail':true ,
+    // 新增checkCode
+    'checkCode':true,
     'checkPwd':true ,
     'logout':true,
     'login': true,

@@ -38,10 +38,21 @@ module.exports.routes = {
   // '/re': {
   //   view: 'frontend/pages/re'
   // },
-  // 'post /rem': {
-  //   controller: 'User',
-  //   action: 'rem'
-  // },
+  
+  // 信箱驗證
+  'post /rem': {
+    controller: 'User',
+    action: 'rem'
+  },
+  // 檢查驗證碼是否正確
+  'get /check-code':{
+    controller: 'User',
+    action: 'checkCode'
+  },
+  // 驗證成功或失敗的頁面
+  'get /remSucess': {
+    view: 'frontend/pages/remSucess'
+  }, 
   // 'post /register': {
   //   controller: 'User',
   //   action: 'register'    
