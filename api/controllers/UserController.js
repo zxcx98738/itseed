@@ -9,6 +9,8 @@ require('dotenv').config()
 var md5 = require("MD5")
 var fs = require("fs");
 var nodemailer = require('nodemailer');
+const readline = require('readline');
+const {google} = require('googleapis');
 
 function registerAccount(res,newuser,callback){
 	// 		 一般會員  email + pwd 		註冊
