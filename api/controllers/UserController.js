@@ -260,7 +260,7 @@ function registerAccount(res,newuser,callback){
             email: req.body.email,
             pwd: md5(req.body.pwd),
         };
-        
+        console.log(newuser.email);
 		registerAccount(res,newuser,function(user){
 			req.session.userid = user.id;
             req.session.email = user.email;
