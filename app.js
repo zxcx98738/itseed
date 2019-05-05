@@ -52,6 +52,43 @@ process.chdir(__dirname);
       rc = function () { return {}; };
     }
   }
+var express    = require('express');  
+var nodemailer = require("nodemailer");  
+var app        = express();  
+  
+var smtpTransport = nodemailer.createTransport({  
+    service: "gmail",  
+    host: "smtp.gmail.com",  
+    auth: {  
+        user: "apple556621@gmail.com",  
+        pass: "iuhmsgkrcmivemod"  
+    }  
+});  
+  
+// app.get('/', function(req, res) {  
+//     res.sendfile('index.html');  
+// });  
+  
+// app.get('/sendmail2', function(req, res) {  
+//     var mailOptions = {  
+//         to:"apple556621@gmail.com",  
+//         subject:"測試信箱寄信",  
+//         html:'</div><div>Email: '+ req.query.email +'</div>'  
+//     }  
+//     smtpTransport.sendMail(mailOptions, function(error, response) {  
+//      if(error) {  
+//         res.end("error");  
+//         console.log("wryyyyyy");
+//      } else {  
+//         res.end("sent");  
+//         console.log("mudaaa");
+//      }  
+//    });  
+// });  
+  
+// app.listen(3000, function() {  
+//     console.log("Application started on http://localhost:3000/");  
+// });  
 
 
   // Start server

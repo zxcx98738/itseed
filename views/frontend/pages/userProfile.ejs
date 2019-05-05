@@ -101,17 +101,31 @@
 						<% } %>
 						</div>
 					</div>
+
 					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" for="grade">系所/年級<b class="darkred">*</b>：</label>
+						<label class="col-sm-2 col-xs-12 control-label" for="dept">系所<b class="darkred">*</b>：</label>
 						<div class="col-sm-10 col-xs-12">
-						<% if(user.grade == null){%>
-							<input type="text" name="grade" class="btn-block" id="grade" placeholder="ex: 資訊管理學系（請輸入系所全名）/三年級">
+						<% if(user.dept == null){%>
+							<input type="text" name="dept" class="btn-block" id="dept" placeholder="ex: 資訊管理學系">
 						<% } else{ %>
-							<input type="text" name="grade" class="btn-block" id="grade" value="<%= user.grade %>" placeholder="ex: 資訊管理學系（請輸入系所全名）/三年級">
+							<input type="text" name="dept" class="btn-block" id="dept" placeholder="ex: 資種大學" value="<%= user.dept%>">
 						<% } %>
 						</div>
-						<div class="col-sm-offset-2 col-sm-10 col-xs-12" style="height: 40px;">※ 請填寫未來一學年即將就讀系所及年級</div>
 					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 col-xs-12 control-label" for="grade">年級<b class="darkred">*</b>：</label>
+						<div class="col-sm-10 col-xs-12">
+						<% if(user.grade == null){%>
+							<input type="text" name="grade" class="btn-block" id="grade" placeholder="ex: 三年級">
+						<% } else{ %>
+							<input type="text" name="grade" class="btn-block" id="grade" value="<%= user.grade %>" placeholder="ex: 三年級">
+						<% } %>
+						</div>
+						<div class="col-sm-offset-2 col-sm-10 col-xs-12" style="height: 40px;">※ 請填寫未來一學年的年級</div>
+					</div>
+
+
 					<div class="form-group">
 						<label class="col-sm-2 col-xs-12 control-label" for="reference">推薦人：</label>
 						<div class="col-sm-10 col-xs-12">

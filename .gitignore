@@ -45,8 +45,9 @@ assets/images/sharing
 assets/images/TUV
 assets/images/career
 assets/files
-
-
+config/session.js
+token.json
+credentials.json
 
 
 ################################################

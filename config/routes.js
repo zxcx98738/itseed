@@ -38,12 +38,23 @@ module.exports.routes = {
   // '/re': {
   //   view: 'frontend/pages/re'
   // },
+<<<<<<< HEAD
   
   // 信箱驗證
+=======
+  // 'post /rem': {
+  //   controller: 'User',
+  //   action: 'rem'
+  // },
+  'get /rem': {
+    view: 'frontend/pages/rem'
+  },
+>>>>>>> 21bd7a3f2ad370af75400e9d9a80ba81b206edc4
   'post /rem': {
     controller: 'User',
     action: 'rem'
   },
+<<<<<<< HEAD
   // 檢查驗證碼是否正確
   'get /check-code':{
     controller: 'User',
@@ -53,6 +64,8 @@ module.exports.routes = {
   'get /remSucess': {
     view: 'frontend/pages/remSucess'
   }, 
+=======
+>>>>>>> 21bd7a3f2ad370af75400e9d9a80ba81b206edc4
   // 'post /register': {
   //   controller: 'User',
   //   action: 'register'    
