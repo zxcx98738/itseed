@@ -8,9 +8,6 @@
 require('dotenv').config()
 var md5 = require("MD5")
 var fs = require("fs");
-<<<<<<< HEAD
-var rand;
-=======
 var nodemailer = require('nodemailer');
 const readline = require('readline');
 const {google} = require('googleapis');
@@ -214,7 +211,6 @@ async function upload_profile_picture(auth, file_name) {
 
 
 
->>>>>>> 21bd7a3f2ad370af75400e9d9a80ba81b206edc4
 function registerAccount(res,newuser,callback){
 	// 		 一般會員  email + pwd 		註冊
 	// goolge登入會員  email + gIdToken 註冊
@@ -251,7 +247,7 @@ function registerAccount(res,newuser,callback){
             if (!user.gIdToken && newuser.gIdToken){
                 value.gIdToken = newuser.gIdToken;
                 User.update({
-                    id: user.id
+                    id: user.id,
                 },value).exec(function (err,data) {
                     if (err) { res.end(JSON.stringify(err)); }
                     User.findOne({id: user.id}).exec(function (err, updated_user) {
@@ -263,7 +259,10 @@ function registerAccount(res,newuser,callback){
             else  if (!user.pwd  && newuser.pwd ){
                 // 補上 pwd
                 value.pwd = newuser.pwd;
-                User.update({id: user.id}, {value}).exec(function (err, user) {
+                User.update({
+                    id: user.id,
+                    isEmailAuth: 1
+                }, {value}).exec(function (err, user) {
                     if (err) { res.end(JSON.stringify(err)); }
                     User.findOne({ id: user.id }).exec(function (err, updated_user) {
                         if (err) { res.end(JSON.stringify(err)); }
@@ -326,14 +325,13 @@ function registerAccount(res,newuser,callback){
     
     // email驗證
     rem: function (req, res) {
-<<<<<<< HEAD
         // 新增使用者的帳號資料
         var userregister ={
-            mailmd5 : md5(req.body.email),
-            email : req.body.email
+            mailmd5 : md5(req.query.email),
+            email : req.query.email
         }
         emailV.findOne({
-            mailmd5: md5(req.body.email)
+            mailmd5: md5(req.query.email)
         })
         .exec(function (err , emailvo) {
             if (err) {
@@ -372,61 +370,6 @@ function registerAccount(res,newuser,callback){
                     }
                 });
             }
-=======
-        // var q = req.session.userid
-        // if(req.session.userid){
-
-        // var userregister ={
-
-        // mailmd5 : md5(req.body.email),
-        // email : req.body.email
-        // }
-        // emailV.findOne({
-        //     mailmd5: md5(req.body.email)
-        // })
-        // .exec(function (err , emailvo) {
-        //     if (err) {
-                
-        //         res.end(JSON.stringify(err));
-        //     }else if(emailvo){
-        //         Mailer.sendWelcomeMail(userregister);
-        //         return res.view("frontend/pages/rem" , { emailV:userregister });
-        //     }else{
-        //         emailV.create(userregister)
-        //         .exec(function(err, emailV) {
-        //             if(err){
-        //                 res.end(JSON.stringify(err));
-        //             }
-        //             else{
-        //                 Mailer.sendWelcomeMail(userregister);
-        //                 return res.view("frontend/pages/rem" , { emailV:emailV });
-        //             }
-        //         });
-        //     }
-        // });
-
-        var transporter = nodemailer.createTransport({
-         service: 'gmail',
-         auth: {
-           user: 'itseed17th@gmail.com',
-           pass: 'weareitseed17'
-         }
-        });
-
-        var mailOptions = {
-        from: 'itseed17th@gmail.com',
-        to: 'itseed17th@gmail.com',
-        subject: 'Sending Email using Node.js',
-        text: 'That was easy!'
-        };s
-
-        transporter.sendMail(mailOptions, function(error, info){
-          if (error) {
-            console.log(error);
-          } else {
-           console.log('Email sent: ' + info.response);
-          }
->>>>>>> 21bd7a3f2ad370af75400e9d9a80ba81b206edc4
         });
     },
     // email驗證檢查
@@ -444,28 +387,53 @@ function registerAccount(res,newuser,callback){
                 
             }else if(emailV == null){
                 // 沒有找到使用者
-                console.log("此帳戶尚未註冊")
-                res.end("<h1>err account</h1>");
+                console.log("此帳戶尚未註冊");
+                res.redirect("/");
             }else{
                 // 有此帳戶
-                // console.log(emailV.email);
-                // console.log(req.query.email);
-                // 如果帳戶的token與帳戶的mailmd5相同
-                if(emailV.mailmd5 ==req.query.token){
-                    // 驗證成功
-                    return res.view("frontend/pages/remSucess", {
-                        emailV:emailV,
-                        status:'驗證成功',
-                        text:'信箱已經驗證成功，您現在可以去填寫DISC'
-                    });                
-                }else{
-                    // 驗證失敗
-                    return res.view("frontend/pages/remSucess", {
-                        emailV:emailV,
-                        status:'驗證失敗',
-                        text:'請重新驗證信箱'
-                    });
-                }
+                User.findOne({
+                    email: req.query.email
+                }).exec(function (err , user) {
+                    if (err) { 
+                        res.end(JSON.stringify(err)); 
+                    }
+                    else if(user.isEmailAuth == 1){
+                        // 已經認證過
+                        return res.view("frontend/pages/remSucess", {
+                            emailV:emailV,
+                            status:'信箱已驗證過',
+                            text:'請直接登入'
+                        });
+                    }
+                    // 如果帳戶的token與帳戶的mailmd5相同
+                    else if(emailV.mailmd5 ==req.query.token){
+                        // 驗證成公
+                            // 未認證過
+                        User.update({
+                            email: req.query.email
+                        }, {
+                            isEmailAuth: 1
+                        }).exec(function (err, data) {
+                            if (err) { 
+                                res.end(JSON.stringify(err)); 
+                            }else {
+                                return res.view("frontend/pages/remSucess", {
+                                    emailV:emailV,
+                                    status:'驗證成功',
+                                    text:'信箱已經驗證成功，您現在可以去填寫DISC'
+                                });      
+                            }
+                        });                  
+                    }else{
+                        // 驗證失敗
+                        return res.view("frontend/pages/remSucess", {
+                            emailV:emailV,
+                            status:'驗證失敗',
+                            text:'請重新驗證信箱'
+                        });
+                    }
+                })
+
             
             }
         });
@@ -548,24 +516,22 @@ function registerAccount(res,newuser,callback){
         var newuser = {
             email: req.body.email,
             pwd: md5(req.body.pwd),
+            name: req.body.name
         };
-        console.log(newuser.email);
+        // console.log(newuser.name);
 		registerAccount(res,newuser,function(user){
-			req.session.userid = user.id;
-            req.session.email = user.email;
-            req.session.pwd = user.pwd;
-			req.session.type =  user.type;
-			req.session.authorized = {
-				user: true
-			};
-<<<<<<< HEAD
-            res.redirect("/disc");  
-        });           
-=======
+			// req.session.userid = user.id;
+            // req.session.email = user.email;
+            // req.session.pwd = user.pwd;
+			// req.session.type =  user.type;
+			// req.session.authorized = {
+			// 	user: true
+            // };
+            res.redirect("/rem?email="+newuser.email);
+            
         //註冊完寄送驗證信    
-			res.redirect("/disc");  
+			// res.redirect("/rem");  
         });                
->>>>>>> 21bd7a3f2ad370af75400e9d9a80ba81b206edc4
     },
     //檢查信箱是否已存在
     checkEmail: function (req, res) {
@@ -641,15 +607,20 @@ function registerAccount(res,newuser,callback){
                 if(md5(req.body.pwd) != user.pwd){
                     return res.end("密碼錯誤");
                 }
-                req.session.userid = user.id;
-                req.session.email = user.email;
-                req.session.pwd = req.body.pwd;
-                req.session.type =  user.type;
-                req.session.authorized = {
-                    user: true
+                if(user.isEmailAuth == 0){
+                    res.redirect("/rem?email="+user.email);
+                }else{
+                    req.session.userid = user.id;
+                    req.session.email = user.email;
+                    req.session.pwd = req.body.pwd;
+                    req.session.type =  user.type;
+                    req.session.authorized = {
+                        user: true
+                    }
+                    //console.log(req.session);
+                    res.redirect(req.body.redirect!='undefined'? req.body.redirect: "/disc" ) ;
                 }
-                //console.log(req.session);
-                res.redirect(req.body.redirect!='undefined'? req.body.redirect: "/disc" ) ;
+
             }
         });
     },
@@ -671,7 +642,8 @@ function registerAccount(res,newuser,callback){
                 if (user == undefined) {
 					const newuser = {
 						email: payload.email,
-						gIdToken: gIdToken
+                        gIdToken: gIdToken,
+                        isEmailAuth: 1
 					}
 					registerAccount(res, newuser, function (new_user) {
                         req.session.userid = new_user.id;
@@ -689,7 +661,7 @@ function registerAccount(res,newuser,callback){
 					req.session.userid = user.id;
 					req.session.email = payload.email;
                     req.session.gIdToken = gIdToken;
-					req.session.type = user.type;
+                    req.session.type = user.type;
                     req.session.authorized = {
                         user: true
                     }
