@@ -96,62 +96,58 @@ function registerAccount(res,newuser,callback){
     /*前台*/
     
     // email驗證
+    // rem忘記密碼
 
     rem: function (req, res) {
-        // var q = req.session.userid
-        // if(req.session.userid){
-
-        // var userregister ={
-
-        // mailmd5 : md5(req.body.email),
-        // email : req.body.email
-        // }
-        // emailV.findOne({
-        //     mailmd5: md5(req.body.email)
-        // })
-        // .exec(function (err , emailvo) {
-        //     if (err) {
-                
-        //         res.end(JSON.stringify(err));
-        //     }else if(emailvo){
-        //         Mailer.sendWelcomeMail(userregister);
-        //         return res.view("frontend/pages/rem" , { emailV:userregister });
-        //     }else{
-        //         emailV.create(userregister)
-        //         .exec(function(err, emailV) {
-        //             if(err){
-        //                 res.end(JSON.stringify(err));
-        //             }
-        //             else{
-        //                 Mailer.sendWelcomeMail(userregister);
-        //                 return res.view("frontend/pages/rem" , { emailV:emailV });
-        //             }
-        //         });
-        //     }
-        // });
-
+        var randomstring = Math.random().toString(36).slice(-8);//亂數生成英數8字密碼
         var transporter = nodemailer.createTransport({
          service: 'gmail',
          auth: {
            user: 'itseed17th@gmail.com',
            pass: 'weareitseed17'
          }
-        });
+        });//宣告寄件者
+        var value = {
+            pwd: md5(randomstring)//宣告將要被更新的值 md5為加密
+        }
+        User.findOne({
+            email: req.body.email
+        })//透過sql比對輸入信箱 req.body.email為頁面輸入的信箱
+        .exec(function(err, user) {
+            if(err){
+                res.end(JSON.stringify(err));
+                console.log('something wrong');
+            }
+            else{
+                // console.log('信箱：'+user.email);
+                // console.log('id：'+user.id);
+                // console.log('name：'+user.name);
+                // console.log('原始密碼：'+user.pwd +' '+randomstring);
+                // console.log('寄信更改後的密碼：'+randomstring);
+                req.session.name=user.name;//將名字設為session
+                User.update({pwd: user.pwd}, value).exec(function (err, user) {//如果密碼更改成功，則寄信通知新密碼
+                    if (err) { res.end(JSON.stringify(err)); }
+                    else{
+                        var mailOptions = {
+                        from: 'itseed17th@gmail.com',
+                        to: req.body.email,
+                        subject: '【資訊種子第17屆】【忘記密碼】',
+                        html:"<p>親愛的 "+req.session.name+" 您好</p><br><p>您的新密碼為："+randomstring+"</p><br><p>請記得登入並更改您的密碼</p><br><p>第十七屆資訊種子招生團隊敬上</p>"
+                        };//每個信件寄出的密碼皆為8字亂數
 
-        var mailOptions = {
-        from: 'itseed17th@gmail.com',
-        to: 'itseed17th@gmail.com',
-        subject: 'Sending Email using Node.js',
-        text: 'That was easy!'
-        };s
-
-        transporter.sendMail(mailOptions, function(error, info){
-          if (error) {
-            console.log(error);
-          } else {
-           console.log('Email sent: ' + info.response);
-          }
+                        transporter.sendMail(mailOptions, function(error, info){
+                          if (error) {
+                            console.log(error);
+                          } else {
+                           console.log('Email sent: ' + info.response +' 寄件的信箱為：'+ req.body.email);
+                          }
+                        });
+                        res.redirect("/FPWpage");//成功則導入「寄件成功」之頁面 
+                    }
+                });
+                }
         });
+        
     },
     reg:function (req,res){
         emailV.findOne({
@@ -254,7 +250,7 @@ function registerAccount(res,newuser,callback){
         from: 'itseed17th@gmail.com',
         to: req.session.email,
         subject: '資訊種子註冊成功驗證信',
-        html: '<p>親愛的報名者您好,</p><br><p>感謝您的註冊</p><br><p>資訊種子為一年期的陪ㄒ運計畫......</p><br><p>第十六屆資訊種子招生團隊敬上</p>'
+        html: '<p>親愛的報名者您好,</p><br><p>感謝您的註冊</p><br><p>資訊種子為一年期的培訓計畫......</p><br><p>第十六屆資訊種子招生團隊敬上</p>'
         };
 
         transporter.sendMail(mailOptions, function(error, info){
