@@ -344,7 +344,8 @@ function registerAccount(res,newuser,callback){
                     from: '資訊種子',
                     subject: '資訊種子註冊信',
                     to: userregister.email,
-                    text: "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>" 
+                    html: '<p>親愛的報名者您好,</p><br><a href="'+link+'">點擊驗證信箱</a></p><p>第十六屆資訊種子招生團隊敬上</p>'
+                    // text: "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>" 
                 };
                 // 寄信API
                 Mailer.sendWelcomeMail(mail);
