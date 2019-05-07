@@ -464,9 +464,19 @@ function registerAccount(res,newuser,callback){
                 //註冊 or 修改信箱
                 if(req.body.pwd == undefined){
                     if(user == undefined){
-                        res.end("true");
+                        if(String(req.body.method) == "reset_pwd"){
+                           res.end("false");
+                        }
+                        // else{
+                        //   console.log("shit");
+                          res.end("true");
+                        //}
+                        
                     }
                     else{
+                        if(req.body.method == "reset_pwd"){
+                          res.end("true");
+                        }                      
                         //修改信箱
                         if(req.session.email == req.body.email)
                             res.end("true");

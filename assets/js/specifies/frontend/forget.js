@@ -15,36 +15,22 @@ $(function(){
   				type: "post",
   				data: {
   					email: function() {
+              console.log($( "input[name='email']" ).val())
   						return $( "input[name='email']" ).val();
-  					}
-  				},
-          success: function(data) {
-            console.log(data)
-            if (data == true){
-                swal({
-                  title: '此帳號尚未被註冊，是否前往註冊?',
-                  confirmButtonText: '確定',
-                  cancelButtonText: '取消',
-                  showCancelButton: true
-                })
-                .then(function(result) {
-                  if (result.value) {
-                    document.location.href = "/register";   
-                  }
-                })              
-              $("#login-btn").attr("disabled", true);
-              // messages: {
-              //   email: "此帳號已存在"
-              // }
+  					},
+            method : function() {
+              console.log($( "input[name='method']" ).val())
+              return $( "input[name='method']" ).val();
             }
-            else{
-
-              $("#login-btn").attr("disabled", false);
-            }
-          }
+  				}
   			}
   		}
-  	}
+  	},
+    messages: {
+      email: {
+        remote: "此帳號尚未被註冊",
+      }
+    }
   });
   // $("#resend").click(function(){
   //   window.history.forward(-1);　
