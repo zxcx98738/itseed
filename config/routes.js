@@ -49,6 +49,9 @@ module.exports.routes = {
     controller: 'User',
     action: 'rem'
   },
+  'get /FPWpage': {
+    view: 'frontend/pages/FPWpage'
+  },
   // 'post /register': {
   //   controller: 'User',
   //   action: 'register'    
