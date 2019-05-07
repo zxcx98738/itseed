@@ -1,5 +1,6 @@
 <script src="/js/specifies/jquery.validate.min.js"></script>
 <script src="/js/specifies/messages_zh_TW.min.js"></script>
+<script src="/js/specifies/frontend/forget.js"></script>
 <!-- <script src="/js/specifies/frontend/login.js"></script> -->
 <!-- <script src="/js/specifies/frontend/register.js"></script> -->
 
@@ -14,13 +15,11 @@
 			<div>
 			<span><img src="/images/layout/ACCOUNT.png"  alt="ACCOUNT.jpg"> 信箱：</span>
 			<!-- <input type="label" name="email" value="<%=emailV.email%>"> -->
-			<input class="btn-block" autofocus="autofocus" name="email" placeholder="電子信箱" type="email">
+			<input class="btn-block" autofocus="autofocus" name="email" type="email">
 			<br>
-			<br>
-			<p>請填寫您的信箱，幫助您重設密碼</p>
 			<br>
 			<!-- <input class="login-btn" id="resend" type="submit" value="重新寄出"> -->
-			<input class="login-btn" type="submit" value="寄出信件">
+			<input class="login-btn" id="login-btn" type="submit" value="寄出信件">
 			</form>
 			</div>
 		</div>

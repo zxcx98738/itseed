@@ -55,15 +55,7 @@ process.chdir(__dirname);
 var express    = require('express');  
 var nodemailer = require("nodemailer");  
 var app        = express();  
-  
-var smtpTransport = nodemailer.createTransport({  
-    service: "gmail",  
-    host: "smtp.gmail.com",  
-    auth: {  
-        user: "apple556621@gmail.com",  
-        pass: "iuhmsgkrcmivemod"  
-    }  
-});  
+   
   
 // app.get('/', function(req, res) {  
 //     res.sendfile('index.html');  

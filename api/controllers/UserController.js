@@ -2,7 +2,7 @@
  * UserController
  *
  * @描述 : 使用者相關
- * @文件 : Se http://links.sailsjs.org/docs/controllers
+ * @文件 : See http://links.sailsjs.org/docs/controllers
  */
 
 require('dotenv').config()
@@ -321,7 +321,6 @@ function registerAccount(res,newuser,callback){
     /*前台*/
     
     // email驗證
-    // rem忘記密碼
 
     rem: function (req, res) {
         var randomstring = Math.random().toString(36).slice(-8);//亂數生成英數8字密碼
@@ -334,14 +333,8 @@ function registerAccount(res,newuser,callback){
         .exec(function(err, user) {
             if(err){
                 res.end(JSON.stringify(err));
-                console.log('something wrong');
             }
             else{
-                // console.log('信箱：'+user.email);
-                // console.log('id：'+user.id);
-                // console.log('name：'+user.name);
-                // console.log('原始密碼：'+user.pwd +' '+randomstring);
-                // console.log('寄信更改後的密碼：'+randomstring);
                 req.session.name=user.name;//將名字設為session
                 User.update({pwd: user.pwd}, value).exec(function (err, user) {//如果密碼更改成功，則寄信通知新密碼
                     if (err) { res.end(JSON.stringify(err)); }
@@ -454,7 +447,7 @@ function registerAccount(res,newuser,callback){
 			req.session.authorized = {
 				user: true
 			};
-
+        //註冊完寄送驗證信    
 			res.redirect("/disc");  
         });                
     },
@@ -754,6 +747,7 @@ function registerAccount(res,newuser,callback){
                                 }
                                 var source = fs.createReadStream(sails.config.appPath + "/assets" + datas[0].photo);
                                 var desti = fs.createWriteStream(sails.config.appPath + "/.tmp/public" + datas[0].photo);
+                                
                                 source.pipe(desti);
                                 source.on('end',function() {
                                     source.close();
