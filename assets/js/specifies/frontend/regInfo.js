@@ -71,7 +71,7 @@ $('document').ready(function(){
   if (getUrlParam('hint') == "true"){
     swal(
       '目前尚未開放報名',
-      '即將在 6 / 1 開放報名，盡請期待',
+      '即將在 6 / 1 開放報名，敬請期待',
       'info'
     )
   }

@@ -54,6 +54,10 @@ module.exports = {
           type: 'string',
           maxLength: 20,
         },
+        dept : {
+          type: 'string',
+          maxLength: 20,
+        },        
         //系所/年級
         grade : {
           type: 'string',

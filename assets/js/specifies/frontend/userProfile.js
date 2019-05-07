@@ -106,6 +106,10 @@ $(function(){
   			required: true,
   			maxlength: 20
   		},
+      dept: {
+        required: true,
+        maxlength: 20
+      },      
   		grade: {
   			required: true,
   			maxlength: 20

@@ -9,6 +9,207 @@ require('dotenv').config()
 var md5 = require("MD5")
 var fs = require("fs");
 var nodemailer = require('nodemailer');
+const readline = require('readline');
+const {google} = require('googleapis');
+
+const transporter = nodemailer.createTransport({
+ service: 'gmail',
+ auth: {
+   user: 'itseed17th@gmail.com',
+   pass: 'weareitseed17'
+ }
+});
+
+const SCOPES = ['https://www.googleapis.com/auth/drive','https://www.googleapis.com/auth/spreadsheets'];
+// The file token.json stores the user's access and refresh tokens, and is
+// created automatically when the authorization flow completes for the first
+// time.
+const TOKEN_PATH = 'token.json';
+
+
+
+function authorize(credentials, callback) {
+  const {client_secret, client_id, redirect_uris} = credentials.installed;
+  const oAuth2Client = new google.auth.OAuth2(
+      client_id, client_secret, redirect_uris[0]);
+
+  // Check if we have previously stored a token.
+  fs.readFile(TOKEN_PATH, (err, token) => {
+    if (err) return getAccessToken(oAuth2Client, callback);
+    oAuth2Client.setCredentials(JSON.parse(token));
+    callback(oAuth2Client,arguments[2]);
+  });
+}
+
+/**
+ * Get and store new token after prompting for user authorization, and then
+ * execute the given callback with the authorized OAuth2 client.
+ * @param {google.auth.OAuth2} oAuth2Client The OAuth2 client to get token for.
+ * @param {getEventsCallback} callback The callback for the authorized client.
+ */
+function getAccessToken(oAuth2Client, callback) {
+  const authUrl = oAuth2Client.generateAuthUrl({
+    access_type: 'offline',
+    scope: SCOPES,
+  });
+  console.log('Authorize this app by visiting this url:', authUrl);
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+  rl.question('Enter the code from that page here: ', (code) => {
+    rl.close();
+    oAuth2Client.getToken(code, (err, token) => {
+      if (err) return console.error('Error retrieving access token', err);
+      oAuth2Client.setCredentials(token);
+      // Store the token to disk for later program executions
+      fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
+        if (err) return console.error(err);
+        console.log('Token stored to', TOKEN_PATH);
+      });
+      callback(oAuth2Client);
+    });
+  });
+}
+
+async function update_reg_sheet(auth, user) {
+  const sheets = google.sheets({version: 'v4', auth});
+  sheets.spreadsheets.values.append({
+    auth: auth,
+    spreadsheetId: '19j2E63vnl6nyjF-ybV7xlXYjr3-QRcKoV-F5UZtK2ng',
+    range: "'reg'!A:I", //Change Sheet1 if your worksheet's name is something else
+    valueInputOption: "RAW",
+    resource: {
+      values: [[user.email]]
+    }
+  }, (err, response) => {
+    if (err) {
+      console.log('The API returned an error: ' + err);
+      return;
+    }
+  });
+}
+
+
+async function update_profile_sheet(auth, user) {
+    //console.log(user)
+  const drive = google.drive({version: 'v3', auth});
+  // drive.files.list({
+  //   pageSize: 10,
+  //   fields: 'nextPageToken, files(id, name)',
+  // }, (err, res) => {
+  //   if (err) return console.log('The API returned an error: ' + err);
+  //   const files = res.data.files;
+  //   if (files.length) {
+  //     console.log('Files:');
+  //     files.map((file) => {
+  //       console.log(`${file.name} (${file.id})`);
+  //     });
+  //   } else {
+  //     console.log('No files found.');
+  //   }
+  // });
+  // const media = {
+  //   mimeType: 'application/pdf',
+  //   body: fs.createReadStream('Quentin_resume.pdf')
+  // };  
+  // drive.files.create({
+  //   requestBody: {
+  //     name: 'Quentin_resume',
+  //     mimeType: 'application/pdf'
+  //   },
+  //   media: media,
+  // }, (err, res) => {
+  //   if (err) return console.log('The API returned an error: ' + err);
+  // });  
+
+  // console.log("listMajors")
+  const sheets = google.sheets({version: 'v4', auth});
+  // sheets.spreadsheets.values.get({
+  //   spreadsheetId: '1Q2lI-9znFr43BJHNkQ4GExKP16kG7nbAeOfhbLJr0Xo',
+  //   range: 'A1:E46',
+  // }, (err, res) => {
+  //   if (err) return console.log('The API returned an error: ' + err);
+  //   const rows = res.data.values;
+  //   if (rows.length) {
+  //     console.log('Name, Major:');
+  //     // Print columns A and E, which correspond to indices 0 and 4.
+  //     rows.map((row) => {
+  //       console.log(`${row[0]}, ${row[4]}`);
+  //     });
+  //   } else {
+  //     console.log('No data found.');
+  //   }
+  // });
+  sheets.spreadsheets.values.append({
+    auth: auth,
+    spreadsheetId: '19j2E63vnl6nyjF-ybV7xlXYjr3-QRcKoV-F5UZtK2ng',
+    range: "'profile'!A:I", //Change Sheet1 if your worksheet's name is something else
+    valueInputOption: "RAW",
+    resource: {
+      values: [[user.name, user.gender, user.phone, user.email, user.school, user.dept, user.grade, user.reference, user.survey]]
+    }
+  }, (err, response) => {
+    if (err) {
+      console.log('The API returned an error: ' + err);
+      return;
+    }
+  });
+
+
+}
+
+async function upload_profile_picture(auth, file_name) {
+    //console.log(user)
+  const drive = google.drive({version: 'v3', auth});
+  // drive.files.list({
+  //   pageSize: 10,
+  //   fields: 'nextPageToken, files(id, name)',
+  // }, (err, res) => {
+  //   if (err) return console.log('The API returned an error: ' + err);
+  //   const files = res.data.files;
+  //   if (files.length) {
+  //     console.log('Files:');
+  //     files.map((file) => {
+  //       console.log(`${file.name} (${file.id})`);
+  //     });
+  //   } else {
+  //     console.log('No files found.');
+  //   }
+  // });
+
+    var fileMetadata = {
+      'name': 'Invoices',
+      'mimeType': 'application/vnd.google-apps.folder'
+    };
+    drive.files.create({
+      resource: fileMetadata,
+      fields: 'id'
+    }, function (err, file) {
+      if (err) {
+        // Handle error
+        console.error(err);
+      } else {
+        console.log('Folder Id: ', file.id);
+      }
+    });  
+
+  const media = {
+    mimeType: 'image/gif, image/png, image/jpeg, image/bmp, image/webp, image/x-icon,image/vnd.microsoft.icon',
+    body: fs.createReadStream('Quentin_resume.pdf')
+  };  
+  drive.files.create({
+    requestBody: {
+      name: 'Quentin_resume',
+      mimeType: 'application/pdf'
+    },
+    media: media,
+  }, (err, res) => {
+    if (err) return console.log('The API returned an error: ' + err);
+  });  
+}
+
+
 
 function registerAccount(res,newuser,callback){
 	// 		 一般會員  email + pwd 		註冊
@@ -17,6 +218,27 @@ function registerAccount(res,newuser,callback){
     //驗證是否重複註冊（信箱是否被使用過）
     //  一般會員     註冊 => 已經被 google登入註冊過 => 補上 password
     //  google登入  註冊 => 已經被 一般註冊註冊過    => 補上 gIdToken
+    fs.readFile('credentials.json', (err, content) => {
+        if (err) return console.log('Error loading client secret file:', err);
+        // Authorize a client with credentials, then call the Google Drive API.
+        authorize(JSON.parse(content), update_reg_sheet, newuser);
+    }); 
+
+    var mailOptions = {
+    from: 'itseed17th@gmail.com',
+    to: newuser.email,
+    subject: '資訊種子註冊成功驗證信',
+    html: '<p>親愛的報名者您好,</p><br><p>感謝您的註冊</p><p>資訊種子為一年期的培訓運計畫......</p><p>第十六屆資訊種子招生團隊敬上</p>'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+       console.log('Email sent: ' + info.response +' 寄件的信箱為：'+req.session.email);
+      }
+    });
+
     var value = {};
     User.findOne({ email: newuser.email }).exec(function (err, user) {
         if (err) { return res.end(JSON.stringify(err)); }
@@ -33,7 +255,8 @@ function registerAccount(res,newuser,callback){
                         callback(updated_user);
                     });
                 });
-            }else  if (!user.pwd  && newuser.pwd ){
+            }
+            else  if (!user.pwd  && newuser.pwd ){
                 // 補上 pwd
                 value.pwd = newuser.pwd;
                 User.update({id: user.id}, {value}).exec(function (err, user) {
@@ -44,7 +267,9 @@ function registerAccount(res,newuser,callback){
                     });
                 });
             }
-        }else{
+        }
+        else{
+
             SystemSetting.findOne({ name: "th" }).exec(function (err, itseed_th) {
                 if (err) { return res.end(JSON.stringify(err)); }
                 if (itseed_th != undefined) {
@@ -100,13 +325,6 @@ function registerAccount(res,newuser,callback){
 
     rem: function (req, res) {
         var randomstring = Math.random().toString(36).slice(-8);//亂數生成英數8字密碼
-        var transporter = nodemailer.createTransport({
-         service: 'gmail',
-         auth: {
-           user: 'itseed17th@gmail.com',
-           pass: 'weareitseed17'
-         }
-        });//宣告寄件者
         var value = {
             pwd: md5(randomstring)//宣告將要被更新的值 md5為加密
         }
@@ -236,30 +454,7 @@ function registerAccount(res,newuser,callback){
 			req.session.authorized = {
 				user: true
 			};
-        //註冊完寄送驗證信    
 
-        var transporter = nodemailer.createTransport({
-         service: 'gmail',
-         auth: {
-           user: 'itseed17th@gmail.com',
-           pass: 'weareitseed17'
-         }
-        });
-
-        var mailOptions = {
-        from: 'itseed17th@gmail.com',
-        to: req.session.email,
-        subject: '資訊種子註冊成功驗證信',
-        html: '<p>親愛的報名者您好,</p><br><p>感謝您的註冊</p><br><p>資訊種子為一年期的培訓計畫......</p><br><p>第十六屆資訊種子招生團隊敬上</p>'
-        };
-
-        transporter.sendMail(mailOptions, function(error, info){
-          if (error) {
-            console.log(error);
-          } else {
-           console.log('Email sent: ' + info.response +' 寄件的信箱為：'+req.session.email);
-          }
-        });
 			res.redirect("/disc");  
         });                
     },
@@ -462,7 +657,7 @@ function registerAccount(res,newuser,callback){
         });
     },
     //編輯個人資料
-    editProfile: function (req, res) {
+    editProfile: function (req, res) {   
         var t = 0;
         var value = {
             email: req.body.email,
@@ -471,10 +666,17 @@ function registerAccount(res,newuser,callback){
             name: req.body.name,
             gender: req.body.gender,
             school: req.body.school,
+            dept: req.body.dept,
             grade: req.body.grade,
             reference: req.body.reference,
             survey: Array.isArray(req.body.survey) ? req.body.survey.join(',') : req.body.survey
         };
+        
+        fs.readFile('credentials.json', (err, content) => {
+          if (err) return console.log('Error loading client secret file:', err);
+          // Authorize a client with credentials, then call the Google Drive API.
+          authorize(JSON.parse(content), update_profile_sheet, value);
+        });     
         if(value.name!=null && value.gender!=null && value.school!=null && value.grade!=null){
             // value.finished = 1 ;
             t++;
@@ -484,6 +686,7 @@ function registerAccount(res,newuser,callback){
                 if (err) 
                     return res.end(JSON.stringify(err));
             //有上傳檔案
+
             if (uploadedFiles.length > 0) {
                 //圖片檔
                 if (uploadedFiles[0].type.substring(0, 5) == "image") { 
@@ -524,7 +727,9 @@ function registerAccount(res,newuser,callback){
 
                         User.update({id: user.id}, value)
                         .exec(function (err, datas) {
+                            console.log(datas[0])
                             if (err) {
+                                
                                 //刪除上傳檔案
                                 fs.unlink(uploadedFiles[0].fd, function (err) {  
                                     if (err) 
