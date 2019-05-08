@@ -42,12 +42,12 @@ module.exports.routes = {
   //   controller: 'User',
   //   action: 'rem'
   // },
-  'get /rem': {
-    view: 'frontend/pages/rem'
+  'get /reset_pwd': {
+    view: 'frontend/pages/reset_pwd'
   },
-  'post /rem': {
+  'post /reset_pwd': {
     controller: 'User',
-    action: 'rem'
+    action: 'reset_pwd'
   },
   'get /FPWpage': {
     view: 'frontend/pages/FPWpage'

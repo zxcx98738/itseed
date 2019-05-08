@@ -322,7 +322,7 @@ function registerAccount(res,newuser,callback){
     
     // email驗證
 
-    rem: function (req, res) {
+    reset_pwd: function (req, res) {
         var randomstring = Math.random().toString(36).slice(-8);//亂數生成英數8字密碼
         var value = {
             pwd: md5(randomstring)//宣告將要被更新的值 md5為加密

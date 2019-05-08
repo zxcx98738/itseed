@@ -39,7 +39,7 @@ module.exports.policies = {
   },
   UserController: {
     '*':'isLoginUser',
-    'rem': true ,
+    'reset_pwd': true ,
     'reg':true ,
     'loginPage':true ,
     'register':true ,
