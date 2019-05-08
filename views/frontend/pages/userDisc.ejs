@@ -26,11 +26,15 @@
 				</p>
 			</div>
 		<% }else {%>
-		<div class="row col-md-10 col-md-offset-1" style="font-size: 13pt;">
-			&emsp;&emsp;<span>DISC個性測驗是國外企業廣泛應用的一種人格測驗，我們期望透過這個測驗幫助你更加了解自己的行為方式、團隊合作、領導方式等等。</span>
-			<br></br>
-			&emsp;&emsp;<span>此測驗<b>不影響徵選結果</b>，請選擇一個比較符合你人格特質的敘述，不需要太多思考，憑直覺就可以了！</span>
-			<br></br>
+
+		<div class="row col-md-10 col-md-offset-1 box1" style="font-size: 13pt;">
+			<p style="text-align: center;"><span><!-- DISC個性測驗是國外企業廣泛應用的一種人格測驗，我們期望透過這個測驗幫助你更加了解自己的行為方式、團隊合作、領導方式等等。 -->本篇提供的四型人格分析，都是有心理學依據並被各大企業廣泛採納的。<br>透過此測驗，你可以更加了解你的行為方式、團隊合作、領導方式等。</span></p>
+			<!-- &emsp;&emsp;<span>此測驗<b>不影響徵選結果</b>，請選擇一個比較符合你人格特質的敘述，不需要太多思考，憑直覺就可以了！</span>
+			<br></br> -->
+		</div>
+		<!-- <br></br><br></br><br></br><br> -->
+		<div class="row col-md-6 col-md-offset-1 box2" style="font-size: 18pt;text-align: center;">
+			<p style="font-size: 30pt;">DISC</p><p>--------------------------------------</p><span>此測驗<b>不影響徵選結果</b>，<br>請選擇一個比較符合你人格特質的敘述，<br>不需要太多思考，憑直覺就可以了！</span>
 		</div>
 		<div class="row col-md-11  col-md-offset-1 col-xs-offset-0 disc-content">
 		
@@ -481,7 +485,24 @@
 		<% include ./discResult %>
 	<% } %>
 </section>
-
+<style type="text/css">
+	.box1 {
+  		margin-top: 2%;
+	  	background-color: #BBD4DB;
+	  	padding-top: 2%;
+	  	padding-bottom: 2%;
+	}
+	.box2{
+		margin-top: 6%;
+		margin-bottom: 6%;
+		margin-left: 27%;
+		border: 1px solid #4D89C5;
+		border-radius: 12px;
+		padding-top: 3.5%;
+		padding-bottom: 3.5%;
+		box-shadow:  4px 6px 5px rgba(0, 0, 0, 0.2);
+	}
+</style>
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->
