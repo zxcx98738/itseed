@@ -32,13 +32,18 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  // 忘記密碼
+  'get /reset_pwd': {
+    view: 'frontend/pages/reset_pwd'
+  },
+  'post /reset_pwd': {
+    controller: 'User',
+    action: 'reset_pwd'
+  },
+  'get /FPWpage': {
+    view: 'frontend/pages/FPWpage'
+  },
 
-  // email
-
-  // '/re': {
-  //   view: 'frontend/pages/re'
-  // },
-  
   // 信箱驗證
   'get /rem': {
     controller: 'User',
@@ -53,18 +58,6 @@ module.exports.routes = {
   'get /remSucess': {
     view: 'frontend/pages/remSucess'
   }, 
-  // 'post /register': {
-  //   controller: 'User',
-  //   action: 'register'    
-  // },
-  // '/register/:email': {
-  //   controller: 'User',
-  //   action: 'reg'    
-  // },
-  // '/register': {
-  //    controller: 'User',
-  //    action: 'reg' 
-  // },
   
   /*前台-一般頁面*/
   '/': {

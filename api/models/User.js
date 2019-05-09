@@ -28,6 +28,10 @@ module.exports = {
           required: true,
           unique: true
         },
+        isEmailAuth : {
+          type: 'integer',
+          defaultsTo: 0
+        },
         //密碼
         pwd: {
           type: 'string',

@@ -47,7 +47,9 @@
     <span class="main-color-br">- 登入 -</span> 
   </div>
   <div class="login-main">
+      
     <form action="/login" method="post">
+
       <input hidden type="text" name="redirect" value="<%= redirect %>" id="redirect">
       <div>
         <span><img alt="" src="/images/layout/ACCOUNT.png"> 帳號：</span>
@@ -60,14 +62,17 @@
       <div>
         <input class="login-btn" id="login-btn" type="submit" value="登入">
       </div>
+
+      <div class="g-signin2" data-onsuccess="onSignIn"  data-longtitle="true"></div>
     </form>
-      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
       <div style="padding-bottom: 0">
         <span>尚未註冊嗎？</span>
         <a class="register" href="/register">立即註冊新帳號</a>
         <!-- <a class="register" href="/re">立即註冊新帳號</a> -->
         <br><br>
-        <a href="" data-toggle="modal" data-target="#myModal">忘記密碼</a>
+        <!-- <a href="" data-toggle="modal" data-target="#myModal">忘記密碼</a> -->
+        <a href="/reset_pwd">忘記密碼</a>
       </div>
   </div>
   <div style="text-align: center; margin-bottom: 30px;">
@@ -128,5 +133,4 @@
     <a class="register" href="/register">註冊新帳號</a>
   </div>
 </div>
-
 <% include ../footer %>

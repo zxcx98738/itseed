@@ -1,25 +1,28 @@
 <script src="/js/specifies/jquery.validate.min.js"></script>
 <script src="/js/specifies/messages_zh_TW.min.js"></script>
 <!-- <script src="/js/specifies/frontend/login.js"></script> -->
-<script src="/js/specifies/frontend/register.js"></script>
-
+<!-- <script src="/js/specifies/frontend/register.js"></script>-->
+<!-- FPWpage = Forget Password Page -->
 <% include ../header %>
 <section class="section-re">
 <div class="login-part" style="margin-top: 100px;">
 	<div class="title-title">
-	    <span class="main-color-br">- 寄驗證信 -</span> 
+	    <span class="main-color-br">- 信件已寄出 -</span> 
 	</div>
 	<div class="login-main">
-		<form action="/rem" method="post">
+		<!-- form action="/rem" method="post">
 		<div>
         <span><img alt="" src="/images/layout/ACCOUNT.png"> 信箱：</span>
         <input class="btn-block" type="text" name="email" value="">
-        <!-- <input type="" name="pwd"> -->
+        <input type="" name="pwd">
         <br>
         <br>
         <br>
         <input class="login-btn" type="submit" value="寄出">
-		</form>
+		</form> -->
+		<p>新的密碼已寄出，請至信箱查看</p>
+		<br>
+		<a href="/login">請點此回到登入頁面</a>
 	    </div>
 	</div>
 </div>

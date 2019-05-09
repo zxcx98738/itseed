@@ -2,7 +2,7 @@
  * UserController
  *
  * @描述 : 使用者相關
- * @文件 : Se http://links.sailsjs.org/docs/controllers
+ * @文件 : See http://links.sailsjs.org/docs/controllers
  */
 
 require('dotenv').config()
@@ -218,26 +218,26 @@ function registerAccount(res,newuser,callback){
     //驗證是否重複註冊（信箱是否被使用過）
     //  一般會員     註冊 => 已經被 google登入註冊過 => 補上 password
     //  google登入  註冊 => 已經被 一般註冊註冊過    => 補上 gIdToken
-    fs.readFile('credentials.json', (err, content) => {
-        if (err) return console.log('Error loading client secret file:', err);
-        // Authorize a client with credentials, then call the Google Drive API.
-        authorize(JSON.parse(content), update_reg_sheet, newuser);
-    }); 
+    // fs.readFile('credentials.json', (err, content) => {
+    //     if (err) return console.log('Error loading client secret file:', err);
+    //     // Authorize a client with credentials, then call the Google Drive API.
+    //     authorize(JSON.parse(content), update_reg_sheet, newuser);
+    // // }); 
 
-    var mailOptions = {
-    from: 'itseed17th@gmail.com',
-    to: newuser.email,
-    subject: '資訊種子註冊成功驗證信',
-    html: '<p>親愛的報名者您好,</p><br><p>感謝您的註冊</p><p>資訊種子為一年期的培訓運計畫......</p><p>第十六屆資訊種子招生團隊敬上</p>'
-    };
+    // var mailOptions = {
+    // from: 'itseed17th@gmail.com',
+    // to: newuser.email,
+    // subject: '資訊種子註冊成功驗證信',
+    // html: '<p>親愛的報名者您好,</p><br><p>感謝您的註冊</p><p>資訊種子為一年期的培訓運計畫......</p><p>第十六屆資訊種子招生團隊敬上</p>'
+    // };
 
-    transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log(error);
-      } else {
-       console.log('Email sent: ' + info.response +' 寄件的信箱為：'+req.session.email);
-      }
-    });
+    // transporter.sendMail(mailOptions, function(error, info){
+    //   if (error) {
+    //     console.log(error);
+    //   } else {
+    //    console.log('Email sent: ' + info.response +' 寄件的信箱為：'+req.session.email);
+    //   }
+    // });
 
     var value = {};
     User.findOne({ email: newuser.email }).exec(function (err, user) {
@@ -386,11 +386,13 @@ function registerAccount(res,newuser,callback){
                 console.log("資料庫錯誤");
                 return res.end(JSON.stringify(err));
                 
-            }else if(emailV == null){
+            }
+            else if(emailV == null){
                 // 沒有找到使用者
                 console.log("此帳戶尚未註冊");
                 res.redirect("/");
-            }else{
+            }
+            else{
                 // 有此帳戶
                 User.findOne({
                     email: req.query.email
@@ -434,8 +436,43 @@ function registerAccount(res,newuser,callback){
                         });
                     }
                 })
+            }
+        });
+    },
+    reset_pwd: function (req, res) {
+        var randomstring = Math.random().toString(36).slice(-8);//亂數生成英數8字密碼
+        var value = {
+            pwd: md5(randomstring)//宣告將要被更新的值 md5為加密
+        }
+        User.findOne({
+            email: req.body.email
+        })//透過sql比對輸入信箱 req.body.email為頁面輸入的信箱
+        .exec(function(err, user) {
+            if(err){
+                res.end(JSON.stringify(err));
+            }
+            else{
+              req.session.name=user.name;//將名字設為session
+              User.update({pwd: user.pwd}, value).exec(function (err, user) {//如果密碼更改成功，則寄信通知新密碼
+                  if (err) { res.end(JSON.stringify(err)); }
+                  else{
+                      var mailOptions = {
+                      from: 'itseed17th@gmail.com',
+                      to: req.body.email,
+                      subject: '【資訊種子第17屆】【忘記密碼】',
+                      html:"<p>親愛的 "+req.session.name+" 您好</p><br><p>您的新密碼為："+randomstring+"</p><br><p>請記得登入並更改您的密碼</p><br><p>第十七屆資訊種子招生團隊敬上</p>"
+                      };//每個信件寄出的密碼皆為8字亂數
 
-            
+                      transporter.sendMail(mailOptions, function(error, info){
+                        if (error) {
+                          console.log(error);
+                        } else {
+                         console.log('Email sent: ' + info.response +' 寄件的信箱為：'+ req.body.email);
+                        }
+                      });
+                      res.redirect("/FPWpage");//成功則導入「寄件成功」之頁面 
+                  }
+              });
             }
         });
     },
@@ -547,9 +584,19 @@ function registerAccount(res,newuser,callback){
                 //註冊 or 修改信箱
                 if(req.body.pwd == undefined){
                     if(user == undefined){
-                        res.end("true");
+                        if(String(req.body.method) == "reset_pwd"){
+                           res.end("false");
+                        }
+                        // else{
+                        //   console.log("shit");
+                          res.end("true");
+                        //}
+                        
                     }
                     else{
+                        if(req.body.method == "reset_pwd"){
+                          res.end("true");
+                        }                      
                         //修改信箱
                         if(req.session.email == req.body.email)
                             res.end("true");
@@ -835,6 +882,7 @@ function registerAccount(res,newuser,callback){
                                 }
                                 var source = fs.createReadStream(sails.config.appPath + "/assets" + datas[0].photo);
                                 var desti = fs.createWriteStream(sails.config.appPath + "/.tmp/public" + datas[0].photo);
+                                
                                 source.pipe(desti);
                                 source.on('end',function() {
                                     source.close();

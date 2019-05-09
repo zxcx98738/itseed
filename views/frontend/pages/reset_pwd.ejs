@@ -1,0 +1,68 @@
+<script src="/js/specifies/jquery.validate.min.js"></script>
+<script src="/js/specifies/messages_zh_TW.min.js"></script>
+<script src="/js/specifies/frontend/forget.js"></script>
+<!-- <script src="/js/specifies/frontend/login.js"></script> -->
+<!-- <script src="/js/specifies/frontend/register.js"></script> -->
+
+<% include ../header %>
+<section class="section-rem">
+	<div class="login-part" style="margin-top: 100px;">
+		<div class="title-title">
+			<span class="main-color-br">- 忘記密碼 -</span> 
+		</div>
+		<div class="login-main">
+			<form action="/reset_pwd" method="post">
+			<div>
+			<span><img src="/images/layout/ACCOUNT.png"  alt="ACCOUNT.jpg"> 信箱：</span>
+			<!-- <input type="label" name="email" value="<%=emailV.email%>"> -->
+			<input class="btn-block" autofocus="autofocus" name="email" type="email">
+      <input class="btn-block" autofocus="autofocus" name="method" type="hidden" value="reset_pwd">
+			<br>
+			<br>
+			<!-- <input class="login-btn" id="resend" type="submit" value="重新寄出"> -->
+			<input class="login-btn" id="login-btn" type="submit" value="寄出信件">
+			</form>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- <script type="text/javascript">
+	$(function(){
+	$("form").validate({
+		submitHandler: function(form) {
+      form.submit();
+    },
+    errorPlacement: function(error, element) {
+      element.closest('div').append(error);
+    },
+  	rules: {
+  		email: {
+  			required: true,
+        email: true,
+  			remote: {
+  				url: "/check-email",
+  				type: "post",
+  				data: {
+  					email: function() {
+  						return $( "input[name='email']" ).val();
+  					}
+  				}
+  			}
+  		}
+  	},
+  	messages: {
+  		email: {
+  			remote: "此帳號已存在",
+  		}
+  	}
+  });
+  // $("#resend").click(function(){
+  //   window.history.forward(-1);　
+  // });
+});
+
+
+</script> -->
+<% include ../footer %>
+
+

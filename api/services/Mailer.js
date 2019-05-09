@@ -12,7 +12,7 @@ module.exports.sendWelcomeMail = function(mail) {
 				return console.log(error);
 		}
 		console.log('mail sent:', info.response);
-});
+	});
 }
 
 
