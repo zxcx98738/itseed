@@ -32,16 +32,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-
-  // email
-
-  // '/re': {
-  //   view: 'frontend/pages/re'
-  // },
-  // 'post /rem': {
-  //   controller: 'User',
-  //   action: 'rem'
-  // },
+  // 忘記密碼
   'get /reset_pwd': {
     view: 'frontend/pages/reset_pwd'
   },
@@ -52,18 +43,21 @@ module.exports.routes = {
   'get /FPWpage': {
     view: 'frontend/pages/FPWpage'
   },
-  // 'post /register': {
-  //   controller: 'User',
-  //   action: 'register'    
-  // },
-  // '/register/:email': {
-  //   controller: 'User',
-  //   action: 'reg'    
-  // },
-  // '/register': {
-  //    controller: 'User',
-  //    action: 'reg' 
-  // },
+
+  // 信箱驗證
+  'get /rem': {
+    controller: 'User',
+    action: 'rem'
+  },
+  // 檢查驗證碼是否正確
+  'get /check-code':{
+    controller: 'User',
+    action: 'checkCode'
+  },
+  // 驗證成功或失敗的頁面
+  'get /remSucess': {
+    view: 'frontend/pages/remSucess'
+  }, 
   
   /*前台-一般頁面*/
   '/': {

@@ -53,6 +53,11 @@ module.exports = {
           minLength: 1,
           maxLength: 1,
         },
+        // 是否驗證
+        isEmailAuth : {
+          type: 'integer',
+          defaultsTo: 0
+        },
         //就讀學校
         school : {
           type: 'string',

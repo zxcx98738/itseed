@@ -218,26 +218,26 @@ function registerAccount(res,newuser,callback){
     //驗證是否重複註冊（信箱是否被使用過）
     //  一般會員     註冊 => 已經被 google登入註冊過 => 補上 password
     //  google登入  註冊 => 已經被 一般註冊註冊過    => 補上 gIdToken
-    fs.readFile('credentials.json', (err, content) => {
-        if (err) return console.log('Error loading client secret file:', err);
-        // Authorize a client with credentials, then call the Google Drive API.
-        authorize(JSON.parse(content), update_reg_sheet, newuser);
-    }); 
+    // fs.readFile('credentials.json', (err, content) => {
+    //     if (err) return console.log('Error loading client secret file:', err);
+    //     // Authorize a client with credentials, then call the Google Drive API.
+    //     authorize(JSON.parse(content), update_reg_sheet, newuser);
+    // // }); 
 
-    var mailOptions = {
-    from: 'itseed17th@gmail.com',
-    to: newuser.email,
-    subject: '資訊種子註冊成功驗證信',
-    html: '<p>親愛的報名者您好,</p><br><p>感謝您的註冊</p><p>資訊種子為一年期的培訓運計畫......</p><p>第十六屆資訊種子招生團隊敬上</p>'
-    };
+    // var mailOptions = {
+    // from: 'itseed17th@gmail.com',
+    // to: newuser.email,
+    // subject: '資訊種子註冊成功驗證信',
+    // html: '<p>親愛的報名者您好,</p><br><p>感謝您的註冊</p><p>資訊種子為一年期的培訓運計畫......</p><p>第十六屆資訊種子招生團隊敬上</p>'
+    // };
 
-    transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log(error);
-      } else {
-       console.log('Email sent: ' + info.response +' 寄件的信箱為：'+req.session.email);
-      }
-    });
+    // transporter.sendMail(mailOptions, function(error, info){
+    //   if (error) {
+    //     console.log(error);
+    //   } else {
+    //    console.log('Email sent: ' + info.response +' 寄件的信箱為：'+req.session.email);
+    //   }
+    // });
 
     var value = {};
     User.findOne({ email: newuser.email }).exec(function (err, user) {
@@ -247,7 +247,7 @@ function registerAccount(res,newuser,callback){
             if (!user.gIdToken && newuser.gIdToken){
                 value.gIdToken = newuser.gIdToken;
                 User.update({
-                    id: user.id
+                    id: user.id,
                 },value).exec(function (err,data) {
                     if (err) { res.end(JSON.stringify(err)); }
                     User.findOne({id: user.id}).exec(function (err, updated_user) {
@@ -259,7 +259,10 @@ function registerAccount(res,newuser,callback){
             else  if (!user.pwd  && newuser.pwd ){
                 // 補上 pwd
                 value.pwd = newuser.pwd;
-                User.update({id: user.id}, {value}).exec(function (err, user) {
+                User.update({
+                    id: user.id,
+                    isEmailAuth: 1
+                }, {value}).exec(function (err, user) {
                     if (err) { res.end(JSON.stringify(err)); }
                     User.findOne({ id: user.id }).exec(function (err, updated_user) {
                         if (err) { res.end(JSON.stringify(err)); }
@@ -321,7 +324,121 @@ function registerAccount(res,newuser,callback){
     /*前台*/
     
     // email驗證
-
+    rem: function (req, res) {
+        // 新增使用者的帳號資料
+        var userregister ={
+            mailmd5 : md5(req.query.email),
+            email : req.query.email
+        }
+        emailV.findOne({
+            mailmd5: md5(req.query.email)
+        })
+        .exec(function (err , emailvo) {
+            if (err) {
+                console.log("資料庫查詢失敗")
+                res.end(JSON.stringify(err));
+            }else if(emailvo){
+                console.log("emailV已經有此帳戶，寄信")                
+                var link="http://"+req.get('host')+"/check-code?email="+userregister.email+"&token="+userregister.mailmd5;                
+                var mail = {
+                    from: '資訊種子',
+                    subject: '資訊種子註冊信',
+                    to: userregister.email,
+                    html: '<p>親愛的報名者您好,</p><br><a href="'+link+'">點擊驗證信箱</a></p><p>第十六屆資訊種子招生團隊敬上</p>'
+                    // text: "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>" 
+                };
+                // 寄信API
+                Mailer.sendWelcomeMail(mail);
+                return res.view("frontend/pages/rem" , { emailV:userregister });
+            }else{
+                // emalV無此帳戶
+                emailV.create(userregister)
+                .exec(function(err, emailV) {
+                    if(err){
+                        res.end(JSON.stringify(err));
+                    }
+                    else{
+                        console.log("新帳戶寄信")
+                        var link="http://"+req.get('host')+"/check-code?email="+userregister.email+"&token="+userregister.mailmd5;
+                        var mail = {
+                            from: '資訊種子',
+                            subject: '测试',
+                            to: userregister.email,
+                            text: "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>" 
+                        };
+                        Mailer.sendWelcomeMail(mail);
+                        return res.view("frontend/pages/rem" , { emailV:userregister });
+                    }
+                });
+            }
+        });
+    },
+    // email驗證檢查
+    checkCode: function (req, res) {
+        // console.log(req.protocol+":/"+req.get('host'));
+        // console.log(req.query.token);
+        // console.log(req.query.email);
+        emailV.findOne({
+            email: req.query.email
+        })
+        .exec(function (err , emailV) {
+            if (err) {
+                console.log("資料庫錯誤");
+                return res.end(JSON.stringify(err));
+                
+            }
+            else if(emailV == null){
+                // 沒有找到使用者
+                console.log("此帳戶尚未註冊");
+                res.redirect("/");
+            }
+            else{
+                // 有此帳戶
+                User.findOne({
+                    email: req.query.email
+                }).exec(function (err , user) {
+                    if (err) { 
+                        res.end(JSON.stringify(err)); 
+                    }
+                    else if(user.isEmailAuth == 1){
+                        // 已經認證過
+                        return res.view("frontend/pages/remSucess", {
+                            emailV:emailV,
+                            status:'信箱已驗證過',
+                            text:'請直接登入'
+                        });
+                    }
+                    // 如果帳戶的token與帳戶的mailmd5相同
+                    else if(emailV.mailmd5 ==req.query.token){
+                        // 驗證成公
+                            // 未認證過
+                        User.update({
+                            email: req.query.email
+                        }, {
+                            isEmailAuth: 1
+                        }).exec(function (err, data) {
+                            if (err) { 
+                                res.end(JSON.stringify(err)); 
+                            }else {
+                                return res.view("frontend/pages/remSucess", {
+                                    emailV:emailV,
+                                    status:'驗證成功',
+                                    text:'信箱已經驗證成功，您現在可以去填寫DISC'
+                                });      
+                            }
+                        });                  
+                    }else{
+                        // 驗證失敗
+                        return res.view("frontend/pages/remSucess", {
+                            emailV:emailV,
+                            status:'驗證失敗',
+                            text:'請重新驗證信箱'
+                        });
+                    }
+                })
+            }
+        });
+    },
     reset_pwd: function (req, res) {
         var randomstring = Math.random().toString(36).slice(-8);//亂數生成英數8字密碼
         var value = {
@@ -335,30 +452,29 @@ function registerAccount(res,newuser,callback){
                 res.end(JSON.stringify(err));
             }
             else{
-                req.session.name=user.name;//將名字設為session
-                User.update({pwd: user.pwd}, value).exec(function (err, user) {//如果密碼更改成功，則寄信通知新密碼
-                    if (err) { res.end(JSON.stringify(err)); }
-                    else{
-                        var mailOptions = {
-                        from: 'itseed17th@gmail.com',
-                        to: req.body.email,
-                        subject: '【資訊種子第17屆】【忘記密碼】',
-                        html:"<p>親愛的 "+req.session.name+" 您好</p><br><p>您的新密碼為："+randomstring+"</p><br><p>請記得登入並更改您的密碼</p><br><p>第十七屆資訊種子招生團隊敬上</p>"
-                        };//每個信件寄出的密碼皆為8字亂數
+              req.session.name=user.name;//將名字設為session
+              User.update({pwd: user.pwd}, value).exec(function (err, user) {//如果密碼更改成功，則寄信通知新密碼
+                  if (err) { res.end(JSON.stringify(err)); }
+                  else{
+                      var mailOptions = {
+                      from: 'itseed17th@gmail.com',
+                      to: req.body.email,
+                      subject: '【資訊種子第17屆】【忘記密碼】',
+                      html:"<p>親愛的 "+req.session.name+" 您好</p><br><p>您的新密碼為："+randomstring+"</p><br><p>請記得登入並更改您的密碼</p><br><p>第十七屆資訊種子招生團隊敬上</p>"
+                      };//每個信件寄出的密碼皆為8字亂數
 
-                        transporter.sendMail(mailOptions, function(error, info){
-                          if (error) {
-                            console.log(error);
-                          } else {
-                           console.log('Email sent: ' + info.response +' 寄件的信箱為：'+ req.body.email);
-                          }
-                        });
-                        res.redirect("/FPWpage");//成功則導入「寄件成功」之頁面 
-                    }
-                });
-                }
+                      transporter.sendMail(mailOptions, function(error, info){
+                        if (error) {
+                          console.log(error);
+                        } else {
+                         console.log('Email sent: ' + info.response +' 寄件的信箱為：'+ req.body.email);
+                        }
+                      });
+                      res.redirect("/FPWpage");//成功則導入「寄件成功」之頁面 
+                  }
+              });
+            }
         });
-        
     },
     reg:function (req,res){
         emailV.findOne({
@@ -438,17 +554,21 @@ function registerAccount(res,newuser,callback){
         var newuser = {
             email: req.body.email,
             pwd: md5(req.body.pwd),
+            name: req.body.name
         };
+        // console.log(newuser.name);
 		registerAccount(res,newuser,function(user){
-			req.session.userid = user.id;
-            req.session.email = user.email;
-            req.session.pwd = user.pwd;
-			req.session.type =  user.type;
-			req.session.authorized = {
-				user: true
-			};
+			// req.session.userid = user.id;
+            // req.session.email = user.email;
+            // req.session.pwd = user.pwd;
+			// req.session.type =  user.type;
+			// req.session.authorized = {
+			// 	user: true
+            // };
+            res.redirect("/rem?email="+newuser.email);
+            
         //註冊完寄送驗證信    
-			res.redirect("/disc");  
+			// res.redirect("/rem");  
         });                
     },
     //檢查信箱是否已存在
@@ -535,16 +655,20 @@ function registerAccount(res,newuser,callback){
                 if(md5(req.body.pwd) != user.pwd){
                     return res.end("密碼錯誤");
                 }
-
-                req.session.userid = user.id;
-                req.session.email = user.email;
-                req.session.pwd = req.body.pwd;
-                req.session.type =  user.type;
-                req.session.authorized = {
-                    user: true
+                if(user.isEmailAuth == 0){
+                    res.redirect("/rem?email="+user.email);
+                }else{
+                    req.session.userid = user.id;
+                    req.session.email = user.email;
+                    req.session.pwd = req.body.pwd;
+                    req.session.type =  user.type;
+                    req.session.authorized = {
+                        user: true
+                    }
+                    //console.log(req.session);
+                    res.redirect(req.body.redirect!='undefined'? req.body.redirect: "/disc" ) ;
                 }
-                //console.log(req.session);
-                res.redirect(req.body.redirect!='undefined'? req.body.redirect: "/disc" ) ;
+
             }
         });
     },
@@ -566,7 +690,8 @@ function registerAccount(res,newuser,callback){
                 if (user == undefined) {
 					const newuser = {
 						email: payload.email,
-						gIdToken: gIdToken
+                        gIdToken: gIdToken,
+                        isEmailAuth: 1
 					}
 					registerAccount(res, newuser, function (new_user) {
                         req.session.userid = new_user.id;
@@ -584,7 +709,7 @@ function registerAccount(res,newuser,callback){
 					req.session.userid = user.id;
 					req.session.email = payload.email;
                     req.session.gIdToken = gIdToken;
-					req.session.type = user.type;
+                    req.session.type = user.type;
                     req.session.authorized = {
                         user: true
                     }
