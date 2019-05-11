@@ -780,12 +780,21 @@ function registerAccount(res,newuser,callback){
                                 console.log("error")
                             }
                             else{
-                              return res.view("frontend/pages/userProfile", {
-                                  user: user,
-                                  disc: disc,
-                                  files:files,
-                                  school : school
-                              });                              
+                              School.query('SELECT distinct dept FROM school' ,function(err, dept) {
+                                if (err) {
+                                    return res.end(JSON.stringify(err));
+                                    console.log("error")
+                                }
+                                else{
+                                  return res.view("frontend/pages/userProfile", {
+                                      user: user,
+                                      disc: disc,
+                                      files:files,
+                                      school : school,
+                                      dept : dept
+                                  });                                   
+                                }
+                              });    
                             }
                           });
                         }

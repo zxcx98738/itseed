@@ -106,9 +106,9 @@
 						<label class="col-sm-2 col-xs-12 control-label" for="dept">系所<b class="darkred">*</b>：</label>
 						<div class="col-sm-10 col-xs-12">
 						<% if(user.dept == null){%>
-							<input type="text" name="dept" class="btn-block" id="dept" placeholder="ex: 資訊管理學系">
+							<input autocomplete="off" type="text" name="dept" class="btn-block" id="dept" placeholder="ex: 資訊管理學系">
 						<% } else{ %>
-							<input type="text" name="dept" class="btn-block" id="dept" placeholder="ex: 資種大學" value="<%= user.dept%>">
+							<input autocomplete="off" type="text" name="dept" class="btn-block" id="dept" placeholder="ex: 資種大學" value="<%= user.dept%>">
 						<% } %>
 						</div>
 					</div>
@@ -201,8 +201,9 @@
 	</script>
 </section>
 <script type="text/javascript">
-	var school_list = JSON.parse('<%-JSON.stringify(school)%>');
-function autocomplete(inp, arr) {
+var school_list = JSON.parse('<%-JSON.stringify(school)%>');
+var dept_list = JSON.parse('<%-JSON.stringify(dept)%>');
+function autocomplete(inp, arr, element) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
   var currentFocus;
@@ -222,14 +223,14 @@ function autocomplete(inp, arr) {
       /*for each item in the array...*/
       for (i = 0; i < arr.length; i++) {
         /*check if the item starts with the same letters as the text field value:*/
-        if (arr[i].school.toUpperCase().includes(val.toUpperCase())) {
+        if (arr[i][element].toUpperCase().replace("台", "臺").includes(val.toUpperCase().replace("台", "臺"))) {
           /*create a DIV element for each matching element:*/
           b = document.createElement("DIV");
           /*make the matching letters bold:*/
-          b.innerHTML = "<strong>" + arr[i].school.substr(0, val.length) + "</strong>";
-          b.innerHTML += arr[i].school.substr(val.length);
+          b.innerHTML = "<strong>" + arr[i][element].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i][element].substr(val.length);
           /*insert a input field that will hold the current array item's value:*/
-          b.innerHTML += "<input type='hidden' value='" + arr[i].school + "'>";
+          b.innerHTML += "<input type='hidden' value='" + arr[i][element] + "'>";
           /*execute a function when someone clicks on the item value (DIV element):*/
           b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
@@ -298,7 +299,8 @@ function autocomplete(inp, arr) {
       closeAllLists(e.target);
   });
 }
-autocomplete(document.getElementById("school"), school_list);
+autocomplete(document.getElementById("school"), school_list, "school");
+autocomplete(document.getElementById("dept"), dept_list, "dept");
 </script>
 <!--FOOTER-->
 <% include ../footer %>
