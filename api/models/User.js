@@ -77,6 +77,11 @@ module.exports = {
           type: 'string',
           maxLength: 20
         },
+        //管道
+        survey : {
+          type: 'string',
+          maxLength: 40
+        },        
         //大頭貼
         photo: {
           type: 'string',
