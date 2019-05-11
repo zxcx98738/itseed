@@ -72,6 +72,30 @@ function getAccessToken(oAuth2Client, callback) {
   });
 }
 
+function send_reg_success(newuser){
+    fs.readFile('credentials.json', (err, content) => {
+        if (err) return console.log('Error loading client secret file:', err);
+        // Authorize a client with credentials, then call the Google Drive API.
+        authorize(JSON.parse(content), update_reg_sheet, newuser);
+    }); 
+
+    var mailOptions = {
+    from: 'itseed17th@gmail.com',
+    to: newuser.email,
+    subject: '資訊種子帳號註冊成功',
+    html: '<p>親愛的' + String(newuser.name)+ '您好,</p><br><p>感謝您的註冊</p><p>資訊種子為一年期的培訓運計畫......</p><p>第十六屆資訊種子招生團隊敬上</p>'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+       console.log('Email sent: ' + info.response +' 寄件的信箱為：'+ newuser.email);
+      }
+    });
+
+}
+
 async function update_reg_sheet(auth, user) {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.append({
@@ -218,26 +242,7 @@ function registerAccount(res,newuser,callback){
     //驗證是否重複註冊（信箱是否被使用過）
     //  一般會員     註冊 => 已經被 google登入註冊過 => 補上 password
     //  google登入  註冊 => 已經被 一般註冊註冊過    => 補上 gIdToken
-    // fs.readFile('credentials.json', (err, content) => {
-    //     if (err) return console.log('Error loading client secret file:', err);
-    //     // Authorize a client with credentials, then call the Google Drive API.
-    //     authorize(JSON.parse(content), update_reg_sheet, newuser);
-    // // }); 
 
-    // var mailOptions = {
-    // from: 'itseed17th@gmail.com',
-    // to: newuser.email,
-    // subject: '資訊種子註冊成功驗證信',
-    // html: '<p>親愛的報名者您好,</p><br><p>感謝您的註冊</p><p>資訊種子為一年期的培訓運計畫......</p><p>第十六屆資訊種子招生團隊敬上</p>'
-    // };
-
-    // transporter.sendMail(mailOptions, function(error, info){
-    //   if (error) {
-    //     console.log(error);
-    //   } else {
-    //    console.log('Email sent: ' + info.response +' 寄件的信箱為：'+req.session.email);
-    //   }
-    // });
 
     var value = {};
     User.findOne({ email: newuser.email }).exec(function (err, user) {
@@ -326,6 +331,7 @@ function registerAccount(res,newuser,callback){
     // email驗證
     rem: function (req, res) {
         // 新增使用者的帳號資料
+        //console.log(req.query)
         var userregister ={
             mailmd5 : md5(req.query.email),
             email : req.query.email
@@ -344,7 +350,7 @@ function registerAccount(res,newuser,callback){
                     from: '資訊種子',
                     subject: '資訊種子註冊信',
                     to: userregister.email,
-                    html: '<p>親愛的報名者您好,</p><br><a href="'+link+'">點擊驗證信箱</a></p><p>第十六屆資訊種子招生團隊敬上</p>'
+                    html: '<p>親愛的使用者您好,</p><br><a href="'+link+'">點擊驗證信箱</a></p><p>第十六屆資訊種子招生團隊敬上</p>'
                     // text: "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>" 
                 };
                 // 寄信API
@@ -361,10 +367,10 @@ function registerAccount(res,newuser,callback){
                         console.log("新帳戶寄信")
                         var link="http://"+req.get('host')+"/check-code?email="+userregister.email+"&token="+userregister.mailmd5;
                         var mail = {
-                            from: '資訊種子',
-                            subject: '测试',
-                            to: userregister.email,
-                            text: "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>" 
+                          from: '資訊種子',
+                          subject: '資訊種子註冊信',
+                          to: userregister.email,
+                          html: '<p>親愛的使用者您好,</p><br><a href="'+link+'">點擊驗證信箱</a></p><p>第十六屆資訊種子招生團隊敬上</p>'
                         };
                         Mailer.sendWelcomeMail(mail);
                         return res.view("frontend/pages/rem" , { emailV:userregister });
@@ -420,11 +426,12 @@ function registerAccount(res,newuser,callback){
                             if (err) { 
                                 res.end(JSON.stringify(err)); 
                             }else {
+                                send_reg_success(data);
                                 return res.view("frontend/pages/remSucess", {
                                     emailV:emailV,
                                     status:'驗證成功',
                                     text:'信箱已經驗證成功，您現在可以去填寫DISC'
-                                });      
+                                }); 
                             }
                         });                  
                     }else{
@@ -680,6 +687,7 @@ function registerAccount(res,newuser,callback){
                   isEmailAuth: 1
 					      }
 					      registerAccount(res, newuser, function (new_user) {
+                  send_reg_success(new_user);
                   req.session.userid = new_user.id;
                   req.session.email = new_user.email;
                   req.session.gIdToken = new_user.gIdToken;
@@ -693,6 +701,12 @@ function registerAccount(res,newuser,callback){
 					      });
               }
               else{
+                User.update(
+                  {id: user.id},
+                  {isEmailAuth: 1}
+                ).exec(function (err, datas) {
+                    if (err) { return res.end(JSON.stringify(err)); }
+                  });
       					req.session.userid = user.id;
       					req.session.email = payload.email;
                 req.session.gIdToken = gIdToken;
@@ -842,7 +856,7 @@ function registerAccount(res,newuser,callback){
 
                         User.update({id: user.id}, value)
                         .exec(function (err, datas) {
-                            console.log(datas[0])
+                            //console.log(datas[0])
                             if (err) {
                                 
                                 //刪除上傳檔案
