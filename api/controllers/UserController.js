@@ -158,7 +158,7 @@ async function update_profile_sheet(auth, user) {
 
 
 }
-
+/*
 async function upload_profile_picture(auth, file_name) {
     //console.log(user)
   const drive = google.drive({version: 'v3', auth});
@@ -208,7 +208,7 @@ async function upload_profile_picture(auth, file_name) {
     if (err) return console.log('The API returned an error: ' + err);
   });  
 }
-
+*/
 
 
 function registerAccount(res,newuser,callback){
@@ -476,24 +476,7 @@ function registerAccount(res,newuser,callback){
             }
         });
     },
-    reg:function (req,res){
-        emailV.findOne({
-            mailmd5: req.param('email')
-        })
-        .exec(function (err , emailV) {
-            if (err) {
-                res.end(JSON.stringify(err));
-                
-            }else if(emailV.mailmd5 == null){
-                return res.view("frontend/pages/register" ,{emailV : null});
-            }else{
-                return res.view("frontend/pages/register", {
-                    emailV:emailV
-                });
-            
-            }
-        });
-    },
+
     //登入頁
     loginPage: function (req, res) {
         let redirect = req.query.redirect;
@@ -676,47 +659,51 @@ function registerAccount(res,newuser,callback){
         const CLIENT_ID = process.env.googleLoginId;
         const OAuth2Client = require('google-auth-library').OAuth2Client;
         const client = new OAuth2Client(CLIENT_ID);
+        //console.log(req.body)
         async function verify() {
-            const ticket = await client.verifyIdToken({
-                idToken: req.body.idtoken,
-                audience: CLIENT_ID,
-            });
-			const payload = ticket.getPayload();
-			const gIdToken = md5(payload.sub);
-            User.findOne({
-				gIdToken: gIdToken
-            }).exec(function (err, user) {
-                if (err) { return res.end(JSON.stringify(err)); }
-                if (user == undefined) {
-					const newuser = {
-						email: payload.email,
-                        gIdToken: gIdToken,
-                        isEmailAuth: 1
-					}
-					registerAccount(res, newuser, function (new_user) {
-                        req.session.userid = new_user.id;
-                        req.session.email = new_user.email;
-                        req.session.gIdToken = new_user.gIdToken;
-                        req.session.type = new_user.type;
-                        req.session.authorized = {
-                            user: true
-                        }
-                        res.end(JSON.stringify({
-                            redirect: req.body.redirect != 'undefined' ? req.body.redirect:"/disc"
-                        }));
-					});
-                }else{
-					req.session.userid = user.id;
-					req.session.email = payload.email;
-                    req.session.gIdToken = gIdToken;
-                    req.session.type = user.type;
-                    req.session.authorized = {
-                        user: true
-                    }
-					res.end(JSON.stringify({
-                        redirect: req.body.redirect != 'undefined' ? req.body.redirect : "/disc"
-					}));
-				}
+          const ticket = await client.verifyIdToken({
+              idToken: req.body.idtoken,
+              audience: CLIENT_ID,
+          });
+			    const payload = ticket.getPayload();
+			    const gIdToken = md5(payload.sub);
+          User.findOne({
+				    gIdToken: gIdToken
+          }).exec(function (err, user) 
+            {
+              if (err) { return res.end(JSON.stringify(err)); }
+              if (user == undefined) {
+					      const newuser = {
+					        email: payload.email,
+                  gIdToken: gIdToken,
+                  name: req.body.name,
+                  isEmailAuth: 1
+					      }
+					      registerAccount(res, newuser, function (new_user) {
+                  req.session.userid = new_user.id;
+                  req.session.email = new_user.email;
+                  req.session.gIdToken = new_user.gIdToken;
+                  req.session.type = new_user.type;
+                  req.session.authorized = {
+                      user: true
+                  }
+                  res.end(JSON.stringify({
+                      redirect: req.body.redirect != 'undefined' ? req.body.redirect:"/disc"
+                  }));
+					      });
+              }
+              else{
+      					req.session.userid = user.id;
+      					req.session.email = payload.email;
+                req.session.gIdToken = gIdToken;
+                req.session.type = user.type;
+                req.session.authorized = {
+                    user: true
+                }
+      					res.end(JSON.stringify({
+                  redirect: req.body.redirect != 'undefined' ? req.body.redirect : "/disc"
+      					}));
+				      }
             });  
         }
         verify().catch(console.error);   

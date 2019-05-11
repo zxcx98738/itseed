@@ -10,9 +10,9 @@
     console.log('Family Name: ' + profile.getFamilyName());
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());
-
+    name = profile.getGivenName()
     var id_token = googleUser.getAuthResponse().id_token;
-    console.log(id_token);
+    //console.log(id_token);
     console.log(googleUser.getAuthResponse());
     var redirect_link = document.getElementById('redirect').value;
     var xhr = new XMLHttpRequest();
@@ -25,7 +25,7 @@
       var res = JSON.parse(xhr.responseText);
       document.location.href = res.redirect;
     };
-    xhr.send(`idtoken=${id_token}&redirect=${redirect_link}`);
+    xhr.send(`idtoken=${id_token}&redirect=${redirect_link}&name=${name}`);
 
   }
 

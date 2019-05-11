@@ -26,43 +26,6 @@
 		</div>
 	</div>
 </section>
-<!-- <script type="text/javascript">
-	$(function(){
-	$("form").validate({
-		submitHandler: function(form) {
-      form.submit();
-    },
-    errorPlacement: function(error, element) {
-      element.closest('div').append(error);
-    },
-  	rules: {
-  		email: {
-  			required: true,
-        email: true,
-  			remote: {
-  				url: "/check-email",
-  				type: "post",
-  				data: {
-  					email: function() {
-  						return $( "input[name='email']" ).val();
-  					}
-  				}
-  			}
-  		}
-  	},
-  	messages: {
-  		email: {
-  			remote: "此帳號已存在",
-  		}
-  	}
-  });
-  // $("#resend").click(function(){
-  //   window.history.forward(-1);　
-  // });
-});
-
-
-</script> -->
 <% include ../footer %>
 
 
