@@ -774,11 +774,20 @@ function registerAccount(res,newuser,callback){
                             res.end(JSON.stringify(err));
                         }
                         else{
-                            return res.view("frontend/pages/userProfile", {
-                                user: user,
-                                disc: disc,
-                                files:files
-                            });
+                          School.query('SELECT distinct school FROM school' ,function(err, school) {
+                            if (err) {
+                                return res.end(JSON.stringify(err));
+                                console.log("error")
+                            }
+                            else{
+                              return res.view("frontend/pages/userProfile", {
+                                  user: user,
+                                  disc: disc,
+                                  files:files,
+                                  school : school
+                              });                              
+                            }
+                          });
                         }
                     });
                 }
