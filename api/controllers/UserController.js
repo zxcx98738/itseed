@@ -335,10 +335,10 @@ function registerAccount(res,newuser,callback){
         })
         .exec(function (err , emailvo) {
             if (err) {
-                console.log("資料庫查詢失敗")
+                // console.log("資料庫查詢失敗")
                 res.end(JSON.stringify(err));
             }else if(emailvo){
-                console.log("emailV已經有此帳戶，寄信")                
+                // console.log("emailV已經有此帳戶，寄信")                
                 var link="http://"+req.get('host')+"/check-code?email="+userregister.email+"&token="+userregister.mailmd5;                
                 var mail = {
                     from: '資訊種子',
@@ -358,7 +358,7 @@ function registerAccount(res,newuser,callback){
                         res.end(JSON.stringify(err));
                     }
                     else{
-                        console.log("新帳戶寄信")
+                        // console.log("新帳戶寄信")
                         var link="http://"+req.get('host')+"/check-code?email="+userregister.email+"&token="+userregister.mailmd5;
                         var mail = {
                             from: '資訊種子',
@@ -383,13 +383,13 @@ function registerAccount(res,newuser,callback){
         })
         .exec(function (err , emailV) {
             if (err) {
-                console.log("資料庫錯誤");
+                // console.log("資料庫錯誤");
                 return res.end(JSON.stringify(err));
                 
             }
             else if(emailV == null){
                 // 沒有找到使用者
-                console.log("此帳戶尚未註冊");
+                // console.log("此帳戶尚未註冊");
                 res.redirect("/");
             }
             else{
@@ -467,7 +467,7 @@ function registerAccount(res,newuser,callback){
                         if (error) {
                           console.log(error);
                         } else {
-                         console.log('Email sent: ' + info.response +' 寄件的信箱為：'+ req.body.email);
+                        //  console.log('Email sent: ' + info.response +' 寄件的信箱為：'+ req.body.email);
                         }
                       });
                       res.redirect("/FPWpage");//成功則導入「寄件成功」之頁面 
