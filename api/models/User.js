@@ -63,11 +63,12 @@ module.exports = {
           type: 'string',
           maxLength: 20,
         },
+        //系所
         dept : {
           type: 'string',
           maxLength: 20,
         },        
-        //系所/年級
+        //年級
         grade : {
           type: 'string',
           maxLength: 20,
@@ -77,6 +78,11 @@ module.exports = {
           type: 'string',
           maxLength: 20
         },
+        //管道
+        survey : {
+          type: 'string',
+          maxLength: 40
+        },        
         //大頭貼
         photo: {
           type: 'string',
@@ -97,6 +103,9 @@ module.exports = {
         //DISC
         disc: {
           model: 'UserDISC'
+        },
+        form: {
+          model: 'User_Form'
         },
         //報名資料
         files: {

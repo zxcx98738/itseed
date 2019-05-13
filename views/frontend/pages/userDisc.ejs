@@ -26,25 +26,35 @@
 				</p>
 			</div>
 		<% }else {%>
-		<div class="row col-md-10 col-md-offset-1" style="font-size: 13pt;">
-			&emsp;&emsp;<span>DISC個性測驗是國外企業廣泛應用的一種人格測驗，我們期望透過這個測驗幫助你更加了解自己的行為方式、團隊合作、領導方式等等。</span>
-			<br></br>
-			&emsp;&emsp;<span>此測驗<b>不影響徵選結果</b>，請選擇一個比較符合你人格特質的敘述，不需要太多思考，憑直覺就可以了！</span>
-			<br></br>
+
+		<div class="row col-md-10 col-md-offset-1 box1" style="font-size: 13pt;">
+			<p style="text-align: center;"><span><!-- DISC個性測驗是國外企業廣泛應用的一種人格測驗，我們期望透過這個測驗幫助你更加了解自己的行為方式、團隊合作、領導方式等等。 -->本篇提供的四型人格分析，都是有心理學依據並被各大企業廣泛採納的。<br>透過此測驗，你可以更加了解你的行為方式、團隊合作、領導方式等。</span></p>
+			<!-- &emsp;&emsp;<span>此測驗<b>不影響徵選結果</b>，請選擇一個比較符合你人格特質的敘述，不需要太多思考，憑直覺就可以了！</span>
+			<br></br> -->
 		</div>
-		<div class="row col-md-11  col-md-offset-1 col-xs-offset-0 disc-content">
+		<!-- <br></br><br></br><br></br><br> -->
+		<div class=" row" id="start0">
+		<div class="row col-md-6 col-md-offset-1 box2" style="padding-left: 4%">
+			
+			<p style="font-size: 28pt;color:black;">DISC</p><p style="color:black;">--------------------------------------</p><span style="color: black;">此測驗<b>不影響徵選結果</b>，<br>請選擇一個比較符合你人格特質的敘述，<br>不需要太多思考，憑直覺就可以了！</span><br>
+			<button class="turnbtn" id="turnbtn0">立即開始</button>	
+		</div>
+			
+		</div>
+
 		
 			<form action="/editDisc" method="post" class="form-horizontal">
 				<!-- 1 -->
-				<div class=" row">
-				<div  class="row  col-md-10 col-md-offset-1 col-xs-offset-0">
-					<p> 一、在同事（同學）眼中您是一位？ </p>
+				<div class=" row " id="start1" style="display: none;">
+				<div class="row col-md-6 col-md-offset-1 box2" >
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question 1/10</span>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在同事（同學）眼中您是一位？</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11">
 					<% if (disc.q1 == 1) { %>
 						<input type="radio" name="q1" value="1" required="" checked>積極、熱情、有行動力的人。
 					<% } else { %>
-						<input type="radio" name="q1" value="1" required="">積極、熱情、有行動力的人。
+						<input type="radio" name="q1" value="1" id="q1-1" required=""><label for="q1-1">積極、熱情、有行動力的人。</label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -52,7 +62,7 @@
 					<% if (disc.q1 == 2) { %>
 						<input type="radio" name="q1" value="2" required="" checked>活潑、開朗、風趣幽默的人。 
 					<% } else { %>
-						<input type="radio" name="q1" value="2" required="">活潑、開朗、風趣幽默的人。 
+						<input type="radio" name="q1" value="2" id="q1-2" required=""><label for="q1-2">活潑、開朗、風趣幽默的人。</label> 
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -60,7 +70,7 @@
 					<% if (disc.q1 == 3) { %>
 						<input type="radio" name="q1" value="3" required="" checked>忠誠、隨和、容易相處的人。
 					<% } else { %>
-						<input type="radio" name="q1" value="3" required="">忠誠、隨和、容易相處的人。
+						<input type="radio" name="q1" value="3" id="q1-3" required=""><label for="q1-3">忠誠、隨和、容易相處的人。</label>
 					<% } %>
 					</label>	
 					<label class="col-sm-1 col-xs-1"></label>
@@ -69,24 +79,27 @@
 						<input type="radio" name="q1" value="4" required="" checked>謹慎、冷靜、注意細節的人。 
 
 					<% } else { %>
-						<input type="radio" name="q1" value="4" required="">謹慎、冷靜、注意細節的人。 
+						<input type="radio" name="q1" value="4" id="q1-4" required=""><label for="q1-4">謹慎、冷靜、注意細節的人。</label> 
 
 					<% } %>
-					</label>					
+					</label>
+					<!-- <button class="turnbtn" id="turnbtn1">Next</button>	 -->
+					<input type="button" value="NEXT" id="turnbtn1">			
 				</div>
 				</div>
 				<!-- <div class=" row">
 				<div  class="col-sm-12 col-md-12 col-xs-12 "></div> -->
 				<!-- 2 -->
-				<div class=" row">
-				<div  class="row  col-md-10 col-md-offset-1 "> 
-					<p>二、您喜歡看哪一類型的雜誌？  </p>
+				<div class=" row " id="start2" style="display: none;">
+				<div class="row col-md-6 col-md-offset-1 box2 " > 
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question 2/10</span>
+					<p>您喜歡看哪一類型的雜誌？  </p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
 					<% if (disc.q2 == 1) { %>
 						<input type="radio" name="q2" value="1" required="" checked>管理、財經、趨勢類。
 					<% } else { %>
-						<input type="radio" name="q2" value="1" required="">管理、財經、趨勢類。
+						<input type="radio" name="q2" value="1" id="q2-1" required=""><label for="q2-1">管理、財經、趨勢類。</label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -94,7 +107,7 @@
 					<% if (disc.q2 == 2) { %>
 						<input type="radio" name="q2" value="2" required="" checked>旅遊、美食、時尚類。 
 					<% } else { %>
-						<input type="radio" name="q2" value="2" required="">旅遊、美食、時尚類。 
+						<input type="radio" name="q2" value="2" id="q2-2" required=""><label for="q2-2">旅遊、美食、時尚類。 </label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -102,7 +115,7 @@
 					<% if (disc.q2 == 3) { %>
 						<input type="radio" name="q2" value="3" required="" checked>心靈、散文、家庭類。
 					<% } else { %>
-						<input type="radio" name="q2" value="3" required="">心靈、散文、家庭類。
+						<input type="radio" name="q2" value="3" id="q2-3" required=""><label for="q2-3">心靈、散文、家庭類。</label>
 					<% } %>
 					</label>	
 					<label class="col-sm-1 col-xs-1"></label>
@@ -111,10 +124,11 @@
 						<input type="radio" name="q2" value="4" required="" checked>科技、專業、藝術類。 
 
 					<% } else { %>
-						<input type="radio" name="q2" value="4" required="">科技、專業、藝術類。 
+						<input type="radio" name="q2" value="4" id="q2-4" required=""><label for="q2-4">科技、專業、藝術類。</label> 
 
 					<% } %>
-					</label>					
+					</label>		
+					<input type="button" value="NEXT" id="turnbtn2">				
 				</div>
 				</div>
 				<!-- <div class=" row">
@@ -122,15 +136,16 @@
 
 				<!-- 3 -->
 
-				<div class=" row">
-				<div  class="row  col-md-10 col-md-offset-1">
-					<p>三、您做決策的方式？ </p>
+				<div class=" row  " id="start3" style="display: none;">
+				<div class="row col-md-6 col-md-offset-1 box2 " >
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question 3/10</span>
+					<p>您做決策的方式？ </p>
 					<label class="col-sm-1 "></label>
 					<label class="col-sm-11 col-xs-11 ">
 					<% if (disc.q3 == 1) { %>
 						<input type="radio" name="q3" value="1" required="" checked>希望能立即有效。
 					<% } else { %>
-						<input type="radio" name="q3" value="1" required="">希望能立即有效。 
+						<input type="radio" name="q3" value="1" id="q3-1" required=""><label for="q3-1">希望能立即有效。 </label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -138,7 +153,7 @@
 					<% if (disc.q3 == 2) { %>
 						<input type="radio" name="q3" value="2" required="" checked>感覺重於一切。 
 					<% } else { %>
-						<input type="radio" name="q3" value="2" required="">感覺重於一切。 
+						<input type="radio" name="q3" value="2" id="q3-2" required=""><label for="q3-2">感覺重於一切。 </label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -146,7 +161,7 @@
 					<% if (disc.q3 == 3) { %>
 						<input type="radio" name="q3" value="3" required="" checked>有一定的消費習慣，不太喜歡變化。
 					<% } else { %>
-						<input type="radio" name="q3" value="3" required="">有一定的消費習慣，不太喜歡變化。
+						<input type="radio" name="q3" value="3" id="q3-3" required=""><label for="q3-3">有一定的消費習慣，不太喜歡變化。</label>
 					<% } %>
 					</label>	
 					<label class="col-sm-1 col-xs-1"></label>
@@ -154,23 +169,25 @@
 					<% if (disc.q3 == 4) { %>
 						<input type="radio" name="q3" value="4" required="" checked>較注意東西好不好，較有成本觀念。
 					<% } else { %>
-						<input type="radio" name="q3" value="4" required="">較注意東西好不好，較有成本觀念。
+						<input type="radio" name="q3" value="4" id="q3-4" required=""><label for="q3-4">較注意東西好不好，較有成本觀念。</label>
 					<% } %>
-					</label>					
+					</label>			
+					<input type="button" value="NEXT" id="turnbtn3">			
 				</div>
 				</div>
 
 				<!-- 4 -->
 
-				<div class=" row">
-				<div  class="row  col-md-10 col-md-offset-1">
-					<p>四、職務上哪種工作是我最擅長的？ </p>
+				<div class=" row " id="start4" style="display: none;">
+				<div class="row col-md-6 col-md-offset-1 box2 " >
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question 4/10</span>
+					<p>職務上哪種工作是我最擅長的？ </p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
 					<% if (disc.q4 == 1) { %>
 						<input type="radio" name="q4" value="1" required="" checked>以目標為導向，有不服輸的精神。
 					<% } else { %>
-						<input type="radio" name="q4" value="1" required="">以目標為導向，有不服輸的精神。
+						<input type="radio" name="q4" value="1" id="q4-1" required=""><label for="q4-1">以目標為導向，有不服輸的精神。</label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -178,7 +195,7 @@
 					<% if (disc.q4 == 2) { %>
 						<input type="radio" name="q4" value="2" required="" checked>良好的口才，能主動的與人建立友善關係。
 					<% } else { %>
-						<input type="radio" name="q4" value="2" required="">良好的口才，能主動的與人建立友善關係。
+						<input type="radio" name="q4" value="2" id="q4-2" required=""><label for="q4-2">良好的口才，能主動的與人建立友善關係。</label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -186,7 +203,7 @@
 					<% if (disc.q4 == 3) { %>
 						<input type="radio" name="q4" value="3" required="" checked>能配合團隊，扮演忠誠的擁護者。
 					<% } else { %>
-						<input type="radio" name="q4" value="3" required="">能配合團隊，扮演忠誠的擁護者。
+						<input type="radio" name="q4" value="3" id="q4-3" required=""><label for="q4-3">能配合團隊，扮演忠誠的擁護者。</label>
 					<% } %>
 					</label>	
 					<label class="col-sm-1 col-xs-1"></label>
@@ -194,23 +211,25 @@
 					<% if (disc.q3 == 4) { %>
 						<input type="radio" name="q4" value="4" required="" checked>流程的掌握，注意到細節。
 					<% } else { %>
-						<input type="radio" name="q4" value="4" required="">流程的掌握，注意到細節。
+						<input type="radio" name="q4" value="4" id="q4-4" required=""><label for="q4-4">流程的掌握，注意到細節。</label>
 					<% } %>
-					</label>					
+					</label>			
+					<input type="button" value="NEXT" id="turnbtn4">			
 				</div>
 				</div>
 
 				<!-- 5 -->
 
-				<div class=" row">
-				<div  class="row  col-md-10 col-md-offset-1">
-					<p>五、當面對壓力時，您會？ </p>
+				<div class=" row " id="start5" style="display: none;">
+				<div class="row col-md-6 col-md-offset-1 box2 " >
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question 5/10</span>
+					<p>當面對壓力時，您會？ </p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
 					<% if (disc.q5 == 1) { %>
 						<input type="radio" name="q5" value="1" required="" checked>用行動力去面對它，並且克服它。
 					<% } else { %>
-						<input type="radio" name="q5" value="1" required="">用行動力去面對它，並且克服它。
+						<input type="radio" name="q5" value="1" id="q5-1" required=""><label for="q5-1">用行動力去面對它，並且克服它。</label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -218,7 +237,7 @@
 					<% if (disc.q5 == 2) { %>
 						<input type="radio" name="q5" value="2" required="" checked>希望找人傾吐，獲得認同。
 					<% } else { %>
-						<input type="radio" name="q5" value="2" required="">希望找人傾吐，獲得認同。
+						<input type="radio" name="q5" value="2" id="q5-2" required=""><label for="q5-2">希望找人傾吐，獲得認同。</label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -226,7 +245,7 @@
 					<% if (disc.q5 == 3) { %>
 						<input type="radio" name="q5" value="3" required="" checked>逆來順受，儘量避免衝突。
 					<% } else { %>
-						<input type="radio" name="q5" value="3" required="">逆來順受，儘量避免衝突。
+						<input type="radio" name="q5" value="3" id="q5-3" required=""><label for="q5-3">逆來順受，儘量避免衝突。</label>
 					<% } %>
 					</label>	
 					<label class="col-sm-1 col-xs-1"></label>
@@ -235,24 +254,26 @@
 						<input type="radio" name="q5" value="4" required="" checked>重新思考緣由，必要時做精細的解說。 
 
 					<% } else { %>
-						<input type="radio" name="q5" value="4" required="">重新思考緣由，必要時做精細的解說。 
+						<input type="radio" name="q5" value="4" id="q5-4" required=""><label for="q5-4">重新思考緣由，必要時做精細的解說。 </label>
 
 					<% } %>
-					</label>					
+					</label>			
+					<input type="button" value="NEXT" id="turnbtn5">			
 				</div>
 				</div>
 
 				<!-- 6 -->
 
-				<div class=" row">
-				<div  class="row  col-md-10 col-md-offset-1">
-					<p>六、與同事（同學）之間的相處？ </p>
+				<div class=" row " id="start6" style="display: none;">
+				<div class="row col-md-6 col-md-offset-1 box2 " >
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question 6/10</span>
+					<p>與同事（同學）之間的相處？ </p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
 					<% if (disc.q6 == 1) { %>
 						<input type="radio" name="q6" value="1" required="" checked>以公事為主，很少談到個人生活。
 					<% } else { %>
-						<input type="radio" name="q6" value="1" required="">以公事為主，很少談到個人生活。	
+						<input type="radio" name="q6" value="1" id="q6-1" required=""><label for="q6-1">以公事為主，很少談到個人生活。</label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -261,7 +282,7 @@
 						<input type="radio" name="q6" value="2" required="" checked>重視氣氛，能夠帶動團隊情趣。 
 
 					<% } else { %>
-						<input type="radio" name="q6" value="2" required="">重視氣氛，能夠帶動團隊情趣。 
+						<input type="radio" name="q6" value="2" id="q6-2" required=""><label for="q6-2">重視氣氛，能夠帶動團隊情趣。</label> 
 
 					<% } %>
 					</label>
@@ -270,7 +291,7 @@
 					<% if (disc.q6 == 3) { %>
 						<input type="radio" name="q6" value="3" required="" checked>良好的傾聽者，對人態度溫和友善。
 					<% } else { %>
-						<input type="radio" name="q6" value="3" required="">良好的傾聽者，對人態度溫和友善。
+						<input type="radio" name="q6" value="3" id="q6-3" required=""><label for="q6-3">良好的傾聽者，對人態度溫和友善。</label>
 					<% } %>
 					</label>	
 					<label class="col-sm-1 col-xs-1"></label>
@@ -278,24 +299,26 @@
 					<% if (disc.q6 == 4) { %>
 						<input type="radio" name="q6" value="4" required="" checked>被動，不會主動與人建立關係。 
 					<% } else { %>
-						<input type="radio" name="q6" value="4" required="">被動，不會主動與人建立關係。 
+						<input type="radio" name="q6" value="4" id="q6-4" required=""><label for="q6-4">被動，不會主動與人建立關係。</label> 
 					<% } %>
-					</label>					
+					</label>				
+					<input type="button" value="NEXT" id="turnbtn6">		
 				</div>
 				</div>
 
 
 				<!-- 7 -->
 
-				<div class=" row">
-				<div  class="row  col-md-10 col-md-offset-1">
-					<p>七、您希望別人如何與您溝通？ </p>
+				<div class=" row " id="start7" style="display: none;">
+				<div class="row col-md-6 col-md-offset-1 box2" >
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question 7/10</span>
+					<p>您希望別人如何與您溝通？ </p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
 					<% if (disc.q7 == 1) { %>
 						<input type="radio" name="q7" value="1" required="" checked>直接講重點，不要拐彎抹角。 
 					<% } else { %>
-						<input type="radio" name="q7" value="1" required="">直接講重點，不要拐彎抹角。 
+						<input type="radio" name="q7" value="1" id="q7-1" required=""><label for="q7-1">直接講重點，不要拐彎抹角。 </label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -304,7 +327,7 @@
 						<input type="radio" name="q7" value="2" required="" checked>輕鬆，不要太嚴肅。 
 
 					<% } else { %>
-						<input type="radio" name="q7" value="2" required="">輕鬆，不要太嚴肅。 
+						<input type="radio" name="q7" value="2" id="q7-2" required=""><label for="q7-2">輕鬆，不要太嚴肅。 </label>
 
 					<% } %>
 					</label>
@@ -313,7 +336,7 @@
 					<% if (disc.q7 == 3) { %>
 						<input type="radio" name="q7" value="3" required="" checked>不要一次說太多，要給予明確的支持。
 					<% } else { %>
-						<input type="radio" name="q7" value="3" required="">不要一次說太多，要給予明確的支持。
+						<input type="radio" name="q7" value="3" id="q7-3" required=""><label for="q7-3">不要一次說太多，要給予明確的支持。</label>
 					<% } %>
 					</label>	
 					<label class="col-sm-1 col-xs-1"></label>
@@ -322,24 +345,26 @@
 						<input type="radio" name="q7" value="4" required="" checked>凡是說清楚，講明白。 
 
 					<% } else { %>
-						<input type="radio" name="q7" value="4" required="">凡是說清楚，講明白。 
+						<input type="radio" name="q7" value="4" id="q7-4" required=""><label for="q7-4">凡是說清楚，講明白。</label> 
 
 					<% } %>
-					</label>					
+					</label>			
+					<input type="button" value="NEXT" id="turnbtn7">			
 				</div>
 				</div>
 
 				<!-- 8 -->
 
-				<div class=" row">
-				<div  class="row  col-md-10 col-md-offset-1">
-					<p>八、要完成一件事情時，您最在意的部份是？ </p>
+				<div class=" row " id="start8" style="display: none;">
+				<div class="row col-md-6 col-md-offset-1 box2" >
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question 8/10</span>
+					<p>要完成一件事情時，您最在意的部份是？ </p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
 					<% if (disc.q8 == 1) { %>
 						<input type="radio" name="q8" value="1" required="" checked>效果是否有達到。
 					<% } else { %>
-						<input type="radio" name="q8" value="1" required="">效果是否有達到。
+						<input type="radio" name="q8" value="1" id="q8-1" required=""><label for="q8-1">效果是否有達到。</label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -347,7 +372,7 @@
 					<% if (disc.q8 == 2) { %>
 						<input type="radio" name="q8" value="2" required="" checked>過程是否快樂。
 					<% } else { %>
-						<input type="radio" name="q8" value="2" required="">過程是否快樂。
+						<input type="radio" name="q8" value="2" id="q8-2" required=""><label for="q8-2">過程是否快樂。</label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -356,7 +381,7 @@
 						<input type="radio" name="q8" value="3" required="" checked>前後是否有改變。 
 
 					<% } else { %>
-						<input type="radio" name="q8" value="3" required="">前後是否有改變。 
+						<input type="radio" name="q8" value="3" id="q8-3" required=""><label for="q8-3">前後是否有改變。</label> 
 
 					<% } %>
 					</label>	
@@ -366,24 +391,26 @@
 						<input type="radio" name="q8" value="4" required="" checked>流程是否正確。 
 
 					<% } else { %>
-						<input type="radio" name="q8" value="4" required="">流程是否正確。 
+						<input type="radio" name="q8" value="4" id="q8-4" required=""><label for="q8-4">流程是否正確。 </label>
 
 					<% } %>
-					</label>					
+					</label>		
+					<input type="button" value="NEXT" id="turnbtn8">				
 				</div>
 				</div>
 
 				<!-- 9 -->
 
-				<div class=" row">
-				<div  class="row  col-md-10 col-md-offset-1">
-					<p>九、什麼事情會讓您恐懼？ </p>
+				<div class=" row " id="start9" style="display: none;">
+				<div class="row col-md-6 col-md-offset-1 box2" >
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question 9/10</span>
+					<p>什麼事情會讓您恐懼？ </p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
 					<% if (disc.q9 == 1) { %>
 						<input type="radio" name="q9" value="1" required="" checked>呈現弱點，被人利用。 
 					<% } else { %>
-						<input type="radio" name="q9" value="1" required="">呈現弱點，被人利用。 
+						<input type="radio" name="q9" value="1" id="q9-1" required=""><label for="q9-1">呈現弱點，被人利用。</label> 
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -391,7 +418,7 @@
 					<% if (disc.q9 == 2) { %>
 						<input type="radio" name="q9" value="2" required="" checked>失去認同，被人排擠。
 					<% } else { %>
-						<input type="radio" name="q9" value="2" required="">失去認同，被人排擠。
+						<input type="radio" name="q9" value="2" id="q9-2" required=""><label for="q9-2">失去認同，被人排擠。</label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -399,7 +426,7 @@
 					<% if (disc.q9 == 3) { %>
 						<input type="radio" name="q9" value="3" required="" checked>過度變動，讓人無所適從。
 					<% } else { %>
-						<input type="radio" name="q9" value="3" required="">過度變動，讓人無所適從。
+						<input type="radio" name="q9" value="3" id="q9-3" required=""><label for="q9-3">過度變動，讓人無所適從。</label>
 					<% } %>
 					</label>	
 					<label class="col-sm-1 col-xs-1"></label>
@@ -408,24 +435,26 @@
 						<input type="radio" name="q9" value="4" required="" checked>制度不清，標準不一。 
 
 					<% } else { %>
-						<input type="radio" name="q9" value="4" required="">制度不清，標準不一。 
+						<input type="radio" name="q9" value="4" id="q9-4" required=""><label for="q9-4">制度不清，標準不一。</label> 
 
 					<% } %>
-					</label>					
+					</label>			
+					<input type="button" value="NEXT" id="turnbtn9">			
 				</div>
 				</div>
 
 				<!-- 10 -->
 
-				<div class=" row">
-				<div  class="row  col-md-10 col-md-offset-1">
-					<p>十、哪些是您自覺的缺點？</p>
+				<div class=" row " id="start10" style="display: none;">
+				<div class="row col-md-6 col-md-offset-1 box2" >
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Question 10/10</span>
+					<p>哪些是您自覺的缺點？</p>
 					<label class="col-sm-1 col-xs-1"></label>
 					<label class="col-sm-11 col-xs-11 ">
 					<% if (disc.q10 == 1) { %>
 						<input type="radio" name="q10" value="1" required="" checked>沒有耐心。 
 					<% } else { %>
-						<input type="radio" name="q10" value="1" required="">沒有耐心。 
+						<input type="radio" name="q10" value="1" id="q10-1" required=""><label for="q10-1">沒有耐心。</label> 
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -433,7 +462,7 @@
 					<% if (disc.q10 == 2) { %>
 						<input type="radio" name="q10" value="2" required="" checked>欠缺細心。 
 					<% } else { %>
-						<input type="radio" name="q10" value="2" required="">欠缺細心。 
+						<input type="radio" name="q10" value="2" id="q10-2" required=""><label for="q10-2">欠缺細心。</label> 
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -441,7 +470,7 @@
 					<% if (disc.q10 == 3) { %>
 						<input type="radio" name="q10" value="3" required="" checked>沒有主見。 
 					<% } else { %>
-						<input type="radio" name="q10" value="3" required="">沒有主見。 
+						<input type="radio" name="q10" value="3" id="q10-3" required=""><label for="q10-3">沒有主見。 </label>
 					<% } %>
 					</label>	
 					<label class="col-sm-1 col-xs-1"></label>
@@ -449,23 +478,23 @@
 					<% if (disc.q10 == 4) { %>
 						<input type="radio" name="q10" value="4" required="" checked>欠缺風趣。
 					<% } else { %>
-						<input type="radio" name="q10" value="4" required="">欠缺風趣。
+						<input type="radio" name="q10" value="4" id="q10-4" required=""><label for="q10-4">欠缺風趣。</label>
 					<% } %>
-					</label>					
-				</div>
-				</div>
-
-				<div class="text-center">
+					</label>
+					<div class="text-center" style="padding-left: 10%">
 					<hr>
-					<button type="submit" class="btn-lg btn-blue" style="color:white;" onclick="discF()">完成測驗</button>
+					<button type="submit" class="turnbtn" onclick="discF()">結束測驗並查看結果</button>
 					<script type="text/javascript">
 						function discF(){
 							confirm("若確定完成，請按下確認鍵");
 						}
 					</script>
+				</div>					
 				</div>
+				</div>
+
+				
 			</form>
-		</div>
 		<% } %>
 		<% } else { %>
 			<div class="row col-xs-12" style="text-align: center;">
@@ -481,7 +510,145 @@
 		<% include ./discResult %>
 	<% } %>
 </section>
+<style type="text/css">
+	.box1 {
+  		margin-top: 2%;
+	  	background-color: #BBD4DB;
+	  	padding-top: 2%;
+	  	padding-bottom: 2%;
+	}
+	.box2{
+		margin-top: 6%;
+		margin-bottom: 6%;
+		margin-left: 24.9%;
+		border: 1px solid #394B7A;
+		border-radius: 12px;
+		padding-top: 3.5%;
+		padding-bottom: 3.5%;
+		padding-right: 3.7%;
+		box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.50);
+		border-radius: 23.5px;
+		font-size: 18pt;
+		text-align: center;
+		background: #FFFFFF;
+		/*padding-left: 4%;*/
+		/*width: 660px;
+		height: 476px;*/
+	}
 
+	.box2 input[type="radio"]{
+		display: none;
+	}
+	.box2 input[type="radio"]+label{
+		border: 1px solid #394B7A;
+		border-radius: 24.5px;
+		width: 459px;
+		height: 49px;
+		font-size: 22px;
+		font-family: PingFangTC-Regular;
+	}
+	.box2 input[type="radio"]:checked+label{
+		background: #475882;
+		color: #FFFFFF;
+	}
+	
+	.box2>span{
+		color: #144989;
+		font-size: 22px;
+		font-family: PingFangTC-Regular;
+	}
+	.box2 input[type="button"]{
+		border: 1px solid #394B7A;
+		border-radius: 24.5px;
+		font-family: PingFangTC-Regular;
+		font-size: 20px;
+		color: #000000;
+		text-align: center;
+		width:86px;
+		height: 35px;
+		margin-top: 5%;
+		margin-left:10%;
+		padding-bottom: 7.5%;
+	}
+	.turnbtn{
+		border: 1px solid #394B7A;
+		border-radius: 24.5px;
+		font-family: PingFangTC-Regular;
+		font-size: 20px;
+		color: #000000;
+		text-align: center;
+		width:459px;
+		height: 49px;
+		margin-top: 5%;
+	}
+	.box2 input[type="button"]:hover,input[type="radio"]+label:hover,button:hover{
+		background-color: #475882;
+		color: #FFFFFF;
+	}
+
+
+</style>
+<script>
+var $currDiv = $( "#start0" );
+$( "#turnbtn0" ).click(function() {
+	$( "#start0" ).hide(0);
+  	$( "#start1" ).show(0);
+});
+
+var x1  = $( "#start1" );
+$( "#turnbtn1" ).click(function() {
+  	$( "#start1" ).hide(0);
+  	$( "#start2" ).show(0);
+});
+
+var x2  = $( "#start2" );
+$( "#turnbtn2" ).click(function() {
+  	$( "#start2" ).hide(0);
+  	$( "#start3" ).show(0);
+});
+
+var x3  = $( "#start3" );
+$( "#turnbtn3" ).click(function() {
+  	$( "#start3" ).hide(0);
+  	$( "#start4" ).show(0);
+});
+
+var x4  = $( "#start4" );
+$( "#turnbtn4" ).click(function() {
+  	$( "#start4" ).hide(0);
+  	$( "#start5" ).show(0);
+});
+
+var x5  = $( "#start5" );
+$( "#turnbtn5" ).click(function() {
+  	$( "#start5" ).hide(0);
+  	$( "#start6" ).show(0);
+});
+
+var x6  = $( "#start6" );
+$( "#turnbtn6" ).click(function() {
+  	$( "#start6" ).hide(0);
+  	$( "#start7" ).show(0);
+});
+
+var x7  = $( "#start7" );
+$( "#turnbtn7" ).click(function() {
+  	$( "#start7" ).hide(0);
+  	$( "#start8" ).show(0);
+});
+
+var x8  = $( "#start8" );
+$( "#turnbtn8" ).click(function() {
+  	$( "#start8" ).hide(0);
+  	$( "#start9" ).show(0);
+});
+
+var x9  = $( "#start9" );
+$( "#turnbtn9" ).click(function() {
+  	$( "#start9" ).hide(0);
+  	$( "#start10" ).show(0);
+});
+</script>
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->
