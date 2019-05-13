@@ -179,8 +179,6 @@ async function update_profile_sheet(auth, user) {
       return;
     }
   });
-
-
 }
 /*
 async function upload_profile_picture(auth, file_name) {
@@ -294,21 +292,27 @@ function registerAccount(res,newuser,callback){
                         UserFiles.create({ user: user.id })
                         .exec(function (err, files) {
                             if (err) { res.end(JSON.stringify(err)); }
-                            //連結table
-                            User.update({
-                                id: user.id
-                            }, {
-                                disc: disc.id,
-                                files: files.id
-                            })
-                            .exec(function (err, data) {
-                                if (err) { res.end(JSON.stringify(err)); }
-                                User.findOne({
-                                    id: user.id
-                                }).exec(function (err, updated_user) {
-                                    if (err) { res.end(JSON.stringify(err)); }
-                                    callback(updated_user);
-                                });
+                            //新增書審資料
+                            User_Form.create({ user: user.id })
+                            .exec(function (err, form) {
+                              if (err) { res.end(JSON.stringify(err)); }
+                              //連結table
+                              User.update({
+                                  id: user.id
+                              }, {
+                                  disc: disc.id,
+                                  files: files.id,
+                                  form: form.id
+                              })
+                              .exec(function (err, data) {
+                                  if (err) { res.end(JSON.stringify(err)); }
+                                  User.findOne({
+                                      id: user.id
+                                  }).exec(function (err, updated_user) {
+                                      if (err) { res.end(JSON.stringify(err)); }
+                                      callback(updated_user);
+                                  });
+                              });
                             });
                         });
                     });
@@ -970,16 +974,19 @@ function registerAccount(res,newuser,callback){
                             user: req.session.userid
                         })
                         .exec(function(err, disc) {
-                            if(err){
-                                res.end(JSON.stringify(err));
-                            }
-                            else{
-                                return res.view("frontend/pages/userDisc", {
-                                    disc: disc,
-                                    files:files,
-                                    user:user
-                                });
-                            }
+                            if (err) { return res.end(JSON.stringify(err)); }
+                            User_Form.findOne({
+                                user: req.session.userid
+                            })
+                            .exec(function(err, user_form) {
+                              if (err) { return res.end(JSON.stringify(err)); }
+                              return res.view("frontend/pages/userDisc", {
+                                  disc: disc,
+                                  files: files,
+                                  user: user,
+                                  user_form: user_form
+                              });
+                            });
                         });
                 }
                 });
