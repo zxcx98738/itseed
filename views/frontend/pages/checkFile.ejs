@@ -6,10 +6,10 @@
             <div class="wizard-inner">
                 <!-- <div class="connecting-line"></div> -->
                 <ul class="nav nav-tabs" role="tablist">
+                    <li id="disc_progress" role="presentation" class="">
 
-                    <li role="presentation" class="active">
                     	<h5>DISC 測驗</h5>
-                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                        <a href="/disc">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-search"></i>
                             </span>
@@ -17,26 +17,26 @@
 
                     </li>
 
-                    <li role="presentation" class="active">
+                    <li id="profile_progress" role="presentation" class="">
                     	<h5>個人資料</h5>
-                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                        <a href="/profile">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-user"></i>
                             </span>
                         </a>
                     </li>
-                    <li role="presentation" class="active">
+                    <li id="form_progress" role="presentation" class="">
                     	<h5>書審問題</h5>
-                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                        <a href="/form">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-pencil"></i>
                             </span>
                         </a>
                     </li>
 
-                    <li role="presentation" class="active">
+                    <li id="finish" role="presentation" class="">
                     	<h5>完成報名</h5>
-                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                        <a href="/files">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-ok"></i>
                             </span>
@@ -44,63 +44,31 @@
                     </li>
                 </ul>
             </div>
-
-<!--             <form role="form">
-                <div class="tab-content">
-                    <div class="tab-pane active" role="tabpanel" id="step1">
-                        <h3>Step one</h3>
-                        <p>first step</p>
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-primary next-step">next</button></li>
-                        </ul>
-                    </div>
-                    <div class="tab-pane" role="tabpanel" id="step2">
-                        <h3>Step two</h3>
-                        <p>Second step</p>
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-primary next-step">next</button></li>
-                        </ul>
-                    </div>
-                    <div class="tab-pane" role="tabpanel" id="step3">
-                        <h3>Step three</h3>
-                        <p>Third step</p>
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-default next-step">next</button></li>
-                        </ul>
-                    </div>
-                    <div class="tab-pane" role="tabpanel" id="complete">
-                        <h3>Complete steps</h3>
-                        <p>You have successfully completed every steps.</p>
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Submit</button></li>
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </form> -->
         </div>
     </section>
    </div>
 </div>
+<script type="text/javascript">
+
+
+	
+</script>
 <style type="text/css">
 .wizard {
     margin: 20px auto;
     background: #fff;
 }
 
-    .wizard .nav-tabs {
-        position: relative;
-        margin: 40px auto;
-        margin-bottom: 0;
-        border-bottom-color: #e0e0e0;
-    }
+.wizard .nav-tabs {
+    position: relative;
+    margin: 40px auto;
+    margin-bottom: 0;
+    border-bottom-color: #e0e0e0;
+}
 
-    .wizard > div.wizard-inner {
-        position: relative;
-    }
+.wizard > div.wizard-inner {
+    position: relative;
+}
 
 .connecting-line {
     height: 3.5px;

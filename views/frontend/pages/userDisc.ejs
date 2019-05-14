@@ -10,14 +10,7 @@
 <section class="section-disc bg-white" id="disc">
 	<% include ../pages/checkFile %>
 	<div class="container disc-contain">
-		<div id="profile-nav"  class="row col-md-10 col-md-offset-1">
-			<ul class="nav nav-tabs profile-ul">
-				<li class="active"><a href="/disc">DISC測驗</a></li>
-				<li><a href="/profile">個人資料</a></li>
-				<li><a href="/forms">書審問答</a></li>
-				<li><a href="/files">履歷上傳</a></li>
-			</ul>
-		</div>
+		
 		<% if( disc !=undefined ) {%>
 		<% if( disc.finished == 1 ) {%>
 		<div class="row col-md-10 col-md-offset-1 box1" style="font-size: 13pt;">
