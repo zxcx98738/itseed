@@ -1,0 +1,160 @@
+
+<script src="/js/specifies/jquery.validate.min.js"></script>
+<script src="/js/specifies/messages_zh_TW.min.js"></script>
+<script src="/js/specifies/frontend/userProfile.js"></script>
+
+
+<!--HEADER-->
+<% include ../header %>
+<!--END HEADER-->
+
+<section class="section-trainingProgram" class="bg-white" id="profile">
+   <!-- <div class=" sub-title mainTitle clearfix"> -->
+    <div class="trainingProgram-main">
+        <div class=" main-titles clearfix">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>培訓計畫內容</div>
+        </div>
+        <p>資訊種子培訓計畫，目的在於培養一群對於未來富有競爭力的種子們。</p>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="trainingProgram-six">
+
+            <div class="sub-title clearfix">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div>六大專案</div>
+            </div>
+            <!-- <div class="container"> -->
+                <ul class="row justify-content-center">
+                    <li class="col-sm-3">
+                        <p class="six-title">TUV專案</p>
+                        <p class="six-description">Top Up Our Value</p>
+                        <div class="six-link">
+                            <a href="#"><img src="/images/layout/musica-searcher.png" alt=""></a>
+                        </div>
+                    </li>
+                    <li class="col-sm-3">2</li>
+                    <li class="col-sm-3">3</li>
+                </ul>
+            <!-- </div> -->
+
+    </div>
+
+
+
+</section>
+
+<style>
+.trainingProgram-main .main-titles{
+    margin-top: 33px;
+}
+.trainingProgram-main p{
+    margin-top: 42px;
+    margin-left: 72px;
+    font-size: 20px;
+    border: 1px #00a0e8 solid;
+    border-radius: 2px;
+    border-width: 3px;
+    width: 50%;
+    text-align: center;
+    padding: 8px;
+    margin-bottom: 100px;
+}
+.trainingProgram-main ul{
+    display: flex;
+    justify-content: space-around;
+    padding: 0 42px;
+    margin-bottom: 109px;
+}
+.trainingProgram-main ul li {
+    width: 26%;
+    height: 0;
+    padding-bottom: 26%;
+    background-color: 	#ffcccc;
+    border-radius:50%;
+    list-style: none;
+}
+
+/* 六大專案 */
+.trainingProgram-six{
+    margin-bottom: 53px;
+}
+.trainingProgram-six .row{
+    display: flex;
+    justify-content: space-around;
+}
+.trainingProgram-six .row{
+    
+    margin: 0 auto;
+    margin-top: 45px;
+}
+.trainingProgram-six ul{
+}
+.trainingProgram-six ul li {
+    width: 28%;
+    height: 0;
+    padding-bottom: 19%;
+    list-style: none;
+    border: 1px #9B9833 solid;
+    border-radius: 1px;
+    position: relative;
+}
+.trainingProgram-six ul li {
+    padding-left: 24px;
+    padding-top: 20px;
+}
+.six-title{
+    font-family: PingFangTC-Regular;
+    font-size: 32px;
+    line-height: 45px;
+    color: #A09D3E;
+}
+
+.six-title::before{
+    content:"";
+    display: block;
+    /* border: 1px solid #A09D3E; */
+    background-color: #A09D3E;
+    width: 4px;
+    height: 30px;
+    position: absolute;
+    top: 28px;
+    left: 10px;
+}
+.six-description{
+    font-family: PingFangTC-Regular;
+    font-size: 24px;
+    color: #000000;
+}
+.six-link{
+    display: block;
+    position: absolute;
+    width: 8.4%;
+    right: 21px;
+    bottom: 17px;
+}
+.six-link a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.six-link img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+</style>
+
+
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->
+
