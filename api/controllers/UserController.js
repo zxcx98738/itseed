@@ -811,8 +811,8 @@ function registerAccount(res,newuser,callback){
     editProfile: function (req, res) {   
         var t = 0;
         var value = {
-            email: req.body.email,
-            pwd: md5(req.body.pwd),
+            //email: req.body.email,
+            //pwd: md5(req.body.pwd),
             phone: req.body.phone,
             name: req.body.name,
             gender: req.body.gender,
@@ -934,6 +934,57 @@ function registerAccount(res,newuser,callback){
             }
         });
     },
+
+    form: function (req, res){
+        User.findOne({
+          id: req.session.userid
+        })
+        .exec(function(err, user){
+            if(err){res.end(JSON.stringify(err));}
+            User_Form.findOne({
+              user: req.session.userid
+            })
+            .exec(function(err, form_data){
+                if(err){res.end(JSON.stringify(err));}
+                UserFiles.findOne({  
+                    user: req.session.userid
+                })
+                .exec(function(err, files){
+                  if(err){res.end(JSON.stringify(err));}
+                  UserDISC.findOne({  
+                      user: req.session.userid
+                  })
+                  .exec(function(err, disc){
+                    if(err){res.end(JSON.stringify(err));}
+                    return res.view("frontend/pages/userForm", {
+                        form_data: form_data,
+                        user: user,
+                        disc: disc,
+                        files:files,
+                    });                      
+                  });
+                });            
+            });
+        });
+    },
+
+    editForm: function (req, res){
+        var value = {
+          Q1 : req.body.Q1,
+          Q2 : req.body.Q2,
+          Q3 : req.body.Q3,
+          Q4 : req.body.Q4,
+          Q5_1 : req.body.Q5_1,
+          Q5_2 : req.body.Q5_2,
+          Q6 : req.body.Q6
+        };
+        User_Form.update({user: req.session.userid}, value)
+        .exec(function(err , user_form){
+          if(err){res.end(JSON.stringify(err));}
+          res.redirect("/form");
+        });
+    },
+
     //DISC
     disc: function (req, res) {
         //================ 報名狀態顯示顯示

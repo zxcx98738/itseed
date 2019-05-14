@@ -265,6 +265,16 @@ module.exports.routes = {
     action: 'editProfile'   
   },
 
+  '/form': {
+    controller: 'User',
+    action: 'form'
+  },
+
+  '/editForm': {
+    controller: 'User',
+    action: 'editForm'
+  },
+
   '/disc': {
     controller: 'User',
     action: 'disc'    

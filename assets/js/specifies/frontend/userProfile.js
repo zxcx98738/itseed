@@ -66,35 +66,35 @@ $(function(){
       }
     },
   	rules: {      		
-  		email: {
-  			required: true,
-  			email: true,
-  			remote: {
-  				url: "/check-email",
-  				type: "post",
-  				data: {
-  					email: function() {
-  						return $( "input[name='email']" ).val();
-  					}
-  				}
-  			}
-  		},
-  		pwd: {
-  			required: true,
-  			minlength: 6,
-        maxlength: 20
-  		},
-  		pwd_confirmation: {
-  			equalTo : '#pwd'
-  		},
+  		// email: {
+  		// 	required: true,
+  		// 	email: true,
+  		// 	remote: {
+  		// 		url: "/check-email",
+  		// 		type: "post",
+  		// 		data: {
+  		// 			email: function() {
+  		// 				return $( "input[name='email']" ).val();
+  		// 			}
+  		// 		}
+  		// 	}
+  		// },
+  		// pwd: {
+  		// 	required: true,
+  		// 	minlength: 6,
+    //     maxlength: 20
+  		// },
+  		// pwd_confirmation: {
+  		// 	equalTo : '#pwd'
+  		// },
   		phone: {
   			required: true,
   			maxlength: 20
   		},
-      th: {
-        required: true,
-        maxlength: 10
-      },
+      // th: {
+      //   required: true,
+      //   maxlength: 10
+      // },
   		name: {
   			required: true,
   			maxlength: 10
