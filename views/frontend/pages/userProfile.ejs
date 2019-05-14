@@ -3,6 +3,7 @@
 <script src="/js/specifies/messages_zh_TW.min.js"></script>
 <script src="/js/specifies/frontend/userProfile.js"></script>
 
+
 <!--HEADER-->
 <% include ../header %>
 <!--END HEADER-->
@@ -28,7 +29,7 @@
 			<p style="font-size: 13pt; height: 10px;">有標注 <b class="darkred">*</b> 為必填資料</p>
 		</div>
 		<div class="row">
-			<form action="/editProfile" method="post" enctype="multipart/form-data" class="form-horizontal ">
+			<form action="/editProfile" method="post" enctype="multipart/form-data" class="form-horizontal clearfix">
 				<div class="justify-content-center uploadPhoto">
 					<img src="<%= user.photo %>" alt="" class="uploadPhoto-img img-responsive center-block">
 					<div class="col-sm-12 col-xs-12 text-center uploadPhoto-top">
@@ -44,55 +45,9 @@
 						<button type="submit" class="btn btn-yellow" >上傳</button>
 						<input type="file" class="" name="photo">
 						<!-- <p>建議使用尺寸為 250x250 以上正方形圖片，檔案大小限制為2MB。</p> -->
-						<div class="uploadPhoto-botton row ">
-							<div class="col-md-12">
-								<div class="row">
-									<!-- <div class="form-group ">
-										<label for="statisticalTypeEnum" class="control-label col-md-5 col-sm-5" for="email">帳號：</label>
-										<div class="col-md-5 col-sm-5">
-											<input type="text" name="email" readonly="readonly" class="btn-block" value="<%= user.email %>">
-										</div>
-									</div> -->
-									<!-- <div class="form-group password-hide">
-										<label class="col-md-5 col-sm-5 col-xs-12 control-label">密碼：</label>
-										<div  class="col-md-5 col-sm-5  col-xs-12">
-											<span class="btn btn-default pwd-btn">更改密碼</span>
-										</div>
-									</div>
-									<div class="form-group password-part">
-										<label class="col-md-5 col-sm-5 col-xs-12 control-label" for="pwd">密碼：</label>
-										<div class="col-md-5 col-sm-5 col-xs-12">
-											<input type="password" name="pwd" class="btn-block" id="pwd" value="<%= req.session.pwd %>">
-										</div>
-									</div>
-									<div class="form-group password-part">
-										<label class="col-md-5 col-sm-5 col-xs-12 control-label" for="pwd_confirmation">確認密碼：</label>
-										<div class="col-md-5 col-sm-5 col-xs-12">
-											<input type="password" name="pwd_confirmation" id="conpwd" class="btn-block" value="<%= req.session.pwd %>">
-										</div>
-									</div>
-									<div class="form-group password-part">
-										<div class="col-md-9 col-sm-9 col-xs-12" style="text-align: right;">
-											<button type="submit" class="btn btn-yellow" >確認</button>
-											<span class="btn btn-default pwd-stop-btn">取消</span>
-										</div>
-									</div> -->
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 				<div class=" col-sm-12 col-xs-12 set-profile">
-					<!-- <div class="form-group">
-						<label class="col-sm-12 col-xs-12 " for="name">真實姓名<b class="darkred">*</b>：</label>
-						<div class="col-sm-12 col-xs-12">
-							<% if(user.name == null){%>
-								<input type="text" name="name" class="btn-block" id="name" placeholder="ex: 林資種">
-							<% } else{ %>
-								<input type="text" name="name" class="btn-block" id="name" placeholder="ex: 林資種" value="<%= user.name %>">
-							<% } %>
-						</div>
-					</div> -->
 					<div class="form-border "></div>
 					<div class="form-sub-title ">
 						<label class="col-sm-3 col-xs-12 " for="phone">連絡電話<b class="darkred">*</b>：</label>
@@ -213,8 +168,138 @@
 						<button type="submit" class="btn-lg btn-yellow" style="color:white;" >儲存個人資料</button>
 					</div>
 				</form>
-			</div>
 		</div>
+		<div class="sub-title clearfix" style="margin-top:20px;">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div>檔案上傳</div>
+		</div>
+		<div class="row">
+				<% if(files.confirm == 1) {%>
+					<div class="row col-xs-12 disc-over">
+						<span>恭喜您已完成書審資料繳交</span>
+					</div>
+				<% }else {%>
+				<div class="profile-upload clearfix">
+					<div class="row col-md-12 col-md-offset-1">
+							<label for="registration" class="col-sm-3 col-xs-12">履歷資料｜ </label>
+							<div class="col-sm-4 col-xs-12">
+								<p class="formatInfo">
+									最新版本:
+									<%
+										if(files.registrationUT == null)
+											files.registrationUT = "";
+				
+										if(files.registration == null)
+											var url = "";
+										else{
+											var url = files.registration;
+											var start = url.search("/") + 1;
+											url = url.slice(start);
+											start = url.search("/") + 1;
+											url = url.slice(start);
+											start = url.search("/") + 1;
+											url = url.slice(start);
+										}
+									%>
+									<a href="<%= files.registration %>"><%= url %></a><br>
+									<!-- <strong><%= url %></strong> -->
+									<!-- <br> -->
+									<!-- 上傳時間: -->
+									<!-- <b><%= files.registrationUT %></b> -->
+									<!-- <br> -->
+									<!-- <span>因系統因素，目前檔案上傳後無法檢視，但資料上傳功能皆正常，請報名者不用擔心！</span> -->
+								</p>
+							</div>
+							<div class="col-sm-4 col-xs-12">
+									<form action="/uploadReg" method="post" enctype="multipart/form-data">
+										<div class="">
+											<input type="file" name="registration">
+											<button type="button" class="btn btn-default">選擇檔案</button>
+											<button type="submit" style="color:white;" class="btn btn-blue">上傳</button>
+										</div>
+									</form>
+							</div>
+						</div>
+						<div class="row col-md-12 ">
+								<ul class="applicant-text">
+									<li>一頁以內</li>
+									<li >建議內含：姓名、聯絡方式、系級(未來一學年)、照片、學／經歷、專長能力，及其他有利審查資料</li>
+									<li >檔案命名規則請依此格式撰寫「姓名_基本資料」(如：「李小花_基本資料」)</li>
+									<li >上傳方式：點選「選擇檔案」，完成選取檔案後，點選「確認上傳」</li>
+									<li style="list-style: none;">※ 可以更改欲上傳之檔案</li>
+								</ul>
+						</div>
+				</div>
+				<div class="profile-upload clearfix">
+						<div class="row col-md-12 col-md-offset-1">
+								<label for="autobiography" class="col-sm-3 col-xs-12">學生資料｜</label>
+								<div class="col-sm-4 col-xs-12">
+									<p class="formatInfo">
+										最新版本:
+										<%
+											if(files.autobiographyUT == null)
+												files.autobiographyUT = "";
+					
+											if(files.autobiography == null)
+												var url = "";
+											else{
+												var url = files.autobiography;
+												var start = url.search("/") + 1;
+												url = url.slice(start);
+												start = url.search("/") + 1;
+												url = url.slice(start);
+												start = url.search("/") + 1;
+												url = url.slice(start);
+											}
+										%>
+										<a href="<%= files.autobiography %>"><%= url %></a><br>
+									</p>
+								</div>
+								<div class="col-sm-4 col-xs-12">
+										<form action="/uploadAut" method="post" enctype="multipart/form-data">
+											<div class="">
+												<input type="file" name="autobiography">
+												<button type="button" class="btn btn-default">選擇檔案</button>
+												<button type="submit" style="color:white;" class="btn btn-blue">上傳</button>
+											</div>
+										</form>
+								</div>
+							</div>
+							<div class="row col-md-12 ">
+									<ul class="applicant-text">
+										<li>一頁以內</li>
+										<li >建議內含：姓名、聯絡方式、系級(未來一學年)、照片、學／經歷、專長能力，及其他有利審查資料</li>
+										<li >檔案命名規則請依此格式撰寫「姓名_基本資料」(如：「李小花_基本資料」)</li>
+										<li >上傳方式：點選「選擇檔案」，完成選取檔案後，點選「確認上傳」</li>
+										<li style="list-style: none;">※ 可以更改欲上傳之檔案</li>
+									</ul>
+							</div>
+					</div>
+				<% } %>
+				<hr>
+				<!-- <div class="row col-md-10 col-md-offset-1">
+					<label for="autobiography" class="col-sm-2 col-xs-12">貝殼集器：</label>
+					<div class="col-sm-8 col-xs-12">
+						<p class="formatInfo">
+							完成資料填寫後，請至貝殼集器繳交100元報名費<br>
+							繳交完畢後預計於三個工作天內回覆<br>
+							若三天內未收到回覆，請來信至itseed16th@gmail.com詢問<br>
+							<a  href=<%= process.env.payLink %> target="_blank">
+								<img alt="backme.png" src="/images/index/backme.png" class="backme">
+							</a>
+						</p>
+						<div class="text-xs-center">
+							<a href=<%= process.env.payLink %> target="_blank">
+								<button class="btn btn-purple" style="color:white; font-size: 15px;">馬上前往</button>
+							</a>
+						</div>
+					</div>
+				</div> -->
+		</div>
+
+	</div>
 </section>
     <script>
 		let source_reulst_text = "<%= user.survey %>";
@@ -329,7 +414,27 @@
 .btn-group .active{
 	background-color: #83B9D5;
 	border-color: #83B9D5;
-
+}
+.applicant-text{
+	font-size: 14px;
+	color: #2a6aa1;
+	padding-left: 5%;
+	/* background-color: red; */
+	width: 45%;
+	margin: 0 auto;
+	margin-top: 10px;
+	border-radius: 3px;
+	border: 1px solid #83B9D5;
+}
+.profile-upload label{
+	font-size: 20px;
+	padding-left: 10%;
+	font-weight: normal;
+	color: #2a6aa1;
+	
+}
+.profile-upload .formatInfo{
+	font-size: 16px;
 }
 </style>
 

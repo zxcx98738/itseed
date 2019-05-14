@@ -157,7 +157,9 @@ module.exports.routes = {
     controller: 'Site',
     action: 'timeline'
   }, 
-
+  '/trainingProgram':{
+    view: 'frontend/pages/trainingProgram'
+  },
   '/faq': {
     controller: 'Site',
     action: 'faq'
@@ -257,9 +259,9 @@ module.exports.routes = {
 
   '/profile': {
     controller: 'User',
-    action: 'profile'   
+    action: 'profile'
   },
-
+  
   '/editProfile': {
     controller: 'User',
     action: 'editProfile'   
