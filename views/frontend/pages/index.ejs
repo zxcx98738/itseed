@@ -69,7 +69,7 @@
   </div>
 </div>
 
-
+<div class="gototpo" style="width:400px; z-index:100px; position:absolute; right:20px; float:right; background:#eea; ">Top</div>
 
 <div class=" part-fourFuture">
   <h4 class="fourtitle">─ 啟動未來．四大絕 ─</h4>
@@ -267,3 +267,8 @@
 </script>
 <script src="/js/specifies/jquery.animateNumber.min.js"></script>
 <script src="/js/specifies/frontend/index.js"></script>
+<script type="text/javascript">
+  $('.gototpo').on("click",function(){
+      $(window).scrollTop(0);
+});
+</script>
