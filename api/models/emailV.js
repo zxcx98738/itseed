@@ -9,7 +9,6 @@ module.exports = {
         },
         email: {
           type: 'email'
-          
         }
     }
 };

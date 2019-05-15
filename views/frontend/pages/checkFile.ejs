@@ -1,33 +1,229 @@
-<section class="section-checkFile">
-	<div class="container check-file-container" style="margin: 0; padding: 0; width: 100%;">
-	<h4>資料繳交狀況</h4>
-	<div class="row check-file-row">
-		<% if (disc !=undefined && disc.finished == 1){ %>
-			<div class="col-md-4 first-file">
-				<p><span>1</span>完成DISC測驗</p>
-			</div>
-		<% } else { %>
-			<div class="col-md-4" >
-				<p><span>1</span>尚未完成DISC測驗</p>
-			</div>
-		<% } %>
-		<% if (user.finished == 1){ %>
-			<div class="col-md-4 second-file">
-				<p><span>2</span>完成個人資料</p>
-			</div>
-		<% } else { %>
-			<div class="col-md-4" >
-				<p><span>2</span>尚未完成個人資料</p>
-			</div>
-		<% } %>
-		<% if ( files.confirm == 1){ %>
-			<div class="col-md-4 third-file">
-				<p><span>3</span>完成書面資料</p>
-			</div>
-		<% } else { %>
-			<div class="col-md-4" >
-				<p><span>3</span>尚未完成書面資料</p>
-			</div>
-		<% } %>
-	</div>
-</section>
+<div class="container">
+	<div class="row">
+		<section>
+        <div class="wizard" style="text-align: center;">
+            <h1>報名專區</h1>
+            <div class="wizard-inner">
+                <!-- <div class="connecting-line"></div> -->
+                <ul class="nav nav-tabs" role="tablist">
+
+                    <li role="presentation" class="active">
+                    	<h5>DISC 測驗</h5>
+                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </span>
+                        </a>
+
+                    </li>
+
+                    <li role="presentation" class="active">
+                    	<h5>個人資料</h5>
+                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-user"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li role="presentation" class="active">
+                    	<h5>書審問題</h5>
+                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li role="presentation" class="active">
+                    	<h5>完成報名</h5>
+                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-ok"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+<!--             <form role="form">
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="step1">
+                        <h3>Step one</h3>
+                        <p>first step</p>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-primary next-step">next</button></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="step2">
+                        <h3>Step two</h3>
+                        <p>Second step</p>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <li><button type="button" class="btn btn-primary next-step">next</button></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="step3">
+                        <h3>Step three</h3>
+                        <p>Third step</p>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <li><button type="button" class="btn btn-default next-step">next</button></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="complete">
+                        <h3>Complete steps</h3>
+                        <p>You have successfully completed every steps.</p>
+                        <ul class="list-inline pull-right">
+                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Submit</button></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </form> -->
+        </div>
+    </section>
+   </div>
+</div>
+<style type="text/css">
+.wizard {
+    margin: 20px auto;
+    background: #fff;
+}
+
+    .wizard .nav-tabs {
+        position: relative;
+        margin: 40px auto;
+        margin-bottom: 0;
+        border-bottom-color: #e0e0e0;
+    }
+
+    .wizard > div.wizard-inner {
+        position: relative;
+    }
+
+.connecting-line {
+    height: 3.5px;
+    background: #e0e0e0;
+    position: absolute;
+    width: 80%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 60%;
+    z-index: 1;
+}
+
+.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    border: 0;
+}
+
+span.round-tab {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    border-radius: 100px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 25px;
+}
+span.round-tab i{
+    color:#555555;
+}
+.wizard li.active span.round-tab {
+    background: #fff;
+    border: 2px solid #5bc0de;
+    
+}
+.wizard li.active span.round-tab i{
+    color: #5bc0de;
+}
+
+span.round-tab:hover {
+    color: #333;
+    border: 2px solid #333;
+}
+
+.wizard .nav-tabs > li {
+    width: 25%;
+}
+
+.wizard li:after {
+  content:"";
+  position:absolute;
+  width: 100%;
+  height:2px;
+  background-color: #e0e0e0;
+  top: 55%;
+  left: -50%;
+  z-index:1;
+}
+
+.wizard li.active + li.active:after{
+	background-color: #5bc0de;
+}
+
+.wizard li:first-child:after {
+  content:none;
+}
+.wizard .nav-tabs > li a {
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
+}
+
+    .wizard .nav-tabs > li a:hover {
+        background: transparent;
+    }
+
+.wizard .tab-pane {
+    position: relative;
+    padding-top: 50px;
+}
+
+.wizard h5 {
+    margin-top: 0;
+}
+
+@media( max-width : 585px ) {
+
+    .wizard {
+        width: 90%;
+        height: auto !important;
+    }
+
+    span.round-tab {
+        font-size: 16px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard .nav-tabs > li a {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard li.active:after {
+        content: "";
+        position: absolute;
+        left: -50%;
+    }
+	.wizard li.active + li.active:after{
+		background-color: #5bc0de;
+	}
+	.wizard li:first-child:after {
+	  content:none;
+	}
+}
+</style>

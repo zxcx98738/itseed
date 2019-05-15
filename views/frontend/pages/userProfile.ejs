@@ -1,3 +1,4 @@
+
 <script src="/js/specifies/jquery.validate.min.js"></script>
 <script src="/js/specifies/messages_zh_TW.min.js"></script>
 <script src="/js/specifies/frontend/userProfile.js"></script>
@@ -13,169 +14,209 @@
 			<ul class="nav nav-tabs profile-ul">
 				<li><a href="/disc">DISC測驗</a></li>
 				<li class="active"><a href="/profile">個人資料</a></li>
-				<li><a href="/files">書審資料</a></li>
+				<li><a href="/form">書審問答</a></li>
+				<li><a href="/files">履歷上傳</a></li>
 			</ul>
 		</div>
-		<div class="col-xs-12 col-md-10 col-md-offset-1">
-			<p style="font-size: 13pt; height: 40px;">有標注 <b class="darkred">*</b> 為必填資料</p>
+		<div class="sub-title clearfix">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div>基本資料</div>
 		</div>
-		<div class="row col-md-10 col-md-offset-1">
-			<form action="/editProfile" method="post" enctype="multipart/form-data" class="form-horizontal">
-				<div class="col-sm-9 col-xs-12 set-profile">
-					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" for="email">帳號：</label>
-						<div class="col-sm-10 col-xs-12">
-							<input type="text" name="email" readonly="readonly" class="btn-block" value="<%= user.email %>">
-						</div>
-					</div>
-					<div class="form-group password-hide">
-						<label class="col-sm-2 col-xs-12 control-label">密碼：</label>
-						<div  class="col-sm-10 col-xs-12">
-							<span class="btn btn-default pwd-btn">更改密碼</span>
-						</div>
-					</div>
-					<div class="form-group password-part">
-						<label class="col-sm-2 col-xs-12 control-label" for="pwd">密碼：</label>
-						<div class="col-sm-10 col-xs-12">
-							<input type="password" name="pwd" class="btn-block" id="pwd" value="<%= req.session.pwd %>">
-						</div>
-					</div>
-					<div class="form-group password-part">
-						<label class="col-sm-2 col-xs-12 control-label" for="pwd_confirmation">確認密碼：</label>
-						<div class="col-sm-10 col-xs-12">
-							<input type="password" name="pwd_confirmation" id="conpwd" class="btn-block" value="<%= req.session.pwd %>">
-						</div>
-					</div>
-					<div class="form-group password-part">
-						<div class="col-xs-12" style="text-align: right;">
-							<button type="submit" class="btn btn-yellow" >確認</button>
-							<span class="btn btn-default pwd-stop-btn">取消</span>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" for="phone">連絡電話<b class="darkred">*</b>：</label>
-						<div class="col-sm-10 col-xs-12">
-						<% if(user.phone == null){%>
-							<input type="text" name="phone" class="btn-block" id="phone" placeholder="ex: 0800090000" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
-						<% } else{ %>
-							<input type="text" name="phone" class="btn-block" id="phone" placeholder="ex: 0800090000" value="<%= user.phone %>" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
-						<% } %>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" for="name">真實姓名<b class="darkred">*</b>：</label>
-						<div class="col-sm-10 col-xs-12">
-						<% if(user.name == null){%>
-							<input type="text" name="name" class="btn-block" id="name" placeholder="ex: 林資種">
-						<% } else{ %>
-							<input type="text" name="name" class="btn-block" id="name" placeholder="ex: 林資種" value="<%= user.name %>">
-						<% } %>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" class="control-label">性別<b class="darkred">*</b>：</label>
-						<div class="col-sm-10 col-xs-12">
-							<label class="radio-inline">
-							<% if(user.gender == "M"){%>
-								<input type="radio" name="gender" value="M" checked> 男
-							<% } else{ %>
-								<input type="radio" name="gender" value="M"> 男
-							<% } %>
-							</label>
-							<label class="radio-inline">
-							<% if(user.gender == "F"){%>
-								<input type="radio" name="gender" value="F" checked> 女
-							<% } else{ %>
-								<input type="radio" name="gender" value="F"> 女
-							<% } %>
-							</label>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" for="school">就讀學校<b class="darkred">*</b>：</label>
-						<div class="col-sm-10 col-xs-12">
-						<% if(user.school == null){%>
-							<input type="text" name="school" class="btn-block" id="school" placeholder="ex: 資種大學">
-						<% } else{ %>
-							<input type="text" name="school" class="btn-block" id="school" placeholder="ex: 資種大學" value="<%= user.school %>">
-						<% } %>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" for="dept">系所<b class="darkred">*</b>：</label>
-						<div class="col-sm-10 col-xs-12">
-						<% if(user.dept == null){%>
-							<input type="text" name="dept" class="btn-block" id="dept" placeholder="ex: 資訊管理學系">
-						<% } else{ %>
-							<input type="text" name="dept" class="btn-block" id="dept" placeholder="ex: 資種大學" value="<%= user.dept%>">
-						<% } %>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" for="grade">年級<b class="darkred">*</b>：</label>
-						<div class="col-sm-10 col-xs-12">
-						<% if(user.grade == null){%>
-							<input type="text" name="grade" class="btn-block" id="grade" placeholder="ex: 三年級">
-						<% } else{ %>
-							<input type="text" name="grade" class="btn-block" id="grade" value="<%= user.grade %>" placeholder="ex: 三年級">
-						<% } %>
-						</div>
-						<div class="col-sm-offset-2 col-sm-10 col-xs-12" style="height: 40px;">※ 請填寫未來一學年的年級</div>
-					</div>
-
-
-					<div class="form-group">
-						<label class="col-sm-2 col-xs-12 control-label" for="reference">推薦人：</label>
-						<div class="col-sm-10 col-xs-12">
-						<% if(user.reference == null){%>
-							<input type="text" name="reference" class="btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種">
-						<% } else{ %>
-							<input type="text" name="reference" class="btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種" value="<%= user.reference %>">
-						<% } %>
-						</div>
-						<div class="col-sm-offset-2 col-sm-10 col-xs-12" style="height: 40px;">※ 此選項<b>不影響</b>徵選結果</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12 col-xs-12" >請問你是透過何種管道得知資種？（可複選）</div>
+		<div class="col-xs-12 col-md-10 col-md-offset-1">
+			<p style="font-size: 13pt; height: 10px;">有標注 <b class="darkred">*</b> 為必填資料</p>
+		</div>
+		<div class="row">
+			<form action="/editProfile" method="post" enctype="multipart/form-data" class="form-horizontal ">
+				<div class="justify-content-center uploadPhoto">
+					<img src="<%= user.photo %>" alt="" class="uploadPhoto-img img-responsive center-block">
+					<div class="col-sm-12 col-xs-12 text-center uploadPhoto-top">
+						<!-- <label class="col-sm-12 col-xs-12 " for="name">真實姓名<b class="darkred">*</b>：</label> -->
 						<div class="col-sm-12 col-xs-12">
-							<label><input type="checkbox" name="survey" value="海報" />　海報　</label>
-							<label><input type="checkbox" name="survey" value="說明會" />　說明會　</label>
-							<label><input type="checkbox" name="survey" value="工作坊" />　工作坊　</label>
-							<label><input type="checkbox" name="survey" value="FB粉專" />　FB粉專（懶人包、宣傳影片等）　</label>
-							<label><input type="checkbox" name="survey" value="官網" />　官網　</label>
-							<label><input type="checkbox" name="survey" value="Blink" />　Blink　</label>
-							<label><input type="checkbox" name="survey" value="親朋好友推薦" />　親朋好友推薦　</label>
-							<label><input type="checkbox" name="survey" class="survey-other" value="其他" />　其他：<input hidden type="text" class="survey-input"></label>
+							<% if(user.name == null){%>
+								<input type="text" name="name" class="btn-block none-border-field text-center" id="name" placeholder="ex: 林資種" autocomplete="off">
+							<% } else{ %>
+								<input type="text" name="name" class="btn-block none-border-field text-center" id="name" placeholder="請輸入真實姓名*" value="<%= user.name %>" autocomplete="off">
+							<% } %>
 						</div>
-					</div>
-				</div>
-				<div class="col-sm-3 col-xs-12 uploadPhoto">
-					<div class="col-sm-12 col-xs-6">
-						<img src="<%= user.photo %>" alt="" class="img-responsive">
-					</div>
-					<div class="col-sm-12 col-xs-6 text-center">
 						<button type="button" class="btn btn-default" id="uploadBtn">選擇照片</button>
 						<button type="submit" class="btn btn-yellow" >上傳</button>
 						<input type="file" class="" name="photo">
-						<p>
-							建議使用尺寸為 250x250 以上正方形圖片，檔案大小限制為2MB。
-						</p>
-						<p>
-							上傳完成後，重新整理圖片即會出現
-						</p>
+						<!-- <p>建議使用尺寸為 250x250 以上正方形圖片，檔案大小限制為2MB。</p> -->
+						<div class="uploadPhoto-botton row ">
+							<div class="col-md-12">
+								<div class="row">
+									<!-- <div class="form-group ">
+										<label for="statisticalTypeEnum" class="control-label col-md-5 col-sm-5" for="email">帳號：</label>
+										<div class="col-md-5 col-sm-5">
+											<input type="text" name="email" readonly="readonly" class="btn-block" value="<%= user.email %>">
+										</div>
+									</div> -->
+									<!-- <div class="form-group password-hide">
+										<label class="col-md-5 col-sm-5 col-xs-12 control-label">密碼：</label>
+										<div  class="col-md-5 col-sm-5  col-xs-12">
+											<span class="btn btn-default pwd-btn">更改密碼</span>
+										</div>
+									</div>
+									<div class="form-group password-part">
+										<label class="col-md-5 col-sm-5 col-xs-12 control-label" for="pwd">密碼：</label>
+										<div class="col-md-5 col-sm-5 col-xs-12">
+											<input type="password" name="pwd" class="btn-block" id="pwd" value="<%= req.session.pwd %>">
+										</div>
+									</div>
+									<div class="form-group password-part">
+										<label class="col-md-5 col-sm-5 col-xs-12 control-label" for="pwd_confirmation">確認密碼：</label>
+										<div class="col-md-5 col-sm-5 col-xs-12">
+											<input type="password" name="pwd_confirmation" id="conpwd" class="btn-block" value="<%= req.session.pwd %>">
+										</div>
+									</div>
+									<div class="form-group password-part">
+										<div class="col-md-9 col-sm-9 col-xs-12" style="text-align: right;">
+											<button type="submit" class="btn btn-yellow" >確認</button>
+											<span class="btn btn-default pwd-stop-btn">取消</span>
+										</div>
+									</div> -->
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="col-sm-12 col-xs-12 text-center">
-					<hr>
-					<button type="submit" class="btn-lg btn-yellow" style="color:white;" >儲存個人資料</button>
-				</div>
-			</form>
+				<div class=" col-sm-12 col-xs-12 set-profile">
+					<!-- <div class="form-group">
+						<label class="col-sm-12 col-xs-12 " for="name">真實姓名<b class="darkred">*</b>：</label>
+						<div class="col-sm-12 col-xs-12">
+							<% if(user.name == null){%>
+								<input type="text" name="name" class="btn-block" id="name" placeholder="ex: 林資種">
+							<% } else{ %>
+								<input type="text" name="name" class="btn-block" id="name" placeholder="ex: 林資種" value="<%= user.name %>">
+							<% } %>
+						</div>
+					</div> -->
+					<div class="form-border "></div>
+					<div class="form-sub-title ">
+						<label class="col-sm-3 col-xs-12 " for="phone">連絡電話<b class="darkred">*</b>：</label>
+						<div class="col-sm-3 col-xs-12">
+							<% if(user.phone == null){%>
+								<input type="text" name="phone" class="none-border-field btn-block " id="phone" placeholder="ex: 0800090000" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')" >
+							<% } else{ %>
+								<input type="text" name="phone" class="none-border-field btn-block" id="phone" placeholder="ex: 0800090000" value="<%= user.phone %>" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+							<% } %>
+						</div>
+						<p class="col-sm-3 col-xs-12 " style="height: 40px;"></p>
+					</div>
+					<div class="form-border"></div>
+					<div class="form-sub-title ">
+							<label class="col-sm-3 col-xs-12" >性別<b class="darkred">*</b>：</label>
+							<div class="col-sm-3 col-xs-12" >
+								<label class="radio-inline" > 
+									<% if(user.gender == "M"){%>
+										<input type="radio" name="gender" value="M" checked> 男
+									<% } else{ %>
+										<input type="radio" name="gender" value="M"> 男
+									<% } %>
+								</label>
+								<label class="radio-inline" style="padding-left: 20px;">
+									<% if(user.gender == "F"){%>
+										<input type="radio" name="gender" value="F" checked> 女
+									<% } else{ %>
+										<input type="radio" name="gender" value="F"> 女
+									<% } %>
+								</label>
+							</div>
+							<p class="col-sm-3 col-xs-12 "></p>
+
+					</div>
+					<div class="form-border "></div>
+					<div class="form-sub-title">
+						<label class="col-sm-3 col-xs-12" for="school">就讀學校<b class="darkred">*</b>：</label>
+						<div class="col-sm-3 col-xs-12">
+							<% if(user.school == null){%>
+								<input type="text" name="school" class="none-border-field btn-block" id="school" placeholder="ex: 資種大學">
+							<% } else{ %>
+								<input type="text" name="school" class="none-border-field btn-block" id="school" placeholder="ex: 資種大學" value="<%= user.school %>">
+								<% } %>
+							</div>
+							<p class="col-sm-3 col-xs-12 "></p>
+						</div>
+					<div class="form-border "></div>
+					<div class="form-sub-title">
+						<label class="col-sm-3 col-xs-12" for="dept">系所<b class="darkred">*</b>：</label>
+						<div class="col-sm-3 col-xs-12">
+							<% if(user.dept == null){%>
+								<input type="text" name="dept" class="none-border-field btn-block" id="dept" placeholder="ex: 資訊管理學系">
+							<% } else{ %>
+								<input type="text" name="dept" class="none-border-field btn-block" id="dept" placeholder="ex: 資種大學" value="<%= user.dept%>">
+							<% } %>
+						</div>
+						<p class="col-sm-3 col-xs-12 "></p>
+					</div>
+					<div class="form-border "></div>
+					<div class="form-sub-title">
+						<label class="col-sm-3 col-xs-12" for="grade">年級<b class="darkred">*</b>：</label>
+						<div class="col-sm-3 col-xs-12">
+							<% if(user.grade == null){%>
+								<input type="text" name="grade" class="none-border-field btn-block" id="grade" placeholder="ex: 三年級">
+								<% } else{ %>
+									<input type="text" name="grade" class="none-border-field btn-block" id="grade" value="<%= user.grade %>" placeholder="ex:三年級">
+									<% } %>
+
+						</div>
+						<p class="col-sm-3 col-xs-12 " style="height: 40px;">※ 請填寫未來一學年的年級</p>
+					</div>
+					<div class="form-border "></div>
+					<div class="form-sub-title">
+						<label class="col-sm-3 col-xs-12" for="reference">推薦人：</label>
+						<div class="col-sm-3 col-xs-12">
+							<% if(user.reference == null){%>
+								<input type="text" name="reference" class="none-border-field btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種">
+							<% } else{ %>
+								<input type="text" name="reference" class="none-border-field btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種" value="<%= user.reference %>">
+							<% } %>
+						</div>
+						<p class="col-sm-3 col-xs-12" style="height: 40px;">※ 此選項<b>不影響</b>徵選結果</p>
+					</div>
+					<div class="form-border "></div>
+					<div class="form-sub-title">
+							<label class="col-sm-120 col-xs-12" >請問你是透過何種管道得知資種？（可複選）</label>
+					</div>
+					<div class="form-sub-title btn-group" data-toggle="buttons">
+							<label class="col-sm-3 col-xs-3 btn btn-primary">
+								<input type="checkbox" checked autocomplete="off">海報 
+							</label>
+							<label class="col-sm-3 col-xs-3 btn btn-primary">
+								<input type="checkbox" autocomplete="off"> 說明會
+							</label>
+							<label class="col-sm-3 col-xs-3 btn btn-primary">
+									<input type="checkbox" checked autocomplete="off">　工作坊　 
+								</label>
+							<label class="col-sm-3 col-xs-3 btn btn-primary">
+								<input type="checkbox" autocomplete="off">　FB粉專
+							</label>
+					</div>
+					<div class="form-sub-title btn-group btn-group-toggle" style="margin-top: 20px;" data-toggle="buttons">
+							<label class="col-sm-3 col-xs-3 btn btn-primary" > 
+								<input type="checkbox" checked autocomplete="off">　官網　 
+							</label>
+							<label class="col-sm-3 col-xs-3 btn btn-primary">
+								<input type="checkbox" autocomplete="off">　親朋好友推薦　
+							</label>
+							<label class="col-sm-3 col-xs-3 btn btn-primary">
+								<input type="checkbox" checked autocomplete="off">　親朋好友推薦　 
+							</label>
+							<label class="col-sm-3 col-xs-3 btn btn-primary">
+								<input type="checkbox" autocomplete="off">　其他
+							</label>
+					</div>
+					<div class="col-sm-12 col-xs-12 text-center">
+						<hr>
+						<button type="submit" class="btn-lg btn-yellow" style="color:white;" >儲存個人資料</button>
+					</div>
+				</form>
+			</div>
 		</div>
-	</div>
-	<script>
-		
+</section>
+    <script>
 		let source_reulst_text = "<%= user.survey %>";
 		source_reulst_text.split(',').forEach(str => {
 			if(str.indexOf('其他:') > -1){
@@ -186,7 +227,6 @@
 				$(`input[value='${str}']`).prop('checked', true);
 			}
 		});
-
 		$('input.survey-other').click(function(){
 			if( $(this).prop("checked") ){
 				$('input.survey-input').show();
@@ -196,11 +236,207 @@
 		})
 		$('input.survey-input').keypress(function(){
 			$('input.survey-other').val( '其他:' + $(this).val() );
-		})
-
-	</script>
+		}) 
+		var button = $('button');
+			button.on('click', function () {
+			$(this).toggleClass('active');
+		});    
+    </script>
 </section>
+
+<style>
+.form-border{
+	border-top: rgba(0, 0, 0, 0.1) 2px solid;
+	width: 75%;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+.none-border-field::placeholder{
+	color: #ccc;
+
+}
+.none-border-field{
+	position: relative;
+	outline: none;
+	background-color:transparent;border:0;
+	margin: 0 auto;
+	font-size: 26px;
+	margin-bottom: 8px;
+}
+.uploadPhoto{
+	margin-bottom: 15vh;
+}
+.uploadPhoto-top button{
+	width: 150px;
+}
+.uploadPhoto-img{
+	border-radius: 100%;
+	width: 200px;
+	height: 200px;
+	background-color: #ccc;
+	margin: 0 auto;
+}
+.uploadPhoto-img:hover{
+	background: #ccc;
+}
+.uploadPhoto-botton{
+	width: 50%;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+.uploadPhoto-botton input{
+	margin-top: 4px;
+	color: #878787;
+}
+
+.form-sub-title{
+    width: 100%;
+    margin: 0 auto;
+    /* overflow: hidden; */
+	display: flex;
+	position: relative;
+}
+.form-sub-title label{
+	margin-left: 15%;
+	font-size: 18px;
+	color: #2a6aa1
+}
+.form-sub-title input{
+	font-size: 18px;
+	margin-left: 10%;
+}
+.form-sub-title input::placeholder{
+	/* margin-right: 20px; */
+}
+/* 註解 */
+.annotation{
+	position: absolute;
+	left: 68%;
+	margin-left: 10px;
+}
+.btn-group{
+	padding: 0 20%;
+}
+.btn-group label{
+	background-color: #fff;
+	color: black;
+	border-color: #83B9D5;
+}
+.btn-group label:hover{
+	background-color: #83B9D5;
+	border-color: #83B9D5;
+}
+.btn-group .active{
+	background-color: #83B9D5;
+	border-color: #83B9D5;
+
+}
+</style>
+
+<script type="text/javascript">
+var school_list = JSON.parse('<%-JSON.stringify(school)%>');
+var dept_list = JSON.parse('<%-JSON.stringify(dept)%>');
+function autocomplete(inp, arr, element) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i][element].toUpperCase().replace("台", "臺").includes(val.toUpperCase().replace("台", "臺"))) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i][element].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i][element].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i][element] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+autocomplete(document.getElementById("school"), school_list, "school");
+autocomplete(document.getElementById("dept"), dept_list, "dept");
+</script>
 
 <!--FOOTER-->
 <% include ../footer %>
 <!--END FOOTER-->
+
