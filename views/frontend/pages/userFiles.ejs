@@ -17,6 +17,7 @@
 		<div class="row col-md-10 col-md-offset-1">
 			<label for="autobiography" class="col-sm-2 col-xs-12">個人履歷：</label>
 			<div class="col-sm-8 col-xs-12">
+				<form action="/uploadAut" method="post" enctype="multipart/form-data">
 				<p class="formatInfo">
 					最新版本:
 					<%
@@ -35,15 +36,19 @@
 							url = url.slice(start);
 						}
 					%>
-					<a href="<%= files.autobiography %>"><%= url %></a><br>
+					<a href="<%= files.autobiography %>"><%= url %></a>
 					<!-- <strong><%= url %></strong> -->
 					<!-- <br> -->
 					<!-- 上傳時間: -->
 					<!-- <b><%= files.autobiographyUT %></b> -->
 					<!-- <br><br> -->
 					<!-- <span>因系統因素，目前檔案上傳後無法檢視，但資料上傳功能皆正常，請報名者不用擔心！</span> -->
+				<input type="file" name="autobiography">
+				<button type="button" class="btn btn-default">選擇檔案</button>
+				<button type="submit" style="color:white;" class="btn btn-purple">上傳</button>
+
 				</p>
-				<form action="/uploadAut" method="post" enctype="multipart/form-data">
+				
 					<div class="applicant-file">
 					<div>
 						請以<b class="red">「pdf」</b>上傳限制大小為<b class="red"> 5MB</b><br>
@@ -67,12 +72,12 @@
 						上傳方式：點選「選擇檔案」，完成選取檔案後，點選「上傳」<br>
 						※ 可以重複上傳檔案<br>
 					<!-- </p> -->
-				</div>
-					<div class="text-xs-center">
+					</div>
+<!-- 					<div class="text-xs-center">
 						<input type="file" name="autobiography">
 						<button type="button" class="btn btn-default">選擇檔案</button>
 						<button type="submit" style="color:white;" class="btn btn-purple">上傳</button>
-					</div>
+					</div> -->
 				</form>
 				
 			</div>
@@ -81,6 +86,7 @@
 		<div class="row col-md-10 col-md-offset-1">
 			<label for="registration" class="col-sm-2 col-xs-12">學生證明：</label>
 			<div class="col-sm-8 col-xs-12">
+				<form action="/uploadReg" method="post" enctype="multipart/form-data">
 				<p class="formatInfo">
 					最新版本:
 					<%
@@ -99,60 +105,57 @@
 							url = url.slice(start);
 						}
 					%>
-					<a href="<%= files.registration %>"><%= url %></a><br>
+					
+					<a href="<%= files.registration %>"><%= url %></a>
+					
 					<!-- <strong><%= url %></strong> -->
 					<!-- <br> -->
 					<!-- 上傳時間: -->
 					<!-- <b><%= files.registrationUT %></b> -->
 					<!-- <br> -->
 					<!-- <span>因系統因素，目前檔案上傳後無法檢視，但資料上傳功能皆正常，請報名者不用擔心！</span> -->
+				<input type="file" name="registration">
+				<button type="button" class="btn btn-default">選擇檔案</button>
+				<button type="submit" style="color:white;" class="btn btn-purple">上傳</button>					
 				</p>
-				<form action="/uploadReg" method="post" enctype="multipart/form-data">
+				
 					<div class="applicant-file">
 					<div>
-						請以<b class="red">「pdf」</b>上傳限制大小為<b class="red"> 5MB</b><br>檔案格式上傳基本資料。基本資料內建議包含以下資訊
+						請以<b class="red">「pdf」</b>上傳限制大小為<b class="red"> 5MB</b><br>
 					</div>
 					<div>
-						<span>履歷</span>
-						<div>
-						<ol>
-							<li>一頁以內</li>
-							<li>建議內含：姓名、學歷、經歷、專長能力，及其他有利審查資料</li>
-						</ol>
-						</div>
+						內容<br>
+						1. 學生證正反面影本或照片、研究所錄取證明書影本或照片<br>
 					</div>
 				
-					<div>
+					<!-- <div>
 						<span>學生證明</span>
 						學生證正反面影本或照片、研究所錄取證明書影本或照片
-					</div>
+					</div> -->
 					<!-- <p class="formatInfo"> -->
 						
-						檔案命名規則請依此格式撰寫<b>「姓名_基本資料」</b>。<br>
+						檔案命名規則<b>「姓名_學生證明」</b>。<br>
 						(如：報名者 陳資種，則將檔案命名為
-						<b>「陳資種_基本資料」</b>)。
+						<b>「陳資種_學生證明」</b>)。
 						<br><br>
 						上傳方式：點選「選擇檔案」，完成選取檔案後，點選「上傳」<br>
 						※ 可以重複上傳檔案<br>
 					<!-- </p> -->
-				</div>
-					<div class="text-xs-center">
+					</div>
+<!-- 					<div class="text-xs-center">
 						<input type="file" name="registration">
 						<button type="button" class="btn btn-default">選擇檔案</button>
 						<button type="submit" style="color:white;" class="btn btn-purple">上傳</button>
-					</div>
+					</div> -->
 				</form>
 			</div>
 		</div>
-<!-- 			<div class="col-xs-12 confirm-btn">
-				<form action="/confirm" method="post">
-					<div class="text-xs-center">
-						<p>當完成撰寫並上傳書審題目和基本資料</p>
-						<p>且確定不再更改後，請按下此按鈕完成繳交的動作</p>
-						<button type="submit" class="btn-lg btn-purple" style="color:white">完成書審資料</button>
-					</div>
-				</form>
-			</div> -->
+			<div class="col-xs-12 confirm-btn">
+				<div class="text-xs-center">
+					<button onclick="window.location.href='/profile'" class="btn-change btn-lg btn-blue" style="color:white">上一步</button>
+					<button onclick="window.location.href='/form'" class="btn-change btn-lg btn-purple" style="color:white">下一步</button>
+				</div>
+			</div>
 		<% } %>
 <!-- 		<hr>
 		<div class="row col-md-10 col-md-offset-1">

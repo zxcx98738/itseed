@@ -86,9 +86,10 @@
 
 						<!-- <p>建議使用尺寸為 250x250 以上正方形圖片，檔案大小限制為2MB。</p> -->
 					</div>
-					<div class="col-sm-12 col-xs-12 text-center">
-						<hr>
-						<button type="submit" class="btn-lg btn-yellow" style="color:white;" >資料暫存</button>
+					<div class="col-sm-12 col-xs-12 text-center" style="margin: 5vh;">
+						<button onclick="window.location.href='/files';window.event.returnValue=false;" class="btn-change btn-lg btn-blue" style="color:white">上一步</button>
+						<button type="submit" class="btn-lg btn-yellow" style="color:white;" >儲存資料</button>
+						<button onclick="window.location.href='/finish';window.event.returnValue=false;" class="btn-change btn-lg btn-purple" style="color:white">下一步</button>
 					</div>
 				</div>
 			</form>

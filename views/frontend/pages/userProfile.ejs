@@ -155,13 +155,19 @@
 								<input type="checkbox" autocomplete="off">　其他
 							</label>
 					</div>
-					<div class="col-sm-12 col-xs-12 text-center">
+<!-- 					<div class="col-sm-12 col-xs-12 text-center">
 						<hr>
 						<button type="submit" class="btn-lg btn-yellow" style="color:white;" >儲存個人資料</button>
+
+					</div> -->
+					<div class="col-sm-12 col-xs-12 text-center" style="margin-top: 5vh;">
+						<button onclick="window.location.href='/disc';window.event.returnValue=false;" class="btn-change btn-lg btn-blue" style="color:white">上一步</button>
+						<button type="submit" class="btn-lg btn-yellow" style="color:white;" >儲存資料</button>
+						<button onclick="window.location.href='/files';window.event.returnValue=false;" class="btn-change btn-lg btn-purple" style="color:white">下一步</button>
 					</div>
 				</form>
 		</div>
-		<div class="sub-title clearfix" style="margin-top:20px;">
+<!-- 		<div class="sub-title clearfix" style="margin-top:20px;">
 			<div></div>
 			<div></div>
 			<div></div>
@@ -196,12 +202,6 @@
 										}
 									%>
 									<a href="<%= files.registration %>"><%= url %></a><br>
-									<!-- <strong><%= url %></strong> -->
-									<!-- <br> -->
-									<!-- 上傳時間: -->
-									<!-- <b><%= files.registrationUT %></b> -->
-									<!-- <br> -->
-									<!-- <span>因系統因素，目前檔案上傳後無法檢視，但資料上傳功能皆正常，請報名者不用擔心！</span> -->
 								</p>
 							</div>
 							<div class="col-sm-4 col-xs-12">
@@ -271,7 +271,7 @@
 					</div>
 				<% } %>
 				<hr>
-				<!-- <div class="row col-md-10 col-md-offset-1">
+				<div class="row col-md-10 col-md-offset-1">
 					<label for="autobiography" class="col-sm-2 col-xs-12">貝殼集器：</label>
 					<div class="col-sm-8 col-xs-12">
 						<p class="formatInfo">
@@ -288,8 +288,8 @@
 							</a>
 						</div>
 					</div>
-				</div> -->
-		</div>
+				</div>
+		</div> -->
 
 	</div>
 </section>
