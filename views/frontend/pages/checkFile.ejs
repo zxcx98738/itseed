@@ -1,14 +1,11 @@
 <div class="container">
-	<div class="row">
-		<section>
-        <div class="wizard" style="text-align: center;">
+        <div class="wizard" style="text-align: center; ">
             <h1>報名專區</h1>
             <div class="wizard-inner">
-                <!-- <div class="connecting-line"></div> -->
                 <ul class="nav nav-tabs" role="tablist">
                     <li id="disc_progress" role="presentation" class="">
 
-                    	<h5>DISC 測驗</h5>
+                    	<div class="progress_title">DISC</div>
                         <a href="/disc">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-search"></i>
@@ -18,15 +15,27 @@
                     </li>
 
                     <li id="profile_progress" role="presentation" class="">
-                    	<h5>個人資料</h5>
+                    	<div class="progress_title">個人資料</div>
                         <a href="/profile">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-user"></i>
                             </span>
                         </a>
                     </li>
+
+                    <li id="disc_progress" role="presentation" class="">
+
+                    	<div class="progress_title">檔案上傳</div>
+                        <a href="/files">
+                            <span class="round-tab">
+                                <i class="glyphicon glyphicon-paperclip"></i>
+                            </span>
+                        </a>
+
+                    </li>
+
                     <li id="form_progress" role="presentation" class="">
-                    	<h5>書審問題</h5>
+                    	<div class="progress_title">書審問題</div>
                         <a href="/form">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-pencil"></i>
@@ -35,7 +44,7 @@
                     </li>
 
                     <li id="finish" role="presentation" class="">
-                    	<h5>完成報名</h5>
+                    	<div class="progress_title">完成報名</div>
                         <a href="/files">
                             <span class="round-tab">
                                 <i class="glyphicon glyphicon-ok"></i>
@@ -45,8 +54,6 @@
                 </ul>
             </div>
         </div>
-    </section>
-   </div>
 </div>
 <script type="text/javascript">
 
@@ -55,32 +62,21 @@
 </script>
 <style type="text/css">
 .wizard {
-    margin: 20px auto;
+    margin: 10px auto;
     background: #fff;
 }
 
 .wizard .nav-tabs {
     position: relative;
     margin: 40px auto;
-    margin-bottom: 0;
-    border-bottom-color: #e0e0e0;
+    margin-bottom: 5;
+    border-bottom: 0px;
 }
 
 .wizard > div.wizard-inner {
     position: relative;
 }
 
-.connecting-line {
-    height: 3.5px;
-    background: #e0e0e0;
-    position: absolute;
-    width: 80%;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    top: 60%;
-    z-index: 1;
-}
 
 .wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
     color: #555555;
@@ -89,9 +85,9 @@
 }
 
 span.round-tab {
-    width: 70px;
-    height: 70px;
-    line-height: 70px;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
     display: inline-block;
     border-radius: 100px;
     background: #fff;
@@ -120,7 +116,7 @@ span.round-tab:hover {
 }
 
 .wizard .nav-tabs > li {
-    width: 25%;
+    width: 20%;
 }
 
 .wizard li:after {
@@ -129,7 +125,7 @@ span.round-tab:hover {
   width: 100%;
   height:2px;
   background-color: #e0e0e0;
-  top: 55%;
+  top: 60%;
   left: -50%;
   z-index:1;
 }
@@ -142,9 +138,9 @@ span.round-tab:hover {
   content:none;
 }
 .wizard .nav-tabs > li a {
-    width: 70px;
-    height: 70px;
-    margin: 20px auto;
+    width: 80px;
+    height: 80px;
+    margin: 1.2vh auto;
     border-radius: 100%;
     padding: 0;
 }
@@ -158,8 +154,9 @@ span.round-tab:hover {
     padding-top: 50px;
 }
 
-.wizard h5 {
-    margin-top: 0;
+.wizard .progress_title {
+    font-size: 20px;
+    font-weight: 1;
 }
 
 @media( max-width : 585px ) {
@@ -192,6 +189,10 @@ span.round-tab:hover {
 	}
 	.wizard li:first-child:after {
 	  content:none;
+	}
+	.wizard .progress_title {
+	    font-size: 12px;
+	    font-weight: 1;
 	}
 }
 </style>

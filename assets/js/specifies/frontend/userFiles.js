@@ -61,11 +61,11 @@ $(function(){
         }
       },
       rules: {          
-        registration: {
-          required: true,
-          accept: 'application/pdf',
-          fileSize: 5
-        },
+        // registration: {
+        //   required: true,
+        //   accept: 'application/pdf',
+        //   fileSize: 5
+        // },
         autobiography: {
           required: true,
           accept: 'application/pdf',
