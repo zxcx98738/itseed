@@ -8,14 +8,14 @@
 <% include ../header %>
 <!--END HEADER-->
 
-<section class="section-profile" class="bg-white" id="profile">
+<section class="section-profile" id="profile">
 	<% include ../pages/checkFile %>
 	<div class="container">
 		<div class="sub-title clearfix">
 			<div></div>
 			<div></div>
 			<div></div>
-			<div>基本資料</div>
+			<div>個人資料</div>
 		</div>
 		<div class="col-xs-12 col-md-10 col-md-offset-1">
 			<p style="font-size: 13pt; height: 10px;">有標注 <b class="darkred">*</b> 為必填資料</p>
@@ -160,10 +160,10 @@
 						<button type="submit" class="btn-lg btn-yellow" style="color:white;" >儲存個人資料</button>
 
 					</div> -->
-					<div class="col-sm-12 col-xs-12 text-center" style="margin-top: 5vh;">
-						<button onclick="window.location.href='/disc';window.event.returnValue=false;" class="btn-change btn-lg btn-blue" style="color:white">上一步</button>
-						<button type="submit" class="btn-lg btn-yellow" style="color:white;" >儲存資料</button>
-						<button onclick="window.location.href='/files';window.event.returnValue=false;" class="btn-change btn-lg btn-purple" style="color:white">下一步</button>
+					<div class="col-sm-12 col-xs-12 text-center" style="margin-top: 5vh; margin-bottom: 5vh;">
+						<button onclick="window.location.href='/disc';window.event.returnValue=false;" class="btn-change btn-lg btn-default" >上一步</button>
+						<button type="submit" class="btn-lg btn-yellow"  >儲存資料</button>
+						<button onclick="window.location.href='/files';window.event.returnValue=false;" class="btn-change btn-lg btn-default">下一步</button>
 					</div>
 				</form>
 		</div>
@@ -293,35 +293,10 @@
 
 	</div>
 </section>
-    <script>
-		let source_reulst_text = "<%= user.survey %>";
-		source_reulst_text.split(',').forEach(str => {
-			if(str.indexOf('其他:') > -1){
-				$('input[value="其他"]').prop('checked', true);
-				$('input.survey-input').show();
-				$('input.survey-input').val(str.split('其他:')[1]);
-			}else{
-				$(`input[value='${str}']`).prop('checked', true);
-			}
-		});
-		$('input.survey-other').click(function(){
-			if( $(this).prop("checked") ){
-				$('input.survey-input').show();
-			}else{
-				$('input.survey-input').hide();
-			}
-		})
-		$('input.survey-input').keypress(function(){
-			$('input.survey-other').val( '其他:' + $(this).val() );
-		}) 
-		var button = $('button');
-			button.on('click', function () {
-			$(this).toggleClass('active');
-		});    
-    </script>
-</section>
-
-<style>
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->
+<style type="text/css">
 .form-border{
 	border-top: rgba(0, 0, 0, 0.1) 2px solid;
 	width: 75%;
@@ -531,9 +506,31 @@ function autocomplete(inp, arr, element) {
 }
 autocomplete(document.getElementById("school"), school_list, "school");
 autocomplete(document.getElementById("dept"), dept_list, "dept");
-</script>
 
-<!--FOOTER-->
-<% include ../footer %>
-<!--END FOOTER-->
+
+		let source_reulst_text = "<%= user.survey %>";
+		source_reulst_text.split(',').forEach(str => {
+			if(str.indexOf('其他:') > -1){
+				$('input[value="其他"]').prop('checked', true);
+				$('input.survey-input').show();
+				$('input.survey-input').val(str.split('其他:')[1]);
+			}else{
+				$(`input[value='${str}']`).prop('checked', true);
+			}
+		});
+		$('input.survey-other').click(function(){
+			if( $(this).prop("checked") ){
+				$('input.survey-input').show();
+			}else{
+				$('input.survey-input').hide();
+			}
+		})
+		$('input.survey-input').keypress(function(){
+			$('input.survey-other').val( '其他:' + $(this).val() );
+		}) 
+		var button = $('button');
+			button.on('click', function () {
+			$(this).toggleClass('active');
+		}); 
+</script>
 

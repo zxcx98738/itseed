@@ -6,15 +6,21 @@
 <% include ../header %>
 
 <!--END HEADER-->
-<section class="section-files bg-white" style="margin-bottom:100px" id="files">
+<section class="section-files" id="files">
 	<% include ../pages/checkFile %>
 	<div class="container">
+		<div class="sub-title clearfix">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div>檔案上傳</div>
+		</div>
 		<% if(files.confirm == 1) {%>
 			<div class="row col-xs-12 disc-over">
 				<span>恭喜您已完成書審資料繳交</span>
 			</div>
 		<% }else {%>
-		<div class="row col-md-10 col-md-offset-1">
+		<div class="row col-md-10 col-md-offset-1" style="margin-top: 5vh;">
 			<label for="autobiography" class="col-sm-2 col-xs-12">個人履歷：</label>
 			<div class="col-sm-8 col-xs-12">
 				<form action="/uploadAut" method="post" enctype="multipart/form-data">
@@ -152,8 +158,8 @@
 		</div>
 			<div class="col-xs-12 confirm-btn">
 				<div class="text-xs-center">
-					<button onclick="window.location.href='/profile'" class="btn-change btn-lg btn-blue" style="color:white">上一步</button>
-					<button onclick="window.location.href='/form'" class="btn-change btn-lg btn-purple" style="color:white">下一步</button>
+					<button onclick="window.location.href='/profile'" class="btn-lg btn-default">上一步</button>
+					<button onclick="window.location.href='/form'" class="btn-lg btn-default">下一步</button>
 				</div>
 			</div>
 		<% } %>

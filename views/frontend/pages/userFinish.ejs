@@ -1,0 +1,50 @@
+<script src="/js/specifies/jquery.validate.min.js"></script>
+<script src="/js/specifies/messages_zh_TW.min.js"></script>
+<script src="/js/specifies/frontend/userFinish.js"></script>
+
+
+<!--HEADER-->
+<% include ../header %>
+
+<!--END HEADER-->
+<section class="section-files" id="files">
+	<% include ../pages/checkFile %>
+	<div class="container">
+		<div class="sub-title clearfix">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div>完成報名</div>
+		</div>
+		
+			<div class="row col-xs-12 disc-over">
+				<h4>恭喜您已完成報名第17屆資訊種子培訓計畫</h4>
+				<!-- <h4>以下是我們的活動資訊及招生時程，期待您成為我們的一員</h4> -->
+			</div>
+
+		<hr>
+		<div class="row col-md-10 col-md-offset-1">
+			<label for="autobiography" class="col-sm-2 col-xs-12">貝殼集器：</label>
+			<div class="col-sm-8 col-xs-12">
+				<p class="formatInfo">
+					完成資料填寫後，請至貝殼集器繳交100元報名費<br>
+					繳交完畢後預計於三個工作天內回覆<br>
+					若三天內未收到回覆，請來信至itseed17th@gmail.com詢問<br>
+					<a  href=<%= process.env.payLink %> target="_blank">
+						<img alt="backme.png" src="/images/index/backme.png" class="backme">
+					</a>
+				</p>
+				<div class="text-xs-center">
+					<!-- <a href=<%= process.env.payLink %> target="_blank"> -->
+					<a href="/">
+						<button class="btn-lg btn-default" style="font-size: 15px; margin-bottom: 5vh;">回首頁</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->

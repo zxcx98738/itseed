@@ -309,6 +309,12 @@ module.exports.routes = {
     controller: 'User',
     action: 'uploadRec'
   },
+  
+  '/finish': {
+    controller: "User",
+    action: 'finish'
+  },
+
 
   /*後台*/
   'get /backend/login': {
