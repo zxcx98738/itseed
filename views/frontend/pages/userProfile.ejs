@@ -8,46 +8,56 @@
 <% include ../header %>
 <!--END HEADER-->
 
-<section class="section-profile" class="bg-white" id="profile">
+<section class="section-profile" id="profile">
 	<% include ../pages/checkFile %>
 	<div class="container">
-		<div id="profile-nav" class="row col-md-10 col-md-offset-1">
-			<ul class="nav nav-tabs profile-ul">
-				<li><a href="/disc">DISC測驗</a></li>
-				<li class="active"><a href="/profile">個人資料</a></li>
-				<li><a href="/files">書審問答</a></li>
-				<li><a href="/files">履歷上傳</a></li>
-			</ul>
-		</div>
 		<div class="sub-title clearfix">
 			<div></div>
 			<div></div>
 			<div></div>
-			<div>基本資料</div>
+			<div>個人資料</div>
 		</div>
 		<div class="col-xs-12 col-md-10 col-md-offset-1">
 			<p style="font-size: 13pt; height: 10px;">有標注 <b class="darkred">*</b> 為必填資料</p>
 		</div>
 		<div class="row">
-			<form action="/editProfile" method="post" enctype="multipart/form-data" class="form-horizontal clearfix">
+			
 				<div class="justify-content-center uploadPhoto">
 					<img src="<%= user.photo %>" alt="" class="uploadPhoto-img img-responsive center-block">
 					<div class="col-sm-12 col-xs-12 text-center uploadPhoto-top">
 						<!-- <label class="col-sm-12 col-xs-12 " for="name">真實姓名<b class="darkred">*</b>：</label> -->
-						<div class="col-sm-12 col-xs-12">
+					<form id="uploadPhoto" action="/uploadPhoto" method="post" enctype="multipart/form-data">
+						<button type="button" class="btn btn-default" id="uploadBtn">選擇照片</button>
+						<button type="submit" class="btn btn-yellow" >上傳</button>
+						<input type="file" class="" name="photo">
+					</form>
+<!-- 						<div class="col-sm-12 col-xs-12">
 							<% if(user.name == null){%>
 								<input type="text" name="name" class="btn-block none-border-field text-center" id="name" placeholder="ex: 林資種" autocomplete="off">
 							<% } else{ %>
 								<input type="text" name="name" class="btn-block none-border-field text-center" id="name" placeholder="請輸入真實姓名*" value="<%= user.name %>" autocomplete="off">
 							<% } %>
-						</div>
-						<button type="button" class="btn btn-default" id="uploadBtn">選擇照片</button>
-						<button type="submit" class="btn btn-yellow" >上傳</button>
-						<input type="file" class="" name="photo">
+						</div> -->
+
 						<!-- <p>建議使用尺寸為 250x250 以上正方形圖片，檔案大小限制為2MB。</p> -->
 					</div>
 				</div>
+			<form id="personl_info" action="/editProfile" method="post" enctype="multipart/form-data" class="form-horizontal clearfix">
 				<div class=" col-sm-12 col-xs-12 set-profile">
+
+					<div class="form-border "></div>
+					<div class="form-sub-title ">
+						<label class="col-sm-3 col-xs-12 " for="phone">姓名<b class="darkred">*</b>：</label>
+						<div class="col-sm-3 col-xs-12">
+							<% if(user.name == null){%>
+								<input type="text" name="name" class="btn-block none-border-field" id="name" placeholder="ex: 林資種" autocomplete="off">
+							<% } else{ %>
+								<input type="text" name="name" class="btn-block none-border-field" id="name" placeholder="請輸入真實姓名*" value="<%= user.name %>" autocomplete="off">
+							<% } %>
+						</div>
+						<p class="col-sm-3 col-xs-12 " style="height: 40px;"></p>
+					</div>
+
 					<div class="form-border "></div>
 					<div class="form-sub-title ">
 						<label class="col-sm-3 col-xs-12 " for="phone">連絡電話<b class="darkred">*</b>：</label>
@@ -180,12 +190,19 @@
 					</label>
 					
 					<div class="col-sm-12 col-xs-12 text-center">
+
 						<hr>
 						<button type="submit" class="btn-lg btn-yellow" style="color:white;" >儲存個人資料</button>
+
+					</div> -->
+					<div class="col-sm-12 col-xs-12 text-center" style="margin-top: 5vh; margin-bottom: 5vh;">
+						<button onclick="window.location.href='/disc';window.event.returnValue=false;" class="btn-change btn-lg btn-default" >上一步</button>
+						<button type="submit" class="btn-lg btn-yellow"  >儲存資料</button>
+						<button onclick="window.location.href='/files';window.event.returnValue=false;" class="btn-change btn-lg btn-default">下一步</button>
 					</div>
 				</form>
 		</div>
-		<div class="sub-title clearfix" style="margin-top:20px;">
+<!-- 		<div class="sub-title clearfix" style="margin-top:20px;">
 			<div></div>
 			<div></div>
 			<div></div>
@@ -220,12 +237,6 @@
 										}
 									%>
 									<a href="<%= files.registration %>"><%= url %></a><br>
-									<!-- <strong><%= url %></strong> -->
-									<!-- <br> -->
-									<!-- 上傳時間: -->
-									<!-- <b><%= files.registrationUT %></b> -->
-									<!-- <br> -->
-									<!-- <span>因系統因素，目前檔案上傳後無法檢視，但資料上傳功能皆正常，請報名者不用擔心！</span> -->
 								</p>
 							</div>
 							<div class="col-sm-4 col-xs-12">
@@ -295,7 +306,7 @@
 					</div>
 				<% } %>
 				<hr>
-				<!-- <div class="row col-md-10 col-md-offset-1">
+				<div class="row col-md-10 col-md-offset-1">
 					<label for="autobiography" class="col-sm-2 col-xs-12">貝殼集器：</label>
 					<div class="col-sm-8 col-xs-12">
 						<p class="formatInfo">
@@ -312,11 +323,12 @@
 							</a>
 						</div>
 					</div>
-				</div> -->
-		</div>
+				</div>
+		</div> -->
 
 	</div>
 </section>
+
     <script>
 		let source_reulst_text = "<%= user.survey %>";
 		source_reulst_text.split(',').forEach(str => {
@@ -351,6 +363,12 @@
 </section>
 
 <style>
+
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->
+<style type="text/css">
+
 .form-border{
 	border-top: rgba(0, 0, 0, 0.1) 2px solid;
 	width: 75%;
@@ -370,7 +388,7 @@
 	margin-bottom: 8px;
 }
 .uploadPhoto{
-	margin-bottom: 15vh;
+	margin-bottom: 7vh;
 }
 .uploadPhoto-top button{
 	width: 150px;
@@ -603,9 +621,31 @@ function autocomplete(inp, arr, element) {
 }
 autocomplete(document.getElementById("school"), school_list, "school");
 autocomplete(document.getElementById("dept"), dept_list, "dept");
-</script>
 
-<!--FOOTER-->
-<% include ../footer %>
-<!--END FOOTER-->
+
+		let source_reulst_text = "<%= user.survey %>";
+		source_reulst_text.split(',').forEach(str => {
+			if(str.indexOf('其他:') > -1){
+				$('input[value="其他"]').prop('checked', true);
+				$('input.survey-input').show();
+				$('input.survey-input').val(str.split('其他:')[1]);
+			}else{
+				$(`input[value='${str}']`).prop('checked', true);
+			}
+		});
+		$('input.survey-other').click(function(){
+			if( $(this).prop("checked") ){
+				$('input.survey-input').show();
+			}else{
+				$('input.survey-input').hide();
+			}
+		})
+		$('input.survey-input').keypress(function(){
+			$('input.survey-other').val( '其他:' + $(this).val() );
+		}) 
+		var button = $('button');
+			button.on('click', function () {
+			$(this).toggleClass('active');
+		}); 
+</script>
 

@@ -261,10 +261,25 @@ module.exports.routes = {
     controller: 'User',
     action: 'profile'
   },
+
+  '/uploadPhoto': {
+    controller: 'User',
+    action: 'uploadPhoto'
+  },
   
   '/editProfile': {
     controller: 'User',
     action: 'editProfile'   
+  },
+
+  '/form': {
+    controller: 'User',
+    action: 'form'
+  },
+
+  '/editForm': {
+    controller: 'User',
+    action: 'editForm'
   },
 
   '/disc': {
@@ -299,6 +314,12 @@ module.exports.routes = {
     controller: 'User',
     action: 'uploadRec'
   },
+  
+  '/finish': {
+    controller: "User",
+    action: 'finish'
+  },
+
 
   /*後台*/
   'get /backend/login': {
