@@ -54,80 +54,80 @@ $(function(){
     $('input[name="photo"]').click();
   });
 
-  /*表單驗證*/
-	$("form").validate({
-		submitHandler: function(form) {
-      form.submit();
-    },
-    errorPlacement: function(error, element) {
-      element.closest('div').append(error);
-      if(element.attr('type') == 'file'){
-        element.siblings('button').addClass('error');
-      }
-    },
-  	rules: {      		
-  		// email: {
-  		// 	required: true,
-  		// 	email: true,
-  		// 	remote: {
-  		// 		url: "/check-email",
-  		// 		type: "post",
-  		// 		data: {
-  		// 			email: function() {
-  		// 				return $( "input[name='email']" ).val();
-  		// 			}
-  		// 		}
-  		// 	}
-  		// },
-  		// pwd: {
-  		// 	required: true,
-  		// 	minlength: 6,
-    //     maxlength: 20
-  		// },
-  		// pwd_confirmation: {
-  		// 	equalTo : '#pwd'
-  		// },
-  		phone: {
-  			required: true,
-  			maxlength: 20
-  		},
-      // th: {
-      //   required: true,
-      //   maxlength: 10
-      // },
-  		name: {
-  			required: true,
-  			maxlength: 10
-  		},
-  		gender: {
-  			required: true,
-  		},
-  		school: {
-  			required: true,
-  			maxlength: 20
-  		},
-      dept: {
-        required: true,
-        maxlength: 20
-      },      
-  		grade: {
-  			required: true,
-  			maxlength: 20
-  		},
-  		reference: {
-  			maxlength: 20,
-  		},
-      photo: {
-        accept: 'image/*',
-        fileSize: 20
-      }
-  	},
-  	messages: {
-  		email: {
-  			remote: "此帳號已存在",
-  		},
-  	}
-  });
+ //  /*表單驗證*/
+	// $("form").validate({
+	// 	submitHandler: function(form) {
+ //      form.submit();
+ //    },
+ //    errorPlacement: function(error, element) {
+ //      element.closest('div').append(error);
+ //      if(element.attr('type') == 'file'){
+ //        element.siblings('button').addClass('error');
+ //      }
+ //    },
+ //  	rules: {      		
+ //  		// email: {
+ //  		// 	required: true,
+ //  		// 	email: true,
+ //  		// 	remote: {
+ //  		// 		url: "/check-email",
+ //  		// 		type: "post",
+ //  		// 		data: {
+ //  		// 			email: function() {
+ //  		// 				return $( "input[name='email']" ).val();
+ //  		// 			}
+ //  		// 		}
+ //  		// 	}
+ //  		// },
+ //  		// pwd: {
+ //  		// 	required: true,
+ //  		// 	minlength: 6,
+ //    //     maxlength: 20
+ //  		// },
+ //  		// pwd_confirmation: {
+ //  		// 	equalTo : '#pwd'
+ //  		// },
+ //  		phone: {
+ //  			required: true,
+ //  			maxlength: 20
+ //  		},
+ //      // th: {
+ //      //   required: true,
+ //      //   maxlength: 10
+ //      // },
+ //  		name: {
+ //  			required: true,
+ //  			maxlength: 10
+ //  		},
+ //  		gender: {
+ //  			required: true,
+ //  		},
+ //  		school: {
+ //  			required: true,
+ //  			maxlength: 20
+ //  		},
+ //      dept: {
+ //        required: true,
+ //        maxlength: 20
+ //      },      
+ //  		grade: {
+ //  			required: true,
+ //  			maxlength: 20
+ //  		},
+ //  		reference: {
+ //  			maxlength: 20,
+ //  		},
+ //      photo: {
+ //        accept: 'image/*',
+ //        fileSize: 2
+ //      }
+ //  	},
+ //  	messages: {
+ //  		email: {
+ //  			remote: "此帳號已存在",
+ //  		},
+ //  	}
+ //  });
   var pass;
   $(".pwd-btn").click(function(){
     $(".password-hide").css('display','none');

@@ -26,24 +26,38 @@
 					<img src="<%= user.photo %>" alt="" class="uploadPhoto-img img-responsive center-block">
 					<div class="col-sm-12 col-xs-12 text-center uploadPhoto-top">
 						<!-- <label class="col-sm-12 col-xs-12 " for="name">真實姓名<b class="darkred">*</b>：</label> -->
-					<form action="/uploadPhoto" method="post" enctype="multipart/form-data">
+					<form id="uploadPhoto" action="/uploadPhoto" method="post" enctype="multipart/form-data">
 						<button type="button" class="btn btn-default" id="uploadBtn">選擇照片</button>
 						<button type="submit" class="btn btn-yellow" >上傳</button>
 						<input type="file" class="" name="photo">
 					</form>
-				<form action="/editProfile" method="post" enctype="multipart/form-data" class="form-horizontal clearfix">
-						<div class="col-sm-12 col-xs-12">
+<!-- 						<div class="col-sm-12 col-xs-12">
 							<% if(user.name == null){%>
 								<input type="text" name="name" class="btn-block none-border-field text-center" id="name" placeholder="ex: 林資種" autocomplete="off">
 							<% } else{ %>
 								<input type="text" name="name" class="btn-block none-border-field text-center" id="name" placeholder="請輸入真實姓名*" value="<%= user.name %>" autocomplete="off">
 							<% } %>
-						</div>
+						</div> -->
 
 						<!-- <p>建議使用尺寸為 250x250 以上正方形圖片，檔案大小限制為2MB。</p> -->
 					</div>
 				</div>
+			<form id="personl_info" action="/editProfile" method="post" enctype="multipart/form-data" class="form-horizontal clearfix">
 				<div class=" col-sm-12 col-xs-12 set-profile">
+
+					<div class="form-border "></div>
+					<div class="form-sub-title ">
+						<label class="col-sm-3 col-xs-12 " for="phone">姓名<b class="darkred">*</b>：</label>
+						<div class="col-sm-3 col-xs-12">
+							<% if(user.name == null){%>
+								<input type="text" name="name" class="btn-block none-border-field" id="name" placeholder="ex: 林資種" autocomplete="off">
+							<% } else{ %>
+								<input type="text" name="name" class="btn-block none-border-field" id="name" placeholder="請輸入真實姓名*" value="<%= user.name %>" autocomplete="off">
+							<% } %>
+						</div>
+						<p class="col-sm-3 col-xs-12 " style="height: 40px;"></p>
+					</div>
+
 					<div class="form-border "></div>
 					<div class="form-sub-title ">
 						<label class="col-sm-3 col-xs-12 " for="phone">連絡電話<b class="darkred">*</b>：</label>
@@ -320,7 +334,7 @@
 	margin-bottom: 8px;
 }
 .uploadPhoto{
-	margin-bottom: 15vh;
+	margin-bottom: 7vh;
 }
 .uploadPhoto-top button{
 	width: 150px;
