@@ -261,6 +261,11 @@ module.exports.routes = {
     controller: 'User',
     action: 'profile'
   },
+
+  '/uploadPhoto': {
+    controller: 'User',
+    action: 'uploadPhoto'
+  },
   
   '/editProfile': {
     controller: 'User',

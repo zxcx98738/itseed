@@ -21,11 +21,17 @@
 			<p style="font-size: 13pt; height: 10px;">有標注 <b class="darkred">*</b> 為必填資料</p>
 		</div>
 		<div class="row">
-			<form action="/editProfile" method="post" enctype="multipart/form-data" class="form-horizontal clearfix">
+			
 				<div class="justify-content-center uploadPhoto">
 					<img src="<%= user.photo %>" alt="" class="uploadPhoto-img img-responsive center-block">
 					<div class="col-sm-12 col-xs-12 text-center uploadPhoto-top">
 						<!-- <label class="col-sm-12 col-xs-12 " for="name">真實姓名<b class="darkred">*</b>：</label> -->
+					<form action="/uploadPhoto" method="post" enctype="multipart/form-data">
+						<button type="button" class="btn btn-default" id="uploadBtn">選擇照片</button>
+						<button type="submit" class="btn btn-yellow" >上傳</button>
+						<input type="file" class="" name="photo">
+					</form>
+				<form action="/editProfile" method="post" enctype="multipart/form-data" class="form-horizontal clearfix">
 						<div class="col-sm-12 col-xs-12">
 							<% if(user.name == null){%>
 								<input type="text" name="name" class="btn-block none-border-field text-center" id="name" placeholder="ex: 林資種" autocomplete="off">
@@ -33,9 +39,7 @@
 								<input type="text" name="name" class="btn-block none-border-field text-center" id="name" placeholder="請輸入真實姓名*" value="<%= user.name %>" autocomplete="off">
 							<% } %>
 						</div>
-						<button type="button" class="btn btn-default" id="uploadBtn">選擇照片</button>
-						<button type="submit" class="btn btn-yellow" >上傳</button>
-						<input type="file" class="" name="photo">
+
 						<!-- <p>建議使用尺寸為 250x250 以上正方形圖片，檔案大小限制為2MB。</p> -->
 					</div>
 				</div>

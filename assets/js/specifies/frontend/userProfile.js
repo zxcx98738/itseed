@@ -119,7 +119,7 @@ $(function(){
   		},
       photo: {
         accept: 'image/*',
-        fileSize: 2
+        fileSize: 20
       }
   	},
   	messages: {
