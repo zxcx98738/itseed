@@ -811,8 +811,8 @@ function registerAccount(res,newuser,callback){
     editProfile: function (req, res) {   
         var t = 0;
         var value = {
-            email: req.body.email,
-            pwd: md5(req.body.pwd),
+            // email: req.body.email,
+            // pwd: md5(req.body.pwd),
             phone: req.body.phone,
             name: req.body.name,
             gender: req.body.gender,
