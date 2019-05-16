@@ -1,5 +1,6 @@
 $(function(){
   /*表單驗證*/
+
 	$("form").validate({
 		submitHandler: function(form) {
       form.submit();
@@ -12,4 +13,8 @@ $(function(){
       element.closest('div').removeClass('error');
     },
   });
+
+});
+$( document ).ready(function() {
+  $("#disc_progress").addClass('active');
 });

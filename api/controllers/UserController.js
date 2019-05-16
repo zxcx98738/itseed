@@ -1475,6 +1475,10 @@ function registerAccount(res,newuser,callback){
             }
         });
     },
+
+    finish: function (req, res){
+      return res.view("frontend/pages/userFinish");    
+    },
     //上傳匯款證明
     uploadRec: function (req, res) {
         var value = {};
