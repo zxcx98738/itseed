@@ -623,6 +623,7 @@ autocomplete(document.getElementById("dept"), dept_list, "dept");
 				$('input.survey-input').val(str.split('其他:')[1]);
 			}else{
 				$(`input[value='${str}']`).prop('checked', true);
+				$(`input[value='${str}']`).parent("label").addClass('active');
 			}
 		});
 		$('input.survey-other').click(function(){

@@ -282,6 +282,11 @@ module.exports.routes = {
     action: 'editForm'
   },
 
+  '/auto_saveForm' :{
+    controller: 'User',
+    action: 'auto_saveForm'
+  },
+
   '/disc': {
     controller: 'User',
     action: 'disc'    
