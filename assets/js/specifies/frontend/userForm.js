@@ -31,7 +31,7 @@ $( document ).ready(function() {
       timeoutId = setTimeout(function() {
           // Runs 1 second (1000 ms) after the last change    
           saveToDB(Qid,text);
-      }, 4000);
+      }, 2000);
   });
 
   function saveToDB(Qid,text)

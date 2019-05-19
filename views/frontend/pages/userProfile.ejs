@@ -147,30 +147,30 @@
 					</div>
 					<div class="form-sub-title btn-group" data-toggle="buttons">
 							<label class="col-sm-3 col-xs-3 btn btn-primary">
-								<input type="checkbox" checked autocomplete="off">海報 
+								<input type="checkbox" name="survey" checked autocomplete="off" value="海報">海報 
 							</label>
 							<label class="col-sm-3 col-xs-3 btn btn-primary">
-								<input type="checkbox" autocomplete="off"> 說明會
+								<input type="checkbox" name="survey" autocomplete="off" value="說明會"> 說明會
 							</label>
 							<label class="col-sm-3 col-xs-3 btn btn-primary">
-									<input type="checkbox" checked autocomplete="off">　工作坊　 
+									<input type="checkbox" name="survey" checked autocomplete="off" value="工作坊">　工作坊　 
 								</label>
 							<label class="col-sm-3 col-xs-3 btn btn-primary">
-								<input type="checkbox" autocomplete="off">　FB粉專
+								<input type="checkbox" name="survey" autocomplete="off" value="FB粉專">　FB粉專
 							</label>
 					</div>
 					<div class="form-sub-title btn-group btn-group-toggle" style="margin-top: 20px;" data-toggle="buttons">
 							<label class="col-sm-3 col-xs-3 btn btn-primary" > 
-								<input type="checkbox" checked autocomplete="off">　官網　 
+								<input type="checkbox" name="survey" checked autocomplete="off" value="官網">　官網　 
 							</label>
 							<label class="col-sm-3 col-xs-3 btn btn-primary">
-								<input type="checkbox" autocomplete="off">　親朋好友推薦　
+								<input type="checkbox" name="survey" autocomplete="off" value="親朋好友推薦">　親朋好友推薦　
 							</label>
 							<label class="col-sm-3 col-xs-3 btn btn-primary">
-								<input type="checkbox" checked autocomplete="off">　親朋好友推薦　 
+								<input type="checkbox" name="survey" checked autocomplete="off" value="親朋好友推薦">　親朋好友推薦　 
 							</label>
 							<label class="col-sm-3 col-xs-3 btn btn-primary">
-								<input type="checkbox" autocomplete="off">　其他
+								<input type="checkbox" name="survey" autocomplete="off">　其他
 							</label>
 					</div>
 <!-- 					<div class="col-sm-12 col-xs-12 text-center">
@@ -185,129 +185,6 @@
 					</div>
 				</form>
 		</div>
-<!-- 		<div class="sub-title clearfix" style="margin-top:20px;">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div>檔案上傳</div>
-		</div>
-		<div class="row">
-				<% if(files.confirm == 1) {%>
-					<div class="row col-xs-12 disc-over">
-						<span>恭喜您已完成書審資料繳交</span>
-					</div>
-				<% }else {%>
-				<div class="profile-upload clearfix">
-					<div class="row col-md-12 col-md-offset-1">
-							<label for="registration" class="col-sm-3 col-xs-12">履歷資料｜ </label>
-							<div class="col-sm-4 col-xs-12">
-								<p class="formatInfo">
-									最新版本:
-									<%
-										if(files.registrationUT == null)
-											files.registrationUT = "";
-				
-										if(files.registration == null)
-											var url = "";
-										else{
-											var url = files.registration;
-											var start = url.search("/") + 1;
-											url = url.slice(start);
-											start = url.search("/") + 1;
-											url = url.slice(start);
-											start = url.search("/") + 1;
-											url = url.slice(start);
-										}
-									%>
-									<a href="<%= files.registration %>"><%= url %></a><br>
-								</p>
-							</div>
-							<div class="col-sm-4 col-xs-12">
-									<form action="/uploadReg" method="post" enctype="multipart/form-data">
-										<div class="">
-											<input type="file" name="registration">
-											<button type="button" class="btn btn-default">選擇檔案</button>
-											<button type="submit" style="color:white;" class="btn btn-blue">上傳</button>
-										</div>
-									</form>
-							</div>
-						</div>
-						<div class="row col-md-12 ">
-								<ul class="applicant-text">
-									<li>一頁以內</li>
-									<li >建議內含：姓名、聯絡方式、系級(未來一學年)、照片、學／經歷、專長能力，及其他有利審查資料</li>
-									<li >檔案命名規則請依此格式撰寫「姓名_基本資料」(如：「李小花_基本資料」)</li>
-									<li >上傳方式：點選「選擇檔案」，完成選取檔案後，點選「確認上傳」</li>
-									<li style="list-style: none;">※ 可以更改欲上傳之檔案</li>
-								</ul>
-						</div>
-				</div>
-				<div class="profile-upload clearfix">
-						<div class="row col-md-12 col-md-offset-1">
-								<label for="autobiography" class="col-sm-3 col-xs-12">學生資料｜</label>
-								<div class="col-sm-4 col-xs-12">
-									<p class="formatInfo">
-										最新版本:
-										<%
-											if(files.autobiographyUT == null)
-												files.autobiographyUT = "";
-					
-											if(files.autobiography == null)
-												var url = "";
-											else{
-												var url = files.autobiography;
-												var start = url.search("/") + 1;
-												url = url.slice(start);
-												start = url.search("/") + 1;
-												url = url.slice(start);
-												start = url.search("/") + 1;
-												url = url.slice(start);
-											}
-										%>
-										<a href="<%= files.autobiography %>"><%= url %></a><br>
-									</p>
-								</div>
-								<div class="col-sm-4 col-xs-12">
-										<form action="/uploadAut" method="post" enctype="multipart/form-data">
-											<div class="">
-												<input type="file" name="autobiography">
-												<button type="button" class="btn btn-default">選擇檔案</button>
-												<button type="submit" style="color:white;" class="btn btn-blue">上傳</button>
-											</div>
-										</form>
-								</div>
-							</div>
-							<div class="row col-md-12 ">
-									<ul class="applicant-text">
-										<li>一頁以內</li>
-										<li >建議內含：姓名、聯絡方式、系級(未來一學年)、照片、學／經歷、專長能力，及其他有利審查資料</li>
-										<li >檔案命名規則請依此格式撰寫「姓名_基本資料」(如：「李小花_基本資料」)</li>
-										<li >上傳方式：點選「選擇檔案」，完成選取檔案後，點選「確認上傳」</li>
-										<li style="list-style: none;">※ 可以更改欲上傳之檔案</li>
-									</ul>
-							</div>
-					</div>
-				<% } %>
-				<hr>
-				<div class="row col-md-10 col-md-offset-1">
-					<label for="autobiography" class="col-sm-2 col-xs-12">貝殼集器：</label>
-					<div class="col-sm-8 col-xs-12">
-						<p class="formatInfo">
-							完成資料填寫後，請至貝殼集器繳交100元報名費<br>
-							繳交完畢後預計於三個工作天內回覆<br>
-							若三天內未收到回覆，請來信至itseed16th@gmail.com詢問<br>
-							<a  href=<%= process.env.payLink %> target="_blank">
-								<img alt="backme.png" src="/images/index/backme.png" class="backme">
-							</a>
-						</p>
-						<div class="text-xs-center">
-							<a href=<%= process.env.payLink %> target="_blank">
-								<button class="btn btn-purple" style="color:white; font-size: 15px;">馬上前往</button>
-							</a>
-						</div>
-					</div>
-				</div>
-		</div> -->
 
 	</div>
 </section>
@@ -426,108 +303,15 @@
 <script type="text/javascript">
 var school_list = JSON.parse('<%-JSON.stringify(school)%>');
 var dept_list = JSON.parse('<%-JSON.stringify(dept)%>');
-function autocomplete(inp, arr, element) {
-  /*the autocomplete function takes two arguments,
-  the text field element and an array of possible autocompleted values:*/
-  var currentFocus;
-  /*execute a function when someone writes in the text field:*/
-  inp.addEventListener("input", function(e) {
-      var a, b, i, val = this.value;
-      /*close any already open lists of autocompleted values*/
-      closeAllLists();
-      if (!val) { return false;}
-      currentFocus = -1;
-      /*create a DIV element that will contain the items (values):*/
-      a = document.createElement("DIV");
-      a.setAttribute("id", this.id + "autocomplete-list");
-      a.setAttribute("class", "autocomplete-items");
-      /*append the DIV element as a child of the autocomplete container:*/
-      this.parentNode.appendChild(a);
-      /*for each item in the array...*/
-      for (i = 0; i < arr.length; i++) {
-        /*check if the item starts with the same letters as the text field value:*/
-        if (arr[i][element].toUpperCase().replace("台", "臺").includes(val.toUpperCase().replace("台", "臺"))) {
-          /*create a DIV element for each matching element:*/
-          b = document.createElement("DIV");
-          /*make the matching letters bold:*/
-          b.innerHTML = "<strong>" + arr[i][element].substr(0, val.length) + "</strong>";
-          b.innerHTML += arr[i][element].substr(val.length);
-          /*insert a input field that will hold the current array item's value:*/
-          b.innerHTML += "<input type='hidden' value='" + arr[i][element] + "'>";
-          /*execute a function when someone clicks on the item value (DIV element):*/
-          b.addEventListener("click", function(e) {
-              /*insert the value for the autocomplete text field:*/
-              inp.value = this.getElementsByTagName("input")[0].value;
-              /*close the list of autocompleted values,
-              (or any other open lists of autocompleted values:*/
-              closeAllLists();
-          });
-          a.appendChild(b);
-        }
-      }
-  });
-  /*execute a function presses a key on the keyboard:*/
-  inp.addEventListener("keydown", function(e) {
-      var x = document.getElementById(this.id + "autocomplete-list");
-      if (x) x = x.getElementsByTagName("div");
-      if (e.keyCode == 40) {
-        /*If the arrow DOWN key is pressed,
-        increase the currentFocus variable:*/
-        currentFocus++;
-        /*and and make the current item more visible:*/
-        addActive(x);
-      } else if (e.keyCode == 38) { //up
-        /*If the arrow UP key is pressed,
-        decrease the currentFocus variable:*/
-        currentFocus--;
-        /*and and make the current item more visible:*/
-        addActive(x);
-      } else if (e.keyCode == 13) {
-        /*If the ENTER key is pressed, prevent the form from being submitted,*/
-        e.preventDefault();
-        if (currentFocus > -1) {
-          /*and simulate a click on the "active" item:*/
-          if (x) x[currentFocus].click();
-        }
-      }
-  });
-  function addActive(x) {
-    /*a function to classify an item as "active":*/
-    if (!x) return false;
-    /*start by removing the "active" class on all items:*/
-    removeActive(x);
-    if (currentFocus >= x.length) currentFocus = 0;
-    if (currentFocus < 0) currentFocus = (x.length - 1);
-    /*add class "autocomplete-active":*/
-    x[currentFocus].classList.add("autocomplete-active");
-  }
-  function removeActive(x) {
-    /*a function to remove the "active" class from all autocomplete items:*/
-    for (var i = 0; i < x.length; i++) {
-      x[i].classList.remove("autocomplete-active");
-    }
-  }
-  function closeAllLists(elmnt) {
-    /*close all autocomplete lists in the document,
-    except the one passed as an argument:*/
-    var x = document.getElementsByClassName("autocomplete-items");
-    for (var i = 0; i < x.length; i++) {
-      if (elmnt != x[i] && elmnt != inp) {
-        x[i].parentNode.removeChild(x[i]);
-      }
-    }
-  }
-  /*execute a function when someone clicks in the document:*/
-  document.addEventListener("click", function (e) {
-      closeAllLists(e.target);
-  });
-}
+
 autocomplete(document.getElementById("school"), school_list, "school");
 autocomplete(document.getElementById("dept"), dept_list, "dept");
 
 
-		let source_reulst_text = "<%= user.survey %>";
+		let source_reulst_text = '<%=user.survey%>';
+		console.log(source_reulst_text);
 		source_reulst_text.split(',').forEach(str => {
+			console.log(str);
 			if(str.indexOf('其他:') > -1){
 				$('input[value="其他"]').prop('checked', true);
 				$('input.survey-input').show();
@@ -535,6 +319,7 @@ autocomplete(document.getElementById("dept"), dept_list, "dept");
 			}else{
 				$(`input[value='${str}']`).prop('checked', true);
 				$(`input[value='${str}']`).parent("label").addClass('active');
+				//console.log($(`input[value='${str}']`));
 			}
 		});
 		$('input.survey-other').click(function(){
