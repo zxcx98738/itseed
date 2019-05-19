@@ -1084,11 +1084,28 @@ function registerAccount(res,newuser,callback){
           Q5_2 : req.body.Q5_2,
           Q6 : req.body.Q6
         };
+
         User_Form.update({user: req.session.userid}, value)
         .exec(function(err , user_form){
           if(err){res.end(JSON.stringify(err));}
           res.redirect("/form");
         });
+    },
+
+    auto_saveForm: function (req, res){
+      //console.log(req.Qid);
+      //console.log(req.body.Qid);
+      var value = {
+        [req.body.Qid] : req.body.text
+      };
+
+      //console.log(value);
+      User_Form.update({user: req.session.userid}, value)
+      .exec(function(err , user_form){
+        if(err){res.end(JSON.stringify(err));}
+        res.end("ok");
+      });
+      
     },
 
     //DISC

@@ -147,3 +147,5 @@ $( document ).ready(function() {
   $("#profile_progress").addClass('active');
   
 });
+$("#disc_progress").addClass('active');
+$("#profile_progress").addClass('active');
