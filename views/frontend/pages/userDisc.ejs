@@ -10,21 +10,100 @@
 <section class="section-disc bg-white" id="disc">
 	<% include ../pages/checkFile %>
 	<div class="container disc-contain">
-		<div id="profile-nav"  class="row col-md-10 col-md-offset-1">
-			<ul class="nav nav-tabs profile-ul">
-				<li class="active"><a href="/disc">DISC測驗</a></li>
-				<li><a href="/profile">個人資料</a></li>
-				<li><a href="/files">書審資料</a></li>
-			</ul>
-		</div>
+		<div class="sub-title clearfix">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div>DISC 測驗</div>
+		</div>		
 		<% if( disc !=undefined ) {%>
 		<% if( disc.finished == 1 ) {%>
-			<div class="row col-xs-12 disc-over">
-				<p>
-					恭喜您已完成DISC測驗，此測驗不影響徵選結果<br>
-					測驗結果為：<%= disc.animal %>
-				</p>
+		<div class="row col-md-10 col-md-offset-1 box1" style="font-size: 13pt;">
+			<p style="text-align: center;">
+				<span>本篇提供的四型人格分析，都是有心理學依據並被各大企業廣泛採納的。<br>透過此測驗，你可以更加了解你的行為方式、團隊合作、領導方式等。</span>
+			</p>
+
+		</div>
+			<div class="rrow col-md-6 col-md-offset-1 DiscResutBoxAll" style="padding-left:4%">
+
+				<p style="font-size: 36pt;color:black;">DISC測驗結果</p>
+				<hr style="border: 0;height: 2px;background: #394B7A;background-image: linear-gradient(to right,#A5B6E3,#394B7A, #A5B6E3);" />
+				<p style="font-size: 36px;"><%= disc.animal %></p>
+
+				<%if(disc.animal=='無尾熊'){%>
+				<p>(Steadiness，穩健型)</p>
+			<div class="media">
+				<div class="DiscResultBox1"><img src="https://case.ntu.edu.tw/blog/wp-content/uploads/2018/08/pic.jpg" class="Discimg"></div>
+				<div class="media-body" style="text-align: left;"><span style="font-size: 28px;">特點：</span>
+				性格類念低調，和你相處起來沒有壓力、很輕鬆。個性溫和，在討論事情時不會有太多異議，做事耐心且適應力強，一但答應工作便會默默做完。無尾熊也是一個很好的聆聽者，加上不愛生氣，在團體中是最穩定的靠山。</div>
+            </div>
+
+              <p class="roleman">資種十六屆代表人物：資訊長</p>
+              <div class="DiscResultBox3">在專案中默默的扶持大家，將所有接受到的工作冷靜、穩定地處理完，是能力強大的執行者。也能夠隨時聆聽夥伴的心聲，提升團體合作的默契，並適時地提出建議。長期、穩定的支持夥伴，幫助專案的進行得以更加順利。
+
+              </div>
+
+
+
+				<% }%>
+				<%if(disc.animal=='老虎'){%>
+
+				<p>(Dominance，支配型)</p>
+			<div class="media">
+				<div class="DiscResultBox1"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1WAacGFK51quvnm1W0-thgkzbkTHbDVS_7LQJP1psNHtF3mQz" class="Discimg"></div>
+				<div class="media-body" style="text-align: left;">
+					<span style="font-size: 28px;">特點：</span>討論事情時喜歡做主，行動力強，喜歡設定目標，且不達目的絕不罷休。做事態度上充滿自信，意志堅定，有活力且做事主動，不易氣餒，是推動別人行動的人，由於行動力很強 往往做事會有很大成就。是團體中帶領眾人前行、不可或缺的指標！</div>
+
 			</div>
+
+
+              <p class="roleman">資種十六屆代表人物：行銷長</p>
+              <div class="DiscResultBox3">總是充滿幹勁的帶領夥伴向前邁進，積極地去尋找所有可能性，不放過任何可能成功的機會。在團隊中合作時會主動說出自己的想法，協助專案更有方向、順利地進行。往往能領導夥伴們一起熱血的向前衝達到目標。
+              </div>
+
+				<% }%>
+
+
+				<%if(disc.animal=='孔雀'){%>
+				<p>(Influence，影響型)</p>
+			<div class="media">
+				<div class="DiscResultBox1">
+					<img src="http://www.tanews.org.tw/sites/default/files/imce/admin/user39253/0620-4.jpg" class="Discimg">
+				</div>
+				<div class="media-body" style="text-align: left;">
+					<span style="font-size: 28px;">特點：</span>在一群人裡面往往話最多，天生是注意力的中心！具有很強的好奇心，對人事物都充滿熱情，且具有強大的表達能力，是團體中最會社交的一群人。無論什麼時候都精力充沛、充滿幹勁。時常熱心答應他人的協助、廣交朋友，是團體中的人氣王！
+				</div>
+			</div>
+
+              <p class="roleman">資種十六屆代表人物：設計長</p>
+              <div class="DiscResultBox3">隨時隨地都充滿活力，喜歡和學員及學長姐互動。在團體合作時為協調者，會協助和觀察組員並擔任溝通的橋樑。在專案內容和幹部規劃上都很有主見，也樂於和人分享自己的想法。面對組員時能夠適當的給予鼓勵，上台簡報時很有台風，彷彿整個簡報提案都是他的舞台。
+
+              </div>
+
+				<% }%>
+
+
+				<%if(disc.animal=='貓頭鷹'){%>
+				<p>(分析型，Compliance)</p>
+			<div class="media">
+				<div class="DiscResultBox1">
+				  <img src="https://img.ltn.com.tw/Upload/liveNews/BigPic/600_phpfkXuM2.jpg" class="Discimg">
+				</div>
+				  <div class="media-body" style="text-align: left;">
+				    <span style="font-size: 28px;">特點：</span>做事情以思考為主，往往帶給人深思熟慮、處變不驚的印象，心中有明確的目標，且目標感很強。做事往往會追求完美。個性較沈穩、關注細節、完美主義、高標準，帶給人有條理、有組織且交友慎重的印象，實際上情感豐富、容易感動。總是穩紮穩打地朝著自己的目標前進，是團隊中的最具有計畫的領航員。
+				  </div>
+				</div>
+
+			<div class="DiscResutBoxAll3">
+              <p class="roleman">資種十六屆代表人物：學員長</p>
+              <div class="media-body" style="text-align: left;"><br>總是用理性、邏輯的思維去幫助夥伴們解決煩惱，提供事情全面、完善角度的分析。在專案中往往擔任時程和進度的監督者，督促夥伴們按部就班的完成進度上的工作。注重細節，因此能夠發現許多專案上的盲點並提出實際的解決方法，讓團隊得以彌補未注意到的缺漏並成長。
+              </div>
+            </div>
+				<% }%>
+				<div class="media-body" style="text-align: left;"><br>「不滿意這個結果嗎？沒關係！這個結果會隨著時間以及每個人的成長而改變，歡迎你加入資種使自己學習成為善於在不同角色間轉換的『變色龍』，在任何情況下都能夠游刃有餘。」</div>
+				<button onclick="window.location.href='/profile'" class="btn btn-primary btn-lg btn-block turnbtn">前往下個階段</button>
+		</div>
+	</div>
 		<% }else {%>
 
 		<div class="row col-md-10 col-md-offset-1 box1" style="font-size: 13pt;">
@@ -36,8 +115,12 @@
 		<div class=" row" id="start0">
 		<div class="row col-md-6 col-md-offset-1 box2" style="padding-left: 4%">
 			
-			<p style="font-size: 28pt;color:black;">DISC</p><p style="color:black;">--------------------------------------</p><span style="color: black;">此測驗<b>不影響徵選結果</b>，<br>請選擇一個比較符合你人格特質的敘述，<br>不需要太多思考，憑直覺就可以了！</span><br>
-			<button class="turnbtn" id="turnbtn0">立即開始</button>	
+
+			<p style="font-size: 28pt;color:black;">DISC</p>
+			<hr style="border: 0;height: 2px;background: #394B7A;background-image: linear-gradient(to right,#A5B6E3,#394B7A, #A5B6E3);" />
+			<span style="color: black;">此測驗<b>不影響徵選結果</b>，<br>請選擇一個比較符合你人格特質的敘述，<br>不需要太多思考，憑直覺就可以了！</span><br>
+			<button class="btn btn-primary btn-lg btn-block turnbtn" id="turnbtn0">立即開始</button>	
+
 		</div>
 			
 		</div>
@@ -77,7 +160,6 @@
 					<label class="col-sm-11 col-xs-11 ">
 					<% if (disc.q1 == 4) { %>
 						<input type="radio" name="q1" value="4" required="" checked>謹慎、冷靜、注意細節的人。 
-
 					<% } else { %>
 						<input type="radio" name="q1" value="4" id="q1-4" required=""><label for="q1-4">謹慎、冷靜、注意細節的人。</label> 
 
@@ -153,7 +235,7 @@
 					<% if (disc.q3 == 2) { %>
 						<input type="radio" name="q3" value="2" required="" checked>感覺重於一切。 
 					<% } else { %>
-						<input type="radio" name="q3" value="2" id="q3-2" required=""><label for="q3-2">感覺重於一切。 </label>
+						<input type="radio" name="q3" value="2" id="q3-2" required=""><label for="q3-2">感覺重於一切。</label>
 					<% } %>
 					</label>
 					<label class="col-sm-1 col-xs-1"></label>
@@ -482,8 +564,8 @@
 					<% } %>
 					</label>
 					<div class="text-center" style="padding-left: 10%">
-					<hr>
-					<button type="submit" class="turnbtn" onclick="discF()">結束測驗並查看結果</button>
+					<hr style="border: 0;height: 2px;background: #394B7A;background-image: linear-gradient(to right,#A5B6E3,#394B7A, #A5B6E3);" />
+					<button type="submit" class="btn btn-primary btn-lg btn-block turnbtn" onclick="discF()">結束測驗並查看結果</button>
 					<script type="text/javascript">
 						function discF(){
 							confirm("若確定完成，請按下確認鍵");
@@ -572,18 +654,203 @@
 	}
 	.turnbtn{
 		border: 1px solid #394B7A;
+		background-color: white;
 		border-radius: 24.5px;
 		font-family: PingFangTC-Regular;
 		font-size: 20px;
 		color: #000000;
-		text-align: center;
-		width:459px;
-		height: 49px;
-		margin-top: 5%;
+		margin-top: 7%;
 	}
-	.box2 input[type="button"]:hover,input[type="radio"]+label:hover,button:hover{
+	.turnbtn:active{
+		border: 1px solid #394B7A;
+		background-color: white;
+		border-radius: 24.5px;
+		font-family: PingFangTC-Regular;
+		font-size: 20px;
+		color: #000000;
+		margin-top: 7%;
+	}
+	.box2 input[type="button"]:hover,input[type="radio"]+label:hover,button:hover,.turnbtn:hover{
 		background-color: #475882;
 		color: #FFFFFF;
+	}
+	/*包起整個結果*/
+	.DiscResutBoxAll{
+		margin-top: 6%;
+		margin-bottom: 6%;
+		margin-left: 24.9%;
+		border: 1px solid #394B7A;
+		border-radius: 12px;
+		padding-top: 3.5%;
+		padding-bottom: 3.5%;
+		padding-right: 3.7%;
+		box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.50);
+		border-radius: 23.5px;
+		text-align: center;
+		background: #FFFFFF;
+	}
+	/*把圖片與文字（DiscResutBox1與DiscResutBox2）包起來做整理*/
+	.DiscResutBoxAll2{
+		margin: 5%;
+		margin-bottom: 70%;
+	}
+	.DiscResutBoxAll3{
+		margin-top: 5%
+	}
+	/*圖片靠左*/
+	.DiscResultBox1{
+		width:25%;　
+		padding:1%;
+		border:1px black solid;
+		margin-right:10%;
+		float:left;
+	}
+	.Discimg{
+		width: 100%;
+		height: 100%;
+		vertical-align : middle;
+	}
+	/*文字靠右*/
+	.DiscResultBox2{
+		width:60%;
+		padding:1%;
+		float:left;
+		text-align: left;
+	}
+	/*下方文字*/
+	.DiscResultBox3{
+		margin-top: 5%;
+		float:left;
+		text-align: left;
+	}
+	/*代表人物*/
+	@media (min-width: 374px) {
+	.roleman{
+		font-size: 20px;
+		text-align: center;
+		background-color: #475882;
+		color: #FFFFFF;
+		font-family: PingFangTC-Regular;
+		border: 1px solid #394B7A;
+		border-radius: 24.5px;
+		width: 75%;
+		margin-top: 5%;
+		}
+	}
+		@media (min-width: 375px) and (max-width: 812px) {
+		  .roleman {
+			font-size: 15px;
+			width: 75%;
+			text-align: center;
+			background-color: #475882;
+			color: #FFFFFF;
+			font-family: PingFangTC-Regular;
+			border: 1px solid #394B7A;
+			border-radius: 24.5px;
+		  }
+		  .box2{
+			margin-top: 6%;
+			margin-bottom: 6%;
+			margin-left: 0.05%;
+			width: 100%;
+			}
+		  .box2 input[type="radio"]+label{
+			border: 1px solid #394B7A;
+			border-radius: 24.5px;
+			width: 100%;
+			height: 29px;
+			font-size: 10px;
+			font-family: PingFangTC-Regular;
+		  }
+		  footer{
+		  	margin-top: 20%;
+		  }
+		}
+		@media (max-width: 813px) {
+		  .roleman {
+		    font-size: 10px;
+		    width: 75%;
+		    text-align: center;
+			background-color: #475882;
+			color: #FFFFFF;
+			font-family: PingFangTC-Regular;
+			border: 1px solid #394B7A;
+			border-radius: 24.5px;
+		  }
+		}
+	}
+	.linestyle{
+		/*border: 0;
+	    height: 2px;
+	    background: #394B7A;
+	    background-image: linear-gradient(to right, #A5B6E3, #394B7A, #A5B6E3);*/
+	    border-top: 5px solid #00FF00;
+	}
+	/*包起整個結果*/
+	.DiscResutBoxAll{
+		margin-top: 6%;
+		margin-bottom: 6%;
+		margin-left: 24.9%;
+		border: 1px solid #394B7A;
+		border-radius: 12px;
+		padding-top: 3.5%;
+		padding-bottom: 3.5%;
+		padding-right: 3.7%;
+		box-shadow: 3px 3px 6px 0 rgba(0,0,0,0.50);
+		border-radius: 23.5px;
+		text-align: center;
+		background: #FFFFFF;
+	}
+	/*把圖片與文字（DiscResutBox1與DiscResutBox2）包起來做整理*/
+	.DiscResutBoxAll2{
+		margin: 5%;
+	}
+	/*圖片靠左*/
+	.DiscResultBox1{
+		width:25%;　
+		padding:1%;
+		border:1px black solid;
+		margin-right:10%;
+		float:left;
+	}
+	.Discimg{
+		width: 100%;
+		height: 100%;
+		vertical-align : middle;
+	}
+	/*文字靠右*/
+	.DiscResultBox2{
+		width:60%;
+		padding:1%;
+		float:left;
+		text-align: left;
+	}
+	/*下方文字*/
+	.DiscResultBox3{
+		margin-top: 3%;
+		float:left;
+		text-align: left;
+	}
+	/*代表人物*/
+	.roleman{
+		margin-left: -5%;
+		border: 1px solid #394B7A;
+		border-radius: 24.5px;
+		margin-top: 5%;
+		padding-bottom: 8%;
+		width: 75%;
+		height: 34px;
+		font-size: 20px;
+		text-align: center;
+		background-color: #475882;
+		color: #FFFFFF;
+		font-family: PingFangTC-Regular;
+	}
+	.linestyle{
+		border: 0;
+	    height: 2px;
+	    background: #394B7A;
+	    background-image: linear-gradient(to right, #A5B6E3, #394B7A, #A5B6E3);
 	}
 
 

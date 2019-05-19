@@ -61,11 +61,11 @@ $(function(){
         }
       },
       rules: {          
-        registration: {
-          required: true,
-          accept: 'application/pdf',
-          fileSize: 5
-        },
+        // registration: {
+        //   required: true,
+        //   accept: 'application/pdf',
+        //   fileSize: 5
+        // },
         autobiography: {
           required: true,
           accept: 'application/pdf',
@@ -90,4 +90,9 @@ $(function(){
       }
     });
   });
+});
+$( document ).ready(function() {
+  $("#disc_progress").addClass('active');
+  $("#profile_progress").addClass('active');
+  $("#file_progress").addClass('active');
 });
