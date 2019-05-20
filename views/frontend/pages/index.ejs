@@ -1,5 +1,7 @@
 <!--HEADER-->
 <% include ../header %>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <!--END HEADER-->
 <div class="loading-div">
   <div class="text">
@@ -77,7 +79,7 @@
 <div class=" part-fourFuture" id="part_fourFuture" style="background: linear-gradient(-45deg, #77DDFF,#99BBFF);">
   <h4 class="fourtitle">─ 資訊種子能帶給你什麼 ─</h4>
   <div class="row fourDiv">
-    <div class="col-md-3 col-sm-6 col-xs-6">
+    <div  data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target1a" class="whatyouget">1</div></div>
@@ -85,7 +87,7 @@
         <p>年學習</p>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-6">
+    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target1b" class="whatyouget">6</div></div>
@@ -93,7 +95,7 @@
         <p>大專案</p>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-6">
+    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target1c" class="whatyouget">4</div></div>
@@ -101,7 +103,7 @@
         <p>次企業參訪</p>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-6">
+    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target1d" class="whatyouget">20</div></div>
@@ -109,7 +111,7 @@
         <p>堂專業課程</p>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-6">
+    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target1" class="counter">16</div></div>
@@ -117,7 +119,7 @@
         <p>屆學長姐</p>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-6">
+    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target4" class="counter">35</div></div>
@@ -125,7 +127,7 @@
         <p>計畫夥伴</p>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-6">
+    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target3" class="counter">100+</div></div>
@@ -133,7 +135,7 @@
         <p>生涯導師</p>
       </div>
     </div>
-    <div class="col-md-3 col-sm-6 col-xs-6">
+    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target2" class="counter">400+</div></div>
@@ -147,7 +149,7 @@
 <div class=" part-fourFuture" style="background: linear-gradient(-45deg, #FFDD55,#DDFF77);">
   <h4 class="fourtitle">─ 資訊種子三大核心理念 ─</h4>
   <div class="row fourDiv">
-    <div class="col-md-4 col-sm-12 col-xs-12">
+    <div data-aos="zoom-in-up" class="col-md-4 col-sm-12 col-xs-12">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div></div></div>
@@ -159,7 +161,7 @@
       <p>- 職場軟硬實力累積 -</p>
       <p>- 專案領導與規劃 -</p>
     </div>
-    <div class="col-md-4 col-sm-12 col-xs-12">
+    <div data-aos="zoom-in-up" class="col-md-4 col-sm-12 col-xs-12">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div></div></div>
@@ -171,7 +173,7 @@
       <p>- 職涯方向找尋 -</p>
       <p>- 履歷回饋點評 -</p>
     </div>
-    <div class="col-md-4 col-sm-12 col-xs-12">
+    <div data-aos="zoom-in-up" class="col-md-4 col-sm-12 col-xs-12">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div></div></div>
@@ -511,3 +513,9 @@ section::after {
   });
 });
 </script>
+<script>
+      AOS.init({
+        easing: 'ease-out-back',
+        duration: 1000
+      });
+    </script>
