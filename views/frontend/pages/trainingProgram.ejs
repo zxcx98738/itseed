@@ -34,7 +34,7 @@
             </div>
             <div class="trainingProgram-container">
                 <ul class="row">
-                    <li class="col-md-4 col-sm-6 col-xs-12">
+                    <li class="col-md-4 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
                         <div class="content">
                             <p class="six-title">TUV專案</p>
                             <p class="six-description">Top Up Our Value</p>
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="col-md-4 col-sm-6  col-xs-12 ">
+                    <li class="col-md-4 col-sm-6  col-sm-offset-0 col-xs-10 col-xs-offset-1">
                         <div class="content">
                             <p class="six-title">TUV專案</p>
                             <p class="six-description">Top Up Our Value</p>
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="col-md-4 col-sm-6 col-xs-12">
+                    <li class="col-md-4 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
                         <div class="content">
                             <p class="six-title">TUV專案</p>
                             <p class="six-description">Top Up Our Value</p>
@@ -61,7 +61,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="col-md-4 col-sm-6 col-xs-12">
+                    <li class="col-md-4 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
                         <div class="content">
                             <p class="six-title">TUV專案</p>
                             <p class="six-description">Top Up Our Value</p>
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="col-md-4 col-sm-6 col-xs-12">
+                    <li class="col-md-4 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
                         <div class="content">
                             <p class="six-title">TUV專案</p>
                             <p class="six-description">Top Up Our Value</p>
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                     </li>
-                    <li class="col-md-4 col-sm-6 col-xs-12">
+                    <li class="col-md-4 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1">
                         <div class="content">
                             <p class="six-title">TUV專案</p>
                             <p class="six-description">Top Up Our Value</p>
@@ -144,15 +144,28 @@
                 <div>企業參訪</div>
             </div>
             <div class="trainingProgram-enterprise-wrapper">
-                <ul>
-                    <li>
+                <ul class="row">
+                    <li class="col-lg-3 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                        <div class="enterprise-name">
+                            <div class="enterprise-block"></div>
+                            <p>蝦皮購物 shopee</p>
+                        </div>
+                    </li>
+                    <li class="col-lg-3 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
                         <div class="enterprise-name">
                             <p>蝦皮購物 shopee</p>
                         </div>
                     </li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li class="col-lg-3 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                        <div class="enterprise-name">
+                            <p>蝦皮購物 shopee</p>
+                        </div>
+                    </li>
+                    <li class="col-lg-3 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                        <div class="enterprise-name">
+                            <p>蝦皮購物 shopee</p>
+                        </div>
+                    </li>
                 </ul>
             </div>
     </div>
@@ -168,16 +181,17 @@
     margin-top: 33px;
 }
 .trainingProgram-main p{
+    margin: 0 auto;
     margin-top: 42px;
-    margin-left: 72px;
+    /* margin-left: 72px; */
     font-size: 20px;
     border: 1px #00a0e8 solid;
     border-radius: 2px;
     border-width: 3px;
-    width: 50%;
+    width: 60%;
     text-align: center;
     padding: 8px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 }
 .trainingProgram-main ul{
     display: flex;
@@ -195,13 +209,57 @@
     border-radius:50%;
     list-style: none;
     min-width: 200px;
-    min-height: 330px;
-    margin-bottom: 30px;
+    min-height: 200px;
+    margin-right: 20px;
 
+    /* margin-bottom: 30px; */
 }
 .trainingProgram-main ul li:last-child{
-    margin-bottom: 0;
+    /* margin: 0; */
+    /* margin-left: 0; */
+    margin-right: 0;
 }
+@media screen and (max-width: 800px){
+    .trainingProgram-main ul{
+        display: block;
+    }
+    .trainingProgram-main ul li{
+        /* width: 300px;
+        height: 300px; */
+        width: 240px;
+        height:  240px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    .trainingProgram-main ul li:last-child{
+        margin: 0 auto;
+    }
+    .trainingProgram-main p{     
+        font-size: 16px;
+    }
+}
+@media screen and (max-width: 480px){
+    .trainingProgram-main ul{
+        display: block;
+        margin-bottom: 30px;
+    }
+    .trainingProgram-main ul li{
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    .trainingProgram-main ul li:last-child{
+        margin: 0 auto;
+    }
+    .trainingProgram-main p{
+        
+        font-size: 16px;
+        width: 300px;
+        margin: 20px auto;
+    }
+}
+
 /* 六大專案 */
 .trainingProgram-container{
     margin-left: 5%;
@@ -220,23 +278,27 @@
     border: 1px #9B9833 solid;
     border-radius: 1px;
     position: relative;
-    
     padding-left: 24px;
+    padding-right: 24px;
     padding-top: 20px;
     margin-top: 50px;
-    min-height: 250px;
+    height: 0;
+    padding-bottom: 66%;
+    /* max-width: 325px; */
+    /* max-height: 243px; */
     /* min-width: 310px; */
 }
-.trainingProgram-six ul li {
-
-    /* margin-left: 50px; */
+.content:hover{
+    box-shadow:4px 4px 3px rgba(10%,10%,40%,0.3);
+    transition: box-shadow 0.2s ease-in-out;
 }
 .trainingProgram-six ul li:last-child{
-    margin-bottom: 84px;
+    margin-bottom: 0px;
 }
+
 .six-title{
     font-family: PingFangTC-Regular;
-    font-size: 4rem;
+    font-size: 32px;
     line-height: 45px;
     color: #A09D3E;
 }
@@ -254,7 +316,7 @@
 }
 .six-description{
     font-family: PingFangTC-Regular;
-    font-size: 32px;
+    font-size: 26px;
     color: #000000;
     margin-top: 20px;
 }
@@ -282,14 +344,35 @@
   transition-delay: 2s;
   /* font-size: 36px; */
 }
-@media screen and (max-width: 1200px){
-    .trainingProgram-six-container .content{
-        height: 180px;
+@media screen and (max-width: 400px){
+    .trainingProgram-six{
+        padding-top: 0;
     }
-}
-@media screen and (max-width: 900px){
-    .trainingProgram-six-container .content{
-        height: 200px;
+
+    .trainingProgram-six  .content {
+        padding-left: 0;
+        padding-top: 0;
+        padding-right: 0;
+        /* padding-bottom: 0; */
+        /* width: 300px; */
+
+    }
+    .trainingProgram-six  .content .six-title::before{
+        display: none;
+    }
+    .trainingProgram-six  .content .six-title{
+        position: relative;
+        width: 100%;
+        text-align: center;
+        font-size: 20px;
+        padding-top: 0;
+        /* padding-bottom: 50px; */
+    }
+    .trainingProgram-six  .content .six-description{
+        font-size: 12px;
+        /* margin: 0 auto; */
+        margin-top: 10px;
+        text-align: center;
     }
 }
 /* 課程 */
@@ -313,7 +396,10 @@
     position: relative;
     border-radius: 3px;
 }
-
+.learn-more{
+    display: none;
+    
+}
 .learn-more a:hover{
     background-color: #48697C;
     color: white;
@@ -334,69 +420,71 @@
     background-color: #fff;
 }
 /* 企業參訪 */
-.trainingProgram-enterprise{
-    margin-bottom: 100px;
-}
 .trainingProgram-enterprise-wrapper{
-    width: 100%;
-    height: 20vw;
-    /* padding-bottom: 220px; */
-    background-color: #D9E9D6;
-}
-.trainingProgram-enterprise-wrapper ul{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     height: 100%;
-    overflow: scroll;
+    background-color: #D9E9D6;
+    padding: 20px 20px;
+}
+ .trainingProgram-enterprise-wrapper ul{
+    width: 100%;
 }
 .trainingProgram-enterprise-wrapper ul li{
-    width: 21%;
-    height: 0;
-    padding-bottom: 16.8%;
-    background-color: red;
+    padding: 0 20px;
 }
 
-@media screen and (max-width: 600px){
-    .trainingProgram-enterprise-wrapper{
-        /* background-color: black; */
-        height: 100%;
-    }
-    .trainingProgram-enterprise-wrapper ul{
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding-top: 20px;
-        margin: 20px auto;
-    }
-    .trainingProgram-enterprise-wrapper ul li{
+.trainingProgram-enterprise-wrapper .enterprise-name{
+    background-color: red;
+    height: 0;
+    padding-bottom: 76%;
+    width:  100%;
+    margin-bottom: 20px;
+    /* margin-right: 20px; */
+    /* min-width: 300px; */
+    /* max-width: 300px;
+    max-height: 228px; */
+    /* margin-bottom: 20px; */
+} 
+.trainingProgram-enterprise-wrapper .enterprise-block{
+    
+}
+@media screen and (max-width: 750px){
+    .trainingProgram-enterprise-wrapper .enterprise-name{
+        padding: 0;
         width: 300px;
         height: 228px;
+        margin: 0 auto;
         margin-bottom: 20px;
-        margin-right: 5px;
+    }
+    .trainingProgram-enterprise-wrapper ul li{
+        padding: 0;
+    }
+}
+@media screen and (max-width: 350px){
+    .trainingProgram-enterprise-wrapper .enterprise-name{
+        padding: 0;
+        width: 200px;
+        height: 167px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+    .trainingProgram-enterprise-wrapper ul li{
+        padding: 0;
     }
 }
 
 
-/* .course-background .course-class{
-    color: #8DC5E4;
-    opacity: 0.59;
-    position: absolute;
-    font-size: 2.5vw;
-    z-index: -999;
-}
-.course-background .course-number{
-    color: #8DC5E4;
-    opacity: 0.59;
-    position: absolute;
-    font-size: 10vw;
-    top: 0;
-    right: 0;
-    top: 0;
-    z-index: -999;
-} */
 
 </style>
+<script>
+    
+$( ".content" ).mouseover(function() {
 
+    $(this).find('.learn-more').show(800);
+});
+$( ".content" ).mouseleave(function() {
+    $(this).find('.learn-more').css( "display", "none" );
+});
+</script>
 
 <!--FOOTER-->
 <% include ../footer %>
