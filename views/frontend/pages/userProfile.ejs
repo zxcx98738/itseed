@@ -10,7 +10,7 @@
 
 <section class="section-profile" id="profile">
 	<% include ../pages/checkFile %>
-	<div class="container">
+	<div class="container" id="sub_profile" style="background-color : white;">
 		<div class="sub-title clearfix">
 			<div></div>
 			<div></div>
@@ -50,9 +50,9 @@
 						<label class="col-sm-3 col-xs-12 " for="phone">姓名<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.name == null){%>
-								<input type="text" name="name" class="btn-block none-border-field" id="name" placeholder="ex: 林資種" autocomplete="off">
+								<input required="required" type="text" name="name" class="btn-block none-border-field" id="name" placeholder="ex: 林資種" autocomplete="off">
 							<% } else{ %>
-								<input type="text" name="name" class="btn-block none-border-field" id="name" placeholder="請輸入真實姓名*" value="<%= user.name %>" autocomplete="off">
+								<input required="required" type="text" name="name" class="btn-block none-border-field" id="name" placeholder="請輸入真實姓名*" value="<%= user.name %>" autocomplete="off">
 							<% } %>
 						</div>
 						<p class="col-sm-3 col-xs-12 " style="height: 40px;"></p>
@@ -63,9 +63,9 @@
 						<label class="col-sm-3 col-xs-12 " for="phone">連絡電話<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.phone == null){%>
-								<input type="text" name="phone" class="none-border-field btn-block " id="phone" placeholder="ex: 0800090000" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')" >
+								<input required="required" type="text" name="phone" class="none-border-field btn-block " id="phone" placeholder="ex: 0800090000" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')" >
 							<% } else{ %>
-								<input type="text" name="phone" class="none-border-field btn-block" id="phone" placeholder="ex: 0800090000" value="<%= user.phone %>" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+								<input required="required" type="text" name="phone" class="none-border-field btn-block" id="phone" placeholder="ex: 0800090000" value="<%= user.phone %>" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 							<% } %>
 						</div>
 						<p class="col-sm-3 col-xs-12 " style="height: 40px;"></p>
@@ -76,16 +76,16 @@
 							<div class="col-sm-3 col-xs-12" >
 								<label class="radio-inline" > 
 									<% if(user.gender == "M"){%>
-										<input type="radio" name="gender" value="M" checked> 男
+										<input required="required" type="radio" name="gender" value="M" checked> 男
 									<% } else{ %>
-										<input type="radio" name="gender" value="M"> 男
+										<input required="required" type="radio" name="gender" value="M"> 男
 									<% } %>
 								</label>
 								<label class="radio-inline" style="padding-left: 20px;">
 									<% if(user.gender == "F"){%>
-										<input type="radio" name="gender" value="F" checked> 女
+										<input required="required" type="radio" name="gender" value="F" checked> 女
 									<% } else{ %>
-										<input type="radio" name="gender" value="F"> 女
+										<input required="required" type="radio" name="gender" value="F"> 女
 									<% } %>
 								</label>
 							</div>
@@ -97,9 +97,9 @@
 						<label class="col-sm-3 col-xs-12" for="school">就讀學校<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.school == null){%>
-								<input type="text" name="school" class="none-border-field btn-block" id="school" placeholder="ex: 資種大學">
+								<input required="required" type="text" name="school" class="none-border-field btn-block" id="school" placeholder="ex: 資種大學">
 							<% } else{ %>
-								<input type="text" name="school" class="none-border-field btn-block" id="school" placeholder="ex: 資種大學" value="<%= user.school %>">
+								<input required="required" type="text" name="school" class="none-border-field btn-block" id="school" placeholder="ex: 資種大學" value="<%= user.school %>">
 								<% } %>
 							</div>
 							<p class="col-sm-3 col-xs-12 "></p>
@@ -109,9 +109,9 @@
 						<label class="col-sm-3 col-xs-12" for="dept">系所<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.dept == null){%>
-								<input type="text" name="dept" class="none-border-field btn-block" id="dept" placeholder="ex: 資訊管理學系">
+								<input required="required" type="text" name="dept" class="none-border-field btn-block" id="dept" placeholder="ex: 資訊管理學系">
 							<% } else{ %>
-								<input type="text" name="dept" class="none-border-field btn-block" id="dept" placeholder="ex: 資種大學" value="<%= user.dept%>">
+								<input required="required" type="text" name="dept" class="none-border-field btn-block" id="dept" placeholder="ex: 資種大學" value="<%= user.dept%>">
 							<% } %>
 						</div>
 						<p class="col-sm-3 col-xs-12 "></p>
@@ -121,9 +121,9 @@
 						<label class="col-sm-3 col-xs-12" for="grade">年級<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.grade == null){%>
-								<input type="text" name="grade" class="none-border-field btn-block" id="grade" placeholder="ex: 三年級">
+								<input required="required" type="text" name="grade" class="none-border-field btn-block" id="grade" placeholder="ex: 三年級">
 								<% } else{ %>
-									<input type="text" name="grade" class="none-border-field btn-block" id="grade" value="<%= user.grade %>" placeholder="ex:三年級">
+									<input required="required" type="text" name="grade" class="none-border-field btn-block" id="grade" value="<%= user.grade %>" placeholder="ex:三年級">
 									<% } %>
 
 						</div>
@@ -299,7 +299,8 @@
 	font-size: 16px;
 }
 </style>
-
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 <script type="text/javascript">
 var school_list = JSON.parse('<%-JSON.stringify(school)%>');
 var dept_list = JSON.parse('<%-JSON.stringify(dept)%>');
