@@ -73,7 +73,7 @@
     <section id="Mark_gotoNext" class="gotonext">
        <a href="#part_fourFuture"><span></span></a>
     </section>
-
+<button type="button" id="BackTop" class="toTop-arrow"></button>
 <!-- <div class="gototpo" style="width:400px; z-index:100px; position:absolute; right:20px; float:right; background:#eea; ">Top</div> -->
 
 <div class=" part-fourFuture" id="part_fourFuture" style="background: linear-gradient(-45deg, #77DDFF,#99BBFF);">
@@ -152,7 +152,7 @@
     <div data-aos="zoom-in-up" class="col-md-4 col-sm-12 col-xs-12">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
-          <div class="circleintext"><div></div></div>
+          <div class="circleintext"><img src="/images/index/share.jpg"></div>
         </div>
         <p>分享</p>
       </div>
@@ -164,7 +164,7 @@
     <div data-aos="zoom-in-up" class="col-md-4 col-sm-12 col-xs-12">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
-          <div class="circleintext"><div></div></div>
+          <div class="circleintext"><img src="/images/index/feedback.jpg"></div>
         </div>
         <p>回饋</p>
       </div>
@@ -176,7 +176,7 @@
     <div data-aos="zoom-in-up" class="col-md-4 col-sm-12 col-xs-12">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
-          <div class="circleintext"><div></div></div>
+          <div class="circleintext"><img src="/images/index/passdown.jpg"></div>
         </div>
         <p>傳承</p>
       </div>
@@ -190,7 +190,7 @@
 
 <div class=" part-fourFuture" style="background: linear-gradient(-45deg, #99FF99,#FF8888);">
   <div class="row fourDiv">
-    <div class="col-md-6 col-sm-12 col-xs-12">
+    <div  data-aos="zoom-in-up" class="col-md-6 col-sm-12 col-xs-12">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;height:360px;">
           <!-- <video width="100%" height="100%" controls>
@@ -203,7 +203,7 @@
         <p></p>
       </div>
     </div>
-    <div class="col-md-6 col-sm-12 col-xs-12">
+    <div data-aos="zoom-in-up" class="col-md-6 col-sm-12 col-xs-12">
       <div class="tilteDiv">
         <h4 class="fourtitle" style="width: 100%;color: black;"> Seed for Change, Change for the Better </h4><br>
           <p style="font-size: 15px;color: black;line-height: 30px;">我們都像一顆顆在大海沉浮的迷惘種子，</p>
@@ -225,7 +225,20 @@
   <button><a href="/login">馬上報名</a></button>
 </div>
 
-
+<script>
+$(function(){
+  $('#BackTop').click(function(){ 
+    $('html,body').animate({scrollTop:0}, 333);
+  });
+  $(window).scroll(function() {
+    if ( $(this).scrollTop() > 300 ){
+      $('#BackTop').fadeIn(222);
+    } else {
+      $('#BackTop').stop().fadeOut(222);
+    }
+  }).scroll();
+});
+</script>
 
 <script type="text/javascript">
 
@@ -453,7 +466,12 @@ section::after {
         width: 180px; /*128px*/
         height: 180px;
         border-radius: 999em; 
-        border: 2px solid black; 
+        /*border: 1px solid black;*/ 
+      }
+      .circleintext>img{
+        width: 180px; /*128px*/
+        height: 180px;
+        border-radius: 999em; 
       }
       .circleintext div { 
         position:relative;
@@ -473,6 +491,11 @@ section::after {
         .circleintext{ 
         background: white; 
         width: 160px; /*90px*/
+        height: 160px;
+        border-radius: 999em; 
+      }
+      .circleintext>img{
+        width: 160px; /*128px*/
         height: 160px;
         border-radius: 999em; 
       }
@@ -496,6 +519,11 @@ section::after {
         height: 140px;
         border-radius: 999em; 
       }
+      .circleintext>img{
+        width: 140px; /*128px*/
+        height: 140px;
+        border-radius: 999em; 
+      }
       .circleintext div { 
         left: 34%; 
         top: 30%; 
@@ -504,6 +532,88 @@ section::after {
         font-size: 25px;
       }
     }
+
+/* 56px */
+.toTop-arrow {
+    display: block;
+    position: fixed;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: #666666;
+    width: 50px;
+    height: 50px;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.toTop-arrow::before, .toTop-arrow::after {
+  width: 26px;
+  height: 3px;
+  border-radius: 3px;
+  background: white;
+  position: absolute;
+  content: "";
+}
+.toTop-arrow::before {
+  transform: rotate(-45deg) translate(0, -50%);
+  left: 0.4rem;
+}
+.toTop-arrow::after {
+  transform: rotate(45deg) translate(0, -50%);
+  right: 0.4rem;
+}
+
+/*.toTop-arrow {
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 33%;
+  opacity: 0.6;
+  background: #000;
+  cursor: pointer;
+  position:fixed;
+  right: 1rem;
+  bottom: 1rem;
+  display: none;
+}
+.toTop-arrow::before, .toTop-arrow::after {
+  width: 31px;
+  height: 7px;
+  border-radius: 3px;
+  background: #f90;
+  position: absolute;
+  content: "";
+}
+.toTop-arrow::before {
+  transform: rotate(-45deg) translate(0, -50%);
+  left: 0.4rem;
+}
+.toTop-arrow::after {
+  transform: rotate(45deg) translate(0, -50%);
+  right: 0.4rem;
+}
+.toTop-arrow:focus {outline: none;}*/
 </style>
 <script type="text/javascript">
   $(function() {
