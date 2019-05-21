@@ -152,7 +152,27 @@ module.exports = {
             res.end(JSON.stringify(err));
         });
     },
+    // 培訓計畫
+    trainingProgram: function(req, res){
+        var model = CourseInfo; 
+        var action = CmsService.getAction(model);
+        var now = new Date();
+        var criteria = {   
+            where: { status: "P" }, 
+            sort: { order: "asc" }
+        }
+        var courses = [];
+        CmsService.findPosts(model, criteria)
+        .then(function(datas){
+            return res.view('frontend/pages/trainingProgram', {
+                datas: datas
+            });
+        })
+        .catch(function(err){
+            res.end(JSON.stringify(err));
+        });
 
+    },
     //歷屆課程
     courseList: function(req, res){
         var model = CourseList; 
@@ -186,6 +206,7 @@ module.exports = {
             where: { status: "P" }, 
             sort: { order: "asc" }
         }
+        console.log(action);
 
         CmsService.findPosts(model, criteria)
         .then(function(datas){
@@ -208,7 +229,6 @@ module.exports = {
         var criteria = {   
             id: req.param("id")
         }
-
         CmsService.findOnePost(model, criteria)
         .then(function(data){
             data.formatTime = CmsService.formatTime(data.createdAt);

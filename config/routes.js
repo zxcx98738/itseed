@@ -158,7 +158,8 @@ module.exports.routes = {
     action: 'timeline'
   }, 
   '/trainingProgram':{
-    view: 'frontend/pages/trainingProgram'
+    controller: 'Site',
+    action: 'trainingProgram'
   },
   '/faq': {
     controller: 'Site',
