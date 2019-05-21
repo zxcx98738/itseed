@@ -14,13 +14,13 @@ module.exports = function (req, res, next) {
     //console.log(typeof req.session.authorized);
     //console.log(req.session.authorized.user);
     //console.log(req.session)
-    if (req.session.authorized !== "undefined" && req.session.authorized.user == true){
-        if (req.session.finished == 1){
+    if (typeof req.session.authorized !== "undefined" && req.session.authorized.user == true){
+        if (typeof req.session.finished !== "undefined" && req.session.finished== 1){
             return res.redirect(`/finish`);
         }
         return next();
     }
     // User is not allowed
     // (default res.forbidden() behavior can be overridden in `config/403.js`)
-    return res.redirect(`/login`);
+    return res.redirect(`/login?redirect=${req.path}`);
 };
