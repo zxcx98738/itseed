@@ -19,36 +19,37 @@
   
   <div id="myCarousel"  class="carousel slide" data-ride="carousel">
     <!-- Carousel indicators -->
-    <!-- <ol class="carousel-indicators">
+    <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol> -->
+    </ol>
     <!-- Wrapper for carousel items -->
+
     <div class="carousel-inner">
       <div class="item landing-img active">
-        <a href="/regInfo" target="_blank" >
+        <a onclick="window.location.href='/regInfo'" target="_blank" style="cursor: pointer;">
           <img src="images/index/section16-1.jpg" alt="First Slide">
         </a>
       </div>
-      <!-- <div class="item landing-img">
-        <a href="/seminar" target="_blank" >
-          <img src="/images/activity-seminar.jpg" alt="Second Slide">
+      <div class="item landing-img">
+        <a  onclick="window.location.href='/seminar'" target="_blank" style="cursor: pointer;">
+          <img src="/images/activity-seminar_16.jpg" alt="Second Slide">
         </a>
       </div>
       <div class="item landing-img">
-        <a href="/workshop" target="_blank">
-          <img src="/images/activity-workshop.png" alt="Third Slide">
+        <a onclick="window.location.href='/workshop'" target="_blank" style="cursor: pointer;">
+          <img src="/images/activity-workshop_16.jpg" alt="Third Slide">
         </a>
-      </div> -->
+      </div>
     </div>
     <!-- Carousel controls -->
-    <!-- <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left"></span>
     </a>
     <a class="carousel-control right" href="#myCarousel" data-slide="next">
       <span class="glyphicon glyphicon-chevron-right"></span>
-    </a> -->
+    </a>
   </div>
 <div class="main">
   <img class="bg" src="/images/index/section15-2.jpg" alt="section15-2.jpg">
@@ -76,8 +77,10 @@
 <button type="button" id="BackTop" class="toTop-arrow"></button>
 <!-- <div class="gototpo" style="width:400px; z-index:100px; position:absolute; right:20px; float:right; background:#eea; ">Top</div> -->
 
+
 <div class=" part-fourFuture" id="part_fourFuture" style="background: linear-gradient(-45deg, #77DDFF,#99BBFF);">
   <h4 class="fourtitle">─ 資訊種子能帶給你什麼 ─</h4>
+
   <div class="row fourDiv">
     <div  data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
       <div class="tilteDiv">
@@ -362,7 +365,6 @@ $(function(){
 </script>
 
 </section>
-
 
 <!--FOOTER-->
 <% include ../footer %>

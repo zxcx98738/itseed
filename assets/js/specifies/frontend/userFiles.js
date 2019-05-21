@@ -83,10 +83,7 @@ $(function(){
         },
         autobiography: {
           required: "未選擇檔案",
-        },
-        receipt: {
-          required: "未選擇檔案",
-        },
+        }
       }
     });
   });
