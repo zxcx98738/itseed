@@ -5,7 +5,7 @@ $( document ).ready(function() {
   $("#form_progress").addClass('active');
   $("#finish_progress").addClass('active');
 });
-function finsih() {
+function finish() {
   var form = $(this).parents('form');   
   swal({
     title: '確定要繳交嗎?，不能再更改囉!',

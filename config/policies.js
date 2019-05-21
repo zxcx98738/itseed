@@ -50,7 +50,11 @@ module.exports.policies = {
     'checkPwd':true ,
     'logout':true,
     'login': true,
-    'google_login': true
+    'google_login': true,
+    'profile': 'isFinishedUser',
+    'form': 'isFinishedUser',
+    'disc': 'isFinishedUser',
+    'files': 'isFinishedUser'
   },
   CmsController: {
     '*': 'isLoginCms',

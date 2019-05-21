@@ -656,6 +656,7 @@ function registerAccount(res,newuser,callback){
                     req.session.email = user.email;
                     req.session.pwd = req.body.pwd;
                     req.session.type =  user.type;
+                    req.session.finished = user.finished;
                     req.session.authorized = {
                         user: true
                     }
@@ -696,6 +697,7 @@ function registerAccount(res,newuser,callback){
                   req.session.email = new_user.email;
                   req.session.gIdToken = new_user.gIdToken;
                   req.session.type = new_user.type;
+                  req.session.finished = new_user.finished;
                   req.session.authorized = {
                       user: true
                   }
@@ -734,6 +736,7 @@ function registerAccount(res,newuser,callback){
         delete(req.session.pwd);
         delete(req.session.type);
         delete(req.session.authorized);
+        delete(req.session.finished);
         res.redirect("/");
     },
     //個人資料
