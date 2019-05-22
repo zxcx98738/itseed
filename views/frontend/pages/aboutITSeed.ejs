@@ -5,20 +5,30 @@
 <section class="section-aboutITSeed">
   <% include ./sub-nav %>
   <div class="main-title-div">
-    <div class="line-and-circle">
+    <!-- <div class="line-and-circle">
       <div class="line"></div>
       <div class="circle"></div>
+    </div> -->
+    <div class="sub-title clearfix">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div>計畫簡介</div>
     </div>
-    <h1>計畫簡介</g1>
   </div>
   <div class="container">
     <div class="row">
       <div class="col-sm-10 col-sm-offset-1">
         <div style="margin-top: 20px;">
           <!-- <video src="" style="background:rgb(252,228,228); width:100%"></video> -->
-          <div class="word-12pt project-content-style">
+          <div class="word-12pt project-content-style" style="font-family: PingFangTC-Regular;font-size: 24px;color: #000000;">
             <!-- <br> -->
-            <%- datas[0].content %>
+            <p>2003 年，由新北市電腦同業公會創建了「資訊種子培訓計畫」，提供給不限科系大三到碩二有志投身IT產業的各大專院校學生，計畫核心價值為<b>「分享、回饋、傳承」</b>，學員通過書審與面試後，即可加入為期一年的免費培訓計畫。</p><br>
+
+            <p>透過系統性的培訓課程與實務專案經驗累積，期許結業學員獲得跨領域產業知識、正確職場態度、提高思考深度與廣度，並累積產業人脈存摺，成為全方位人才，並從中摸索自己的天賦才能。</p><br>
+
+            <p>目前培訓計畫即將邁入第十七屆，廣納各大專院校不同科系背景之學員，累積培養400多位校友投身各產業服務及創業，同時回歸資訊種子進行傳承，締造累積與循環。</p>
+            <!-- <%- datas[0].content %> -->
           </div>
           <!--<h3><#% datas[0].title %></h3>-->
           <!--<div><#% datas[0].content %></div>-->
@@ -27,87 +37,53 @@
       </div>
     </div>
   </div>
-  
-  <div class="data2">
-  <div class="whatyouget">
-      <div class="number">
-        <p class="number1">1</p>
-        <p class="number2">年學習</p>
-      </div>
-      <div class="number">
-        <p class="number1">6</p>
-        <p class="number2">大專案</p>
-      </div>
-      <div class="number">
-        <p class="number1">4</p>
-        <p class="number2">次企業參訪</p>
-      </div>
-      <div class="number">
-        <p class="number1">20</p>
-        <p class="number2">堂課程</p>
-      </div>
-  </div>
-  
-  <div class="counter">
-    <div class="number">
-      <p id="target1" class="number1">15</p>
-      <p class="number2">屆累積</p>
-    </div>
-    <div class="number">
-      <p id="target4" class="number1">35</p>
-      <p class="number2">位緊密夥伴</p>
-    </div>
-    <div class="number">
-      <p id="target3" class="number1">100+</p>
-      <p class="number2">生涯導師</p>
-    </div>
-    <div class="number">
-      <p id="target2" class="number1">400+</p>
-      <p class="number2">校友人脈</p>
-    </div>
-  </div>
-  <div class="cloud cloud1"></div>
-  <div class="cloud cloud2"></div>
-  <div class="cloud cloud3"></div>
-  <div class="cloud cloud4"></div>
-</div>
 
   <div class="container four-big">
     <div>
-      <h2 class="aboutITSeed title">- 培訓內容 - </h2>
+      <!-- <h2 class="aboutITSeed title">- 培訓內容 - </h2> -->
+      <h1 style="color: #144989">培訓計畫資源</h1>
+      <hr style="border: 0;height: 2px;background: #394B7A;background-image: linear-gradient(to right,#A5B6E3,#394B7A, #A5B6E3);" />
     </div>
     <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+      <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
         <div class="card">
-          <div class="four-big-title"><span>01 </span><%- datas[1].title %></div>
-          <hr>
-          <div class="content" ><%- datas[1].content %></div>
+          <div class="four-big-title">
+            <span><!-- <%- datas[1].title %> -->定期培訓課程、企業參訪</span></div>
+          <div class="content"><!-- <%- datas[1].content %> -->
+            <p>・累積跨領域知識</p>
+            <p>・提升對於職場的認識</p>
+            <p>・職涯發展探索</p>
+          </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+      <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
         <div class="card">
-          <div class="four-big-title"><span>02 </span><%- datas[2].title %></div>
-          <hr>
-          <div class="content" ><%- datas[2].content %></div>
+          <div class="four-big-title">
+            <span>實戰專案執行經驗</span><!-- <%- datas[2].title %> --></div>
+          <div class="content" ><!-- <%- datas[2].content %> -->
+            <p>・發揮科系專業及自身專長</p>
+            <p>・累積專案實戰經驗</p>
+          </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+      <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
         <div class="card">
-          <div class="four-big-title"><span>03 </span><%- datas[3].title %></div>
-          <hr>
-          <div class="content" ><%- datas[3].content %></div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="card">
-          <div class="four-big-title"><span>04 </span><%- datas[4].title %></div>
-          <hr>
-          <div class="content" ><%- datas[4].content %></div>
+          <div class="four-big-title">
+            <span>資訊種子校友會</span><!-- <%- datas[3].title %> --></div>
+          <div class="content" ><!-- <%- datas[3].content %> -->
+            <p>・整合人脈資源</p>
+            <p>・提供職涯諮詢</p>
+            <p>・專案上的資源／建議</p>
+            <div align="right">
+              <button onclick="window.location.href='/aboutITSeed'" class="AfterSeed">近一步了解校友會</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 <!--FOOTER-->
 <% include ../footer %>
