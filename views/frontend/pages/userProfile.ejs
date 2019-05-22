@@ -1,4 +1,3 @@
-
 <script src="/js/specifies/jquery.validate.min.js"></script>
 <script src="/js/specifies/messages_zh_TW.min.js"></script>
 <script src="/js/specifies/frontend/userProfile.js"></script>
@@ -142,24 +141,9 @@
 						<p class="col-sm-3 col-xs-12" style="height: 40px;">※ 此選項<b>不影響</b>徵選結果</p>
 					</div>
 					<div class="form-border "></div>
-					<!-- <div class="form-group">
-						<div class="form-sub-title">
-								<label class="col-sm-120 col-xs-12" >請問你是透過何種管道得知資種？（可複選）</label>
-						</div>
-						<div class="col-sm-12 col-xs-12">
-							<label><input type="checkbox" name="survey" value="海報" />　海報　</label>
-							<label><input type="checkbox" name="survey" value="說明會" />　說明會　</label>
-							<label><input type="checkbox" name="survey" value="工作坊" />　工作坊　</label>
-							<label><input type="checkbox" name="survey" value="FB粉專" />　FB粉專（懶人包、宣傳影片等）　</label>
-							<label><input type="checkbox" name="survey" value="官網" />　官網　</label>
-							<label><input type="checkbox" name="survey" value="Blink" />　Blink　</label>
-							<label><input type="checkbox" name="survey" value="親朋好友推薦" />　親朋好友推薦　</label>
-							<label><input type="checkbox" name="survey" class="survey-other" value="其他" />　其他：<input hidden type="text" class="survey-input"></label>
-						</div>
-					</div> -->
 					<div class="form-sub-title">
-							<label class="col-sm-12 col-xs-12" >請問你是透過何種管道得知資種？（可複選）</label>
-
+							<label class="col-sm-120 col-xs-12" >請問你是透過何種管道得知資種？（可複選）</label>
+					</div>
 					<div class="form-group" style="margin-left: 15%;">
 							<div class="col-sm-12 col-xs-12">
 								<label><input type="checkbox" name="survey" value="海報" />　海報　</label>
@@ -172,7 +156,9 @@
 								<label><input type="checkbox" name="survey" class="survey-other" value="其他" />　其他：<input hidden type="text" class="survey-input"></label>
 							</div>
 						</div>
-
+<!-- 					<div class="col-sm-12 col-xs-12 text-center">
+						<hr>
+						<button type="submit" class="btn-lg btn-yellow" style="color:white;" >儲存個人資料</button>
 					</div> -->
 					<div class="col-sm-12 col-xs-12 text-center" style="margin-top: 5vh; margin-bottom: 5vh;">
 						<button onclick="window.location.href='/disc';window.event.returnValue=false;" class="btn-change btn-lg btn-default" >上一步</button>
@@ -184,41 +170,10 @@
 
 	</div>
 </section>
-
-    <script>
-		let source_reulst_text = "<%= user.survey %>";
-		source_reulst_text.split(',').forEach(str => {
-			if(str.indexOf('其他:') > -1){
-				$('input[value="其他"]').prop('checked', true);
-				$('input.survey-input').show();
-				$('input.survey-input').val(str.split('其他:')[1]);
-			}else{
-				$(`input[value='${str}']`).prop('checked', true);
-				$(`input[value='${str}']`).parent("label").addClass('active');
-			}
-		});
-		$('input.survey-other').click(function(){
-			if( $(this).prop("checked") ){
-				$('input.survey-input').show();
-			}else{
-				$('input.survey-input').hide();
-			}
-		})
-		$('input.survey-input').keyup(function(){
-			$('input.survey-other').val( '其他:' + $(this).val() );
-		}) 
-		
-
-		var button = $('button');
-			button.on('click', function () {
-			$(this).toggleClass('active');
-			// $(this).toggle('checked');
-		});    
-		
-    </script>
-</section>
-
-<style>
+<!--FOOTER-->
+<% include ../footer %>
+<!--END FOOTER-->
+<style type="text/css">
 .form-border{
 	border-top: rgba(0, 0, 0, 0.1) 2px solid;
 	width: 75%;
@@ -227,7 +182,6 @@
 }
 .none-border-field::placeholder{
 	color: #ccc;
-
 }
 .none-border-field{
 	position: relative;
@@ -262,7 +216,6 @@
 	margin-top: 4px;
 	color: #878787;
 }
-
 .form-sub-title{
     width: 100%;
     margin: 0 auto;
@@ -302,7 +255,6 @@
 }
 .btn-group .active{
 	background-color: #83B9D5;
-	color: white;
 	border-color: #83B9D5;
 }
 .applicant-text{
@@ -326,59 +278,14 @@
 .profile-upload .formatInfo{
 	font-size: 16px;
 }
-
-.container .survey-other-field{
-	position: relative;
-	/* margin-left: 25%; */
-	height: 30px;
-	font-size: 18px;
-	color: 	#0e1111;
-	font-weight: normal;
-	margin: 20px auto;
-	margin-left: 40%;
-	/* display: flex; */
-}
-.survey-input{
-	height: 35px;
-	padding-left: 10px;
-	border: 1px solid #83B9D5;
-	border-radius: 3px;
-}
-.survey-other-field input[type=checkbox] {
-	position: relative;
-		width: 10px;
-		height: 1px;
-}
-.survey-other-field input[type=checkbox]::before{
-		content:'';
-		position: absolute;
-		top: -17px;
-		left: 0;
-		width: 22px;
-		height: 22px;
-		line-height:22px;
-		text-align: center;
-		color:white;
-		font-size:16px;
-		background-color:#999;
-		border-radius: 4px;
-}
-.survey-other-field input[type=checkbox]:checked::before {
-		color:white;
-		background-color: #83B9D5;
-		content: 'v';
-}
 </style>
 <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 <script type="text/javascript">
 var school_list = JSON.parse('<%-JSON.stringify(school)%>');
 var dept_list = JSON.parse('<%-JSON.stringify(dept)%>');
-
 autocomplete(document.getElementById("school"), school_list, "school");
 autocomplete(document.getElementById("dept"), dept_list, "dept");
-
-
 let source_reulst_text = "<%= user.survey %>";
 		source_reulst_text.split(',').forEach(str => {
 			if(str.indexOf('其他:') > -1){
@@ -405,6 +312,5 @@ let source_reulst_text = "<%= user.survey %>";
 		var button = $('button');
 			button.on('click', function () {
 			$(this).toggleClass('active');
-		}); 
+		}); 
 </script>
-
