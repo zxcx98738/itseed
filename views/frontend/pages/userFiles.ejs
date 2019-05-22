@@ -15,11 +15,6 @@
 			<div></div>
 			<div>檔案上傳</div>
 		</div>
-		<% if(files.confirm == 1) {%>
-			<div class="row col-xs-12 disc-over">
-				<span>恭喜您已完成書審資料繳交</span>
-			</div>
-		<% }else {%>
 		<div class="row col-md-10 col-md-offset-1" style="margin-top: 5vh;">
 			<label for="autobiography" class="col-sm-2 col-xs-12">個人履歷：</label>
 			<div class="col-sm-8 col-xs-12">
@@ -43,12 +38,7 @@
 						}
 					%>
 					<a href="<%= files.autobiography %>"><%= url %></a>
-					<!-- <strong><%= url %></strong> -->
-					<!-- <br> -->
-					<!-- 上傳時間: -->
-					<!-- <b><%= files.autobiographyUT %></b> -->
-					<!-- <br><br> -->
-					<!-- <span>因系統因素，目前檔案上傳後無法檢視，但資料上傳功能皆正常，請報名者不用擔心！</span> -->
+
 				<input type="file" name="autobiography">
 				<button type="button" class="btn btn-default">選擇檔案</button>
 				<button type="submit" style="color:white;" class="btn btn-purple">上傳</button>
@@ -65,11 +55,7 @@
 						2. 建議內含：姓名、學歷、經歷、專長能力，及其他有利審查資料
 					</div>
 				
-					<!-- <div>
-						<span>學生證明</span>
-						學生證正反面影本或照片、研究所錄取證明書影本或照片
-					</div> -->
-					<!-- <p class="formatInfo"> -->
+
 						
 						檔案命名規則<b>「姓名_個人履歷」</b>。<br>
 						(如：報名者 陳資種，則將檔案命名為
@@ -77,13 +63,9 @@
 						<br><br>
 						上傳方式：點選「選擇檔案」，完成選取檔案後，點選「上傳」<br>
 						※ 可以重複上傳檔案<br>
-					<!-- </p> -->
+
 					</div>
-<!-- 					<div class="text-xs-center">
-						<input type="file" name="autobiography">
-						<button type="button" class="btn btn-default">選擇檔案</button>
-						<button type="submit" style="color:white;" class="btn btn-purple">上傳</button>
-					</div> -->
+
 				</form>
 				
 			</div>
@@ -113,13 +95,7 @@
 					%>
 					
 					<a href="<%= files.registration %>"><%= url %></a>
-					
-					<!-- <strong><%= url %></strong> -->
-					<!-- <br> -->
-					<!-- 上傳時間: -->
-					<!-- <b><%= files.registrationUT %></b> -->
-					<!-- <br> -->
-					<!-- <span>因系統因素，目前檔案上傳後無法檢視，但資料上傳功能皆正常，請報名者不用擔心！</span> -->
+
 				<input type="file" name="registration">
 				<button type="button" class="btn btn-default">選擇檔案</button>
 				<button type="submit" style="color:white;" class="btn btn-purple">上傳</button>					
@@ -134,11 +110,6 @@
 						1. 學生證正反面影本或照片、研究所錄取證明書影本或照片<br>
 					</div>
 				
-					<!-- <div>
-						<span>學生證明</span>
-						學生證正反面影本或照片、研究所錄取證明書影本或照片
-					</div> -->
-					<!-- <p class="formatInfo"> -->
 						
 						檔案命名規則<b>「姓名_學生證明」</b>。<br>
 						(如：報名者 陳資種，則將檔案命名為
@@ -146,13 +117,9 @@
 						<br><br>
 						上傳方式：點選「選擇檔案」，完成選取檔案後，點選「上傳」<br>
 						※ 可以重複上傳檔案<br>
-					<!-- </p> -->
+
 					</div>
-<!-- 					<div class="text-xs-center">
-						<input type="file" name="registration">
-						<button type="button" class="btn btn-default">選擇檔案</button>
-						<button type="submit" style="color:white;" class="btn btn-purple">上傳</button>
-					</div> -->
+
 				</form>
 			</div>
 		</div>
@@ -162,26 +129,7 @@
 					<button onclick="window.location.href='/form'" class="btn-lg btn-default">下一步</button>
 				</div>
 			</div>
-		<% } %>
-<!-- 		<hr>
-		<div class="row col-md-10 col-md-offset-1">
-			<label for="autobiography" class="col-sm-2 col-xs-12">貝殼集器：</label>
-			<div class="col-sm-8 col-xs-12">
-				<p class="formatInfo">
-					完成資料填寫後，請至貝殼集器繳交100元報名費<br>
-					繳交完畢後預計於三個工作天內回覆<br>
-					若三天內未收到回覆，請來信至itseed16th@gmail.com詢問<br>
-					<a  href=<%= process.env.payLink %> target="_blank">
-						<img alt="backme.png" src="/images/index/backme.png" class="backme">
-					</a>
-				</p>
-				<div class="text-xs-center">
-					<a href=<%= process.env.payLink %> target="_blank">
-						<button class="btn btn-purple" style="color:white; font-size: 15px;">馬上前往</button>
-					</a>
-				</div>
-			</div>
-		</div> -->
+
 	</div>
 </section>
 

@@ -10,7 +10,7 @@
 
 <section class="section-profile" id="profile">
 	<% include ../pages/checkFile %>
-	<div class="container">
+	<div class="container" id="sub_profile" style="background-color : white;">
 		<div class="sub-title clearfix">
 			<div></div>
 			<div></div>
@@ -50,9 +50,9 @@
 						<label class="col-sm-3 col-xs-12 " for="phone">姓名<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.name == null){%>
-								<input type="text" name="name" class="btn-block none-border-field" id="name" placeholder="ex: 林資種" autocomplete="off">
+								<input required="required" type="text" name="name" class="btn-block none-border-field" id="name" placeholder="ex: 林資種" autocomplete="off">
 							<% } else{ %>
-								<input type="text" name="name" class="btn-block none-border-field" id="name" placeholder="請輸入真實姓名*" value="<%= user.name %>" autocomplete="off">
+								<input required="required" type="text" name="name" class="btn-block none-border-field" id="name" placeholder="請輸入真實姓名*" value="<%= user.name %>" autocomplete="off">
 							<% } %>
 						</div>
 						<p class="col-sm-3 col-xs-12 " style="height: 40px;"></p>
@@ -63,9 +63,9 @@
 						<label class="col-sm-3 col-xs-12 " for="phone">連絡電話<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.phone == null){%>
-								<input type="text" name="phone" class="none-border-field btn-block " id="phone" placeholder="ex: 0800090000" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')" >
+								<input required="required" type="text" name="phone" class="none-border-field btn-block " id="phone" placeholder="ex: 0800090000" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')" >
 							<% } else{ %>
-								<input type="text" name="phone" class="none-border-field btn-block" id="phone" placeholder="ex: 0800090000" value="<%= user.phone %>" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+								<input required="required" type="text" name="phone" class="none-border-field btn-block" id="phone" placeholder="ex: 0800090000" value="<%= user.phone %>" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 							<% } %>
 						</div>
 						<p class="col-sm-3 col-xs-12 " style="height: 40px;"></p>
@@ -76,16 +76,16 @@
 							<div class="col-sm-3 col-xs-12" >
 								<label class="radio-inline" > 
 									<% if(user.gender == "M"){%>
-										<input type="radio" name="gender" value="M" checked> 男
+										<input required="required" type="radio" name="gender" value="M" checked> 男
 									<% } else{ %>
-										<input type="radio" name="gender" value="M"> 男
+										<input required="required" type="radio" name="gender" value="M"> 男
 									<% } %>
 								</label>
 								<label class="radio-inline" style="padding-left: 20px;">
 									<% if(user.gender == "F"){%>
-										<input type="radio" name="gender" value="F" checked> 女
+										<input required="required" type="radio" name="gender" value="F" checked> 女
 									<% } else{ %>
-										<input type="radio" name="gender" value="F"> 女
+										<input required="required" type="radio" name="gender" value="F"> 女
 									<% } %>
 								</label>
 							</div>
@@ -97,9 +97,9 @@
 						<label class="col-sm-3 col-xs-12" for="school">就讀學校<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.school == null){%>
-								<input type="text" name="school" class="none-border-field btn-block" id="school" placeholder="ex: 資種大學">
+								<input required="required" type="text" name="school" class="none-border-field btn-block" id="school" placeholder="ex: 資種大學">
 							<% } else{ %>
-								<input type="text" name="school" class="none-border-field btn-block" id="school" placeholder="ex: 資種大學" value="<%= user.school %>">
+								<input required="required" type="text" name="school" class="none-border-field btn-block" id="school" placeholder="ex: 資種大學" value="<%= user.school %>">
 								<% } %>
 							</div>
 							<p class="col-sm-3 col-xs-12 "></p>
@@ -109,9 +109,9 @@
 						<label class="col-sm-3 col-xs-12" for="dept">系所<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.dept == null){%>
-								<input type="text" name="dept" class="none-border-field btn-block" id="dept" placeholder="ex: 資訊管理學系">
+								<input required="required" type="text" name="dept" class="none-border-field btn-block" id="dept" placeholder="ex: 資訊管理學系">
 							<% } else{ %>
-								<input type="text" name="dept" class="none-border-field btn-block" id="dept" placeholder="ex: 資種大學" value="<%= user.dept%>">
+								<input required="required" type="text" name="dept" class="none-border-field btn-block" id="dept" placeholder="ex: 資種大學" value="<%= user.dept%>">
 							<% } %>
 						</div>
 						<p class="col-sm-3 col-xs-12 "></p>
@@ -121,9 +121,9 @@
 						<label class="col-sm-3 col-xs-12" for="grade">年級<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.grade == null){%>
-								<input type="text" name="grade" class="none-border-field btn-block" id="grade" placeholder="ex: 三年級">
+								<input required="required" type="text" name="grade" class="none-border-field btn-block" id="grade" placeholder="ex: 三年級">
 								<% } else{ %>
-									<input type="text" name="grade" class="none-border-field btn-block" id="grade" value="<%= user.grade %>" placeholder="ex:三年級">
+									<input required="required" type="text" name="grade" class="none-border-field btn-block" id="grade" value="<%= user.grade %>" placeholder="ex:三年級">
 									<% } %>
 
 						</div>
@@ -159,42 +159,19 @@
 					</div> -->
 					<div class="form-sub-title">
 							<label class="col-sm-12 col-xs-12" >請問你是透過何種管道得知資種？（可複選）</label>
-					</div>
-					<div class="form-sub-title btn-group" data-toggle="buttons">
-							<label class="col-sm-3 col-xs-3 btn btn-primary">
-								<input type="checkbox" name="survey" checked autocomplete="off" value="海報">海報 
-							</label>
-							<label class="col-sm-3 col-xs-3 btn btn-primary">
-								<input type="checkbox" name="survey" autocomplete="off" value="說明會"> 說明會
-							</label>
-							<label class="col-sm-3 col-xs-3 btn btn-primary">
-									<input type="checkbox" name="survey" checked autocomplete="off" value="工作坊">　工作坊　 
-								</label>
-							<label class="col-sm-3 col-xs-3 btn btn-primary">
-								<input type="checkbox" name="survey" autocomplete="off" value="FB粉專">　FB粉專
-							</label>
-					</div>
-					<div class="form-sub-title btn-group btn-group-toggle" style="margin-top: 20px;" data-toggle="buttons">
-							<label class="col-sm-3 col-xs-3 btn btn-primary" > 
-								<input type="checkbox" name="survey" checked autocomplete="off" value="官網">　官網　 
-							</label>
-							<label class="col-sm-3 col-xs-3 btn btn-primary">
-								<input type="checkbox" name="survey" autocomplete="off" value="親朋好友推薦">　親朋好友推薦　
-							</label>
-							<label class="col-sm-3 col-xs-3 btn btn-primary">
-								<input type="checkbox" name="survey" checked autocomplete="off" value="親朋好友推薦">　親朋好友推薦　 
-							</label>
-							<label class="col-sm-3 col-xs-3 btn btn-primary">
-								<input type="checkbox" name="survey" autocomplete="off">　其他
-							</label>
-					</div>
-					<label class="checkbox survey-other-field">
-						<input type="checkbox" name="survey" class="survey-other" value="其他" />　其他：<input type="text" class="survey-input" placeholder="請輸入文字">
-					</label>
-					
-					<div class="col-sm-12 col-xs-12 text-center">
-						<hr>
-						<button type="submit" class="btn-lg btn-yellow" style="color:white;" >儲存個人資料</button>
+
+					<div class="form-group" style="margin-left: 15%;">
+							<div class="col-sm-12 col-xs-12">
+								<label><input type="checkbox" name="survey" value="海報" />　海報　</label>
+								<label><input type="checkbox" name="survey" value="說明會" />　說明會　</label>
+								<label><input type="checkbox" name="survey" value="工作坊" />　工作坊　</label>
+								<label><input type="checkbox" name="survey" value="FB粉專" />　FB粉專（懶人包、宣傳影片等）　</label><br>
+								<label><input type="checkbox" name="survey" value="官網" />　官網　</label>
+								<label><input type="checkbox" name="survey" value="Blink" />　Blink　</label>
+								<label><input type="checkbox" name="survey" value="親朋好友推薦" />　親朋好友推薦　</label>
+								<label><input type="checkbox" name="survey" class="survey-other" value="其他" />　其他：<input hidden type="text" class="survey-input"></label>
+							</div>
+						</div>
 
 					</div> -->
 					<div class="col-sm-12 col-xs-12 text-center" style="margin-top: 5vh; margin-bottom: 5vh;">
@@ -207,10 +184,7 @@
 
 	</div>
 </section>
-<<<<<<< HEAD
-=======
 
->>>>>>> e8b5bd560a5f6f061e9479b64c002173989b52c8
     <script>
 		let source_reulst_text = "<%= user.survey %>";
 		source_reulst_text.split(',').forEach(str => {
@@ -395,7 +369,8 @@
 		content: 'v';
 }
 </style>
-
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 <script type="text/javascript">
 var school_list = JSON.parse('<%-JSON.stringify(school)%>');
 var dept_list = JSON.parse('<%-JSON.stringify(dept)%>');
@@ -404,18 +379,15 @@ autocomplete(document.getElementById("school"), school_list, "school");
 autocomplete(document.getElementById("dept"), dept_list, "dept");
 
 
-		let source_reulst_text = '<%=user.survey%>';
-		console.log(source_reulst_text);
+let source_reulst_text = "<%= user.survey %>";
 		source_reulst_text.split(',').forEach(str => {
-			console.log(str);
 			if(str.indexOf('其他:') > -1){
 				$('input[value="其他"]').prop('checked', true);
 				$('input.survey-input').show();
 				$('input.survey-input').val(str.split('其他:')[1]);
+				$('input.survey-other').val( '其他:' + str.split('其他:')[1] );
 			}else{
 				$(`input[value='${str}']`).prop('checked', true);
-				$(`input[value='${str}']`).parent("label").addClass('active');
-				//console.log($(`input[value='${str}']`));
 			}
 		});
 		$('input.survey-other').click(function(){
@@ -426,8 +398,10 @@ autocomplete(document.getElementById("dept"), dept_list, "dept");
 			}
 		})
 		$('input.survey-input').keypress(function(){
+			
 			$('input.survey-other').val( '其他:' + $(this).val() );
-		}) 
+			
+		})
 		var button = $('button');
 			button.on('click', function () {
 			$(this).toggleClass('active');

@@ -39,11 +39,11 @@
 ################################################
 
 config/local.js
-assets/images/courseInfo
-assets/images/businessVisit
-assets/images/sharing
-assets/images/TUV
-assets/images/career
+# assets/images/courseInfo
+# assets/images/businessVisit
+# assets/images/sharing
+# assets/images/TUV
+# assets/images/career
 assets/files
 config/session.js
 token.json
