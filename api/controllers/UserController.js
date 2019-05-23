@@ -168,10 +168,28 @@ async function update_profile_sheet(auth, user) {
   sheets.spreadsheets.values.append({
     auth: auth,
     spreadsheetId: '19j2E63vnl6nyjF-ybV7xlXYjr3-QRcKoV-F5UZtK2ng',
-    range: "'profile'!A:I", //Change Sheet1 if your worksheet's name is something else
+    range: "'profile'!A:Q", //Change Sheet1 if your worksheet's name is something else
     valueInputOption: "RAW",
     resource: {
-      values: [[user.name, user.gender, user.phone, user.email, user.school, user.dept, user.grade, user.reference, user.survey]]
+      values: [[
+          user.name,
+          user.email,
+          user.phone,
+          user.disc,
+          user.gender,
+          user.grade,
+          user.school,
+          user.dept,
+          user.reference,
+          user.survey,
+          user.Q1,
+          user.Q2,
+          user.Q3,
+          user.Q4,
+          user.Q5_1,
+          user.Q5_2,
+          user.Q6
+        ]]
     }
   }, (err, response) => {
     if (err) {
@@ -880,11 +898,7 @@ function registerAccount(res,newuser,callback){
             reference: req.body.reference,
             survey: Array.isArray(req.body.survey) ? req.body.survey.join(',') : req.body.survey
         };
-        fs.readFile('credentials.json', (err, content) => {
-          if (err) return console.log('Error loading client secret file:', err);
-          // Authorize a client with credentials, then call the Google Drive API.
-          authorize(JSON.parse(content), update_profile_sheet, value);
-        });  
+
 
         User.update({id: req.session.userid}, value)
         .exec(function (err, datas) {
@@ -1007,15 +1021,60 @@ function registerAccount(res,newuser,callback){
                         value.confirm =1;
                     }
                     UserFiles.update({user: req.session.userid}, value)
-                    .exec(function (err, datas) {
+                    .exec(function (err, final_files) {
                         if(err){
                             res.end(JSON.stringify(err));
                         }else{
                             User.update({id: req.session.userid},{finished : 1})
-                            .exec(function (err, user){
+                            .exec(function (err, user_data){
                                 if (err) res.end(JSON.stringify(err));
-                                req.session.finished = 1;
-                                res.redirect("/finish");
+                                User_Form.findOne({
+                                    user: req.session.userid
+                                })
+                                .exec(function(err, user_form){
+                                    if (err) res.end(JSON.stringify(err));
+                                    UserDISC.findOne({
+                                        user: req.session.userid
+                                    })
+                                    .exec(function(err, disc){
+                                        if (err) res.end(JSON.stringify(err));
+                                        User.findOne({
+                                            id: req.session.userid
+                                        })
+                                        .exec(function(err, user){
+                                            if (err) res.end(JSON.stringify(err));
+                                            var save_data = {
+                                                name : user.name,
+                                                email : user.email,
+                                                phone : user.phone,
+                                                gender : user.gender,
+                                                grade : user.grade,
+                                                school : user.school,
+                                                dept : user.dept,
+                                                disc : disc.animal,
+                                                reference : user.reference,
+                                                survey : user.survey,
+                                                Q1 : user_form.Q1,
+                                                Q2 : user_form.Q2,
+                                                Q3 : user_form.Q3,
+                                                Q4 : user_form.Q4,
+                                                Q5_1 : user_form.Q5_1,
+                                                Q5_2 : user_form.Q5_2,
+                                                Q6 : user_form.Q6
+                                            };
+                                            fs.readFile('credentials.json', (err, content) => {
+                                                if (err) return console.log('Error loading client secret file:', err);
+                                                // Authorize a client with credentials, then call the Google Drive API.
+                                                authorize(JSON.parse(content), update_profile_sheet, save_data);
+                                            });  
+                                            req.session.finished = 1;
+                                            res.redirect("/finish");
+                                        });
+
+                                    });
+
+                                });
+
                             });
                             
                         }

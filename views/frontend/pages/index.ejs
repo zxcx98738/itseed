@@ -279,6 +279,11 @@ $(function(){
   var t1d = true;
 
   $(document).ready(function () {
+    AOS.init({
+        startEvent: 'load', 
+        easing: 'ease-out-back',
+        duration: 800
+    });
     var whatyouget_display_pos = $('.whatyouget').offset().top - $(window).height();
     var counter_display_pos = $('.counter').offset().top - $(window).height();
     $(window).scroll(function () {
@@ -589,51 +594,5 @@ section::after {
   transform: rotate(45deg) translate(0, -50%);
   right: 0.4rem;
 }
-
-/*.toTop-arrow {
-  width: 3.5rem;
-  height: 3.5rem;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  border-radius: 33%;
-  opacity: 0.6;
-  background: #000;
-  cursor: pointer;
-  position:fixed;
-  right: 1rem;
-  bottom: 1rem;
-  display: none;
-}
-.toTop-arrow::before, .toTop-arrow::after {
-  width: 31px;
-  height: 7px;
-  border-radius: 3px;
-  background: #f90;
-  position: absolute;
-  content: "";
-}
-.toTop-arrow::before {
-  transform: rotate(-45deg) translate(0, -50%);
-  left: 0.4rem;
-}
-.toTop-arrow::after {
-  transform: rotate(45deg) translate(0, -50%);
-  right: 0.4rem;
-}
-.toTop-arrow:focus {outline: none;}*/
 </style>
-<script type="text/javascript">
-//   $(function() {
-//   $('a[href*=#]').on('click', function(e) {
-//     e.preventDefault();
-//     $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
-//   });
-// });
-</script>
-    <script>
-      AOS.init({
-        easing: 'ease-out-back',
-        duration: 3000
-      });
-    </script>
+
