@@ -18,12 +18,12 @@
             <div>培訓計畫內容</div>
         </div>
         <p>資訊種子培訓計畫，目的在於培養一群對於未來富有競爭力的種子們。</p>
-        <ul>
+        <!-- <ul>
                     
             <li></li>
             <li></li>
             <li></li>
-        </ul>
+        </ul> -->
     </div>
     <div class="trainingProgram-six">
 
@@ -136,40 +136,48 @@
             </div>
             <div class="trainingProgram-enterprise-wrapper">
                 <ul class="row">
-                    <li class="col-lg-3 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-                        <div class="enterprise-name">
-                                <img src="/images/trainingProgram/shopee.png" alt="">
+                    <li class="col-lg-3 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1  col-xs-10 col-xs-offset-1">
+                        <div class="content">
+                            <div class="enterprise-name">
+                                    <img src="/images/trainingProgram/蝦皮logo.png" alt="">
 
-                            <div class="enterprise-block">
+                                <div class="enterprise-block">
+                                </div>
+                                <p>蝦皮購物 shopee</p>
                             </div>
-                            <p>蝦皮購物 shopee</p>
                         </div>
                     </li>
-                    <li class="col-lg-3 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-                        <div class="enterprise-name">
-                                <img src="/images/trainingProgram/shopee.png" alt="">
+                    <li class="col-lg-3 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                       <div class="content">
+                            <div class="enterprise-name">
+                                    <img src="/images/trainingProgram/神基logo.gif" alt="">
 
-                            <div class="enterprise-block">
+                                <div class="enterprise-block">
+                                </div>
+                                <p>蝦皮購物 shopee</p>
                             </div>
-                            <p>蝦皮購物 shopee</p>
                         </div>
                     </li>
-                    <li class="col-lg-3 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-                        <div class="enterprise-name">
-                                <img src="/images/trainingProgram/shopee.png" alt="">
+                    <li class="col-lg-3 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                       <div class="content">
+                            <div class="enterprise-name">
+                                    <img src="/images/trainingProgram/微軟logo.png" alt="">
 
-                            <div class="enterprise-block">
+                                <div class="enterprise-block">
+                                </div>
+                                <p>蝦皮購物 shopee</p>
                             </div>
-                            <p>蝦皮購物 shopee</p>
                         </div>
                     </li>
-                    <li class="col-lg-3 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-                        <div class="enterprise-name">
-                                <img src="/images/trainingProgram/shopee.png" alt="">
+                    <li class="col-lg-3 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                     <div class="content">
+                            <div class="enterprise-name">
+                                    <img src="/images/trainingProgram/googlelogo.png" alt="">
 
-                            <div class="enterprise-block">
+                                <div class="enterprise-block">
+                                </div>
+                                <p>蝦皮購物 shopee</p>
                             </div>
-                            <p>蝦皮購物 shopee</p>
                         </div>
                     </li>
                 </ul>
@@ -205,7 +213,6 @@
     padding: 0 42px;
     margin-bottom: 109px;
     flex-wrap: wrap;
-    
 }
 .trainingProgram-main ul li {
     width: 26%;
@@ -217,6 +224,7 @@
     min-width: 200px;
     min-height: 200px;
     margin-right: 20px;
+    
 
     /* margin-bottom: 30px; */
 }
@@ -449,24 +457,40 @@
 .trainingProgram-enterprise-wrapper ul li{
     padding: 0 20px;
     margin-bottom: 20px;
-    min-width: 200px;
+    min-width: 360px;
+    /* max-width: 550px; */
 }
 .trainingProgram-enterprise-wrapper .enterprise-name p{
     display: none;
 }
 .trainingProgram-enterprise-wrapper .enterprise-name img{
     display: block;
+    width: 300px;
+    height: 143px;
     margin: 0 auto;
+}
+@media screen and (min-width: 1200px){
+    .trainingProgram-enterprise-wrapper .enterprise-name img{
+        width: 240px;
+        height: 120px;
+}
+.trainingProgram-enterprise-wrapper ul{
+        display: flex;
+    }
+    .trainingProgram-enterprise-wrapper ul li{
+        padding: 0 20px;
+        margin-bottom: 20px;
+        min-width: 280px;
+        flex: 1;
+    }
 }
 .trainingProgram-enterprise-wrapper .enterprise-name{
     background-color: #ffffff;
-    padding: 30px;
+    padding: 10px;
     width:  100%;
     height: 100%;
-
     display: block;
     box-shadow:4px 4px 3px rgba(10%,10%,40%,0.3);
-
 } 
 
 .enterprise-block{
