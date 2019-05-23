@@ -247,8 +247,7 @@ $(function(){
 });
 </script>
 
-<!-- <script type="text/javascript">
-
+<script type="text/javascript">
   $.fn.isOnScreen = function () {
     var win = $(window);
     var viewport = {
@@ -257,27 +256,21 @@ $(function(){
     };
     viewport.right = viewport.left + win.width();
     viewport.bottom = viewport.top + win.height();
-
     var bounds = this.offset();
     bounds.right = bounds.left + this.outerWidth();
     bounds.bottom = bounds.top + this.outerHeight();
-
     return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
   };
-
-
   var isDataScroll1 = false;
   var isDataScroll2 = false;
   var t1 = true;
   var t2 = true;
   var t3 = true;
   var t4 = true;
-
   var t1a = true;
   var t1b = true;
   var t1c = true;
   var t1d = true;
-
   $(document).ready(function () {
     AOS.init({
         startEvent: 'load', 
@@ -365,13 +358,12 @@ $(function(){
         }, 4000,
           function () {
             $('#target4').text('35')
-
           });
         t4 = false
       }
     });
   });
-</script> -->
+</script>
 
 </section>
 
@@ -408,7 +400,6 @@ section::after {
   width: 100%;
   height: 80%;
 }
-
 .gotonext a {
   position: absolute;
   bottom: 20px;
@@ -426,7 +417,6 @@ section::after {
 .gotonext a:hover {
   opacity: .5;
 }
-
 #Mark_gotoNext a {
   padding-top: 70px;
 }
@@ -545,7 +535,6 @@ section::after {
         color: white;
       }
     }
-
 /* 56px */
 .toTop-arrow {
     display: block;
@@ -577,7 +566,6 @@ section::after {
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
-
 .toTop-arrow::before, .toTop-arrow::after {
   width: 26px;
   height: 3px;
@@ -594,3 +582,4 @@ section::after {
   transform: rotate(45deg) translate(0, -50%);
   right: 0.4rem;
 }
+</style>
