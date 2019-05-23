@@ -45,7 +45,7 @@
     .intro-container{
         width:100%;
         .studentIntro{
-            width:80%;
+            width:90%;
             margin:0 auto;
             .title{
                 display: inline-block;
@@ -58,13 +58,17 @@
                 color: @main-light-blue;
             }
             .subtitle{
-                color: @main-yellow;
+                color: #144989;
                 font-size: 18px;
                 line-height:2em;
             }
             span{
-                color: @main-yellow;
+                color: #999;/*@main-yellow*/
                 font-size:14px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 2%;
             }
             .content{
                 color: #999;
@@ -72,9 +76,53 @@
                 margin-left:32px;
             }
             .student-div{
-                margin-left:32px;
+                /*margin-left:32px;*/
+                .st-subtitle{
+                    background: #3B4C98;
+                    border: 1px solid #3B4C98;
+                    border-radius: 17.5px;
+                    color: white;
+                    font-size: 16px;
+                    height: 35px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 20%;
+                }
             }
-            @media screen and (min-width: 0px) and (max-width: 840px) {
+            .media{
+                .studentIntrobox{
+                    width:30%;
+                    margin-right:3%;
+                    float:left;
+                    height: 25%;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        vertical-align : middle;
+                    }
+                }
+                .media-body{
+                    .AfterSeed{
+                        .AfterSeedbtn{
+                            border: 1px solid #64BEEC;
+                            border-radius: 27px;
+                            width: 30%;
+                            /*padding-left: 2.5%;*/
+                            margin-left: 70%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: #144989;
+                        }
+                        .AfterSeedbtn:hover{
+                            background-color: #64BEEC;
+                            color: white;
+                        }
+                    }
+                }
+            }
+            @media screen and (min-width: 475px) and (max-width: 840px) {
                 .title{
                     font-size:24px;
                 }
@@ -87,6 +135,59 @@
                 .content{
                     font-size: 14px;
                     margin-left:28px;
+                }
+                .media{
+                    .media-body{
+                        .AfterSeed{
+                            .AfterSeedbtn{
+                                border: 1px solid #64BEEC;
+                                border-radius: 27px;
+                                width: 40%;
+                                /*padding-left: 2.5%;*/
+                                margin-left: 60%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+                        }
+                    }
+                }
+                .student-div{
+                    .st-subtitle{
+                    height: 30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 14px;
+                    width: 30%;
+                    }
+                }
+                            
+            }
+            @media screen and (min-width: 0px) and (max-width: 474px) {
+                .media{
+                    .media-body{
+                        .AfterSeed{
+                            .AfterSeedbtn{
+                                border: 1px solid #64BEEC;
+                                border-radius: 27px;
+                                width: 75%;
+                                /*padding-left: 2.5%;*/
+                                margin-left: 15%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+                .student-div{
+                    .st-subtitle{
+                        height: 25px;
+                        width: 60%;
+                        font-size: 12px;
+                    }
                 }
             }
         }

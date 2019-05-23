@@ -14,17 +14,41 @@
 			<div></div>
 			<div></div>
 			<div></div>
-			<div>完成報名</div>
+			<div>確認報名</div>
 		</div>
-		
-			<div class="row col-xs-12 disc-over">
-				<h4>恭喜您已完成報名第17屆資訊種子培訓計畫</h4>
-				<!-- <h4>以下是我們的活動資訊及招生時程，期待您成為我們的一員</h4> -->
-			</div>
+
+			
+				<div class="row col-md-10 col-md-offset-1" style="margin-top: 5vh;">
+					<label for="autobiography" class="col-sm-2 col-xs-12">資料確認：</label>
+					<form action="/confirm" method="post">
+					<div class="col-sm-8 col-xs-12">
+						<p class="formatInfo">
+							<%if (req.session.finished != 1){ %>
+							1. <a href="/profile">基本資料</a><br>
+							2. <a href="/files">個人履歷 / 學生證明</a><br>
+							3. <a href="/form">書審問題</a> <br>
+							確定不再更改後，請按下此按鈕完成繳交的動作<br>
+							<button onclick="finish();" type="button" class="btn btn-purple" style="color:white">完成書審資料</button>
+							<% } else{ %>
+								您已成功繳交第17屆資訊種子培訓計畫的書審資料
+							<% } %>
+						</p>
+					</div>
+					</form>
+				</div>
+		<!-- <div class="col-xs-12 confirm-btn">
+			<form action="/confirm" method="post">
+				<div class="text-xs-center">
+					<p>當完成撰寫並上傳書審題目和基本資料</p>
+					<p>且確定不再更改後，請按下此按鈕完成繳交的動作</p>
+					<button type="submit" class="btn-lg btn-blue" style="color:white">完成書審資料</button>
+				</div>
+			</form>
+		</div> -->
 
 		<hr>
 		<div class="row col-md-10 col-md-offset-1">
-			<label for="autobiography" class="col-sm-2 col-xs-12">貝殼集器：</label>
+			<label for="autobiography" class="col-sm-2 col-xs-12">完成繳費：</label>
 			<div class="col-sm-8 col-xs-12">
 				<p class="formatInfo">
 					完成資料填寫後，請至貝殼集器繳交100元報名費<br>
