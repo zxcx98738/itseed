@@ -206,7 +206,6 @@ module.exports = {
             where: { status: "P" }, 
             sort: { order: "asc" }
         }
-        console.log(action);
 
         CmsService.findPosts(model, criteria)
         .then(function(datas){
