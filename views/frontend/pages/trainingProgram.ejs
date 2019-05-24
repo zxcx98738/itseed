@@ -17,13 +17,14 @@
             <div></div>
             <div>培訓計畫內容</div>
         </div>
-        <p>資訊種子培訓計畫，目的在於培養一群對於未來富有競爭力的種子們。</p>
-        <ul>
+        <p>資訊種子培訓計畫一改原先大學的授課方式，期許學員能夠實際與業界接軌，開拓思考的眼界。
+                </p>
+        <!-- <ul>
                     
             <li></li>
             <li></li>
             <li></li>
-        </ul>
+        </ul> -->
     </div>
     <div class="trainingProgram-six">
 
@@ -116,11 +117,21 @@
             <div class="trainingProgram-container">
                 <ul class="row">
                 <% for(var i = 0; i <datas.length; i++){ %>
-                        <li class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <li class="col-lg-3 col-md-4 col-sm-6 col-xs-6" onclick="javascript:location.href='courseInfo/'+'<%=datas[i].id %>'">
                                 <div class="content">
-                                    <div class="learn-more">
-                                        <a href="<%= 'courseInfo/' + datas[i].id %>"><p>Learn more</p></a>
-                                    </div>
+                                        <div class="course-background clearfix">
+                                            <div class="course-class">class</div>
+                                            <% if(datas[i].id<10){ %>
+                                                <div class="course-number">0<%=datas[i].id %></div>
+                                            <% }else{ %>
+                                                <div class="course-number"><%=datas[i].id %></div>
+                                            <% } %>
+                                        </div>
+                                        <p class="course-title"> 「<%=datas[i].title %>」 </p>
+                                        <p class="course-author"><%=datas[i].speaker.split("|")[0] %></p>
+                                        <div class="learn-more learn-more-none">
+                                            <a href="<%= 'courseInfo/' + datas[i].id %>"><p>Learn more</p></a>
+                                        </div>
                                 </div>
                             </li>
                         <% } %>          
@@ -134,43 +145,52 @@
                 <div></div>
                 <div>企業參訪</div>
             </div>
+            
             <div class="trainingProgram-enterprise-wrapper">
                 <ul class="row">
-                    <li class="col-lg-3 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-                        <div class="enterprise-name">
-                                <img src="/images/trainingProgram/shopee.png" alt="">
-
-                            <div class="enterprise-block">
+                    <li class="col-lg-3 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1  col-xs-10 col-xs-offset-1">
+                        <a href="/businessVisit" style="display: block; width:100%; height: 100%; list-style: none; text-decoration:none;">
+                            <div class="content">
+                                <div class="enterprise-name">
+                                        <img src="/images/trainingProgram/蝦皮logo.png" alt="">
+                                    <div class="enterprise-block"></div>
+                                </div>
                             </div>
-                            <p>蝦皮購物 shopee</p>
-                        </div>
+                        </a>
                     </li>
-                    <li class="col-lg-3 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-                        <div class="enterprise-name">
-                                <img src="/images/trainingProgram/shopee.png" alt="">
-
-                            <div class="enterprise-block">
+                    <li class="col-lg-3 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                        <a href="/businessVisit" style="display: block; width:100%; height: 100%; list-style: none; text-decoration:none;">
+                        <div class="content">
+                            <div class="enterprise-name">
+                                    <img src="/images/trainingProgram/神基logo.gif" alt="">
+                                <div class="enterprise-block"></div>
                             </div>
-                            <p>蝦皮購物 shopee</p>
                         </div>
+                        </a>
                     </li>
-                    <li class="col-lg-3 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-                        <div class="enterprise-name">
-                                <img src="/images/trainingProgram/shopee.png" alt="">
+                    <li class="col-lg-3 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                        <a href="/businessVisit" style="display: block; width:100%; height: 100%; list-style: none; text-decoration:none;">                       
+                            <div class="content">
+                                <div class="enterprise-name">
+                                        <img src="/images/trainingProgram/微軟logo.png" alt="">
 
-                            <div class="enterprise-block">
+                                    <div class="enterprise-block">
+                                    </div>
+                                </div>
                             </div>
-                            <p>蝦皮購物 shopee</p>
-                        </div>
+                        </a>
                     </li>
-                    <li class="col-lg-3 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-                        <div class="enterprise-name">
-                                <img src="/images/trainingProgram/shopee.png" alt="">
+                    <li class="col-lg-3 col-lg-offset-0 col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                        <a href="/businessVisit" style="display: block; width:100%; height: 100%; list-style: none; text-decoration:none;">
+                            <div class="content">
+                                <div class="enterprise-name">
+                                        <img src="/images/trainingProgram/googlelogo.png" alt="">
 
-                            <div class="enterprise-block">
+                                    <div class="enterprise-block">
+                                    </div>
+                                </div>
                             </div>
-                            <p>蝦皮購物 shopee</p>
-                        </div>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -205,7 +225,6 @@
     padding: 0 42px;
     margin-bottom: 109px;
     flex-wrap: wrap;
-    
 }
 .trainingProgram-main ul li {
     width: 26%;
@@ -217,6 +236,7 @@
     min-width: 200px;
     min-height: 200px;
     margin-right: 20px;
+    
 
     /* margin-bottom: 30px; */
 }
@@ -404,7 +424,7 @@
 .trainingProgram-courses .content{
     width:100%;
     height:0;
-    padding-bottom: 66%;
+    padding-bottom: 60%;
     /* background-color:red; */
     font-size: 2px;
     border: 1px solid #48697C;
@@ -434,14 +454,149 @@
     border: 1px solid #48697C;
     background-color: #fff;
 }
+.course-text{
+    padding-top: 17px;
+    position: relative;
+    /* height: 100%; */
+    font-size: 20px;
+}
+.course-class{
+    color: #8DC5E4;
+    opacity: 0.3;
+    /* font-size: 48px; */
+    font-size: 2.8vw;
+    /* float: left; */
+    font-weight: normal;
+    margin-left: 10px;
+
+}
+.course-number{
+    position: absolute;
+    right: 0;
+    /* top: -90px; */
+    font-size: 12vw;
+    padding-top: 0;
+    color: #8DC5E4;
+    line-height: 1;
+    z-index: -999;
+    top: 0px;
+    opacity: 0.3;
+}
+.course-title{
+    /* background-color: green; */
+    font-size: 22px;
+    /* font-weight: normal; */
+    width: 100%;
+    /* padding: 0 50px; */
+    /* padding-left: 22px; */
+    text-align: center;
+    margin-top: -5px;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+.course-author{
+    font-size: 16px;
+    position: absolute;
+    /* bottom: 0; */
+    /* top: 0; */
+    bottom: 0;
+    left: 5px;
+}
+@media screen and (max-width: 1200px){
+    .course-number{
+        font-size: 180px;
+    }
+    .course-class{
+        font-size: 32px;
+    }
+    .course-title{
+        font-size: 24px;
+        margin-top: 0px;
+    }
+}
+@media screen and (max-width: 992px){
+    .course-number{
+        font-size: 25vw;
+    }
+    .course-class{
+        font-size: 5vw;
+    }
+    .course-title{
+        font-size: 22px;
+        margin-top: 0px;
+    }
+}
+@media screen and (max-width: 700px){
+    .course-number{
+        font-size: 23vw;
+    }
+    .course-class{
+        font-size: 5vw;
+    }
+    .course-title{
+        font-size: 20px;
+        margin-top: 0px;
+        overflow: hidden;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        padding: 0 10px;
+    }
+    .course-author{
+        font-size: 12px;
+    }
+    .trainingProgram-courses{
+    margin-bottom: 20px;
+    }   
+}
+@media screen and (max-width: 550px){
+    .trainingProgram-container .row li{
+        margin-top: 0;
+    }
+    .course-number{
+        font-size: 20vw;
+    }
+    .course-class{
+        font-size: 4vw;
+    }
+    .course-title{
+        font-size: 12px;
+        margin-top: 0px;
+        /* word-break: normal; */
+        /* white-space:normal; */
+        white-space:nowrap;
+
+    }
+    .course-author{
+        width: 100%;
+        font-size: 12px;
+        overflow: hidden;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+    }
+    .learn-more-none{
+        display: none;
+    }
+    .trainingProgram-courses{
+    margin-bottom: 20px;
+    }   
+
+}
+
+
+
+
+
+
+
 /* 企業參訪 */
 .trainingProgram-enterprise{
     margin-bottom: 50px;
 }
 .trainingProgram-enterprise-wrapper{
     height: 100%;
-    background-color: #D9E9D6;
-    padding: 20px 20px;
+    /* background-color: #D9E9D6; */
+    padding: 20px 5%;
 }
  .trainingProgram-enterprise-wrapper ul{
     width: 100%;
@@ -449,24 +604,58 @@
 .trainingProgram-enterprise-wrapper ul li{
     padding: 0 20px;
     margin-bottom: 20px;
-    min-width: 200px;
+    min-width: 360px;
+    /* max-width: 550px; */
 }
 .trainingProgram-enterprise-wrapper .enterprise-name p{
     display: none;
 }
 .trainingProgram-enterprise-wrapper .enterprise-name img{
     display: block;
+    width: 300px;
+    height: 143px;
     margin: 0 auto;
 }
+@media screen and (min-width: 1200px){
+    .trainingProgram-enterprise-wrapper .enterprise-name img{
+        width: 240px;
+        height: 120px;
+    }
+    .trainingProgram-enterprise-wrapper ul{
+        display: flex;
+    }
+    .trainingProgram-enterprise-wrapper ul li{
+        padding: 0 20px;
+        margin-bottom: 20px;
+        min-width: 280px;
+        flex: 1;
+    }
+}
+@media screen and (max-width: 450px){
+    .trainingProgram-enterprise-wrapper ul li{
+        padding: 0 20px;
+        /* background-color: red; */
+        margin-bottom: 20px;
+        min-width: 160px;
+        /* max-width: 550px; */
+    }
+    .trainingProgram-enterprise-wrapper .enterprise-name img{
+        display: block;
+        width: 160px;
+        height: 100px;
+        margin: 0 auto;
+    }
+}
+
 .trainingProgram-enterprise-wrapper .enterprise-name{
     background-color: #ffffff;
-    padding: 30px;
+    padding: 10px;
     width:  100%;
     height: 100%;
-
     display: block;
-    box-shadow:4px 4px 3px rgba(10%,10%,40%,0.3);
-
+    /* box-shadow:4px 4px 3px rgba(10%,10%,40%,0.3); */
+    border-radius: 3px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.2);
 } 
 
 .enterprise-block{
@@ -485,7 +674,6 @@ $( ".content" ).mouseover(function() {
 $( ".content" ).mouseleave(function() {
     $(this).find('.learn-more').css( "display", "none" );
 });
-// $("html,body").animate({scrollTop:$("#enterprise").offset().top},0)
 </script>
 
 <!--FOOTER-->

@@ -83,7 +83,7 @@
 
 <div class="part-fourFuture" id="part_fourFuture" style="background-image: url('images/index/section16-2.jpg'); background-size:cover;">
   
-  <h4 class="fourtitle eight_gift">─ 資訊種子能帶給你什麼 ─</h4>
+  <div class="fourtitle eight_gift" style="font-size: 5vh;">資訊種子能帶給你</div>
   
   <div class="row fourDiv">
     <div  data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
@@ -154,8 +154,8 @@
 </div>
 
 <div class="part-fourFuture">
-  <h4 class="fourtitle three_core">─ 資訊種子三大核心理念 ─</h4>
-  <div class="row fourDiv">
+  <div class="fourtitle three_core " style="font-size: 5vh;">資訊種子三大核心理念</div>
+  <div class="row fourDiv" style="margin-top: 4vh;">
     <div data-aos="zoom-in-up" class="col-md-4 col-sm-12 col-xs-12">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
@@ -205,7 +205,7 @@
             <source src="movie.ogg" type="video/ogg">
             Your browser does not support the video tag.
           </video> -->
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/4_zi1FzKSE4?&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="900" height="506" src="https://www.youtube.com/embed/Y2AL_mUfqqw?loop=1&rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <p></p>
       </div>
@@ -273,7 +273,8 @@ $(function(){
   var t1d = true;
   $(document).ready(function () {
     AOS.init({
-        startEvent: 'load', 
+      disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+      startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
         easing: 'ease-out-back',
         duration: 800
     });
@@ -363,6 +364,7 @@ $(function(){
       }
     });
   });
+  $(window).load(function() { setTimeout(function() { AOS.refresh(); }, 500); });
 </script>
 
 </section>
@@ -582,4 +584,5 @@ section::after {
   transform: rotate(45deg) translate(0, -50%);
   right: 0.4rem;
 }
+
 </style>
