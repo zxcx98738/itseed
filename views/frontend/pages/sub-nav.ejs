@@ -25,16 +25,45 @@
 
 <div style="display: none;" class="sub-nav sub-nav-plan">
     <ul>
-        <li><a class="sub-nav-link" href="/courseInfo">講座課程</a></li> 
+        <li>
+            <a href="/trainingProgram" class="back">
+                <span> &lt; </span>
+                <img src="" alt="">
+                Back
+            </a>
+        </li>
         <li><a class="sub-nav-link" href="/businessVisit">企業參訪</a></li> 
-        <li><a class="sub-nav-link dont-be-selected" href="/tuv">六大專案</a></li>
+
+        <!-- <li><a class="sub-nav-link" href="/businessVisit">企業參訪</a></li> 
+        <li><a class="sub-nav-link" href="/businessVisit">企業參訪</a></li> 
+        <li><a class="sub-nav-link" href="/businessVisit">企業參訪</a></li>  -->
     </ul>
+    <ul class="small-link-nav">
+            <li><a class="sub-nav-link shopee" href="/businessVisit#shopee">蝦皮企業</a></li> 
+            <li><a class="sub-nav-link" href="/businessVisit#getac">神基科技</a></li> 
+            <li><a class="sub-nav-link" href="/businessVisit#microsoft">微軟</a></li> 
+            <li><a class="sub-nav-link" href="/businessVisit#google">Google</a></li> 
+        </ul>
 </div>
 
 <div style="display: none;" class="sub-nav dobule-sub-nav sub-nav-plan">
+
     <ul class="link-nav">
-        <li><a class="sub-nav-link dont-be-selected" href="/courseInfo">講座課程</a></li> 
-        <li><a class="sub-nav-link dont-be-selected" href="/businessVisit">企業參訪</a></li> 
+        <!-- <li><a class="sub-nav-link dont-be-selected" href="/courseInfo">講座課程</a></li> 
+        <li><a class="sub-nav-link dont-be-selected" href="/businessVisit">企業參訪</a></li>  -->
+
+        <!-- <li>    
+            <a href="/trainingProgram" class="back">
+                <span> &lt; </span>
+                <img src="" alt="">
+                Back
+            </a>
+        </li> -->
+        <a href="/trainingProgram" class="back">
+            <span> &lt; </span>
+            <img src="" alt="">
+            Back
+        </a>
         <li><a class="sub-nav-link active" href="/tuv">六大專案</a></li>
     </ul>
     <ul class="small-link-nav">
@@ -55,3 +84,22 @@
         .addClass('active')
         .closest(".sub-nav").show();
 </script>
+<style>
+/* .back:hover{
+    color: #3075b1;
+    border: 1px solid #3075b1;
+    background-color: #fff;
+
+}
+.back{
+    color: #fff;
+    background-color: #3075b1;
+    border: 1px solid #fff;
+
+    border-radius: 3px;
+    padding: 5px;
+    width: 100px;
+    margin-left: 20px;
+    text-align: center;
+} */
+</style>

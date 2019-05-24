@@ -5,18 +5,24 @@
 
 <section class="section-courseInfo bg-light-gray">
   <% include ./sub-nav %>
-  <div class="main-title-div">
+  <!-- <div class="main-title-div">
     <div class="line-and-circle">
       <div class="line"></div>
       <div class="circle"></div>
     </div>
     <h1><%= datas[0].title %></h1>
-  </div>
+  </div> -->
+  <div class="main-titles clearfix">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div><%= datas[0].title %></div>
+    </div>	
   <div class="course-container">
     <img alt="" src="<%= datas[0].photo %>"></img>
     <%- datas[0].content %>
     <div class="text-xs-center back-to-course">
-      <a href="/courseInfo">Back</a>
+      <a href="/trainingProgram#course">Back</a>
     </div>
   </div>
 </section>
