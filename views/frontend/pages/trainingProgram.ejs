@@ -17,7 +17,7 @@
             <div></div>
             <div>培訓計畫內容</div>
         </div>
-        <p>資訊種子培訓計畫一改原先大學的授課方式，期許學員能夠實際與業界接軌，開拓思考的眼界。
+        <p>資訊種子培訓計畫一改原先大學的授課方式，<br>期許學員能夠實際與業界接軌，開拓思考的眼界。
                 </p>
         <!-- <ul>
                     
@@ -117,7 +117,7 @@
             <div class="trainingProgram-container">
                 <ul class="row">
                 <% for(var i = 0; i <datas.length; i++){ %>
-                        <li class="col-lg-3 col-md-4 col-sm-6 col-xs-6" onclick="javascript:location.href='courseInfo/'+'<%=datas[i].id %>'">
+                        <li class="col-lg-3 col-md-4 col-sm-6 col-xs-6" onclick="javascript:location.href='courseInfo/'+'<%=datas[i].id %>'" style="cursor: pointer;">
                                 <div class="content">
                                         <div class="course-background clearfix">
                                             <div class="course-class">class</div>
@@ -128,7 +128,8 @@
                                             <% } %>
                                         </div>
                                         <p class="course-title"> 「<%=datas[i].title %>」 </p>
-                                        <p class="course-author"><%=datas[i].speaker.split("|")[0] %></p>
+                                        <!-- <p class="course-author"><%=datas[i].speaker.split("|")[0] %></p> -->
+                                        <p class="course-author"><%=datas[i].speaker %></p>
                                         <div class="learn-more learn-more-none">
                                             <a href="<%= 'courseInfo/' + datas[i].id %>"><p>Learn more</p></a>
                                         </div>
@@ -210,7 +211,9 @@
     margin: 0 auto;
     margin-top: 42px;
     /* margin-left: 72px; */
-    font-size: 20px;
+    font-size: 32px;
+    color: #48697C;
+    min-width: 760px;
     border: 1px #00a0e8 solid;
     border-radius: 2px;
     border-width: 3px;
@@ -262,6 +265,7 @@
     }
     .trainingProgram-main p{     
         font-size: 16px;
+        min-width: 415px;
     }
 }
 @media screen and (max-width: 480px){
@@ -279,8 +283,8 @@
         margin: 0 auto;
     }
     .trainingProgram-main p{
-        
-        font-size: 16px;
+        min-width: 300px;
+        font-size: 14px;
         width: 300px;
         margin: 20px auto;
     }
@@ -498,10 +502,15 @@
 .course-author{
     font-size: 16px;
     position: absolute;
+    font-weight: normal;
     /* bottom: 0; */
     /* top: 0; */
     bottom: 0;
     left: 5px;
+    width: 100%;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
 }
 @media screen and (max-width: 1200px){
     .course-number{
@@ -574,7 +583,7 @@
         white-space:nowrap;
         text-overflow:ellipsis;
     }
-    .learn-more-none{
+    .trainingProgram-container .row .learn-more-none{
         display: none;
     }
     .trainingProgram-courses{
@@ -668,12 +677,12 @@
 </style>
 <script>
     
-$( ".content" ).mouseover(function() {
-    $(this).find('.learn-more').show(300);
-});
-$( ".content" ).mouseleave(function() {
-    $(this).find('.learn-more').css( "display", "none" );
-});
+// $( ".content" ).mouseover(function() {
+//     $(this).find('.learn-more').show(300);
+// });
+// $( ".content" ).mouseleave(function() {
+//     $(this).find('.learn-more').css( "display", "none" );
+// });
 </script>
 
 <!--FOOTER-->

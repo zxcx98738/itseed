@@ -51,7 +51,7 @@
 .main-titles{
     display: block;
     clear: both;
-    font-size: 48px;    
+    font-size: 48px; 
     div{
         float: left;
         background: #83B9D5;
@@ -75,11 +75,22 @@
         color: #ffffff;
         margin-left: 5px;
         opacity: 1;
-        width: 320px;
         line-height: 78px;
-        text-align: center;
+        text-align: center !important;
+        padding: 0 30px;
     }
-    @media screen and (max-width: 480px){
+    margin: 28px 0;
+    h2{
+        width: 100%;
+        padding:20px;
+        margin-top: 67px;
+        line-height: 2;
+        font-size:calc(28px + 1.5vw);
+        font-weight: normal;
+        text-align: center;
+        background-color: #D4F0FF;
+      }
+      @media screen and (max-width: 480px){
         div{
             display: none;
             margin: 0;
@@ -90,7 +101,11 @@
             height: 70px;
             font-size: 40px;
             width: 100%;
+            // width: 1px;
             margin: 0 auto;
+        }
+        h2{
+            font-size: 18px;
         }
     }
 }
