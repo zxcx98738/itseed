@@ -4,13 +4,19 @@
 
 <section class="section-careerSharing">
 	<% include ./sub-nav %>
-	<div class="main-title-div">
+	<!-- <div class="main-title-div">
 		<div class="line-and-circle">
 			<div class="line"></div>
 			<div class="circle"></div>
 		</div>
 		<h1>實習心得</h1>
-	</div>
+	</div> -->
+	<div class="main-titles clearfix">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div>實習心得</div>
+		</div>	
 	<div class="container">
 		<% for(var i = 0; i < datas.length; i++){ %>
 			<div class="shring-row row" onclick="window.location.pathname = '/careerSharing/<%= datas[i].id %>'">
