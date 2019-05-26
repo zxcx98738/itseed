@@ -347,6 +347,7 @@ module.exports = {
             case CourseInfo:
                 value.th = req.param("th");
                 value.speaker = req.param("speaker");
+                value.sub_title = req.param("sub_title");
                 value.speakerTitle = req.param("speakerTitle");
 
                 //上傳檔案
@@ -579,6 +580,7 @@ module.exports = {
                 value.th = req.param("th");
                 value.speaker = req.param("speaker");
                 value.speakerTitle = req.param("speakerTitle");
+                value.sub_title = req.param("sub_title");
 
                 //上傳檔案
                 req.file('photo').upload({ dirname: '../../assets/images/courseInfo'}, function (err, uploadedFiles) {

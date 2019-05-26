@@ -47,6 +47,11 @@ module.exports = {
           maxLength: 30,
           notNull: true
         },
+        sub_title: {
+          type: 'string',
+          maxLength: 30,
+          notNull: true
+        },
         //內容
         content: {
           type: 'text',
