@@ -28,13 +28,13 @@ module.exports = {
         speaker: {
           type: 'string',
           required: true,
-          maxLength: 30
+          maxLength: 100
         },
         //講者頭銜
         speakerTitle: {
           type: 'string',
           required: true,
-          maxLength: 30
+          maxLength: 100
         },
         //照片
         photo: {
