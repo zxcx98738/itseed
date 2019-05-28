@@ -1,4 +1,5 @@
 <!--HEADER-->
+<script src="/js/specifies/frontend/career.js"></script>
 <% include ../header %>
 <!--END HEADER-->
 
@@ -15,11 +16,19 @@
 			<div></div>
 			<div></div>
 			<div></div>
-			<div>實習心得</div>
-		</div>	
+			<div>職涯體驗</div>
+			<h4>由業界不同產業的學長姐提供實習職缺，讓學員進公司實習及體驗公司文化，
+				亦有學長姐提供個人指導機會，<br>利用下班後時間指導學員，透過Mentor帶領的制度，提升學員職場軟硬實力，同時增進跨屆交流。</h4>
+	</div>
 	<div class="container">
+			<div class="text-xs-center" >
+    
+					<button id="firm_button" class="btn-lg btn-default" style="padding-left: 1vw; padding-right: 1vw; border: solid 1px; font-size: 15px; margin-bottom: 5vh;">公司實習</button>
+				  
+					<button id="personal_button" class="btn-lg btn-default" style="padding-left: 1vw; padding-right: 1vw; border: solid 1px; margin-left: 4vh;  font-size: 15px; margin-bottom: 5vh;">個人指導</button>
+				  </div>
 		<% for(var i = 0; i < datas.length; i++){ %>
-			<div class="shring-row row" onclick="window.location.pathname = '/careerSharing/<%= datas[i].id %>'">
+			<div class="shring-row row <%= datas[i].career_type %>" onclick="window.location.pathname = '/careerSharing/<%= datas[i].id %>'">
 				<div class="image col-md-4 col-sm-4 col-xm-12">
 						<img src="<%= datas[i].photo %>" alt="slider">
 				</div>

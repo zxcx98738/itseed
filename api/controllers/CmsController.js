@@ -46,6 +46,7 @@ module.exports = {
                     post.name = "";
                     post.photo = "";
                     post.description = "";
+                    post.career_type = "";
                     break;
                 case Project:
                     post.th = "";
@@ -443,6 +444,7 @@ module.exports = {
                 value.th = req.param("th");
                 value.name = req.param("name");
 
+
                 //上傳檔案
                 req.file('photo').upload({ dirname: '../../assets/images/sharing'}, function (err, uploadedFiles) {
                     if (err)
@@ -486,6 +488,9 @@ module.exports = {
             case Career:
                 value.th = req.param("th");
                 value.name = req.param("name");
+                value.sub_title = req.param("sub_title");
+                value.description = req.param("description");
+                value.career_type = req.param("career_type");
                 
                 //上傳檔案
                 req.file('photo').upload({ dirname: '../../assets/images/career'}, function (err, uploadedFiles) {
@@ -509,13 +514,16 @@ module.exports = {
                             return res.end(JSON.stringify("檔案格式錯誤"));
                         }
                     }
+                    console.log(value);
 
                     CmsService.createPost(model, value)
                     .then(function(data){
+                        
                         data.message = "success";
                         res.end(JSON.stringify(data));
                     })
                     .catch(function(err){
+
                         //刪除上傳檔案
                         if (uploadedFiles.length > 0) {
                             fs.unlink(uploadedFiles[0].fd, function (err) {
@@ -744,7 +752,9 @@ module.exports = {
             case Career:
                 value.th = req.param("th");
                 value.name = req.param("name");
+                value.sub_title = req.param("sub_title");
                 value.description = req.param("description");
+                value.career_type = req.param("career_type");
                 //上傳檔案
                 req.file('photo').upload({ dirname: '../../assets/images/career'}, function (err, uploadedFiles) {
                     if (err)

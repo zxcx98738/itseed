@@ -292,7 +292,7 @@ module.exports = {
         var action = CmsService.getAction(model);
         var now = new Date();
         var criteria = {   
-            select: ['id','title', 'description','photo'],
+            select: ['id','title', 'career_type', 'description','photo'],
             where: { status: "P" }, 
             sort: { order: "asc" }
         }

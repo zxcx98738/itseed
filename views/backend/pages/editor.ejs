@@ -113,6 +113,16 @@
                                 <% } %>
                                 </div>
                             <% } %>
+                            <% if(typeof post.career_type !== 'undefined'){ %>
+                                <div>
+                                    <label>體驗類別</label>
+                                <% if(post.status == "new"){ %>
+                                    <input type="text" class="form-control" name="career_type" placeholder="ex: 個人指導/公司實習">
+                                <% } else{ %>
+                                    <input type="text" class="form-control" name="career_type" placeholder="ex: 個人指導/公司實習" value="<%= post.career_type %>">
+                                <% } %>
+                                </div>
+                            <% } %>
                             <% if(typeof post.photo !== 'undefined'){ %>
                                 <div>
                                     <label>封面相片</label>

@@ -22,12 +22,12 @@ module.exports = {
         //屆數
         th: {
           type: 'integer',
-          notNull: true
+          // notNull: true
         },
         //分享人
         name: {
           type: 'string',
-          notNull: true,
+          //notNull: true,
           maxLength: 30
         },
         //照片
@@ -44,12 +44,15 @@ module.exports = {
         title: {
           type: 'string',
           maxLength: 100,
-          notNull: true
+          //notNull: true
         },
         //內容
         content: {
           type: 'text',
-          notNull: true
+          //notNull: true
+        },
+        career_type: {
+          type: 'string',
         },
         //排序
         order: {
