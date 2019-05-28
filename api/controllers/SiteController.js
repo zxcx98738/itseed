@@ -364,7 +364,7 @@ module.exports = {
         var now = new Date();
         var criteria = {   
             where: { status: "P" }, 
-            sort: { order: "asc" }
+            sort: { th: "desc" }
         }
 
         CmsService.findPosts(model, criteria)
