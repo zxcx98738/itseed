@@ -81,12 +81,12 @@
 <!-- <button type="button" id="BackTop" class="toTop-arrow"></button> -->
 
 
-<div class="part-fourFuture" id="part_fourFuture" style="background-image: url('https://i.imgur.com/rVHEknj.jpg'); background-size:cover;">
+<div class="part-fourFuture" id="part_fourFuture" style="background-image: url('https://i.imgur.com/rVHEknj.jpg'); background-repeat: no-repeat;background-attachment: fixed;background-position: center;background-size: cover;">
   
   <div class="fourtitle eight_gift" style="font-size: 5vh;">資訊種子能帶給你</div>
   
   <div class="row fourDiv">
-    <div  data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
+    <div  data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6 num">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target1a" class="whatyouget">1</div></div>
@@ -94,7 +94,7 @@
         <p class="eight_gift">年學習</p>
       </div>
     </div>
-    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
+    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6 num">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target1b" class="whatyouget">6</div></div>
@@ -102,7 +102,7 @@
         <p class="eight_gift">大專案</p>
       </div>
     </div>
-    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
+    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6 num">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target1c" class="whatyouget">4</div></div>
@@ -110,7 +110,7 @@
         <p class="eight_gift">次企業參訪</p>
       </div>
     </div>
-    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
+    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6 num">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target1d" class="whatyouget">20</div></div>
@@ -118,7 +118,7 @@
         <p class="eight_gift">堂專業課程</p>
       </div>
     </div>
-    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
+    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6 num">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target1" class="counter">16</div></div>
@@ -126,7 +126,7 @@
         <p class="eight_gift">屆學長姐</p>
       </div>
     </div>
-    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
+    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6 num">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target4" class="counter">35</div></div>
@@ -134,7 +134,7 @@
         <p class="eight_gift">計畫夥伴</p>
       </div>
     </div>
-    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
+    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6 num">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target3" class="counter">100+</div></div>
@@ -142,7 +142,7 @@
         <p class="eight_gift">生涯導師</p>
       </div>
     </div>
-    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6">
+    <div data-aos="zoom-in-up" class="col-md-3 col-sm-6 col-xs-6 num">
       <div class="tilteDiv">
         <div class="imgDiv" style="width: 100%;">
           <div class="circleintext"><div id="target2" class="counter">400+</div></div>
@@ -488,6 +488,9 @@ section::after {
       }
     }
     @media (min-width: 351px) and (max-width: 550px) {
+      .num{
+        height: 80px;
+      }
       #Mark_gotoNext a span {
         top: 100%;
        }
@@ -514,6 +517,9 @@ section::after {
       }
     }
     @media (max-width: 551px) {
+      .num{
+        height: 80px;
+      }
       #Mark_gotoNext a span {
         top: 100%;
        }
