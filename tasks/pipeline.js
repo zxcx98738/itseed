@@ -16,13 +16,13 @@
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
   'styles/dependencies/*.css',
-  'styles/importer.css'
+  'styles/importer_17.css'
 ];
 
 var cssAdminFilesToInject = [
   'styles/dependencies/*.css',
   'styles/Admin/*.css',
-  'styles/b_importer.css'
+  'styles/b_importer_17.css'
 ];
 
 // Client-side javascript files to inject in order
