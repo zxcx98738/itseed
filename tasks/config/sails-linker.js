@@ -12,13 +12,13 @@
  *
  */
 module.exports = function(grunt) {
-
+	var time = new Date().getTime();
 	grunt.config.set('sails-linker', {
 		devJs: {
 			options: {
 				startTag: '<!--SCRIPTS-->',
 				endTag: '<!--SCRIPTS END-->',
-				fileTmpl: '<script src="%s"></script>',
+				fileTmpl: '<script src="%s?v='+ time +'"></script>',
 				appRoot: '.tmp/public'
 			},
 			files: {
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '<!--SCRIPTS_ADMIN-->',
 				endTag: '<!--SCRIPTS_ADMIN END-->',
-				fileTmpl: '<script src="%s"></script>',
+				fileTmpl: '<script src="%s?v='+ time +'"></script>',
 				appRoot: '.tmp/public'
 			},
 			files: {
@@ -46,7 +46,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '<!--SCRIPTS-->',
 				endTag: '<!--SCRIPTS END-->',
-				fileTmpl: '<script src="%s"></script>',
+				fileTmpl: '<script src="%s?v='+ time +'"></script>',
 				appRoot: '.tmp/public',
 				relative: true
 			},
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '<!--SCRIPTS-->',
 				endTag: '<!--SCRIPTS END-->',
-				fileTmpl: '<script src="%s"></script>',
+				fileTmpl: '<script src="%s?v='+ time +'"></script>',
 				appRoot: '.tmp/public'
 			},
 			files: {
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '<!--SCRIPTS_ADMIN-->',
 				endTag: '<!--SCRIPTS_ADMIN END-->',
-				fileTmpl: '<script src="%s"></script>',
+				fileTmpl: '<script src="%s?v='+ time +'"></script>',
 				appRoot: '.tmp/public'
 			},
 			files: {
@@ -89,7 +89,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '<!--SCRIPTS-->',
 				endTag: '<!--SCRIPTS END-->',
-				fileTmpl: '<script src="%s"></script>',
+				fileTmpl: '<script src="%s?v='+ time +'"></script>',
 				appRoot: '.tmp/public',
 				relative: true
 			},
@@ -192,7 +192,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '<!--TEMPLATES-->',
 				endTag: '<!--TEMPLATES END-->',
-				fileTmpl: '<script type="text/javascript" src="%s"></script>',
+				fileTmpl: '<script type="text/javascript" src="%s?v='+ time +'"></script>',
 				appRoot: '.tmp/public'
 			},
 			files: {
@@ -206,7 +206,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '// SCRIPTS',
 				endTag: '// SCRIPTS END',
-				fileTmpl: 'script(src="%s")',
+				fileTmpl: 'script(src="%s?v='+ time +'")',
 				appRoot: '.tmp/public'
 			},
 			files: {
@@ -218,7 +218,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '// SCRIPTS',
 				endTag: '// SCRIPTS END',
-				fileTmpl: 'script(src="%s")',
+				fileTmpl: 'script(src="%s?v='+ time +'")',
 				appRoot: '.tmp/public',
 				relative: true
 			},
@@ -231,7 +231,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '// SCRIPTS',
 				endTag: '// SCRIPTS END',
-				fileTmpl: 'script(src="%s")',
+				fileTmpl: 'script(src="%s?v='+ time +'")',
 				appRoot: '.tmp/public'
 			},
 			files: {
@@ -243,7 +243,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '// SCRIPTS',
 				endTag: '// SCRIPTS END',
-				fileTmpl: 'script(src="%s")',
+				fileTmpl: 'script(src="%s?v='+ time +'")',
 				appRoot: '.tmp/public',
 				relative: true
 			},
@@ -309,7 +309,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '// TEMPLATES',
 				endTag: '// TEMPLATES END',
-				fileTmpl: 'script(type="text/javascript", src="%s")',
+				fileTmpl: 'script(type="text/javascript", src="%s?v='+ time +'")',
 				appRoot: '.tmp/public'
 			},
 			files: {
