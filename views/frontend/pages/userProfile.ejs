@@ -25,9 +25,10 @@
 					<img src="<%= user.photo %>" alt="" class="uploadPhoto-img img-responsive center-block">
 					<div class="col-sm-12 col-xs-12 text-center uploadPhoto-top">
 						<!-- <label class="col-sm-12 col-xs-12 " for="name">真實姓名<b class="darkred">*</b>：</label> -->
-					<form id="uploadPhoto" action="/uploadPhoto" method="post" enctype="multipart/form-data">
+					<form id="uploadPhoto" action="/uploadPhoto" method="post" enctype="multipart/form-data" style="margin-top: 20px; margin-bottom:20px;">
 						<button type="button" class="btn btn-default" id="uploadBtn">選擇照片</button>
 						<button type="submit" class="btn btn-yellow" >上傳</button>
+						<p>【 選擇照片後請按上傳 】</p>
 						<input type="file" class="" name="photo">
 					</form>
 <!-- 						<div class="col-sm-12 col-xs-12">
@@ -126,7 +127,7 @@
 									<% } %>
 
 						</div>
-						<p class="col-sm-3 col-xs-12 " style="height: 40px;">※ 請填寫未來一學年的年級</p>
+						<p class="col-sm-3 col-xs-12 comment" style="height: 40px;">※ 請填寫未來一學年的年級</p>
 					</div>
 					<div class="form-border "></div>
 					<div class="form-sub-title">
@@ -138,7 +139,7 @@
 								<input type="text" name="reference" class="none-border-field btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種" value="<%= user.reference %>">
 							<% } %>
 						</div>
-						<p class="col-sm-3 col-xs-12" style="height: 40px;">※ 此選項<b>不影響</b>徵選結果</p>
+						<p class="col-sm-3 col-xs-12 comment" style="height: 40px;">※ 此選項<b>不影響</b>徵選結果</p>
 					</div>
 					<div class="form-border "></div>
 					<div class="form-sub-title">
@@ -278,6 +279,12 @@
 .profile-upload .formatInfo{
 	font-size: 16px;
 }
+/* comment */
+/* @media screen and (max-width: 1200px){
+	input{
+		w300px
+	}
+} */
 </style>
 <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
