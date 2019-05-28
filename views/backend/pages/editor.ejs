@@ -24,10 +24,12 @@
         <header class="editor-header">
             <form method="post" id="form-edit">
                 <% if(post.status == "new"){ %>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="文章標題">
+                    <input type="text" class="form-control" id="title" name="title" style="width: 50%" placeholder="文章標題">
+                    <input type="text" class="form-control" id="title" name="sub_title" style="width: 50%" placeholder="副標題">
                     <input type="text" class="hidden" id="id" name="id">
                 <% } else{ %>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="文章標題" value="<%= post.title %>">
+                    <input type="text" class="form-control" id="title" name="title" style="width: 50%" placeholder="文章標題" value="<%= post.title %>">
+                    <input type="text" class="form-control" id="title" name="sub_title" style="width: 50%" placeholder="副標題" value="<%= post.sub_title %>">
                     <input type="text" class="hidden" id="id" name="id" value="<%= post.id %>">
                 <% } %>
                 <textarea class="hidden" id="content" name="content"></textarea>
