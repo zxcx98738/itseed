@@ -81,7 +81,7 @@ function send_reg_success(newuser){
     // fs.readFile('credentials.json', (err, content) => {
     //     if (err) return console.log('Error loading client secret file:', err);
     //     // Authorize a client with credentials, then call the Google Drive API.
-    //     authorize(JSON.parse(content), update_profile_sheet, save_data);
+    //     authorize(JSON.parse(content), update_final_sheet, save_data);
     // });  
     var email_content = "";
     fs.readFile("views/emailTemplates/testEmail/email.html",(err, content) => {
@@ -123,15 +123,52 @@ async function update_reg_sheet(auth, user) {
   });
 }
 
-
 async function update_profile_sheet(auth, user) {
+
+    const sheets = google.sheets({version: 'v4', auth});
+  
+    sheets.spreadsheets.values.append({
+      auth: auth,
+      spreadsheetId: '19j2E63vnl6nyjF-ybV7xlXYjr3-QRcKoV-F5UZtK2ng',
+      range: "'profile'!A:Q", //Change Sheet1 if your worksheet's name is something else
+      valueInputOption: "RAW",
+      resource: {
+        values: [[
+            user.name,
+            user.email,
+            user.phone,
+            user.disc,
+            user.gender,
+            user.grade,
+            user.school,
+            user.dept,
+            user.reference,
+            user.survey,
+            user.Q1,
+            user.Q2,
+            user.Q3,
+            user.Q4,
+            user.Q5_1,
+            user.Q5_2,
+            user.Q6
+          ]]
+      }
+    }, (err, response) => {
+      if (err) {
+        console.log('The API returned an error: ' + err);
+        return;
+      }
+    });
+  }
+
+async function update_final_sheet(auth, user) {
 
   const sheets = google.sheets({version: 'v4', auth});
 
   sheets.spreadsheets.values.append({
     auth: auth,
     spreadsheetId: '19j2E63vnl6nyjF-ybV7xlXYjr3-QRcKoV-F5UZtK2ng',
-    range: "'profile'!A:Q", //Change Sheet1 if your worksheet's name is something else
+    range: "'final'!A:Q", //Change Sheet1 if your worksheet's name is something else
     valueInputOption: "RAW",
     resource: {
       values: [[
@@ -979,7 +1016,7 @@ function registerAccount(res,newuser,callback){
                                             fs.readFile('credentials.json', (err, content) => {
                                                 if (err) return console.log('Error loading client secret file:', err);
                                                 // Authorize a client with credentials, then call the Google Drive API.
-                                                authorize(JSON.parse(content), update_profile_sheet, save_data);
+                                                authorize(JSON.parse(content), update_final_sheet, save_data);
                                             });  
                                             req.session.finished = 1;
                                             res.redirect("/finish");
