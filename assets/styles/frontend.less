@@ -22,7 +22,16 @@ body {
     min-height: 100vh;
 	font-family:@font-chainese @font-english;
 }
-
+iframe {
+    width: 100%;
+    height: 506px;
+    @media screen and (min-width:551px and max-width(991px)){
+        height : 400px;
+    }
+    @media screen and (max-width : 500px){
+        height : 400px;
+    }
+}
 a{
     color:@main-light-blue;
 }

@@ -130,7 +130,7 @@ async function update_profile_sheet(auth, user) {
     sheets.spreadsheets.values.append({
       auth: auth,
       spreadsheetId: '19j2E63vnl6nyjF-ybV7xlXYjr3-QRcKoV-F5UZtK2ng',
-      range: "'profile'!A:Q", //Change Sheet1 if your worksheet's name is something else
+      range: "'profile'!A:J", //Change Sheet1 if your worksheet's name is something else
       valueInputOption: "RAW",
       resource: {
         values: [[
@@ -144,13 +144,6 @@ async function update_profile_sheet(auth, user) {
             user.dept,
             user.reference,
             user.survey,
-            user.Q1,
-            user.Q2,
-            user.Q3,
-            user.Q4,
-            user.Q5_1,
-            user.Q5_2,
-            user.Q6
           ]]
       }
     }, (err, response) => {
@@ -251,7 +244,6 @@ function registerAccount(res,newuser,callback){
                 }
                 User.create(newuser)
                 .exec(function (err, user) {
-                    console.log(user);
                     if (err) { res.end(JSON.stringify(err)); }
                     //新增DISC
                     UserDISC.create({ user: user.id })
@@ -850,7 +842,7 @@ function registerAccount(res,newuser,callback){
             survey: Array.isArray(req.body.survey) ? req.body.survey.join(',') : req.body.survey
         };
 
-
+        
         User.update({id: req.session.userid}, value)
         .exec(function (err, datas) {
             if (err) {
@@ -859,7 +851,17 @@ function registerAccount(res,newuser,callback){
             else {
                 req.session.email = req.body.email;
                 req.session.pwd = req.body.pwd;
-                res.redirect("/profile");
+
+                if (req.body.move == "下一步"){
+                    res.redirect("/form");
+                }
+                else if(req.body.move == "上一步"){
+                    res.redirect("/disc");
+                }
+                else{
+                    res.redirect("/profile");
+                }
+                
             }     
         });
     },
@@ -889,8 +891,13 @@ function registerAccount(res,newuser,callback){
 
         User_Form.update({user: req.session.userid}, value)
         .exec(function(err , user_form){
-          if(err){res.end(JSON.stringify(err));}
-          res.redirect("/form");
+            if(err){res.end(JSON.stringify(err));}
+            if (req.body.move == "下一步"){
+                res.redirect("/finish");
+            }
+            else{
+                res.redirect("/form");
+            }
         });
     },
 
