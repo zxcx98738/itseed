@@ -117,6 +117,7 @@
 						<p class="col-sm-3 col-xs-12 "></p>
 					</div>
 					<div class="form-border "></div>
+					
 					<div class="form-sub-title">
 						<label class="col-sm-3 col-xs-12" for="grade">年級<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
@@ -125,9 +126,12 @@
 								<% } else{ %>
 									<input required="required" type="text" name="grade" class="none-border-field btn-block" id="grade" value="<%= user.grade %>" placeholder="ex:三年級">
 									<% } %>
-
 						</div>
-						<p class="col-sm-3 col-xs-12 comment" style="height: 40px;">※ 請填寫未來一學年的年級</p>
+						<p class="col-sm-3 col-xs-12" ></p>
+					</div>
+					<!-- <p class="col-sm-3 col-xs-12 comment" style="height: 40px;">※ 請填寫未來一學年的年級</p> -->
+					<div class="row">
+						<p class="col-sm-5 col-sm-offset-5 col-xs-5 col-xs-offset-5">※ 請填寫未來一學年的年級</p>
 					</div>
 					<div class="form-border "></div>
 					<div class="form-sub-title">
@@ -139,7 +143,10 @@
 								<input type="text" name="reference" class="none-border-field btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種" value="<%= user.reference %>">
 							<% } %>
 						</div>
-						<p class="col-sm-3 col-xs-12 comment" style="height: 40px;">※ 此選項<b>不影響</b>徵選結果</p>
+						<p class="col-sm-3 col-xs-12 comment" style="height: 40px;"></p>
+					</div>
+					<div class="row">
+						<p class="col-sm-5 col-sm-offset-5 col-xs-5 col-xs-offset-5">※ 此選項<b>不影響</b>徵選結果</p>
 					</div>
 					<div class="form-border "></div>
 					<div class="form-sub-title">
@@ -161,7 +168,7 @@
 						<hr>
 						<button type="submit" class="btn-lg btn-yellow" style="color:white;" >儲存個人資料</button>
 					</div> -->
-					<div class="col-sm-12 col-xs-12 text-center" style="margin-top: 5vh; margin-bottom: 5vh;">
+					<div class="col-sm-12 col-xs-12 text-center" style="margin-top: 3vh; margin-bottom: 5vh;">
 						<button onclick="window.location.href='/disc';window.event.returnValue=false;" class="btn-change btn-lg btn-default" >上一步</button>
 						<button type="submit" class="btn-lg btn-yellow"  >儲存資料</button>
 						<button onclick="window.location.href='/form';window.event.returnValue=false;" class="btn-change btn-lg btn-default">下一步</button>
@@ -280,11 +287,20 @@
 	font-size: 16px;
 }
 /* comment */
-/* @media screen and (max-width: 1200px){
-	input{
-		w300px
+@media screen and (max-width: 500px){
+	.form-sub-title label, .form-sub-title input,.form-sub-title p,label{
+		font-size: 14px;
 	}
-} */
+	.set-profile {
+		padding: 0;
+	}
+	.row p{
+		font-size: 12px;
+	}
+	.uploadPhoto img{
+		margin-top: 30px;
+	}
+}
 </style>
 <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
