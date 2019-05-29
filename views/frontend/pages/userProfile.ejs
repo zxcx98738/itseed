@@ -28,18 +28,9 @@
 					<form id="uploadPhoto" action="/uploadPhoto" method="post" enctype="multipart/form-data" style="margin-top: 20px; margin-bottom:20px;">
 						<button type="button" class="btn btn-default" id="uploadBtn">選擇照片</button>
 						<button type="submit" class="btn btn-yellow" >上傳</button>
-						<p>【 選擇照片後請按上傳 】</p>
+						<p>【 選擇照片後請按上傳，檔案大小限制為2M， 】</p>
 						<input type="file" class="" name="photo">
 					</form>
-<!-- 						<div class="col-sm-12 col-xs-12">
-							<% if(user.name == null){%>
-								<input type="text" name="name" class="btn-block none-border-field text-center" id="name" placeholder="ex: 林資種" autocomplete="off">
-							<% } else{ %>
-								<input type="text" name="name" class="btn-block none-border-field text-center" id="name" placeholder="請輸入真實姓名*" value="<%= user.name %>" autocomplete="off">
-							<% } %>
-						</div> -->
-
-						<!-- <p>建議使用尺寸為 250x250 以上正方形圖片，檔案大小限制為2MB。</p> -->
 					</div>
 				</div>
 			<form id="personl_info" action="/editProfile" method="post" enctype="multipart/form-data" class="form-horizontal clearfix">
@@ -63,9 +54,9 @@
 						<label class="col-sm-3 col-xs-12 " for="phone">連絡電話<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.phone == null){%>
-								<input required="required" type="text" name="phone" class="none-border-field btn-block " id="phone" placeholder="ex: 0800090000" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')" >
+								<input required="required" type="text" name="phone" class="none-border-field btn-block " id="phone" placeholder="ex: 0912345678" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')" >
 							<% } else{ %>
-								<input required="required" type="text" name="phone" class="none-border-field btn-block" id="phone" placeholder="ex: 0800090000" value="<%= user.phone %>" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+								<input required="required" type="text" name="phone" class="none-border-field btn-block" id="phone" placeholder="ex: 0912345678" value="<%= user.phone %>" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 							<% } %>
 						</div>
 						<p class="col-sm-3 col-xs-12 " style="height: 40px;"></p>

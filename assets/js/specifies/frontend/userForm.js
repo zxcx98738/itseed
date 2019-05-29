@@ -2,8 +2,6 @@ $(function(){
   /*表單驗證*/
   
   $('#goto_upload').click(function(){
-    
-    console.log("click");
     $("form").validate({
       submitHandler: function(form) {
         form.submit();
@@ -38,7 +36,8 @@ $(function(){
     });
     $("form").submit();
   });
-
+  $('#no_require_save').click(function(){
+  });
 
 });
 $( document ).ready(function() {
