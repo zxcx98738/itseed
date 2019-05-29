@@ -83,9 +83,19 @@ function send_reg_success(newuser){
     from: 'itseed17th@gmail.com',
     to: newuser.email,
     subject: '資訊種子帳號註冊成功',
-    html: '<p>親愛的' + String(newuser.name)+ '您好,</p><br><p>感謝您的註冊</p><p>資訊種子為一年期的培訓運計畫......</p><p>第十六屆資訊種子招生團隊敬上</p>'
+    // html: '<p>親愛的' + String(newuser.name)+ '您好,</p><br><p>感謝您的註冊</p><p>資訊種子為一年期的培訓運計畫......</p><p>第十六屆資訊種子招生團隊敬上</p>'
     };
-
+    // 渲染email html
+    res.render('emailTemplates/emailSucess/emailSucess.ejs', {
+        name:String(newuser.name)
+    }, function(err, html) {
+        if(err){
+            console.log('error in email template');    
+        } 
+        console.log(html);
+        mailOptions.html = html;
+    });
+    // 寄信
     transporter.sendMail(mailOptions, function(error, info){
       if (error) {
         console.log(error);
@@ -365,18 +375,23 @@ function registerAccount(res,newuser,callback){
             if (err) {
                 // console.log("資料庫查詢失敗")
                 res.end(JSON.stringify(err));
-            }else if(emailvo){
-                // console.log("emailV已經有此帳戶，寄信")                
+            }else if(emailvo){               
                 var link="http://"+req.get('host')+"/check-code?email="+userregister.email+"&token="+userregister.mailmd5;                
                 var mail = {
                     from: '資訊種子',
                     subject: '資訊種子註冊信',
                     to: userregister.email,
-                    html: '<p>親愛的使用者您好,</p><br><a href="'+link+'">點擊驗證信箱</a></p><p>第十六屆資訊種子招生團隊敬上</p>'
-                    // text: "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>" 
-                };
-                // 寄信API
-                Mailer.sendWelcomeMail(mail);
+                 };
+                 res.render('emailTemplates/emailVerification/emailVerification.ejs', {
+                    link:link
+                }, function(err, html) {
+                    if(err){
+                        console.log('error in email template');    
+                    } 
+                    console.log(html);
+                    mail.html = html;
+                    Mailer.sendWelcomeMail(mail);
+                });
                 return res.view("frontend/pages/rem" , { emailV:userregister });
             }else{
                 // emalV無此帳戶
@@ -392,9 +407,18 @@ function registerAccount(res,newuser,callback){
                           from: '資訊種子',
                           subject: '資訊種子註冊信',
                           to: userregister.email,
-                          html: '<p>親愛的使用者您好,</p><br><a href="'+link+'">點擊驗證信箱</a></p><p>第十六屆資訊種子招生團隊敬上</p>'
+                        //   html: '<p>親愛的使用者您好,</p><br><a href="'+link+'">點擊驗證信箱</a></p><p>第十六屆資訊種子招生團隊敬上</p>'
                         };
-                        Mailer.sendWelcomeMail(mail);
+                        res.render('emailTemplates/emailVerification/emailVerification.ejs', {
+                            link:link
+                        }, function(err, html) {
+                            if(err){
+                                console.log('error in email template');    
+                            } 
+                            console.log(html);
+                            mail.html = html;
+                            Mailer.sendWelcomeMail(mail);
+                        });
                         return res.view("frontend/pages/rem" , { emailV:userregister });
                     }
                 });
@@ -489,7 +513,7 @@ function registerAccount(res,newuser,callback){
                       from: 'itseed17th@gmail.com',
                       to: req.body.email,
                       subject: '【資訊種子第17屆】【忘記密碼】',
-                      html:"<p>親愛的 "+req.session.name+" 您好</p><br><p>您的新密碼為："+randomstring+"</p><br><p>請記得登入並更改您的密碼</p><br><p>第十七屆資訊種子招生團隊敬上</p>"
+                    //   html:"<p>親愛的 "+req.session.name+" 您好</p><br><p>您的新密碼為："+randomstring+"</p><br><p>請記得登入並更改您的密碼</p><br><p>第十七屆資訊種子招生團隊敬上</p>"
                       };//每個信件寄出的密碼皆為8字亂數
 
                       transporter.sendMail(mailOptions, function(error, info){
