@@ -14,9 +14,9 @@
 		</div>	
 	<div class="container">
 		<div class="share-but-part">
-			<button class="share-but graduate-btn">學長姐怎麼看</button>
-			<button class="share-but leader-btn">領導者怎麼看</button>
-			<button class="share-but school-btn">學員怎麼看</button>
+			<button class="share-but graduate-btn" onclick="window.location.href='/sharing#junior'">學長姐怎麼看</button>
+			<button class="share-but leader-btn" onclick="window.location.href='/sharing#leader'">領導者怎麼看</button>
+			<button class="share-but school-btn" onclick="window.location.href='/sharing#classmate'">學員怎麼看</button>
 		</div>
 		<div class="row share-page">
 			<div class="col-xs-12 share-part" style="padding: 0%;">
@@ -27,7 +27,7 @@
 				<% for(var i = 0; i < datas.length; i++){ %>
 					<% if(datas[i].th == 4) { %>
 						<% if (m == 0 ) {%>
-							<span class="col-xs-12 graduate-see">
+							<span class="col-xs-12 graduate-see" id="junior">
 								<h3>學長姐怎麼看</h3>
 							</span>
 							<% m = 1 %>
@@ -44,7 +44,7 @@
 					<% } %>
 					<% if(datas[i].th == 1) { %>
 						<% if (j == 0 ) {%>
-							<span class="col-xs-12 school-see" style="margin-top: 5vh;">
+							<span class="col-xs-12 school-see" style="margin-top: 5vh;" id="classmate">
 								<h3>學員怎麼看</h3>
 							</span>
 							<% j = 1 %>
@@ -63,7 +63,7 @@
 					<% } %>
 					<% if(datas[i].th == 2) { %>
 						<% if (k == 0 ) {%>
-							<span class="col-xs-12 leader-see"  style="margin-top: 5vh;">
+							<span class="col-xs-12 leader-see"  style="margin-top: 5vh;" id="leader">
 								<h3>領導者怎麼看</h3>
 							</span>
 							<% k = 1 %>

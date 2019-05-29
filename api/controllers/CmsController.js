@@ -704,7 +704,7 @@ module.exports = {
                 req.file('photo').upload({ dirname: '../../assets/images/sharing'}, function (err, uploadedFiles) {
                     if (err)
                         res.end(JSON.stringify(err));
-                    if (uploadedFiles.length > 0) {
+                    if (typeof uploadedFiles !== "undefined" && uploadedFiles.length > 0) {
                         //圖片檔
                         if(uploadedFiles[0].type.substring(0, 5) == "image"){
                             var url = uploadedFiles[0].fd;
@@ -727,7 +727,7 @@ module.exports = {
                     .then(function(){
 
                         //刪除原始檔案
-                        if (uploadedFiles.length > 0 && req.param("oldPhoto") != '/images/sharing/default.png') {
+                        if (typeof uploadedFiles !== "undefined" && uploadedFiles.length > 0 && req.param("oldPhoto") != '/images/sharing/default.png') {
                             var imagePath = sails.config.appPath+'/assets'+req.param("oldPhoto");
 
                             fs.unlink(imagePath, function (err) {
@@ -739,7 +739,7 @@ module.exports = {
                     })
                     .catch(function(err){
                         //刪除上傳檔案
-                        if (uploadedFiles.length > 0) {
+                        if (typeof uploadedFiles !== "undefined" && uploadedFiles.length > 0) {
                             fs.unlink(uploadedFiles[0].fd, function (err) {
                                 if (err)
                                     console.error(err)
@@ -759,7 +759,8 @@ module.exports = {
                 req.file('photo').upload({ dirname: '../../assets/images/career'}, function (err, uploadedFiles) {
                     if (err)
                         res.end(JSON.stringify(err));
-                    if (uploadedFiles.length > 0) {
+                    
+                    if (typeof uploadedFiles !== "undefined" && uploadedFiles.length > 0) {
                         //圖片檔
                         if(uploadedFiles[0].type.substring(0, 5) == "image"){
                             var url = uploadedFiles[0].fd;
@@ -782,7 +783,7 @@ module.exports = {
                     .then(function(){
 
                         //刪除原始檔案
-                        if (uploadedFiles.length > 0 && req.param("oldPhoto") != '/images/sharing/default.png') {
+                        if (typeof uploadedFiles !== "undefined" && uploadedFiles.length > 0 && req.param("oldPhoto") != '/images/sharing/default.png') {
                             var imagePath = sails.config.appPath+'/assets'+req.param("oldPhoto");
 
                             fs.unlink(imagePath, function (err) {
@@ -794,7 +795,7 @@ module.exports = {
                     })
                     .catch(function(err){
                         //刪除上傳檔案
-                        if (uploadedFiles.length > 0) {
+                        if (typeof uploadedFiles !== "undefined" && uploadedFiles.length > 0) {
                             fs.unlink(uploadedFiles[0].fd, function (err) {
                                 if (err)
                                     console.error(err)
