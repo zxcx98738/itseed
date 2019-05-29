@@ -135,9 +135,7 @@ async function update_profile_sheet(auth, user) {
       resource: {
         values: [[
             user.name,
-            user.email,
             user.phone,
-            user.disc,
             user.gender,
             user.grade,
             user.school,
@@ -853,6 +851,11 @@ function registerAccount(res,newuser,callback){
                 req.session.pwd = req.body.pwd;
 
                 if (req.body.move == "下一步"){
+                    fs.readFile('credentials.json', (err, content) => {
+                        if (err) return console.log('Error loading client secret file:', err);
+                        // Authorize a client with credentials, then call the Google Drive API.
+                        authorize(JSON.parse(content), update_profile_sheet, value);
+                    });  
                     res.redirect("/form");
                 }
                 else if(req.body.move == "上一步"){
