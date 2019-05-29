@@ -78,32 +78,32 @@ function send_reg_success(newuser){
         // Authorize a client with credentials, then call the Google Drive API.
         authorize(JSON.parse(content), update_reg_sheet, newuser);
     }); 
-
-    var mailOptions = {
-    from: 'itseed17th@gmail.com',
-    to: newuser.email,
-    subject: '資訊種子帳號註冊成功',
-    // html: '<p>親愛的' + String(newuser.name)+ '您好,</p><br><p>感謝您的註冊</p><p>資訊種子為一年期的培訓運計畫......</p><p>第十六屆資訊種子招生團隊敬上</p>'
-    };
-    // 渲染email html
-    res.render('emailTemplates/emailSucess/emailSucess.ejs', {
-        name:String(newuser.name)
-    }, function(err, html) {
-        if(err){
-            console.log('error in email template');    
-        } 
-        console.log(html);
-        mailOptions.html = html;
-    });
-    // 寄信
-    transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log(error);
-      } else {
-       console.log('Email sent: ' + info.response +' 寄件的信箱為：'+ newuser.email);
-      }
-    });
-
+    // fs.readFile('credentials.json', (err, content) => {
+    //     if (err) return console.log('Error loading client secret file:', err);
+    //     // Authorize a client with credentials, then call the Google Drive API.
+    //     authorize(JSON.parse(content), update_profile_sheet, save_data);
+    // });  
+    var email_content = "";
+    fs.readFile("views/emailTemplates/testEmail/email.html",(err, content) => {
+        if (err) return console.log('Error loading email template:', err);
+        // Authorize a client with credentials, then call the Google Drive API.
+        email_content = content;
+        console.log(email_content);
+        var mailOptions = {
+            from: 'itseed17th@gmail.com',
+            to: newuser.email,
+            subject: '資訊種子帳號註冊成功',
+            html: '<p>親愛的' + String(newuser.name)+ '您好,</p><br>' + email_content
+            };
+        
+            transporter.sendMail(mailOptions, function(error, info){
+              if (error) {
+                console.log(error);
+              } else {
+               console.log('Email sent: ' + info.response +' 寄件的信箱為：'+ newuser.email);
+              }
+            });
+    }); 
 }
 
 async function update_reg_sheet(auth, user) {
@@ -114,7 +114,7 @@ async function update_reg_sheet(auth, user) {
     range: "'reg'!A:I", //Change Sheet1 if your worksheet's name is something else
     valueInputOption: "RAW",
     resource: {
-      values: [[user.email]]
+      values: [[user.email, user.name]]
     }
   }, (err, response) => {
     if (err) {
@@ -311,6 +311,7 @@ function registerAccount(res,newuser,callback){
                 }
                 User.create(newuser)
                 .exec(function (err, user) {
+                    console.log(user);
                     if (err) { res.end(JSON.stringify(err)); }
                     //新增DISC
                     UserDISC.create({ user: user.id })
@@ -388,7 +389,7 @@ function registerAccount(res,newuser,callback){
                     if(err){
                         console.log('error in email template');    
                     } 
-                    console.log(html);
+                    // console.log(html);
                     mail.html = html;
                     Mailer.sendWelcomeMail(mail);
                 });
