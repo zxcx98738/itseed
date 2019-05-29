@@ -112,9 +112,9 @@
 						<label class="col-sm-3 col-xs-12" for="grade">年級<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.grade == null){%>
-								<input required="required" type="text" name="grade" class="none-border-field btn-block" id="grade" placeholder="ex: 三年級">
+								<input autocomplete="off" required="required" type="text" name="grade" class="none-border-field btn-block" id="grade" placeholder="ex: 大三">
 								<% } else{ %>
-									<input required="required" type="text" name="grade" class="none-border-field btn-block" id="grade" value="<%= user.grade %>" placeholder="ex:三年級">
+									<input autocomplete="off" required="required" type="text" name="grade" class="none-border-field btn-block" id="grade" value="<%= user.grade %>" placeholder="ex:大三">
 									<% } %>
 
 						</div>
@@ -125,9 +125,9 @@
 						<label class="col-sm-3 col-xs-12" for="reference">推薦人：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.reference == null){%>
-								<input type="text" name="reference" class="none-border-field btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種">
+								<input autocomplete="off" type="text" name="reference" class="none-border-field btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種">
 							<% } else{ %>
-								<input type="text" name="reference" class="none-border-field btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種" value="<%= user.reference %>">
+								<input autocomplete="off" type="text" name="reference" class="none-border-field btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種" value="<%= user.reference %>">
 							<% } %>
 						</div>
 						<p class="col-sm-3 col-xs-12 comment" style="height: 40px;">※ 此選項<b>不影響</b>徵選結果</p>
