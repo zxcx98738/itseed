@@ -61,7 +61,8 @@ $(function(){
         element.closest('label').append(error);
         swal({
           title: "檔案格式錯誤",
-          confirmButtonText: '確定'
+          confirmButtonText: '確定',
+          icon: "error",
         })
         if(element.attr('type') == 'file'){
           element.siblings('button[type="button"]').addClass('error');

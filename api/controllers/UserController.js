@@ -893,7 +893,7 @@ function registerAccount(res,newuser,callback){
         .exec(function(err , user_form){
             if(err){res.end(JSON.stringify(err));}
             if (req.body.move == "下一步"){
-                res.redirect("/finish");
+                res.redirect("/files");
             }
             else{
                 res.redirect("/form");
