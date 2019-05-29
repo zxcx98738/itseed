@@ -704,7 +704,7 @@ module.exports = {
                 req.file('photo').upload({ dirname: '../../assets/images/sharing'}, function (err, uploadedFiles) {
                     if (err)
                         res.end(JSON.stringify(err));
-                    if typeof uploadedFiles !== "undefined" && (uploadedFiles.length > 0) {
+                    if (typeof uploadedFiles !== "undefined" && uploadedFiles.length > 0) {
                         //圖片檔
                         if(uploadedFiles[0].type.substring(0, 5) == "image"){
                             var url = uploadedFiles[0].fd;
