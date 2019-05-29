@@ -55,138 +55,31 @@ $(function(){
   });
 
  //  /*表單驗證*/
-	// $("form").validate({
-	// 	submitHandler: function(form) {
- //      form.submit();
- //    },
- //    errorPlacement: function(error, element) {
- //      element.closest('div').append(error);
- //      if(element.attr('type') == 'file'){
- //        element.siblings('button').addClass('error');
- //      }
- //    },
- //  	rules: {      		
- //  		// email: {
- //  		// 	required: true,
- //  		// 	email: true,
- //  		// 	remote: {
- //  		// 		url: "/check-email",
- //  		// 		type: "post",
- //  		// 		data: {
- //  		// 			email: function() {
- //  		// 				return $( "input[name='email']" ).val();
- //  		// 			}
- //  		// 		}
- //  		// 	}
- //  		// },
- //  		// pwd: {
- //  		// 	required: true,
- //  		// 	minlength: 6,
- //    //     maxlength: 20
- //  		// },
- //  		// pwd_confirmation: {
- //  		// 	equalTo : '#pwd'
- //  		// },
- //  		phone: {
- //  			required: true,
- //  			maxlength: 20
- //  		},
- //      // th: {
- //      //   required: true,
- //      //   maxlength: 10
- //      // },
- //  		name: {
- //  			required: true,
- //  			maxlength: 10
- //  		},
- //  		gender: {
- //  			required: true,
- //  		},
- //  		school: {
- //  			required: true,
- //  			maxlength: 20
- //  		},
- //      dept: {
- //        required: true,
- //        maxlength: 20
- //      },      
- //  		grade: {
- //  			required: true,
- //  			maxlength: 20
- //  		},
- //  		reference: {
- //  			maxlength: 20,
- //  		},
- //      photo: {
- //        accept: 'image/*',
- //        fileSize: 2
- //      }
- //  	},
- //  	messages: {
- //  		email: {
- //  			remote: "此帳號已存在",
- //  		},
- //  	}
- //  });
-  // var pass;
-  // $(".pwd-btn").click(function(){
-  //   $(".password-hide").css('display','none');
-  //   $(".password-part").css('display','block');
-  //   pass = $("#pwd").val();
-  // });
+	$("#uploadPhoto").validate({
+		submitHandler: function(form) {
+      form.submit();
+    },
+    errorPlacement: function(error, element) {
+      element.closest('div').append(error);
+      if(element.attr('type') == 'file'){
+        element.siblings('button').addClass('error');
+      }
+    },
+  	rules: {      		
+      photo: {
+        accept: 'image/*',
+        fileSize: 2
+      }
+  	}
+  });
 
-  // $(".pwd-stop-btn").click(function(){
-  //   $(".password-hide").css('display','block');
-  //   $(".password-part").css('display','none');
-  //   $("#pwd").val(pass);
-  //   $("#conpwd").val(pass);
-  // });
 });
 $( document ).ready(function() {
   $("#disc_progress").addClass('active');
   $("#profile_progress").addClass('active');
-// html2canvas(document.getElementById("sub_profile"), {
-//   onrendered:function(canvas) {
-//       console.log("hi i am printing pdf");
-//       var contentWidth = canvas.width;
-//       var contentHeight = canvas.height;
-
-//       //一页pdf显示html页面生成的canvas高度;
-//       var pageHeight = contentWidth / 592.28 * 841.89;
-//       //未生成pdf的html页面高度
-//       var leftHeight = contentHeight;
-//       //页面偏移
-//       var position = 0;
-//       //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
-//       var imgWidth = 595.28;
-//       var imgHeight = 841.89;
-
-//       var pageData = canvas.toDataURL('image/jpeg', 1.0);
-
-//       var pdf = new jsPDF('', 'pt', 'a4');
-
-//       //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
-//       //当内容未超过pdf一页显示的范围，无需分页
-//       if (leftHeight < pageHeight) {
-//     pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight );
-//       } else {
-//         while(leftHeight > 0) {
-//             pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
-//             leftHeight -= pageHeight;
-//             position -= 841.89;
-//             //避免添加空白页
-//             if(leftHeight > 0) {
-//             pdf.addPage();
-//             }
-//         }
-//       }
-
-//       pdf.save('content.pdf');
-//   }
-// })  
 });
-$("#disc_progress").addClass('active');
-$("#profile_progress").addClass('active');
+  $("#disc_progress").addClass('active');
+  $("#profile_progress").addClass('active');
 function autocomplete(inp, arr, element) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/

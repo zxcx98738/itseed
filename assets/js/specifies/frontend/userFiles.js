@@ -50,32 +50,39 @@ $(function(){
 
   /*表單驗證*/
   $("form").each(function(){
+    
     $(this).validate({
       submitHandler: function(form) {
+        console.log(form);
         form.submit();
+
       },
       errorPlacement: function(error, element) {
-        element.closest('div').append(error);
+        element.closest('label').append(error);
+        swal({
+          title: "檔案格式錯誤",
+          confirmButtonText: '確定'
+        })
         if(element.attr('type') == 'file'){
           element.siblings('button[type="button"]').addClass('error');
         }
       },
       rules: {          
-        // registration: {
-        //   required: true,
-        //   accept: 'application/pdf',
-        //   fileSize: 5
-        // },
+        registration: {
+          required: true,
+          accept: 'application/pdf',
+          fileSize: 5
+        },
         autobiography: {
           required: true,
           accept: 'application/pdf',
           fileSize: 5
         },
-        receipt: {
-          required: true,
-          accept: 'application/pdf',
-          fileSize: 5
-        },
+        // receipt: {
+        //   required: true,
+        //   accept: 'application/pdf',
+        //   fileSize: 5
+        // },
       },
       messages: {
         registration: {
