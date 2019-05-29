@@ -81,14 +81,13 @@ function send_reg_success(newuser){
     // fs.readFile('credentials.json', (err, content) => {
     //     if (err) return console.log('Error loading client secret file:', err);
     //     // Authorize a client with credentials, then call the Google Drive API.
-    //     authorize(JSON.parse(content), update_profile_sheet, save_data);
+    //     authorize(JSON.parse(content), update_final_sheet, save_data);
     // });  
     var email_content = "";
     fs.readFile("views/emailTemplates/testEmail/email.html",(err, content) => {
         if (err) return console.log('Error loading email template:', err);
         // Authorize a client with credentials, then call the Google Drive API.
         email_content = content;
-        console.log(email_content);
         var mailOptions = {
             from: 'itseed17th@gmail.com',
             to: newuser.email,
@@ -124,61 +123,52 @@ async function update_reg_sheet(auth, user) {
   });
 }
 
-
 async function update_profile_sheet(auth, user) {
-    //console.log(user)
-  const drive = google.drive({version: 'v3', auth});
-  // drive.files.list({
-  //   pageSize: 10,
-  //   fields: 'nextPageToken, files(id, name)',
-  // }, (err, res) => {
-  //   if (err) return console.log('The API returned an error: ' + err);
-  //   const files = res.data.files;
-  //   if (files.length) {
-  //     console.log('Files:');
-  //     files.map((file) => {
-  //       console.log(`${file.name} (${file.id})`);
-  //     });
-  //   } else {
-  //     console.log('No files found.');
-  //   }
-  // });
-  // const media = {
-  //   mimeType: 'application/pdf',
-  //   body: fs.createReadStream('Quentin_resume.pdf')
-  // };  
-  // drive.files.create({
-  //   requestBody: {
-  //     name: 'Quentin_resume',
-  //     mimeType: 'application/pdf'
-  //   },
-  //   media: media,
-  // }, (err, res) => {
-  //   if (err) return console.log('The API returned an error: ' + err);
-  // });  
 
-  // console.log("listMajors")
+    const sheets = google.sheets({version: 'v4', auth});
+  
+    sheets.spreadsheets.values.append({
+      auth: auth,
+      spreadsheetId: '19j2E63vnl6nyjF-ybV7xlXYjr3-QRcKoV-F5UZtK2ng',
+      range: "'profile'!A:Q", //Change Sheet1 if your worksheet's name is something else
+      valueInputOption: "RAW",
+      resource: {
+        values: [[
+            user.name,
+            user.email,
+            user.phone,
+            user.disc,
+            user.gender,
+            user.grade,
+            user.school,
+            user.dept,
+            user.reference,
+            user.survey,
+            user.Q1,
+            user.Q2,
+            user.Q3,
+            user.Q4,
+            user.Q5_1,
+            user.Q5_2,
+            user.Q6
+          ]]
+      }
+    }, (err, response) => {
+      if (err) {
+        console.log('The API returned an error: ' + err);
+        return;
+      }
+    });
+  }
+
+async function update_final_sheet(auth, user) {
+
   const sheets = google.sheets({version: 'v4', auth});
-  // sheets.spreadsheets.values.get({
-  //   spreadsheetId: '1Q2lI-9znFr43BJHNkQ4GExKP16kG7nbAeOfhbLJr0Xo',
-  //   range: 'A1:E46',
-  // }, (err, res) => {
-  //   if (err) return console.log('The API returned an error: ' + err);
-  //   const rows = res.data.values;
-  //   if (rows.length) {
-  //     console.log('Name, Major:');
-  //     // Print columns A and E, which correspond to indices 0 and 4.
-  //     rows.map((row) => {
-  //       console.log(`${row[0]}, ${row[4]}`);
-  //     });
-  //   } else {
-  //     console.log('No data found.');
-  //   }
-  // });
+
   sheets.spreadsheets.values.append({
     auth: auth,
     spreadsheetId: '19j2E63vnl6nyjF-ybV7xlXYjr3-QRcKoV-F5UZtK2ng',
-    range: "'profile'!A:Q", //Change Sheet1 if your worksheet's name is something else
+    range: "'final'!A:Q", //Change Sheet1 if your worksheet's name is something else
     valueInputOption: "RAW",
     resource: {
       values: [[
@@ -208,57 +198,7 @@ async function update_profile_sheet(auth, user) {
     }
   });
 }
-/*
-async function upload_profile_picture(auth, file_name) {
-    //console.log(user)
-  const drive = google.drive({version: 'v3', auth});
-  // drive.files.list({
-  //   pageSize: 10,
-  //   fields: 'nextPageToken, files(id, name)',
-  // }, (err, res) => {
-  //   if (err) return console.log('The API returned an error: ' + err);
-  //   const files = res.data.files;
-  //   if (files.length) {
-  //     console.log('Files:');
-  //     files.map((file) => {
-  //       console.log(`${file.name} (${file.id})`);
-  //     });
-  //   } else {
-  //     console.log('No files found.');
-  //   }
-  // });
 
-    var fileMetadata = {
-      'name': 'Invoices',
-      'mimeType': 'application/vnd.google-apps.folder'
-    };
-    drive.files.create({
-      resource: fileMetadata,
-      fields: 'id'
-    }, function (err, file) {
-      if (err) {
-        // Handle error
-        console.error(err);
-      } else {
-        console.log('Folder Id: ', file.id);
-      }
-    });  
-
-  const media = {
-    mimeType: 'image/gif, image/png, image/jpeg, image/bmp, image/webp, image/x-icon,image/vnd.microsoft.icon',
-    body: fs.createReadStream('Quentin_resume.pdf')
-  };  
-  drive.files.create({
-    requestBody: {
-      name: 'Quentin_resume',
-      mimeType: 'application/pdf'
-    },
-    media: media,
-  }, (err, res) => {
-    if (err) return console.log('The API returned an error: ' + err);
-  });  
-}
-*/
 
 
 function registerAccount(res,newuser,callback){
@@ -1090,7 +1030,7 @@ function registerAccount(res,newuser,callback){
                                             fs.readFile('credentials.json', (err, content) => {
                                                 if (err) return console.log('Error loading client secret file:', err);
                                                 // Authorize a client with credentials, then call the Google Drive API.
-                                                authorize(JSON.parse(content), update_profile_sheet, save_data);
+                                                authorize(JSON.parse(content), update_final_sheet, save_data);
                                             });  
                                             req.session.finished = 1;
                                             res.redirect("/finish");
