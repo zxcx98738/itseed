@@ -104,7 +104,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '<!--STYLES-->',
 				endTag: '<!--STYLES END-->',
-				fileTmpl: '<link rel="stylesheet" href="%s">',
+				fileTmpl: '<link rel="stylesheet" href="%s?v='+ time +'">',
 				appRoot: '.tmp/public'
 			},
 
@@ -118,7 +118,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '<!--STYLES_ADMIN-->',
 				endTag: '<!--STYLES_ADMIN END-->',
-				fileTmpl: '<link rel="stylesheet" href="%s">',
+				fileTmpl: '<link rel="stylesheet" href="%s?v='+ time +'">',
 				appRoot: '.tmp/public'
 			},
 
@@ -132,7 +132,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '<!--STYLES-->',
 				endTag: '<!--STYLES END-->',
-				fileTmpl: '<link rel="stylesheet" href="%s">',
+				fileTmpl: '<link rel="stylesheet" href="%s?v='+ time +'">',
 				appRoot: '.tmp/public',
 				relative: true
 			},
@@ -148,7 +148,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '<!--STYLES-->',
 				endTag: '<!--STYLES END-->',
-				fileTmpl: '<link rel="stylesheet" href="%s">',
+				fileTmpl: '<link rel="stylesheet" href="%s?v='+ time +'">',
 				appRoot: '.tmp/public'
 			},
 			files: {
@@ -162,7 +162,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '<!--STYLES_ADMIN-->',
 				endTag: '<!--STYLES_ADMIN END-->',
-				fileTmpl: '<link rel="stylesheet" href="%s">',
+				fileTmpl: '<link rel="stylesheet" href="%s?v='+ time +'">',
 				appRoot: '.tmp/public'
 			},
 			files: {
@@ -176,7 +176,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '<!--STYLES-->',
 				endTag: '<!--STYLES END-->',
-				fileTmpl: '<link rel="stylesheet" href="%s">',
+				fileTmpl: '<link rel="stylesheet" href="%s?v='+ time +'">',
 				appRoot: '.tmp/public',
 				relative: true
 			},
@@ -256,7 +256,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '// STYLES',
 				endTag: '// STYLES END',
-				fileTmpl: 'link(rel="stylesheet", href="%s")',
+				fileTmpl: 'link(rel="stylesheet", href="%s?v='+ time +'")',
 				appRoot: '.tmp/public'
 			},
 
@@ -269,7 +269,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '// STYLES',
 				endTag: '// STYLES END',
-				fileTmpl: 'link(rel="stylesheet", href="%s")',
+				fileTmpl: 'link(rel="stylesheet", href="%s?v='+ time +'")',
 				appRoot: '.tmp/public',
 				relative: true
 			},
@@ -283,7 +283,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '// STYLES',
 				endTag: '// STYLES END',
-				fileTmpl: 'link(rel="stylesheet", href="%s")',
+				fileTmpl: 'link(rel="stylesheet", href="%s?v='+ time +'")',
 				appRoot: '.tmp/public'
 			},
 			files: {
@@ -295,7 +295,7 @@ module.exports = function(grunt) {
 			options: {
 				startTag: '// STYLES',
 				endTag: '// STYLES END',
-				fileTmpl: 'link(rel="stylesheet", href="%s")',
+				fileTmpl: 'link(rel="stylesheet", href="%s?v='+ time +'")',
 				appRoot: '.tmp/public',
 				relative: true
 			},
