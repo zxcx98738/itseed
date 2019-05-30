@@ -131,10 +131,8 @@
                                         </div>
                                         <p class="course-title"> 「<%=datas[i].title %>」 </p>
                                         <!-- <p class="course-author"><%=datas[i].speaker.split("|")[0] %></p> -->
-                                        <p class="course-author"><%=datas[i].speaker %></p>
-                                        <div class="learn-more learn-more-none">
-                                            <a href="<%= 'courseInfo/' + datas[i].id %>"><p>Learn more</p></a>
-                                        </div>
+                                        <p class="course-author"><%=datas[i].speaker.split("|")[1] %></p>
+                                        <p class="course-author-department"><%=datas[i].speaker.split("|")[0] %></p>
                                 </div>
                             </li>
                         <% } %>          
@@ -489,26 +487,36 @@
     opacity: 0.3;
 }
 .course-title{
-    /* background-color: green; */
     font-size: 22px;
-    /* font-weight: normal; */
     width: 100%;
-    /* padding: 0 50px; */
-    /* padding-left: 22px; */
-    text-align: center;
+    text-align: left;
+    padding-left: 5px;
     margin-top: -5px;
     white-space:nowrap;
     overflow: hidden;
     text-overflow:ellipsis;
 }
 .course-author{
+    font-size: 12px;
+    position: absolute;
+    font-weight: normal;
+    /* bottom: 0; */
+    /* top: 0; */
+    bottom: 24px;
+    left: 8px;
+    width: 100%;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+.course-author-department{
     font-size: 16px;
     position: absolute;
     font-weight: normal;
     /* bottom: 0; */
     /* top: 0; */
     bottom: 0;
-    left: 5px;
+    left: 8px;
     width: 100%;
     white-space:nowrap;
     overflow: hidden;
@@ -573,8 +581,6 @@
     .course-title{
         font-size: 12px;
         margin-top: 0px;
-        /* word-break: normal; */
-        /* white-space:normal; */
         white-space:nowrap;
 
     }
@@ -584,6 +590,10 @@
         overflow: hidden;
         white-space:nowrap;
         text-overflow:ellipsis;
+        bottom: 14px;
+    }
+    .course-author-department{
+        font-size: 12px;
     }
     .trainingProgram-container .row .learn-more-none{
         display: none;
@@ -594,6 +604,11 @@
 
 }
 
+@media screen and (max-width: 350px){
+    .course-author{
+        display: none;
+    }
+}
 
 
 
