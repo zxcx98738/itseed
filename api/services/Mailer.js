@@ -7,6 +7,7 @@ var transporter = nodemailer.createTransport({
   },
 });
 module.exports.sendWelcomeMail = function(mail) {
+	
 	transporter.sendMail(mail, function(error, info){
 		if(error) {
 				return console.log(error);

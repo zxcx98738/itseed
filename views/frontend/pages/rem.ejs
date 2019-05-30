@@ -10,7 +10,7 @@
 			<span class="main-color-br">- 寄驗證信 -</span> 
 		</div>
 		<div class="login-main">
-			<form action="/rem" method="post">
+			<form action="/rem?email=<%=emailV.email%>" method="get">
 			 <div>
 			<span><img src="/images/layout/ACCOUNT.png"  alt="ACCOUNT.jpg"> 信箱：</span>
 			<input type="label" readonly="readonly" name="email" value="<%=emailV.email%>">
