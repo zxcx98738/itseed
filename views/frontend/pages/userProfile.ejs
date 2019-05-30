@@ -28,18 +28,9 @@
 					<form id="uploadPhoto" action="/uploadPhoto" method="post" enctype="multipart/form-data" style="margin-top: 20px; margin-bottom:20px;">
 						<button type="button" class="btn btn-default" id="uploadBtn">選擇照片</button>
 						<button type="submit" class="btn btn-yellow" >上傳</button>
-						<p>【 選擇照片後請按上傳 】</p>
+						<p>【 選擇照片後請按上傳，檔案大小限制為2M， 】</p>
 						<input type="file" class="" name="photo">
 					</form>
-<!-- 						<div class="col-sm-12 col-xs-12">
-							<% if(user.name == null){%>
-								<input type="text" name="name" class="btn-block none-border-field text-center" id="name" placeholder="ex: 林資種" autocomplete="off">
-							<% } else{ %>
-								<input type="text" name="name" class="btn-block none-border-field text-center" id="name" placeholder="請輸入真實姓名*" value="<%= user.name %>" autocomplete="off">
-							<% } %>
-						</div> -->
-
-						<!-- <p>建議使用尺寸為 250x250 以上正方形圖片，檔案大小限制為2MB。</p> -->
 					</div>
 				</div>
 			<form id="personl_info" action="/editProfile" method="post" enctype="multipart/form-data" class="form-horizontal clearfix">
@@ -63,9 +54,9 @@
 						<label class="col-sm-3 col-xs-12 " for="phone">連絡電話<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.phone == null){%>
-								<input required="required" type="text" name="phone" class="none-border-field btn-block " id="phone" placeholder="ex: 0800090000" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')" >
+								<input required="required" type="text" name="phone" class="none-border-field btn-block " id="phone" placeholder="ex: 0912345678" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')" >
 							<% } else{ %>
-								<input required="required" type="text" name="phone" class="none-border-field btn-block" id="phone" placeholder="ex: 0800090000" value="<%= user.phone %>" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+								<input required="required" type="text" name="phone" class="none-border-field btn-block" id="phone" placeholder="ex: 0912345678" value="<%= user.phone %>" autocomplete="off" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 							<% } %>
 						</div>
 						<p class="col-sm-3 col-xs-12 " style="height: 40px;"></p>
@@ -122,9 +113,9 @@
 						<label class="col-sm-3 col-xs-12" for="grade">年級<b class="darkred">*</b>：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.grade == null){%>
-								<input required="required" type="text" name="grade" class="none-border-field btn-block" id="grade" placeholder="ex: 三年級">
+								<input autocomplete="off" required="required" type="text" name="grade" class="none-border-field btn-block" id="grade" placeholder="ex: 大三">
 								<% } else{ %>
-									<input required="required" type="text" name="grade" class="none-border-field btn-block" id="grade" value="<%= user.grade %>" placeholder="ex:三年級">
+									<input autocomplete="off" required="required" type="text" name="grade" class="none-border-field btn-block" id="grade" value="<%= user.grade %>" placeholder="ex:大三">
 									<% } %>
 						</div>
 						<p class="col-sm-3 col-xs-12" ></p>
@@ -138,9 +129,9 @@
 						<label class="col-sm-3 col-xs-12" for="reference">推薦人：</label>
 						<div class="col-sm-3 col-xs-12">
 							<% if(user.reference == null){%>
-								<input type="text" name="reference" class="none-border-field btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種">
+								<input autocomplete="off" type="text" name="reference" class="none-border-field btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種">
 							<% } else{ %>
-								<input type="text" name="reference" class="none-border-field btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種" value="<%= user.reference %>">
+								<input autocomplete="off" type="text" name="reference" class="none-border-field btn-block" id="reference" placeholder="ex: 張資種, 陳資種, 黃資種" value="<%= user.reference %>">
 							<% } %>
 						</div>
 						<p class="col-sm-3 col-xs-12 comment" style="height: 40px;"></p>
@@ -168,10 +159,10 @@
 						<hr>
 						<button type="submit" class="btn-lg btn-yellow" style="color:white;" >儲存個人資料</button>
 					</div> -->
-					<div class="col-sm-12 col-xs-12 text-center" style="margin-top: 3vh; margin-bottom: 5vh;">
-						<button onclick="window.location.href='/disc';window.event.returnValue=false;" class="btn-change btn-lg btn-default" >上一步</button>
+					<div class="col-sm-12 col-xs-12 text-center" style="margin-top: 5vh; margin-bottom: 5vh;">
+						<input class="btn-change btn-lg btn-default" name = "move" type='submit' value="上一步">
 						<button type="submit" class="btn-lg btn-yellow"  >儲存資料</button>
-						<button onclick="window.location.href='/form';window.event.returnValue=false;" class="btn-change btn-lg btn-default">下一步</button>
+						<input class="btn-change btn-lg btn-default" name = "move" type='submit' value="下一步">
 					</div>
 				</form>
 		</div>

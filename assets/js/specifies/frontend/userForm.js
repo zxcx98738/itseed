@@ -1,17 +1,42 @@
 $(function(){
   /*表單驗證*/
-
-	$("form").validate({
-		submitHandler: function(form) {
-      form.submit();
-    },
-    errorPlacement: function(error, element) {
-      element.closest('div').append(error);
-      element.closest('div').addClass('error');
-    },
-    success: function(element) {
-      element.closest('div').removeClass('error');
-    },
+  
+  $('#goto_upload').click(function(){
+    $("form").validate({
+      submitHandler: function(form) {
+        form.submit();
+      },
+      errorPlacement: function(error, element) {
+        element.closest('div').append(error);
+        element.closest('div').addClass('error');
+      },
+      rules: {      		
+        Q1: {
+          required: true,
+        },
+        Q2: {
+          required: true,
+        },
+        Q3: {
+          required: true,
+        },
+        Q4: {
+          required: true,
+        },
+        Q5_1: {
+          required: true,
+        },
+        Q5_2: {
+          required: true,
+        },
+        Q6: {
+          required: true,
+        }
+      }
+    });
+    $("form").submit();
+  });
+  $('#no_require_save').click(function(){
   });
 
 });
@@ -35,16 +60,8 @@ $( document ).ready(function() {
 
   function saveToDB(Qid,text)
   {
-      console.log('Saving to the db');
-      console.log(Qid,text);
-      //console.log($("form textarea").val());
-      // document.querySelector('form')
-      // $('form').submit(function() {
-      //     // Get all the forms elements and their values in one step
-      //     var values = $("form").text();;
-      //     console.log(values);
-
-      // });
+      // console.log('Saving to the db');
+      // console.log(Qid,text);
       $.ajax({
           url: "/auto_saveForm",
           type: "Post",
@@ -53,36 +70,17 @@ $( document ).ready(function() {
           contentType: "application/json; charset=utf-8",
           success: function (result) {
               console.log(result);
+              console.log('#'+String(Qid));
+              var d = new Date();
+              $('#'+String(Qid)+"_status").html('儲存成功: ' + d.toLocaleTimeString());;
           },
           error: function(result){
               console.log(result);
           }
       });
-           
-      // var formdata = new FormData($('form')[0]);
-      // console.log(formdata);      
-      // Now show them we saved and when we did
-      // var d = new Date();
-      // $('.form-status-holder').html('Saved! Last: ' + d.toLocaleTimeString());
   }
 
 
 
 
 });
-// $.ajax({
-//     url: "/editform",
-//     type: "Post",
-//     data: ko.toJSON(self.stripDownObj()),
-//     datatype: "json",
-//     contentType: "application/json; charset=utf-8",
-//     success: function (result) {
-//         console.log(result);
-//         if(result.status == 200){
-//             self.isEditMode(!self.isEditMode());
-//         }
-//     },
-//     error: function(result){
-//         console.log(result);
-//     }
-// });

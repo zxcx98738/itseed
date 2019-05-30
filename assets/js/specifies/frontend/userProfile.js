@@ -60,10 +60,15 @@ $(function(){
       form.submit();
     },
     errorPlacement: function(error, element) {
-      element.closest('div').append(error);
-      if(element.attr('type') == 'file'){
-        element.siblings('button').addClass('error');
-      }
+      // element.closest('div').append(error);
+      swal({
+        title: "檔案格式錯誤",
+        confirmButtonText: '確定',
+        icon: "error",
+      })
+      // if(element.attr('type') == 'file'){
+      //   element.siblings('button').addClass('error');
+      // }
     },
   	rules: {      		
       photo: {
