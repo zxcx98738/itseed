@@ -58,6 +58,10 @@ module.exports.routes = {
   'get /remSucess': {
     view: 'frontend/pages/remSucess'
   }, 
+  // 提案工作坊
+  'get /Proposalworkshop': {
+    view: 'frontend/pages/Proposalworkshop'
+  },
   
   /*前台-一般頁面*/
   '/': {
