@@ -87,9 +87,9 @@
 						<!-- <p>建議使用尺寸為 250x250 以上正方形圖片，檔案大小限制為2MB。</p> -->
 					</div>
 					<div class="col-sm-12 col-xs-12 text-center" style="margin-top: 5vh; margin-bottom: 5vh;">
-						<button onclick="$('#goto_profile').val('上一步');" type="submit" id="no_require_save" class="btn-lg btn-default"><input class="btn-lg btn-default" name = "back" id="goto_profile" type="hidden">上一步</button>
-						<button type="submit" id="no_require_save" class="btn-lg btn-yellow cancel">儲存資料</button>
-						<button onclick="$('#goto_upload').val('下一步');" type="submit" id="no_require_save" class="btn-lg btn-default"><input class="btn-lg btn-default" name = "next" id="goto_upload" type="hidden">下一步</button>
+						<button onclick="$('#goto_upload').val(''); $('#goto_profile').val('上一步'); " type="submit"  class="btn-lg btn-default"><input class="btn-lg btn-default" name = "back" id="goto_profile" type="hidden">上一步</button>
+						<button onclick="$('#goto_upload').val(''); $('#goto_profile').val(''); " type="submit" id="no_require_save" class="btn-lg btn-yellow cancel">儲存資料</button>
+						<button onclick="$('#goto_profile').val(''); $('#goto_upload').val('下一步');" type="submit" id="require_save" class="btn-lg btn-default"><input class="btn-lg btn-default" name = "next" id="goto_upload" type="hidden">下一步</button>
 						
 					</div>
 				</div>

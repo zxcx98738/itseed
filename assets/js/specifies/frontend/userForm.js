@@ -1,7 +1,7 @@
 $(function(){
   /*表單驗證*/
   
-  $('#goto_upload').click(function(){
+  $('#require_save').click(function(){
     $("form").validate({
       submitHandler: function(form) {
         form.submit();
@@ -36,9 +36,6 @@ $(function(){
     });
     $("form").submit();
   });
-  $('#no_require_save').click(function(){
-  });
-
 });
 $( document ).ready(function() {
   $("#disc_progress").addClass('active');
@@ -55,7 +52,7 @@ $( document ).ready(function() {
       timeoutId = setTimeout(function() {
           // Runs 1 second (1000 ms) after the last change    
           saveToDB(Qid,text);
-      }, 2000);
+      }, 1000);
   });
 
   function saveToDB(Qid,text)
