@@ -863,8 +863,7 @@ function registerAccount(res,newuser,callback){
             else {
                 req.session.email = req.body.email;
                 req.session.pwd = req.body.pwd;
-
-                if (req.body.move == "下一步"){
+                if (req.body.next == "下一步"){
                     fs.readFile('credentials.json', (err, content) => {
                         if (err) return console.log('Error loading client secret file:', err);
                         // Authorize a client with credentials, then call the Google Drive API.
@@ -872,7 +871,7 @@ function registerAccount(res,newuser,callback){
                     });  
                     res.redirect("/form");
                 }
-                else if(req.body.move == "上一步"){
+                else if(req.body.back == "上一步"){
                     res.redirect("/disc");
                 }
                 else{
@@ -909,8 +908,11 @@ function registerAccount(res,newuser,callback){
         User_Form.update({user: req.session.userid}, value)
         .exec(function(err , user_form){
             if(err){res.end(JSON.stringify(err));}
-            if (req.body.move == "下一步"){
+            else if (req.body.next == "下一步"){
                 res.redirect("/files");
+            }
+            else if(req.body.back == "上一步"){
+                res.redirect("/profile");
             }
             else{
                 res.redirect("/form");

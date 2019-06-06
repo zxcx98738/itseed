@@ -1,6 +1,6 @@
 <script src="/js/specifies/jquery.validate.min.js"></script>
 <script src="/js/specifies/messages_zh_TW.min.js"></script>
-<script src="/js/specifies/frontend/userProfile.js"></script>
+<script src="/js/specifies/frontend/Profile.js"></script>
 
 
 <!--HEADER-->
@@ -160,9 +160,9 @@
 						<button type="submit" class="btn-lg btn-yellow" style="color:white;" >儲存個人資料</button>
 					</div> -->
 					<div class="col-sm-12 col-xs-12 text-center" style="margin-top: 5vh; margin-bottom: 5vh;">
-						<input class="btn-change btn-lg btn-default" name = "move" type='submit' value="上一步">
+						<button onclick="$('#goto_disc').val('上一步');" type="submit" id="no_require_save" class="btn-lg btn-default"><input class="btn-lg btn-default" name = "back" id="goto_disc" type="hidden">上一步</button>
 						<button type="submit" class="btn-lg btn-yellow"  >儲存資料</button>
-						<input class="btn-change btn-lg btn-default" name = "move" type='submit' value="下一步">
+						<button onclick="$('#goto_form').val('下一步');" type="submit" id="no_require_save" class="btn-lg btn-default"><input class="btn-lg btn-default" name = "next" id="goto_form" type="hidden">下一步</button>
 					</div>
 				</form>
 		</div>
