@@ -843,6 +843,9 @@ function registerAccount(res,newuser,callback){
     //編輯個人資料
     editProfile: function (req, res) {   
         var t = 0;
+        if (typeof req.body == "undefined"){
+            res.redirect("/profile");
+        }
         var value = {
             phone: req.body.phone,
             name: req.body.name,
@@ -895,6 +898,9 @@ function registerAccount(res,newuser,callback){
     },
 
     editForm: function (req, res){
+        if (typeof req.body == "undefined"){
+            res.redirect("/form");
+        }
         var value = {
           Q1 : req.body.Q1,
           Q2 : req.body.Q2,
