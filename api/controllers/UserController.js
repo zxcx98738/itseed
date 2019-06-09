@@ -656,29 +656,29 @@ function registerAccount(res,newuser,callback){
 				    gIdToken: gIdToken
           }).exec(function (err, user) 
             {
-              if (err) { return res.end(JSON.stringify(err)); }
-              if (user == undefined) {
-					      const newuser = {
-					        email: payload.email,
-                  gIdToken: gIdToken,
-                  name: req.body.name,
-                  isEmailAuth: 1
-					      }
-					      registerAccount(res, newuser, function (new_user) {
-                  send_reg_success(new_user);
-                  req.session.userid = new_user.id;
-                  req.session.email = new_user.email;
-                  req.session.gIdToken = new_user.gIdToken;
-                  req.session.type = new_user.type;
-                  req.session.finished = new_user.finished;
-                  req.session.authorized = {
-                      user: true
-                  }
-                  res.end(JSON.stringify({
-                      redirect: req.body.redirect != 'undefined' ? req.body.redirect:"/disc"
-                  }));
-					      });
-              }
+                if (err) { return res.end(JSON.stringify(err)); }
+                if (user == undefined) {
+					const newuser = {
+					    email: payload.email,
+                        gIdToken: gIdToken,
+                        name: req.body.name,
+                        isEmailAuth: 1
+				    }
+                    registerAccount(res, newuser, function (new_user) {
+                        send_reg_success(new_user);
+                        req.session.userid = new_user.id;
+                        req.session.email = new_user.email;
+                        req.session.gIdToken = new_user.gIdToken;
+                        req.session.type = new_user.type;
+                        req.session.finished = new_user.finished;
+                        req.session.authorized = {
+                            user: true
+                        }
+                        res.end(JSON.stringify({
+                            redirect: req.body.redirect != 'undefined' ? req.body.redirect:"/disc?reg=1"
+                        }));
+                    });
+                }
               else{
                 User.update(
                   {id: user.id},
