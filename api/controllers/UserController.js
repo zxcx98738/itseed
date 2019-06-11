@@ -110,10 +110,10 @@ async function update_reg_sheet(auth, user) {
   sheets.spreadsheets.values.append({
     auth: auth,
     spreadsheetId: '19j2E63vnl6nyjF-ybV7xlXYjr3-QRcKoV-F5UZtK2ng',
-    range: "'reg'!A:I", //Change Sheet1 if your worksheet's name is something else
+    range: "'reg'!A:J", //Change Sheet1 if your worksheet's name is something else
     valueInputOption: "RAW",
     resource: {
-      values: [[user.email, user.name]]
+      values: [[user.email, user.name, new Date()]]
     }
   }, (err, response) => {
     if (err) {
@@ -130,7 +130,7 @@ async function update_profile_sheet(auth, user) {
     sheets.spreadsheets.values.append({
       auth: auth,
       spreadsheetId: '19j2E63vnl6nyjF-ybV7xlXYjr3-QRcKoV-F5UZtK2ng',
-      range: "'profile'!A:J", //Change Sheet1 if your worksheet's name is something else
+      range: "'profile'!A:K", //Change Sheet1 if your worksheet's name is something else
       valueInputOption: "RAW",
       resource: {
         values: [[
@@ -142,6 +142,7 @@ async function update_profile_sheet(auth, user) {
             user.dept,
             user.reference,
             user.survey,
+            new Date()
           ]]
       }
     }, (err, response) => {
@@ -159,7 +160,7 @@ async function update_final_sheet(auth, user) {
   sheets.spreadsheets.values.append({
     auth: auth,
     spreadsheetId: '19j2E63vnl6nyjF-ybV7xlXYjr3-QRcKoV-F5UZtK2ng',
-    range: "'final'!A:Q", //Change Sheet1 if your worksheet's name is something else
+    range: "'final'!A:R", //Change Sheet1 if your worksheet's name is something else
     valueInputOption: "RAW",
     resource: {
       values: [[
@@ -179,7 +180,8 @@ async function update_final_sheet(auth, user) {
           user.Q4,
           user.Q5_1,
           user.Q5_2,
-          user.Q6
+          user.Q6,
+          new Date()
         ]]
     }
   }, (err, response) => {
@@ -675,7 +677,7 @@ function registerAccount(res,newuser,callback){
                             user: true
                         }
                         res.end(JSON.stringify({
-                            redirect: req.body.redirect != 'undefined' ? req.body.redirect:"/disc?reg=1"
+                            redirect: req.body.redirect != 'undefined' ? req.body.redirect:"/disc"
                         }));
                     });
                 }
@@ -921,6 +923,7 @@ function registerAccount(res,newuser,callback){
                 res.redirect("/profile");
             }
             else{
+              
                 res.redirect("/form");
             }
         });
