@@ -151,7 +151,38 @@ async function update_profile_sheet(auth, user) {
         return;
       }
     });
-  }
+}
+
+async function update_form_sheet(auth, user) {
+
+    const sheets = google.sheets({version: 'v4', auth});
+    sheets.spreadsheets.values.append({
+      auth: auth,
+      spreadsheetId: '19j2E63vnl6nyjF-ybV7xlXYjr3-QRcKoV-F5UZtK2ng',
+      range: "'form'!A:K", //Change Sheet1 if your worksheet's name is something else
+      valueInputOption: "RAW",
+      resource: {
+        values: [[
+            user.name,
+            new Date(),
+            user.Q1,
+            user.Q2,
+            user.Q3,
+            user.Q4,
+            user.Q5_1,
+            user.Q5_2,
+            user.Q6
+          ]]
+      }
+    }, (err, response) => {
+      if (err) {
+        console.log('The API returned an error: ' + err);
+        return;
+      }
+    });
+}
+
+
 
 async function update_final_sheet(auth, user) {
 
@@ -912,12 +943,23 @@ function registerAccount(res,newuser,callback){
           Q5_2 : req.body.Q5_2,
           Q6 : req.body.Q6
         };
-
         User_Form.update({user: req.session.userid}, value)
         .exec(function(err , user_form){
             if(err){res.end(JSON.stringify(err));}
             else if (req.body.next == "下一步"){
-                res.redirect("/files");
+                User.findOne({
+                  id: req.session.userid
+                })
+                .exec(function (err, user){
+                  value.name = user.name
+                  fs.readFile('credentials.json', (err, content) => {
+                      if (err) return console.log('Error loading client secret file:', err);
+                      // Authorize a client with credentials, then call the Google Drive API.
+                      authorize(JSON.parse(content), update_form_sheet, value);
+                  });                    
+                  res.redirect("/files");
+                });
+                
             }
             else if(req.body.back == "上一步"){
                 res.redirect("/profile");
