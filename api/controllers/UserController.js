@@ -477,7 +477,7 @@ function registerAccount(res,newuser,callback){
                       from: 'itseed17th@gmail.com',
                       to: req.body.email,
                       subject: '【資訊種子第17屆】【忘記密碼】',
-                    //   html:"<p>親愛的 "+req.session.name+" 您好</p><br><p>您的新密碼為："+randomstring+"</p><br><p>請記得登入並更改您的密碼</p><br><p>第十七屆資訊種子招生團隊敬上</p>"
+                      html:"<p>親愛的 "+req.session.name+" 您好</p><br><p>您的新密碼為："+randomstring+"</p><br><p>請記得登入並更改您的密碼</p><br><p>第十七屆資訊種子招生團隊敬上</p>"
                       };//每個信件寄出的密碼皆為8字亂數
 
                       transporter.sendMail(mailOptions, function(error, info){
