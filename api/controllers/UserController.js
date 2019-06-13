@@ -273,8 +273,10 @@ function registerAccount(res,newuser,callback){
                 if (itseed_th != undefined) {
                     newuser.th = itseed_th.value;
                 }
+                // console.log(newuser);
                 User.create(newuser)
                 .exec(function (err, user) {
+                    // console.log(user);
                     if (err) { res.end(JSON.stringify(err)); }
                     //新增DISC
                     UserDISC.create({ user: user.id })
@@ -556,19 +558,11 @@ function registerAccount(res,newuser,callback){
             pwd: md5(req.body.pwd),
             name: req.body.name
         };
-        // console.log(newuser.name);
+
 		registerAccount(res,newuser,function(user){
-			// req.session.userid = user.id;
-            // req.session.email = user.email;
-            // req.session.pwd = user.pwd;
-			// req.session.type =  user.type;
-			// req.session.authorized = {
-			// 	user: true
-            // };
+
             res.redirect("/rem?email="+newuser.email);
-            
-        //註冊完寄送驗證信    
-			// res.redirect("/rem");  
+
         });                
     },
     //檢查信箱是否已存在

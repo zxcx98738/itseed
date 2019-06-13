@@ -45,7 +45,7 @@ module.exports = {
         //真實姓名
         name: {
           type: 'string',
-          maxLength: 10,
+          maxLength: 40,
         },  
         //性別 男:M, 女:F
         gender: {
@@ -61,12 +61,12 @@ module.exports = {
         //就讀學校
         school : {
           type: 'string',
-          maxLength: 20,
+          maxLength: 40,
         },
         //系所
         dept : {
           type: 'string',
-          maxLength: 20,
+          maxLength: 40,
         },        
         //年級
         grade : {
