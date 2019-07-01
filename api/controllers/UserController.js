@@ -438,7 +438,7 @@ function registerAccount(res,newuser,callback){
                             if (err) { 
                                 res.end(JSON.stringify(err)); 
                             }else {
-                                send_reg_success(data);
+                                send_reg_success(user);
                                 return res.view("frontend/pages/remSucess", {
                                     emailV:emailV,
                                     status:'驗證成功',
@@ -685,12 +685,12 @@ function registerAccount(res,newuser,callback){
             {
                 if (err) { return res.end(JSON.stringify(err)); }
                 if (user == undefined) {
-					const newuser = {
-					    email: payload.email,
-                        gIdToken: gIdToken,
-                        name: req.body.name,
-                        isEmailAuth: 1
-				    }
+        					const newuser = {
+        					    email: payload.email,
+                      gIdToken: gIdToken,
+                      name: req.body.name,
+                      isEmailAuth: 1
+        				    }
                     registerAccount(res, newuser, function (new_user) {
                         send_reg_success(new_user);
                         req.session.userid = new_user.id;
@@ -940,7 +940,7 @@ function registerAccount(res,newuser,callback){
         User_Form.update({user: req.session.userid}, value)
         .exec(function(err , user_form){
             if(err){res.end(JSON.stringify(err));}
-            else if (req.body.next == "下一步"){
+            if (req.body.next == "下一步"){
                 User.findOne({
                   id: req.session.userid
                 })
@@ -1133,10 +1133,7 @@ function registerAccount(res,newuser,callback){
                         files.autobiographyUT = CmsService.formatTime(files.autobiographyUT);
                     }
                 }
-                // if (files.receiptUT != null){
-                //     f += 1;
-                //     files.receiptUT = CmsService.formatTime(files.receiptUT);
-                // }
+                
                 if(f == 2){
                     // files.allFiles = 1;
                     files.finished = 1;
