@@ -870,46 +870,49 @@ function registerAccount(res,newuser,callback){
     //編輯個人資料
     editProfile: function (req, res) {   
         var t = 0;
+        print(req.body);
         if (typeof req.body == "undefined"){
             res.redirect("/profile");
         }
-        var value = {
-            phone: req.body.phone,
-            name: req.body.name,
-            gender: req.body.gender,
-            school: req.body.school,
-            dept: req.body.dept,
-            grade: req.body.grade,
-            reference: req.body.reference,
-            survey: Array.isArray(req.body.survey) ? req.body.survey.join(',') : req.body.survey
-        };
+        else{
+          var value = {
+              phone: req.body.phone,
+              name: req.body.name,
+              gender: req.body.gender,
+              school: req.body.school,
+              dept: req.body.dept,
+              grade: req.body.grade,
+              reference: req.body.reference,
+              survey: Array.isArray(req.body.survey) ? req.body.survey.join(',') : req.body.survey
+          };
 
-        
-        User.update({id: req.session.userid}, value)
-        .exec(function (err, datas) {
-            if (err) {
-                res.end(JSON.stringify(err));
-            }
-            else {
-                req.session.email = req.body.email;
-                req.session.pwd = req.body.pwd;
-                if (req.body.next == "下一步"){
-                    fs.readFile('credentials.json', (err, content) => {
-                        if (err) return console.log('Error loading client secret file:', err);
-                        // Authorize a client with credentials, then call the Google Drive API.
-                        authorize(JSON.parse(content), update_profile_sheet, value);
-                    });  
-                    res.redirect("/form");
-                }
-                else if(req.body.back == "上一步"){
-                    res.redirect("/disc");
-                }
-                else{
-                    res.redirect("/profile");
-                }
-                
-            }     
-        });
+          
+          User.update({id: req.session.userid}, value)
+          .exec(function (err, datas) {
+              if (err) {
+                  res.end(JSON.stringify(err));
+              }
+              else {
+                  req.session.email = req.body.email;
+                  req.session.pwd = req.body.pwd;
+                  if (req.body.next == "下一步"){
+                      fs.readFile('credentials.json', (err, content) => {
+                          if (err) return console.log('Error loading client secret file:', err);
+                          // Authorize a client with credentials, then call the Google Drive API.
+                          authorize(JSON.parse(content), update_profile_sheet, value);
+                      });  
+                      res.redirect("/form");
+                  }
+                  else if(req.body.back == "上一步"){
+                      res.redirect("/disc");
+                  }
+                  else{
+                      res.redirect("/profile");
+                  }
+                  
+              }     
+          });
+        }
     },
 
     form: function (req, res){
