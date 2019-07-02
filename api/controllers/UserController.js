@@ -381,7 +381,7 @@ function registerAccount(res,newuser,callback){
                             if(err){
                                 console.log('error in email template');    
                             } 
-                            console.log(html);
+                            // console.log(html);
                             mail.html = html;
                             Mailer.sendWelcomeMail(mail);
                         });
@@ -870,7 +870,7 @@ function registerAccount(res,newuser,callback){
     //編輯個人資料
     editProfile: function (req, res) {   
         var t = 0;
-        print(req.body);
+        console.log(req.body);
         if (typeof req.body == "undefined"){
             res.redirect("/profile");
         }
