@@ -931,41 +931,43 @@ function registerAccount(res,newuser,callback){
         if (typeof req.body == "undefined"){
             res.redirect("/form");
         }
-        var value = {
-          Q1 : req.body.Q1,
-          Q2 : req.body.Q2,
-          Q3 : req.body.Q3,
-          Q4 : req.body.Q4,
-          Q5_1 : req.body.Q5_1,
-          Q5_2 : req.body.Q5_2,
-          Q6 : req.body.Q6
-        };
-        User_Form.update({user: req.session.userid}, value)
-        .exec(function(err , user_form){
-            if(err){res.end(JSON.stringify(err));}
-            if (req.body.next == "下一步"){
-                User.findOne({
-                  id: req.session.userid
-                })
-                .exec(function (err, user){
-                  value.name = user.name
-                  fs.readFile('credentials.json', (err, content) => {
-                      if (err) return console.log('Error loading client secret file:', err);
-                      // Authorize a client with credentials, then call the Google Drive API.
-                      authorize(JSON.parse(content), update_form_sheet, value);
-                  });                    
-                  res.redirect("/files");
-                });
-                
-            }
-            else if(req.body.back == "上一步"){
-                res.redirect("/profile");
-            }
-            else{
-              
-                res.redirect("/form");
-            }
-        });
+        else{
+          var value = {
+              Q1 : req.body.Q1,
+              Q2 : req.body.Q2,
+              Q3 : req.body.Q3,
+              Q4 : req.body.Q4,
+              Q5_1 : req.body.Q5_1,
+              Q5_2 : req.body.Q5_2,
+              Q6 : req.body.Q6
+            };
+            User_Form.update({user: req.session.userid}, value)
+            .exec(function(err , user_form){
+                if(err){res.end(JSON.stringify(err));}
+                if (req.body.next == "下一步"){
+                    User.findOne({
+                      id: req.session.userid
+                    })
+                    .exec(function (err, user){
+                      value.name = user.name
+                      fs.readFile('credentials.json', (err, content) => {
+                          if (err) return console.log('Error loading client secret file:', err);
+                          // Authorize a client with credentials, then call the Google Drive API.
+                          authorize(JSON.parse(content), update_form_sheet, value);
+                      });                    
+                      res.redirect("/files");
+                    });
+                    
+                }
+                else if(req.body.back == "上一步"){
+                    res.redirect("/profile");
+                }
+                else{
+                    res.redirect("/form");
+                }
+            });          
+        }
+  
     },
 
     auto_saveForm: function (req, res){
