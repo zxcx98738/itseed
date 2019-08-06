@@ -11,12 +11,14 @@ var fs = require("fs");
 var nodemailer = require('nodemailer');
 const readline = require('readline');
 const {google} = require('googleapis');
+const used_email = String(process.env.email);
+const email_pwd = String(process.env.email_password)
 
 const transporter = nodemailer.createTransport({
  service: 'gmail',
  auth: {
-   user: 'itseed17th@gmail.com',
-   pass: 'weareitseed17'
+   user: used_email,
+   pass: email_pwd
  }
 });
 
@@ -89,7 +91,7 @@ function send_reg_success(newuser){
         // Authorize a client with credentials, then call the Google Drive API.
         email_content = content;
         var mailOptions = {
-            from: 'itseed17th@gmail.com',
+            from: used_email,
             to: newuser.email,
             subject: '資訊種子帳號註冊成功',
             html: '<p>親愛的' + String(newuser.name)+ '您好,</p><br>' + email_content
@@ -476,7 +478,7 @@ function registerAccount(res,newuser,callback){
                   if (err) { res.end(JSON.stringify(err)); }
                   else{
                       var mailOptions = {
-                      from: 'itseed17th@gmail.com',
+                      from: used_email,
                       to: req.body.email,
                       subject: '【資訊種子第17屆】【忘記密碼】',
                       html:"<p>親愛的 "+req.session.name+" 您好</p><br><p>您的新密碼為："+randomstring+"</p><br><p>請記得登入並更改您的密碼</p><br><p>第十七屆資訊種子招生團隊敬上</p>"
