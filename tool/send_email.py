@@ -13,21 +13,22 @@ import sys
 sender = 'itseed17th@gmail.com'
 passwd = 'weareitseed17'
 receivers = []
-receive_list = open("email_list.txt")
+receive_list = open("formal_list.txt")
 for i in receive_list:
 	print(i.rstrip("\n"))
-	receivers.append(i.rstrip("\n").split(",")[1])
+	receivers.append(i.rstrip("\n"))
 
  
 emails = [elem.strip().split(',') for elem in receivers]
 msg = MIMEMultipart()
-msg['Subject'] = "Greeting from 招生團隊"
+msg['Subject'] = "【第十七屆資訊種子培訓計畫】報名倒數通知信"
 msg['From'] = sender
-msg['To'] = ','.join(receivers)
+# msg['To'] = ','.join(receivers)
+# msg['Bcc'] = ", ".join(receivers)
  
-msg.preamble = 'Multipart massage.\n'
-part = MIMEText("親愛的學員 暑假快樂\n")
-msg.attach(part)
+# msg.preamble = 'Multipart massage.\n'
+# part = MIMEText("親愛的學員 暑假快樂\n")
+# msg.attach(part)
  
 # part = MIMEApplication(open(str(sys.argv[1])).read())
 report_file = open('email.html')
@@ -47,4 +48,4 @@ smtp.starttls()
 smtp.login(sender, passwd)
  
 smtp.sendmail(msg['From'], emails , msg.as_string())
-print ('Send mails to',msg['To'])
+print ('Send mails to',receivers)
