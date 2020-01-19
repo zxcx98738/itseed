@@ -28,9 +28,9 @@ module.exports = {
   
   port: 443,
   ssl: {
-     ca: require('fs').readFileSync(require('path').resolve(__dirname,'../ssl/gd-bundle.crt')),
-     key: require('fs').readFileSync(require('path').resolve(__dirname,'../ssl/ssl.key')),
-     cert: require('fs').readFileSync(require('path').resolve(__dirname,'../ssl/ssl.crt'))
+     ca: require('fs').readFileSync(require('path').resolve(__dirname,'../ssl/gd-bundle.crt'), 'utf8'),
+     key: require('fs').readFileSync(require('path').resolve(__dirname,'../ssl/ssl.key'), 'utf8'),
+     cert: require('fs').readFileSync(require('path').resolve(__dirname,'../ssl/ssl.crt'), 'utf8')
   },
 
 
