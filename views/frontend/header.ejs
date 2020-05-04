@@ -1,5 +1,5 @@
 <script>
-  function signOut() {    
+  function signOut() {
     swal({
       title: '確定要登出嗎?',
       confirmButtonText: '確定',
@@ -12,7 +12,7 @@
         auth2.signOut().then(function () {
           document.location.href = "/logout";
         });
-        document.location.href = "/logout";   
+        document.location.href = "/logout";
       }
     })
   }
@@ -100,7 +100,7 @@
 </script>
 <script>
 $(function(){
-  $('#BackTop').click(function(){ 
+  $('#BackTop').click(function(){
     $('html,body').animate({scrollTop:0}, 333);
   });
   $(window).scroll(function() {
