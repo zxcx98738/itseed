@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
-  <head>
-    <title>資訊種子培訓計畫</title>
 
-    <!-- Viewport mobile tag for sensible mobile support -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="KeyWords" content="資訊種子培訓計畫,培訓計畫,資訊種子,課程,itseed,講座,實習計畫,實習機會,夥伴,學習">
-    <meta name="description" content="培訓計畫,itseed">
+<head>
+  <title>資訊種子培訓計畫</title>
 
-    <meta property="og:title" content="資種種子培訓計畫">
-    <meta property="og:image" content="/images/index/recruit_16.jpg">
-    <meta property="og:description" content="Seed for Change; Change for the better.">
-    <link rel="shortcut icon" type="image/png" href="/images/layout/logo.png"/>
-    
-    <!--n
+  <!-- Viewport mobile tag for sensible mobile support -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="KeyWords" content="資訊種子培訓計畫,培訓計畫,資訊種子,課程,itseed,講座,實習計畫,實習機會,夥伴,學習">
+  <meta name="description" content="培訓計畫,itseed">
+
+  <meta property="og:title" content="資種種子培訓計畫">
+  <meta property="og:image" content="/images/index/recruit_16.jpg">
+  <meta property="og:description" content="Seed for Change; Change for the better.">
+  <link rel="shortcut icon" type="image/png" href="/images/layout/logo.png" />
+
+  <!--n
         Stylesheets and Preprocessors
         ==============================
 
@@ -36,57 +37,60 @@
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
 
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
       crossorigin="anonymous"> -->
-    <!--STYLES-->
-    <link rel="stylesheet" href="/styles/dependencies/bootstrap.css?v=1588581838394">
-    <link rel="stylesheet" href="/styles/importer_17.css?v=1588581838394">
-    <!--STYLES END-->
+  <!--STYLES-->
+  <link rel="stylesheet" href="/styles/dependencies/bootstrap.css?v=1589120307795">
+  <link rel="stylesheet" href="/styles/importer_17.css?v=1589120307795">
+  <!--STYLES END-->
 
-    <!--手動添加-->
-    <script src="/js/specifies/jquery-1.11.2.min.js"></script>
-    <script src="/js/specifies/jquery.color.min.js"></script>
-    <!-- google-login -->
-    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-    <meta name="google-signin-client_id" content=<%= process.env.googleLoginId %> >
-    <script>
-      function onLoad() {
-        gapi.load('auth2', function () {
-          gapi.auth2.init();
-        });
-      }
+  <!--手動添加-->
+  <script src="/js/specifies/jquery-1.11.2.min.js"></script>
+  <script src="/js/specifies/jquery.color.min.js"></script>
+  <!-- google-login -->
+  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+  <meta name="google-signin-client_id" content=<%= process.env.googleLoginId %>>
+  <script>
+    function onLoad() {
+      gapi.load('auth2', function () {
+        gapi.auth2.init();
+      });
+    }
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P78DT5T');
     </script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116242302-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
+  <!-- End Google Tag Manager -->
 
-      gtag('config', 'UA-116242302-1');
-    </script>
-    
-    <!-- Hotjar Tracking Code for http://www.itseed.tw/ -->
-    <script>
-      (function (h, o, t, j, a, r) {
-        h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
-        h._hjSettings = { hjid: 867549, hjsv: 6 };
-        a = o.getElementsByTagName('head')[0];
-        r = o.createElement('script'); r.async = 1;
-        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-        a.appendChild(r);
-      })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-    </script>
-    <!--[if lt IE 9]>
+  <!-- Hotjar Tracking Code for http://www.itseed.tw/ -->
+  <script>
+    (function (h, o, t, j, a, r) {
+      h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+      h._hjSettings = { hjid: 867549, hjsv: 6 };
+      a = o.getElementsByTagName('head')[0];
+      r = o.createElement('script'); r.async = 1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+  </script>
+  <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
       </script>
     <![endif]-->
 
-  </head>
-  <body>
-    <div id="fb-root"></div>
-    <%- body %>
-    <!--
+</head>
+
+<body>
+  <div id="fb-root"></div>
+  <%- body %>
+  <!--
         Client-side Templates
         ========================
 
@@ -107,12 +111,12 @@
               stringfile before they're served.
     -->
 
-    <!--TEMPLATES-->
-    
-    <!--TEMPLATES END-->
+  <!--TEMPLATES-->
+
+  <!--TEMPLATES END-->
 
 
-    <!--
+  <!--
 
       Client-side Javascript
       ========================
@@ -135,30 +139,17 @@
 
     -->
 
-    <!--SCRIPTS-->
-    <script src="/js/dependencies/sails.io.js?v=1588581838394"></script>
-    <script src="/js/dependencies/bootstrap.js?v=1588581838394"></script>
-    <script src="/js/dependencies/fb.js?v=1588581838394"></script>
-    <script src="/js/dependencies/sweetalert2-7.21.1.js?v=1588581838394"></script>
-    <!--SCRIPTS END-->
-    <script>(function () {
-        var _fbq = window._fbq || (window._fbq = []);
-        if (!_fbq.loaded) {
-          var fbds = document.createElement('script');
-          fbds.async = true;
-          fbds.src = '//connect.facebook.net/en_US/fbds.js';
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(fbds, s);
-          _fbq.loaded = true;
-        }
-        _fbq.push(['addPixelId', '227111357648472']);
-      })();
-      window._fbq = window._fbq || [];
-      window._fbq.push(['track', 'PixelInitialized', {}]);
-    </script>
-    <noscript>
-      <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=227111357648472&amp;ev=PixelInitialized"
-      />
-    </noscript>
-  </body>
+  <!--SCRIPTS-->
+  <script src="/js/dependencies/sails.io.js?v=1589120307795"></script>
+  <script src="/js/dependencies/bootstrap.js?v=1589120307795"></script>
+  <script src="/js/dependencies/fb.js?v=1589120307795"></script>
+  <script src="/js/dependencies/sweetalert2-7.21.1.js?v=1589120307795"></script>
+  <!--SCRIPTS END-->
+
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P78DT5T"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+</body>
+
 </html>
